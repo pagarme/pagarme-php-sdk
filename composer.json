@@ -7,14 +7,13 @@
         "API",
         "SDK"
     ],
-    "homepage": "https://www.apimatic.io",
+    "homepage": "https://github.com/pagarme/",
     "license": "MIT",
     "authors": [
         {
-            "name": "APIMatic Code Generator",
-            "email": "support@apimatic.io",
-            "homepage": "https://www.apimatic.io",
-            "role": "API Tool"
+            "name": "Pagar.me Pagamentos S/A",
+            "email": "suporte@pagar.me",
+            "homepage": "https://github.com/pagarme/"
         }
     ],
     "require": {
