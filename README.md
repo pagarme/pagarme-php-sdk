@@ -114,6 +114,8 @@ The following parameters are configurable for the API Client:
 | `retryOnTimeout` | `bool` | Whether to retry on request timeout.<br>*Default*: `true` |
 | `httpStatusCodesToRetry` | `array` | Http status codes to retry against.<br>*Default*: `408, 413, 429, 500, 502, 503, 504, 521, 522, 524` |
 | `httpMethodsToRetry` | `array` | Http methods to retry against.<br>*Default*: `'GET', 'PUT'` |
+| `basicAuthUserName` | `string` | The username to use with basic authentication |
+| `basicAuthPassword` | `string` | The password to use with basic authentication |
 
 The API client can be initialized as follows:
 
@@ -152,7 +154,6 @@ Here is the list of errors that the API might throw.
 * [Charges](/doc/controllers/charges.md)
 * [Recipients](/doc/controllers/recipients.md)
 * [Tokens](/doc/controllers/tokens.md)
-* [Sellers](/doc/controllers/sellers.md)
 * [Transactions](/doc/controllers/transactions.md)
 * [Transfers](/doc/controllers/transfers.md)
 

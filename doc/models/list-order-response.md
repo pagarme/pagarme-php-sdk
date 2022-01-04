@@ -29,7 +29,6 @@ Response object for listing order objects
           "amount": 180,
           "description": "description2",
           "quantity": 38,
-          "GetSellerResponse": null,
           "category": "category0",
           "code": "code0"
         },
@@ -38,7 +37,6 @@ Response object for listing order objects
           "amount": 181,
           "description": "description3",
           "quantity": 39,
-          "GetSellerResponse": null,
           "category": "category1",
           "code": "code1"
         }
@@ -173,7 +171,6 @@ Response object for listing order objects
           "amount": 181,
           "description": "description3",
           "quantity": 39,
-          "GetSellerResponse": null,
           "category": "category1",
           "code": "code1"
         },
@@ -182,7 +179,6 @@ Response object for listing order objects
           "amount": 182,
           "description": "description4",
           "quantity": 40,
-          "GetSellerResponse": null,
           "category": "category2",
           "code": "code2"
         },
@@ -191,7 +187,6 @@ Response object for listing order objects
           "amount": 183,
           "description": "description5",
           "quantity": 41,
-          "GetSellerResponse": null,
           "category": "category3",
           "code": "code3"
         }

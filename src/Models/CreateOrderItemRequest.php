@@ -33,16 +33,6 @@ class CreateOrderItemRequest implements \JsonSerializable
     private $quantity;
 
     /**
-     * @var CreateSellerRequest|null
-     */
-    private $seller;
-
-    /**
-     * @var string|null
-     */
-    private $sellerId;
-
-    /**
      * @var string
      */
     private $category;
@@ -136,50 +126,6 @@ class CreateOrderItemRequest implements \JsonSerializable
     }
 
     /**
-     * Returns Seller.
-     *
-     * Item seller
-     */
-    public function getSeller(): ?CreateSellerRequest
-    {
-        return $this->seller;
-    }
-
-    /**
-     * Sets Seller.
-     *
-     * Item seller
-     *
-     * @maps seller
-     */
-    public function setSeller(?CreateSellerRequest $seller): void
-    {
-        $this->seller = $seller;
-    }
-
-    /**
-     * Returns Seller Id.
-     *
-     * seller identificator
-     */
-    public function getSellerId(): ?string
-    {
-        return $this->sellerId;
-    }
-
-    /**
-     * Sets Seller Id.
-     *
-     * seller identificator
-     *
-     * @maps seller_id
-     */
-    public function setSellerId(?string $sellerId): void
-    {
-        $this->sellerId = $sellerId;
-    }
-
-    /**
      * Returns Category.
      *
      * Category
@@ -235,18 +181,12 @@ class CreateOrderItemRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['amount']        = $this->amount;
-        $json['description']   = $this->description;
-        $json['quantity']      = $this->quantity;
-        if (isset($this->seller)) {
-            $json['seller']    = $this->seller;
-        }
-        if (isset($this->sellerId)) {
-            $json['seller_id'] = $this->sellerId;
-        }
-        $json['category']      = $this->category;
+        $json['amount']      = $this->amount;
+        $json['description'] = $this->description;
+        $json['quantity']    = $this->quantity;
+        $json['category']    = $this->category;
         if (isset($this->code)) {
-            $json['code']      = $this->code;
+            $json['code']    = $this->code;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

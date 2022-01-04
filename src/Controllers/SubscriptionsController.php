@@ -91,351 +91,6 @@ class SubscriptionsController extends BaseController
     }
 
     /**
-     * Updates the credit card from a subscription
-     *
-     * @param string $subscriptionId Subscription id
-     * @param \PagarmeApiSDKLib\Models\UpdateSubscriptionCardRequest $request Request for updating a
-     *        card
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateSubscriptionCard(
-        string $subscriptionId,
-        \PagarmeApiSDKLib\Models\UpdateSubscriptionCardRequest $request,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/card';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
-    }
-
-    /**
-     * Deletes a usage
-     *
-     * @param string $subscriptionId The subscription id
-     * @param string $itemId The subscription item id
-     * @param string $usageId The usage id
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetUsageResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function deleteUsage(
-        string $subscriptionId,
-        string $itemId,
-        string $usageId,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetUsageResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-            'item_id'         => $itemId,
-            'usage_id'        => $usageId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::DELETE, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::delete($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetUsageResponse');
-    }
-
-    /**
-     * Creates a discount
-     *
-     * @param string $subscriptionId Subscription id
-     * @param \PagarmeApiSDKLib\Models\CreateDiscountRequest $request Request for creating a
-     *        discount
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetDiscountResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createDiscount(
-        string $subscriptionId,
-        \PagarmeApiSDKLib\Models\CreateDiscountRequest $request,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetDiscountResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/discounts';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetDiscountResponse');
-    }
-
-    /**
-     * Create Usage
-     *
-     * @param string $subscriptionId Subscription id
-     * @param string $itemId Item id
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetUsageResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createAnUsage(
-        string $subscriptionId,
-        string $itemId,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetUsageResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/items/{item_id}/usages';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-            'item_id'         => $itemId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetUsageResponse');
-    }
-
-    /**
-     * @param string $subscriptionId Subscription Id
-     * @param \PagarmeApiSDKLib\Models\UpdateCurrentCycleStatusRequest $request Request for updating
-     *        the end date of the subscription current status
-     * @param string|null $idempotencyKey
-     *
-     * @return void Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateCurrentCycleStatus(
-        string $subscriptionId,
-        \PagarmeApiSDKLib\Models\UpdateCurrentCycleStatusRequest $request,
-        ?string $idempotencyKey = null
-    ): void {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/cycle-status';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-    }
-
-    /**
      * Deletes a discount
      *
      * @param string $subscriptionId Subscription id
@@ -500,230 +155,6 @@ class SubscriptionsController extends BaseController
         $this->validateResponse($_httpResponse, $_httpRequest);
         $mapper = $this->getJsonMapper();
         return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetDiscountResponse');
-    }
-
-    /**
-     * Get Subscription Items
-     *
-     * @param string $subscriptionId The subscription id
-     * @param int|null $page Page number
-     * @param int|null $size Page size
-     * @param string|null $name The item name
-     * @param string|null $code Identification code in the client system
-     * @param string|null $status The item statis
-     * @param string|null $description The item description
-     * @param string|null $createdSince Filter for item's creation date start range
-     * @param string|null $createdUntil Filter for item's creation date end range
-     *
-     * @return \PagarmeApiSDKLib\Models\ListSubscriptionItemsResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getSubscriptionItems(
-        string $subscriptionId,
-        ?int $page = null,
-        ?int $size = null,
-        ?string $name = null,
-        ?string $code = null,
-        ?string $status = null,
-        ?string $description = null,
-        ?string $createdSince = null,
-        ?string $createdUntil = null
-    ): \PagarmeApiSDKLib\Models\ListSubscriptionItemsResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/items';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //process optional query parameters
-        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
-            'page'            => $page,
-            'size'            => $size,
-            'name'            => $name,
-            'code'            => $code,
-            'status'          => $status,
-            'description'     => $description,
-            'created_since'   => $createdSince,
-            'created_until'   => $createdUntil,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListSubscriptionItemsResponse');
-    }
-
-    /**
-     * Updates the payment method from a subscription
-     *
-     * @param string $subscriptionId Subscription id
-     * @param \PagarmeApiSDKLib\Models\UpdateSubscriptionPaymentMethodRequest $request Request for
-     *        updating the paymentmethod from a subscription
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateSubscriptionPaymentMethod(
-        string $subscriptionId,
-        \PagarmeApiSDKLib\Models\UpdateSubscriptionPaymentMethodRequest $request,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/payment-method';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
-    }
-
-    /**
-     * Get Subscription Item
-     *
-     * @param string $subscriptionId Subscription Id
-     * @param string $itemId Item id
-     *
-     * @return \PagarmeApiSDKLib\Models\GetSubscriptionItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getSubscriptionItem(
-        string $subscriptionId,
-        string $itemId
-    ): \PagarmeApiSDKLib\Models\GetSubscriptionItemResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/items/{item_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-            'item_id'         => $itemId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionItemResponse');
     }
 
     /**
@@ -819,221 +250,6 @@ class SubscriptionsController extends BaseController
         $this->validateResponse($_httpResponse, $_httpRequest);
         $mapper = $this->getJsonMapper();
         return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListSubscriptionsResponse');
-    }
-
-    /**
-     * Cancels a subscription
-     *
-     * @param string $subscriptionId Subscription id
-     * @param \PagarmeApiSDKLib\Models\CreateCancelSubscriptionRequest|null $request Request for
-     *        cancelling a subscription
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function cancelSubscription(
-        string $subscriptionId,
-        ?\PagarmeApiSDKLib\Models\CreateCancelSubscriptionRequest $request = null,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::DELETE, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::delete($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
-    }
-
-    /**
-     * Creates a increment
-     *
-     * @param string $subscriptionId Subscription id
-     * @param \PagarmeApiSDKLib\Models\CreateIncrementRequest $request Request for creating a
-     *        increment
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetIncrementResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createIncrement(
-        string $subscriptionId,
-        \PagarmeApiSDKLib\Models\CreateIncrementRequest $request,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetIncrementResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/increments';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetIncrementResponse');
-    }
-
-    /**
-     * Creates a usage
-     *
-     * @param string $subscriptionId Subscription Id
-     * @param string $itemId Item id
-     * @param \PagarmeApiSDKLib\Models\CreateUsageRequest $body Request for creating a usage
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetUsageResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createUsage(
-        string $subscriptionId,
-        string $itemId,
-        \PagarmeApiSDKLib\Models\CreateUsageRequest $body,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetUsageResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/items/{item_id}/usages';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-            'item_id'         => $itemId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($body);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetUsageResponse');
     }
 
     /**
@@ -1225,75 +441,6 @@ class SubscriptionsController extends BaseController
     }
 
     /**
-     * @param string $subscriptionId
-     * @param \PagarmeApiSDKLib\Models\UpdateSubscriptionAffiliationIdRequest $request Request for
-     *        updating a subscription affiliation id
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateSubscriptionAffiliationId(
-        string $subscriptionId,
-        \PagarmeApiSDKLib\Models\UpdateSubscriptionAffiliationIdRequest $request,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/gateway-affiliation-id';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
-    }
-
-    /**
      * Updates the metadata from a subscription
      *
      * @param string $subscriptionId The subscription id
@@ -1432,31 +579,22 @@ class SubscriptionsController extends BaseController
     }
 
     /**
-     * @param string $subscriptionId Subscription Id
-     * @param string $page Page number
-     * @param string $size Page size
+     * Gets a subscription
      *
-     * @return \PagarmeApiSDKLib\Models\ListCyclesResponse Response from the API call
+     * @param string $subscriptionId Subscription id
+     *
+     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getSubscriptionCycles(
-        string $subscriptionId,
-        string $page,
-        string $size
-    ): \PagarmeApiSDKLib\Models\ListCyclesResponse {
+    public function getSubscription(string $subscriptionId): \PagarmeApiSDKLib\Models\GetSubscriptionResponse
+    {
         //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/cycles';
+        $_queryBuilder = '/subscriptions/{subscription_id}';
 
         //process optional query parameters
         $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
             'subscription_id' => $subscriptionId,
-        ]);
-
-        //process optional query parameters
-        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
-            'page'            => $page,
-            'size'            => $size,
         ]);
 
         //validate and preprocess url
@@ -1497,7 +635,364 @@ class SubscriptionsController extends BaseController
         //handle errors defined at the API level
         $this->validateResponse($_httpResponse, $_httpRequest);
         $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListCyclesResponse');
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
+    }
+
+    /**
+     * @param string $subscriptionId
+     * @param \PagarmeApiSDKLib\Models\UpdateCurrentCycleEndDateRequest $request Request for
+     *        updating the end date of the current signature cycle
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateLatestPeriodEndAt(
+        string $subscriptionId,
+        \PagarmeApiSDKLib\Models\UpdateCurrentCycleEndDateRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/periods/latest/end-at';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
+    }
+
+    /**
+     * @param string $subscriptionId Subscription Id
+     * @param \PagarmeApiSDKLib\Models\UpdateCurrentCycleStatusRequest $request Request for updating
+     *        the end date of the subscription current status
+     * @param string|null $idempotencyKey
+     *
+     * @return void Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateCurrentCycleStatus(
+        string $subscriptionId,
+        \PagarmeApiSDKLib\Models\UpdateCurrentCycleStatusRequest $request,
+        ?string $idempotencyKey = null
+    ): void {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/cycle-status';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+    }
+
+    /**
+     * Get Subscription Items
+     *
+     * @param string $subscriptionId The subscription id
+     * @param int|null $page Page number
+     * @param int|null $size Page size
+     * @param string|null $name The item name
+     * @param string|null $code Identification code in the client system
+     * @param string|null $status The item statis
+     * @param string|null $description The item description
+     * @param string|null $createdSince Filter for item's creation date start range
+     * @param string|null $createdUntil Filter for item's creation date end range
+     *
+     * @return \PagarmeApiSDKLib\Models\ListSubscriptionItemsResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getSubscriptionItems(
+        string $subscriptionId,
+        ?int $page = null,
+        ?int $size = null,
+        ?string $name = null,
+        ?string $code = null,
+        ?string $status = null,
+        ?string $description = null,
+        ?string $createdSince = null,
+        ?string $createdUntil = null
+    ): \PagarmeApiSDKLib\Models\ListSubscriptionItemsResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/items';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+        ]);
+
+        //process optional query parameters
+        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
+            'page'            => $page,
+            'size'            => $size,
+            'name'            => $name,
+            'code'            => $code,
+            'status'          => $status,
+            'description'     => $description,
+            'created_since'   => $createdSince,
+            'created_until'   => $createdUntil,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json'
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListSubscriptionItemsResponse');
+    }
+
+    /**
+     * Get Subscription Item
+     *
+     * @param string $subscriptionId Subscription Id
+     * @param string $itemId Item id
+     *
+     * @return \PagarmeApiSDKLib\Models\GetSubscriptionItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getSubscriptionItem(
+        string $subscriptionId,
+        string $itemId
+    ): \PagarmeApiSDKLib\Models\GetSubscriptionItemResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/items/{item_id}';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+            'item_id'         => $itemId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json'
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionItemResponse');
+    }
+
+    /**
+     * @param string $subscriptionId
+     * @param \PagarmeApiSDKLib\Models\UpdateSubscriptionAffiliationIdRequest $request Request for
+     *        updating a subscription affiliation id
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateSubscriptionAffiliationId(
+        string $subscriptionId,
+        \PagarmeApiSDKLib\Models\UpdateSubscriptionAffiliationIdRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/gateway-affiliation-id';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
     }
 
     /**
@@ -1570,24 +1065,255 @@ class SubscriptionsController extends BaseController
     }
 
     /**
-     * Updates the billing date from a subscription
+     * Updates a subscription item
+     *
+     * @param string $subscriptionId Subscription Id
+     * @param string $itemId Item id
+     * @param \PagarmeApiSDKLib\Models\UpdateSubscriptionItemRequest $body Request for updating a
+     *        subscription item
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetSubscriptionItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateSubscriptionItem(
+        string $subscriptionId,
+        string $itemId,
+        \PagarmeApiSDKLib\Models\UpdateSubscriptionItemRequest $body,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetSubscriptionItemResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/items/{item_id}';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+            'item_id'         => $itemId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($body);
+
+        $_httpRequest = new HttpRequest(HttpMethod::PUT, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::put($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionItemResponse');
+    }
+
+    /**
+     * Creates a new Subscription item
+     *
+     * @param string $subscriptionId Subscription id
+     * @param \PagarmeApiSDKLib\Models\CreateSubscriptionItemRequest $request Request for creating a
+     *        subscription item
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetSubscriptionItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createSubscriptionItem(
+        string $subscriptionId,
+        \PagarmeApiSDKLib\Models\CreateSubscriptionItemRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetSubscriptionItemResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/items';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionItemResponse');
+    }
+
+    /**
+     * Lists all usages from a subscription item
      *
      * @param string $subscriptionId The subscription id
-     * @param \PagarmeApiSDKLib\Models\UpdateSubscriptionBillingDateRequest $request Request for
-     *        updating the subscription billing date
+     * @param string $itemId The subscription item id
+     * @param int|null $page Page number
+     * @param int|null $size Page size
+     * @param string|null $code Identification code in the client system
+     * @param string|null $group Identification group in the client system
+     * @param \DateTime|null $usedSince
+     * @param \DateTime|null $usedUntil
+     *
+     * @return \PagarmeApiSDKLib\Models\ListUsagesResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getUsages(
+        string $subscriptionId,
+        string $itemId,
+        ?int $page = null,
+        ?int $size = null,
+        ?string $code = null,
+        ?string $group = null,
+        ?\DateTime $usedSince = null,
+        ?\DateTime $usedUntil = null
+    ): \PagarmeApiSDKLib\Models\ListUsagesResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/items/{item_id}/usages';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+            'item_id'         => $itemId,
+        ]);
+
+        //process optional query parameters
+        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
+            'page'            => $page,
+            'size'            => $size,
+            'code'            => $code,
+            'group'           => $group,
+            'used_since'      => DateTimeHelper::toRfc3339DateTime($usedSince),
+            'used_until'      => DateTimeHelper::toRfc3339DateTime($usedUntil),
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json'
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListUsagesResponse');
+    }
+
+    /**
+     * Atualização do valor mínimo da assinatura
+     *
+     * @param string $subscriptionId Subscription Id
+     * @param \PagarmeApiSDKLib\Models\UpdateSubscriptionMinimumPriceRequest $request Request da
+     *        requisição com o valor mínimo que será configurado
      * @param string|null $idempotencyKey
      *
      * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function updateSubscriptionBillingDate(
+    public function updateSubscriptionMiniumPrice(
         string $subscriptionId,
-        \PagarmeApiSDKLib\Models\UpdateSubscriptionBillingDateRequest $request,
+        \PagarmeApiSDKLib\Models\UpdateSubscriptionMinimumPriceRequest $request,
         ?string $idempotencyKey = null
     ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
         //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/billing-date';
+        $_queryBuilder = '/subscriptions/{subscription_id}/minimum_price';
 
         //process optional query parameters
         $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
@@ -1621,6 +1347,206 @@ class SubscriptionsController extends BaseController
         // and invoke the API call request to fetch the response
         try {
             $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
+    }
+
+    /**
+     * @param string $subscriptionId The subscription id
+     * @param string $cycleId
+     *
+     * @return \PagarmeApiSDKLib\Models\GetPeriodResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getSubscriptionCycleById(
+        string $subscriptionId,
+        string $cycleId
+    ): \PagarmeApiSDKLib\Models\GetPeriodResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/cycles/{cycleId}';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+            'cycleId'         => $cycleId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json'
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetPeriodResponse');
+    }
+
+    /**
+     * Create Usage
+     *
+     * @param string $subscriptionId Subscription id
+     * @param string $itemId Item id
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetUsageResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createAnUsage(
+        string $subscriptionId,
+        string $itemId,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetUsageResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/items/{item_id}/usages';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+            'item_id'         => $itemId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetUsageResponse');
+    }
+
+    /**
+     * Cancels a subscription
+     *
+     * @param string $subscriptionId Subscription id
+     * @param \PagarmeApiSDKLib\Models\CreateCancelSubscriptionRequest|null $request Request for
+     *        cancelling a subscription
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function cancelSubscription(
+        string $subscriptionId,
+        ?\PagarmeApiSDKLib\Models\CreateCancelSubscriptionRequest $request = null,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::DELETE, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::delete($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
         } catch (\Unirest\Exception $ex) {
             throw new ApiException($ex->getMessage(), $_httpRequest);
         }
@@ -1847,6 +1773,573 @@ class SubscriptionsController extends BaseController
     }
 
     /**
+     * Updates the credit card from a subscription
+     *
+     * @param string $subscriptionId Subscription id
+     * @param \PagarmeApiSDKLib\Models\UpdateSubscriptionCardRequest $request Request for updating a
+     *        card
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateSubscriptionCard(
+        string $subscriptionId,
+        \PagarmeApiSDKLib\Models\UpdateSubscriptionCardRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/card';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
+    }
+
+    /**
+     * Deletes a usage
+     *
+     * @param string $subscriptionId The subscription id
+     * @param string $itemId The subscription item id
+     * @param string $usageId The usage id
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetUsageResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function deleteUsage(
+        string $subscriptionId,
+        string $itemId,
+        string $usageId,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetUsageResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+            'item_id'         => $itemId,
+            'usage_id'        => $usageId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::DELETE, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::delete($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetUsageResponse');
+    }
+
+    /**
+     * Creates a discount
+     *
+     * @param string $subscriptionId Subscription id
+     * @param \PagarmeApiSDKLib\Models\CreateDiscountRequest $request Request for creating a
+     *        discount
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetDiscountResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createDiscount(
+        string $subscriptionId,
+        \PagarmeApiSDKLib\Models\CreateDiscountRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetDiscountResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/discounts';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetDiscountResponse');
+    }
+
+    /**
+     * Updates the payment method from a subscription
+     *
+     * @param string $subscriptionId Subscription id
+     * @param \PagarmeApiSDKLib\Models\UpdateSubscriptionPaymentMethodRequest $request Request for
+     *        updating the paymentmethod from a subscription
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateSubscriptionPaymentMethod(
+        string $subscriptionId,
+        \PagarmeApiSDKLib\Models\UpdateSubscriptionPaymentMethodRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/payment-method';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
+    }
+
+    /**
+     * Creates a increment
+     *
+     * @param string $subscriptionId Subscription id
+     * @param \PagarmeApiSDKLib\Models\CreateIncrementRequest $request Request for creating a
+     *        increment
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetIncrementResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createIncrement(
+        string $subscriptionId,
+        \PagarmeApiSDKLib\Models\CreateIncrementRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetIncrementResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/increments';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetIncrementResponse');
+    }
+
+    /**
+     * Creates a usage
+     *
+     * @param string $subscriptionId Subscription Id
+     * @param string $itemId Item id
+     * @param \PagarmeApiSDKLib\Models\CreateUsageRequest $body Request for creating a usage
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetUsageResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createUsage(
+        string $subscriptionId,
+        string $itemId,
+        \PagarmeApiSDKLib\Models\CreateUsageRequest $body,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetUsageResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/items/{item_id}/usages';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+            'item_id'         => $itemId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($body);
+
+        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetUsageResponse');
+    }
+
+    /**
+     * @param string $subscriptionId Subscription Id
+     * @param string $page Page number
+     * @param string $size Page size
+     *
+     * @return \PagarmeApiSDKLib\Models\ListCyclesResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getSubscriptionCycles(
+        string $subscriptionId,
+        string $page,
+        string $size
+    ): \PagarmeApiSDKLib\Models\ListCyclesResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/cycles';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+        ]);
+
+        //process optional query parameters
+        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
+            'page'            => $page,
+            'size'            => $size,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json'
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListCyclesResponse');
+    }
+
+    /**
+     * Updates the billing date from a subscription
+     *
+     * @param string $subscriptionId The subscription id
+     * @param \PagarmeApiSDKLib\Models\UpdateSubscriptionBillingDateRequest $request Request for
+     *        updating the subscription billing date
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateSubscriptionBillingDate(
+        string $subscriptionId,
+        \PagarmeApiSDKLib\Models\UpdateSubscriptionBillingDateRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/billing-date';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
+    }
+
+    /**
      * Updates the start at date from a subscription
      *
      * @param string $subscriptionId The subscription id
@@ -1915,499 +2408,6 @@ class SubscriptionsController extends BaseController
         $this->validateResponse($_httpResponse, $_httpRequest);
         $mapper = $this->getJsonMapper();
         return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
-    }
-
-    /**
-     * Updates a subscription item
-     *
-     * @param string $subscriptionId Subscription Id
-     * @param string $itemId Item id
-     * @param \PagarmeApiSDKLib\Models\UpdateSubscriptionItemRequest $body Request for updating a
-     *        subscription item
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetSubscriptionItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateSubscriptionItem(
-        string $subscriptionId,
-        string $itemId,
-        \PagarmeApiSDKLib\Models\UpdateSubscriptionItemRequest $body,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetSubscriptionItemResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/items/{item_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-            'item_id'         => $itemId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($body);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PUT, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::put($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionItemResponse');
-    }
-
-    /**
-     * Creates a new Subscription item
-     *
-     * @param string $subscriptionId Subscription id
-     * @param \PagarmeApiSDKLib\Models\CreateSubscriptionItemRequest $request Request for creating a
-     *        subscription item
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetSubscriptionItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createSubscriptionItem(
-        string $subscriptionId,
-        \PagarmeApiSDKLib\Models\CreateSubscriptionItemRequest $request,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetSubscriptionItemResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/items';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionItemResponse');
-    }
-
-    /**
-     * Gets a subscription
-     *
-     * @param string $subscriptionId Subscription id
-     *
-     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getSubscription(string $subscriptionId): \PagarmeApiSDKLib\Models\GetSubscriptionResponse
-    {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
-    }
-
-    /**
-     * Lists all usages from a subscription item
-     *
-     * @param string $subscriptionId The subscription id
-     * @param string $itemId The subscription item id
-     * @param int|null $page Page number
-     * @param int|null $size Page size
-     * @param string|null $code Identification code in the client system
-     * @param string|null $group Identification group in the client system
-     * @param \DateTime|null $usedSince
-     * @param \DateTime|null $usedUntil
-     *
-     * @return \PagarmeApiSDKLib\Models\ListUsagesResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getUsages(
-        string $subscriptionId,
-        string $itemId,
-        ?int $page = null,
-        ?int $size = null,
-        ?string $code = null,
-        ?string $group = null,
-        ?\DateTime $usedSince = null,
-        ?\DateTime $usedUntil = null
-    ): \PagarmeApiSDKLib\Models\ListUsagesResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/items/{item_id}/usages';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-            'item_id'         => $itemId,
-        ]);
-
-        //process optional query parameters
-        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
-            'page'            => $page,
-            'size'            => $size,
-            'code'            => $code,
-            'group'           => $group,
-            'used_since'      => DateTimeHelper::toRfc3339DateTime($usedSince),
-            'used_until'      => DateTimeHelper::toRfc3339DateTime($usedUntil),
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListUsagesResponse');
-    }
-
-    /**
-     * @param string $subscriptionId
-     * @param \PagarmeApiSDKLib\Models\UpdateCurrentCycleEndDateRequest $request Request for
-     *        updating the end date of the current signature cycle
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateLatestPeriodEndAt(
-        string $subscriptionId,
-        \PagarmeApiSDKLib\Models\UpdateCurrentCycleEndDateRequest $request,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/periods/latest/end-at';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
-    }
-
-    /**
-     * Atualização do valor mínimo da assinatura
-     *
-     * @param string $subscriptionId Subscription Id
-     * @param \PagarmeApiSDKLib\Models\UpdateSubscriptionMinimumPriceRequest $request Request da
-     *        requisição com o valor mínimo que será configurado
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateSubscriptionMiniumPrice(
-        string $subscriptionId,
-        \PagarmeApiSDKLib\Models\UpdateSubscriptionMinimumPriceRequest $request,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetSubscriptionResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/minimum_price';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetSubscriptionResponse');
-    }
-
-    /**
-     * @param string $subscriptionId The subscription id
-     * @param string $cycleId
-     *
-     * @return \PagarmeApiSDKLib\Models\GetPeriodResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getSubscriptionCycleById(
-        string $subscriptionId,
-        string $cycleId
-    ): \PagarmeApiSDKLib\Models\GetPeriodResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/cycles/{cycleId}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-            'cycleId'         => $cycleId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetPeriodResponse');
     }
 
     /**

@@ -29,199 +29,6 @@ class InvoicesController extends BaseController
     }
 
     /**
-     * Updates the metadata from an invoice
-     *
-     * @param string $invoiceId The invoice id
-     * @param \PagarmeApiSDKLib\Models\UpdateMetadataRequest $request Request for updating the
-     *        invoice metadata
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetInvoiceResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateInvoiceMetadata(
-        string $invoiceId,
-        \PagarmeApiSDKLib\Models\UpdateMetadataRequest $request,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetInvoiceResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/invoices/{invoice_id}/metadata';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'invoice_id'      => $invoiceId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetInvoiceResponse');
-    }
-
-    /**
-     * @param string $subscriptionId Subscription Id
-     *
-     * @return \PagarmeApiSDKLib\Models\GetInvoiceResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getPartialInvoice(string $subscriptionId): \PagarmeApiSDKLib\Models\GetInvoiceResponse
-    {
-        //prepare query string for API call
-        $_queryBuilder = '/subscriptions/{subscription_id}/partial-invoice';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'subscription_id' => $subscriptionId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetInvoiceResponse');
-    }
-
-    /**
-     * Cancels an invoice
-     *
-     * @param string $invoiceId Invoice id
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetInvoiceResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function cancelInvoice(
-        string $invoiceId,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetInvoiceResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/invoices/{invoice_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'invoice_id'      => $invoiceId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::DELETE, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::delete($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetInvoiceResponse');
-    }
-
-    /**
      * Create an Invoice
      *
      * @param string $subscriptionId Subscription Id
@@ -386,22 +193,155 @@ class InvoicesController extends BaseController
     }
 
     /**
-     * Gets an invoice
+     * Cancels an invoice
      *
-     * @param string $invoiceId Invoice Id
+     * @param string $invoiceId Invoice id
+     * @param string|null $idempotencyKey
      *
      * @return \PagarmeApiSDKLib\Models\GetInvoiceResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getInvoice(string $invoiceId): \PagarmeApiSDKLib\Models\GetInvoiceResponse
-    {
+    public function cancelInvoice(
+        string $invoiceId,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetInvoiceResponse {
         //prepare query string for API call
         $_queryBuilder = '/invoices/{invoice_id}';
 
         //process optional query parameters
         $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'invoice_id' => $invoiceId,
+            'invoice_id'      => $invoiceId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::DELETE, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::delete($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetInvoiceResponse');
+    }
+
+    /**
+     * Updates the metadata from an invoice
+     *
+     * @param string $invoiceId The invoice id
+     * @param \PagarmeApiSDKLib\Models\UpdateMetadataRequest $request Request for updating the
+     *        invoice metadata
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetInvoiceResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateInvoiceMetadata(
+        string $invoiceId,
+        \PagarmeApiSDKLib\Models\UpdateMetadataRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetInvoiceResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/invoices/{invoice_id}/metadata';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'invoice_id'      => $invoiceId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetInvoiceResponse');
+    }
+
+    /**
+     * @param string $subscriptionId Subscription Id
+     *
+     * @return \PagarmeApiSDKLib\Models\GetInvoiceResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getPartialInvoice(string $subscriptionId): \PagarmeApiSDKLib\Models\GetInvoiceResponse
+    {
+        //prepare query string for API call
+        $_queryBuilder = '/subscriptions/{subscription_id}/partial-invoice';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'subscription_id' => $subscriptionId,
         ]);
 
         //validate and preprocess url
@@ -497,6 +437,66 @@ class InvoicesController extends BaseController
         // and invoke the API call request to fetch the response
         try {
             $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetInvoiceResponse');
+    }
+
+    /**
+     * Gets an invoice
+     *
+     * @param string $invoiceId Invoice Id
+     *
+     * @return \PagarmeApiSDKLib\Models\GetInvoiceResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getInvoice(string $invoiceId): \PagarmeApiSDKLib\Models\GetInvoiceResponse
+    {
+        //prepare query string for API call
+        $_queryBuilder = '/invoices/{invoice_id}';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'invoice_id' => $invoiceId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json'
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
         } catch (\Unirest\Exception $ex) {
             throw new ApiException($ex->getMessage(), $_httpRequest);
         }
