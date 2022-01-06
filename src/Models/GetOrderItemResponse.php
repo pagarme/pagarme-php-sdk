@@ -38,11 +38,6 @@ class GetOrderItemResponse implements \JsonSerializable
     private $quantity;
 
     /**
-     * @var GetSellerResponse|null
-     */
-    private $getSellerResponse;
-
-    /**
      * @var string
      */
     private $category;
@@ -157,28 +152,6 @@ class GetOrderItemResponse implements \JsonSerializable
     }
 
     /**
-     * Returns Get Seller Response.
-     *
-     * Seller data
-     */
-    public function getGetSellerResponse(): ?GetSellerResponse
-    {
-        return $this->getSellerResponse;
-    }
-
-    /**
-     * Sets Get Seller Response.
-     *
-     * Seller data
-     *
-     * @maps GetSellerResponse
-     */
-    public function setGetSellerResponse(?GetSellerResponse $getSellerResponse): void
-    {
-        $this->getSellerResponse = $getSellerResponse;
-    }
-
-    /**
      * Returns Category.
      *
      * Category
@@ -235,15 +208,12 @@ class GetOrderItemResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']                    = $this->id;
-        $json['amount']                = $this->amount;
-        $json['description']           = $this->description;
-        $json['quantity']              = $this->quantity;
-        if (isset($this->getSellerResponse)) {
-            $json['GetSellerResponse'] = $this->getSellerResponse;
-        }
-        $json['category']              = $this->category;
-        $json['code']                  = $this->code;
+        $json['id']          = $this->id;
+        $json['amount']      = $this->amount;
+        $json['description'] = $this->description;
+        $json['quantity']    = $this->quantity;
+        $json['category']    = $this->category;
+        $json['code']        = $this->code;
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

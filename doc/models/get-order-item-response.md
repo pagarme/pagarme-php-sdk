@@ -15,7 +15,6 @@ Response object for getting an order item
 | `amount` | `int` | Required | - | getAmount(): int | setAmount(int amount): void |
 | `description` | `string` | Required | - | getDescription(): string | setDescription(string description): void |
 | `quantity` | `int` | Required | - | getQuantity(): int | setQuantity(int quantity): void |
-| `getSellerResponse` | [`?GetSellerResponse`](/doc/models/get-seller-response.md) | Optional | Seller data | getGetSellerResponse(): ?GetSellerResponse | setGetSellerResponse(?GetSellerResponse getSellerResponse): void |
 | `category` | `string` | Required | Category | getCategory(): string | setCategory(string category): void |
 | `code` | `string` | Required | Code | getCode(): string | setCode(string code): void |
 
@@ -27,7 +26,6 @@ Response object for getting an order item
   "amount": 46,
   "description": "description0",
   "quantity": 68,
-  "GetSellerResponse": null,
   "category": "category2",
   "code": "code8"
 }

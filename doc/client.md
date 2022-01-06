@@ -14,6 +14,8 @@ The following parameters are configurable for the API Client:
 | `retryOnTimeout` | `bool` | Whether to retry on request timeout.<br>*Default*: `true` |
 | `httpStatusCodesToRetry` | `array` | Http status codes to retry against.<br>*Default*: `408, 413, 429, 500, 502, 503, 504, 521, 522, 524` |
 | `httpMethodsToRetry` | `array` | Http methods to retry against.<br>*Default*: `'GET', 'PUT'` |
+| `basicAuthUserName` | `string` | The username to use with basic authentication |
+| `basicAuthPassword` | `string` | The password to use with basic authentication |
 
 The API client can be initialized as follows:
 
@@ -33,15 +35,14 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 
 | Name | Description |
 |  --- | --- |
+| getOrdersController() | Gets OrdersController |
 | getPlansController() | Gets PlansController |
 | getSubscriptionsController() | Gets SubscriptionsController |
 | getInvoicesController() | Gets InvoicesController |
-| getOrdersController() | Gets OrdersController |
 | getCustomersController() | Gets CustomersController |
 | getRecipientsController() | Gets RecipientsController |
 | getChargesController() | Gets ChargesController |
-| getTransfersController() | Gets TransfersController |
 | getTokensController() | Gets TokensController |
-| getSellersController() | Gets SellersController |
+| getTransfersController() | Gets TransfersController |
 | getTransactionsController() | Gets TransactionsController |
 

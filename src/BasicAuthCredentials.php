@@ -18,18 +18,18 @@ interface BasicAuthCredentials
     /**
      * String value for basicAuthUserName.
      */
-    public function getBasicAuthUserName(): ?string;
+    public function getBasicAuthUserName(): string;
 
     /**
      * String value for basicAuthPassword.
      */
-    public function getBasicAuthPassword(): ?string;
+    public function getBasicAuthPassword(): string;
 
     /**
      * Checks if provided credentials match with existing ones.
      *
-     * @param string|null $basicAuthUserName The username to use with basic authentication
-     * @param string|null $basicAuthPassword The password to use with basic authentication
+     * @param string $basicAuthUserName The username to use with basic authentication
+     * @param string $basicAuthPassword The password to use with basic authentication
      */
-    public function equals(?string $basicAuthUserName, ?string $basicAuthPassword): bool;
+    public function equals(string $basicAuthUserName, string $basicAuthPassword): bool;
 }

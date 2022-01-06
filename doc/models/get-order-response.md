@@ -43,7 +43,6 @@ Response object for getting an Order
       "amount": 13,
       "description": "description7",
       "quantity": 127,
-      "GetSellerResponse": null,
       "category": "category5",
       "code": "code5"
     },
@@ -52,7 +51,6 @@ Response object for getting an Order
       "amount": 14,
       "description": "description8",
       "quantity": 128,
-      "GetSellerResponse": null,
       "category": "category6",
       "code": "code6"
     }

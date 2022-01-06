@@ -25,10 +25,10 @@ class BasicAuthManager implements AuthManagerInterface, BasicAuthCredentials
     /**
      * Returns an instance of this class.
      *
-     * @param string|null $basicAuthUserName The username to use with basic authentication
-     * @param string|null $basicAuthPassword The password to use with basic authentication
+     * @param string $basicAuthUserName The username to use with basic authentication
+     * @param string $basicAuthPassword The password to use with basic authentication
      */
-    public function __construct(?string $basicAuthUserName, ?string $basicAuthPassword)
+    public function __construct(string $basicAuthUserName, string $basicAuthPassword)
     {
         $this->basicAuthUserName = $basicAuthUserName;
         $this->basicAuthPassword = $basicAuthPassword;
@@ -37,7 +37,7 @@ class BasicAuthManager implements AuthManagerInterface, BasicAuthCredentials
     /**
      * String value for basicAuthUserName.
      */
-    public function getBasicAuthUserName(): ?string
+    public function getBasicAuthUserName(): string
     {
         return $this->basicAuthUserName;
     }
@@ -45,7 +45,7 @@ class BasicAuthManager implements AuthManagerInterface, BasicAuthCredentials
     /**
      * String value for basicAuthPassword.
      */
-    public function getBasicAuthPassword(): ?string
+    public function getBasicAuthPassword(): string
     {
         return $this->basicAuthPassword;
     }
@@ -53,10 +53,10 @@ class BasicAuthManager implements AuthManagerInterface, BasicAuthCredentials
     /**
      * Checks if provided credentials match with existing ones.
      *
-     * @param string|null $basicAuthUserName The username to use with basic authentication
-     * @param string|null $basicAuthPassword The password to use with basic authentication
+     * @param string $basicAuthUserName The username to use with basic authentication
+     * @param string $basicAuthPassword The password to use with basic authentication
      */
-    public function equals(?string $basicAuthUserName, ?string $basicAuthPassword): bool
+    public function equals(string $basicAuthUserName, string $basicAuthPassword): bool
     {
         return $basicAuthUserName == $this->basicAuthUserName &&
             $basicAuthPassword == $this->basicAuthPassword;
