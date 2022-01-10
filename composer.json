@@ -1,5 +1,5 @@
 {
-    "name": "pagarme/pagarme-php",
+    "name": "pagarme/pagarme-php-sdk",
     "description": "Pagarme API",
     "type": "library",
     "keywords": [
