@@ -17,15 +17,15 @@ use PagarmeApiSDKLib\Controllers;
  */
 class PagarmeApiSDKClient implements ConfigurationInterface
 {
-    private $orders;
     private $plans;
     private $subscriptions;
     private $invoices;
+    private $orders;
     private $customers;
     private $recipients;
     private $charges;
-    private $tokens;
     private $transfers;
+    private $tokens;
     private $transactions;
 
     private $timeout = ConfigurationDefaults::TIMEOUT;
@@ -216,21 +216,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
-     * Returns Orders Controller
-     */
-    public function getOrdersController(): Controllers\OrdersController
-    {
-        if ($this->orders == null) {
-            $this->orders = new Controllers\OrdersController(
-                $this,
-                $this->authManagers,
-                $this->httpCallback
-            );
-        }
-        return $this->orders;
-    }
-
-    /**
      * Returns Plans Controller
      */
     public function getPlansController(): Controllers\PlansController
@@ -269,6 +254,21 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             );
         }
         return $this->invoices;
+    }
+
+    /**
+     * Returns Orders Controller
+     */
+    public function getOrdersController(): Controllers\OrdersController
+    {
+        if ($this->orders == null) {
+            $this->orders = new Controllers\OrdersController(
+                $this,
+                $this->authManagers,
+                $this->httpCallback
+            );
+        }
+        return $this->orders;
     }
 
     /**
@@ -317,21 +317,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
-     * Returns Tokens Controller
-     */
-    public function getTokensController(): Controllers\TokensController
-    {
-        if ($this->tokens == null) {
-            $this->tokens = new Controllers\TokensController(
-                $this,
-                $this->authManagers,
-                $this->httpCallback
-            );
-        }
-        return $this->tokens;
-    }
-
-    /**
      * Returns Transfers Controller
      */
     public function getTransfersController(): Controllers\TransfersController
@@ -344,6 +329,21 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             );
         }
         return $this->transfers;
+    }
+
+    /**
+     * Returns Tokens Controller
+     */
+    public function getTokensController(): Controllers\TokensController
+    {
+        if ($this->tokens == null) {
+            $this->tokens = new Controllers\TokensController(
+                $this,
+                $this->authManagers,
+                $this->httpCallback
+            );
+        }
+        return $this->tokens;
     }
 
     /**
