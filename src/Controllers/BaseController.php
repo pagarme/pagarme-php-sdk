@@ -50,7 +50,7 @@ class BaseController
      *
      * @var string
      */
-    protected static $userAgent = 'PagarmeCoreApi - PHP 6.3.0';
+    protected static $userAgent = 'PagarmeCoreApi - PHP 6.4.0';
 
     /**
      * Constructor that sets the timeout of requests
