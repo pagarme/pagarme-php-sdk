@@ -10,28 +10,9 @@ $transfersController = $client->getTransfersController();
 
 ## Methods
 
-* [Get Transfers](/doc/controllers/transfers.md#get-transfers)
 * [Get Transfer by Id](/doc/controllers/transfers.md#get-transfer-by-id)
 * [Create Transfer](/doc/controllers/transfers.md#create-transfer)
-
-
-# Get Transfers
-
-Gets all transfers
-
-```php
-function getTransfers(): ListTransfers
-```
-
-## Response Type
-
-[`ListTransfers`](/doc/models/list-transfers.md)
-
-## Example Usage
-
-```php
-$result = $transfersController->getTransfers();
-```
+* [Get Transfers](/doc/controllers/transfers.md#get-transfers)
 
 
 # Get Transfer by Id
@@ -88,5 +69,24 @@ $request = new Models\CreateTransfer(
 );
 
 $result = $transfersController->createTransfer($request);
+```
+
+
+# Get Transfers
+
+Gets all transfers
+
+```php
+function getTransfers(): ListTransfers
+```
+
+## Response Type
+
+[`ListTransfers`](/doc/models/list-transfers.md)
+
+## Example Usage
+
+```php
+$result = $transfersController->getTransfers();
 ```
 

@@ -438,7 +438,28 @@ Response model for listing the usages from a subscription item
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null
+                "boleto_due_days": null,
+                "split": {
+                  "enabled": false,
+                  "rules": [
+                    {
+                      "type": "type2",
+                      "amount": 84,
+                      "recipient": null,
+                      "gateway_id": "gateway_id2",
+                      "options": null,
+                      "id": "id8"
+                    },
+                    {
+                      "type": "type3",
+                      "amount": 85,
+                      "recipient": null,
+                      "gateway_id": "gateway_id3",
+                      "options": null,
+                      "id": "id7"
+                    }
+                  ]
+                }
               },
               "name": "name4",
               "quantity": null,
@@ -500,7 +521,20 @@ Response model for listing the usages from a subscription item
               "subscription_item": null
             }
           ],
-          "boleto_due_days": null
+          "boleto_due_days": null,
+          "split": {
+            "enabled": true,
+            "rules": [
+              {
+                "type": "type3",
+                "amount": 157,
+                "recipient": null,
+                "gateway_id": "gateway_id3",
+                "options": null,
+                "id": "id7"
+              }
+            ]
+          }
         },
         "name": "name1",
         "quantity": null,
@@ -899,7 +933,36 @@ Response model for listing the usages from a subscription item
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null
+                "boleto_due_days": null,
+                "split": {
+                  "enabled": true,
+                  "rules": [
+                    {
+                      "type": "type3",
+                      "amount": 85,
+                      "recipient": null,
+                      "gateway_id": "gateway_id3",
+                      "options": null,
+                      "id": "id7"
+                    },
+                    {
+                      "type": "type4",
+                      "amount": 86,
+                      "recipient": null,
+                      "gateway_id": "gateway_id4",
+                      "options": null,
+                      "id": "id6"
+                    },
+                    {
+                      "type": "type5",
+                      "amount": 87,
+                      "recipient": null,
+                      "gateway_id": "gateway_id5",
+                      "options": null,
+                      "id": "id5"
+                    }
+                  ]
+                }
               },
               "name": "name5",
               "quantity": null,
@@ -1147,7 +1210,20 @@ Response model for listing the usages from a subscription item
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null
+                "boleto_due_days": null,
+                "split": {
+                  "enabled": false,
+                  "rules": [
+                    {
+                      "type": "type4",
+                      "amount": 86,
+                      "recipient": null,
+                      "gateway_id": "gateway_id4",
+                      "options": null,
+                      "id": "id6"
+                    }
+                  ]
+                }
               },
               "name": "name6",
               "quantity": null,
@@ -1187,7 +1263,28 @@ Response model for listing the usages from a subscription item
               "subscription_item": null
             }
           ],
-          "boleto_due_days": null
+          "boleto_due_days": null,
+          "split": {
+            "enabled": false,
+            "rules": [
+              {
+                "type": "type2",
+                "amount": 158,
+                "recipient": null,
+                "gateway_id": "gateway_id2",
+                "options": null,
+                "id": "id8"
+              },
+              {
+                "type": "type1",
+                "amount": 159,
+                "recipient": null,
+                "gateway_id": "gateway_id1",
+                "options": null,
+                "id": "id9"
+              }
+            ]
+          }
         },
         "name": "name2",
         "quantity": null,
