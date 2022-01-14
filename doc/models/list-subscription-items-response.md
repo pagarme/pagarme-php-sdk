@@ -399,7 +399,28 @@ Response model for listing subscription items
                   "subscription_item": null
                 }
               ],
-              "boleto_due_days": null
+              "boleto_due_days": null,
+              "split": {
+                "enabled": false,
+                "rules": [
+                  {
+                    "type": "type6",
+                    "amount": 68,
+                    "recipient": null,
+                    "gateway_id": "gateway_id6",
+                    "options": null,
+                    "id": "id4"
+                  },
+                  {
+                    "type": "type7",
+                    "amount": 69,
+                    "recipient": null,
+                    "gateway_id": "gateway_id7",
+                    "options": null,
+                    "id": "id3"
+                  }
+                ]
+              }
             },
             "name": "name8",
             "quantity": null,
@@ -647,7 +668,20 @@ Response model for listing subscription items
                   "subscription_item": null
                 }
               ],
-              "boleto_due_days": null
+              "boleto_due_days": null,
+              "split": {
+                "enabled": true,
+                "rules": [
+                  {
+                    "type": "type5",
+                    "amount": 67,
+                    "recipient": null,
+                    "gateway_id": "gateway_id5",
+                    "options": null,
+                    "id": "id5"
+                  }
+                ]
+              }
             },
             "name": "name9",
             "quantity": null,
@@ -687,7 +721,28 @@ Response model for listing subscription items
             "subscription_item": null
           }
         ],
-        "boleto_due_days": null
+        "boleto_due_days": null,
+        "split": {
+          "enabled": true,
+          "rules": [
+            {
+              "type": "type9",
+              "amount": 169,
+              "recipient": null,
+              "gateway_id": "gateway_id9",
+              "options": null,
+              "id": "id1"
+            },
+            {
+              "type": "type8",
+              "amount": 170,
+              "recipient": null,
+              "gateway_id": "gateway_id8",
+              "options": null,
+              "id": "id2"
+            }
+          ]
+        }
       },
       "name": "name5",
       "quantity": null,
@@ -1043,7 +1098,20 @@ Response model for listing subscription items
                   "subscription_item": null
                 }
               ],
-              "boleto_due_days": null
+              "boleto_due_days": null,
+              "split": {
+                "enabled": true,
+                "rules": [
+                  {
+                    "type": "type5",
+                    "amount": 67,
+                    "recipient": null,
+                    "gateway_id": "gateway_id5",
+                    "options": null,
+                    "id": "id5"
+                  }
+                ]
+              }
             },
             "name": "name9",
             "quantity": null,
@@ -1321,7 +1389,36 @@ Response model for listing subscription items
                   "subscription_item": null
                 }
               ],
-              "boleto_due_days": null
+              "boleto_due_days": null,
+              "split": {
+                "enabled": false,
+                "rules": [
+                  {
+                    "type": "type4",
+                    "amount": 66,
+                    "recipient": null,
+                    "gateway_id": "gateway_id4",
+                    "options": null,
+                    "id": "id6"
+                  },
+                  {
+                    "type": "type5",
+                    "amount": 67,
+                    "recipient": null,
+                    "gateway_id": "gateway_id5",
+                    "options": null,
+                    "id": "id5"
+                  },
+                  {
+                    "type": "type6",
+                    "amount": 68,
+                    "recipient": null,
+                    "gateway_id": "gateway_id6",
+                    "options": null,
+                    "id": "id4"
+                  }
+                ]
+              }
             },
             "name": "name0",
             "quantity": null,
@@ -1575,7 +1672,28 @@ Response model for listing subscription items
                   "subscription_item": null
                 }
               ],
-              "boleto_due_days": null
+              "boleto_due_days": null,
+              "split": {
+                "enabled": true,
+                "rules": [
+                  {
+                    "type": "type3",
+                    "amount": 65,
+                    "recipient": null,
+                    "gateway_id": "gateway_id3",
+                    "options": null,
+                    "id": "id7"
+                  },
+                  {
+                    "type": "type4",
+                    "amount": 66,
+                    "recipient": null,
+                    "gateway_id": "gateway_id4",
+                    "options": null,
+                    "id": "id6"
+                  }
+                ]
+              }
             },
             "name": "name1",
             "quantity": null,
@@ -1626,7 +1744,36 @@ Response model for listing subscription items
             "subscription_item": null
           }
         ],
-        "boleto_due_days": null
+        "boleto_due_days": null,
+        "split": {
+          "enabled": false,
+          "rules": [
+            {
+              "type": "type8",
+              "amount": 170,
+              "recipient": null,
+              "gateway_id": "gateway_id8",
+              "options": null,
+              "id": "id2"
+            },
+            {
+              "type": "type7",
+              "amount": 171,
+              "recipient": null,
+              "gateway_id": "gateway_id7",
+              "options": null,
+              "id": "id3"
+            },
+            {
+              "type": "type6",
+              "amount": 172,
+              "recipient": null,
+              "gateway_id": "gateway_id6",
+              "options": null,
+              "id": "id4"
+            }
+          ]
+        }
       },
       "name": "name6",
       "quantity": null,

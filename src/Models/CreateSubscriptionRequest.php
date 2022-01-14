@@ -174,6 +174,11 @@ class CreateSubscriptionRequest implements \JsonSerializable
     private $submerchant;
 
     /**
+     * @var CreateSubscriptionSplitRequest|null
+     */
+    private $split;
+
+    /**
      * @param CreateCustomerRequest $customer
      * @param CreateCardRequest $card
      * @param string $code
@@ -939,6 +944,28 @@ class CreateSubscriptionRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Split.
+     *
+     * Subscription's split
+     */
+    public function getSplit(): ?CreateSubscriptionSplitRequest
+    {
+        return $this->split;
+    }
+
+    /**
+     * Sets Split.
+     *
+     * Subscription's split
+     *
+     * @maps split
+     */
+    public function setSplit(?CreateSubscriptionSplitRequest $split): void
+    {
+        $this->split = $split;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -1007,6 +1034,9 @@ class CreateSubscriptionRequest implements \JsonSerializable
         }
         if (isset($this->submerchant)) {
             $json['submerchant']            = $this->submerchant;
+        }
+        if (isset($this->split)) {
+            $json['split']                  = $this->split;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

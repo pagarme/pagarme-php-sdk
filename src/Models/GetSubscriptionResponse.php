@@ -151,6 +151,11 @@ class GetSubscriptionResponse implements \JsonSerializable
     private $boletoDueDays;
 
     /**
+     * @var GetSubscriptionSplitResponse
+     */
+    private $split;
+
+    /**
      * @param string $id
      * @param string $code
      * @param \DateTime $startAt
@@ -170,6 +175,7 @@ class GetSubscriptionResponse implements \JsonSerializable
      * @param GetSetupResponse $setup
      * @param string $gatewayAffiliationId
      * @param GetIncrementResponse[] $increments
+     * @param GetSubscriptionSplitResponse $split
      */
     public function __construct(
         string $id,
@@ -190,7 +196,8 @@ class GetSubscriptionResponse implements \JsonSerializable
         array $metadata,
         GetSetupResponse $setup,
         string $gatewayAffiliationId,
-        array $increments
+        array $increments,
+        GetSubscriptionSplitResponse $split
     ) {
         $this->id = $id;
         $this->code = $code;
@@ -211,6 +218,7 @@ class GetSubscriptionResponse implements \JsonSerializable
         $this->setup = $setup;
         $this->gatewayAffiliationId = $gatewayAffiliationId;
         $this->increments = $increments;
+        $this->split = $split;
     }
 
     /**
@@ -752,6 +760,29 @@ class GetSubscriptionResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Split.
+     *
+     * Subscription's split response
+     */
+    public function getSplit(): GetSubscriptionSplitResponse
+    {
+        return $this->split;
+    }
+
+    /**
+     * Sets Split.
+     *
+     * Subscription's split response
+     *
+     * @required
+     * @maps split
+     */
+    public function setSplit(GetSubscriptionSplitResponse $split): void
+    {
+        $this->split = $split;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -805,6 +836,7 @@ class GetSubscriptionResponse implements \JsonSerializable
         if (isset($this->boletoDueDays)) {
             $json['boleto_due_days']    = $this->boletoDueDays;
         }
+        $json['split']                  = $this->split;
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

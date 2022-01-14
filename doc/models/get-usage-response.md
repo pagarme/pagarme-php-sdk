@@ -407,7 +407,36 @@ Response object for getting a usage
                 "subscription_item": null
               }
             ],
-            "boleto_due_days": null
+            "boleto_due_days": null,
+            "split": {
+              "enabled": true,
+              "rules": [
+                {
+                  "type": "type9",
+                  "amount": 225,
+                  "recipient": null,
+                  "gateway_id": "gateway_id9",
+                  "options": null,
+                  "id": "id1"
+                },
+                {
+                  "type": "type8",
+                  "amount": 226,
+                  "recipient": null,
+                  "gateway_id": "gateway_id8",
+                  "options": null,
+                  "id": "id2"
+                },
+                {
+                  "type": "type7",
+                  "amount": 227,
+                  "recipient": null,
+                  "gateway_id": "gateway_id7",
+                  "options": null,
+                  "id": "id3"
+                }
+              ]
+            }
           },
           "name": "name5",
           "quantity": null,
@@ -685,7 +714,20 @@ Response object for getting a usage
                 "subscription_item": null
               }
             ],
-            "boleto_due_days": null
+            "boleto_due_days": null,
+            "split": {
+              "enabled": false,
+              "rules": [
+                {
+                  "type": "type8",
+                  "amount": 226,
+                  "recipient": null,
+                  "gateway_id": "gateway_id8",
+                  "options": null,
+                  "id": "id2"
+                }
+              ]
+            }
           },
           "name": "name6",
           "quantity": null,
@@ -927,7 +969,28 @@ Response object for getting a usage
                 "subscription_item": null
               }
             ],
-            "boleto_due_days": null
+            "boleto_due_days": null,
+            "split": {
+              "enabled": true,
+              "rules": [
+                {
+                  "type": "type7",
+                  "amount": 227,
+                  "recipient": null,
+                  "gateway_id": "gateway_id7",
+                  "options": null,
+                  "id": "id3"
+                },
+                {
+                  "type": "type6",
+                  "amount": 228,
+                  "recipient": null,
+                  "gateway_id": "gateway_id6",
+                  "options": null,
+                  "id": "id4"
+                }
+              ]
+            }
           },
           "name": "name7",
           "quantity": null,
@@ -978,7 +1041,36 @@ Response object for getting a usage
           "subscription_item": null
         }
       ],
-      "boleto_due_days": null
+      "boleto_due_days": null,
+      "split": {
+        "enabled": false,
+        "rules": [
+          {
+            "type": "type8",
+            "amount": 62,
+            "recipient": null,
+            "gateway_id": "gateway_id8",
+            "options": null,
+            "id": "id8"
+          },
+          {
+            "type": "type9",
+            "amount": 63,
+            "recipient": null,
+            "gateway_id": "gateway_id9",
+            "options": null,
+            "id": "id9"
+          },
+          {
+            "type": "type0",
+            "amount": 64,
+            "recipient": null,
+            "gateway_id": "gateway_id0",
+            "options": null,
+            "id": "id0"
+          }
+        ]
+      }
     },
     "name": "name6",
     "quantity": null,

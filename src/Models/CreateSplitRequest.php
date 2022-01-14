@@ -38,6 +38,11 @@ class CreateSplitRequest implements \JsonSerializable
     private $options;
 
     /**
+     * @var string|null
+     */
+    private $splitRuleId;
+
+    /**
      * @param string $type
      * @param int $amount
      * @param string $recipientId
@@ -141,6 +146,28 @@ class CreateSplitRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Split Rule Id.
+     *
+     * Rule code used in cancellation.
+     */
+    public function getSplitRuleId(): ?string
+    {
+        return $this->splitRuleId;
+    }
+
+    /**
+     * Sets Split Rule Id.
+     *
+     * Rule code used in cancellation.
+     *
+     * @maps split_rule_id
+     */
+    public function setSplitRuleId(?string $splitRuleId): void
+    {
+        $this->splitRuleId = $splitRuleId;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -151,11 +178,14 @@ class CreateSplitRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['type']         = $this->type;
-        $json['amount']       = $this->amount;
-        $json['recipient_id'] = $this->recipientId;
+        $json['type']              = $this->type;
+        $json['amount']            = $this->amount;
+        $json['recipient_id']      = $this->recipientId;
         if (isset($this->options)) {
-            $json['options']  = $this->options;
+            $json['options']       = $this->options;
+        }
+        if (isset($this->splitRuleId)) {
+            $json['split_rule_id'] = $this->splitRuleId;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

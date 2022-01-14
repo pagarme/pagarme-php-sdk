@@ -241,6 +241,70 @@ class CustomersController extends BaseController
     }
 
     /**
+     * Creates a new customer
+     *
+     * @param \PagarmeApiSDKLib\Models\CreateCustomerRequest $request Request for creating a
+     *        customer
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetCustomerResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createCustomer(
+        \PagarmeApiSDKLib\Models\CreateCustomerRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetCustomerResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/customers';
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetCustomerResponse');
+    }
+
+    /**
      * Creates a new address for a customer
      *
      * @param string $customerId Customer Id
@@ -311,167 +375,22 @@ class CustomersController extends BaseController
     }
 
     /**
-     * Creates a new customer
-     *
-     * @param \PagarmeApiSDKLib\Models\CreateCustomerRequest $request Request for creating a
-     *        customer
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetCustomerResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createCustomer(
-        \PagarmeApiSDKLib\Models\CreateCustomerRequest $request,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetCustomerResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/customers';
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetCustomerResponse');
-    }
-
-    /**
-     * Creates a new card for a customer
-     *
-     * @param string $customerId Customer id
-     * @param \PagarmeApiSDKLib\Models\CreateCardRequest $request Request for creating a card
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetCardResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createCard(
-        string $customerId,
-        \PagarmeApiSDKLib\Models\CreateCardRequest $request,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetCardResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/customers/{customer_id}/cards';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'customer_id'     => $customerId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetCardResponse');
-    }
-
-    /**
-     * Get all cards from a customer
+     * Delete a Customer's access tokens
      *
      * @param string $customerId Customer Id
-     * @param int|null $page Page number
-     * @param int|null $size Page size
      *
-     * @return \PagarmeApiSDKLib\Models\ListCardsResponse Response from the API call
+     * @return \PagarmeApiSDKLib\Models\ListAccessTokensResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getCards(
-        string $customerId,
-        ?int $page = null,
-        ?int $size = null
-    ): \PagarmeApiSDKLib\Models\ListCardsResponse {
+    public function deleteAccessTokens(string $customerId): \PagarmeApiSDKLib\Models\ListAccessTokensResponse
+    {
         //prepare query string for API call
-        $_queryBuilder = '/customers/{customer_id}/cards';
+        $_queryBuilder = '/customers/{customer_id}/access-tokens/';
 
         //process optional query parameters
         $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
             'customer_id' => $customerId,
-        ]);
-
-        //process optional query parameters
-        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
-            'page'        => $page,
-            'size'        => $size,
         ]);
 
         //validate and preprocess url
@@ -512,74 +431,7 @@ class CustomersController extends BaseController
         //handle errors defined at the API level
         $this->validateResponse($_httpResponse, $_httpRequest);
         $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListCardsResponse');
-    }
-
-    /**
-     * Renew a card
-     *
-     * @param string $customerId Customer id
-     * @param string $cardId Card Id
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetCardResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function renewCard(
-        string $customerId,
-        string $cardId,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetCardResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/customers/{customer_id}/cards/{card_id}/renew';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'customer_id'     => $customerId,
-            'card_id'         => $cardId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetCardResponse');
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListAccessTokensResponse');
     }
 
     /**
@@ -712,88 +564,23 @@ class CustomersController extends BaseController
     }
 
     /**
-     * Get a Customer's access token
+     * Creates a new card for a customer
      *
-     * @param string $customerId Customer Id
-     * @param string $tokenId Token Id
-     *
-     * @return \PagarmeApiSDKLib\Models\GetAccessTokenResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getAccessToken(
-        string $customerId,
-        string $tokenId
-    ): \PagarmeApiSDKLib\Models\GetAccessTokenResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/customers/{customer_id}/access-tokens/{token_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'customer_id' => $customerId,
-            'token_id'    => $tokenId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetAccessTokenResponse');
-    }
-
-    /**
-     * Updates the metadata a customer
-     *
-     * @param string $customerId The customer id
-     * @param \PagarmeApiSDKLib\Models\UpdateMetadataRequest $request Request for updating the
-     *        customer metadata
+     * @param string $customerId Customer id
+     * @param \PagarmeApiSDKLib\Models\CreateCardRequest $request Request for creating a card
      * @param string|null $idempotencyKey
      *
-     * @return \PagarmeApiSDKLib\Models\GetCustomerResponse Response from the API call
+     * @return \PagarmeApiSDKLib\Models\GetCardResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function updateCustomerMetadata(
+    public function createCard(
         string $customerId,
-        \PagarmeApiSDKLib\Models\UpdateMetadataRequest $request,
+        \PagarmeApiSDKLib\Models\CreateCardRequest $request,
         ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetCustomerResponse {
+    ): \PagarmeApiSDKLib\Models\GetCardResponse {
         //prepare query string for API call
-        $_queryBuilder = '/Customers/{customer_id}/metadata';
+        $_queryBuilder = '/customers/{customer_id}/cards';
 
         //process optional query parameters
         $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
@@ -814,7 +601,7 @@ class CustomersController extends BaseController
         //json encode body
         $_bodyJson = Request\Body::Json($request);
 
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
 
         // Apply authorization to request
         $this->getAuthManager('global')->apply($_httpRequest);
@@ -826,69 +613,7 @@ class CustomersController extends BaseController
 
         // and invoke the API call request to fetch the response
         try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetCustomerResponse');
-    }
-
-    /**
-     * Get a customer's card
-     *
-     * @param string $customerId Customer id
-     * @param string $cardId Card id
-     *
-     * @return \PagarmeApiSDKLib\Models\GetCardResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getCard(string $customerId, string $cardId): \PagarmeApiSDKLib\Models\GetCardResponse
-    {
-        //prepare query string for API call
-        $_queryBuilder = '/customers/{customer_id}/cards/{card_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'customer_id' => $customerId,
-            'card_id'     => $cardId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
         } catch (\Unirest\Exception $ex) {
             throw new ApiException($ex->getMessage(), $_httpRequest);
         }
@@ -909,22 +634,40 @@ class CustomersController extends BaseController
     }
 
     /**
-     * Delete a Customer's access tokens
+     * Get all Customers
      *
-     * @param string $customerId Customer Id
+     * @param string|null $name Name of the Customer
+     * @param string|null $document Document of the Customer
+     * @param int|null $page Current page the the search
+     * @param int|null $size Quantity pages of the search
+     * @param string|null $email Customer's email
+     * @param string|null $code Customer's code
      *
-     * @return \PagarmeApiSDKLib\Models\ListAccessTokensResponse Response from the API call
+     * @return \PagarmeApiSDKLib\Models\ListCustomersResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function deleteAccessTokens(string $customerId): \PagarmeApiSDKLib\Models\ListAccessTokensResponse
-    {
+    public function getCustomers(
+        ?string $name = null,
+        ?string $document = null,
+        ?int $page = 1,
+        ?int $size = 10,
+        ?string $email = null,
+        ?string $code = null
+    ): \PagarmeApiSDKLib\Models\ListCustomersResponse {
         //prepare query string for API call
-        $_queryBuilder = '/customers/{customer_id}/access-tokens/';
+        $_queryBuilder = '/customers';
 
         //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'customer_id' => $customerId,
+        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
+            'name'     => $name,
+            'document' => $document,
+            'page'     => (null != $page) ?
+                $page : 1,
+            'size'     => (null != $size) ?
+                $size : 10,
+            'email'    => $email,
+            'Code'     => $code,
         ]);
 
         //validate and preprocess url
@@ -965,7 +708,78 @@ class CustomersController extends BaseController
         //handle errors defined at the API level
         $this->validateResponse($_httpResponse, $_httpRequest);
         $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListAccessTokensResponse');
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListCustomersResponse');
+    }
+
+    /**
+     * Updates a customer
+     *
+     * @param string $customerId Customer id
+     * @param \PagarmeApiSDKLib\Models\UpdateCustomerRequest $request Request for updating a
+     *        customer
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetCustomerResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateCustomer(
+        string $customerId,
+        \PagarmeApiSDKLib\Models\UpdateCustomerRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetCustomerResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/customers/{customer_id}';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'customer_id'     => $customerId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::PUT, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::put($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetCustomerResponse');
     }
 
     /**
@@ -1111,40 +925,33 @@ class CustomersController extends BaseController
     }
 
     /**
-     * Get all Customers
+     * Get all cards from a customer
      *
-     * @param string|null $name Name of the Customer
-     * @param string|null $document Document of the Customer
-     * @param int|null $page Current page the the search
-     * @param int|null $size Quantity pages of the search
-     * @param string|null $email Customer's email
-     * @param string|null $code Customer's code
+     * @param string $customerId Customer Id
+     * @param int|null $page Page number
+     * @param int|null $size Page size
      *
-     * @return \PagarmeApiSDKLib\Models\ListCustomersResponse Response from the API call
+     * @return \PagarmeApiSDKLib\Models\ListCardsResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getCustomers(
-        ?string $name = null,
-        ?string $document = null,
-        ?int $page = 1,
-        ?int $size = 10,
-        ?string $email = null,
-        ?string $code = null
-    ): \PagarmeApiSDKLib\Models\ListCustomersResponse {
+    public function getCards(
+        string $customerId,
+        ?int $page = null,
+        ?int $size = null
+    ): \PagarmeApiSDKLib\Models\ListCardsResponse {
         //prepare query string for API call
-        $_queryBuilder = '/customers';
+        $_queryBuilder = '/customers/{customer_id}/cards';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'customer_id' => $customerId,
+        ]);
 
         //process optional query parameters
         ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
-            'name'     => $name,
-            'document' => $document,
-            'page'     => (null != $page) ?
-                $page : 1,
-            'size'     => (null != $size) ?
-                $size : 10,
-            'email'    => $email,
-            'Code'     => $code,
+            'page'        => $page,
+            'size'        => $size,
         ]);
 
         //validate and preprocess url
@@ -1185,28 +992,159 @@ class CustomersController extends BaseController
         //handle errors defined at the API level
         $this->validateResponse($_httpResponse, $_httpRequest);
         $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListCustomersResponse');
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListCardsResponse');
     }
 
     /**
-     * Updates a customer
+     * Renew a card
      *
      * @param string $customerId Customer id
-     * @param \PagarmeApiSDKLib\Models\UpdateCustomerRequest $request Request for updating a
-     *        customer
+     * @param string $cardId Card Id
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetCardResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function renewCard(
+        string $customerId,
+        string $cardId,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetCardResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/customers/{customer_id}/cards/{card_id}/renew';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'customer_id'     => $customerId,
+            'card_id'         => $cardId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetCardResponse');
+    }
+
+    /**
+     * Get a Customer's access token
+     *
+     * @param string $customerId Customer Id
+     * @param string $tokenId Token Id
+     *
+     * @return \PagarmeApiSDKLib\Models\GetAccessTokenResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getAccessToken(
+        string $customerId,
+        string $tokenId
+    ): \PagarmeApiSDKLib\Models\GetAccessTokenResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/customers/{customer_id}/access-tokens/{token_id}';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'customer_id' => $customerId,
+            'token_id'    => $tokenId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json'
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetAccessTokenResponse');
+    }
+
+    /**
+     * Updates the metadata a customer
+     *
+     * @param string $customerId The customer id
+     * @param \PagarmeApiSDKLib\Models\UpdateMetadataRequest $request Request for updating the
+     *        customer metadata
      * @param string|null $idempotencyKey
      *
      * @return \PagarmeApiSDKLib\Models\GetCustomerResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function updateCustomer(
+    public function updateCustomerMetadata(
         string $customerId,
-        \PagarmeApiSDKLib\Models\UpdateCustomerRequest $request,
+        \PagarmeApiSDKLib\Models\UpdateMetadataRequest $request,
         ?string $idempotencyKey = null
     ): \PagarmeApiSDKLib\Models\GetCustomerResponse {
         //prepare query string for API call
-        $_queryBuilder = '/customers/{customer_id}';
+        $_queryBuilder = '/Customers/{customer_id}/metadata';
 
         //process optional query parameters
         $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
@@ -1227,7 +1165,7 @@ class CustomersController extends BaseController
         //json encode body
         $_bodyJson = Request\Body::Json($request);
 
-        $_httpRequest = new HttpRequest(HttpMethod::PUT, $_headers, $_queryUrl);
+        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
 
         // Apply authorization to request
         $this->getAuthManager('global')->apply($_httpRequest);
@@ -1239,7 +1177,7 @@ class CustomersController extends BaseController
 
         // and invoke the API call request to fetch the response
         try {
-            $response = Request::put($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
         } catch (\Unirest\Exception $ex) {
             throw new ApiException($ex->getMessage(), $_httpRequest);
         }
@@ -1455,5 +1393,67 @@ class CustomersController extends BaseController
         $this->validateResponse($_httpResponse, $_httpRequest);
         $mapper = $this->getJsonMapper();
         return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetCustomerResponse');
+    }
+
+    /**
+     * Get a customer's card
+     *
+     * @param string $customerId Customer id
+     * @param string $cardId Card id
+     *
+     * @return \PagarmeApiSDKLib\Models\GetCardResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getCard(string $customerId, string $cardId): \PagarmeApiSDKLib\Models\GetCardResponse
+    {
+        //prepare query string for API call
+        $_queryBuilder = '/customers/{customer_id}/cards/{card_id}';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'customer_id' => $customerId,
+            'card_id'     => $cardId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json'
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetCardResponse');
     }
 }

@@ -368,7 +368,20 @@ Response object for getting a period
                   "subscription_item": null
                 }
               ],
-              "boleto_due_days": null
+              "boleto_due_days": null,
+              "split": {
+                "enabled": true,
+                "rules": [
+                  {
+                    "type": "type1",
+                    "amount": 37,
+                    "recipient": null,
+                    "gateway_id": "gateway_id1",
+                    "options": null,
+                    "id": "id9"
+                  }
+                ]
+              }
             },
             "name": "name5",
             "quantity": null,
@@ -407,7 +420,28 @@ Response object for getting a period
               "subscription_item": null
             }
           ],
-          "boleto_due_days": null
+          "boleto_due_days": null,
+          "split": {
+            "enabled": true,
+            "rules": [
+              {
+                "type": "type3",
+                "amount": 213,
+                "recipient": null,
+                "gateway_id": "gateway_id3",
+                "options": null,
+                "id": "id7"
+              },
+              {
+                "type": "type2",
+                "amount": 214,
+                "recipient": null,
+                "gateway_id": "gateway_id2",
+                "options": null,
+                "id": "id8"
+              }
+            ]
+          }
         },
         "name": "name1",
         "quantity": null,
@@ -710,7 +744,36 @@ Response object for getting a period
                   "subscription_item": null
                 }
               ],
-              "boleto_due_days": null
+              "boleto_due_days": null,
+              "split": {
+                "enabled": false,
+                "rules": [
+                  {
+                    "type": "type2",
+                    "amount": 36,
+                    "recipient": null,
+                    "gateway_id": "gateway_id2",
+                    "options": null,
+                    "id": "id8"
+                  },
+                  {
+                    "type": "type1",
+                    "amount": 37,
+                    "recipient": null,
+                    "gateway_id": "gateway_id1",
+                    "options": null,
+                    "id": "id9"
+                  },
+                  {
+                    "type": "type0",
+                    "amount": 38,
+                    "recipient": null,
+                    "gateway_id": "gateway_id0",
+                    "options": null,
+                    "id": "id0"
+                  }
+                ]
+              }
             },
             "name": "name6",
             "quantity": null,
@@ -772,7 +835,36 @@ Response object for getting a period
               "subscription_item": null
             }
           ],
-          "boleto_due_days": null
+          "boleto_due_days": null,
+          "split": {
+            "enabled": false,
+            "rules": [
+              {
+                "type": "type2",
+                "amount": 214,
+                "recipient": null,
+                "gateway_id": "gateway_id2",
+                "options": null,
+                "id": "id8"
+              },
+              {
+                "type": "type1",
+                "amount": 215,
+                "recipient": null,
+                "gateway_id": "gateway_id1",
+                "options": null,
+                "id": "id9"
+              },
+              {
+                "type": "type0",
+                "amount": 216,
+                "recipient": null,
+                "gateway_id": "gateway_id0",
+                "options": null,
+                "id": "id0"
+              }
+            ]
+          }
         },
         "name": "name2",
         "quantity": null,
@@ -812,7 +904,28 @@ Response object for getting a period
         "subscription_item": null
       }
     ],
-    "boleto_due_days": null
+    "boleto_due_days": null,
+    "split": {
+      "enabled": false,
+      "rules": [
+        {
+          "type": "type4",
+          "amount": 50,
+          "recipient": null,
+          "gateway_id": "gateway_id4",
+          "options": null,
+          "id": "id4"
+        },
+        {
+          "type": "type5",
+          "amount": 51,
+          "recipient": null,
+          "gateway_id": "gateway_id5",
+          "options": null,
+          "id": "id5"
+        }
+      ]
+    }
   },
   "status": "status8",
   "duration": 112,

@@ -15,6 +15,7 @@ Split
 | `amount` | `int` | Required | Amount | getAmount(): int | setAmount(int amount): void |
 | `recipientId` | `string` | Required | Recipient id | getRecipientId(): string | setRecipientId(string recipientId): void |
 | `options` | [`?CreateSplitOptionsRequest`](/doc/models/create-split-options-request.md) | Optional | The split options request | getOptions(): ?CreateSplitOptionsRequest | setOptions(?CreateSplitOptionsRequest options): void |
+| `splitRuleId` | `?string` | Optional | Rule code used in cancellation. | getSplitRuleId(): ?string | setSplitRuleId(?string splitRuleId): void |
 
 ## Example (as JSON)
 
@@ -23,7 +24,8 @@ Split
   "type": "type0",
   "amount": 46,
   "recipient_id": "recipient_id0",
-  "options": null
+  "options": null,
+  "split_rule_id": null
 }
 ```
 

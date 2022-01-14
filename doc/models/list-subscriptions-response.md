@@ -365,7 +365,36 @@ Response object for listing subscriptions
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null
+                "boleto_due_days": null,
+                "split": {
+                  "enabled": false,
+                  "rules": [
+                    {
+                      "type": "type8",
+                      "amount": 226,
+                      "recipient": null,
+                      "gateway_id": "gateway_id8",
+                      "options": null,
+                      "id": "id2"
+                    },
+                    {
+                      "type": "type7",
+                      "amount": 225,
+                      "recipient": null,
+                      "gateway_id": "gateway_id7",
+                      "options": null,
+                      "id": "id3"
+                    },
+                    {
+                      "type": "type6",
+                      "amount": 224,
+                      "recipient": null,
+                      "gateway_id": "gateway_id6",
+                      "options": null,
+                      "id": "id4"
+                    }
+                  ]
+                }
               },
               "name": "name6",
               "quantity": null,
@@ -404,7 +433,28 @@ Response object for listing subscriptions
                 "subscription_item": null
               }
             ],
-            "boleto_due_days": null
+            "boleto_due_days": null,
+            "split": {
+              "enabled": false,
+              "rules": [
+                {
+                  "type": "type2",
+                  "amount": 228,
+                  "recipient": null,
+                  "gateway_id": "gateway_id2",
+                  "options": null,
+                  "id": "id8"
+                },
+                {
+                  "type": "type1",
+                  "amount": 229,
+                  "recipient": null,
+                  "gateway_id": "gateway_id1",
+                  "options": null,
+                  "id": "id9"
+                }
+              ]
+            }
           },
           "name": "name2",
           "quantity": null,
@@ -700,7 +750,20 @@ Response object for listing subscriptions
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null
+                "boleto_due_days": null,
+                "split": {
+                  "enabled": true,
+                  "rules": [
+                    {
+                      "type": "type7",
+                      "amount": 225,
+                      "recipient": null,
+                      "gateway_id": "gateway_id7",
+                      "options": null,
+                      "id": "id3"
+                    }
+                  ]
+                }
               },
               "name": "name7",
               "quantity": null,
@@ -750,7 +813,36 @@ Response object for listing subscriptions
                 "subscription_item": null
               }
             ],
-            "boleto_due_days": null
+            "boleto_due_days": null,
+            "split": {
+              "enabled": true,
+              "rules": [
+                {
+                  "type": "type1",
+                  "amount": 229,
+                  "recipient": null,
+                  "gateway_id": "gateway_id1",
+                  "options": null,
+                  "id": "id9"
+                },
+                {
+                  "type": "type0",
+                  "amount": 230,
+                  "recipient": null,
+                  "gateway_id": "gateway_id0",
+                  "options": null,
+                  "id": "id0"
+                },
+                {
+                  "type": "type9",
+                  "amount": 231,
+                  "recipient": null,
+                  "gateway_id": "gateway_id9",
+                  "options": null,
+                  "id": "id1"
+                }
+              ]
+            }
           },
           "name": "name3",
           "quantity": null,
@@ -789,7 +881,28 @@ Response object for listing subscriptions
           "subscription_item": null
         }
       ],
-      "boleto_due_days": null
+      "boleto_due_days": null,
+      "split": {
+        "enabled": true,
+        "rules": [
+          {
+            "type": "type5",
+            "amount": 65,
+            "recipient": null,
+            "gateway_id": "gateway_id5",
+            "options": null,
+            "id": "id5"
+          },
+          {
+            "type": "type6",
+            "amount": 66,
+            "recipient": null,
+            "gateway_id": "gateway_id6",
+            "options": null,
+            "id": "id6"
+          }
+        ]
+      }
     },
     {
       "id": "id6",
@@ -1128,7 +1241,20 @@ Response object for listing subscriptions
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null
+                "boleto_due_days": null,
+                "split": {
+                  "enabled": true,
+                  "rules": [
+                    {
+                      "type": "type7",
+                      "amount": 225,
+                      "recipient": null,
+                      "gateway_id": "gateway_id7",
+                      "options": null,
+                      "id": "id3"
+                    }
+                  ]
+                }
               },
               "name": "name7",
               "quantity": null,
@@ -1178,7 +1304,36 @@ Response object for listing subscriptions
                 "subscription_item": null
               }
             ],
-            "boleto_due_days": null
+            "boleto_due_days": null,
+            "split": {
+              "enabled": true,
+              "rules": [
+                {
+                  "type": "type1",
+                  "amount": 229,
+                  "recipient": null,
+                  "gateway_id": "gateway_id1",
+                  "options": null,
+                  "id": "id9"
+                },
+                {
+                  "type": "type0",
+                  "amount": 230,
+                  "recipient": null,
+                  "gateway_id": "gateway_id0",
+                  "options": null,
+                  "id": "id0"
+                },
+                {
+                  "type": "type9",
+                  "amount": 231,
+                  "recipient": null,
+                  "gateway_id": "gateway_id9",
+                  "options": null,
+                  "id": "id1"
+                }
+              ]
+            }
           },
           "name": "name3",
           "quantity": null,
@@ -1488,7 +1643,28 @@ Response object for listing subscriptions
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null
+                "boleto_due_days": null,
+                "split": {
+                  "enabled": false,
+                  "rules": [
+                    {
+                      "type": "type6",
+                      "amount": 224,
+                      "recipient": null,
+                      "gateway_id": "gateway_id6",
+                      "options": null,
+                      "id": "id4"
+                    },
+                    {
+                      "type": "type5",
+                      "amount": 223,
+                      "recipient": null,
+                      "gateway_id": "gateway_id5",
+                      "options": null,
+                      "id": "id5"
+                    }
+                  ]
+                }
               },
               "name": "name8",
               "quantity": null,
@@ -1549,7 +1725,20 @@ Response object for listing subscriptions
                 "subscription_item": null
               }
             ],
-            "boleto_due_days": null
+            "boleto_due_days": null,
+            "split": {
+              "enabled": false,
+              "rules": [
+                {
+                  "type": "type0",
+                  "amount": 230,
+                  "recipient": null,
+                  "gateway_id": "gateway_id0",
+                  "options": null,
+                  "id": "id0"
+                }
+              ]
+            }
           },
           "name": "name4",
           "quantity": null,
@@ -1852,7 +2041,36 @@ Response object for listing subscriptions
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null
+                "boleto_due_days": null,
+                "split": {
+                  "enabled": true,
+                  "rules": [
+                    {
+                      "type": "type5",
+                      "amount": 223,
+                      "recipient": null,
+                      "gateway_id": "gateway_id5",
+                      "options": null,
+                      "id": "id5"
+                    },
+                    {
+                      "type": "type4",
+                      "amount": 222,
+                      "recipient": null,
+                      "gateway_id": "gateway_id4",
+                      "options": null,
+                      "id": "id6"
+                    },
+                    {
+                      "type": "type3",
+                      "amount": 221,
+                      "recipient": null,
+                      "gateway_id": "gateway_id3",
+                      "options": null,
+                      "id": "id7"
+                    }
+                  ]
+                }
               },
               "name": "name9",
               "quantity": null,
@@ -1891,7 +2109,28 @@ Response object for listing subscriptions
                 "subscription_item": null
               }
             ],
-            "boleto_due_days": null
+            "boleto_due_days": null,
+            "split": {
+              "enabled": true,
+              "rules": [
+                {
+                  "type": "type9",
+                  "amount": 231,
+                  "recipient": null,
+                  "gateway_id": "gateway_id9",
+                  "options": null,
+                  "id": "id1"
+                },
+                {
+                  "type": "type8",
+                  "amount": 232,
+                  "recipient": null,
+                  "gateway_id": "gateway_id8",
+                  "options": null,
+                  "id": "id2"
+                }
+              ]
+            }
           },
           "name": "name5",
           "quantity": null,
@@ -1943,7 +2182,36 @@ Response object for listing subscriptions
           "subscription_item": null
         }
       ],
-      "boleto_due_days": null
+      "boleto_due_days": null,
+      "split": {
+        "enabled": false,
+        "rules": [
+          {
+            "type": "type6",
+            "amount": 66,
+            "recipient": null,
+            "gateway_id": "gateway_id6",
+            "options": null,
+            "id": "id6"
+          },
+          {
+            "type": "type7",
+            "amount": 67,
+            "recipient": null,
+            "gateway_id": "gateway_id7",
+            "options": null,
+            "id": "id7"
+          },
+          {
+            "type": "type8",
+            "amount": 68,
+            "recipient": null,
+            "gateway_id": "gateway_id8",
+            "options": null,
+            "id": "id8"
+          }
+        ]
+      }
     }
   ],
   "paging": {
