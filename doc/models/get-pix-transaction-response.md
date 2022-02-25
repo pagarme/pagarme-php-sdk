@@ -19,6 +19,8 @@ Response object when getting a pix transaction
 | `qrCodeUrl` | `string` | Required | - | getQrCodeUrl(): string | setQrCodeUrl(string qrCodeUrl): void |
 | `expiresAt` | `\DateTime` | Required | - | getExpiresAt(): \DateTime | setExpiresAt(\DateTime expiresAt): void |
 | `additionalInformation` | [`PixAdditionalInformation[]`](/doc/models/pix-additional-information.md) | Required | - | getAdditionalInformation(): array | setAdditionalInformation(array additionalInformation): void |
+| `endToEndId` | `?string` | Required | - | getEndToEndId(): ?string | setEndToEndId(?string endToEndId): void |
+| `payer` | [`GetPixPayerResponse`](/doc/models/get-pix-payer-response.md) | Required | - | getPayer(): GetPixPayerResponse | setPayer(GetPixPayerResponse payer): void |
 
 ## Example (as JSON)
 
@@ -37,6 +39,18 @@ Response object when getting a pix transaction
       "Value": "Value6"
     }
   ],
+  "end_to_end_id": "end_to_end_id0",
+  "payer": {
+    "name": "name8",
+    "document": "document2",
+    "document_type": "document_type6",
+    "bank_account": {
+      "bank_name": "bank_name8",
+      "ispb": "ispb6",
+      "branch_code": "branch_code0",
+      "account_number": "account_number2"
+    }
+  },
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",

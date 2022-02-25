@@ -42,6 +42,16 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
     private $additionalInformation;
 
     /**
+     * @var string|null
+     */
+    private $endToEndId;
+
+    /**
+     * @var GetPixPayerResponse
+     */
+    private $payer;
+
+    /**
      * @param string $gatewayId
      * @param int $amount
      * @param string $status
@@ -59,6 +69,7 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
      * @param string $qrCodeUrl
      * @param \DateTime $expiresAt
      * @param PixAdditionalInformation[] $additionalInformation
+     * @param GetPixPayerResponse $payer
      */
     public function __construct(
         string $gatewayId,
@@ -77,7 +88,8 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
         string $qrCode,
         string $qrCodeUrl,
         \DateTime $expiresAt,
-        array $additionalInformation
+        array $additionalInformation,
+        GetPixPayerResponse $payer
     ) {
         parent::__construct(
             $gatewayId,
@@ -98,6 +110,7 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
         $this->qrCodeUrl = $qrCodeUrl;
         $this->expiresAt = $expiresAt;
         $this->additionalInformation = $additionalInformation;
+        $this->payer = $payer;
     }
 
     /**
@@ -182,6 +195,43 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
     }
 
     /**
+     * Returns End to End Id.
+     */
+    public function getEndToEndId(): ?string
+    {
+        return $this->endToEndId;
+    }
+
+    /**
+     * Sets End to End Id.
+     *
+     * @maps end_to_end_id
+     */
+    public function setEndToEndId(?string $endToEndId): void
+    {
+        $this->endToEndId = $endToEndId;
+    }
+
+    /**
+     * Returns Payer.
+     */
+    public function getPayer(): GetPixPayerResponse
+    {
+        return $this->payer;
+    }
+
+    /**
+     * Sets Payer.
+     *
+     * @required
+     * @maps payer
+     */
+    public function setPayer(GetPixPayerResponse $payer): void
+    {
+        $this->payer = $payer;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -196,6 +246,8 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
         $json['qr_code_url']            = $this->qrCodeUrl;
         $json['expires_at']             = DateTimeHelper::toRfc3339DateTime($this->expiresAt);
         $json['additional_information'] = $this->additionalInformation;
+        $json['end_to_end_id']          = $this->endToEndId;
+        $json['payer']                  = $this->payer;
         $json = array_merge($json, parent::jsonSerialize(true));
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

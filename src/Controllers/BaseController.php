@@ -50,7 +50,7 @@ class BaseController
      *
      * @var string
      */
-    protected static $userAgent = 'PagarmeCoreApi - PHP 6.4.0';
+    protected static $userAgent = 'PagarmeCoreApi - PHP 6.6.0';
 
     /**
      * Constructor that sets the timeout of requests
@@ -102,15 +102,15 @@ class BaseController
     {
         $mapper = new JsonMapper();
         $mapper->arChildClasses['PagarmeApiSDKLib\\Models\\GetTransactionResponse'] = [
+            'PagarmeApiSDKLib\\Models\\GetVoucherTransactionResponse',
             'PagarmeApiSDKLib\\Models\\GetBankTransferTransactionResponse',
             'PagarmeApiSDKLib\\Models\\GetSafetyPayTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetVoucherTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetBoletoTransactionResponse',
             'PagarmeApiSDKLib\\Models\\GetDebitCardTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetPrivateLabelTransactionResponse',
+            'PagarmeApiSDKLib\\Models\\GetBoletoTransactionResponse',
             'PagarmeApiSDKLib\\Models\\GetCashTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetCreditCardTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetPixTransactionResponse'
+            'PagarmeApiSDKLib\\Models\\GetPrivateLabelTransactionResponse',
+            'PagarmeApiSDKLib\\Models\\GetPixTransactionResponse',
+            'PagarmeApiSDKLib\\Models\\GetCreditCardTransactionResponse'
         ];
         return $mapper;
     }

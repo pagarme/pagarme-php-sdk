@@ -65,7 +65,7 @@ class ChargesController extends BaseController
         ];
 
         //json encode body
-        $_bodyJson = Request\Body::Json($request);
+        $_bodyJson = ApiHelper::serialize($request);
 
         $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
 
@@ -136,7 +136,7 @@ class ChargesController extends BaseController
         ];
 
         //json encode body
-        $_bodyJson = Request\Body::Json($request);
+        $_bodyJson = ApiHelper::serialize($request);
 
         $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
 
@@ -151,6 +151,205 @@ class ChargesController extends BaseController
         // and invoke the API call request to fetch the response
         try {
             $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetChargeResponse');
+    }
+
+    /**
+     * Updates the card from a charge
+     *
+     * @param string $chargeId Charge id
+     * @param \PagarmeApiSDKLib\Models\UpdateChargeCardRequest $request Request for updating a
+     *        charge's card
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetChargeResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateChargeCard(
+        string $chargeId,
+        \PagarmeApiSDKLib\Models\UpdateChargeCardRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetChargeResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/charges/{charge_id}/card';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'charge_id'       => $chargeId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = ApiHelper::serialize($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetChargeResponse');
+    }
+
+    /**
+     * @param string $status
+     * @param \DateTime|null $createdSince
+     * @param \DateTime|null $createdUntil
+     *
+     * @return \PagarmeApiSDKLib\Models\GetChargesSummaryResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getChargesSummary(
+        string $status,
+        ?\DateTime $createdSince = null,
+        ?\DateTime $createdUntil = null
+    ): \PagarmeApiSDKLib\Models\GetChargesSummaryResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/charges/summary';
+
+        //process optional query parameters
+        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
+            'status'        => $status,
+            'created_since' => DateTimeHelper::toRfc3339DateTime($createdSince),
+            'created_until' => DateTimeHelper::toRfc3339DateTime($createdUntil),
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json'
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetChargesSummaryResponse');
+    }
+
+    /**
+     * Creates a new charge
+     *
+     * @param \PagarmeApiSDKLib\Models\CreateChargeRequest $request Request for creating a charge
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetChargeResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createCharge(
+        \PagarmeApiSDKLib\Models\CreateChargeRequest $request,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetChargeResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/Charges';
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = ApiHelper::serialize($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
         } catch (\Unirest\Exception $ex) {
             throw new ApiException($ex->getMessage(), $_httpRequest);
         }
@@ -240,24 +439,24 @@ class ChargesController extends BaseController
     }
 
     /**
-     * Updates the due date from a charge
+     * Captures a charge
      *
-     * @param string $chargeId Charge Id
-     * @param \PagarmeApiSDKLib\Models\UpdateChargeDueDateRequest $request Request for updating the
-     *        due date
+     * @param string $chargeId Charge id
+     * @param \PagarmeApiSDKLib\Models\CreateCaptureChargeRequest|null $request Request for
+     *        capturing a charge
      * @param string|null $idempotencyKey
      *
      * @return \PagarmeApiSDKLib\Models\GetChargeResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function updateChargeDueDate(
+    public function captureCharge(
         string $chargeId,
-        \PagarmeApiSDKLib\Models\UpdateChargeDueDateRequest $request,
+        ?\PagarmeApiSDKLib\Models\CreateCaptureChargeRequest $request = null,
         ?string $idempotencyKey = null
     ): \PagarmeApiSDKLib\Models\GetChargeResponse {
         //prepare query string for API call
-        $_queryBuilder = '/Charges/{charge_id}/due-date';
+        $_queryBuilder = '/charges/{charge_id}/capture';
 
         //process optional query parameters
         $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
@@ -276,9 +475,9 @@ class ChargesController extends BaseController
         ];
 
         //json encode body
-        $_bodyJson = Request\Body::Json($request);
+        $_bodyJson = ApiHelper::serialize($request);
 
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
 
         // Apply authorization to request
         $this->getAuthManager('global')->apply($_httpRequest);
@@ -290,7 +489,138 @@ class ChargesController extends BaseController
 
         // and invoke the API call request to fetch the response
         try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetChargeResponse');
+    }
+
+    /**
+     * Get a charge from its id
+     *
+     * @param string $chargeId Charge id
+     *
+     * @return \PagarmeApiSDKLib\Models\GetChargeResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getCharge(string $chargeId): \PagarmeApiSDKLib\Models\GetChargeResponse
+    {
+        //prepare query string for API call
+        $_queryBuilder = '/charges/{charge_id}';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'charge_id' => $chargeId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json'
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        $mapper = $this->getJsonMapper();
+        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetChargeResponse');
+    }
+
+    /**
+     * Cancel a charge
+     *
+     * @param string $chargeId Charge id
+     * @param \PagarmeApiSDKLib\Models\CreateCancelChargeRequest|null $request Request for
+     *        cancelling a charge
+     * @param string|null $idempotencyKey
+     *
+     * @return \PagarmeApiSDKLib\Models\GetChargeResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function cancelCharge(
+        string $chargeId,
+        ?\PagarmeApiSDKLib\Models\CreateCancelChargeRequest $request = null,
+        ?string $idempotencyKey = null
+    ): \PagarmeApiSDKLib\Models\GetChargeResponse {
+        //prepare query string for API call
+        $_queryBuilder = '/charges/{charge_id}';
+
+        //process optional query parameters
+        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
+            'charge_id'       => $chargeId,
+        ]);
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json',
+            'idempotency-key' => $idempotencyKey
+        ];
+
+        //json encode body
+        $_bodyJson = ApiHelper::serialize($request);
+
+        $_httpRequest = new HttpRequest(HttpMethod::DELETE, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::delete($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
         } catch (\Unirest\Exception $ex) {
             throw new ApiException($ex->getMessage(), $_httpRequest);
         }
@@ -397,24 +727,22 @@ class ChargesController extends BaseController
     }
 
     /**
-     * Captures a charge
-     *
-     * @param string $chargeId Charge id
-     * @param \PagarmeApiSDKLib\Models\CreateCaptureChargeRequest|null $request Request for
-     *        capturing a charge
+     * @param string $chargeId
+     * @param \PagarmeApiSDKLib\Models\CreateConfirmPaymentRequest|null $request Request for confirm
+     *        payment
      * @param string|null $idempotencyKey
      *
      * @return \PagarmeApiSDKLib\Models\GetChargeResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function captureCharge(
+    public function confirmPayment(
         string $chargeId,
-        ?\PagarmeApiSDKLib\Models\CreateCaptureChargeRequest $request = null,
+        ?\PagarmeApiSDKLib\Models\CreateConfirmPaymentRequest $request = null,
         ?string $idempotencyKey = null
     ): \PagarmeApiSDKLib\Models\GetChargeResponse {
         //prepare query string for API call
-        $_queryBuilder = '/charges/{charge_id}/capture';
+        $_queryBuilder = '/charges/{charge_id}/confirm-payment';
 
         //process optional query parameters
         $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
@@ -433,7 +761,7 @@ class ChargesController extends BaseController
         ];
 
         //json encode body
-        $_bodyJson = Request\Body::Json($request);
+        $_bodyJson = ApiHelper::serialize($request);
 
         $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
 
@@ -468,24 +796,24 @@ class ChargesController extends BaseController
     }
 
     /**
-     * Updates the card from a charge
+     * Updates the due date from a charge
      *
-     * @param string $chargeId Charge id
-     * @param \PagarmeApiSDKLib\Models\UpdateChargeCardRequest $request Request for updating a
-     *        charge's card
+     * @param string $chargeId Charge Id
+     * @param \PagarmeApiSDKLib\Models\UpdateChargeDueDateRequest $request Request for updating the
+     *        due date
      * @param string|null $idempotencyKey
      *
      * @return \PagarmeApiSDKLib\Models\GetChargeResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function updateChargeCard(
+    public function updateChargeDueDate(
         string $chargeId,
-        \PagarmeApiSDKLib\Models\UpdateChargeCardRequest $request,
+        \PagarmeApiSDKLib\Models\UpdateChargeDueDateRequest $request,
         ?string $idempotencyKey = null
     ): \PagarmeApiSDKLib\Models\GetChargeResponse {
         //prepare query string for API call
-        $_queryBuilder = '/charges/{charge_id}/card';
+        $_queryBuilder = '/Charges/{charge_id}/due-date';
 
         //process optional query parameters
         $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
@@ -504,7 +832,7 @@ class ChargesController extends BaseController
         ];
 
         //json encode body
-        $_bodyJson = Request\Body::Json($request);
+        $_bodyJson = ApiHelper::serialize($request);
 
         $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
 
@@ -536,131 +864,6 @@ class ChargesController extends BaseController
         $this->validateResponse($_httpResponse, $_httpRequest);
         $mapper = $this->getJsonMapper();
         return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetChargeResponse');
-    }
-
-    /**
-     * Get a charge from its id
-     *
-     * @param string $chargeId Charge id
-     *
-     * @return \PagarmeApiSDKLib\Models\GetChargeResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getCharge(string $chargeId): \PagarmeApiSDKLib\Models\GetChargeResponse
-    {
-        //prepare query string for API call
-        $_queryBuilder = '/charges/{charge_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'charge_id' => $chargeId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetChargeResponse');
-    }
-
-    /**
-     * @param string $status
-     * @param \DateTime|null $createdSince
-     * @param \DateTime|null $createdUntil
-     *
-     * @return \PagarmeApiSDKLib\Models\GetChargesSummaryResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getChargesSummary(
-        string $status,
-        ?\DateTime $createdSince = null,
-        ?\DateTime $createdUntil = null
-    ): \PagarmeApiSDKLib\Models\GetChargesSummaryResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/charges/summary';
-
-        //process optional query parameters
-        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
-            'status'        => $status,
-            'created_since' => DateTimeHelper::toRfc3339DateTime($createdSince),
-            'created_until' => DateTimeHelper::toRfc3339DateTime($createdUntil),
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetChargesSummaryResponse');
     }
 
     /**
@@ -708,209 +911,6 @@ class ChargesController extends BaseController
         // and invoke the API call request to fetch the response
         try {
             $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetChargeResponse');
-    }
-
-    /**
-     * Cancel a charge
-     *
-     * @param string $chargeId Charge id
-     * @param \PagarmeApiSDKLib\Models\CreateCancelChargeRequest|null $request Request for
-     *        cancelling a charge
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetChargeResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function cancelCharge(
-        string $chargeId,
-        ?\PagarmeApiSDKLib\Models\CreateCancelChargeRequest $request = null,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetChargeResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/charges/{charge_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'charge_id'       => $chargeId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::DELETE, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::delete($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetChargeResponse');
-    }
-
-    /**
-     * Creates a new charge
-     *
-     * @param \PagarmeApiSDKLib\Models\CreateChargeRequest $request Request for creating a charge
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetChargeResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createCharge(
-        \PagarmeApiSDKLib\Models\CreateChargeRequest $request,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetChargeResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/Charges';
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetChargeResponse');
-    }
-
-    /**
-     * @param string $chargeId
-     * @param \PagarmeApiSDKLib\Models\CreateConfirmPaymentRequest|null $request Request for confirm
-     *        payment
-     * @param string|null $idempotencyKey
-     *
-     * @return \PagarmeApiSDKLib\Models\GetChargeResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function confirmPayment(
-        string $chargeId,
-        ?\PagarmeApiSDKLib\Models\CreateConfirmPaymentRequest $request = null,
-        ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetChargeResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/charges/{charge_id}/confirm-payment';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'charge_id'       => $chargeId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
         } catch (\Unirest\Exception $ex) {
             throw new ApiException($ex->getMessage(), $_httpRequest);
         }
