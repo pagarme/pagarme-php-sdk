@@ -15,7 +15,7 @@ Response object for getting the shipping data
 | `description` | `string` | Required | - | getDescription(): string | setDescription(string description): void |
 | `recipientName` | `string` | Required | - | getRecipientName(): string | setRecipientName(string recipientName): void |
 | `recipientPhone` | `string` | Required | - | getRecipientPhone(): string | setRecipientPhone(string recipientPhone): void |
-| `address` | [`GetAddressResponse`](/doc/models/get-address-response.md) | Required | - | getAddress(): GetAddressResponse | setAddress(GetAddressResponse address): void |
+| `address` | [`GetAddressResponse`](../../doc/models/get-address-response.md) | Required | - | getAddress(): GetAddressResponse | setAddress(GetAddressResponse address): void |
 | `maxDeliveryDate` | `?\DateTime` | Optional | Data máxima de entrega | getMaxDeliveryDate(): ?\DateTime | setMaxDeliveryDate(?\DateTime maxDeliveryDate): void |
 | `estimatedDeliveryDate` | `?\DateTime` | Optional | Prazo estimado de entrega | getEstimatedDeliveryDate(): ?\DateTime | setEstimatedDeliveryDate(?\DateTime estimatedDeliveryDate): void |
 | `type` | `string` | Required | Shipping Type | getType(): string | setType(string type): void |

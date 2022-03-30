@@ -48,7 +48,7 @@ class CreateOrderRequest implements \JsonSerializable
     private $shipping;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -103,7 +103,7 @@ class CreateOrderRequest implements \JsonSerializable
      * @param CreatePaymentRequest[] $payments
      * @param string $code
      * @param string $customerId
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param bool $closed
      */
     public function __construct(
@@ -126,7 +126,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Items.
-     *
      * Items
      *
      * @return CreateOrderItemRequest[]
@@ -138,7 +137,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Items.
-     *
      * Items
      *
      * @required
@@ -153,7 +151,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Customer.
-     *
      * Customer
      */
     public function getCustomer(): CreateCustomerRequest
@@ -163,7 +160,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Customer.
-     *
      * Customer
      *
      * @required
@@ -176,7 +172,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Payments.
-     *
      * Payment data
      *
      * @return CreatePaymentRequest[]
@@ -188,7 +183,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Payments.
-     *
      * Payment data
      *
      * @required
@@ -203,7 +197,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * The order code
      */
     public function getCode(): string
@@ -213,7 +206,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * The order code
      *
      * @required
@@ -226,7 +218,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Customer Id.
-     *
      * The customer id
      */
     public function getCustomerId(): string
@@ -236,7 +227,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Customer Id.
-     *
      * The customer id
      *
      * @required
@@ -249,7 +239,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Shipping.
-     *
      * Shipping data
      */
     public function getShipping(): ?CreateShippingRequest
@@ -259,7 +248,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Shipping.
-     *
      * Shipping data
      *
      * @maps shipping
@@ -271,8 +259,9 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -281,11 +270,12 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -294,7 +284,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Antifraud Enabled.
-     *
      * Defines whether the order will go through anti-fraud
      */
     public function getAntifraudEnabled(): ?bool
@@ -304,7 +293,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Antifraud Enabled.
-     *
      * Defines whether the order will go through anti-fraud
      *
      * @maps antifraud_enabled
@@ -316,7 +304,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Ip.
-     *
      * Ip address
      */
     public function getIp(): ?string
@@ -326,7 +313,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Ip.
-     *
      * Ip address
      *
      * @maps ip
@@ -338,7 +324,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Session Id.
-     *
      * Session id
      */
     public function getSessionId(): ?string
@@ -348,7 +333,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Session Id.
-     *
      * Session id
      *
      * @maps session_id
@@ -360,7 +344,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Location.
-     *
      * Request's location
      */
     public function getLocation(): ?CreateLocationRequest
@@ -370,7 +353,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Location.
-     *
      * Request's location
      *
      * @maps location
@@ -382,7 +364,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Device.
-     *
      * Device's informations
      */
     public function getDevice(): ?CreateDeviceRequest
@@ -392,7 +373,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Device.
-     *
      * Device's informations
      *
      * @maps device
@@ -423,7 +403,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Currency.
-     *
      * Currency
      */
     public function getCurrency(): ?string
@@ -433,7 +412,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Currency.
-     *
      * Currency
      *
      * @maps currency
@@ -463,7 +441,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Returns Submerchant.
-     *
      * SubMerchant
      */
     public function getSubmerchant(): ?CreateSubMerchantRequest
@@ -473,7 +450,6 @@ class CreateOrderRequest implements \JsonSerializable
 
     /**
      * Sets Submerchant.
-     *
      * SubMerchant
      *
      * @maps submerchant
@@ -489,8 +465,9 @@ class CreateOrderRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

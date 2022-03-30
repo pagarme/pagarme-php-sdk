@@ -237,7 +237,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Valor em centavos
      */
     public function getAmount(): ?int
@@ -247,7 +246,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Valor em centavos
      *
      * @maps amount
@@ -259,7 +257,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Default Payment Method.
-     *
      * Meio de pagamento padrão no checkout
      */
     public function getDefaultPaymentMethod(): string
@@ -269,7 +266,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Default Payment Method.
-     *
      * Meio de pagamento padrão no checkout
      *
      * @required
@@ -282,7 +278,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Success Url.
-     *
      * Url de redirecionamento de sucesso após o checkou
      */
     public function getSuccessUrl(): string
@@ -292,7 +287,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Success Url.
-     *
      * Url de redirecionamento de sucesso após o checkou
      *
      * @required
@@ -305,7 +299,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Payment Url.
-     *
      * Url para pagamento usando o checkout
      */
     public function getPaymentUrl(): string
@@ -315,7 +308,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Payment Url.
-     *
      * Url para pagamento usando o checkout
      *
      * @required
@@ -328,7 +320,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Gateway Affiliation Id.
-     *
      * Código da afiliação onde o pagamento será processado no gateway
      */
     public function getGatewayAffiliationId(): string
@@ -338,7 +329,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Gateway Affiliation Id.
-     *
      * Código da afiliação onde o pagamento será processado no gateway
      *
      * @required
@@ -351,7 +341,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Accepted Payment Methods.
-     *
      * Meios de pagamento aceitos no checkout
      *
      * @return string[]
@@ -363,7 +352,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Accepted Payment Methods.
-     *
      * Meios de pagamento aceitos no checkout
      *
      * @required
@@ -378,7 +366,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Status do checkout
      */
     public function getStatus(): string
@@ -388,7 +375,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Status do checkout
      *
      * @required
@@ -401,7 +387,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Skip Checkout Success Page.
-     *
      * Pular tela de sucesso pós-pagamento?
      */
     public function getSkipCheckoutSuccessPage(): bool
@@ -411,7 +396,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Skip Checkout Success Page.
-     *
      * Pular tela de sucesso pós-pagamento?
      *
      * @required
@@ -424,7 +408,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Created At.
-     *
      * Data de criação
      */
     public function getCreatedAt(): \DateTime
@@ -434,7 +417,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Created At.
-     *
      * Data de criação
      *
      * @required
@@ -448,7 +430,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Updated At.
-     *
      * Data de atualização
      */
     public function getUpdatedAt(): \DateTime
@@ -458,7 +439,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Updated At.
-     *
      * Data de atualização
      *
      * @required
@@ -472,7 +452,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Canceled At.
-     *
      * Data de cancelamento
      */
     public function getCanceledAt(): ?\DateTime
@@ -482,7 +461,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Canceled At.
-     *
      * Data de cancelamento
      *
      * @maps canceled_at
@@ -495,7 +473,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Customer Editable.
-     *
      * Torna o objeto customer editável
      */
     public function getCustomerEditable(): bool
@@ -505,7 +482,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Customer Editable.
-     *
      * Torna o objeto customer editável
      *
      * @required
@@ -518,7 +494,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Customer.
-     *
      * Dados do comprador
      */
     public function getCustomer(): ?GetCustomerResponse
@@ -528,7 +503,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Customer.
-     *
      * Dados do comprador
      *
      * @maps customer
@@ -540,7 +514,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Billingaddress.
-     *
      * Dados do endereço de cobrança
      */
     public function getBillingaddress(): GetAddressResponse
@@ -550,7 +523,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Billingaddress.
-     *
      * Dados do endereço de cobrança
      *
      * @required
@@ -563,7 +535,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Credit Card.
-     *
      * Configurações de cartão de crédito
      */
     public function getCreditCard(): GetCheckoutCreditCardPaymentResponse
@@ -573,7 +544,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Credit Card.
-     *
      * Configurações de cartão de crédito
      *
      * @required
@@ -586,7 +556,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Boleto.
-     *
      * Configurações de boleto
      */
     public function getBoleto(): GetCheckoutBoletoPaymentResponse
@@ -596,7 +565,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Boleto.
-     *
      * Configurações de boleto
      *
      * @required
@@ -609,7 +577,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Billing Address Editable.
-     *
      * Indica se o billing address poderá ser editado
      */
     public function getBillingAddressEditable(): bool
@@ -619,7 +586,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Billing Address Editable.
-     *
      * Indica se o billing address poderá ser editado
      *
      * @required
@@ -632,7 +598,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Shipping.
-     *
      * Configurações  de entrega
      */
     public function getShipping(): GetShippingResponse
@@ -642,7 +607,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Shipping.
-     *
      * Configurações  de entrega
      *
      * @required
@@ -655,7 +619,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Shippable.
-     *
      * Indica se possui entrega
      */
     public function getShippable(): bool
@@ -665,7 +628,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Shippable.
-     *
      * Indica se possui entrega
      *
      * @required
@@ -678,7 +640,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Closed At.
-     *
      * Data de fechamento
      */
     public function getClosedAt(): ?\DateTime
@@ -688,7 +649,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Closed At.
-     *
      * Data de fechamento
      *
      * @maps closed_at
@@ -701,7 +661,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Expires At.
-     *
      * Data de expiração
      */
     public function getExpiresAt(): ?\DateTime
@@ -711,7 +670,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Expires At.
-     *
      * Data de expiração
      *
      * @maps expires_at
@@ -724,7 +682,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Currency.
-     *
      * Moeda
      */
     public function getCurrency(): string
@@ -734,7 +691,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Currency.
-     *
      * Moeda
      *
      * @required
@@ -747,7 +703,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Debit Card.
-     *
      * Configurações de cartão de débito
      */
     public function getDebitCard(): ?GetCheckoutDebitCardPaymentResponse
@@ -757,7 +712,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Debit Card.
-     *
      * Configurações de cartão de débito
      *
      * @maps debit_card
@@ -769,7 +723,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Bank Transfer.
-     *
      * Bank transfer payment response
      */
     public function getBankTransfer(): ?GetCheckoutBankTransferPaymentResponse
@@ -779,7 +732,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Bank Transfer.
-     *
      * Bank transfer payment response
      *
      * @maps bank_transfer
@@ -791,7 +743,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Accepted Brands.
-     *
      * Accepted Brands
      *
      * @return string[]
@@ -803,7 +754,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Accepted Brands.
-     *
      * Accepted Brands
      *
      * @required
@@ -818,7 +768,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Returns Pix.
-     *
      * Pix payment response
      */
     public function getPix(): ?GetCheckoutPixPaymentResponse
@@ -828,7 +777,6 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
 
     /**
      * Sets Pix.
-     *
      * Pix payment response
      *
      * @maps pix
@@ -844,8 +792,9 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

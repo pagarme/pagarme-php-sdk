@@ -39,7 +39,6 @@ class CreateBankTransferPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Bank.
-     *
      * Bank
      */
     public function getBank(): string
@@ -49,7 +48,6 @@ class CreateBankTransferPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Bank.
-     *
      * Bank
      *
      * @required
@@ -62,7 +60,6 @@ class CreateBankTransferPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Retries.
-     *
      * Number of retries
      */
     public function getRetries(): int
@@ -72,7 +69,6 @@ class CreateBankTransferPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Retries.
-     *
      * Number of retries
      *
      * @required
@@ -89,8 +85,9 @@ class CreateBankTransferPaymentRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -12,7 +12,7 @@ Checkout pix payment response
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `expiresAt` | `\DateTime` | Required | Expires at | getExpiresAt(): \DateTime | setExpiresAt(\DateTime expiresAt): void |
-| `additionalInformation` | [`PixAdditionalInformation[]`](/doc/models/pix-additional-information.md) | Required | Additional information | getAdditionalInformation(): array | setAdditionalInformation(array additionalInformation): void |
+| `additionalInformation` | [`PixAdditionalInformation[]`](../../doc/models/pix-additional-information.md) | Required | Additional information | getAdditionalInformation(): array | setAdditionalInformation(array additionalInformation): void |
 
 ## Example (as JSON)
 

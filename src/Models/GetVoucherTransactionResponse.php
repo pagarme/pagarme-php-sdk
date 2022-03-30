@@ -149,7 +149,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Returns Statement Descriptor.
-     *
      * Text that will appear on the voucher's statement
      */
     public function getStatementDescriptor(): string
@@ -159,7 +158,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Sets Statement Descriptor.
-     *
      * Text that will appear on the voucher's statement
      *
      * @required
@@ -172,7 +170,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Returns Acquirer Name.
-     *
      * Acquirer name
      */
     public function getAcquirerName(): string
@@ -182,7 +179,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Sets Acquirer Name.
-     *
      * Acquirer name
      *
      * @required
@@ -195,7 +191,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Returns Acquirer Affiliation Code.
-     *
      * Acquirer affiliation code
      */
     public function getAcquirerAffiliationCode(): string
@@ -205,7 +200,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Sets Acquirer Affiliation Code.
-     *
      * Acquirer affiliation code
      *
      * @required
@@ -218,7 +212,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Returns Acquirer Tid.
-     *
      * Acquirer TID
      */
     public function getAcquirerTid(): string
@@ -228,7 +221,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Sets Acquirer Tid.
-     *
      * Acquirer TID
      *
      * @required
@@ -241,7 +233,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Returns Acquirer Nsu.
-     *
      * Acquirer NSU
      */
     public function getAcquirerNsu(): string
@@ -251,7 +242,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Sets Acquirer Nsu.
-     *
      * Acquirer NSU
      *
      * @required
@@ -264,7 +254,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Returns Acquirer Auth Code.
-     *
      * Acquirer authorization code
      */
     public function getAcquirerAuthCode(): string
@@ -274,7 +263,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Sets Acquirer Auth Code.
-     *
      * Acquirer authorization code
      *
      * @required
@@ -287,7 +275,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Returns Acquirer Message.
-     *
      * acquirer_message
      */
     public function getAcquirerMessage(): string
@@ -297,7 +284,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Sets Acquirer Message.
-     *
      * acquirer_message
      *
      * @required
@@ -310,7 +296,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Returns Acquirer Return Code.
-     *
      * Acquirer return code
      */
     public function getAcquirerReturnCode(): string
@@ -320,7 +305,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Sets Acquirer Return Code.
-     *
      * Acquirer return code
      *
      * @required
@@ -333,7 +317,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Returns Operation Type.
-     *
      * Operation type
      */
     public function getOperationType(): string
@@ -343,7 +326,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Sets Operation Type.
-     *
      * Operation type
      *
      * @required
@@ -356,7 +338,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Returns Card.
-     *
      * Card data
      */
     public function getCard(): GetCardResponse
@@ -366,7 +347,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
 
     /**
      * Sets Card.
-     *
      * Card data
      *
      * @required
@@ -383,8 +363,9 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

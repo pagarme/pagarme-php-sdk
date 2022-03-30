@@ -54,7 +54,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Statement Descriptor.
-     *
      * The text that will be shown on the debit card's statement
      */
     public function getStatementDescriptor(): ?string
@@ -64,7 +63,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Statement Descriptor.
-     *
      * The text that will be shown on the debit card's statement
      *
      * @maps statement_descriptor
@@ -76,7 +74,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Card.
-     *
      * Debit card data
      */
     public function getCard(): ?CreateCardRequest
@@ -86,7 +83,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Card.
-     *
      * Debit card data
      *
      * @maps card
@@ -98,7 +94,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Card Id.
-     *
      * The debit card id
      */
     public function getCardId(): ?string
@@ -108,7 +103,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Card Id.
-     *
      * The debit card id
      *
      * @maps card_id
@@ -120,7 +114,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Card Token.
-     *
      * The debit card token
      */
     public function getCardToken(): ?string
@@ -130,7 +123,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Card Token.
-     *
      * The debit card token
      *
      * @maps card_token
@@ -142,7 +134,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Recurrence.
-     *
      * Indicates a recurrence
      */
     public function getRecurrence(): ?bool
@@ -152,7 +143,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Recurrence.
-     *
      * Indicates a recurrence
      *
      * @maps recurrence
@@ -164,7 +154,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Authentication.
-     *
      * The payment authentication request
      */
     public function getAuthentication(): ?CreatePaymentAuthenticationRequest
@@ -174,7 +163,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Authentication.
-     *
      * The payment authentication request
      *
      * @maps authentication
@@ -186,7 +174,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Token.
-     *
      * The Debit card payment token request
      */
     public function getToken(): ?CreateCardPaymentContactlessRequest
@@ -196,7 +183,6 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Token.
-     *
      * The Debit card payment token request
      *
      * @maps token
@@ -212,8 +198,9 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

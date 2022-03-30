@@ -16,9 +16,9 @@ Response object for getting a plan item
 | `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
 | `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
 | `updatedAt` | `\DateTime` | Required | - | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
-| `pricingScheme` | [`GetPricingSchemeResponse`](/doc/models/get-pricing-scheme-response.md) | Required | - | getPricingScheme(): GetPricingSchemeResponse | setPricingScheme(GetPricingSchemeResponse pricingScheme): void |
+| `pricingScheme` | [`GetPricingSchemeResponse`](../../doc/models/get-pricing-scheme-response.md) | Required | - | getPricingScheme(): GetPricingSchemeResponse | setPricingScheme(GetPricingSchemeResponse pricingScheme): void |
 | `description` | `string` | Required | - | getDescription(): string | setDescription(string description): void |
-| `plan` | [`GetPlanResponse`](/doc/models/get-plan-response.md) | Required | - | getPlan(): GetPlanResponse | setPlan(GetPlanResponse plan): void |
+| `plan` | [`GetPlanResponse`](../../doc/models/get-plan-response.md) | Required | - | getPlan(): GetPlanResponse | setPlan(GetPlanResponse plan): void |
 | `quantity` | `?int` | Optional | - | getQuantity(): ?int | setQuantity(?int quantity): void |
 | `cycles` | `?int` | Optional | - | getCycles(): ?int | setCycles(?int cycles): void |
 | `deletedAt` | `?\DateTime` | Optional | - | getDeletedAt(): ?\DateTime | setDeletedAt(?\DateTime deletedAt): void |

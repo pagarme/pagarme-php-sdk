@@ -56,7 +56,6 @@ class CreateDiscountRequest implements \JsonSerializable
 
     /**
      * Returns Value.
-     *
      * The discount value
      */
     public function getValue(): float
@@ -66,7 +65,6 @@ class CreateDiscountRequest implements \JsonSerializable
 
     /**
      * Sets Value.
-     *
      * The discount value
      *
      * @required
@@ -79,7 +77,6 @@ class CreateDiscountRequest implements \JsonSerializable
 
     /**
      * Returns Discount Type.
-     *
      * Discount type. Can be either flat or percentage.
      */
     public function getDiscountType(): string
@@ -89,7 +86,6 @@ class CreateDiscountRequest implements \JsonSerializable
 
     /**
      * Sets Discount Type.
-     *
      * Discount type. Can be either flat or percentage.
      *
      * @required
@@ -102,7 +98,6 @@ class CreateDiscountRequest implements \JsonSerializable
 
     /**
      * Returns Item Id.
-     *
      * The item where the discount will be applied
      */
     public function getItemId(): string
@@ -112,7 +107,6 @@ class CreateDiscountRequest implements \JsonSerializable
 
     /**
      * Sets Item Id.
-     *
      * The item where the discount will be applied
      *
      * @required
@@ -125,7 +119,6 @@ class CreateDiscountRequest implements \JsonSerializable
 
     /**
      * Returns Cycles.
-     *
      * Number of cycles that the discount will be applied
      */
     public function getCycles(): ?int
@@ -135,7 +128,6 @@ class CreateDiscountRequest implements \JsonSerializable
 
     /**
      * Sets Cycles.
-     *
      * Number of cycles that the discount will be applied
      *
      * @maps cycles
@@ -147,7 +139,6 @@ class CreateDiscountRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Description
      */
     public function getDescription(): ?string
@@ -157,7 +148,6 @@ class CreateDiscountRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Description
      *
      * @maps description
@@ -173,8 +163,9 @@ class CreateDiscountRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

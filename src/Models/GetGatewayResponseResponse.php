@@ -39,7 +39,6 @@ class GetGatewayResponseResponse implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * The error code
      */
     public function getCode(): string
@@ -49,7 +48,6 @@ class GetGatewayResponseResponse implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * The error code
      *
      * @required
@@ -62,7 +60,6 @@ class GetGatewayResponseResponse implements \JsonSerializable
 
     /**
      * Returns Errors.
-     *
      * The gateway response errors list
      *
      * @return GetGatewayErrorResponse[]
@@ -74,7 +71,6 @@ class GetGatewayResponseResponse implements \JsonSerializable
 
     /**
      * Sets Errors.
-     *
      * The gateway response errors list
      *
      * @required
@@ -93,8 +89,9 @@ class GetGatewayResponseResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

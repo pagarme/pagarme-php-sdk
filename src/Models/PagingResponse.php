@@ -46,7 +46,6 @@ class PagingResponse implements \JsonSerializable
 
     /**
      * Returns Total.
-     *
      * Total number of pages
      */
     public function getTotal(): int
@@ -56,7 +55,6 @@ class PagingResponse implements \JsonSerializable
 
     /**
      * Sets Total.
-     *
      * Total number of pages
      *
      * @required
@@ -69,7 +67,6 @@ class PagingResponse implements \JsonSerializable
 
     /**
      * Returns Previous.
-     *
      * Previous page
      */
     public function getPrevious(): string
@@ -79,7 +76,6 @@ class PagingResponse implements \JsonSerializable
 
     /**
      * Sets Previous.
-     *
      * Previous page
      *
      * @required
@@ -92,7 +88,6 @@ class PagingResponse implements \JsonSerializable
 
     /**
      * Returns Next.
-     *
      * Next page
      */
     public function getNext(): string
@@ -102,7 +97,6 @@ class PagingResponse implements \JsonSerializable
 
     /**
      * Sets Next.
-     *
      * Next page
      *
      * @required
@@ -119,8 +113,9 @@ class PagingResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

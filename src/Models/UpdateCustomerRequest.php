@@ -43,7 +43,7 @@ class UpdateCustomerRequest implements \JsonSerializable
     private $address;
 
     /**
-     * @var array|null
+     * @var array<string,string>|null
      */
     private $metadata;
 
@@ -69,7 +69,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Name.
-     *
      * Name
      */
     public function getName(): ?string
@@ -79,7 +78,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Name.
-     *
      * Name
      *
      * @maps name
@@ -91,7 +89,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Email.
-     *
      * Email
      */
     public function getEmail(): ?string
@@ -101,7 +98,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Email.
-     *
      * Email
      *
      * @maps email
@@ -113,7 +109,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Document.
-     *
      * Document number
      */
     public function getDocument(): ?string
@@ -123,7 +118,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Document.
-     *
      * Document number
      *
      * @maps document
@@ -135,7 +129,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Person type
      */
     public function getType(): ?string
@@ -145,7 +138,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Person type
      *
      * @maps type
@@ -157,7 +149,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Address.
-     *
      * Address
      */
     public function getAddress(): ?CreateAddressRequest
@@ -167,7 +158,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Address.
-     *
      * Address
      *
      * @maps address
@@ -179,8 +169,9 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>|null
      */
     public function getMetadata(): ?array
     {
@@ -189,10 +180,11 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @maps metadata
+     *
+     * @param array<string,string>|null $metadata
      */
     public function setMetadata(?array $metadata): void
     {
@@ -219,7 +211,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * Código de referência do cliente no sistema da loja. Max: 52 caracteres
      */
     public function getCode(): ?string
@@ -229,7 +220,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * Código de referência do cliente no sistema da loja. Max: 52 caracteres
      *
      * @maps code
@@ -241,7 +231,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Gender.
-     *
      * Gênero do cliente
      */
     public function getGender(): ?string
@@ -251,7 +240,6 @@ class UpdateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Gender.
-     *
      * Gênero do cliente
      *
      * @maps gender
@@ -285,8 +273,9 @@ class UpdateCustomerRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

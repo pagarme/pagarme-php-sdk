@@ -64,7 +64,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Installments.
-     *
      * Number of installments
      */
     public function getInstallments(): ?int
@@ -74,7 +73,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Installments.
-     *
      * Number of installments
      *
      * @maps installments
@@ -86,7 +84,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Statement Descriptor.
-     *
      * The text that will be shown on the private label's statement
      */
     public function getStatementDescriptor(): ?string
@@ -96,7 +93,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Statement Descriptor.
-     *
      * The text that will be shown on the private label's statement
      *
      * @maps statement_descriptor
@@ -108,7 +104,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Card.
-     *
      * Card data
      */
     public function getCard(): ?CreateCardRequest
@@ -118,7 +113,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Card.
-     *
      * Card data
      *
      * @maps card
@@ -130,7 +124,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Card Id.
-     *
      * The Card id
      */
     public function getCardId(): ?string
@@ -140,7 +133,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Card Id.
-     *
      * The Card id
      *
      * @maps card_id
@@ -170,7 +162,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Recurrence.
-     *
      * Indicates a recurrence
      */
     public function getRecurrence(): ?bool
@@ -180,7 +171,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Recurrence.
-     *
      * Indicates a recurrence
      *
      * @maps recurrence
@@ -192,7 +182,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Capture.
-     *
      * Indicates if the operation should be only authorization or auth and capture.
      */
     public function getCapture(): ?bool
@@ -202,7 +191,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Capture.
-     *
      * Indicates if the operation should be only authorization or auth and capture.
      *
      * @maps capture
@@ -214,7 +202,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Extended Limit Enabled.
-     *
      * Indicates whether the extended label (private label) is enabled
      */
     public function getExtendedLimitEnabled(): ?bool
@@ -224,7 +211,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Extended Limit Enabled.
-     *
      * Indicates whether the extended label (private label) is enabled
      *
      * @maps extended_limit_enabled
@@ -236,7 +222,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Extended Limit Code.
-     *
      * Extended Limit Code
      */
     public function getExtendedLimitCode(): ?string
@@ -246,7 +231,6 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Extended Limit Code.
-     *
      * Extended Limit Code
      *
      * @maps extended_limit_code
@@ -262,8 +246,9 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

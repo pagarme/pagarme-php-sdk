@@ -96,7 +96,6 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
 
     /**
      * Returns Url.
-     *
      * Payment url
      */
     public function getUrl(): string
@@ -106,7 +105,6 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
 
     /**
      * Sets Url.
-     *
      * Payment url
      *
      * @required
@@ -119,7 +117,6 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
 
     /**
      * Returns Bank Tid.
-     *
      * Transaction identifier on bank
      */
     public function getBankTid(): string
@@ -129,7 +126,6 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
 
     /**
      * Sets Bank Tid.
-     *
      * Transaction identifier on bank
      *
      * @required
@@ -142,7 +138,6 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
 
     /**
      * Returns Paid At.
-     *
      * Payment date
      */
     public function getPaidAt(): ?\DateTime
@@ -152,7 +147,6 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
 
     /**
      * Sets Paid At.
-     *
      * Payment date
      *
      * @maps paid_at
@@ -165,7 +159,6 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
 
     /**
      * Returns Paid Amount.
-     *
      * Paid amount
      */
     public function getPaidAmount(): ?int
@@ -175,7 +168,6 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
 
     /**
      * Sets Paid Amount.
-     *
      * Paid amount
      *
      * @maps paid_amount
@@ -191,8 +183,9 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

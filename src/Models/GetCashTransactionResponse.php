@@ -77,7 +77,6 @@ class GetCashTransactionResponse extends GetTransactionResponse implements \Json
 
     /**
      * Returns Description.
-     *
      * Description
      */
     public function getDescription(): string
@@ -87,7 +86,6 @@ class GetCashTransactionResponse extends GetTransactionResponse implements \Json
 
     /**
      * Sets Description.
-     *
      * Description
      *
      * @required
@@ -104,8 +102,9 @@ class GetCashTransactionResponse extends GetTransactionResponse implements \Json
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

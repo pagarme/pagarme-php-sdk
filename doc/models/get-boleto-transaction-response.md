@@ -9,7 +9,7 @@ Response object for getting a boleto transaction
 
 ## Inherits From
 
-[`GetTransactionResponse`](/doc/models/get-transaction-response.md)
+[`GetTransactionResponse`](../../doc/models/get-transaction-response.md)
 
 ## Fields
 
@@ -21,7 +21,7 @@ Response object for getting a boleto transaction
 | `bank` | `string` | Required | - | getBank(): string | setBank(string bank): void |
 | `documentNumber` | `string` | Required | - | getDocumentNumber(): string | setDocumentNumber(string documentNumber): void |
 | `instructions` | `string` | Required | - | getInstructions(): string | setInstructions(string instructions): void |
-| `billingAddress` | [`GetBillingAddressResponse`](/doc/models/get-billing-address-response.md) | Required | - | getBillingAddress(): GetBillingAddressResponse | setBillingAddress(GetBillingAddressResponse billingAddress): void |
+| `billingAddress` | [`GetBillingAddressResponse`](../../doc/models/get-billing-address-response.md) | Required | - | getBillingAddress(): GetBillingAddressResponse | setBillingAddress(GetBillingAddressResponse billingAddress): void |
 | `dueAt` | `?\DateTime` | Optional | - | getDueAt(): ?\DateTime | setDueAt(?\DateTime dueAt): void |
 | `qrCode` | `string` | Required | - | getQrCode(): string | setQrCode(string qrCode): void |
 | `line` | `string` | Required | - | getLine(): string | setLine(string line): void |

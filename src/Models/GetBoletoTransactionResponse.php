@@ -501,7 +501,6 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
 
     /**
      * Returns Statement Descriptor.
-     *
      * Soft Descriptor
      */
     public function getStatementDescriptor(): string
@@ -511,7 +510,6 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
 
     /**
      * Sets Statement Descriptor.
-     *
      * Soft Descriptor
      *
      * @required
@@ -528,8 +526,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

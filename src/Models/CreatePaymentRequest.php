@@ -83,7 +83,7 @@ class CreatePaymentRequest implements \JsonSerializable
     private $customer;
 
     /**
-     * @var array|null
+     * @var array<string,string>|null
      */
     private $metadata;
 
@@ -114,7 +114,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Payment Method.
-     *
      * Payment method
      */
     public function getPaymentMethod(): string
@@ -124,7 +123,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Payment Method.
-     *
      * Payment method
      *
      * @required
@@ -137,7 +135,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Credit Card.
-     *
      * Settings for credit card payment
      */
     public function getCreditCard(): ?CreateCreditCardPaymentRequest
@@ -147,7 +144,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Credit Card.
-     *
      * Settings for credit card payment
      *
      * @maps credit_card
@@ -159,7 +155,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Debit Card.
-     *
      * Settings for debit card payment
      */
     public function getDebitCard(): ?CreateDebitCardPaymentRequest
@@ -169,7 +164,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Debit Card.
-     *
      * Settings for debit card payment
      *
      * @maps debit_card
@@ -181,7 +175,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Boleto.
-     *
      * Settings for boleto payment
      */
     public function getBoleto(): ?CreateBoletoPaymentRequest
@@ -191,7 +184,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Boleto.
-     *
      * Settings for boleto payment
      *
      * @maps boleto
@@ -203,7 +195,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Currency.
-     *
      * Currency. Must be informed using 3 characters
      */
     public function getCurrency(): ?string
@@ -213,7 +204,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Currency.
-     *
      * Currency. Must be informed using 3 characters
      *
      * @maps currency
@@ -225,7 +215,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Voucher.
-     *
      * Settings for voucher payment
      */
     public function getVoucher(): ?CreateVoucherPaymentRequest
@@ -235,7 +224,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Voucher.
-     *
      * Settings for voucher payment
      *
      * @maps voucher
@@ -247,7 +235,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Split.
-     *
      * Splits
      *
      * @return CreateSplitRequest[]|null
@@ -259,7 +246,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Split.
-     *
      * Splits
      *
      * @maps split
@@ -273,7 +259,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Bank Transfer.
-     *
      * Settings for bank transfer payment
      */
     public function getBankTransfer(): ?CreateBankTransferPaymentRequest
@@ -283,7 +268,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Bank Transfer.
-     *
      * Settings for bank transfer payment
      *
      * @maps bank_transfer
@@ -295,7 +279,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Gateway Affiliation Id.
-     *
      * Gateway affiliation code
      */
     public function getGatewayAffiliationId(): ?string
@@ -305,7 +288,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Gateway Affiliation Id.
-     *
      * Gateway affiliation code
      *
      * @maps gateway_affiliation_id
@@ -317,7 +299,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * The amount of the payment, in cents
      */
     public function getAmount(): ?int
@@ -327,7 +308,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * The amount of the payment, in cents
      *
      * @maps amount
@@ -339,7 +319,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Checkout.
-     *
      * Settings for checkout payment
      */
     public function getCheckout(): ?CreateCheckoutPaymentRequest
@@ -349,7 +328,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Checkout.
-     *
      * Settings for checkout payment
      *
      * @maps checkout
@@ -361,7 +339,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Customer Id.
-     *
      * Customer Id
      */
     public function getCustomerId(): ?string
@@ -371,7 +348,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Customer Id.
-     *
      * Customer Id
      *
      * @maps customer_id
@@ -383,7 +359,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Customer.
-     *
      * Customer
      */
     public function getCustomer(): ?CreateCustomerRequest
@@ -393,7 +368,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Customer.
-     *
      * Customer
      *
      * @maps customer
@@ -405,8 +379,9 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>|null
      */
     public function getMetadata(): ?array
     {
@@ -415,10 +390,11 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @maps metadata
+     *
+     * @param array<string,string>|null $metadata
      */
     public function setMetadata(?array $metadata): void
     {
@@ -427,7 +403,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Cash.
-     *
      * Settings for cash payment
      */
     public function getCash(): ?CreateCashPaymentRequest
@@ -437,7 +412,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Cash.
-     *
      * Settings for cash payment
      *
      * @maps cash
@@ -449,7 +423,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Private Label.
-     *
      * Settings for private label payment
      */
     public function getPrivateLabel(): CreatePrivateLabelPaymentRequest
@@ -459,7 +432,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Private Label.
-     *
      * Settings for private label payment
      *
      * @required
@@ -472,7 +444,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Returns Pix.
-     *
      * Settings for pix payment
      */
     public function getPix(): ?CreatePixPaymentRequest
@@ -482,7 +453,6 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * Sets Pix.
-     *
      * Settings for pix payment
      *
      * @maps pix
@@ -498,8 +468,9 @@ class CreatePaymentRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

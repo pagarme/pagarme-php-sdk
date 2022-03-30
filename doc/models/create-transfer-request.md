@@ -12,7 +12,7 @@ Request for creating a transfer
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `amount` | `int` | Required | Transfer amount | getAmount(): int | setAmount(int amount): void |
-| `metadata` | `array` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
+| `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 
 ## Example (as JSON)
 

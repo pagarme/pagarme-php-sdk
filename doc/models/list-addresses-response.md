@@ -11,8 +11,8 @@ Response object for listing addresses
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `data` | [`GetAddressResponse[]`](/doc/models/get-address-response.md) | Required | The address objects | getData(): array | setData(array data): void |
-| `paging` | [`PagingResponse`](/doc/models/paging-response.md) | Required | Paging object | getPaging(): PagingResponse | setPaging(PagingResponse paging): void |
+| `data` | [`GetAddressResponse[]`](../../doc/models/get-address-response.md) | Required | The address objects | getData(): array | setData(array data): void |
+| `paging` | [`PagingResponse`](../../doc/models/paging-response.md) | Required | Paging object | getPaging(): PagingResponse | setPaging(PagingResponse paging): void |
 
 ## Example (as JSON)
 

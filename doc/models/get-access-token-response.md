@@ -15,7 +15,7 @@ Response object for getting a access token
 | `code` | `string` | Required | - | getCode(): string | setCode(string code): void |
 | `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
 | `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
-| `customer` | [`?GetCustomerResponse`](/doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
+| `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
 
 ## Example (as JSON)
 

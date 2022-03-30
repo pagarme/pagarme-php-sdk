@@ -14,20 +14,20 @@ Response object for getting an Order
 | `id` | `string` | Required | - | getId(): string | setId(string id): void |
 | `code` | `string` | Required | - | getCode(): string | setCode(string code): void |
 | `currency` | `string` | Required | - | getCurrency(): string | setCurrency(string currency): void |
-| `items` | [`GetOrderItemResponse[]`](/doc/models/get-order-item-response.md) | Required | - | getItems(): array | setItems(array items): void |
-| `customer` | [`?GetCustomerResponse`](/doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
+| `items` | [`GetOrderItemResponse[]`](../../doc/models/get-order-item-response.md) | Required | - | getItems(): array | setItems(array items): void |
+| `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
 | `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
 | `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
 | `updatedAt` | `\DateTime` | Required | - | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
-| `charges` | [`GetChargeResponse[]`](/doc/models/get-charge-response.md) | Required | - | getCharges(): array | setCharges(array charges): void |
+| `charges` | [`GetChargeResponse[]`](../../doc/models/get-charge-response.md) | Required | - | getCharges(): array | setCharges(array charges): void |
 | `invoiceUrl` | `string` | Required | - | getInvoiceUrl(): string | setInvoiceUrl(string invoiceUrl): void |
-| `shipping` | [`GetShippingResponse`](/doc/models/get-shipping-response.md) | Required | - | getShipping(): GetShippingResponse | setShipping(GetShippingResponse shipping): void |
-| `metadata` | `array` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
-| `checkouts` | [`?(GetCheckoutPaymentResponse[])`](/doc/models/get-checkout-payment-response.md) | Optional | Checkout Payment Settings Response | getCheckouts(): ?array | setCheckouts(?array checkouts): void |
+| `shipping` | [`GetShippingResponse`](../../doc/models/get-shipping-response.md) | Required | - | getShipping(): GetShippingResponse | setShipping(GetShippingResponse shipping): void |
+| `metadata` | `array<string,string>` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
+| `checkouts` | [`?(GetCheckoutPaymentResponse[])`](../../doc/models/get-checkout-payment-response.md) | Optional | Checkout Payment Settings Response | getCheckouts(): ?array | setCheckouts(?array checkouts): void |
 | `ip` | `?string` | Optional | Ip address | getIp(): ?string | setIp(?string ip): void |
 | `sessionId` | `?string` | Optional | Session id | getSessionId(): ?string | setSessionId(?string sessionId): void |
-| `location` | [`?GetLocationResponse`](/doc/models/get-location-response.md) | Optional | Location | getLocation(): ?GetLocationResponse | setLocation(?GetLocationResponse location): void |
-| `device` | [`?GetDeviceResponse`](/doc/models/get-device-response.md) | Optional | Device's informations | getDevice(): ?GetDeviceResponse | setDevice(?GetDeviceResponse device): void |
+| `location` | [`?GetLocationResponse`](../../doc/models/get-location-response.md) | Optional | Location | getLocation(): ?GetLocationResponse | setLocation(?GetLocationResponse location): void |
+| `device` | [`?GetDeviceResponse`](../../doc/models/get-device-response.md) | Optional | Device's informations | getDevice(): ?GetDeviceResponse | setDevice(?GetDeviceResponse device): void |
 | `closed` | `bool` | Required | Indicates whether the order is closed | getClosed(): bool | setClosed(bool closed): void |
 
 ## Example (as JSON)

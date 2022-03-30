@@ -60,7 +60,6 @@ class GetThreeDSecureResponse implements \JsonSerializable
 
     /**
      * Returns Mpi.
-     *
      * MPI Vendor
      */
     public function getMpi(): string
@@ -70,7 +69,6 @@ class GetThreeDSecureResponse implements \JsonSerializable
 
     /**
      * Sets Mpi.
-     *
      * MPI Vendor
      *
      * @required
@@ -83,7 +81,6 @@ class GetThreeDSecureResponse implements \JsonSerializable
 
     /**
      * Returns Eci.
-     *
      * Electronic Commerce Indicator (ECI) (Opcional)
      */
     public function getEci(): string
@@ -93,7 +90,6 @@ class GetThreeDSecureResponse implements \JsonSerializable
 
     /**
      * Sets Eci.
-     *
      * Electronic Commerce Indicator (ECI) (Opcional)
      *
      * @required
@@ -106,7 +102,6 @@ class GetThreeDSecureResponse implements \JsonSerializable
 
     /**
      * Returns Cavv.
-     *
      * Online payment cryptogram, definido pelo 3-D Secure.
      */
     public function getCavv(): string
@@ -116,7 +111,6 @@ class GetThreeDSecureResponse implements \JsonSerializable
 
     /**
      * Sets Cavv.
-     *
      * Online payment cryptogram, definido pelo 3-D Secure.
      *
      * @required
@@ -129,7 +123,6 @@ class GetThreeDSecureResponse implements \JsonSerializable
 
     /**
      * Returns Transaction Id.
-     *
      * Identificador da transação (XID)
      */
     public function getTransactionId(): string
@@ -139,7 +132,6 @@ class GetThreeDSecureResponse implements \JsonSerializable
 
     /**
      * Sets Transaction Id.
-     *
      * Identificador da transação (XID)
      *
      * @required
@@ -152,7 +144,6 @@ class GetThreeDSecureResponse implements \JsonSerializable
 
     /**
      * Returns Success Url.
-     *
      * Url de redirecionamento de sucessso
      */
     public function getSuccessUrl(): string
@@ -162,7 +153,6 @@ class GetThreeDSecureResponse implements \JsonSerializable
 
     /**
      * Sets Success Url.
-     *
      * Url de redirecionamento de sucessso
      *
      * @required
@@ -179,8 +169,9 @@ class GetThreeDSecureResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

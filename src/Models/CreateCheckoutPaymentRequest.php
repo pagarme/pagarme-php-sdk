@@ -126,7 +126,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Accepted Payment Methods.
-     *
      * Accepted Payment Methods
      *
      * @return string[]
@@ -138,7 +137,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Accepted Payment Methods.
-     *
      * Accepted Payment Methods
      *
      * @required
@@ -153,7 +151,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Accepted Multi Payment Methods.
-     *
      * Accepted Multi Payment Methods
      *
      * @return array[]
@@ -165,7 +162,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Accepted Multi Payment Methods.
-     *
      * Accepted Multi Payment Methods
      *
      * @required
@@ -180,7 +176,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Success Url.
-     *
      * Success url
      */
     public function getSuccessUrl(): string
@@ -190,7 +185,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Success Url.
-     *
      * Success url
      *
      * @required
@@ -203,7 +197,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Default Payment Method.
-     *
      * Default payment method
      */
     public function getDefaultPaymentMethod(): ?string
@@ -213,7 +206,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Default Payment Method.
-     *
      * Default payment method
      *
      * @maps default_payment_method
@@ -225,7 +217,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Gateway Affiliation Id.
-     *
      * Gateway Affiliation Id
      */
     public function getGatewayAffiliationId(): ?string
@@ -235,7 +226,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Gateway Affiliation Id.
-     *
      * Gateway Affiliation Id
      *
      * @maps gateway_affiliation_id
@@ -247,7 +237,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Credit Card.
-     *
      * Credit Card payment request
      */
     public function getCreditCard(): ?CreateCheckoutCreditCardPaymentRequest
@@ -257,7 +246,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Credit Card.
-     *
      * Credit Card payment request
      *
      * @maps credit_card
@@ -269,7 +257,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Debit Card.
-     *
      * Debit Card payment request
      */
     public function getDebitCard(): ?CreateCheckoutDebitCardPaymentRequest
@@ -279,7 +266,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Debit Card.
-     *
      * Debit Card payment request
      *
      * @maps debit_card
@@ -291,7 +277,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Boleto.
-     *
      * Boleto payment request
      */
     public function getBoleto(): ?CreateCheckoutBoletoPaymentRequest
@@ -301,7 +286,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Boleto.
-     *
      * Boleto payment request
      *
      * @maps boleto
@@ -313,7 +297,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Customer Editable.
-     *
      * Customer is editable?
      */
     public function getCustomerEditable(): ?bool
@@ -323,7 +306,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Customer Editable.
-     *
      * Customer is editable?
      *
      * @maps customer_editable
@@ -335,7 +317,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Expires In.
-     *
      * Time in minutes for expiration
      */
     public function getExpiresIn(): ?int
@@ -345,7 +326,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Expires In.
-     *
      * Time in minutes for expiration
      *
      * @maps expires_in
@@ -357,7 +337,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Skip Checkout Success Page.
-     *
      * Skip postpay success screen?
      */
     public function getSkipCheckoutSuccessPage(): bool
@@ -367,7 +346,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Skip Checkout Success Page.
-     *
      * Skip postpay success screen?
      *
      * @required
@@ -380,7 +358,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Billing Address Editable.
-     *
      * Billing Address is editable?
      */
     public function getBillingAddressEditable(): bool
@@ -390,7 +367,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Billing Address Editable.
-     *
      * Billing Address is editable?
      *
      * @required
@@ -403,7 +379,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Billing Address.
-     *
      * Billing Address
      */
     public function getBillingAddress(): CreateAddressRequest
@@ -413,7 +388,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Billing Address.
-     *
      * Billing Address
      *
      * @required
@@ -426,7 +400,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Bank Transfer.
-     *
      * Bank Transfer payment request
      */
     public function getBankTransfer(): ?CreateCheckoutBankTransferRequest
@@ -436,7 +409,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Bank Transfer.
-     *
      * Bank Transfer payment request
      *
      * @maps bank_transfer
@@ -448,7 +420,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Accepted Brands.
-     *
      * Accepted Brands
      *
      * @return string[]
@@ -460,7 +431,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Accepted Brands.
-     *
      * Accepted Brands
      *
      * @required
@@ -475,7 +445,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Pix.
-     *
      * Pix payment request
      */
     public function getPix(): ?CreateCheckoutPixPaymentRequest
@@ -485,7 +454,6 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Pix.
-     *
      * Pix payment request
      *
      * @maps pix
@@ -501,8 +469,9 @@ class CreateCheckoutPaymentRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -13,7 +13,7 @@ Request for updating an address
 |  --- | --- | --- | --- | --- | --- |
 | `number` | `string` | Required | Number | getNumber(): string | setNumber(string number): void |
 | `complement` | `string` | Required | Complement | getComplement(): string | setComplement(string complement): void |
-| `metadata` | `array` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
+| `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 | `line2` | `string` | Required | Line 2 for address | getLine2(): string | setLine2(string line2): void |
 
 ## Example (as JSON)

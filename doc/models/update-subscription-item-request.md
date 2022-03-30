@@ -13,7 +13,7 @@ Request for updating a subscription item
 |  --- | --- | --- | --- | --- | --- |
 | `description` | `string` | Required | Description | getDescription(): string | setDescription(string description): void |
 | `status` | `string` | Required | Status | getStatus(): string | setStatus(string status): void |
-| `pricingScheme` | [`UpdatePricingSchemeRequest`](/doc/models/update-pricing-scheme-request.md) | Required | Pricing scheme | getPricingScheme(): UpdatePricingSchemeRequest | setPricingScheme(UpdatePricingSchemeRequest pricingScheme): void |
+| `pricingScheme` | [`UpdatePricingSchemeRequest`](../../doc/models/update-pricing-scheme-request.md) | Required | Pricing scheme | getPricingScheme(): UpdatePricingSchemeRequest | setPricingScheme(UpdatePricingSchemeRequest pricingScheme): void |
 | `name` | `string` | Required | Item name | getName(): string | setName(string name): void |
 | `cycles` | `?int` | Optional | Number of cycles that the item will be charged | getCycles(): ?int | setCycles(?int cycles): void |
 | `quantity` | `?int` | Optional | Quantity | getQuantity(): ?int | setQuantity(?int quantity): void |

@@ -66,6 +66,21 @@ class DateTimeHelper
     }
 
     /**
+     * Convert a 2D array of DateTime objects to a 2D array of strings in simple date format
+     *
+     * @param array|null $dates The 2D array of DateTime objects to convert
+     *
+     * @return array|null The 2D array of datetime strings in simple date format
+     */
+    public static function toSimpleDate2DArray(?array $dates): ?array
+    {
+        if (is_null($dates)) {
+            return null;
+        }
+        return array_map([self::class, 'toSimpleDateArray'], $dates);
+    }
+
+    /**
      * Parse a datetime string in simple date format to a DateTime object
      *
      * @param string|null $date A datetime string in simple date format
@@ -101,6 +116,21 @@ class DateTimeHelper
     }
 
     /**
+     * Parse an array of map of datetime strings in simple date format to a 2D array of DateTime objects
+     *
+     * @param array|null $dates An array of map of datetime strings in simple date format
+     *
+     * @return array|null A 2D array of parsed DateTime objects
+     */
+    public static function fromSimpleDateArrayOfMap(?array $dates): ?array
+    {
+        if (is_null($dates)) {
+            return null;
+        }
+        return array_map([self::class, 'fromSimpleDateMap'], $dates);
+    }
+
+    /**
      * Parse a class of datetime strings in simple date format to an array of DateTime objects
      *
      * @param stdClass|null $datetimes A class of datetime strings in simple date format
@@ -114,6 +144,22 @@ class DateTimeHelper
         }
         $array = json_decode(json_encode($datetimes), true);
         return array_map([self::class, 'fromSimpleDate'], $array);
+    }
+
+    /**
+     * Parse a map of array of datetime strings in simple date format to a 2D array of DateTime objects
+     *
+     * @param stdClass|null $dates A map of array of datetime strings in simple date format
+     *
+     * @return array|null A 2D array of parsed DateTime objects
+     */
+    public static function fromSimpleDateMapOfArray(?stdClass $dates): ?array
+    {
+        if (is_null($dates)) {
+            return null;
+        }
+        $array = json_decode(json_encode($dates), true);
+        return array_map([self::class, 'fromSimpleDateArray'], $array);
     }
 
     /**
@@ -147,6 +193,21 @@ class DateTimeHelper
             return null;
         }
         return array_map([self::class, 'toRfc1123DateTime'], $datetimes);
+    }
+
+    /**
+     * Convert a 2D array of DateTime objects to a 2D array of strings in Rfc1123 format
+     *
+     * @param array|null $dates The 2D array of DateTime objects to convert
+     *
+     * @return array|null The 2D array of datetime strings in Rfc1123 format
+     */
+    public static function toRfc1123DateTime2DArray(?array $dates): ?array
+    {
+        if (is_null($dates)) {
+            return null;
+        }
+        return array_map([self::class, 'toRfc1123DateTimeArray'], $dates);
     }
 
     /**
@@ -185,6 +246,21 @@ class DateTimeHelper
     }
 
     /**
+     * Parse an array of map of datetime strings in Rfc1123 format to a 2D array of DateTime objects
+     *
+     * @param array|null $dates An array of map of datetime strings in Rfc1123 format
+     *
+     * @return array|null A 2D array of parsed DateTime objects
+     */
+    public static function fromRfc1123DateTimeArrayOfMap(?array $dates): ?array
+    {
+        if (is_null($dates)) {
+            return null;
+        }
+        return array_map([self::class, 'fromRfc1123DateTimeMap'], $dates);
+    }
+
+    /**
      * Parse a class of datetime strings in Rfc1123 format to an array of DateTime objects
      *
      * @param stdClass|null $datetimes A class of datetime strings in Rfc1123 format
@@ -198,6 +274,22 @@ class DateTimeHelper
         }
         $array = json_decode(json_encode($datetimes), true);
         return array_map([self::class, 'fromRfc1123DateTime'], $array);
+    }
+
+    /**
+     * Parse a map of array of datetime strings in Rfc1123 format to a 2D array of DateTime objects
+     *
+     * @param stdClass|null $dates A map of array of datetime strings in Rfc1123 format
+     *
+     * @return array|null A 2D array of parsed DateTime objects
+     */
+    public static function fromRfc1123DateTimeMapOfArray(?stdClass $dates): ?array
+    {
+        if (is_null($dates)) {
+            return null;
+        }
+        $array = json_decode(json_encode($dates), true);
+        return array_map([self::class, 'fromRfc1123DateTimeArray'], $array);
     }
 
     /**
@@ -231,6 +323,21 @@ class DateTimeHelper
             return null;
         }
         return array_map([self::class, 'toRfc3339DateTime'], $datetimes);
+    }
+
+    /**
+     * Convert a 2D array of DateTime objects to a 2D array of strings in Rfc3339 format
+     *
+     * @param array|null $dates The 2D array of DateTime objects to convert
+     *
+     * @return array|null The 2D array of datetime strings in Rfc3339 format
+     */
+    public static function toRfc3339DateTime2DArray(?array $dates): ?array
+    {
+        if (is_null($dates)) {
+            return null;
+        }
+        return array_map([self::class, 'toRfc3339DateTimeArray'], $dates);
     }
 
     /**
@@ -282,6 +389,21 @@ class DateTimeHelper
     }
 
     /**
+     * Parse an array of map of datetime strings in Rfc3339 format to a 2D array DateTime objects
+     *
+     * @param array|null $dates An array of map of datetime strings in Rfc3339 format
+     *
+     * @return array|null A 2D array of parsed DateTime objects
+     */
+    public static function fromRfc3339DateTimeArrayOfMap(?array $dates): ?array
+    {
+        if (is_null($dates)) {
+            return null;
+        }
+        return array_map([self::class, 'fromRfc3339DateTimeMap'], $dates);
+    }
+
+    /**
      * Parse a class of datetime strings in Rfc3339 format to an array of DateTime objects
      *
      * @param stdClass|null $datetimes A class of datetime strings in Rfc3339 format
@@ -295,6 +417,22 @@ class DateTimeHelper
         }
         $array = json_decode(json_encode($datetimes), true);
         return array_map([self::class, 'fromRfc3339DateTime'], $array);
+    }
+
+    /**
+     * Parse a map of array of datetime strings in Rfc3339 format to a 2D array of DateTime objects
+     *
+     * @param stdClass|null $dates A map of array of datetime strings in Rfc3339 format
+     *
+     * @return array|null A 2D array of parsed DateTime objects
+     */
+    public static function fromRfc3339DateTimeMapOfArray(?stdClass $dates): ?array
+    {
+        if (is_null($dates)) {
+            return null;
+        }
+        $array = json_decode(json_encode($dates), true);
+        return array_map([self::class, 'fromRfc3339DateTimeArray'], $array);
     }
 
     /**
@@ -328,6 +466,21 @@ class DateTimeHelper
             return null;
         }
         return array_map([self::class, 'toUnixTimestamp'], $datetimes);
+    }
+
+    /**
+     * Convert a 2D array of DateTime objects to a 2D array of Unix timestamps
+     *
+     * @param array|null $dates The 2D array of DateTime objects to convert
+     *
+     * @return array|null The 2D array of integers representing date-time in Unix timestamp
+     */
+    public static function toUnixTimestamp2DArray(?array $dates): ?array
+    {
+        if (is_null($dates)) {
+            return null;
+        }
+        return array_map([self::class, 'toUnixTimestampArray'], $dates);
     }
 
     /**
@@ -366,6 +519,21 @@ class DateTimeHelper
     }
 
     /**
+     * Parse an array of map of Unix Timestamps to a 2D array of DateTime objects
+     *
+     * @param array|null $dates An array of map of Unix Timestamps
+     *
+     * @return array|null A 2D array of parsed DateTime objects
+     */
+    public static function fromUnixTimestampArrayOfMap(?array $dates): ?array
+    {
+        if (is_null($dates)) {
+            return null;
+        }
+        return array_map([self::class, 'fromUnixTimestampMap'], $dates);
+    }
+
+    /**
      * Parse a class of Unix Timestamps to an array of DateTime objects
      *
      * @param stdClass|null $datetimes A class of Unix Timestamps
@@ -379,5 +547,21 @@ class DateTimeHelper
         }
         $array = json_decode(json_encode($datetimes), true);
         return array_map([self::class, 'fromUnixTimestamp'], array_map('strval', $array));
+    }
+
+    /**
+     * Parse a map of array of Unix Timestamps to a 2D array of DateTime objects
+     *
+     * @param stdClass|null $dates A map of array of Unix Timestamps
+     *
+     * @return array|null A 2D array of parsed DateTime objects
+     */
+    public static function fromUnixTimestampMapOfArray(?stdClass $dates): ?array
+    {
+        if (is_null($dates)) {
+            return null;
+        }
+        $array = json_decode(json_encode($dates), true);
+        return array_map([self::class, 'fromUnixTimestampArray'], $array);
     }
 }

@@ -14,7 +14,7 @@ Anticipation
 | `id` | `string` | Required | Id | getId(): string | setId(string id): void |
 | `requestedAmount` | `int` | Required | Requested amount | getRequestedAmount(): int | setRequestedAmount(int requestedAmount): void |
 | `approvedAmount` | `int` | Required | Approved amount | getApprovedAmount(): int | setApprovedAmount(int approvedAmount): void |
-| `recipient` | [`?GetRecipientResponse`](/doc/models/get-recipient-response.md) | Optional | Recipient | getRecipient(): ?GetRecipientResponse | setRecipient(?GetRecipientResponse recipient): void |
+| `recipient` | [`?GetRecipientResponse`](../../doc/models/get-recipient-response.md) | Optional | Recipient | getRecipient(): ?GetRecipientResponse | setRecipient(?GetRecipientResponse recipient): void |
 | `pgid` | `string` | Required | Anticipation id on the gateway | getPgid(): string | setPgid(string pgid): void |
 | `createdAt` | `\DateTime` | Required | Creation date | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
 | `updatedAt` | `\DateTime` | Required | Last update date | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |

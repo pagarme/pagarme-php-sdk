@@ -13,7 +13,7 @@ Balance
 |  --- | --- | --- | --- | --- | --- |
 | `currency` | `string` | Required | Currency | getCurrency(): string | setCurrency(string currency): void |
 | `availableAmount` | `int` | Required | Amount available for transferring | getAvailableAmount(): int | setAvailableAmount(int availableAmount): void |
-| `recipient` | [`?GetRecipientResponse`](/doc/models/get-recipient-response.md) | Optional | Recipient | getRecipient(): ?GetRecipientResponse | setRecipient(?GetRecipientResponse recipient): void |
+| `recipient` | [`?GetRecipientResponse`](../../doc/models/get-recipient-response.md) | Optional | Recipient | getRecipient(): ?GetRecipientResponse | setRecipient(?GetRecipientResponse recipient): void |
 | `transferredAmount` | `int` | Required | - | getTransferredAmount(): int | setTransferredAmount(int transferredAmount): void |
 | `waitingFundsAmount` | `int` | Required | - | getWaitingFundsAmount(): int | setWaitingFundsAmount(int waitingFundsAmount): void |
 

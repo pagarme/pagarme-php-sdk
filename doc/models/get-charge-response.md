@@ -21,11 +21,11 @@ Response object for getting a charge
 | `dueAt` | `\DateTime` | Required | - | getDueAt(): \DateTime | setDueAt(\DateTime dueAt): void |
 | `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
 | `updatedAt` | `\DateTime` | Required | - | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
-| `lastTransaction` | [`?GetTransactionResponse`](/doc/models/get-transaction-response.md) | Optional | - | getLastTransaction(): ?GetTransactionResponse | setLastTransaction(?GetTransactionResponse lastTransaction): void |
-| `invoice` | [`?GetInvoiceResponse`](/doc/models/get-invoice-response.md) | Optional | - | getInvoice(): ?GetInvoiceResponse | setInvoice(?GetInvoiceResponse invoice): void |
-| `order` | [`?GetOrderResponse`](/doc/models/get-order-response.md) | Optional | - | getOrder(): ?GetOrderResponse | setOrder(?GetOrderResponse order): void |
-| `customer` | [`?GetCustomerResponse`](/doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
-| `metadata` | `array` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
+| `lastTransaction` | [`?GetTransactionResponse`](../../doc/models/get-transaction-response.md) | Optional | - | getLastTransaction(): ?GetTransactionResponse | setLastTransaction(?GetTransactionResponse lastTransaction): void |
+| `invoice` | [`?GetInvoiceResponse`](../../doc/models/get-invoice-response.md) | Optional | - | getInvoice(): ?GetInvoiceResponse | setInvoice(?GetInvoiceResponse invoice): void |
+| `order` | [`?GetOrderResponse`](../../doc/models/get-order-response.md) | Optional | - | getOrder(): ?GetOrderResponse | setOrder(?GetOrderResponse order): void |
+| `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
+| `metadata` | `array<string,string>` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
 | `paidAt` | `?\DateTime` | Optional | - | getPaidAt(): ?\DateTime | setPaidAt(?\DateTime paidAt): void |
 | `canceledAt` | `?\DateTime` | Optional | - | getCanceledAt(): ?\DateTime | setCanceledAt(?\DateTime canceledAt): void |
 | `canceledAmount` | `int` | Required | Canceled Amount | getCanceledAmount(): int | setCanceledAmount(int canceledAmount): void |

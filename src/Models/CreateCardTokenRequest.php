@@ -81,7 +81,6 @@ class CreateCardTokenRequest implements \JsonSerializable
 
     /**
      * Returns Number.
-     *
      * Credit card number
      */
     public function getNumber(): string
@@ -91,7 +90,6 @@ class CreateCardTokenRequest implements \JsonSerializable
 
     /**
      * Sets Number.
-     *
      * Credit card number
      *
      * @required
@@ -104,7 +102,6 @@ class CreateCardTokenRequest implements \JsonSerializable
 
     /**
      * Returns Holder Name.
-     *
      * Holder name, as written on the card
      */
     public function getHolderName(): string
@@ -114,7 +111,6 @@ class CreateCardTokenRequest implements \JsonSerializable
 
     /**
      * Sets Holder Name.
-     *
      * Holder name, as written on the card
      *
      * @required
@@ -127,7 +123,6 @@ class CreateCardTokenRequest implements \JsonSerializable
 
     /**
      * Returns Exp Month.
-     *
      * The expiration month
      */
     public function getExpMonth(): int
@@ -137,7 +132,6 @@ class CreateCardTokenRequest implements \JsonSerializable
 
     /**
      * Sets Exp Month.
-     *
      * The expiration month
      *
      * @required
@@ -150,7 +144,6 @@ class CreateCardTokenRequest implements \JsonSerializable
 
     /**
      * Returns Exp Year.
-     *
      * The expiration year, that can be informed with 2 or 4 digits
      */
     public function getExpYear(): int
@@ -160,7 +153,6 @@ class CreateCardTokenRequest implements \JsonSerializable
 
     /**
      * Sets Exp Year.
-     *
      * The expiration year, that can be informed with 2 or 4 digits
      *
      * @required
@@ -173,7 +165,6 @@ class CreateCardTokenRequest implements \JsonSerializable
 
     /**
      * Returns Cvv.
-     *
      * The card's security code
      */
     public function getCvv(): string
@@ -183,7 +174,6 @@ class CreateCardTokenRequest implements \JsonSerializable
 
     /**
      * Sets Cvv.
-     *
      * The card's security code
      *
      * @required
@@ -196,7 +186,6 @@ class CreateCardTokenRequest implements \JsonSerializable
 
     /**
      * Returns Brand.
-     *
      * Card brand
      */
     public function getBrand(): string
@@ -206,7 +195,6 @@ class CreateCardTokenRequest implements \JsonSerializable
 
     /**
      * Sets Brand.
-     *
      * Card brand
      *
      * @required
@@ -242,8 +230,9 @@ class CreateCardTokenRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

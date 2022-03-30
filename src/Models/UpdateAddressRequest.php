@@ -28,7 +28,7 @@ class UpdateAddressRequest implements \JsonSerializable
     private $complement;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -40,7 +40,7 @@ class UpdateAddressRequest implements \JsonSerializable
     /**
      * @param string $number
      * @param string $complement
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param string $line2
      */
     public function __construct(string $number, string $complement, array $metadata, string $line2)
@@ -53,7 +53,6 @@ class UpdateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Number.
-     *
      * Number
      */
     public function getNumber(): string
@@ -63,7 +62,6 @@ class UpdateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Number.
-     *
      * Number
      *
      * @required
@@ -76,7 +74,6 @@ class UpdateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Complement.
-     *
      * Complement
      */
     public function getComplement(): string
@@ -86,7 +83,6 @@ class UpdateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Complement.
-     *
      * Complement
      *
      * @required
@@ -99,8 +95,9 @@ class UpdateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -109,11 +106,12 @@ class UpdateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -122,7 +120,6 @@ class UpdateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Line 2.
-     *
      * Line 2 for address
      */
     public function getLine2(): string
@@ -132,7 +129,6 @@ class UpdateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Line 2.
-     *
      * Line 2 for address
      *
      * @required
@@ -149,8 +145,9 @@ class UpdateAddressRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

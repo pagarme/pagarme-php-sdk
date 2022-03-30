@@ -51,7 +51,6 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
 
     /**
      * Returns Payment Method.
-     *
      * The new payment method
      */
     public function getPaymentMethod(): string
@@ -61,7 +60,6 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
 
     /**
      * Sets Payment Method.
-     *
      * The new payment method
      *
      * @required
@@ -74,7 +72,6 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
 
     /**
      * Returns Card Id.
-     *
      * Card id
      */
     public function getCardId(): string
@@ -84,7 +81,6 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
 
     /**
      * Sets Card Id.
-     *
      * Card id
      *
      * @required
@@ -97,7 +93,6 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
 
     /**
      * Returns Card.
-     *
      * Card data
      */
     public function getCard(): CreateCardRequest
@@ -107,7 +102,6 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
 
     /**
      * Sets Card.
-     *
      * Card data
      *
      * @required
@@ -120,7 +114,6 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
 
     /**
      * Returns Card Token.
-     *
      * The Card Token
      */
     public function getCardToken(): ?string
@@ -130,7 +123,6 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
 
     /**
      * Sets Card Token.
-     *
      * The Card Token
      *
      * @maps card_token
@@ -146,8 +138,9 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

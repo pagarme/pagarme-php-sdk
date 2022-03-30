@@ -63,7 +63,6 @@ class GetSplitResponse implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Type
      */
     public function getType(): string
@@ -73,7 +72,6 @@ class GetSplitResponse implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Type
      *
      * @required
@@ -86,7 +84,6 @@ class GetSplitResponse implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Amount
      */
     public function getAmount(): int
@@ -96,7 +93,6 @@ class GetSplitResponse implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Amount
      *
      * @required
@@ -109,7 +105,6 @@ class GetSplitResponse implements \JsonSerializable
 
     /**
      * Returns Recipient.
-     *
      * Recipient
      */
     public function getRecipient(): ?GetRecipientResponse
@@ -119,7 +114,6 @@ class GetSplitResponse implements \JsonSerializable
 
     /**
      * Sets Recipient.
-     *
      * Recipient
      *
      * @maps recipient
@@ -131,7 +125,6 @@ class GetSplitResponse implements \JsonSerializable
 
     /**
      * Returns Gateway Id.
-     *
      * The split rule gateway id
      */
     public function getGatewayId(): string
@@ -141,7 +134,6 @@ class GetSplitResponse implements \JsonSerializable
 
     /**
      * Sets Gateway Id.
-     *
      * The split rule gateway id
      *
      * @required
@@ -195,8 +187,9 @@ class GetSplitResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

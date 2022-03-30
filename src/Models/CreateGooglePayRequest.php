@@ -65,7 +65,6 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Returns Version.
-     *
      * The token version
      */
     public function getVersion(): string
@@ -75,7 +74,6 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Sets Version.
-     *
      * The token version
      *
      * @required
@@ -88,7 +86,6 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Returns Data.
-     *
      * The cryptography data
      */
     public function getData(): string
@@ -98,7 +95,6 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Sets Data.
-     *
      * The cryptography data
      *
      * @required
@@ -111,7 +107,6 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Returns Header.
-     *
      * The GooglePay header request
      */
     public function getHeader(): CreateGooglePayHeaderRequest
@@ -121,7 +116,6 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Sets Header.
-     *
      * The GooglePay header request
      *
      * @required
@@ -134,7 +128,6 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Returns Signature.
-     *
      * Detached PKCS #7 signature, Base64 encoded as string
      */
     public function getSignature(): string
@@ -144,7 +137,6 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Sets Signature.
-     *
      * Detached PKCS #7 signature, Base64 encoded as string
      *
      * @required
@@ -157,7 +149,6 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Returns Merchant Identifier.
-     *
      * GooglePay Merchant identifier
      */
     public function getMerchantIdentifier(): string
@@ -167,7 +158,6 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Sets Merchant Identifier.
-     *
      * GooglePay Merchant identifier
      *
      * @required
@@ -184,8 +174,9 @@ class CreateGooglePayRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

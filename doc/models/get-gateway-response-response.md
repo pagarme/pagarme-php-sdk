@@ -12,7 +12,7 @@ The Transaction Gateway Response
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `code` | `string` | Required | The error code | getCode(): string | setCode(string code): void |
-| `errors` | [`GetGatewayErrorResponse[]`](/doc/models/get-gateway-error-response.md) | Required | The gateway response errors list | getErrors(): array | setErrors(array errors): void |
+| `errors` | [`GetGatewayErrorResponse[]`](../../doc/models/get-gateway-error-response.md) | Required | The gateway response errors list | getErrors(): array | setErrors(array errors): void |
 
 ## Example (as JSON)
 

@@ -39,7 +39,6 @@ class CreatePaymentAuthenticationRequest implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * The Authentication type
      */
     public function getType(): string
@@ -49,7 +48,6 @@ class CreatePaymentAuthenticationRequest implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * The Authentication type
      *
      * @required
@@ -62,7 +60,6 @@ class CreatePaymentAuthenticationRequest implements \JsonSerializable
 
     /**
      * Returns Threed Secure.
-     *
      * The 3D-S authentication object
      */
     public function getThreedSecure(): CreateThreeDSecureRequest
@@ -72,7 +69,6 @@ class CreatePaymentAuthenticationRequest implements \JsonSerializable
 
     /**
      * Sets Threed Secure.
-     *
      * The 3D-S authentication object
      *
      * @required
@@ -89,8 +85,9 @@ class CreatePaymentAuthenticationRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

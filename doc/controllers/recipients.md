@@ -10,27 +10,27 @@ $recipientsController = $client->getRecipientsController();
 
 ## Methods
 
-* [Update Recipient](/doc/controllers/recipients.md#update-recipient)
-* [Create Anticipation](/doc/controllers/recipients.md#create-anticipation)
-* [Get Anticipation Limits](/doc/controllers/recipients.md#get-anticipation-limits)
-* [Get Recipients](/doc/controllers/recipients.md#get-recipients)
-* [Get Withdraw by Id](/doc/controllers/recipients.md#get-withdraw-by-id)
-* [Update Recipient Default Bank Account](/doc/controllers/recipients.md#update-recipient-default-bank-account)
-* [Update Recipient Metadata](/doc/controllers/recipients.md#update-recipient-metadata)
-* [Get Transfers](/doc/controllers/recipients.md#get-transfers)
-* [Get Transfer](/doc/controllers/recipients.md#get-transfer)
-* [Create Withdraw](/doc/controllers/recipients.md#create-withdraw)
-* [Update Automatic Anticipation Settings](/doc/controllers/recipients.md#update-automatic-anticipation-settings)
-* [Get Anticipation](/doc/controllers/recipients.md#get-anticipation)
-* [Update Recipient Transfer Settings](/doc/controllers/recipients.md#update-recipient-transfer-settings)
-* [Get Anticipations](/doc/controllers/recipients.md#get-anticipations)
-* [Get Recipient](/doc/controllers/recipients.md#get-recipient)
-* [Get Balance](/doc/controllers/recipients.md#get-balance)
-* [Get Withdrawals](/doc/controllers/recipients.md#get-withdrawals)
-* [Create Transfer](/doc/controllers/recipients.md#create-transfer)
-* [Create Recipient](/doc/controllers/recipients.md#create-recipient)
-* [Get Recipient by Code](/doc/controllers/recipients.md#get-recipient-by-code)
-* [Get Default Recipient](/doc/controllers/recipients.md#get-default-recipient)
+* [Update Recipient](../../doc/controllers/recipients.md#update-recipient)
+* [Create Anticipation](../../doc/controllers/recipients.md#create-anticipation)
+* [Get Anticipation Limits](../../doc/controllers/recipients.md#get-anticipation-limits)
+* [Get Recipients](../../doc/controllers/recipients.md#get-recipients)
+* [Update Recipient Metadata](../../doc/controllers/recipients.md#update-recipient-metadata)
+* [Get Transfer](../../doc/controllers/recipients.md#get-transfer)
+* [Get Anticipation](../../doc/controllers/recipients.md#get-anticipation)
+* [Update Recipient Transfer Settings](../../doc/controllers/recipients.md#update-recipient-transfer-settings)
+* [Get Anticipations](../../doc/controllers/recipients.md#get-anticipations)
+* [Update Recipient Default Bank Account](../../doc/controllers/recipients.md#update-recipient-default-bank-account)
+* [Create Withdraw](../../doc/controllers/recipients.md#create-withdraw)
+* [Get Balance](../../doc/controllers/recipients.md#get-balance)
+* [Create Transfer](../../doc/controllers/recipients.md#create-transfer)
+* [Create Recipient](../../doc/controllers/recipients.md#create-recipient)
+* [Update Automatic Anticipation Settings](../../doc/controllers/recipients.md#update-automatic-anticipation-settings)
+* [Get Recipient](../../doc/controllers/recipients.md#get-recipient)
+* [Get Withdrawals](../../doc/controllers/recipients.md#get-withdrawals)
+* [Get Withdraw by Id](../../doc/controllers/recipients.md#get-withdraw-by-id)
+* [Get Transfers](../../doc/controllers/recipients.md#get-transfers)
+* [Get Recipient by Code](../../doc/controllers/recipients.md#get-recipient-by-code)
+* [Get Default Recipient](../../doc/controllers/recipients.md#get-default-recipient)
 
 
 # Update Recipient
@@ -50,12 +50,12 @@ function updateRecipient(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateRecipientRequest`](/doc/models/update-recipient-request.md) | Body, Required | Recipient data |
+| `request` | [`UpdateRecipientRequest`](../../doc/models/update-recipient-request.md) | Body, Required | Recipient data |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
@@ -97,12 +97,12 @@ function createAnticipation(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`CreateAnticipationRequest`](/doc/models/create-anticipation-request.md) | Body, Required | Anticipation data |
+| `request` | [`CreateAnticipationRequest`](../../doc/models/create-anticipation-request.md) | Body, Required | Anticipation data |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`GetAnticipationResponse`](/doc/models/get-anticipation-response.md)
+[`GetAnticipationResponse`](../../doc/models/get-anticipation-response.md)
 
 ## Example Usage
 
@@ -143,7 +143,7 @@ function getAnticipationLimits(
 
 ## Response Type
 
-[`GetAnticipationLimitResponse`](/doc/models/get-anticipation-limit-response.md)
+[`GetAnticipationLimitResponse`](../../doc/models/get-anticipation-limit-response.md)
 
 ## Example Usage
 
@@ -173,101 +173,12 @@ function getRecipients(?int $page = null, ?int $size = null): ListRecipientRespo
 
 ## Response Type
 
-[`ListRecipientResponse`](/doc/models/list-recipient-response.md)
+[`ListRecipientResponse`](../../doc/models/list-recipient-response.md)
 
 ## Example Usage
 
 ```php
 $result = $recipientsController->getRecipients();
-```
-
-
-# Get Withdraw by Id
-
-```php
-function getWithdrawById(string $recipientId, string $withdrawalId): GetWithdrawResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | - |
-| `withdrawalId` | `string` | Template, Required | - |
-
-## Response Type
-
-[`GetWithdrawResponse`](/doc/models/get-withdraw-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-$withdrawalId = 'withdrawal_id2';
-
-$result = $recipientsController->getWithdrawById($recipientId, $withdrawalId);
-```
-
-
-# Update Recipient Default Bank Account
-
-Updates the default bank account from a recipient
-
-```php
-function updateRecipientDefaultBankAccount(
-    string $recipientId,
-    UpdateRecipientBankAccountRequest $request,
-    ?string $idempotencyKey = null
-): GetRecipientResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateRecipientBankAccountRequest`](/doc/models/update-recipient-bank-account-request.md) | Body, Required | Bank account data |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-$request_bankAccount_holderName = 'holder_name6';
-$request_bankAccount_holderType = 'holder_type2';
-$request_bankAccount_holderDocument = 'holder_document4';
-$request_bankAccount_bank = 'bank8';
-$request_bankAccount_branchNumber = 'branch_number6';
-$request_bankAccount_branchCheckDigit = 'branch_check_digit6';
-$request_bankAccount_accountNumber = 'account_number0';
-$request_bankAccount_accountCheckDigit = 'account_check_digit6';
-$request_bankAccount_type = 'type0';
-$request_bankAccount_metadata = ['key0' => 'metadata9', 'key1' => 'metadata8'];
-$request_bankAccount_pixKey = 'pix_key4';
-$request_bankAccount = new Models\CreateBankAccountRequest(
-    $request_bankAccount_holderName,
-    $request_bankAccount_holderType,
-    $request_bankAccount_holderDocument,
-    $request_bankAccount_bank,
-    $request_bankAccount_branchNumber,
-    $request_bankAccount_branchCheckDigit,
-    $request_bankAccount_accountNumber,
-    $request_bankAccount_accountCheckDigit,
-    $request_bankAccount_type,
-    $request_bankAccount_metadata,
-    $request_bankAccount_pixKey
-);
-$request_paymentMode = 'bank_transfer';
-$request = new Models\UpdateRecipientBankAccountRequest(
-    $request_bankAccount,
-    $request_paymentMode
-);
-
-$result = $recipientsController->updateRecipientDefaultBankAccount($recipientId, $request);
 ```
 
 
@@ -288,12 +199,12 @@ function updateRecipientMetadata(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateMetadataRequest`](/doc/models/update-metadata-request.md) | Body, Required | Metadata |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Metadata |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
@@ -305,45 +216,6 @@ $request = new Models\UpdateMetadataRequest(
 );
 
 $result = $recipientsController->updateRecipientMetadata($recipientId, $request);
-```
-
-
-# Get Transfers
-
-Gets a paginated list of transfers for the recipient
-
-```php
-function getTransfers(
-    string $recipientId,
-    ?int $page = null,
-    ?int $size = null,
-    ?string $status = null,
-    ?\DateTime $createdSince = null,
-    ?\DateTime $createdUntil = null
-): ListTransferResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-| `status` | `?string` | Query, Optional | Filter for transfer status |
-| `createdSince` | `?\DateTime` | Query, Optional | Filter for start range of transfer creation date |
-| `createdUntil` | `?\DateTime` | Query, Optional | Filter for end range of transfer creation date |
-
-## Response Type
-
-[`ListTransferResponse`](/doc/models/list-transfer-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$result = $recipientsController->getTransfers($recipientId);
 ```
 
 
@@ -364,7 +236,7 @@ function getTransfer(string $recipientId, string $transferId): GetTransferRespon
 
 ## Response Type
 
-[`GetTransferResponse`](/doc/models/get-transfer-response.md)
+[`GetTransferResponse`](../../doc/models/get-transfer-response.md)
 
 ## Example Usage
 
@@ -373,70 +245,6 @@ $recipientId = 'recipient_id0';
 $transferId = 'transfer_id6';
 
 $result = $recipientsController->getTransfer($recipientId, $transferId);
-```
-
-
-# Create Withdraw
-
-```php
-function createWithdraw(string $recipientId, CreateWithdrawRequest $request): GetWithdrawResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | - |
-| `request` | [`CreateWithdrawRequest`](/doc/models/create-withdraw-request.md) | Body, Required | - |
-
-## Response Type
-
-[`GetWithdrawResponse`](/doc/models/get-withdraw-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-$request_amount = 242;
-$request = new Models\CreateWithdrawRequest(
-    $request_amount
-);
-
-$result = $recipientsController->createWithdraw($recipientId, $request);
-```
-
-
-# Update Automatic Anticipation Settings
-
-Updates recipient metadata
-
-```php
-function updateAutomaticAnticipationSettings(
-    string $recipientId,
-    UpdateAutomaticAnticipationSettingsRequest $request,
-    ?string $idempotencyKey = null
-): GetRecipientResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateAutomaticAnticipationSettingsRequest`](/doc/models/update-automatic-anticipation-settings-request.md) | Body, Required | Metadata |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-$request = new Models\UpdateAutomaticAnticipationSettingsRequest;
-
-$result = $recipientsController->updateAutomaticAnticipationSettings($recipientId, $request);
 ```
 
 
@@ -457,7 +265,7 @@ function getAnticipation(string $recipientId, string $anticipationId): GetAntici
 
 ## Response Type
 
-[`GetAnticipationResponse`](/doc/models/get-anticipation-response.md)
+[`GetAnticipationResponse`](../../doc/models/get-anticipation-response.md)
 
 ## Example Usage
 
@@ -484,12 +292,12 @@ function updateRecipientTransferSettings(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipientId` | `string` | Template, Required | Recipient Identificator |
-| `request` | [`UpdateTransferSettingsRequest`](/doc/models/update-transfer-settings-request.md) | Body, Required | - |
+| `request` | [`UpdateTransferSettingsRequest`](../../doc/models/update-transfer-settings-request.md) | Body, Required | - |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
@@ -542,7 +350,7 @@ function getAnticipations(
 
 ## Response Type
 
-[`ListAnticipationResponse`](/doc/models/list-anticipation-response.md)
+[`ListAnticipationResponse`](../../doc/models/list-anticipation-response.md)
 
 ## Example Usage
 
@@ -553,30 +361,95 @@ $result = $recipientsController->getAnticipations($recipientId);
 ```
 
 
-# Get Recipient
+# Update Recipient Default Bank Account
 
-Retrieves recipient information
+Updates the default bank account from a recipient
 
 ```php
-function getRecipient(string $recipientId): GetRecipientResponse
+function updateRecipientDefaultBankAccount(
+    string $recipientId,
+    UpdateRecipientBankAccountRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipiend id |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateRecipientBankAccountRequest`](../../doc/models/update-recipient-bank-account-request.md) | Body, Required | Bank account data |
+| `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
 ```php
 $recipientId = 'recipient_id0';
+$request_bankAccount_holderName = 'holder_name6';
+$request_bankAccount_holderType = 'holder_type2';
+$request_bankAccount_holderDocument = 'holder_document4';
+$request_bankAccount_bank = 'bank8';
+$request_bankAccount_branchNumber = 'branch_number6';
+$request_bankAccount_branchCheckDigit = 'branch_check_digit6';
+$request_bankAccount_accountNumber = 'account_number0';
+$request_bankAccount_accountCheckDigit = 'account_check_digit6';
+$request_bankAccount_type = 'type0';
+$request_bankAccount_metadata = ['key0' => 'metadata9', 'key1' => 'metadata8'];
+$request_bankAccount_pixKey = 'pix_key4';
+$request_bankAccount = new Models\CreateBankAccountRequest(
+    $request_bankAccount_holderName,
+    $request_bankAccount_holderType,
+    $request_bankAccount_holderDocument,
+    $request_bankAccount_bank,
+    $request_bankAccount_branchNumber,
+    $request_bankAccount_branchCheckDigit,
+    $request_bankAccount_accountNumber,
+    $request_bankAccount_accountCheckDigit,
+    $request_bankAccount_type,
+    $request_bankAccount_metadata,
+    $request_bankAccount_pixKey
+);
+$request_paymentMode = 'bank_transfer';
+$request = new Models\UpdateRecipientBankAccountRequest(
+    $request_bankAccount,
+    $request_paymentMode
+);
 
-$result = $recipientsController->getRecipient($recipientId);
+$result = $recipientsController->updateRecipientDefaultBankAccount($recipientId, $request);
+```
+
+
+# Create Withdraw
+
+```php
+function createWithdraw(string $recipientId, CreateWithdrawRequest $request): GetWithdrawResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | - |
+| `request` | [`CreateWithdrawRequest`](../../doc/models/create-withdraw-request.md) | Body, Required | - |
+
+## Response Type
+
+[`GetWithdrawResponse`](../../doc/models/get-withdraw-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+$request_amount = 242;
+$request = new Models\CreateWithdrawRequest(
+    $request_amount
+);
+
+$result = $recipientsController->createWithdraw($recipientId, $request);
 ```
 
 
@@ -596,7 +469,7 @@ function getBalance(string $recipientId): GetBalanceResponse
 
 ## Response Type
 
-[`GetBalanceResponse`](/doc/models/get-balance-response.md)
+[`GetBalanceResponse`](../../doc/models/get-balance-response.md)
 
 ## Example Usage
 
@@ -604,45 +477,6 @@ function getBalance(string $recipientId): GetBalanceResponse
 $recipientId = 'recipient_id0';
 
 $result = $recipientsController->getBalance($recipientId);
-```
-
-
-# Get Withdrawals
-
-Gets a paginated list of transfers for the recipient
-
-```php
-function getWithdrawals(
-    string $recipientId,
-    ?int $page = null,
-    ?int $size = null,
-    ?string $status = null,
-    ?\DateTime $createdSince = null,
-    ?\DateTime $createdUntil = null
-): ListWithdrawals
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | - |
-| `page` | `?int` | Query, Optional | - |
-| `size` | `?int` | Query, Optional | - |
-| `status` | `?string` | Query, Optional | - |
-| `createdSince` | `?\DateTime` | Query, Optional | - |
-| `createdUntil` | `?\DateTime` | Query, Optional | - |
-
-## Response Type
-
-[`ListWithdrawals`](/doc/models/list-withdrawals.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$result = $recipientsController->getWithdrawals($recipientId);
 ```
 
 
@@ -663,12 +497,12 @@ function createTransfer(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipientId` | `string` | Template, Required | Recipient Id |
-| `request` | [`CreateTransferRequest`](/doc/models/create-transfer-request.md) | Body, Required | Transfer data |
+| `request` | [`CreateTransferRequest`](../../doc/models/create-transfer-request.md) | Body, Required | Transfer data |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`GetTransferResponse`](/doc/models/get-transfer-response.md)
+[`GetTransferResponse`](../../doc/models/get-transfer-response.md)
 
 ## Example Usage
 
@@ -697,12 +531,12 @@ function createRecipient(CreateRecipientRequest $request, ?string $idempotencyKe
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `request` | [`CreateRecipientRequest`](/doc/models/create-recipient-request.md) | Body, Required | Recipient data |
+| `request` | [`CreateRecipientRequest`](../../doc/models/create-recipient-request.md) | Body, Required | Recipient data |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
@@ -755,6 +589,172 @@ $result = $recipientsController->createRecipient($request);
 ```
 
 
+# Update Automatic Anticipation Settings
+
+Updates recipient metadata
+
+```php
+function updateAutomaticAnticipationSettings(
+    string $recipientId,
+    UpdateAutomaticAnticipationSettingsRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateAutomaticAnticipationSettingsRequest`](../../doc/models/update-automatic-anticipation-settings-request.md) | Body, Required | Metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+$request = new Models\UpdateAutomaticAnticipationSettingsRequest;
+
+$result = $recipientsController->updateAutomaticAnticipationSettings($recipientId, $request);
+```
+
+
+# Get Recipient
+
+Retrieves recipient information
+
+```php
+function getRecipient(string $recipientId): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipiend id |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->getRecipient($recipientId);
+```
+
+
+# Get Withdrawals
+
+Gets a paginated list of transfers for the recipient
+
+```php
+function getWithdrawals(
+    string $recipientId,
+    ?int $page = null,
+    ?int $size = null,
+    ?string $status = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListWithdrawals
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | - |
+| `page` | `?int` | Query, Optional | - |
+| `size` | `?int` | Query, Optional | - |
+| `status` | `?string` | Query, Optional | - |
+| `createdSince` | `?\DateTime` | Query, Optional | - |
+| `createdUntil` | `?\DateTime` | Query, Optional | - |
+
+## Response Type
+
+[`ListWithdrawals`](../../doc/models/list-withdrawals.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->getWithdrawals($recipientId);
+```
+
+
+# Get Withdraw by Id
+
+```php
+function getWithdrawById(string $recipientId, string $withdrawalId): GetWithdrawResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | - |
+| `withdrawalId` | `string` | Template, Required | - |
+
+## Response Type
+
+[`GetWithdrawResponse`](../../doc/models/get-withdraw-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+$withdrawalId = 'withdrawal_id2';
+
+$result = $recipientsController->getWithdrawById($recipientId, $withdrawalId);
+```
+
+
+# Get Transfers
+
+Gets a paginated list of transfers for the recipient
+
+```php
+function getTransfers(
+    string $recipientId,
+    ?int $page = null,
+    ?int $size = null,
+    ?string $status = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListTransferResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `status` | `?string` | Query, Optional | Filter for transfer status |
+| `createdSince` | `?\DateTime` | Query, Optional | Filter for start range of transfer creation date |
+| `createdUntil` | `?\DateTime` | Query, Optional | Filter for end range of transfer creation date |
+
+## Response Type
+
+[`ListTransferResponse`](../../doc/models/list-transfer-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->getTransfers($recipientId);
+```
+
+
 # Get Recipient by Code
 
 Retrieves recipient information
@@ -771,7 +771,7 @@ function getRecipientByCode(string $code): GetRecipientResponse
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
@@ -790,7 +790,7 @@ function getDefaultRecipient(): GetRecipientResponse
 
 ## Response Type
 
-[`GetRecipientResponse`](/doc/models/get-recipient-response.md)
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 

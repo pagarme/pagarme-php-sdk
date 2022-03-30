@@ -16,8 +16,8 @@ Transfer response
 | `status` | `string` | Required | Transfer status | getStatus(): string | setStatus(string status): void |
 | `createdAt` | `\DateTime` | Required | Transfer creation date | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
 | `updatedAt` | `\DateTime` | Required | Transfer last update date | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
-| `bankAccount` | [`GetBankAccountResponse`](/doc/models/get-bank-account-response.md) | Required | Bank account | getBankAccount(): GetBankAccountResponse | setBankAccount(GetBankAccountResponse bankAccount): void |
-| `metadata` | `array` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
+| `bankAccount` | [`GetBankAccountResponse`](../../doc/models/get-bank-account-response.md) | Required | Bank account | getBankAccount(): GetBankAccountResponse | setBankAccount(GetBankAccountResponse bankAccount): void |
+| `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 
 ## Example (as JSON)
 

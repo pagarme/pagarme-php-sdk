@@ -23,7 +23,7 @@ Request for updating a plan
 | `status` | `string` | Required | Plan status | getStatus(): string | setStatus(string status): void |
 | `shippable` | `bool` | Required | Indicates if the plan is shippable | getShippable(): bool | setShippable(bool shippable): void |
 | `billingDays` | `int[]` | Required | Billing days accepted by the plan | getBillingDays(): array | setBillingDays(array billingDays): void |
-| `metadata` | `array` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
+| `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 | `minimumPrice` | `?int` | Optional | Minimum price | getMinimumPrice(): ?int | setMinimumPrice(?int minimumPrice): void |
 | `trialPeriodDays` | `?int` | Optional | Number of trial period in days, where the customer will not be charged | getTrialPeriodDays(): ?int | setTrialPeriodDays(?int trialPeriodDays): void |
 

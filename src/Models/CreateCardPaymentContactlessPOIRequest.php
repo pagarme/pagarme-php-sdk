@@ -62,7 +62,6 @@ class CreateCardPaymentContactlessPOIRequest implements \JsonSerializable
 
     /**
      * Returns System Name.
-     *
      * system name
      */
     public function getSystemName(): string
@@ -72,7 +71,6 @@ class CreateCardPaymentContactlessPOIRequest implements \JsonSerializable
 
     /**
      * Sets System Name.
-     *
      * system name
      *
      * @required
@@ -85,7 +83,6 @@ class CreateCardPaymentContactlessPOIRequest implements \JsonSerializable
 
     /**
      * Returns Model.
-     *
      * model
      */
     public function getModel(): string
@@ -95,7 +92,6 @@ class CreateCardPaymentContactlessPOIRequest implements \JsonSerializable
 
     /**
      * Sets Model.
-     *
      * model
      *
      * @required
@@ -108,7 +104,6 @@ class CreateCardPaymentContactlessPOIRequest implements \JsonSerializable
 
     /**
      * Returns Provider.
-     *
      * provider
      */
     public function getProvider(): string
@@ -118,7 +113,6 @@ class CreateCardPaymentContactlessPOIRequest implements \JsonSerializable
 
     /**
      * Sets Provider.
-     *
      * provider
      *
      * @required
@@ -131,7 +125,6 @@ class CreateCardPaymentContactlessPOIRequest implements \JsonSerializable
 
     /**
      * Returns Serial Number.
-     *
      * serial number
      */
     public function getSerialNumber(): string
@@ -141,7 +134,6 @@ class CreateCardPaymentContactlessPOIRequest implements \JsonSerializable
 
     /**
      * Sets Serial Number.
-     *
      * serial number
      *
      * @required
@@ -154,7 +146,6 @@ class CreateCardPaymentContactlessPOIRequest implements \JsonSerializable
 
     /**
      * Returns Version Number.
-     *
      * version number
      */
     public function getVersionNumber(): string
@@ -164,7 +155,6 @@ class CreateCardPaymentContactlessPOIRequest implements \JsonSerializable
 
     /**
      * Sets Version Number.
-     *
      * version number
      *
      * @required
@@ -181,8 +171,9 @@ class CreateCardPaymentContactlessPOIRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

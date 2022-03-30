@@ -12,11 +12,11 @@ namespace PagarmeApiSDKLib\Controllers;
 
 use PagarmeApiSDKLib\Http\HttpCallBack;
 use PagarmeApiSDKLib\Http\HttpResponse;
+use PagarmeApiSDKLib\ApiHelper;
 use PagarmeApiSDKLib\Http\HttpRequest;
 use PagarmeApiSDKLib\Exceptions\ApiException;
 use PagarmeApiSDKLib\ConfigurationInterface;
 use PagarmeApiSDKLib\AuthManagerInterface;
-use apimatic\jsonmapper\JsonMapper;
 use Unirest\Request;
 
 /**
@@ -50,7 +50,7 @@ class BaseController
      *
      * @var string
      */
-    protected static $userAgent = 'PagarmeCoreApi - PHP 6.4.0';
+    protected static $userAgent = 'PagarmeCoreApi - PHP 6.5.0';
 
     /**
      * Constructor that sets the timeout of requests
@@ -91,28 +91,6 @@ class BaseController
     public function getHttpCallBack(): ?HttpCallBack
     {
         return $this->httpCallBack;
-    }
-
-    /**
-     * Get a new JsonMapper instance for mapping objects
-     *
-     * @return \apimatic\jsonmapper\JsonMapper JsonMapper instance
-     */
-    protected function getJsonMapper(): JsonMapper
-    {
-        $mapper = new JsonMapper();
-        $mapper->arChildClasses['PagarmeApiSDKLib\\Models\\GetTransactionResponse'] = [
-            'PagarmeApiSDKLib\\Models\\GetBankTransferTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetSafetyPayTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetVoucherTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetBoletoTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetDebitCardTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetPrivateLabelTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetCashTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetCreditCardTransactionResponse',
-            'PagarmeApiSDKLib\\Models\\GetPixTransactionResponse'
-        ];
-        return $mapper;
     }
 
     /**
@@ -192,6 +170,6 @@ class BaseController
             $body->response = $response;
         }
 
-        return $this->getJsonMapper()->mapClass($body, $type);
+        return ApiHelper::getJsonMapper()->mapClass($body, $type);
     }
 }

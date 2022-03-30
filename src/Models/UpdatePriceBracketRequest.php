@@ -49,7 +49,6 @@ class UpdatePriceBracketRequest implements \JsonSerializable
 
     /**
      * Returns Start Quantity.
-     *
      * Start quantity of the bracket
      */
     public function getStartQuantity(): int
@@ -59,7 +58,6 @@ class UpdatePriceBracketRequest implements \JsonSerializable
 
     /**
      * Sets Start Quantity.
-     *
      * Start quantity of the bracket
      *
      * @required
@@ -72,7 +70,6 @@ class UpdatePriceBracketRequest implements \JsonSerializable
 
     /**
      * Returns Price.
-     *
      * Price
      */
     public function getPrice(): int
@@ -82,7 +79,6 @@ class UpdatePriceBracketRequest implements \JsonSerializable
 
     /**
      * Sets Price.
-     *
      * Price
      *
      * @required
@@ -95,7 +91,6 @@ class UpdatePriceBracketRequest implements \JsonSerializable
 
     /**
      * Returns End Quantity.
-     *
      * End quantity of the bracket
      */
     public function getEndQuantity(): ?int
@@ -105,7 +100,6 @@ class UpdatePriceBracketRequest implements \JsonSerializable
 
     /**
      * Sets End Quantity.
-     *
      * End quantity of the bracket
      *
      * @maps end_quantity
@@ -117,7 +111,6 @@ class UpdatePriceBracketRequest implements \JsonSerializable
 
     /**
      * Returns Overage Price.
-     *
      * Overage price
      */
     public function getOveragePrice(): ?int
@@ -127,7 +120,6 @@ class UpdatePriceBracketRequest implements \JsonSerializable
 
     /**
      * Sets Overage Price.
-     *
      * Overage price
      *
      * @maps overage_price
@@ -143,8 +135,9 @@ class UpdatePriceBracketRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -39,7 +39,6 @@ class CreateCheckoutCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Statement Descriptor.
-     *
      * Card invoice text descriptor
      */
     public function getStatementDescriptor(): ?string
@@ -49,7 +48,6 @@ class CreateCheckoutCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Statement Descriptor.
-     *
      * Card invoice text descriptor
      *
      * @maps statement_descriptor
@@ -61,7 +59,6 @@ class CreateCheckoutCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Installments.
-     *
      * Payment installment options
      *
      * @return CreateCheckoutCardInstallmentOptionRequest[]|null
@@ -73,7 +70,6 @@ class CreateCheckoutCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Installments.
-     *
      * Payment installment options
      *
      * @maps installments
@@ -87,7 +83,6 @@ class CreateCheckoutCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Authentication.
-     *
      * Creates payment authentication
      */
     public function getAuthentication(): ?CreatePaymentAuthenticationRequest
@@ -97,7 +92,6 @@ class CreateCheckoutCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Authentication.
-     *
      * Creates payment authentication
      *
      * @maps authentication
@@ -109,7 +103,6 @@ class CreateCheckoutCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Capture.
-     *
      * Authorize and capture?
      */
     public function getCapture(): ?bool
@@ -119,7 +112,6 @@ class CreateCheckoutCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Capture.
-     *
      * Authorize and capture?
      *
      * @maps capture
@@ -135,8 +127,9 @@ class CreateCheckoutCreditCardPaymentRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

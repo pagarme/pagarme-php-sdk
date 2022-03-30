@@ -16,17 +16,17 @@ Checkout payment request
 | `successUrl` | `string` | Required | Success url | getSuccessUrl(): string | setSuccessUrl(string successUrl): void |
 | `defaultPaymentMethod` | `?string` | Optional | Default payment method | getDefaultPaymentMethod(): ?string | setDefaultPaymentMethod(?string defaultPaymentMethod): void |
 | `gatewayAffiliationId` | `?string` | Optional | Gateway Affiliation Id | getGatewayAffiliationId(): ?string | setGatewayAffiliationId(?string gatewayAffiliationId): void |
-| `creditCard` | [`?CreateCheckoutCreditCardPaymentRequest`](/doc/models/create-checkout-credit-card-payment-request.md) | Optional | Credit Card payment request | getCreditCard(): ?CreateCheckoutCreditCardPaymentRequest | setCreditCard(?CreateCheckoutCreditCardPaymentRequest creditCard): void |
-| `debitCard` | [`?CreateCheckoutDebitCardPaymentRequest`](/doc/models/create-checkout-debit-card-payment-request.md) | Optional | Debit Card payment request | getDebitCard(): ?CreateCheckoutDebitCardPaymentRequest | setDebitCard(?CreateCheckoutDebitCardPaymentRequest debitCard): void |
-| `boleto` | [`?CreateCheckoutBoletoPaymentRequest`](/doc/models/create-checkout-boleto-payment-request.md) | Optional | Boleto payment request | getBoleto(): ?CreateCheckoutBoletoPaymentRequest | setBoleto(?CreateCheckoutBoletoPaymentRequest boleto): void |
+| `creditCard` | [`?CreateCheckoutCreditCardPaymentRequest`](../../doc/models/create-checkout-credit-card-payment-request.md) | Optional | Credit Card payment request | getCreditCard(): ?CreateCheckoutCreditCardPaymentRequest | setCreditCard(?CreateCheckoutCreditCardPaymentRequest creditCard): void |
+| `debitCard` | [`?CreateCheckoutDebitCardPaymentRequest`](../../doc/models/create-checkout-debit-card-payment-request.md) | Optional | Debit Card payment request | getDebitCard(): ?CreateCheckoutDebitCardPaymentRequest | setDebitCard(?CreateCheckoutDebitCardPaymentRequest debitCard): void |
+| `boleto` | [`?CreateCheckoutBoletoPaymentRequest`](../../doc/models/create-checkout-boleto-payment-request.md) | Optional | Boleto payment request | getBoleto(): ?CreateCheckoutBoletoPaymentRequest | setBoleto(?CreateCheckoutBoletoPaymentRequest boleto): void |
 | `customerEditable` | `?bool` | Optional | Customer is editable? | getCustomerEditable(): ?bool | setCustomerEditable(?bool customerEditable): void |
 | `expiresIn` | `?int` | Optional | Time in minutes for expiration | getExpiresIn(): ?int | setExpiresIn(?int expiresIn): void |
 | `skipCheckoutSuccessPage` | `bool` | Required | Skip postpay success screen? | getSkipCheckoutSuccessPage(): bool | setSkipCheckoutSuccessPage(bool skipCheckoutSuccessPage): void |
 | `billingAddressEditable` | `bool` | Required | Billing Address is editable? | getBillingAddressEditable(): bool | setBillingAddressEditable(bool billingAddressEditable): void |
-| `billingAddress` | [`CreateAddressRequest`](/doc/models/create-address-request.md) | Required | Billing Address | getBillingAddress(): CreateAddressRequest | setBillingAddress(CreateAddressRequest billingAddress): void |
-| `bankTransfer` | [`?CreateCheckoutBankTransferRequest`](/doc/models/create-checkout-bank-transfer-request.md) | Optional | Bank Transfer payment request | getBankTransfer(): ?CreateCheckoutBankTransferRequest | setBankTransfer(?CreateCheckoutBankTransferRequest bankTransfer): void |
+| `billingAddress` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Billing Address | getBillingAddress(): CreateAddressRequest | setBillingAddress(CreateAddressRequest billingAddress): void |
+| `bankTransfer` | [`?CreateCheckoutBankTransferRequest`](../../doc/models/create-checkout-bank-transfer-request.md) | Optional | Bank Transfer payment request | getBankTransfer(): ?CreateCheckoutBankTransferRequest | setBankTransfer(?CreateCheckoutBankTransferRequest bankTransfer): void |
 | `acceptedBrands` | `string[]` | Required | Accepted Brands | getAcceptedBrands(): array | setAcceptedBrands(array acceptedBrands): void |
-| `pix` | [`?CreateCheckoutPixPaymentRequest`](/doc/models/create-checkout-pix-payment-request.md) | Optional | Pix payment request | getPix(): ?CreateCheckoutPixPaymentRequest | setPix(?CreateCheckoutPixPaymentRequest pix): void |
+| `pix` | [`?CreateCheckoutPixPaymentRequest`](../../doc/models/create-checkout-pix-payment-request.md) | Optional | Pix payment request | getPix(): ?CreateCheckoutPixPaymentRequest | setPix(?CreateCheckoutPixPaymentRequest pix): void |
 
 ## Example (as JSON)
 

@@ -43,7 +43,6 @@ class CreateEmvDataTlvDecryptRequest implements \JsonSerializable
 
     /**
      * Returns Tag.
-     *
      * Emv tag
      */
     public function getTag(): string
@@ -53,7 +52,6 @@ class CreateEmvDataTlvDecryptRequest implements \JsonSerializable
 
     /**
      * Sets Tag.
-     *
      * Emv tag
      *
      * @required
@@ -66,7 +64,6 @@ class CreateEmvDataTlvDecryptRequest implements \JsonSerializable
 
     /**
      * Returns Lenght.
-     *
      * Emv lenght
      */
     public function getLenght(): string
@@ -76,7 +73,6 @@ class CreateEmvDataTlvDecryptRequest implements \JsonSerializable
 
     /**
      * Sets Lenght.
-     *
      * Emv lenght
      *
      * @required
@@ -89,7 +85,6 @@ class CreateEmvDataTlvDecryptRequest implements \JsonSerializable
 
     /**
      * Returns Value.
-     *
      * Emv value
      */
     public function getValue(): string
@@ -99,7 +94,6 @@ class CreateEmvDataTlvDecryptRequest implements \JsonSerializable
 
     /**
      * Sets Value.
-     *
      * Emv value
      *
      * @required
@@ -116,8 +110,9 @@ class CreateEmvDataTlvDecryptRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

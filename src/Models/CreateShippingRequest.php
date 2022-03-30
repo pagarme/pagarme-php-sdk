@@ -92,7 +92,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Shipping amount
      */
     public function getAmount(): int
@@ -102,7 +101,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Shipping amount
      *
      * @required
@@ -115,7 +113,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Description
      */
     public function getDescription(): string
@@ -125,7 +122,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Description
      *
      * @required
@@ -138,7 +134,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Returns Recipient Name.
-     *
      * Recipient name
      */
     public function getRecipientName(): string
@@ -148,7 +143,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Sets Recipient Name.
-     *
      * Recipient name
      *
      * @required
@@ -161,7 +155,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Returns Recipient Phone.
-     *
      * Recipient phone number
      */
     public function getRecipientPhone(): string
@@ -171,7 +164,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Sets Recipient Phone.
-     *
      * Recipient phone number
      *
      * @required
@@ -184,7 +176,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Returns Address Id.
-     *
      * The id of the address that will be used for shipping
      */
     public function getAddressId(): string
@@ -194,7 +185,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Sets Address Id.
-     *
      * The id of the address that will be used for shipping
      *
      * @required
@@ -207,7 +197,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Returns Address.
-     *
      * Address data
      */
     public function getAddress(): CreateAddressRequest
@@ -217,7 +206,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Sets Address.
-     *
      * Address data
      *
      * @required
@@ -230,7 +218,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Returns Max Delivery Date.
-     *
      * Data máxima de entrega
      */
     public function getMaxDeliveryDate(): ?\DateTime
@@ -240,7 +227,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Sets Max Delivery Date.
-     *
      * Data máxima de entrega
      *
      * @maps max_delivery_date
@@ -253,7 +239,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Returns Estimated Delivery Date.
-     *
      * Prazo estimado de entrega
      */
     public function getEstimatedDeliveryDate(): ?\DateTime
@@ -263,7 +248,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Sets Estimated Delivery Date.
-     *
      * Prazo estimado de entrega
      *
      * @maps estimated_delivery_date
@@ -276,7 +260,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Shipping type
      */
     public function getType(): string
@@ -286,7 +269,6 @@ class CreateShippingRequest implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Shipping type
      *
      * @required
@@ -303,8 +285,9 @@ class CreateShippingRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -25,7 +25,6 @@ class UpdateChargeDueDateRequest implements \JsonSerializable
 
     /**
      * Returns Due At.
-     *
      * The charge's new due date
      */
     public function getDueAt(): ?\DateTime
@@ -35,7 +34,6 @@ class UpdateChargeDueDateRequest implements \JsonSerializable
 
     /**
      * Sets Due At.
-     *
      * The charge's new due date
      *
      * @maps due_at
@@ -52,8 +50,9 @@ class UpdateChargeDueDateRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

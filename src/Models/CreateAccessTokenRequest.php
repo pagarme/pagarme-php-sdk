@@ -24,7 +24,6 @@ class CreateAccessTokenRequest implements \JsonSerializable
 
     /**
      * Returns Expires In.
-     *
      * Minutes to expire the token
      */
     public function getExpiresIn(): ?int
@@ -34,7 +33,6 @@ class CreateAccessTokenRequest implements \JsonSerializable
 
     /**
      * Sets Expires In.
-     *
      * Minutes to expire the token
      *
      * @maps expires_in
@@ -50,8 +48,9 @@ class CreateAccessTokenRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -13,6 +13,7 @@ namespace PagarmeApiSDKLib\Controllers;
 use PagarmeApiSDKLib\Exceptions\ApiException;
 use PagarmeApiSDKLib\ApiHelper;
 use PagarmeApiSDKLib\ConfigurationInterface;
+use PagarmeApiSDKLib\Models;
 use PagarmeApiSDKLib\Http\HttpRequest;
 use PagarmeApiSDKLib\Http\HttpResponse;
 use PagarmeApiSDKLib\Http\HttpMethod;
@@ -30,11 +31,11 @@ class TransactionsController extends BaseController
     /**
      * @param string $transactionId
      *
-     * @return \PagarmeApiSDKLib\Models\GetTransactionResponse Response from the API call
+     * @return Models\GetTransactionResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getTransaction(string $transactionId): \PagarmeApiSDKLib\Models\GetTransactionResponse
+    public function getTransaction(string $transactionId): Models\GetTransactionResponse
     {
         //prepare query string for API call
         $_queryBuilder = '/transactions/{transaction_id}';
@@ -81,7 +82,6 @@ class TransactionsController extends BaseController
 
         //handle errors defined at the API level
         $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetTransactionResponse');
+        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetTransactionResponse');
     }
 }

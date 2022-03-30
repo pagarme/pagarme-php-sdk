@@ -43,7 +43,7 @@ class CreateCustomerRequest implements \JsonSerializable
     private $address;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -73,7 +73,7 @@ class CreateCustomerRequest implements \JsonSerializable
      * @param string $document
      * @param string $type
      * @param CreateAddressRequest $address
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param CreatePhonesRequest $phones
      * @param string $code
      */
@@ -99,7 +99,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Name.
-     *
      * Name
      */
     public function getName(): string
@@ -109,7 +108,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Name.
-     *
      * Name
      *
      * @required
@@ -122,7 +120,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Email.
-     *
      * Email
      */
     public function getEmail(): string
@@ -132,7 +129,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Email.
-     *
      * Email
      *
      * @required
@@ -145,7 +141,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Document.
-     *
      * Document number. Only numbers, no special characters.
      */
     public function getDocument(): string
@@ -155,7 +150,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Document.
-     *
      * Document number. Only numbers, no special characters.
      *
      * @required
@@ -168,7 +162,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Person type. Can be either 'individual' or 'company'
      */
     public function getType(): string
@@ -178,7 +171,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Person type. Can be either 'individual' or 'company'
      *
      * @required
@@ -191,7 +183,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Address.
-     *
      * The customer's address
      */
     public function getAddress(): CreateAddressRequest
@@ -201,7 +192,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Address.
-     *
      * The customer's address
      *
      * @required
@@ -214,8 +204,9 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -224,11 +215,12 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -256,7 +248,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * Customer code
      */
     public function getCode(): string
@@ -266,7 +257,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * Customer code
      *
      * @required
@@ -279,7 +269,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Returns Gender.
-     *
      * Customer Gender
      */
     public function getGender(): ?string
@@ -289,7 +278,6 @@ class CreateCustomerRequest implements \JsonSerializable
 
     /**
      * Sets Gender.
-     *
      * Customer Gender
      *
      * @maps gender
@@ -323,8 +311,9 @@ class CreateCustomerRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

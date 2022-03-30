@@ -19,14 +19,14 @@ Generic response object for getting a transaction.
 | `updatedAt` | `\DateTime` | Required | Last update date | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
 | `attemptCount` | `int` | Required | Number of attempts tried | getAttemptCount(): int | setAttemptCount(int attemptCount): void |
 | `maxAttempts` | `int` | Required | Max attempts | getMaxAttempts(): int | setMaxAttempts(int maxAttempts): void |
-| `splits` | [`GetSplitResponse[]`](/doc/models/get-split-response.md) | Required | Splits | getSplits(): array | setSplits(array splits): void |
+| `splits` | [`GetSplitResponse[]`](../../doc/models/get-split-response.md) | Required | Splits | getSplits(): array | setSplits(array splits): void |
 | `nextAttempt` | `?\DateTime` | Optional | Date and time of the next attempt | getNextAttempt(): ?\DateTime | setNextAttempt(?\DateTime nextAttempt): void |
 | `transactionType` | `?string` | Optional | - | getTransactionType(): ?string | setTransactionType(?string transactionType): void |
 | `id` | `string` | Required | Código da transação | getId(): string | setId(string id): void |
-| `gatewayResponse` | [`GetGatewayResponseResponse`](/doc/models/get-gateway-response-response.md) | Required | The Gateway Response | getGatewayResponse(): GetGatewayResponseResponse | setGatewayResponse(GetGatewayResponseResponse gatewayResponse): void |
-| `antifraudResponse` | [`GetAntifraudResponse`](/doc/models/get-antifraud-response.md) | Required | - | getAntifraudResponse(): GetAntifraudResponse | setAntifraudResponse(GetAntifraudResponse antifraudResponse): void |
-| `metadata` | `?array` | Optional | - | getMetadata(): ?array | setMetadata(?array metadata): void |
-| `split` | [`GetSplitResponse[]`](/doc/models/get-split-response.md) | Required | - | getSplit(): array | setSplit(array split): void |
+| `gatewayResponse` | [`GetGatewayResponseResponse`](../../doc/models/get-gateway-response-response.md) | Required | The Gateway Response | getGatewayResponse(): GetGatewayResponseResponse | setGatewayResponse(GetGatewayResponseResponse gatewayResponse): void |
+| `antifraudResponse` | [`GetAntifraudResponse`](../../doc/models/get-antifraud-response.md) | Required | - | getAntifraudResponse(): GetAntifraudResponse | setAntifraudResponse(GetAntifraudResponse antifraudResponse): void |
+| `metadata` | `?array<string,string>` | Optional | - | getMetadata(): ?array | setMetadata(?array metadata): void |
+| `split` | [`GetSplitResponse[]`](../../doc/models/get-split-response.md) | Required | - | getSplit(): array | setSplit(array split): void |
 
 ## Example (as JSON)
 

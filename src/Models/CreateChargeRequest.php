@@ -44,7 +44,7 @@ class CreateChargeRequest implements \JsonSerializable
     private $payment;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -69,7 +69,7 @@ class CreateChargeRequest implements \JsonSerializable
      * @param string $customerId
      * @param CreateCustomerRequest $customer
      * @param CreatePaymentRequest $payment
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param CreateAntifraudRequest $antifraud
      * @param string $orderId
      */
@@ -95,7 +95,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * Code
      */
     public function getCode(): string
@@ -105,7 +104,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * Code
      *
      * @required
@@ -118,7 +116,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * The amount of the charge, in cents
      */
     public function getAmount(): int
@@ -128,7 +125,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * The amount of the charge, in cents
      *
      * @required
@@ -141,7 +137,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Returns Customer Id.
-     *
      * The customer's id
      */
     public function getCustomerId(): string
@@ -151,7 +146,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Sets Customer Id.
-     *
      * The customer's id
      *
      * @required
@@ -164,7 +158,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Returns Customer.
-     *
      * Customer data
      */
     public function getCustomer(): CreateCustomerRequest
@@ -174,7 +167,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Sets Customer.
-     *
      * Customer data
      *
      * @required
@@ -187,7 +179,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Returns Payment.
-     *
      * Payment data
      */
     public function getPayment(): CreatePaymentRequest
@@ -197,7 +188,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Sets Payment.
-     *
      * Payment data
      *
      * @required
@@ -210,8 +200,9 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -220,11 +211,12 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -233,7 +225,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Returns Due At.
-     *
      * The charge due date
      */
     public function getDueAt(): ?\DateTime
@@ -243,7 +234,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Sets Due At.
-     *
      * The charge due date
      *
      * @maps due_at
@@ -275,7 +265,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Returns Order Id.
-     *
      * Order Id
      */
     public function getOrderId(): string
@@ -285,7 +274,6 @@ class CreateChargeRequest implements \JsonSerializable
 
     /**
      * Sets Order Id.
-     *
      * Order Id
      *
      * @required
@@ -302,8 +290,9 @@ class CreateChargeRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

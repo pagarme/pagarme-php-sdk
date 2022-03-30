@@ -92,7 +92,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Retries.
-     *
      * Number of retries
      */
     public function getRetries(): int
@@ -102,7 +101,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Retries.
-     *
      * Number of retries
      *
      * @required
@@ -115,7 +113,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Bank.
-     *
      * The bank code, containing three characters. The available codes are on the API specification
      */
     public function getBank(): string
@@ -125,7 +122,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Bank.
-     *
      * The bank code, containing three characters. The available codes are on the API specification
      *
      * @required
@@ -138,7 +134,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Instructions.
-     *
      * The instructions field that will be printed on the boleto.
      */
     public function getInstructions(): string
@@ -148,7 +143,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Instructions.
-     *
      * The instructions field that will be printed on the boleto.
      *
      * @required
@@ -161,7 +155,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Due At.
-     *
      * Boleto due date
      */
     public function getDueAt(): ?\DateTime
@@ -171,7 +164,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Due At.
-     *
      * Boleto due date
      *
      * @maps due_at
@@ -184,7 +176,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Billing Address.
-     *
      * Card's billing address
      */
     public function getBillingAddress(): CreateAddressRequest
@@ -194,7 +185,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Billing Address.
-     *
      * Card's billing address
      *
      * @required
@@ -207,7 +197,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Billing Address Id.
-     *
      * The address id for the billing address
      */
     public function getBillingAddressId(): string
@@ -217,7 +206,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Billing Address Id.
-     *
      * The address id for the billing address
      *
      * @required
@@ -230,7 +218,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Nosso Numero.
-     *
      * Customer identification number with the bank
      */
     public function getNossoNumero(): ?string
@@ -240,7 +227,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Nosso Numero.
-     *
      * Customer identification number with the bank
      *
      * @maps nosso_numero
@@ -252,7 +238,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Document Number.
-     *
      * Boleto identification
      */
     public function getDocumentNumber(): string
@@ -262,7 +247,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Document Number.
-     *
      * Boleto identification
      *
      * @required
@@ -275,7 +259,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Statement Descriptor.
-     *
      * Soft Descriptor
      */
     public function getStatementDescriptor(): string
@@ -285,7 +268,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Statement Descriptor.
-     *
      * Soft Descriptor
      *
      * @required
@@ -302,8 +284,9 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

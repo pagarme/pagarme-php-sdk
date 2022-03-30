@@ -20,7 +20,7 @@ Request for creating a bank account
 | `accountNumber` | `string` | Required | Account number | getAccountNumber(): string | setAccountNumber(string accountNumber): void |
 | `accountCheckDigit` | `string` | Required | Account check digit | getAccountCheckDigit(): string | setAccountCheckDigit(string accountCheckDigit): void |
 | `type` | `string` | Required | Bank account type | getType(): string | setType(string type): void |
-| `metadata` | `array` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
+| `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 | `pixKey` | `string` | Required | Pix key | getPixKey(): string | setPixKey(string pixKey): void |
 
 ## Example (as JSON)

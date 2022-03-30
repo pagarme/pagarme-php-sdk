@@ -43,7 +43,7 @@ class UpdateCardRequest implements \JsonSerializable
     private $billingAddress;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -58,7 +58,7 @@ class UpdateCardRequest implements \JsonSerializable
      * @param int $expYear
      * @param string $billingAddressId
      * @param CreateAddressRequest $billingAddress
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param string $label
      */
     public function __construct(
@@ -81,7 +81,6 @@ class UpdateCardRequest implements \JsonSerializable
 
     /**
      * Returns Holder Name.
-     *
      * Holder name
      */
     public function getHolderName(): string
@@ -91,7 +90,6 @@ class UpdateCardRequest implements \JsonSerializable
 
     /**
      * Sets Holder Name.
-     *
      * Holder name
      *
      * @required
@@ -104,7 +102,6 @@ class UpdateCardRequest implements \JsonSerializable
 
     /**
      * Returns Exp Month.
-     *
      * Expiration month
      */
     public function getExpMonth(): int
@@ -114,7 +111,6 @@ class UpdateCardRequest implements \JsonSerializable
 
     /**
      * Sets Exp Month.
-     *
      * Expiration month
      *
      * @required
@@ -127,7 +123,6 @@ class UpdateCardRequest implements \JsonSerializable
 
     /**
      * Returns Exp Year.
-     *
      * Expiration year
      */
     public function getExpYear(): int
@@ -137,7 +132,6 @@ class UpdateCardRequest implements \JsonSerializable
 
     /**
      * Sets Exp Year.
-     *
      * Expiration year
      *
      * @required
@@ -150,7 +144,6 @@ class UpdateCardRequest implements \JsonSerializable
 
     /**
      * Returns Billing Address Id.
-     *
      * Id of the address to be used as billing address
      */
     public function getBillingAddressId(): string
@@ -160,7 +153,6 @@ class UpdateCardRequest implements \JsonSerializable
 
     /**
      * Sets Billing Address Id.
-     *
      * Id of the address to be used as billing address
      *
      * @required
@@ -173,7 +165,6 @@ class UpdateCardRequest implements \JsonSerializable
 
     /**
      * Returns Billing Address.
-     *
      * Billing address
      */
     public function getBillingAddress(): CreateAddressRequest
@@ -183,7 +174,6 @@ class UpdateCardRequest implements \JsonSerializable
 
     /**
      * Sets Billing Address.
-     *
      * Billing address
      *
      * @required
@@ -196,8 +186,9 @@ class UpdateCardRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -206,11 +197,12 @@ class UpdateCardRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -242,8 +234,9 @@ class UpdateCardRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

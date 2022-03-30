@@ -42,7 +42,6 @@ class CreateApplePayHeaderRequest implements \JsonSerializable
 
     /**
      * Returns Public Key Hash.
-     *
      * SHA–256 hash, Base64 string codified
      */
     public function getPublicKeyHash(): ?string
@@ -52,7 +51,6 @@ class CreateApplePayHeaderRequest implements \JsonSerializable
 
     /**
      * Sets Public Key Hash.
-     *
      * SHA–256 hash, Base64 string codified
      *
      * @maps public_key_hash
@@ -64,7 +62,6 @@ class CreateApplePayHeaderRequest implements \JsonSerializable
 
     /**
      * Returns Ephemeral Public Key.
-     *
      * X.509 encoded key bytes, Base64 encoded as a string
      */
     public function getEphemeralPublicKey(): string
@@ -74,7 +71,6 @@ class CreateApplePayHeaderRequest implements \JsonSerializable
 
     /**
      * Sets Ephemeral Public Key.
-     *
      * X.509 encoded key bytes, Base64 encoded as a string
      *
      * @required
@@ -87,7 +83,6 @@ class CreateApplePayHeaderRequest implements \JsonSerializable
 
     /**
      * Returns Transaction Id.
-     *
      * Transaction identifier, generated on Device
      */
     public function getTransactionId(): ?string
@@ -97,7 +92,6 @@ class CreateApplePayHeaderRequest implements \JsonSerializable
 
     /**
      * Sets Transaction Id.
-     *
      * Transaction identifier, generated on Device
      *
      * @maps transaction_id
@@ -113,8 +107,9 @@ class CreateApplePayHeaderRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

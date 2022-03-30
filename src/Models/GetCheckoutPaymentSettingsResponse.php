@@ -73,7 +73,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Returns Success Url.
-     *
      * Success Url
      */
     public function getSuccessUrl(): string
@@ -83,7 +82,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Sets Success Url.
-     *
      * Success Url
      *
      * @required
@@ -96,7 +94,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Returns Payment Url.
-     *
      * Payment Url
      */
     public function getPaymentUrl(): string
@@ -106,7 +103,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Sets Payment Url.
-     *
      * Payment Url
      *
      * @required
@@ -119,7 +115,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Returns Accepted Payment Methods.
-     *
      * Accepted Payment Methods
      *
      * @return string[]
@@ -131,7 +126,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Sets Accepted Payment Methods.
-     *
      * Accepted Payment Methods
      *
      * @required
@@ -146,7 +140,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Status
      */
     public function getStatus(): string
@@ -156,7 +149,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Status
      *
      * @required
@@ -169,7 +161,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Returns Customer.
-     *
      * Customer
      */
     public function getCustomer(): ?GetCustomerResponse
@@ -179,7 +170,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Sets Customer.
-     *
      * Customer
      *
      * @maps customer
@@ -191,7 +181,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Payment amount
      */
     public function getAmount(): ?int
@@ -201,7 +190,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Payment amount
      *
      * @maps amount
@@ -213,7 +201,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Returns Default Payment Method.
-     *
      * Default Payment Method
      */
     public function getDefaultPaymentMethod(): ?string
@@ -223,7 +210,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Sets Default Payment Method.
-     *
      * Default Payment Method
      *
      * @maps default_payment_method
@@ -235,7 +221,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Returns Gateway Affiliation Id.
-     *
      * Gateway Affiliation Id
      */
     public function getGatewayAffiliationId(): ?string
@@ -245,7 +230,6 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 
     /**
      * Sets Gateway Affiliation Id.
-     *
      * Gateway Affiliation Id
      *
      * @maps gateway_affiliation_id
@@ -261,8 +245,9 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

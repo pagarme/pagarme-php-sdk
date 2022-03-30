@@ -39,7 +39,6 @@ class GetAnticipationLimitResponse implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Amount
      */
     public function getAmount(): int
@@ -49,7 +48,6 @@ class GetAnticipationLimitResponse implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Amount
      *
      * @required
@@ -62,7 +60,6 @@ class GetAnticipationLimitResponse implements \JsonSerializable
 
     /**
      * Returns Anticipation Fee.
-     *
      * Anticipation fee
      */
     public function getAnticipationFee(): int
@@ -72,7 +69,6 @@ class GetAnticipationLimitResponse implements \JsonSerializable
 
     /**
      * Sets Anticipation Fee.
-     *
      * Anticipation fee
      *
      * @required
@@ -89,8 +85,9 @@ class GetAnticipationLimitResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

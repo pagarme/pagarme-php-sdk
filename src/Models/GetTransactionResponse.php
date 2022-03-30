@@ -92,7 +92,7 @@ class GetTransactionResponse implements \JsonSerializable
     private $antifraudResponse;
 
     /**
-     * @var array|null
+     * @var array<string,string>|null
      */
     private $metadata;
 
@@ -148,7 +148,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Gateway Id.
-     *
      * Gateway transaction id
      */
     public function getGatewayId(): string
@@ -158,7 +157,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Sets Gateway Id.
-     *
      * Gateway transaction id
      *
      * @required
@@ -171,7 +169,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Amount in cents
      */
     public function getAmount(): int
@@ -181,7 +178,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Amount in cents
      *
      * @required
@@ -194,7 +190,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Transaction status
      */
     public function getStatus(): string
@@ -204,7 +199,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Transaction status
      *
      * @required
@@ -217,7 +211,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Success.
-     *
      * Indicates if the transaction ocurred successfuly
      */
     public function getSuccess(): bool
@@ -227,7 +220,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Sets Success.
-     *
      * Indicates if the transaction ocurred successfuly
      *
      * @required
@@ -240,7 +232,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Created At.
-     *
      * Creation date
      */
     public function getCreatedAt(): \DateTime
@@ -250,7 +241,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Sets Created At.
-     *
      * Creation date
      *
      * @required
@@ -264,7 +254,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Updated At.
-     *
      * Last update date
      */
     public function getUpdatedAt(): \DateTime
@@ -274,7 +263,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Sets Updated At.
-     *
      * Last update date
      *
      * @required
@@ -288,7 +276,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Attempt Count.
-     *
      * Number of attempts tried
      */
     public function getAttemptCount(): int
@@ -298,7 +285,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Sets Attempt Count.
-     *
      * Number of attempts tried
      *
      * @required
@@ -311,7 +297,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Max Attempts.
-     *
      * Max attempts
      */
     public function getMaxAttempts(): int
@@ -321,7 +306,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Sets Max Attempts.
-     *
      * Max attempts
      *
      * @required
@@ -334,7 +318,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Splits.
-     *
      * Splits
      *
      * @return GetSplitResponse[]
@@ -346,7 +329,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Sets Splits.
-     *
      * Splits
      *
      * @required
@@ -361,7 +343,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Next Attempt.
-     *
      * Date and time of the next attempt
      */
     public function getNextAttempt(): ?\DateTime
@@ -371,7 +352,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Sets Next Attempt.
-     *
      * Date and time of the next attempt
      *
      * @maps next_attempt
@@ -402,7 +382,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Id.
-     *
      * Código da transação
      */
     public function getId(): string
@@ -412,7 +391,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Sets Id.
-     *
      * Código da transação
      *
      * @required
@@ -425,7 +403,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Gateway Response.
-     *
      * The Gateway Response
      */
     public function getGatewayResponse(): GetGatewayResponseResponse
@@ -435,7 +412,6 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Sets Gateway Response.
-     *
      * The Gateway Response
      *
      * @required
@@ -467,6 +443,8 @@ class GetTransactionResponse implements \JsonSerializable
 
     /**
      * Returns Metadata.
+     *
+     * @return array<string,string>|null
      */
     public function getMetadata(): ?array
     {
@@ -477,6 +455,8 @@ class GetTransactionResponse implements \JsonSerializable
      * Sets Metadata.
      *
      * @maps metadata
+     *
+     * @param array<string,string>|null $metadata
      */
     public function setMetadata(?array $metadata): void
     {
@@ -512,8 +492,9 @@ class GetTransactionResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -67,7 +67,6 @@ class CreatePlanItemRequest implements \JsonSerializable
 
     /**
      * Returns Name.
-     *
      * Item name
      */
     public function getName(): string
@@ -77,7 +76,6 @@ class CreatePlanItemRequest implements \JsonSerializable
 
     /**
      * Sets Name.
-     *
      * Item name
      *
      * @required
@@ -90,7 +88,6 @@ class CreatePlanItemRequest implements \JsonSerializable
 
     /**
      * Returns Pricing Scheme.
-     *
      * Item's pricing scheme
      */
     public function getPricingScheme(): CreatePricingSchemeRequest
@@ -100,7 +97,6 @@ class CreatePlanItemRequest implements \JsonSerializable
 
     /**
      * Sets Pricing Scheme.
-     *
      * Item's pricing scheme
      *
      * @required
@@ -113,7 +109,6 @@ class CreatePlanItemRequest implements \JsonSerializable
 
     /**
      * Returns Id.
-     *
      * Item's id
      */
     public function getId(): string
@@ -123,7 +118,6 @@ class CreatePlanItemRequest implements \JsonSerializable
 
     /**
      * Sets Id.
-     *
      * Item's id
      *
      * @required
@@ -136,7 +130,6 @@ class CreatePlanItemRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Item's description
      */
     public function getDescription(): string
@@ -146,7 +139,6 @@ class CreatePlanItemRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Item's description
      *
      * @required
@@ -159,7 +151,6 @@ class CreatePlanItemRequest implements \JsonSerializable
 
     /**
      * Returns Cycles.
-     *
      * Number of cycles where the item will be charged
      */
     public function getCycles(): ?int
@@ -169,7 +160,6 @@ class CreatePlanItemRequest implements \JsonSerializable
 
     /**
      * Sets Cycles.
-     *
      * Number of cycles where the item will be charged
      *
      * @maps cycles
@@ -181,7 +171,6 @@ class CreatePlanItemRequest implements \JsonSerializable
 
     /**
      * Returns Quantity.
-     *
      * Quantity
      */
     public function getQuantity(): ?int
@@ -191,7 +180,6 @@ class CreatePlanItemRequest implements \JsonSerializable
 
     /**
      * Sets Quantity.
-     *
      * Quantity
      *
      * @maps quantity
@@ -207,8 +195,9 @@ class CreatePlanItemRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

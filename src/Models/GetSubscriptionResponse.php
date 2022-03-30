@@ -101,7 +101,7 @@ class GetSubscriptionResponse implements \JsonSerializable
     private $statementDescriptor;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -171,7 +171,7 @@ class GetSubscriptionResponse implements \JsonSerializable
      * @param GetCardResponse $card
      * @param GetSubscriptionItemResponse[] $items
      * @param string $statementDescriptor
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param GetSetupResponse $setup
      * @param string $gatewayAffiliationId
      * @param GetIncrementResponse[] $increments
@@ -551,6 +551,8 @@ class GetSubscriptionResponse implements \JsonSerializable
 
     /**
      * Returns Metadata.
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -562,6 +564,8 @@ class GetSubscriptionResponse implements \JsonSerializable
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -589,7 +593,6 @@ class GetSubscriptionResponse implements \JsonSerializable
 
     /**
      * Returns Gateway Affiliation Id.
-     *
      * Affiliation Code
      */
     public function getGatewayAffiliationId(): string
@@ -599,7 +602,6 @@ class GetSubscriptionResponse implements \JsonSerializable
 
     /**
      * Sets Gateway Affiliation Id.
-     *
      * Affiliation Code
      *
      * @required
@@ -686,7 +688,6 @@ class GetSubscriptionResponse implements \JsonSerializable
 
     /**
      * Returns Discounts.
-     *
      * Subscription discounts
      *
      * @return GetDiscountResponse[]|null
@@ -698,7 +699,6 @@ class GetSubscriptionResponse implements \JsonSerializable
 
     /**
      * Sets Discounts.
-     *
      * Subscription discounts
      *
      * @maps discounts
@@ -712,7 +712,6 @@ class GetSubscriptionResponse implements \JsonSerializable
 
     /**
      * Returns Increments.
-     *
      * Subscription increments
      *
      * @return GetIncrementResponse[]
@@ -724,7 +723,6 @@ class GetSubscriptionResponse implements \JsonSerializable
 
     /**
      * Sets Increments.
-     *
      * Subscription increments
      *
      * @required
@@ -739,7 +737,6 @@ class GetSubscriptionResponse implements \JsonSerializable
 
     /**
      * Returns Boleto Due Days.
-     *
      * Days until boleto expires
      */
     public function getBoletoDueDays(): ?int
@@ -749,7 +746,6 @@ class GetSubscriptionResponse implements \JsonSerializable
 
     /**
      * Sets Boleto Due Days.
-     *
      * Days until boleto expires
      *
      * @maps boleto_due_days
@@ -761,7 +757,6 @@ class GetSubscriptionResponse implements \JsonSerializable
 
     /**
      * Returns Split.
-     *
      * Subscription's split response
      */
     public function getSplit(): GetSubscriptionSplitResponse
@@ -771,7 +766,6 @@ class GetSubscriptionResponse implements \JsonSerializable
 
     /**
      * Sets Split.
-     *
      * Subscription's split response
      *
      * @required
@@ -788,8 +782,9 @@ class GetSubscriptionResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

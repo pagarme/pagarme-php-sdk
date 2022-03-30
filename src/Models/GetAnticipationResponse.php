@@ -103,7 +103,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Returns Id.
-     *
      * Id
      */
     public function getId(): string
@@ -113,7 +112,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Sets Id.
-     *
      * Id
      *
      * @required
@@ -126,7 +124,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Returns Requested Amount.
-     *
      * Requested amount
      */
     public function getRequestedAmount(): int
@@ -136,7 +133,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Sets Requested Amount.
-     *
      * Requested amount
      *
      * @required
@@ -149,7 +145,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Returns Approved Amount.
-     *
      * Approved amount
      */
     public function getApprovedAmount(): int
@@ -159,7 +154,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Sets Approved Amount.
-     *
      * Approved amount
      *
      * @required
@@ -172,7 +166,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Returns Recipient.
-     *
      * Recipient
      */
     public function getRecipient(): ?GetRecipientResponse
@@ -182,7 +175,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Sets Recipient.
-     *
      * Recipient
      *
      * @maps recipient
@@ -194,7 +186,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Returns Pgid.
-     *
      * Anticipation id on the gateway
      */
     public function getPgid(): string
@@ -204,7 +195,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Sets Pgid.
-     *
      * Anticipation id on the gateway
      *
      * @required
@@ -217,7 +207,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Returns Created At.
-     *
      * Creation date
      */
     public function getCreatedAt(): \DateTime
@@ -227,7 +216,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Sets Created At.
-     *
      * Creation date
      *
      * @required
@@ -241,7 +229,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Returns Updated At.
-     *
      * Last update date
      */
     public function getUpdatedAt(): \DateTime
@@ -251,7 +238,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Sets Updated At.
-     *
      * Last update date
      *
      * @required
@@ -265,7 +251,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Returns Payment Date.
-     *
      * Payment date
      */
     public function getPaymentDate(): \DateTime
@@ -275,7 +260,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Sets Payment Date.
-     *
      * Payment date
      *
      * @required
@@ -289,7 +273,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Status
      */
     public function getStatus(): string
@@ -299,7 +282,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Status
      *
      * @required
@@ -312,7 +294,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Returns Timeframe.
-     *
      * Timeframe
      */
     public function getTimeframe(): string
@@ -322,7 +303,6 @@ class GetAnticipationResponse implements \JsonSerializable
 
     /**
      * Sets Timeframe.
-     *
      * Timeframe
      *
      * @required
@@ -339,8 +319,9 @@ class GetAnticipationResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -20,7 +20,7 @@ class CreateWithdrawRequest implements \JsonSerializable
     private $amount;
 
     /**
-     * @var array|null
+     * @var array<string,string>|null
      */
     private $metadata;
 
@@ -53,6 +53,8 @@ class CreateWithdrawRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
+     *
+     * @return array<string,string>|null
      */
     public function getMetadata(): ?array
     {
@@ -63,6 +65,8 @@ class CreateWithdrawRequest implements \JsonSerializable
      * Sets Metadata.
      *
      * @maps metadata
+     *
+     * @param array<string,string>|null $metadata
      */
     public function setMetadata(?array $metadata): void
     {
@@ -75,8 +79,9 @@ class CreateWithdrawRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

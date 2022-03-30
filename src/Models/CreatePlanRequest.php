@@ -83,7 +83,7 @@ class CreatePlanRequest implements \JsonSerializable
     private $pricingScheme;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -121,7 +121,7 @@ class CreatePlanRequest implements \JsonSerializable
      * @param int[] $billingDays
      * @param string $billingType
      * @param CreatePricingSchemeRequest $pricingScheme
-     * @param array $metadata
+     * @param array<string,string> $metadata
      */
     public function __construct(
         string $name,
@@ -157,7 +157,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Name.
-     *
      * Plan's name
      */
     public function getName(): string
@@ -167,7 +166,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Name.
-     *
      * Plan's name
      *
      * @required
@@ -180,7 +178,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Description
      */
     public function getDescription(): string
@@ -190,7 +187,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Description
      *
      * @required
@@ -203,7 +199,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Statement Descriptor.
-     *
      * Text that will be printed on the credit card's statement
      */
     public function getStatementDescriptor(): string
@@ -213,7 +208,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Statement Descriptor.
-     *
      * Text that will be printed on the credit card's statement
      *
      * @required
@@ -226,7 +220,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Items.
-     *
      * Plan items
      *
      * @return CreatePlanItemRequest[]
@@ -238,7 +231,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Items.
-     *
      * Plan items
      *
      * @required
@@ -253,7 +245,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Shippable.
-     *
      * Indicates if the plan is shippable
      */
     public function getShippable(): bool
@@ -263,7 +254,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Shippable.
-     *
      * Indicates if the plan is shippable
      *
      * @required
@@ -276,7 +266,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Payment Methods.
-     *
      * Allowed payment methods for the plan
      *
      * @return string[]
@@ -288,7 +277,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Payment Methods.
-     *
      * Allowed payment methods for the plan
      *
      * @required
@@ -303,7 +291,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Installments.
-     *
      * Number of installments
      *
      * @return int[]
@@ -315,7 +302,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Installments.
-     *
      * Number of installments
      *
      * @required
@@ -330,7 +316,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Currency.
-     *
      * Currency
      */
     public function getCurrency(): string
@@ -340,7 +325,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Currency.
-     *
      * Currency
      *
      * @required
@@ -353,7 +337,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Interval.
-     *
      * Interval
      */
     public function getInterval(): string
@@ -363,7 +346,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Interval.
-     *
      * Interval
      *
      * @required
@@ -376,7 +358,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Interval Count.
-     *
      * Interval counts between two charges. For instance, if the interval is 'month' and count is 2, the
      * customer will be charged once every two months.
      */
@@ -387,7 +368,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Interval Count.
-     *
      * Interval counts between two charges. For instance, if the interval is 'month' and count is 2, the
      * customer will be charged once every two months.
      *
@@ -401,7 +381,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Billing Days.
-     *
      * Allowed billings days for the subscription, in case the plan type is 'exact_day'
      *
      * @return int[]
@@ -413,7 +392,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Billing Days.
-     *
      * Allowed billings days for the subscription, in case the plan type is 'exact_day'
      *
      * @required
@@ -428,7 +406,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Billing Type.
-     *
      * Billing type
      */
     public function getBillingType(): string
@@ -438,7 +415,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Billing Type.
-     *
      * Billing type
      *
      * @required
@@ -451,7 +427,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Pricing Scheme.
-     *
      * Plan's pricing scheme
      */
     public function getPricingScheme(): CreatePricingSchemeRequest
@@ -461,7 +436,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Pricing Scheme.
-     *
      * Plan's pricing scheme
      *
      * @required
@@ -474,8 +448,9 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -484,11 +459,12 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -497,7 +473,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Minimum Price.
-     *
      * Minimum price that will be charged
      */
     public function getMinimumPrice(): ?int
@@ -507,7 +482,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Minimum Price.
-     *
      * Minimum price that will be charged
      *
      * @maps minimum_price
@@ -519,7 +493,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Cycles.
-     *
      * Number of cycles
      */
     public function getCycles(): ?int
@@ -529,7 +502,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Cycles.
-     *
      * Number of cycles
      *
      * @maps cycles
@@ -541,7 +513,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Quantity.
-     *
      * Quantity
      */
     public function getQuantity(): ?int
@@ -551,7 +522,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Quantity.
-     *
      * Quantity
      *
      * @maps quantity
@@ -563,7 +533,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Trial Period Days.
-     *
      * Trial period, where the customer will not be charged.
      */
     public function getTrialPeriodDays(): ?int
@@ -573,7 +542,6 @@ class CreatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Trial Period Days.
-     *
      * Trial period, where the customer will not be charged.
      *
      * @maps trial_period_days
@@ -589,8 +557,9 @@ class CreatePlanRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

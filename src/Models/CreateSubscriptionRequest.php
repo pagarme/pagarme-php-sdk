@@ -89,7 +89,7 @@ class CreateSubscriptionRequest implements \JsonSerializable
     private $discounts;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -193,7 +193,7 @@ class CreateSubscriptionRequest implements \JsonSerializable
      * @param CreateSubscriptionItemRequest[] $items
      * @param CreateShippingRequest $shipping
      * @param CreateDiscountRequest[] $discounts
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param CreateSetupRequest $setup
      * @param CreateIncrementRequest[] $increments
      */
@@ -237,7 +237,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Customer.
-     *
      * Customer
      */
     public function getCustomer(): CreateCustomerRequest
@@ -247,7 +246,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Customer.
-     *
      * Customer
      *
      * @required
@@ -260,7 +258,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Card.
-     *
      * Card
      */
     public function getCard(): CreateCardRequest
@@ -270,7 +267,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Card.
-     *
      * Card
      *
      * @required
@@ -283,7 +279,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * Subscription code
      */
     public function getCode(): string
@@ -293,7 +288,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * Subscription code
      *
      * @required
@@ -306,7 +300,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Payment Method.
-     *
      * Payment method
      */
     public function getPaymentMethod(): string
@@ -316,7 +309,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Payment Method.
-     *
      * Payment method
      *
      * @required
@@ -329,7 +321,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Billing Type.
-     *
      * Billing type
      */
     public function getBillingType(): string
@@ -339,7 +330,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Billing Type.
-     *
      * Billing type
      *
      * @required
@@ -352,7 +342,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Statement Descriptor.
-     *
      * Statement descriptor for credit card subscriptions
      */
     public function getStatementDescriptor(): string
@@ -362,7 +351,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Statement Descriptor.
-     *
      * Statement descriptor for credit card subscriptions
      *
      * @required
@@ -375,7 +363,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Subscription description
      */
     public function getDescription(): string
@@ -385,7 +372,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Subscription description
      *
      * @required
@@ -398,7 +384,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Currency.
-     *
      * Currency
      */
     public function getCurrency(): string
@@ -408,7 +393,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Currency.
-     *
      * Currency
      *
      * @required
@@ -421,7 +405,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Interval.
-     *
      * Interval
      */
     public function getInterval(): string
@@ -431,7 +414,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Interval.
-     *
      * Interval
      *
      * @required
@@ -444,7 +426,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Interval Count.
-     *
      * Interval count
      */
     public function getIntervalCount(): int
@@ -454,7 +435,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Interval Count.
-     *
      * Interval count
      *
      * @required
@@ -467,7 +447,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Pricing Scheme.
-     *
      * Subscription pricing scheme
      */
     public function getPricingScheme(): CreatePricingSchemeRequest
@@ -477,7 +456,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Pricing Scheme.
-     *
      * Subscription pricing scheme
      *
      * @required
@@ -490,7 +468,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Items.
-     *
      * Subscription items
      *
      * @return CreateSubscriptionItemRequest[]
@@ -502,7 +479,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Items.
-     *
      * Subscription items
      *
      * @required
@@ -517,7 +493,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Shipping.
-     *
      * Shipping
      */
     public function getShipping(): CreateShippingRequest
@@ -527,7 +502,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Shipping.
-     *
      * Shipping
      *
      * @required
@@ -540,7 +514,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Discounts.
-     *
      * Discounts
      *
      * @return CreateDiscountRequest[]
@@ -552,7 +525,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Discounts.
-     *
      * Discounts
      *
      * @required
@@ -567,8 +539,9 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -577,11 +550,12 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -590,7 +564,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Setup.
-     *
      * Setup data
      */
     public function getSetup(): CreateSetupRequest
@@ -600,7 +573,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Setup.
-     *
      * Setup data
      *
      * @required
@@ -613,7 +585,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Plan Id.
-     *
      * Plan id
      */
     public function getPlanId(): ?string
@@ -623,7 +594,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Plan Id.
-     *
      * Plan id
      *
      * @maps plan_id
@@ -635,7 +605,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Customer Id.
-     *
      * Customer id
      */
     public function getCustomerId(): ?string
@@ -645,7 +614,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Customer Id.
-     *
      * Customer id
      *
      * @maps customer_id
@@ -657,7 +625,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Card Id.
-     *
      * Card id
      */
     public function getCardId(): ?string
@@ -667,7 +634,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Card Id.
-     *
      * Card id
      *
      * @maps card_id
@@ -679,7 +645,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Billing Day.
-     *
      * Billing day
      */
     public function getBillingDay(): ?int
@@ -689,7 +654,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Billing Day.
-     *
      * Billing day
      *
      * @maps billing_day
@@ -701,7 +665,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Installments.
-     *
      * Number of installments
      */
     public function getInstallments(): ?int
@@ -711,7 +674,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Installments.
-     *
      * Number of installments
      *
      * @maps installments
@@ -723,7 +685,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Start At.
-     *
      * Subscription start date
      */
     public function getStartAt(): ?\DateTime
@@ -733,7 +694,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Start At.
-     *
      * Subscription start date
      *
      * @maps start_at
@@ -746,7 +706,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Minimum Price.
-     *
      * Subscription minimum price
      */
     public function getMinimumPrice(): ?int
@@ -756,7 +715,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Minimum Price.
-     *
      * Subscription minimum price
      *
      * @maps minimum_price
@@ -768,7 +726,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Cycles.
-     *
      * Number of cycles
      */
     public function getCycles(): ?int
@@ -778,7 +735,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Cycles.
-     *
      * Number of cycles
      *
      * @maps cycles
@@ -790,7 +746,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Card Token.
-     *
      * Card token
      */
     public function getCardToken(): ?string
@@ -800,7 +755,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Card Token.
-     *
      * Card token
      *
      * @maps card_token
@@ -812,7 +766,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Gateway Affiliation Id.
-     *
      * Gateway Affiliation code
      */
     public function getGatewayAffiliationId(): ?string
@@ -822,7 +775,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Gateway Affiliation Id.
-     *
      * Gateway Affiliation code
      *
      * @maps gateway_affiliation_id
@@ -834,7 +786,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Quantity.
-     *
      * Quantity
      */
     public function getQuantity(): ?int
@@ -844,7 +795,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Quantity.
-     *
      * Quantity
      *
      * @maps quantity
@@ -856,7 +806,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Boleto Due Days.
-     *
      * Days until boleto expires
      */
     public function getBoletoDueDays(): ?int
@@ -866,7 +815,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Boleto Due Days.
-     *
      * Days until boleto expires
      *
      * @maps boleto_due_days
@@ -878,7 +826,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Increments.
-     *
      * Increments
      *
      * @return CreateIncrementRequest[]
@@ -890,7 +837,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Increments.
-     *
      * Increments
      *
      * @required
@@ -923,7 +869,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Submerchant.
-     *
      * SubMerchant
      */
     public function getSubmerchant(): ?CreateSubMerchantRequest
@@ -933,7 +878,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Submerchant.
-     *
      * SubMerchant
      *
      * @maps submerchant
@@ -945,7 +889,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Returns Split.
-     *
      * Subscription's split
      */
     public function getSplit(): ?CreateSubscriptionSplitRequest
@@ -955,7 +898,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
 
     /**
      * Sets Split.
-     *
      * Subscription's split
      *
      * @maps split
@@ -971,8 +913,9 @@ class CreateSubscriptionRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

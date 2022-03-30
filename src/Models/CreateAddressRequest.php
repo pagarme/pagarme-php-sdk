@@ -58,7 +58,7 @@ class CreateAddressRequest implements \JsonSerializable
     private $complement;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -81,7 +81,7 @@ class CreateAddressRequest implements \JsonSerializable
      * @param string $state
      * @param string $country
      * @param string $complement
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param string $line1
      * @param string $line2
      */
@@ -113,7 +113,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Street.
-     *
      * Street
      */
     public function getStreet(): string
@@ -123,7 +122,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Street.
-     *
      * Street
      *
      * @required
@@ -136,7 +134,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Number.
-     *
      * Number
      */
     public function getNumber(): string
@@ -146,7 +143,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Number.
-     *
      * Number
      *
      * @required
@@ -159,7 +155,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Zip Code.
-     *
      * The zip code containing only numbers. No special characters or spaces.
      */
     public function getZipCode(): string
@@ -169,7 +164,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Zip Code.
-     *
      * The zip code containing only numbers. No special characters or spaces.
      *
      * @required
@@ -182,7 +176,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Neighborhood.
-     *
      * Neighborhood
      */
     public function getNeighborhood(): string
@@ -192,7 +185,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Neighborhood.
-     *
      * Neighborhood
      *
      * @required
@@ -205,7 +197,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Returns City.
-     *
      * City
      */
     public function getCity(): string
@@ -215,7 +206,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Sets City.
-     *
      * City
      *
      * @required
@@ -228,7 +218,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Returns State.
-     *
      * State
      */
     public function getState(): string
@@ -238,7 +227,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Sets State.
-     *
      * State
      *
      * @required
@@ -251,7 +239,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Country.
-     *
      * Country. Must be entered using ISO 3166-1 alpha-2 format. See https://pt.wikipedia.org/wiki/ISO_3166-
      * 1_alfa-2
      */
@@ -262,7 +249,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Country.
-     *
      * Country. Must be entered using ISO 3166-1 alpha-2 format. See https://pt.wikipedia.org/wiki/ISO_3166-
      * 1_alfa-2
      *
@@ -276,7 +262,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Complement.
-     *
      * Complement
      */
     public function getComplement(): string
@@ -286,7 +271,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Complement.
-     *
      * Complement
      *
      * @required
@@ -299,8 +283,9 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -309,11 +294,12 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -322,7 +308,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Line 1.
-     *
      * Line 1 for address
      */
     public function getLine1(): string
@@ -332,7 +317,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Line 1.
-     *
      * Line 1 for address
      *
      * @required
@@ -345,7 +329,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Returns Line 2.
-     *
      * Line 2 for address
      */
     public function getLine2(): string
@@ -355,7 +338,6 @@ class CreateAddressRequest implements \JsonSerializable
 
     /**
      * Sets Line 2.
-     *
      * Line 2 for address
      *
      * @required
@@ -372,8 +354,9 @@ class CreateAddressRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

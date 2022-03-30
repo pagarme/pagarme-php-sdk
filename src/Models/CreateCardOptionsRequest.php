@@ -32,7 +32,6 @@ class CreateCardOptionsRequest implements \JsonSerializable
 
     /**
      * Returns Verify Card.
-     *
      * Indicates if the card should be verified before creation. If true, executes an authorization before
      * saving the card.
      */
@@ -43,7 +42,6 @@ class CreateCardOptionsRequest implements \JsonSerializable
 
     /**
      * Sets Verify Card.
-     *
      * Indicates if the card should be verified before creation. If true, executes an authorization before
      * saving the card.
      *
@@ -61,8 +59,9 @@ class CreateCardOptionsRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

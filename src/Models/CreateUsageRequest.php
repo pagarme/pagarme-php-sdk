@@ -120,7 +120,6 @@ class CreateUsageRequest implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * Identification code in the client system
      */
     public function getCode(): ?string
@@ -130,7 +129,6 @@ class CreateUsageRequest implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * Identification code in the client system
      *
      * @maps code
@@ -142,7 +140,6 @@ class CreateUsageRequest implements \JsonSerializable
 
     /**
      * Returns Group.
-     *
      * identification group in the client system
      */
     public function getGroup(): ?string
@@ -152,7 +149,6 @@ class CreateUsageRequest implements \JsonSerializable
 
     /**
      * Sets Group.
-     *
      * identification group in the client system
      *
      * @maps group
@@ -164,7 +160,6 @@ class CreateUsageRequest implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Field used in item scheme type 'Percent'
      */
     public function getAmount(): ?int
@@ -174,7 +169,6 @@ class CreateUsageRequest implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Field used in item scheme type 'Percent'
      *
      * @maps amount
@@ -190,8 +184,9 @@ class CreateUsageRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

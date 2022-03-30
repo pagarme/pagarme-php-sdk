@@ -35,7 +35,6 @@ class CreateCheckoutPixPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Expires At.
-     *
      * Expires at
      */
     public function getExpiresAt(): ?\DateTime
@@ -45,7 +44,6 @@ class CreateCheckoutPixPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Expires At.
-     *
      * Expires at
      *
      * @maps expires_at
@@ -58,7 +56,6 @@ class CreateCheckoutPixPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Expires In.
-     *
      * Expires in
      */
     public function getExpiresIn(): ?int
@@ -68,7 +65,6 @@ class CreateCheckoutPixPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Expires In.
-     *
      * Expires in
      *
      * @maps expires_in
@@ -80,7 +76,6 @@ class CreateCheckoutPixPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Additional Information.
-     *
      * Additional information
      *
      * @return PixAdditionalInformation[]|null
@@ -92,7 +87,6 @@ class CreateCheckoutPixPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Additional Information.
-     *
      * Additional information
      *
      * @maps additional_information
@@ -110,8 +104,9 @@ class CreateCheckoutPixPaymentRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -89,7 +89,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Installments.
-     *
      * Number of installments
      */
     public function getInstallments(): ?int
@@ -99,7 +98,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Installments.
-     *
      * Number of installments
      *
      * @maps installments
@@ -111,7 +109,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Statement Descriptor.
-     *
      * The text that will be shown on the credit card's statement
      */
     public function getStatementDescriptor(): ?string
@@ -121,7 +118,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Statement Descriptor.
-     *
      * The text that will be shown on the credit card's statement
      *
      * @maps statement_descriptor
@@ -133,7 +129,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Card.
-     *
      * Credit card data
      */
     public function getCard(): ?CreateCardRequest
@@ -143,7 +138,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Card.
-     *
      * Credit card data
      *
      * @maps card
@@ -155,7 +149,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Card Id.
-     *
      * The credit card id
      */
     public function getCardId(): ?string
@@ -165,7 +158,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Card Id.
-     *
      * The credit card id
      *
      * @maps card_id
@@ -195,7 +187,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Recurrence.
-     *
      * Indicates a recurrence
      */
     public function getRecurrence(): ?bool
@@ -205,7 +196,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Recurrence.
-     *
      * Indicates a recurrence
      *
      * @maps recurrence
@@ -217,7 +207,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Capture.
-     *
      * Indicates if the operation should be only authorization or auth and capture.
      */
     public function getCapture(): ?bool
@@ -227,7 +216,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Capture.
-     *
      * Indicates if the operation should be only authorization or auth and capture.
      *
      * @maps capture
@@ -239,7 +227,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Extended Limit Enabled.
-     *
      * Indicates whether the extended label (private label) is enabled
      */
     public function getExtendedLimitEnabled(): ?bool
@@ -249,7 +236,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Extended Limit Enabled.
-     *
      * Indicates whether the extended label (private label) is enabled
      *
      * @maps extended_limit_enabled
@@ -261,7 +247,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Extended Limit Code.
-     *
      * Extended Limit Code
      */
     public function getExtendedLimitCode(): ?string
@@ -271,7 +256,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Extended Limit Code.
-     *
      * Extended Limit Code
      *
      * @maps extended_limit_code
@@ -283,7 +267,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Merchant Category Code.
-     *
      * Customer business segment code
      */
     public function getMerchantCategoryCode(): ?int
@@ -293,7 +276,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Merchant Category Code.
-     *
      * Customer business segment code
      *
      * @maps merchant_category_code
@@ -305,7 +287,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Authentication.
-     *
      * The payment authentication request
      */
     public function getAuthentication(): ?CreatePaymentAuthenticationRequest
@@ -315,7 +296,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Authentication.
-     *
      * The payment authentication request
      *
      * @maps authentication
@@ -327,7 +307,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Contactless.
-     *
      * The Credit card payment contactless request
      */
     public function getContactless(): ?CreateCardPaymentContactlessRequest
@@ -337,7 +316,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Contactless.
-     *
      * The Credit card payment contactless request
      *
      * @maps contactless
@@ -349,7 +327,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Auto Recovery.
-     *
      * Indicates whether a particular payment will enter the offline retry flow
      */
     public function getAutoRecovery(): ?bool
@@ -359,7 +336,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Auto Recovery.
-     *
      * Indicates whether a particular payment will enter the offline retry flow
      *
      * @maps auto_recovery
@@ -371,7 +347,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Operation Type.
-     *
      * AuthOnly, AuthAndCapture, PreAuth
      */
     public function getOperationType(): ?string
@@ -381,7 +356,6 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Operation Type.
-     *
      * AuthOnly, AuthAndCapture, PreAuth
      *
      * @maps operation_type
@@ -397,8 +371,9 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

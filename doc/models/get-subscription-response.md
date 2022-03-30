@@ -15,28 +15,28 @@
 | `interval` | `string` | Required | - | getInterval(): string | setInterval(string interval): void |
 | `intervalCount` | `int` | Required | - | getIntervalCount(): int | setIntervalCount(int intervalCount): void |
 | `billingType` | `string` | Required | - | getBillingType(): string | setBillingType(string billingType): void |
-| `currentCycle` | [`?GetPeriodResponse`](/doc/models/get-period-response.md) | Optional | - | getCurrentCycle(): ?GetPeriodResponse | setCurrentCycle(?GetPeriodResponse currentCycle): void |
+| `currentCycle` | [`?GetPeriodResponse`](../../doc/models/get-period-response.md) | Optional | - | getCurrentCycle(): ?GetPeriodResponse | setCurrentCycle(?GetPeriodResponse currentCycle): void |
 | `paymentMethod` | `string` | Required | - | getPaymentMethod(): string | setPaymentMethod(string paymentMethod): void |
 | `currency` | `string` | Required | - | getCurrency(): string | setCurrency(string currency): void |
 | `installments` | `int` | Required | - | getInstallments(): int | setInstallments(int installments): void |
 | `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
 | `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
 | `updatedAt` | `\DateTime` | Required | - | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
-| `customer` | [`?GetCustomerResponse`](/doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
-| `card` | [`GetCardResponse`](/doc/models/get-card-response.md) | Required | - | getCard(): GetCardResponse | setCard(GetCardResponse card): void |
-| `items` | [`GetSubscriptionItemResponse[]`](/doc/models/get-subscription-item-response.md) | Required | - | getItems(): array | setItems(array items): void |
+| `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
+| `card` | [`GetCardResponse`](../../doc/models/get-card-response.md) | Required | - | getCard(): GetCardResponse | setCard(GetCardResponse card): void |
+| `items` | [`GetSubscriptionItemResponse[]`](../../doc/models/get-subscription-item-response.md) | Required | - | getItems(): array | setItems(array items): void |
 | `statementDescriptor` | `string` | Required | - | getStatementDescriptor(): string | setStatementDescriptor(string statementDescriptor): void |
-| `metadata` | `array` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
-| `setup` | [`GetSetupResponse`](/doc/models/get-setup-response.md) | Required | - | getSetup(): GetSetupResponse | setSetup(GetSetupResponse setup): void |
+| `metadata` | `array<string,string>` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
+| `setup` | [`GetSetupResponse`](../../doc/models/get-setup-response.md) | Required | - | getSetup(): GetSetupResponse | setSetup(GetSetupResponse setup): void |
 | `gatewayAffiliationId` | `string` | Required | Affiliation Code | getGatewayAffiliationId(): string | setGatewayAffiliationId(string gatewayAffiliationId): void |
 | `nextBillingAt` | `?\DateTime` | Optional | - | getNextBillingAt(): ?\DateTime | setNextBillingAt(?\DateTime nextBillingAt): void |
 | `billingDay` | `?int` | Optional | - | getBillingDay(): ?int | setBillingDay(?int billingDay): void |
 | `minimumPrice` | `?int` | Optional | - | getMinimumPrice(): ?int | setMinimumPrice(?int minimumPrice): void |
 | `canceledAt` | `?\DateTime` | Optional | - | getCanceledAt(): ?\DateTime | setCanceledAt(?\DateTime canceledAt): void |
-| `discounts` | [`?(GetDiscountResponse[])`](/doc/models/get-discount-response.md) | Optional | Subscription discounts | getDiscounts(): ?array | setDiscounts(?array discounts): void |
-| `increments` | [`GetIncrementResponse[]`](/doc/models/get-increment-response.md) | Required | Subscription increments | getIncrements(): array | setIncrements(array increments): void |
+| `discounts` | [`?(GetDiscountResponse[])`](../../doc/models/get-discount-response.md) | Optional | Subscription discounts | getDiscounts(): ?array | setDiscounts(?array discounts): void |
+| `increments` | [`GetIncrementResponse[]`](../../doc/models/get-increment-response.md) | Required | Subscription increments | getIncrements(): array | setIncrements(array increments): void |
 | `boletoDueDays` | `?int` | Optional | Days until boleto expires | getBoletoDueDays(): ?int | setBoletoDueDays(?int boletoDueDays): void |
-| `split` | [`GetSubscriptionSplitResponse`](/doc/models/get-subscription-split-response.md) | Required | Subscription's split response | getSplit(): GetSubscriptionSplitResponse | setSplit(GetSubscriptionSplitResponse split): void |
+| `split` | [`GetSubscriptionSplitResponse`](../../doc/models/get-subscription-split-response.md) | Required | Subscription's split response | getSplit(): GetSubscriptionSplitResponse | setSplit(GetSubscriptionSplitResponse split): void |
 
 ## Example (as JSON)
 
