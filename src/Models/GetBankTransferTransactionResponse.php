@@ -104,7 +104,6 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Url.
-     *
      * Payment url
      */
     public function getUrl(): string
@@ -114,7 +113,6 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Url.
-     *
      * Payment url
      *
      * @required
@@ -127,7 +125,6 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Bank Tid.
-     *
      * Transaction identifier for the bank
      */
     public function getBankTid(): string
@@ -137,7 +134,6 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Bank Tid.
-     *
      * Transaction identifier for the bank
      *
      * @required
@@ -150,7 +146,6 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Bank.
-     *
      * Bank
      */
     public function getBank(): string
@@ -160,7 +155,6 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Bank.
-     *
      * Bank
      *
      * @required
@@ -173,7 +167,6 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Paid At.
-     *
      * Payment date
      */
     public function getPaidAt(): ?\DateTime
@@ -183,7 +176,6 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Paid At.
-     *
      * Payment date
      *
      * @maps paid_at
@@ -196,7 +188,6 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Paid Amount.
-     *
      * Paid amount
      */
     public function getPaidAmount(): ?int
@@ -206,7 +197,6 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Paid Amount.
-     *
      * Paid amount
      *
      * @maps paid_amount
@@ -222,8 +212,9 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

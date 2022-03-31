@@ -79,7 +79,7 @@ class GetRecipientResponse implements \JsonSerializable
     private $gatewayRecipients;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -116,7 +116,7 @@ class GetRecipientResponse implements \JsonSerializable
      * @param \DateTime $deletedAt
      * @param GetBankAccountResponse $defaultBankAccount
      * @param GetGatewayRecipientResponse[] $gatewayRecipients
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param string $code
      * @param string $paymentMode
      */
@@ -156,7 +156,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Id.
-     *
      * Id
      */
     public function getId(): string
@@ -166,7 +165,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Id.
-     *
      * Id
      *
      * @required
@@ -179,7 +177,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Name.
-     *
      * Name
      */
     public function getName(): string
@@ -189,7 +186,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Name.
-     *
      * Name
      *
      * @required
@@ -202,7 +198,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Email.
-     *
      * Email
      */
     public function getEmail(): string
@@ -212,7 +207,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Email.
-     *
      * Email
      *
      * @required
@@ -225,7 +219,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Document.
-     *
      * Document
      */
     public function getDocument(): string
@@ -235,7 +228,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Document.
-     *
      * Document
      *
      * @required
@@ -248,7 +240,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Description
      */
     public function getDescription(): string
@@ -258,7 +249,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Description
      *
      * @required
@@ -271,7 +261,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Type
      */
     public function getType(): string
@@ -281,7 +270,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Type
      *
      * @required
@@ -294,7 +282,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Status
      */
     public function getStatus(): string
@@ -304,7 +291,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Status
      *
      * @required
@@ -317,7 +303,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Created At.
-     *
      * Creation date
      */
     public function getCreatedAt(): \DateTime
@@ -327,7 +312,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Created At.
-     *
      * Creation date
      *
      * @required
@@ -341,7 +325,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Updated At.
-     *
      * Last update date
      */
     public function getUpdatedAt(): \DateTime
@@ -351,7 +334,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Updated At.
-     *
      * Last update date
      *
      * @required
@@ -365,7 +347,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Deleted At.
-     *
      * Deletion date
      */
     public function getDeletedAt(): \DateTime
@@ -375,7 +356,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Deleted At.
-     *
      * Deletion date
      *
      * @required
@@ -389,7 +369,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Default Bank Account.
-     *
      * Default bank account
      */
     public function getDefaultBankAccount(): GetBankAccountResponse
@@ -399,7 +378,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Default Bank Account.
-     *
      * Default bank account
      *
      * @required
@@ -412,7 +390,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Gateway Recipients.
-     *
      * Info about the recipient on the gateway
      *
      * @return GetGatewayRecipientResponse[]
@@ -424,7 +401,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Gateway Recipients.
-     *
      * Info about the recipient on the gateway
      *
      * @required
@@ -439,8 +415,9 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -449,11 +426,12 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -499,7 +477,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * Recipient code
      */
     public function getCode(): string
@@ -509,7 +486,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * Recipient code
      *
      * @required
@@ -522,7 +498,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Payment Mode.
-     *
      * Payment mode
      */
     public function getPaymentMode(): string
@@ -532,7 +507,6 @@ class GetRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Payment Mode.
-     *
      * Payment mode
      *
      * @required
@@ -549,8 +523,9 @@ class GetRecipientResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

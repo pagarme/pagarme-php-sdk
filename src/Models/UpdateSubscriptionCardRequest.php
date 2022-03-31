@@ -39,7 +39,6 @@ class UpdateSubscriptionCardRequest implements \JsonSerializable
 
     /**
      * Returns Card.
-     *
      * Credit card data
      */
     public function getCard(): CreateCardRequest
@@ -49,7 +48,6 @@ class UpdateSubscriptionCardRequest implements \JsonSerializable
 
     /**
      * Sets Card.
-     *
      * Credit card data
      *
      * @required
@@ -62,7 +60,6 @@ class UpdateSubscriptionCardRequest implements \JsonSerializable
 
     /**
      * Returns Card Id.
-     *
      * Credit card id
      */
     public function getCardId(): string
@@ -72,7 +69,6 @@ class UpdateSubscriptionCardRequest implements \JsonSerializable
 
     /**
      * Sets Card Id.
-     *
      * Credit card id
      *
      * @required
@@ -89,8 +85,9 @@ class UpdateSubscriptionCardRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -39,7 +39,6 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
 
     /**
      * Returns Max.
-     *
      * Max limit
      */
     public function getMax(): GetAnticipationLimitResponse
@@ -49,7 +48,6 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
 
     /**
      * Sets Max.
-     *
      * Max limit
      *
      * @required
@@ -62,7 +60,6 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
 
     /**
      * Returns Min.
-     *
      * Min limit
      */
     public function getMin(): GetAnticipationLimitResponse
@@ -72,7 +69,6 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
 
     /**
      * Sets Min.
-     *
      * Min limit
      *
      * @required
@@ -89,8 +85,9 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -36,7 +36,6 @@ class ListIncrementsResponse implements \JsonSerializable
 
     /**
      * Returns Data.
-     *
      * The Increments response
      *
      * @return GetIncrementResponse[]
@@ -48,7 +47,6 @@ class ListIncrementsResponse implements \JsonSerializable
 
     /**
      * Sets Data.
-     *
      * The Increments response
      *
      * @required
@@ -63,7 +61,6 @@ class ListIncrementsResponse implements \JsonSerializable
 
     /**
      * Returns Paging.
-     *
      * Paging object
      */
     public function getPaging(): PagingResponse
@@ -73,7 +70,6 @@ class ListIncrementsResponse implements \JsonSerializable
 
     /**
      * Sets Paging.
-     *
      * Paging object
      *
      * @required
@@ -90,8 +86,9 @@ class ListIncrementsResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -89,7 +89,7 @@ class GetChargeResponse implements \JsonSerializable
     private $customer;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -124,7 +124,7 @@ class GetChargeResponse implements \JsonSerializable
      * @param \DateTime $dueAt
      * @param \DateTime $createdAt
      * @param \DateTime $updatedAt
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param int $canceledAmount
      * @param int $paidAmount
      */
@@ -425,6 +425,8 @@ class GetChargeResponse implements \JsonSerializable
 
     /**
      * Returns Metadata.
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -436,6 +438,8 @@ class GetChargeResponse implements \JsonSerializable
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -482,7 +486,6 @@ class GetChargeResponse implements \JsonSerializable
 
     /**
      * Returns Canceled Amount.
-     *
      * Canceled Amount
      */
     public function getCanceledAmount(): int
@@ -492,7 +495,6 @@ class GetChargeResponse implements \JsonSerializable
 
     /**
      * Sets Canceled Amount.
-     *
      * Canceled Amount
      *
      * @required
@@ -505,7 +507,6 @@ class GetChargeResponse implements \JsonSerializable
 
     /**
      * Returns Paid Amount.
-     *
      * Paid amount
      */
     public function getPaidAmount(): int
@@ -515,7 +516,6 @@ class GetChargeResponse implements \JsonSerializable
 
     /**
      * Sets Paid Amount.
-     *
      * Paid amount
      *
      * @required
@@ -532,8 +532,9 @@ class GetChargeResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

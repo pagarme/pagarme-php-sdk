@@ -67,7 +67,6 @@ class UpdatePlanItemRequest implements \JsonSerializable
 
     /**
      * Returns Name.
-     *
      * Item name
      */
     public function getName(): string
@@ -77,7 +76,6 @@ class UpdatePlanItemRequest implements \JsonSerializable
 
     /**
      * Sets Name.
-     *
      * Item name
      *
      * @required
@@ -90,7 +88,6 @@ class UpdatePlanItemRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Description
      */
     public function getDescription(): string
@@ -100,7 +97,6 @@ class UpdatePlanItemRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Description
      *
      * @required
@@ -113,7 +109,6 @@ class UpdatePlanItemRequest implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Item status
      */
     public function getStatus(): string
@@ -123,7 +118,6 @@ class UpdatePlanItemRequest implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Item status
      *
      * @required
@@ -136,7 +130,6 @@ class UpdatePlanItemRequest implements \JsonSerializable
 
     /**
      * Returns Pricing Scheme.
-     *
      * Pricing scheme
      */
     public function getPricingScheme(): UpdatePricingSchemeRequest
@@ -146,7 +139,6 @@ class UpdatePlanItemRequest implements \JsonSerializable
 
     /**
      * Sets Pricing Scheme.
-     *
      * Pricing scheme
      *
      * @required
@@ -159,7 +151,6 @@ class UpdatePlanItemRequest implements \JsonSerializable
 
     /**
      * Returns Quantity.
-     *
      * Quantity
      */
     public function getQuantity(): ?int
@@ -169,7 +160,6 @@ class UpdatePlanItemRequest implements \JsonSerializable
 
     /**
      * Sets Quantity.
-     *
      * Quantity
      *
      * @maps quantity
@@ -181,7 +171,6 @@ class UpdatePlanItemRequest implements \JsonSerializable
 
     /**
      * Returns Cycles.
-     *
      * Number of cycles that the item will be charged
      */
     public function getCycles(): ?int
@@ -191,7 +180,6 @@ class UpdatePlanItemRequest implements \JsonSerializable
 
     /**
      * Sets Cycles.
-     *
      * Number of cycles that the item will be charged
      *
      * @maps cycles
@@ -207,8 +195,9 @@ class UpdatePlanItemRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

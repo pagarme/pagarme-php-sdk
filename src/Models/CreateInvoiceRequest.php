@@ -18,12 +18,12 @@ use stdClass;
 class CreateInvoiceRequest implements \JsonSerializable
 {
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
     /**
-     * @param array $metadata
+     * @param array<string,string> $metadata
      */
     public function __construct(array $metadata)
     {
@@ -32,8 +32,9 @@ class CreateInvoiceRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -42,11 +43,12 @@ class CreateInvoiceRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -59,8 +61,9 @@ class CreateInvoiceRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

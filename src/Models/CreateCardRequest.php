@@ -58,7 +58,7 @@ class CreateCardRequest implements \JsonSerializable
     private $billingAddressId;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -106,7 +106,7 @@ class CreateCardRequest implements \JsonSerializable
      * @param CreateAddressRequest $billingAddress
      * @param string $brand
      * @param string $billingAddressId
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param string $type
      * @param CreateCardOptionsRequest $options
      * @param bool $privateLabel
@@ -144,7 +144,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Number.
-     *
      * Credit card number
      */
     public function getNumber(): string
@@ -154,7 +153,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Number.
-     *
      * Credit card number
      *
      * @required
@@ -167,7 +165,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Holder Name.
-     *
      * Holder name, as written on the card
      */
     public function getHolderName(): string
@@ -177,7 +174,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Holder Name.
-     *
      * Holder name, as written on the card
      *
      * @required
@@ -190,7 +186,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Exp Month.
-     *
      * The expiration month
      */
     public function getExpMonth(): int
@@ -200,7 +195,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Exp Month.
-     *
      * The expiration month
      *
      * @required
@@ -213,7 +207,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Exp Year.
-     *
      * The expiration year, that can be informed with 2 or 4 digits
      */
     public function getExpYear(): int
@@ -223,7 +216,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Exp Year.
-     *
      * The expiration year, that can be informed with 2 or 4 digits
      *
      * @required
@@ -236,7 +228,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Cvv.
-     *
      * The card's security code
      */
     public function getCvv(): string
@@ -246,7 +237,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Cvv.
-     *
      * The card's security code
      *
      * @required
@@ -259,7 +249,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Billing Address.
-     *
      * Card's billing address
      */
     public function getBillingAddress(): CreateAddressRequest
@@ -269,7 +258,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Billing Address.
-     *
      * Card's billing address
      *
      * @required
@@ -282,7 +270,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Brand.
-     *
      * Card brand
      */
     public function getBrand(): string
@@ -292,7 +279,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Brand.
-     *
      * Card brand
      *
      * @required
@@ -305,7 +291,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Billing Address Id.
-     *
      * The address id for the billing address
      */
     public function getBillingAddressId(): string
@@ -315,7 +300,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Billing Address Id.
-     *
      * The address id for the billing address
      *
      * @required
@@ -328,8 +312,9 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -338,11 +323,12 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -351,7 +337,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Card type
      */
     public function getType(): string
@@ -361,7 +346,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Card type
      *
      * @required
@@ -374,7 +358,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Options.
-     *
      * Options for creating the card
      */
     public function getOptions(): CreateCardOptionsRequest
@@ -384,7 +367,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Options.
-     *
      * Options for creating the card
      *
      * @required
@@ -397,7 +379,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Holder Document.
-     *
      * Document number for the card's holder
      */
     public function getHolderDocument(): ?string
@@ -407,7 +388,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Holder Document.
-     *
      * Document number for the card's holder
      *
      * @maps holder_document
@@ -419,7 +399,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Private Label.
-     *
      * Indicates whether it is a private label card
      */
     public function getPrivateLabel(): bool
@@ -429,7 +408,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Private Label.
-     *
      * Indicates whether it is a private label card
      *
      * @required
@@ -461,7 +439,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Id.
-     *
      * Identifier
      */
     public function getId(): ?string
@@ -471,7 +448,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Id.
-     *
      * Identifier
      *
      * @maps id
@@ -483,7 +459,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Returns Token.
-     *
      * token identifier
      */
     public function getToken(): ?string
@@ -493,7 +468,6 @@ class CreateCardRequest implements \JsonSerializable
 
     /**
      * Sets Token.
-     *
      * token identifier
      *
      * @maps token
@@ -509,8 +483,9 @@ class CreateCardRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

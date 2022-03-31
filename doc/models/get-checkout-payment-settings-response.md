@@ -15,7 +15,7 @@ Checkout Payment Settings Response
 | `paymentUrl` | `string` | Required | Payment Url | getPaymentUrl(): string | setPaymentUrl(string paymentUrl): void |
 | `acceptedPaymentMethods` | `string[]` | Required | Accepted Payment Methods | getAcceptedPaymentMethods(): array | setAcceptedPaymentMethods(array acceptedPaymentMethods): void |
 | `status` | `string` | Required | Status | getStatus(): string | setStatus(string status): void |
-| `customer` | [`?GetCustomerResponse`](/doc/models/get-customer-response.md) | Optional | Customer | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
+| `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | Customer | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
 | `amount` | `?int` | Optional | Payment amount | getAmount(): ?int | setAmount(?int amount): void |
 | `defaultPaymentMethod` | `?string` | Optional | Default Payment Method | getDefaultPaymentMethod(): ?string | setDefaultPaymentMethod(?string defaultPaymentMethod): void |
 | `gatewayAffiliationId` | `?string` | Optional | Gateway Affiliation Id | getGatewayAffiliationId(): ?string | setGatewayAffiliationId(?string gatewayAffiliationId): void |

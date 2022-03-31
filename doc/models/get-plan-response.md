@@ -25,10 +25,10 @@ Response object for getting a plan
 | `currency` | `string` | Required | - | getCurrency(): string | setCurrency(string currency): void |
 | `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
 | `updatedAt` | `\DateTime` | Required | - | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
-| `items` | [`GetPlanItemResponse[]`](/doc/models/get-plan-item-response.md) | Required | - | getItems(): array | setItems(array items): void |
+| `items` | [`GetPlanItemResponse[]`](../../doc/models/get-plan-item-response.md) | Required | - | getItems(): array | setItems(array items): void |
 | `billingDays` | `int[]` | Required | - | getBillingDays(): array | setBillingDays(array billingDays): void |
 | `shippable` | `bool` | Required | - | getShippable(): bool | setShippable(bool shippable): void |
-| `metadata` | `array` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
+| `metadata` | `array<string,string>` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
 | `trialPeriodDays` | `?int` | Optional | - | getTrialPeriodDays(): ?int | setTrialPeriodDays(?int trialPeriodDays): void |
 | `minimumPrice` | `?int` | Optional | - | getMinimumPrice(): ?int | setMinimumPrice(?int minimumPrice): void |
 | `deletedAt` | `?\DateTime` | Optional | - | getDeletedAt(): ?\DateTime | setDeletedAt(?\DateTime deletedAt): void |

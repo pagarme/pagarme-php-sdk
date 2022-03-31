@@ -257,7 +257,6 @@ class GetBillingAddressResponse implements \JsonSerializable
 
     /**
      * Returns Line 1.
-     *
      * Line 1 for address
      */
     public function getLine1(): string
@@ -267,7 +266,6 @@ class GetBillingAddressResponse implements \JsonSerializable
 
     /**
      * Sets Line 1.
-     *
      * Line 1 for address
      *
      * @required
@@ -280,7 +278,6 @@ class GetBillingAddressResponse implements \JsonSerializable
 
     /**
      * Returns Line 2.
-     *
      * Line 2 for address
      */
     public function getLine2(): string
@@ -290,7 +287,6 @@ class GetBillingAddressResponse implements \JsonSerializable
 
     /**
      * Sets Line 2.
-     *
      * Line 2 for address
      *
      * @required
@@ -307,8 +303,9 @@ class GetBillingAddressResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

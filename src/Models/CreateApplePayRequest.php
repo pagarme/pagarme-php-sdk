@@ -65,7 +65,6 @@ class CreateApplePayRequest implements \JsonSerializable
 
     /**
      * Returns Version.
-     *
      * The token version
      */
     public function getVersion(): string
@@ -75,7 +74,6 @@ class CreateApplePayRequest implements \JsonSerializable
 
     /**
      * Sets Version.
-     *
      * The token version
      *
      * @required
@@ -88,7 +86,6 @@ class CreateApplePayRequest implements \JsonSerializable
 
     /**
      * Returns Data.
-     *
      * The cryptography data
      */
     public function getData(): string
@@ -98,7 +95,6 @@ class CreateApplePayRequest implements \JsonSerializable
 
     /**
      * Sets Data.
-     *
      * The cryptography data
      *
      * @required
@@ -111,7 +107,6 @@ class CreateApplePayRequest implements \JsonSerializable
 
     /**
      * Returns Header.
-     *
      * The ApplePay header request
      */
     public function getHeader(): CreateApplePayHeaderRequest
@@ -121,7 +116,6 @@ class CreateApplePayRequest implements \JsonSerializable
 
     /**
      * Sets Header.
-     *
      * The ApplePay header request
      *
      * @required
@@ -134,7 +128,6 @@ class CreateApplePayRequest implements \JsonSerializable
 
     /**
      * Returns Signature.
-     *
      * Detached PKCS #7 signature, Base64 encoded as string
      */
     public function getSignature(): string
@@ -144,7 +137,6 @@ class CreateApplePayRequest implements \JsonSerializable
 
     /**
      * Sets Signature.
-     *
      * Detached PKCS #7 signature, Base64 encoded as string
      *
      * @required
@@ -157,7 +149,6 @@ class CreateApplePayRequest implements \JsonSerializable
 
     /**
      * Returns Merchant Identifier.
-     *
      * ApplePay Merchant identifier
      */
     public function getMerchantIdentifier(): string
@@ -167,7 +158,6 @@ class CreateApplePayRequest implements \JsonSerializable
 
     /**
      * Sets Merchant Identifier.
-     *
      * ApplePay Merchant identifier
      *
      * @required
@@ -184,8 +174,9 @@ class CreateApplePayRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

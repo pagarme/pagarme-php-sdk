@@ -74,7 +74,7 @@ class GetOrderResponse implements \JsonSerializable
     private $shipping;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -119,7 +119,7 @@ class GetOrderResponse implements \JsonSerializable
      * @param GetChargeResponse[] $charges
      * @param string $invoiceUrl
      * @param GetShippingResponse $shipping
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param bool $closed
      */
     public function __construct(
@@ -370,6 +370,8 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Returns Metadata.
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -381,6 +383,8 @@ class GetOrderResponse implements \JsonSerializable
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -389,7 +393,6 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Returns Checkouts.
-     *
      * Checkout Payment Settings Response
      *
      * @return GetCheckoutPaymentResponse[]|null
@@ -401,7 +404,6 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Sets Checkouts.
-     *
      * Checkout Payment Settings Response
      *
      * @maps checkouts
@@ -415,7 +417,6 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Returns Ip.
-     *
      * Ip address
      */
     public function getIp(): ?string
@@ -425,7 +426,6 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Sets Ip.
-     *
      * Ip address
      *
      * @maps ip
@@ -437,7 +437,6 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Returns Session Id.
-     *
      * Session id
      */
     public function getSessionId(): ?string
@@ -447,7 +446,6 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Sets Session Id.
-     *
      * Session id
      *
      * @maps session_id
@@ -459,7 +457,6 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Returns Location.
-     *
      * Location
      */
     public function getLocation(): ?GetLocationResponse
@@ -469,7 +466,6 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Sets Location.
-     *
      * Location
      *
      * @maps location
@@ -481,7 +477,6 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Returns Device.
-     *
      * Device's informations
      */
     public function getDevice(): ?GetDeviceResponse
@@ -491,7 +486,6 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Sets Device.
-     *
      * Device's informations
      *
      * @maps device
@@ -503,7 +497,6 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Returns Closed.
-     *
      * Indicates whether the order is closed
      */
     public function getClosed(): bool
@@ -513,7 +506,6 @@ class GetOrderResponse implements \JsonSerializable
 
     /**
      * Sets Closed.
-     *
      * Indicates whether the order is closed
      *
      * @required
@@ -530,8 +522,9 @@ class GetOrderResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

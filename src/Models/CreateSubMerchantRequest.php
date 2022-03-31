@@ -89,7 +89,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Returns Payment Facilitator Code.
-     *
      * Payment Facilitator Code
      */
     public function getPaymentFacilitatorCode(): string
@@ -99,7 +98,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Sets Payment Facilitator Code.
-     *
      * Payment Facilitator Code
      *
      * @required
@@ -112,7 +110,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * Code
      */
     public function getCode(): string
@@ -122,7 +119,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * Code
      *
      * @required
@@ -135,7 +131,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Returns Name.
-     *
      * Name
      */
     public function getName(): string
@@ -145,7 +140,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Sets Name.
-     *
      * Name
      *
      * @required
@@ -158,7 +152,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Returns Merchant Category Code.
-     *
      * Merchant Category Code
      */
     public function getMerchantCategoryCode(): string
@@ -168,7 +161,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Sets Merchant Category Code.
-     *
      * Merchant Category Code
      *
      * @required
@@ -181,7 +173,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Returns Document.
-     *
      * Document number. Only numbers, no special characters.
      */
     public function getDocument(): string
@@ -191,7 +182,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Sets Document.
-     *
      * Document number. Only numbers, no special characters.
      *
      * @required
@@ -204,7 +194,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Document type. Can be either 'individual' or 'company'
      */
     public function getType(): string
@@ -214,7 +203,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Document type. Can be either 'individual' or 'company'
      *
      * @required
@@ -227,7 +215,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Returns Phone.
-     *
      * Phone
      */
     public function getPhone(): CreatePhoneRequest
@@ -237,7 +224,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Sets Phone.
-     *
      * Phone
      *
      * @required
@@ -250,7 +236,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Returns Address.
-     *
      * Address
      */
     public function getAddress(): CreateAddressRequest
@@ -260,7 +245,6 @@ class CreateSubMerchantRequest implements \JsonSerializable
 
     /**
      * Sets Address.
-     *
      * Address
      *
      * @required
@@ -277,8 +261,9 @@ class CreateSubMerchantRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

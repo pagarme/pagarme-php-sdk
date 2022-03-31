@@ -48,7 +48,7 @@ class CreateRecipientRequest implements \JsonSerializable
     private $defaultBankAccount;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -74,7 +74,7 @@ class CreateRecipientRequest implements \JsonSerializable
      * @param string $document
      * @param string $type
      * @param CreateBankAccountRequest $defaultBankAccount
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param string $code
      * @param string $paymentMode
      */
@@ -102,7 +102,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Name.
-     *
      * Recipient name
      */
     public function getName(): string
@@ -112,7 +111,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Name.
-     *
      * Recipient name
      *
      * @required
@@ -125,7 +123,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Email.
-     *
      * Recipient email
      */
     public function getEmail(): string
@@ -135,7 +132,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Email.
-     *
      * Recipient email
      *
      * @required
@@ -148,7 +144,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Recipient description
      */
     public function getDescription(): string
@@ -158,7 +153,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Recipient description
      *
      * @required
@@ -171,7 +165,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Document.
-     *
      * Recipient document number
      */
     public function getDocument(): string
@@ -181,7 +174,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Document.
-     *
      * Recipient document number
      *
      * @required
@@ -194,7 +186,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Recipient type
      */
     public function getType(): string
@@ -204,7 +195,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Recipient type
      *
      * @required
@@ -217,7 +207,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Default Bank Account.
-     *
      * Bank account
      */
     public function getDefaultBankAccount(): CreateBankAccountRequest
@@ -227,7 +216,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Default Bank Account.
-     *
      * Bank account
      *
      * @required
@@ -240,8 +228,9 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -250,11 +239,12 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -263,7 +253,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Transfer Settings.
-     *
      * Receiver Transfer Information
      */
     public function getTransferSettings(): ?CreateTransferSettingsRequest
@@ -273,7 +262,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Transfer Settings.
-     *
      * Receiver Transfer Information
      *
      * @maps transfer_settings
@@ -285,7 +273,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * Recipient code
      */
     public function getCode(): string
@@ -295,7 +282,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * Recipient code
      *
      * @required
@@ -308,7 +294,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Payment Mode.
-     *
      * Payment mode
      */
     public function getPaymentMode(): string
@@ -318,7 +303,6 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Payment Mode.
-     *
      * Payment mode
      *
      * @required
@@ -335,8 +319,9 @@ class CreateRecipientRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

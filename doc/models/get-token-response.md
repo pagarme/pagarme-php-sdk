@@ -15,7 +15,7 @@ Token data
 | `type` | `string` | Required | - | getType(): string | setType(string type): void |
 | `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
 | `expiresAt` | `string` | Required | - | getExpiresAt(): string | setExpiresAt(string expiresAt): void |
-| `card` | [`GetCardTokenResponse`](/doc/models/get-card-token-response.md) | Required | - | getCard(): GetCardTokenResponse | setCard(GetCardTokenResponse card): void |
+| `card` | [`GetCardTokenResponse`](../../doc/models/get-card-token-response.md) | Required | - | getCard(): GetCardTokenResponse | setCard(GetCardTokenResponse card): void |
 
 ## Example (as JSON)
 

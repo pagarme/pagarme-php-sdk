@@ -16,7 +16,7 @@ Request for updating a Recipient
 | `description` | `string` | Required | Description | getDescription(): string | setDescription(string description): void |
 | `type` | `string` | Required | Type | getType(): string | setType(string type): void |
 | `status` | `string` | Required | Status | getStatus(): string | setStatus(string status): void |
-| `metadata` | `array` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
+| `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 
 ## Example (as JSON)
 

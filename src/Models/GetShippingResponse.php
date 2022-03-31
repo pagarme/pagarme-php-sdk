@@ -179,7 +179,6 @@ class GetShippingResponse implements \JsonSerializable
 
     /**
      * Returns Max Delivery Date.
-     *
      * Data máxima de entrega
      */
     public function getMaxDeliveryDate(): ?\DateTime
@@ -189,7 +188,6 @@ class GetShippingResponse implements \JsonSerializable
 
     /**
      * Sets Max Delivery Date.
-     *
      * Data máxima de entrega
      *
      * @maps max_delivery_date
@@ -202,7 +200,6 @@ class GetShippingResponse implements \JsonSerializable
 
     /**
      * Returns Estimated Delivery Date.
-     *
      * Prazo estimado de entrega
      */
     public function getEstimatedDeliveryDate(): ?\DateTime
@@ -212,7 +209,6 @@ class GetShippingResponse implements \JsonSerializable
 
     /**
      * Sets Estimated Delivery Date.
-     *
      * Prazo estimado de entrega
      *
      * @maps estimated_delivery_date
@@ -225,7 +221,6 @@ class GetShippingResponse implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Shipping Type
      */
     public function getType(): string
@@ -235,7 +230,6 @@ class GetShippingResponse implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Shipping Type
      *
      * @required
@@ -252,8 +246,9 @@ class GetShippingResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

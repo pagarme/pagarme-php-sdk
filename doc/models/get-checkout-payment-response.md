@@ -24,20 +24,20 @@ Resposta das configurações de pagamento do checkout
 | `updatedAt` | `\DateTime` | Required | Data de atualização | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
 | `canceledAt` | `?\DateTime` | Optional | Data de cancelamento | getCanceledAt(): ?\DateTime | setCanceledAt(?\DateTime canceledAt): void |
 | `customerEditable` | `bool` | Required | Torna o objeto customer editável | getCustomerEditable(): bool | setCustomerEditable(bool customerEditable): void |
-| `customer` | [`?GetCustomerResponse`](/doc/models/get-customer-response.md) | Optional | Dados do comprador | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
-| `billingaddress` | [`GetAddressResponse`](/doc/models/get-address-response.md) | Required | Dados do endereço de cobrança | getBillingaddress(): GetAddressResponse | setBillingaddress(GetAddressResponse billingaddress): void |
-| `creditCard` | [`GetCheckoutCreditCardPaymentResponse`](/doc/models/get-checkout-credit-card-payment-response.md) | Required | Configurações de cartão de crédito | getCreditCard(): GetCheckoutCreditCardPaymentResponse | setCreditCard(GetCheckoutCreditCardPaymentResponse creditCard): void |
-| `boleto` | [`GetCheckoutBoletoPaymentResponse`](/doc/models/get-checkout-boleto-payment-response.md) | Required | Configurações de boleto | getBoleto(): GetCheckoutBoletoPaymentResponse | setBoleto(GetCheckoutBoletoPaymentResponse boleto): void |
+| `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | Dados do comprador | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
+| `billingaddress` | [`GetAddressResponse`](../../doc/models/get-address-response.md) | Required | Dados do endereço de cobrança | getBillingaddress(): GetAddressResponse | setBillingaddress(GetAddressResponse billingaddress): void |
+| `creditCard` | [`GetCheckoutCreditCardPaymentResponse`](../../doc/models/get-checkout-credit-card-payment-response.md) | Required | Configurações de cartão de crédito | getCreditCard(): GetCheckoutCreditCardPaymentResponse | setCreditCard(GetCheckoutCreditCardPaymentResponse creditCard): void |
+| `boleto` | [`GetCheckoutBoletoPaymentResponse`](../../doc/models/get-checkout-boleto-payment-response.md) | Required | Configurações de boleto | getBoleto(): GetCheckoutBoletoPaymentResponse | setBoleto(GetCheckoutBoletoPaymentResponse boleto): void |
 | `billingAddressEditable` | `bool` | Required | Indica se o billing address poderá ser editado | getBillingAddressEditable(): bool | setBillingAddressEditable(bool billingAddressEditable): void |
-| `shipping` | [`GetShippingResponse`](/doc/models/get-shipping-response.md) | Required | Configurações  de entrega | getShipping(): GetShippingResponse | setShipping(GetShippingResponse shipping): void |
+| `shipping` | [`GetShippingResponse`](../../doc/models/get-shipping-response.md) | Required | Configurações  de entrega | getShipping(): GetShippingResponse | setShipping(GetShippingResponse shipping): void |
 | `shippable` | `bool` | Required | Indica se possui entrega | getShippable(): bool | setShippable(bool shippable): void |
 | `closedAt` | `?\DateTime` | Optional | Data de fechamento | getClosedAt(): ?\DateTime | setClosedAt(?\DateTime closedAt): void |
 | `expiresAt` | `?\DateTime` | Optional | Data de expiração | getExpiresAt(): ?\DateTime | setExpiresAt(?\DateTime expiresAt): void |
 | `currency` | `string` | Required | Moeda | getCurrency(): string | setCurrency(string currency): void |
-| `debitCard` | [`?GetCheckoutDebitCardPaymentResponse`](/doc/models/get-checkout-debit-card-payment-response.md) | Optional | Configurações de cartão de débito | getDebitCard(): ?GetCheckoutDebitCardPaymentResponse | setDebitCard(?GetCheckoutDebitCardPaymentResponse debitCard): void |
-| `bankTransfer` | [`?GetCheckoutBankTransferPaymentResponse`](/doc/models/get-checkout-bank-transfer-payment-response.md) | Optional | Bank transfer payment response | getBankTransfer(): ?GetCheckoutBankTransferPaymentResponse | setBankTransfer(?GetCheckoutBankTransferPaymentResponse bankTransfer): void |
+| `debitCard` | [`?GetCheckoutDebitCardPaymentResponse`](../../doc/models/get-checkout-debit-card-payment-response.md) | Optional | Configurações de cartão de débito | getDebitCard(): ?GetCheckoutDebitCardPaymentResponse | setDebitCard(?GetCheckoutDebitCardPaymentResponse debitCard): void |
+| `bankTransfer` | [`?GetCheckoutBankTransferPaymentResponse`](../../doc/models/get-checkout-bank-transfer-payment-response.md) | Optional | Bank transfer payment response | getBankTransfer(): ?GetCheckoutBankTransferPaymentResponse | setBankTransfer(?GetCheckoutBankTransferPaymentResponse bankTransfer): void |
 | `acceptedBrands` | `string[]` | Required | Accepted Brands | getAcceptedBrands(): array | setAcceptedBrands(array acceptedBrands): void |
-| `pix` | [`?GetCheckoutPixPaymentResponse`](/doc/models/get-checkout-pix-payment-response.md) | Optional | Pix payment response | getPix(): ?GetCheckoutPixPaymentResponse | setPix(?GetCheckoutPixPaymentResponse pix): void |
+| `pix` | [`?GetCheckoutPixPaymentResponse`](../../doc/models/get-checkout-pix-payment-response.md) | Optional | Pix payment response | getPix(): ?GetCheckoutPixPaymentResponse | setPix(?GetCheckoutPixPaymentResponse pix): void |
 
 ## Example (as JSON)
 

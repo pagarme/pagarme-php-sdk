@@ -21,11 +21,11 @@ Recipient response
 | `createdAt` | `\DateTime` | Required | Creation date | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
 | `updatedAt` | `\DateTime` | Required | Last update date | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
 | `deletedAt` | `\DateTime` | Required | Deletion date | getDeletedAt(): \DateTime | setDeletedAt(\DateTime deletedAt): void |
-| `defaultBankAccount` | [`GetBankAccountResponse`](/doc/models/get-bank-account-response.md) | Required | Default bank account | getDefaultBankAccount(): GetBankAccountResponse | setDefaultBankAccount(GetBankAccountResponse defaultBankAccount): void |
-| `gatewayRecipients` | [`GetGatewayRecipientResponse[]`](/doc/models/get-gateway-recipient-response.md) | Required | Info about the recipient on the gateway | getGatewayRecipients(): array | setGatewayRecipients(array gatewayRecipients): void |
-| `metadata` | `array` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
-| `automaticAnticipationSettings` | [`?GetAutomaticAnticipationResponse`](/doc/models/get-automatic-anticipation-response.md) | Optional | - | getAutomaticAnticipationSettings(): ?GetAutomaticAnticipationResponse | setAutomaticAnticipationSettings(?GetAutomaticAnticipationResponse automaticAnticipationSettings): void |
-| `transferSettings` | [`?GetTransferSettingsResponse`](/doc/models/get-transfer-settings-response.md) | Optional | - | getTransferSettings(): ?GetTransferSettingsResponse | setTransferSettings(?GetTransferSettingsResponse transferSettings): void |
+| `defaultBankAccount` | [`GetBankAccountResponse`](../../doc/models/get-bank-account-response.md) | Required | Default bank account | getDefaultBankAccount(): GetBankAccountResponse | setDefaultBankAccount(GetBankAccountResponse defaultBankAccount): void |
+| `gatewayRecipients` | [`GetGatewayRecipientResponse[]`](../../doc/models/get-gateway-recipient-response.md) | Required | Info about the recipient on the gateway | getGatewayRecipients(): array | setGatewayRecipients(array gatewayRecipients): void |
+| `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
+| `automaticAnticipationSettings` | [`?GetAutomaticAnticipationResponse`](../../doc/models/get-automatic-anticipation-response.md) | Optional | - | getAutomaticAnticipationSettings(): ?GetAutomaticAnticipationResponse | setAutomaticAnticipationSettings(?GetAutomaticAnticipationResponse automaticAnticipationSettings): void |
+| `transferSettings` | [`?GetTransferSettingsResponse`](../../doc/models/get-transfer-settings-response.md) | Optional | - | getTransferSettings(): ?GetTransferSettingsResponse | setTransferSettings(?GetTransferSettingsResponse transferSettings): void |
 | `code` | `string` | Required | Recipient code | getCode(): string | setCode(string code): void |
 | `paymentMode` | `string` | Required | Payment mode<br>**Default**: `'bank_transfer'` | getPaymentMode(): string | setPaymentMode(string paymentMode): void |
 

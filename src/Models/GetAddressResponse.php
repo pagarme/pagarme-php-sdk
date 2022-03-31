@@ -84,7 +84,7 @@ class GetAddressResponse implements \JsonSerializable
     private $customer;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -116,7 +116,7 @@ class GetAddressResponse implements \JsonSerializable
      * @param string $status
      * @param \DateTime $createdAt
      * @param \DateTime $updatedAt
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param string $line1
      * @param string $line2
      */
@@ -404,6 +404,8 @@ class GetAddressResponse implements \JsonSerializable
 
     /**
      * Returns Metadata.
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -415,6 +417,8 @@ class GetAddressResponse implements \JsonSerializable
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -423,7 +427,6 @@ class GetAddressResponse implements \JsonSerializable
 
     /**
      * Returns Line 1.
-     *
      * Line 1 for address
      */
     public function getLine1(): string
@@ -433,7 +436,6 @@ class GetAddressResponse implements \JsonSerializable
 
     /**
      * Sets Line 1.
-     *
      * Line 1 for address
      *
      * @required
@@ -446,7 +448,6 @@ class GetAddressResponse implements \JsonSerializable
 
     /**
      * Returns Line 2.
-     *
      * Line 2 for address
      */
     public function getLine2(): string
@@ -456,7 +457,6 @@ class GetAddressResponse implements \JsonSerializable
 
     /**
      * Sets Line 2.
-     *
      * Line 2 for address
      *
      * @required
@@ -492,8 +492,9 @@ class GetAddressResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -11,8 +11,8 @@ Anticipations
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `data` | [`GetAnticipationResponse[]`](/doc/models/get-anticipation-response.md) | Required | Anticipations | getData(): array | setData(array data): void |
-| `paging` | [`PagingResponse`](/doc/models/paging-response.md) | Required | Paging | getPaging(): PagingResponse | setPaging(PagingResponse paging): void |
+| `data` | [`GetAnticipationResponse[]`](../../doc/models/get-anticipation-response.md) | Required | Anticipations | getData(): array | setData(array data): void |
+| `paging` | [`PagingResponse`](../../doc/models/paging-response.md) | Required | Paging | getPaging(): PagingResponse | setPaging(PagingResponse paging): void |
 
 ## Example (as JSON)
 

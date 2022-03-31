@@ -39,7 +39,6 @@ class CreateCheckoutCardInstallmentOptionRequest implements \JsonSerializable
 
     /**
      * Returns Number.
-     *
      * Installment quantity
      */
     public function getNumber(): int
@@ -49,7 +48,6 @@ class CreateCheckoutCardInstallmentOptionRequest implements \JsonSerializable
 
     /**
      * Sets Number.
-     *
      * Installment quantity
      *
      * @required
@@ -62,7 +60,6 @@ class CreateCheckoutCardInstallmentOptionRequest implements \JsonSerializable
 
     /**
      * Returns Total.
-     *
      * Total amount
      */
     public function getTotal(): int
@@ -72,7 +69,6 @@ class CreateCheckoutCardInstallmentOptionRequest implements \JsonSerializable
 
     /**
      * Sets Total.
-     *
      * Total amount
      *
      * @required
@@ -89,8 +85,9 @@ class CreateCheckoutCardInstallmentOptionRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

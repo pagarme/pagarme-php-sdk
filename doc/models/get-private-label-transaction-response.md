@@ -9,7 +9,7 @@ Response object for getting a private label transaction
 
 ## Inherits From
 
-[`GetTransactionResponse`](/doc/models/get-transaction-response.md)
+[`GetTransactionResponse`](../../doc/models/get-transaction-response.md)
 
 ## Fields
 
@@ -22,7 +22,7 @@ Response object for getting a private label transaction
 | `acquirerNsu` | `string` | Required | Acquirer NSU | getAcquirerNsu(): string | setAcquirerNsu(string acquirerNsu): void |
 | `acquirerAuthCode` | `string` | Required | Acquirer authorization code | getAcquirerAuthCode(): string | setAcquirerAuthCode(string acquirerAuthCode): void |
 | `operationType` | `string` | Required | Operation type | getOperationType(): string | setOperationType(string operationType): void |
-| `card` | [`GetCardResponse`](/doc/models/get-card-response.md) | Required | Card data | getCard(): GetCardResponse | setCard(GetCardResponse card): void |
+| `card` | [`GetCardResponse`](../../doc/models/get-card-response.md) | Required | Card data | getCard(): GetCardResponse | setCard(GetCardResponse card): void |
 | `acquirerMessage` | `string` | Required | Acquirer message | getAcquirerMessage(): string | setAcquirerMessage(string acquirerMessage): void |
 | `acquirerReturnCode` | `string` | Required | Acquirer Return Code | getAcquirerReturnCode(): string | setAcquirerReturnCode(string acquirerReturnCode): void |
 | `installments` | `?int` | Optional | Number of installments | getInstallments(): ?int | setInstallments(?int installments): void |

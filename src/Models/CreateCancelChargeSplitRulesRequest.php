@@ -46,7 +46,6 @@ class CreateCancelChargeSplitRulesRequest implements \JsonSerializable
 
     /**
      * Returns Id.
-     *
      * The split rule gateway id
      */
     public function getId(): string
@@ -56,7 +55,6 @@ class CreateCancelChargeSplitRulesRequest implements \JsonSerializable
 
     /**
      * Sets Id.
-     *
      * The split rule gateway id
      *
      * @required
@@ -69,7 +67,6 @@ class CreateCancelChargeSplitRulesRequest implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * The split rule amount
      */
     public function getAmount(): int
@@ -79,7 +76,6 @@ class CreateCancelChargeSplitRulesRequest implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * The split rule amount
      *
      * @required
@@ -92,7 +88,6 @@ class CreateCancelChargeSplitRulesRequest implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * The amount type (flat ou percentage)
      */
     public function getType(): string
@@ -102,7 +97,6 @@ class CreateCancelChargeSplitRulesRequest implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * The amount type (flat ou percentage)
      *
      * @required
@@ -119,8 +113,9 @@ class CreateCancelChargeSplitRulesRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

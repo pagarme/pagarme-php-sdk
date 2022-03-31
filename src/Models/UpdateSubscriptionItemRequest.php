@@ -72,7 +72,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Description
      */
     public function getDescription(): string
@@ -82,7 +81,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Description
      *
      * @required
@@ -95,7 +93,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Status
      */
     public function getStatus(): string
@@ -105,7 +102,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Status
      *
      * @required
@@ -118,7 +114,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Pricing Scheme.
-     *
      * Pricing scheme
      */
     public function getPricingScheme(): UpdatePricingSchemeRequest
@@ -128,7 +123,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Pricing Scheme.
-     *
      * Pricing scheme
      *
      * @required
@@ -141,7 +135,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Name.
-     *
      * Item name
      */
     public function getName(): string
@@ -151,7 +144,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Name.
-     *
      * Item name
      *
      * @required
@@ -164,7 +156,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Cycles.
-     *
      * Number of cycles that the item will be charged
      */
     public function getCycles(): ?int
@@ -174,7 +165,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Cycles.
-     *
      * Number of cycles that the item will be charged
      *
      * @maps cycles
@@ -186,7 +176,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Quantity.
-     *
      * Quantity
      */
     public function getQuantity(): ?int
@@ -196,7 +185,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Quantity.
-     *
      * Quantity
      *
      * @maps quantity
@@ -208,7 +196,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Minimum Price.
-     *
      * Minimum price
      */
     public function getMinimumPrice(): ?int
@@ -218,7 +205,6 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Minimum Price.
-     *
      * Minimum price
      *
      * @maps minimum_price
@@ -234,8 +220,9 @@ class UpdateSubscriptionItemRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

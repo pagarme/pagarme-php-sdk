@@ -58,7 +58,6 @@ class CreateOrderItemRequest implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Amount
      */
     public function getAmount(): int
@@ -68,7 +67,6 @@ class CreateOrderItemRequest implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Amount
      *
      * @required
@@ -81,7 +79,6 @@ class CreateOrderItemRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Description
      */
     public function getDescription(): string
@@ -91,7 +88,6 @@ class CreateOrderItemRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Description
      *
      * @required
@@ -104,7 +100,6 @@ class CreateOrderItemRequest implements \JsonSerializable
 
     /**
      * Returns Quantity.
-     *
      * Quantity
      */
     public function getQuantity(): int
@@ -114,7 +109,6 @@ class CreateOrderItemRequest implements \JsonSerializable
 
     /**
      * Sets Quantity.
-     *
      * Quantity
      *
      * @required
@@ -127,7 +121,6 @@ class CreateOrderItemRequest implements \JsonSerializable
 
     /**
      * Returns Category.
-     *
      * Category
      */
     public function getCategory(): string
@@ -137,7 +130,6 @@ class CreateOrderItemRequest implements \JsonSerializable
 
     /**
      * Sets Category.
-     *
      * Category
      *
      * @required
@@ -150,7 +142,6 @@ class CreateOrderItemRequest implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * The item code passed by the client
      */
     public function getCode(): ?string
@@ -160,7 +151,6 @@ class CreateOrderItemRequest implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * The item code passed by the client
      *
      * @maps code
@@ -176,8 +166,9 @@ class CreateOrderItemRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

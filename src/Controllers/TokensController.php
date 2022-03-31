@@ -13,6 +13,7 @@ namespace PagarmeApiSDKLib\Controllers;
 use PagarmeApiSDKLib\Exceptions\ApiException;
 use PagarmeApiSDKLib\ApiHelper;
 use PagarmeApiSDKLib\ConfigurationInterface;
+use PagarmeApiSDKLib\Models;
 use PagarmeApiSDKLib\Http\HttpRequest;
 use PagarmeApiSDKLib\Http\HttpResponse;
 use PagarmeApiSDKLib\Http\HttpMethod;
@@ -29,18 +30,18 @@ class TokensController extends BaseController
 
     /**
      * @param string $publicKey Public key
-     * @param \PagarmeApiSDKLib\Models\CreateTokenRequest $request Request for creating a token
+     * @param Models\CreateTokenRequest $request Request for creating a token
      * @param string|null $idempotencyKey
      *
-     * @return \PagarmeApiSDKLib\Models\GetTokenResponse Response from the API call
+     * @return Models\GetTokenResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
     public function createToken(
         string $publicKey,
-        \PagarmeApiSDKLib\Models\CreateTokenRequest $request,
+        Models\CreateTokenRequest $request,
         ?string $idempotencyKey = null
-    ): \PagarmeApiSDKLib\Models\GetTokenResponse {
+    ): Models\GetTokenResponse {
         //prepare query string for API call
         $_queryBuilder = '/tokens?appId={public_key}';
 
@@ -61,7 +62,7 @@ class TokensController extends BaseController
         ];
 
         //json encode body
-        $_bodyJson = Request\Body::Json($request);
+        $_bodyJson = ApiHelper::serialize($request);
 
         $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
 
@@ -88,8 +89,7 @@ class TokensController extends BaseController
 
         //handle errors defined at the API level
         $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetTokenResponse');
+        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetTokenResponse');
     }
 
     /**
@@ -98,11 +98,11 @@ class TokensController extends BaseController
      * @param string $id Token id
      * @param string $publicKey Public key
      *
-     * @return \PagarmeApiSDKLib\Models\GetTokenResponse Response from the API call
+     * @return Models\GetTokenResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getToken(string $id, string $publicKey): \PagarmeApiSDKLib\Models\GetTokenResponse
+    public function getToken(string $id, string $publicKey): Models\GetTokenResponse
     {
         //prepare query string for API call
         $_queryBuilder = '/tokens/{id}?appId={public_key}';
@@ -147,7 +147,6 @@ class TokensController extends BaseController
 
         //handle errors defined at the API level
         $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetTokenResponse');
+        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetTokenResponse');
     }
 }

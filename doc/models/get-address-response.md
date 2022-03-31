@@ -23,8 +23,8 @@ Response object for getting an Address
 | `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
 | `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
 | `updatedAt` | `\DateTime` | Required | - | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
-| `customer` | [`?GetCustomerResponse`](/doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
-| `metadata` | `array` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
+| `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
+| `metadata` | `array<string,string>` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
 | `line1` | `string` | Required | Line 1 for address | getLine1(): string | setLine1(string line1): void |
 | `line2` | `string` | Required | Line 2 for address | getLine2(): string | setLine2(string line2): void |
 | `deletedAt` | `?\DateTime` | Optional | - | getDeletedAt(): ?\DateTime | setDeletedAt(?\DateTime deletedAt): void |

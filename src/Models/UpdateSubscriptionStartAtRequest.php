@@ -33,7 +33,6 @@ class UpdateSubscriptionStartAtRequest implements \JsonSerializable
 
     /**
      * Returns Start At.
-     *
      * The date when the subscription periods will start
      */
     public function getStartAt(): \DateTime
@@ -43,7 +42,6 @@ class UpdateSubscriptionStartAtRequest implements \JsonSerializable
 
     /**
      * Sets Start At.
-     *
      * The date when the subscription periods will start
      *
      * @required
@@ -61,8 +59,9 @@ class UpdateSubscriptionStartAtRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -44,7 +44,6 @@ class CreateCheckoutBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Bank.
-     *
      * Bank identifier
      */
     public function getBank(): string
@@ -54,7 +53,6 @@ class CreateCheckoutBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Bank.
-     *
      * Bank identifier
      *
      * @required
@@ -67,7 +65,6 @@ class CreateCheckoutBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Instructions.
-     *
      * Instructions
      */
     public function getInstructions(): string
@@ -77,7 +74,6 @@ class CreateCheckoutBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Instructions.
-     *
      * Instructions
      *
      * @required
@@ -90,7 +86,6 @@ class CreateCheckoutBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Due At.
-     *
      * Due date
      */
     public function getDueAt(): \DateTime
@@ -100,7 +95,6 @@ class CreateCheckoutBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Due At.
-     *
      * Due date
      *
      * @required
@@ -118,8 +112,9 @@ class CreateCheckoutBoletoPaymentRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

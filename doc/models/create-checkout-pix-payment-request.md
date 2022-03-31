@@ -13,7 +13,7 @@ Checkout pix payment request
 |  --- | --- | --- | --- | --- | --- |
 | `expiresAt` | `?\DateTime` | Optional | Expires at | getExpiresAt(): ?\DateTime | setExpiresAt(?\DateTime expiresAt): void |
 | `expiresIn` | `?int` | Optional | Expires in | getExpiresIn(): ?int | setExpiresIn(?int expiresIn): void |
-| `additionalInformation` | [`?(PixAdditionalInformation[])`](/doc/models/pix-additional-information.md) | Optional | Additional information | getAdditionalInformation(): ?array | setAdditionalInformation(?array additionalInformation): void |
+| `additionalInformation` | [`?(PixAdditionalInformation[])`](../../doc/models/pix-additional-information.md) | Optional | Additional information | getAdditionalInformation(): ?array | setAdditionalInformation(?array additionalInformation): void |
 
 ## Example (as JSON)
 

@@ -78,7 +78,7 @@ class UpdatePlanRequest implements \JsonSerializable
     private $billingDays;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -105,7 +105,7 @@ class UpdatePlanRequest implements \JsonSerializable
      * @param string $status
      * @param bool $shippable
      * @param int[] $billingDays
-     * @param array $metadata
+     * @param array<string,string> $metadata
      */
     public function __construct(
         string $name,
@@ -139,7 +139,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Name.
-     *
      * Plan's name
      */
     public function getName(): string
@@ -149,7 +148,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Name.
-     *
      * Plan's name
      *
      * @required
@@ -162,7 +160,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Description
      */
     public function getDescription(): string
@@ -172,7 +169,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Description
      *
      * @required
@@ -185,7 +181,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Installments.
-     *
      * Number os installments
      *
      * @return int[]
@@ -197,7 +192,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Installments.
-     *
      * Number os installments
      *
      * @required
@@ -212,7 +206,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Statement Descriptor.
-     *
      * Text that will be shown on the credit card's statement
      */
     public function getStatementDescriptor(): string
@@ -222,7 +215,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Statement Descriptor.
-     *
      * Text that will be shown on the credit card's statement
      *
      * @required
@@ -235,7 +227,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Currency.
-     *
      * Currency
      */
     public function getCurrency(): string
@@ -245,7 +236,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Currency.
-     *
      * Currency
      *
      * @required
@@ -258,7 +248,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Interval.
-     *
      * Interval
      */
     public function getInterval(): string
@@ -268,7 +257,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Interval.
-     *
      * Interval
      *
      * @required
@@ -281,7 +269,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Interval Count.
-     *
      * Interval count
      */
     public function getIntervalCount(): int
@@ -291,7 +278,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Interval Count.
-     *
      * Interval count
      *
      * @required
@@ -304,7 +290,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Payment Methods.
-     *
      * Payment methods accepted by the plan
      *
      * @return string[]
@@ -316,7 +301,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Payment Methods.
-     *
      * Payment methods accepted by the plan
      *
      * @required
@@ -331,7 +315,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Billing Type.
-     *
      * Billing type
      */
     public function getBillingType(): string
@@ -341,7 +324,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Billing Type.
-     *
      * Billing type
      *
      * @required
@@ -354,7 +336,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Plan status
      */
     public function getStatus(): string
@@ -364,7 +345,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Plan status
      *
      * @required
@@ -377,7 +357,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Shippable.
-     *
      * Indicates if the plan is shippable
      */
     public function getShippable(): bool
@@ -387,7 +366,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Shippable.
-     *
      * Indicates if the plan is shippable
      *
      * @required
@@ -400,7 +378,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Billing Days.
-     *
      * Billing days accepted by the plan
      *
      * @return int[]
@@ -412,7 +389,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Billing Days.
-     *
      * Billing days accepted by the plan
      *
      * @required
@@ -427,8 +403,9 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -437,11 +414,12 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -450,7 +428,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Minimum Price.
-     *
      * Minimum price
      */
     public function getMinimumPrice(): ?int
@@ -460,7 +437,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Minimum Price.
-     *
      * Minimum price
      *
      * @maps minimum_price
@@ -472,7 +448,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Returns Trial Period Days.
-     *
      * Number of trial period in days, where the customer will not be charged
      */
     public function getTrialPeriodDays(): ?int
@@ -482,7 +457,6 @@ class UpdatePlanRequest implements \JsonSerializable
 
     /**
      * Sets Trial Period Days.
-     *
      * Number of trial period in days, where the customer will not be charged
      *
      * @maps trial_period_days
@@ -498,8 +472,9 @@ class UpdatePlanRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

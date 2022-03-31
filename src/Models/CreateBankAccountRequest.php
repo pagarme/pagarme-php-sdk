@@ -63,7 +63,7 @@ class CreateBankAccountRequest implements \JsonSerializable
     private $type;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -82,7 +82,7 @@ class CreateBankAccountRequest implements \JsonSerializable
      * @param string $accountNumber
      * @param string $accountCheckDigit
      * @param string $type
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param string $pixKey
      */
     public function __construct(
@@ -113,7 +113,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Returns Holder Name.
-     *
      * Bank account holder name
      */
     public function getHolderName(): string
@@ -123,7 +122,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Sets Holder Name.
-     *
      * Bank account holder name
      *
      * @required
@@ -136,7 +134,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Returns Holder Type.
-     *
      * Bank account holder type
      */
     public function getHolderType(): string
@@ -146,7 +143,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Sets Holder Type.
-     *
      * Bank account holder type
      *
      * @required
@@ -159,7 +155,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Returns Holder Document.
-     *
      * Bank account holder document
      */
     public function getHolderDocument(): string
@@ -169,7 +164,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Sets Holder Document.
-     *
      * Bank account holder document
      *
      * @required
@@ -182,7 +176,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Returns Bank.
-     *
      * Bank
      */
     public function getBank(): string
@@ -192,7 +185,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Sets Bank.
-     *
      * Bank
      *
      * @required
@@ -205,7 +197,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Returns Branch Number.
-     *
      * Branch number
      */
     public function getBranchNumber(): string
@@ -215,7 +206,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Sets Branch Number.
-     *
      * Branch number
      *
      * @required
@@ -228,7 +218,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Returns Branch Check Digit.
-     *
      * Branch check digit
      */
     public function getBranchCheckDigit(): string
@@ -238,7 +227,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Sets Branch Check Digit.
-     *
      * Branch check digit
      *
      * @required
@@ -251,7 +239,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Returns Account Number.
-     *
      * Account number
      */
     public function getAccountNumber(): string
@@ -261,7 +248,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Sets Account Number.
-     *
      * Account number
      *
      * @required
@@ -274,7 +260,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Returns Account Check Digit.
-     *
      * Account check digit
      */
     public function getAccountCheckDigit(): string
@@ -284,7 +269,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Sets Account Check Digit.
-     *
      * Account check digit
      *
      * @required
@@ -297,7 +281,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Bank account type
      */
     public function getType(): string
@@ -307,7 +290,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Bank account type
      *
      * @required
@@ -320,8 +302,9 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -330,11 +313,12 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -343,7 +327,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Returns Pix Key.
-     *
      * Pix key
      */
     public function getPixKey(): string
@@ -353,7 +336,6 @@ class CreateBankAccountRequest implements \JsonSerializable
 
     /**
      * Sets Pix Key.
-     *
      * Pix key
      *
      * @required
@@ -370,8 +352,9 @@ class CreateBankAccountRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

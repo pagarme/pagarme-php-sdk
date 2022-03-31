@@ -12,7 +12,7 @@ Checkout credit card payment request
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `statementDescriptor` | `?string` | Optional | Card invoice text descriptor | getStatementDescriptor(): ?string | setStatementDescriptor(?string statementDescriptor): void |
-| `authentication` | [`CreatePaymentAuthenticationRequest`](/doc/models/create-payment-authentication-request.md) | Required | Creates payment authentication | getAuthentication(): CreatePaymentAuthenticationRequest | setAuthentication(CreatePaymentAuthenticationRequest authentication): void |
+| `authentication` | [`CreatePaymentAuthenticationRequest`](../../doc/models/create-payment-authentication-request.md) | Required | Creates payment authentication | getAuthentication(): CreatePaymentAuthenticationRequest | setAuthentication(CreatePaymentAuthenticationRequest authentication): void |
 
 ## Example (as JSON)
 

@@ -43,7 +43,7 @@ class UpdateRecipientRequest implements \JsonSerializable
     private $status;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -53,7 +53,7 @@ class UpdateRecipientRequest implements \JsonSerializable
      * @param string $description
      * @param string $type
      * @param string $status
-     * @param array $metadata
+     * @param array<string,string> $metadata
      */
     public function __construct(
         string $name,
@@ -73,7 +73,6 @@ class UpdateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Name.
-     *
      * Name
      */
     public function getName(): string
@@ -83,7 +82,6 @@ class UpdateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Name.
-     *
      * Name
      *
      * @required
@@ -96,7 +94,6 @@ class UpdateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Email.
-     *
      * Email
      */
     public function getEmail(): string
@@ -106,7 +103,6 @@ class UpdateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Email.
-     *
      * Email
      *
      * @required
@@ -119,7 +115,6 @@ class UpdateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Description
      */
     public function getDescription(): string
@@ -129,7 +124,6 @@ class UpdateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Description
      *
      * @required
@@ -142,7 +136,6 @@ class UpdateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Type
      */
     public function getType(): string
@@ -152,7 +145,6 @@ class UpdateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Type
      *
      * @required
@@ -165,7 +157,6 @@ class UpdateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Status
      */
     public function getStatus(): string
@@ -175,7 +166,6 @@ class UpdateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Status
      *
      * @required
@@ -188,8 +178,9 @@ class UpdateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -198,11 +189,12 @@ class UpdateRecipientRequest implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -215,8 +207,9 @@ class UpdateRecipientRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

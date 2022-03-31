@@ -86,7 +86,7 @@ class GetBankAccountResponse implements \JsonSerializable
     private $recipient;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -109,7 +109,7 @@ class GetBankAccountResponse implements \JsonSerializable
      * @param \DateTime $createdAt
      * @param \DateTime $updatedAt
      * @param \DateTime $deletedAt
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param string $pixKey
      */
     public function __construct(
@@ -148,7 +148,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Id.
-     *
      * Id
      */
     public function getId(): string
@@ -158,7 +157,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Id.
-     *
      * Id
      *
      * @required
@@ -171,7 +169,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Holder Name.
-     *
      * Holder name
      */
     public function getHolderName(): string
@@ -181,7 +178,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Holder Name.
-     *
      * Holder name
      *
      * @required
@@ -194,7 +190,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Holder Type.
-     *
      * Holder type
      */
     public function getHolderType(): string
@@ -204,7 +199,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Holder Type.
-     *
      * Holder type
      *
      * @required
@@ -217,7 +211,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Bank.
-     *
      * Bank
      */
     public function getBank(): string
@@ -227,7 +220,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Bank.
-     *
      * Bank
      *
      * @required
@@ -240,7 +232,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Branch Number.
-     *
      * Branch number
      */
     public function getBranchNumber(): string
@@ -250,7 +241,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Branch Number.
-     *
      * Branch number
      *
      * @required
@@ -263,7 +253,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Branch Check Digit.
-     *
      * Branch check digit
      */
     public function getBranchCheckDigit(): string
@@ -273,7 +262,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Branch Check Digit.
-     *
      * Branch check digit
      *
      * @required
@@ -286,7 +274,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Account Number.
-     *
      * Account number
      */
     public function getAccountNumber(): string
@@ -296,7 +283,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Account Number.
-     *
      * Account number
      *
      * @required
@@ -309,7 +295,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Account Check Digit.
-     *
      * Account check digit
      */
     public function getAccountCheckDigit(): string
@@ -319,7 +304,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Account Check Digit.
-     *
      * Account check digit
      *
      * @required
@@ -332,7 +316,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Bank account type
      */
     public function getType(): string
@@ -342,7 +325,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Bank account type
      *
      * @required
@@ -355,7 +337,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Bank account status
      */
     public function getStatus(): string
@@ -365,7 +346,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Bank account status
      *
      * @required
@@ -378,7 +358,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Created At.
-     *
      * Creation date
      */
     public function getCreatedAt(): \DateTime
@@ -388,7 +367,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Created At.
-     *
      * Creation date
      *
      * @required
@@ -402,7 +380,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Updated At.
-     *
      * Last update date
      */
     public function getUpdatedAt(): \DateTime
@@ -412,7 +389,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Updated At.
-     *
      * Last update date
      *
      * @required
@@ -426,7 +402,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Deleted At.
-     *
      * Deletion date
      */
     public function getDeletedAt(): \DateTime
@@ -436,7 +411,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Deleted At.
-     *
      * Deletion date
      *
      * @required
@@ -450,7 +424,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Recipient.
-     *
      * Recipient
      */
     public function getRecipient(): ?GetRecipientResponse
@@ -460,7 +433,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Recipient.
-     *
      * Recipient
      *
      * @maps recipient
@@ -472,8 +444,9 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -482,11 +455,12 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -495,7 +469,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Returns Pix Key.
-     *
      * Pix Key
      */
     public function getPixKey(): string
@@ -505,7 +478,6 @@ class GetBankAccountResponse implements \JsonSerializable
 
     /**
      * Sets Pix Key.
-     *
      * Pix Key
      *
      * @required
@@ -522,8 +494,9 @@ class GetBankAccountResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

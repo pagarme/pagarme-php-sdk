@@ -97,7 +97,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Returns Update Subscription.
-     *
      * Indicates if the payment method from the subscription must also be updated
      */
     public function getUpdateSubscription(): bool
@@ -107,7 +106,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Sets Update Subscription.
-     *
      * Indicates if the payment method from the subscription must also be updated
      *
      * @required
@@ -120,7 +118,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Returns Payment Method.
-     *
      * The new payment method
      */
     public function getPaymentMethod(): string
@@ -130,7 +127,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Sets Payment Method.
-     *
      * The new payment method
      *
      * @required
@@ -143,7 +139,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Returns Credit Card.
-     *
      * Credit card data
      */
     public function getCreditCard(): CreateCreditCardPaymentRequest
@@ -153,7 +148,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Sets Credit Card.
-     *
      * Credit card data
      *
      * @required
@@ -166,7 +160,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Returns Debit Card.
-     *
      * Debit card data
      */
     public function getDebitCard(): CreateDebitCardPaymentRequest
@@ -176,7 +169,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Sets Debit Card.
-     *
      * Debit card data
      *
      * @required
@@ -189,7 +181,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Returns Boleto.
-     *
      * Boleto data
      */
     public function getBoleto(): CreateBoletoPaymentRequest
@@ -199,7 +190,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Sets Boleto.
-     *
      * Boleto data
      *
      * @required
@@ -212,7 +202,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Returns Voucher.
-     *
      * Voucher data
      */
     public function getVoucher(): CreateVoucherPaymentRequest
@@ -222,7 +211,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Sets Voucher.
-     *
      * Voucher data
      *
      * @required
@@ -235,7 +223,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Returns Cash.
-     *
      * Cash data
      */
     public function getCash(): CreateCashPaymentRequest
@@ -245,7 +232,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Sets Cash.
-     *
      * Cash data
      *
      * @required
@@ -258,7 +244,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Returns Bank Transfer.
-     *
      * Bank Transfer data
      */
     public function getBankTransfer(): CreateBankTransferPaymentRequest
@@ -268,7 +253,6 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
 
     /**
      * Sets Bank Transfer.
-     *
      * Bank Transfer data
      *
      * @required
@@ -304,8 +288,9 @@ class UpdateChargePaymentMethodRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

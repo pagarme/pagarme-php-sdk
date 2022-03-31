@@ -20,8 +20,8 @@
 | `fundingDate` | `?\DateTime` | Optional | - | getFundingDate(): ?\DateTime | setFundingDate(?\DateTime fundingDate): void |
 | `fundingEstimatedDate` | `?\DateTime` | Optional | - | getFundingEstimatedDate(): ?\DateTime | setFundingEstimatedDate(?\DateTime fundingEstimatedDate): void |
 | `type` | `string` | Required | - | getType(): string | setType(string type): void |
-| `source` | [`GetWithdrawSourceResponse`](/doc/models/get-withdraw-source-response.md) | Required | - | getSource(): GetWithdrawSourceResponse | setSource(GetWithdrawSourceResponse source): void |
-| `target` | [`GetWithdrawTargetResponse`](/doc/models/get-withdraw-target-response.md) | Required | - | getTarget(): GetWithdrawTargetResponse | setTarget(GetWithdrawTargetResponse target): void |
+| `source` | [`GetWithdrawSourceResponse`](../../doc/models/get-withdraw-source-response.md) | Required | - | getSource(): GetWithdrawSourceResponse | setSource(GetWithdrawSourceResponse source): void |
+| `target` | [`GetWithdrawTargetResponse`](../../doc/models/get-withdraw-target-response.md) | Required | - | getTarget(): GetWithdrawTargetResponse | setTarget(GetWithdrawTargetResponse target): void |
 
 ## Example (as JSON)
 

@@ -49,7 +49,6 @@ class CreateCaptureChargeRequest implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * Code for the charge. Sending this field will update the code send on the charge and order creation.
      */
     public function getCode(): string
@@ -59,7 +58,6 @@ class CreateCaptureChargeRequest implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * Code for the charge. Sending this field will update the code send on the charge and order creation.
      *
      * @required
@@ -72,7 +70,6 @@ class CreateCaptureChargeRequest implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * The amount that will be captured
      */
     public function getAmount(): ?int
@@ -82,7 +79,6 @@ class CreateCaptureChargeRequest implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * The amount that will be captured
      *
      * @maps amount
@@ -94,7 +90,6 @@ class CreateCaptureChargeRequest implements \JsonSerializable
 
     /**
      * Returns Split.
-     *
      * Splits
      *
      * @return CreateSplitRequest[]|null
@@ -106,7 +101,6 @@ class CreateCaptureChargeRequest implements \JsonSerializable
 
     /**
      * Sets Split.
-     *
      * Splits
      *
      * @maps split
@@ -143,8 +137,9 @@ class CreateCaptureChargeRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

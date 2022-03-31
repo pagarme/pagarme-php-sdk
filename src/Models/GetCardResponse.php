@@ -74,7 +74,7 @@ class GetCardResponse implements \JsonSerializable
     private $customer;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -114,7 +114,7 @@ class GetCardResponse implements \JsonSerializable
      * @param \DateTime $createdAt
      * @param \DateTime $updatedAt
      * @param GetBillingAddressResponse $billingAddress
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param string $type
      * @param string $holderDocument
      * @param string $firstSixDigits
@@ -366,6 +366,8 @@ class GetCardResponse implements \JsonSerializable
 
     /**
      * Returns Metadata.
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -377,6 +379,8 @@ class GetCardResponse implements \JsonSerializable
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -385,7 +389,6 @@ class GetCardResponse implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Card type
      */
     public function getType(): string
@@ -395,7 +398,6 @@ class GetCardResponse implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Card type
      *
      * @required
@@ -408,7 +410,6 @@ class GetCardResponse implements \JsonSerializable
 
     /**
      * Returns Holder Document.
-     *
      * Document number for the card's holder
      */
     public function getHolderDocument(): string
@@ -418,7 +419,6 @@ class GetCardResponse implements \JsonSerializable
 
     /**
      * Sets Holder Document.
-     *
      * Document number for the card's holder
      *
      * @required
@@ -450,7 +450,6 @@ class GetCardResponse implements \JsonSerializable
 
     /**
      * Returns First Six Digits.
-     *
      * First six digits
      */
     public function getFirstSixDigits(): string
@@ -460,7 +459,6 @@ class GetCardResponse implements \JsonSerializable
 
     /**
      * Sets First Six Digits.
-     *
      * First six digits
      *
      * @required
@@ -496,8 +494,9 @@ class GetCardResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

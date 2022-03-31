@@ -47,7 +47,6 @@ class CreateAnticipationRequest implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Amount requested for the anticipation
      */
     public function getAmount(): int
@@ -57,7 +56,6 @@ class CreateAnticipationRequest implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Amount requested for the anticipation
      *
      * @required
@@ -70,7 +68,6 @@ class CreateAnticipationRequest implements \JsonSerializable
 
     /**
      * Returns Timeframe.
-     *
      * Timeframe
      */
     public function getTimeframe(): string
@@ -80,7 +77,6 @@ class CreateAnticipationRequest implements \JsonSerializable
 
     /**
      * Sets Timeframe.
-     *
      * Timeframe
      *
      * @required
@@ -93,7 +89,6 @@ class CreateAnticipationRequest implements \JsonSerializable
 
     /**
      * Returns Payment Date.
-     *
      * Payment date
      */
     public function getPaymentDate(): \DateTime
@@ -103,7 +98,6 @@ class CreateAnticipationRequest implements \JsonSerializable
 
     /**
      * Sets Payment Date.
-     *
      * Payment date
      *
      * @required
@@ -121,8 +115,9 @@ class CreateAnticipationRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -102,7 +102,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Returns Id.
-     *
      * Id
      */
     public function getId(): string
@@ -112,7 +111,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Sets Id.
-     *
      * Id
      *
      * @required
@@ -125,7 +123,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Returns Quantity.
-     *
      * Quantity
      */
     public function getQuantity(): int
@@ -135,7 +132,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Sets Quantity.
-     *
      * Quantity
      *
      * @required
@@ -148,7 +144,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Description
      */
     public function getDescription(): string
@@ -158,7 +153,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Description
      *
      * @required
@@ -171,7 +165,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Returns Used At.
-     *
      * Used at
      */
     public function getUsedAt(): \DateTime
@@ -181,7 +174,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Sets Used At.
-     *
      * Used at
      *
      * @required
@@ -195,7 +187,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Returns Created At.
-     *
      * Creation date
      */
     public function getCreatedAt(): \DateTime
@@ -205,7 +196,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Sets Created At.
-     *
      * Creation date
      *
      * @required
@@ -219,7 +209,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Status
      */
     public function getStatus(): string
@@ -229,7 +218,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Status
      *
      * @required
@@ -261,7 +249,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Returns Subscription Item.
-     *
      * Subscription item
      */
     public function getSubscriptionItem(): GetSubscriptionItemResponse
@@ -271,7 +258,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Sets Subscription Item.
-     *
      * Subscription item
      *
      * @required
@@ -284,7 +270,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * Identification code in the client system
      */
     public function getCode(): ?string
@@ -294,7 +279,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * Identification code in the client system
      *
      * @maps code
@@ -306,7 +290,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Returns Group.
-     *
      * Identification group in the client system
      */
     public function getGroup(): ?string
@@ -316,7 +299,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Sets Group.
-     *
      * Identification group in the client system
      *
      * @maps group
@@ -328,7 +310,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Field used in item scheme type 'Percent'
      */
     public function getAmount(): ?int
@@ -338,7 +319,6 @@ class GetUsageResponse implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Field used in item scheme type 'Percent'
      *
      * @maps amount
@@ -354,8 +334,9 @@ class GetUsageResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

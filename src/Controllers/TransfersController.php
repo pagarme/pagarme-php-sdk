@@ -13,6 +13,7 @@ namespace PagarmeApiSDKLib\Controllers;
 use PagarmeApiSDKLib\Exceptions\ApiException;
 use PagarmeApiSDKLib\ApiHelper;
 use PagarmeApiSDKLib\ConfigurationInterface;
+use PagarmeApiSDKLib\Models;
 use PagarmeApiSDKLib\Http\HttpRequest;
 use PagarmeApiSDKLib\Http\HttpResponse;
 use PagarmeApiSDKLib\Http\HttpMethod;
@@ -28,13 +29,65 @@ class TransfersController extends BaseController
     }
 
     /**
-     * @param string $transferId
+     * Gets all transfers
      *
-     * @return \PagarmeApiSDKLib\Models\GetTransfer Response from the API call
+     * @return Models\ListTransfers Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getTransferById(string $transferId): \PagarmeApiSDKLib\Models\GetTransfer
+    public function getTransfers(): Models\ListTransfers
+    {
+        //prepare query string for API call
+        $_queryBuilder = '/transfers';
+
+        //validate and preprocess url
+        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+
+        //prepare headers
+        $_headers = [
+            'user-agent'    => self::$userAgent,
+            'Accept'        => 'application/json'
+        ];
+
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+
+        // Apply authorization to request
+        $this->getAuthManager('global')->apply($_httpRequest);
+
+        //call on-before Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        // and invoke the API call request to fetch the response
+        try {
+            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
+        } catch (\Unirest\Exception $ex) {
+            throw new ApiException($ex->getMessage(), $_httpRequest);
+        }
+
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpRequest);
+        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'ListTransfers');
+    }
+
+    /**
+     * @param string $transferId
+     *
+     * @return Models\GetTransfer Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getTransferById(string $transferId): Models\GetTransfer
     {
         //prepare query string for API call
         $_queryBuilder = '/transfers/{transfer_id}';
@@ -81,20 +134,18 @@ class TransfersController extends BaseController
 
         //handle errors defined at the API level
         $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetTransfer');
+        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetTransfer');
     }
 
     /**
-     * @param \PagarmeApiSDKLib\Models\CreateTransfer $request
+     * @param Models\CreateTransfer $request
      *
-     * @return \PagarmeApiSDKLib\Models\GetTransfer Response from the API call
+     * @return Models\GetTransfer Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function createTransfer(
-        \PagarmeApiSDKLib\Models\CreateTransfer $request
-    ): \PagarmeApiSDKLib\Models\GetTransfer {
+    public function createTransfer(Models\CreateTransfer $request): Models\GetTransfer
+    {
         //prepare query string for API call
         $_queryBuilder = '/transfers/recipients';
 
@@ -109,7 +160,7 @@ class TransfersController extends BaseController
         ];
 
         //json encode body
-        $_bodyJson = Request\Body::Json($request);
+        $_bodyJson = ApiHelper::serialize($request);
 
         $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
 
@@ -139,60 +190,6 @@ class TransfersController extends BaseController
 
         //handle errors defined at the API level
         $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\GetTransfer');
-    }
-
-    /**
-     * Gets all transfers
-     *
-     * @return \PagarmeApiSDKLib\Models\ListTransfers Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getTransfers(): \PagarmeApiSDKLib\Models\ListTransfers
-    {
-        //prepare query string for API call
-        $_queryBuilder = '/transfers';
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        $mapper = $this->getJsonMapper();
-        return $mapper->mapClass($response->body, 'PagarmeApiSDKLib\\Models\\ListTransfers');
+        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetTransfer');
     }
 }

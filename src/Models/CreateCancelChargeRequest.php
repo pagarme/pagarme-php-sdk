@@ -47,7 +47,6 @@ class CreateCancelChargeRequest implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * The amount that will be canceled.
      */
     public function getAmount(): ?int
@@ -57,7 +56,6 @@ class CreateCancelChargeRequest implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * The amount that will be canceled.
      *
      * @maps amount
@@ -69,7 +67,6 @@ class CreateCancelChargeRequest implements \JsonSerializable
 
     /**
      * Returns Split Rules.
-     *
      * The split rules request
      *
      * @return CreateCancelChargeSplitRulesRequest[]|null
@@ -81,7 +78,6 @@ class CreateCancelChargeRequest implements \JsonSerializable
 
     /**
      * Sets Split Rules.
-     *
      * The split rules request
      *
      * @maps split_rules
@@ -95,7 +91,6 @@ class CreateCancelChargeRequest implements \JsonSerializable
 
     /**
      * Returns Split.
-     *
      * Splits
      *
      * @return CreateSplitRequest[]|null
@@ -107,7 +102,6 @@ class CreateCancelChargeRequest implements \JsonSerializable
 
     /**
      * Sets Split.
-     *
      * Splits
      *
      * @maps split
@@ -144,8 +138,9 @@ class CreateCancelChargeRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

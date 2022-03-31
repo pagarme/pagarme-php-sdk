@@ -41,7 +41,6 @@ class CreateConfirmPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Description
      */
     public function getDescription(): string
@@ -51,7 +50,6 @@ class CreateConfirmPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Description
      *
      * @required
@@ -64,7 +62,6 @@ class CreateConfirmPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Amount
      */
     public function getAmount(): ?int
@@ -74,7 +71,6 @@ class CreateConfirmPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Amount
      *
      * @maps Amount
@@ -86,7 +82,6 @@ class CreateConfirmPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * Code reference
      */
     public function getCode(): string
@@ -96,7 +91,6 @@ class CreateConfirmPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * Code reference
      *
      * @required
@@ -113,8 +107,9 @@ class CreateConfirmPaymentRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

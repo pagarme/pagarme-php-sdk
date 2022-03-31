@@ -154,7 +154,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Statement Descriptor.
-     *
      * Text that will appear on the credit card's statement
      */
     public function getStatementDescriptor(): string
@@ -164,7 +163,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Statement Descriptor.
-     *
      * Text that will appear on the credit card's statement
      *
      * @required
@@ -177,7 +175,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Acquirer Name.
-     *
      * Acquirer name
      */
     public function getAcquirerName(): string
@@ -187,7 +184,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Acquirer Name.
-     *
      * Acquirer name
      *
      * @required
@@ -200,7 +196,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Acquirer Affiliation Code.
-     *
      * Aquirer affiliation code
      */
     public function getAcquirerAffiliationCode(): string
@@ -210,7 +205,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Acquirer Affiliation Code.
-     *
      * Aquirer affiliation code
      *
      * @required
@@ -223,7 +217,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Acquirer Tid.
-     *
      * Acquirer TID
      */
     public function getAcquirerTid(): string
@@ -233,7 +226,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Acquirer Tid.
-     *
      * Acquirer TID
      *
      * @required
@@ -246,7 +238,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Acquirer Nsu.
-     *
      * Acquirer NSU
      */
     public function getAcquirerNsu(): string
@@ -256,7 +247,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Acquirer Nsu.
-     *
      * Acquirer NSU
      *
      * @required
@@ -269,7 +259,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Acquirer Auth Code.
-     *
      * Acquirer authorization code
      */
     public function getAcquirerAuthCode(): string
@@ -279,7 +268,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Acquirer Auth Code.
-     *
      * Acquirer authorization code
      *
      * @required
@@ -292,7 +280,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Operation Type.
-     *
      * Operation type
      */
     public function getOperationType(): string
@@ -302,7 +289,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Operation Type.
-     *
      * Operation type
      *
      * @required
@@ -315,7 +301,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Card.
-     *
      * Card data
      */
     public function getCard(): GetCardResponse
@@ -325,7 +310,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Card.
-     *
      * Card data
      *
      * @required
@@ -338,7 +322,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Acquirer Message.
-     *
      * Acquirer message
      */
     public function getAcquirerMessage(): string
@@ -348,7 +331,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Acquirer Message.
-     *
      * Acquirer message
      *
      * @required
@@ -361,7 +343,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Acquirer Return Code.
-     *
      * Acquirer Return Code
      */
     public function getAcquirerReturnCode(): string
@@ -371,7 +352,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Acquirer Return Code.
-     *
      * Acquirer Return Code
      *
      * @required
@@ -384,7 +364,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Returns Installments.
-     *
      * Number of installments
      */
     public function getInstallments(): ?int
@@ -394,7 +373,6 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
 
     /**
      * Sets Installments.
-     *
      * Number of installments
      *
      * @maps installments
@@ -410,8 +388,9 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

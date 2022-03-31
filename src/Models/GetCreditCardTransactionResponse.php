@@ -162,7 +162,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Returns Statement Descriptor.
-     *
      * Text that will appear on the credit card's statement
      */
     public function getStatementDescriptor(): string
@@ -172,7 +171,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Sets Statement Descriptor.
-     *
      * Text that will appear on the credit card's statement
      *
      * @required
@@ -185,7 +183,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Returns Acquirer Name.
-     *
      * Acquirer name
      */
     public function getAcquirerName(): string
@@ -195,7 +192,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Sets Acquirer Name.
-     *
      * Acquirer name
      *
      * @required
@@ -208,7 +204,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Returns Acquirer Affiliation Code.
-     *
      * Aquirer affiliation code
      */
     public function getAcquirerAffiliationCode(): string
@@ -218,7 +213,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Sets Acquirer Affiliation Code.
-     *
      * Aquirer affiliation code
      *
      * @required
@@ -231,7 +225,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Returns Acquirer Tid.
-     *
      * Acquirer TID
      */
     public function getAcquirerTid(): string
@@ -241,7 +234,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Sets Acquirer Tid.
-     *
      * Acquirer TID
      *
      * @required
@@ -254,7 +246,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Returns Acquirer Nsu.
-     *
      * Acquirer NSU
      */
     public function getAcquirerNsu(): string
@@ -264,7 +255,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Sets Acquirer Nsu.
-     *
      * Acquirer NSU
      *
      * @required
@@ -277,7 +267,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Returns Acquirer Auth Code.
-     *
      * Acquirer authorization code
      */
     public function getAcquirerAuthCode(): string
@@ -287,7 +276,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Sets Acquirer Auth Code.
-     *
      * Acquirer authorization code
      *
      * @required
@@ -300,7 +288,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Returns Operation Type.
-     *
      * Operation type
      */
     public function getOperationType(): string
@@ -310,7 +297,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Sets Operation Type.
-     *
      * Operation type
      *
      * @required
@@ -323,7 +309,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Returns Card.
-     *
      * Card data
      */
     public function getCard(): GetCardResponse
@@ -333,7 +318,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Sets Card.
-     *
      * Card data
      *
      * @required
@@ -346,7 +330,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Returns Acquirer Message.
-     *
      * Acquirer message
      */
     public function getAcquirerMessage(): string
@@ -356,7 +339,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Sets Acquirer Message.
-     *
      * Acquirer message
      *
      * @required
@@ -369,7 +351,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Returns Acquirer Return Code.
-     *
      * Acquirer Return Code
      */
     public function getAcquirerReturnCode(): string
@@ -379,7 +360,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Sets Acquirer Return Code.
-     *
      * Acquirer Return Code
      *
      * @required
@@ -392,7 +372,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Returns Installments.
-     *
      * Number of installments
      */
     public function getInstallments(): ?int
@@ -402,7 +381,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Sets Installments.
-     *
      * Number of installments
      *
      * @maps installments
@@ -414,7 +392,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Returns Threed Authentication Url.
-     *
      * 3D-S authentication Url
      */
     public function getThreedAuthenticationUrl(): string
@@ -424,7 +401,6 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
 
     /**
      * Sets Threed Authentication Url.
-     *
      * 3D-S authentication Url
      *
      * @required
@@ -441,8 +417,9 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

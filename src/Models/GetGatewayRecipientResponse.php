@@ -60,7 +60,6 @@ class GetGatewayRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Gateway.
-     *
      * Gateway name
      */
     public function getGateway(): string
@@ -70,7 +69,6 @@ class GetGatewayRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Gateway.
-     *
      * Gateway name
      *
      * @required
@@ -83,7 +81,6 @@ class GetGatewayRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Status of the recipient on the gateway
      */
     public function getStatus(): string
@@ -93,7 +90,6 @@ class GetGatewayRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Status of the recipient on the gateway
      *
      * @required
@@ -106,7 +102,6 @@ class GetGatewayRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Pgid.
-     *
      * Recipient id on the gateway
      */
     public function getPgid(): string
@@ -116,7 +111,6 @@ class GetGatewayRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Pgid.
-     *
      * Recipient id on the gateway
      *
      * @required
@@ -129,7 +123,6 @@ class GetGatewayRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Created At.
-     *
      * Creation date
      */
     public function getCreatedAt(): string
@@ -139,7 +132,6 @@ class GetGatewayRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Created At.
-     *
      * Creation date
      *
      * @required
@@ -152,7 +144,6 @@ class GetGatewayRecipientResponse implements \JsonSerializable
 
     /**
      * Returns Updated At.
-     *
      * Last update date
      */
     public function getUpdatedAt(): string
@@ -162,7 +153,6 @@ class GetGatewayRecipientResponse implements \JsonSerializable
 
     /**
      * Sets Updated At.
-     *
      * Last update date
      *
      * @required
@@ -179,8 +169,9 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -13,8 +13,8 @@ Response object for getting an invoice item
 |  --- | --- | --- | --- | --- | --- |
 | `amount` | `int` | Required | - | getAmount(): int | setAmount(int amount): void |
 | `description` | `string` | Required | - | getDescription(): string | setDescription(string description): void |
-| `pricingScheme` | [`GetPricingSchemeResponse`](/doc/models/get-pricing-scheme-response.md) | Required | - | getPricingScheme(): GetPricingSchemeResponse | setPricingScheme(GetPricingSchemeResponse pricingScheme): void |
-| `priceBracket` | [`GetPriceBracketResponse`](/doc/models/get-price-bracket-response.md) | Required | - | getPriceBracket(): GetPriceBracketResponse | setPriceBracket(GetPriceBracketResponse priceBracket): void |
+| `pricingScheme` | [`GetPricingSchemeResponse`](../../doc/models/get-pricing-scheme-response.md) | Required | - | getPricingScheme(): GetPricingSchemeResponse | setPricingScheme(GetPricingSchemeResponse pricingScheme): void |
+| `priceBracket` | [`GetPriceBracketResponse`](../../doc/models/get-price-bracket-response.md) | Required | - | getPriceBracket(): GetPriceBracketResponse | setPriceBracket(GetPriceBracketResponse priceBracket): void |
 | `quantity` | `?int` | Optional | - | getQuantity(): ?int | setQuantity(?int quantity): void |
 | `name` | `?string` | Optional | - | getName(): ?string | setName(?string name): void |
 | `subscriptionItemId` | `string` | Required | Subscription Item Id | getSubscriptionItemId(): string | setSubscriptionItemId(string subscriptionItemId): void |

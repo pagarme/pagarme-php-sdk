@@ -88,7 +88,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     *
      * Item description
      */
     public function getDescription(): string
@@ -98,7 +97,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     *
      * Item description
      *
      * @required
@@ -111,7 +109,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Pricing Scheme.
-     *
      * Pricing scheme
      */
     public function getPricingScheme(): CreatePricingSchemeRequest
@@ -121,7 +118,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Pricing Scheme.
-     *
      * Pricing scheme
      *
      * @required
@@ -134,7 +130,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Id.
-     *
      * Item id
      */
     public function getId(): string
@@ -144,7 +139,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Id.
-     *
      * Item id
      *
      * @required
@@ -157,7 +151,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Plan Item Id.
-     *
      * Plan item id
      */
     public function getPlanItemId(): string
@@ -167,7 +160,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Plan Item Id.
-     *
      * Plan item id
      *
      * @required
@@ -180,7 +172,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Discounts.
-     *
      * Discounts for the item
      *
      * @return CreateDiscountRequest[]
@@ -192,7 +183,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Discounts.
-     *
      * Discounts for the item
      *
      * @required
@@ -207,7 +197,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Name.
-     *
      * Item name
      */
     public function getName(): string
@@ -217,7 +206,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Name.
-     *
      * Item name
      *
      * @required
@@ -230,7 +218,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Cycles.
-     *
      * Number of cycles which the item will be charged
      */
     public function getCycles(): ?int
@@ -240,7 +227,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Cycles.
-     *
      * Number of cycles which the item will be charged
      *
      * @maps cycles
@@ -252,7 +238,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Quantity.
-     *
      * Quantity of items
      */
     public function getQuantity(): ?int
@@ -262,7 +247,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Quantity.
-     *
      * Quantity of items
      *
      * @maps quantity
@@ -274,7 +258,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Returns Minimum Price.
-     *
      * Minimum price
      */
     public function getMinimumPrice(): ?int
@@ -284,7 +267,6 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
 
     /**
      * Sets Minimum Price.
-     *
      * Minimum price
      *
      * @maps minimum_price
@@ -300,8 +282,9 @@ class CreateSubscriptionItemRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

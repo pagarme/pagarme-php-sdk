@@ -10,8 +10,8 @@ $tokensController = $client->getTokensController();
 
 ## Methods
 
-* [Create Token](/doc/controllers/tokens.md#create-token)
-* [Get Token](/doc/controllers/tokens.md#get-token)
+* [Create Token](../../doc/controllers/tokens.md#create-token)
+* [Get Token](../../doc/controllers/tokens.md#get-token)
 
 
 # Create Token
@@ -31,12 +31,12 @@ function createToken(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `publicKey` | `string` | Template, Required | Public key |
-| `request` | [`CreateTokenRequest`](/doc/models/create-token-request.md) | Body, Required | Request for creating a token |
+| `request` | [`CreateTokenRequest`](../../doc/models/create-token-request.md) | Body, Required | Request for creating a token |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`GetTokenResponse`](/doc/models/get-token-response.md)
+[`GetTokenResponse`](../../doc/models/get-token-response.md)
 
 ## Example Usage
 
@@ -87,7 +87,7 @@ function getToken(string $id, string $publicKey): GetTokenResponse
 
 ## Response Type
 
-[`GetTokenResponse`](/doc/models/get-token-response.md)
+[`GetTokenResponse`](../../doc/models/get-token-response.md)
 
 ## Example Usage
 

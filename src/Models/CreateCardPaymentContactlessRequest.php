@@ -47,7 +47,6 @@ class CreateCardPaymentContactlessRequest implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * The authentication type
      */
     public function getType(): string
@@ -57,7 +56,6 @@ class CreateCardPaymentContactlessRequest implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * The authentication type
      *
      * @required
@@ -70,7 +68,6 @@ class CreateCardPaymentContactlessRequest implements \JsonSerializable
 
     /**
      * Returns Apple Pay.
-     *
      * The ApplePay encrypted request
      */
     public function getApplePay(): ?CreateApplePayRequest
@@ -80,7 +77,6 @@ class CreateCardPaymentContactlessRequest implements \JsonSerializable
 
     /**
      * Sets Apple Pay.
-     *
      * The ApplePay encrypted request
      *
      * @maps apple_pay
@@ -92,7 +88,6 @@ class CreateCardPaymentContactlessRequest implements \JsonSerializable
 
     /**
      * Returns Google Pay.
-     *
      * The GooglePay encrypted request
      */
     public function getGooglePay(): ?CreateGooglePayRequest
@@ -102,7 +97,6 @@ class CreateCardPaymentContactlessRequest implements \JsonSerializable
 
     /**
      * Sets Google Pay.
-     *
      * The GooglePay encrypted request
      *
      * @maps google_pay
@@ -114,7 +108,6 @@ class CreateCardPaymentContactlessRequest implements \JsonSerializable
 
     /**
      * Returns Emv.
-     *
      * The Emv encrypted request
      */
     public function getEmv(): ?CreateEmvDecryptRequest
@@ -124,7 +117,6 @@ class CreateCardPaymentContactlessRequest implements \JsonSerializable
 
     /**
      * Sets Emv.
-     *
      * The Emv encrypted request
      *
      * @maps emv
@@ -140,8 +132,9 @@ class CreateCardPaymentContactlessRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

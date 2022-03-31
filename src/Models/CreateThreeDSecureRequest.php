@@ -62,7 +62,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Returns Mpi.
-     *
      * The MPI Vendor (MerchantPlugin)
      */
     public function getMpi(): string
@@ -72,7 +71,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Sets Mpi.
-     *
      * The MPI Vendor (MerchantPlugin)
      *
      * @required
@@ -85,7 +83,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Returns Cavv.
-     *
      * The Cardholder Authentication Verification value
      */
     public function getCavv(): ?string
@@ -95,7 +92,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Sets Cavv.
-     *
      * The Cardholder Authentication Verification value
      *
      * @maps cavv
@@ -107,7 +103,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Returns Eci.
-     *
      * The Electronic Commerce Indicator value
      */
     public function getEci(): ?string
@@ -117,7 +112,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Sets Eci.
-     *
      * The Electronic Commerce Indicator value
      *
      * @maps eci
@@ -129,7 +123,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Returns Transaction Id.
-     *
      * The TransactionId value (XID)
      */
     public function getTransactionId(): ?string
@@ -139,7 +132,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Sets Transaction Id.
-     *
      * The TransactionId value (XID)
      *
      * @maps transaction_id
@@ -151,7 +143,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Returns Success Url.
-     *
      * The success URL after the authentication
      */
     public function getSuccessUrl(): ?string
@@ -161,7 +152,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Sets Success Url.
-     *
      * The success URL after the authentication
      *
      * @maps success_url
@@ -173,7 +163,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Returns Ds Transaction Id.
-     *
      * Directory Service Transaction Identifier
      */
     public function getDsTransactionId(): ?string
@@ -183,7 +172,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Sets Ds Transaction Id.
-     *
      * Directory Service Transaction Identifier
      *
      * @maps ds_transaction_id
@@ -195,7 +183,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Returns Version.
-     *
      * ThreeDSecure Version
      */
     public function getVersion(): ?string
@@ -205,7 +192,6 @@ class CreateThreeDSecureRequest implements \JsonSerializable
 
     /**
      * Sets Version.
-     *
      * ThreeDSecure Version
      *
      * @maps version
@@ -221,8 +207,9 @@ class CreateThreeDSecureRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

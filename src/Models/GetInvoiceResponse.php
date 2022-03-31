@@ -94,7 +94,7 @@ class GetInvoiceResponse implements \JsonSerializable
     private $shipping;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -147,7 +147,7 @@ class GetInvoiceResponse implements \JsonSerializable
      * @param GetBillingAddressResponse $billingAddress
      * @param GetSubscriptionResponse $subscription
      * @param GetShippingResponse $shipping
-     * @param array $metadata
+     * @param array<string,string> $metadata
      * @param string $subscriptionId
      */
     public function __construct(
@@ -474,6 +474,8 @@ class GetInvoiceResponse implements \JsonSerializable
 
     /**
      * Returns Metadata.
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -485,6 +487,8 @@ class GetInvoiceResponse implements \JsonSerializable
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -569,7 +573,6 @@ class GetInvoiceResponse implements \JsonSerializable
 
     /**
      * Returns Total Discount.
-     *
      * Total discounted value
      */
     public function getTotalDiscount(): ?int
@@ -579,7 +582,6 @@ class GetInvoiceResponse implements \JsonSerializable
 
     /**
      * Sets Total Discount.
-     *
      * Total discounted value
      *
      * @maps total_discount
@@ -591,7 +593,6 @@ class GetInvoiceResponse implements \JsonSerializable
 
     /**
      * Returns Total Increment.
-     *
      * Total discounted value
      */
     public function getTotalIncrement(): ?int
@@ -601,7 +602,6 @@ class GetInvoiceResponse implements \JsonSerializable
 
     /**
      * Sets Total Increment.
-     *
      * Total discounted value
      *
      * @maps total_increment
@@ -613,7 +613,6 @@ class GetInvoiceResponse implements \JsonSerializable
 
     /**
      * Returns Subscription Id.
-     *
      * Subscription Id
      */
     public function getSubscriptionId(): string
@@ -623,7 +622,6 @@ class GetInvoiceResponse implements \JsonSerializable
 
     /**
      * Sets Subscription Id.
-     *
      * Subscription Id
      *
      * @required
@@ -640,8 +638,9 @@ class GetInvoiceResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

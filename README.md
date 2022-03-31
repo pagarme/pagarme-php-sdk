@@ -99,7 +99,7 @@ To run your project, right click on your PHP file inside your Test project and c
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -137,30 +137,29 @@ Here is the list of errors that the API might throw.
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | Invalid request | [`ErrorException`](/doc/models/error-exception.md) |
-| 401 | Invalid API key | [`ErrorException`](/doc/models/error-exception.md) |
-| 404 | An informed resource was not found | [`ErrorException`](/doc/models/error-exception.md) |
-| 412 | Business validation error | [`ErrorException`](/doc/models/error-exception.md) |
-| 422 | Contract validation error | [`ErrorException`](/doc/models/error-exception.md) |
-| 500 | Internal server error | [`ErrorException`](/doc/models/error-exception.md) |
+| 400 | Invalid request | [`ErrorException`](doc/models/error-exception.md) |
+| 401 | Invalid API key | [`ErrorException`](doc/models/error-exception.md) |
+| 404 | An informed resource was not found | [`ErrorException`](doc/models/error-exception.md) |
+| 412 | Business validation error | [`ErrorException`](doc/models/error-exception.md) |
+| 422 | Contract validation error | [`ErrorException`](doc/models/error-exception.md) |
+| 500 | Internal server error | [`ErrorException`](doc/models/error-exception.md) |
 
 ## List of APIs
 
-* [Subscriptions](/doc/controllers/subscriptions.md)
-* [Orders](/doc/controllers/orders.md)
-* [Plans](/doc/controllers/plans.md)
-* [Invoices](/doc/controllers/invoices.md)
-* [Customers](/doc/controllers/customers.md)
-* [Charges](/doc/controllers/charges.md)
-* [Recipients](/doc/controllers/recipients.md)
-* [Tokens](/doc/controllers/tokens.md)
-* [Transactions](/doc/controllers/transactions.md)
-* [Transfers](/doc/controllers/transfers.md)
+* [Subscriptions](doc/controllers/subscriptions.md)
+* [Orders](doc/controllers/orders.md)
+* [Plans](doc/controllers/plans.md)
+* [Invoices](doc/controllers/invoices.md)
+* [Customers](doc/controllers/customers.md)
+* [Charges](doc/controllers/charges.md)
+* [Recipients](doc/controllers/recipients.md)
+* [Tokens](doc/controllers/tokens.md)
+* [Transactions](doc/controllers/transactions.md)
+* [Transfers](doc/controllers/transfers.md)
 
 ## Classes Documentation
 
-* [Utility Classes](/doc/utility-classes.md)
-* [ApiException](/doc/api-exception.md)
-* [HttpRequest](/doc/http-request.md)
-* [HttpResponse](/doc/http-response.md)
+* [ApiException](doc/api-exception.md)
+* [HttpRequest](doc/http-request.md)
+* [HttpResponse](doc/http-response.md)
 

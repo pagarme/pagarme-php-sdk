@@ -39,7 +39,6 @@ class ListTransactionsResponse implements \JsonSerializable
 
     /**
      * Returns Data.
-     *
      * The transaction objects
      *
      * @return GetTransactionResponse[]
@@ -51,7 +50,6 @@ class ListTransactionsResponse implements \JsonSerializable
 
     /**
      * Sets Data.
-     *
      * The transaction objects
      *
      * @required
@@ -66,7 +64,6 @@ class ListTransactionsResponse implements \JsonSerializable
 
     /**
      * Returns Paging.
-     *
      * Paging object
      */
     public function getPaging(): PagingResponse
@@ -76,7 +73,6 @@ class ListTransactionsResponse implements \JsonSerializable
 
     /**
      * Sets Paging.
-     *
      * Paging object
      *
      * @required
@@ -93,8 +89,9 @@ class ListTransactionsResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

@@ -37,7 +37,6 @@ class CreateCheckoutDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Statement Descriptor.
-     *
      * Card invoice text descriptor
      */
     public function getStatementDescriptor(): ?string
@@ -47,7 +46,6 @@ class CreateCheckoutDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Statement Descriptor.
-     *
      * Card invoice text descriptor
      *
      * @maps statement_descriptor
@@ -59,7 +57,6 @@ class CreateCheckoutDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Authentication.
-     *
      * Creates payment authentication
      */
     public function getAuthentication(): CreatePaymentAuthenticationRequest
@@ -69,7 +66,6 @@ class CreateCheckoutDebitCardPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Authentication.
-     *
      * Creates payment authentication
      *
      * @required
@@ -86,8 +82,9 @@ class CreateCheckoutDebitCardPaymentRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

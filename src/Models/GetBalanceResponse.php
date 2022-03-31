@@ -62,7 +62,6 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Returns Currency.
-     *
      * Currency
      */
     public function getCurrency(): string
@@ -72,7 +71,6 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Sets Currency.
-     *
      * Currency
      *
      * @required
@@ -85,7 +83,6 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Returns Available Amount.
-     *
      * Amount available for transferring
      */
     public function getAvailableAmount(): int
@@ -95,7 +92,6 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Sets Available Amount.
-     *
      * Amount available for transferring
      *
      * @required
@@ -108,7 +104,6 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Returns Recipient.
-     *
      * Recipient
      */
     public function getRecipient(): ?GetRecipientResponse
@@ -118,7 +113,6 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Sets Recipient.
-     *
      * Recipient
      *
      * @maps recipient
@@ -172,8 +166,9 @@ class GetBalanceResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

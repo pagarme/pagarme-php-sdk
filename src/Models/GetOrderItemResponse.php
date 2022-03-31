@@ -73,7 +73,6 @@ class GetOrderItemResponse implements \JsonSerializable
 
     /**
      * Returns Id.
-     *
      * Id
      */
     public function getId(): string
@@ -83,7 +82,6 @@ class GetOrderItemResponse implements \JsonSerializable
 
     /**
      * Sets Id.
-     *
      * Id
      *
      * @required
@@ -153,7 +151,6 @@ class GetOrderItemResponse implements \JsonSerializable
 
     /**
      * Returns Category.
-     *
      * Category
      */
     public function getCategory(): string
@@ -163,7 +160,6 @@ class GetOrderItemResponse implements \JsonSerializable
 
     /**
      * Sets Category.
-     *
      * Category
      *
      * @required
@@ -176,7 +172,6 @@ class GetOrderItemResponse implements \JsonSerializable
 
     /**
      * Returns Code.
-     *
      * Code
      */
     public function getCode(): string
@@ -186,7 +181,6 @@ class GetOrderItemResponse implements \JsonSerializable
 
     /**
      * Sets Code.
-     *
      * Code
      *
      * @required
@@ -203,8 +197,9 @@ class GetOrderItemResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

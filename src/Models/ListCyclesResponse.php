@@ -29,7 +29,6 @@ class ListCyclesResponse implements \JsonSerializable
 
     /**
      * Returns Data.
-     *
      * The subscription cycles objects
      *
      * @return GetPeriodResponse[]|null
@@ -41,7 +40,6 @@ class ListCyclesResponse implements \JsonSerializable
 
     /**
      * Sets Data.
-     *
      * The subscription cycles objects
      *
      * @maps data
@@ -55,7 +53,6 @@ class ListCyclesResponse implements \JsonSerializable
 
     /**
      * Returns Paging.
-     *
      * Paging object
      */
     public function getPaging(): ?PagingResponse
@@ -65,7 +62,6 @@ class ListCyclesResponse implements \JsonSerializable
 
     /**
      * Sets Paging.
-     *
      * Paging object
      *
      * @maps paging
@@ -81,8 +77,9 @@ class ListCyclesResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

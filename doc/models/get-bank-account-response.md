@@ -22,8 +22,8 @@
 | `createdAt` | `\DateTime` | Required | Creation date | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
 | `updatedAt` | `\DateTime` | Required | Last update date | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
 | `deletedAt` | `\DateTime` | Required | Deletion date | getDeletedAt(): \DateTime | setDeletedAt(\DateTime deletedAt): void |
-| `recipient` | [`?GetRecipientResponse`](/doc/models/get-recipient-response.md) | Optional | Recipient | getRecipient(): ?GetRecipientResponse | setRecipient(?GetRecipientResponse recipient): void |
-| `metadata` | `array` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
+| `recipient` | [`?GetRecipientResponse`](../../doc/models/get-recipient-response.md) | Optional | Recipient | getRecipient(): ?GetRecipientResponse | setRecipient(?GetRecipientResponse recipient): void |
+| `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 | `pixKey` | `string` | Required | Pix Key | getPixKey(): string | setPixKey(string pixKey): void |
 
 ## Example (as JSON)

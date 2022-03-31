@@ -49,7 +49,7 @@ class GetTransferResponse implements \JsonSerializable
     private $bankAccount;
 
     /**
-     * @var array
+     * @var array<string,string>
      */
     private $metadata;
 
@@ -60,7 +60,7 @@ class GetTransferResponse implements \JsonSerializable
      * @param \DateTime $createdAt
      * @param \DateTime $updatedAt
      * @param GetBankAccountResponse $bankAccount
-     * @param array $metadata
+     * @param array<string,string> $metadata
      */
     public function __construct(
         string $id,
@@ -82,7 +82,6 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Returns Id.
-     *
      * Id
      */
     public function getId(): string
@@ -92,7 +91,6 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Sets Id.
-     *
      * Id
      *
      * @required
@@ -105,7 +103,6 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Transfer amount
      */
     public function getAmount(): int
@@ -115,7 +112,6 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Transfer amount
      *
      * @required
@@ -128,7 +124,6 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Returns Status.
-     *
      * Transfer status
      */
     public function getStatus(): string
@@ -138,7 +133,6 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Sets Status.
-     *
      * Transfer status
      *
      * @required
@@ -151,7 +145,6 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Returns Created At.
-     *
      * Transfer creation date
      */
     public function getCreatedAt(): \DateTime
@@ -161,7 +154,6 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Sets Created At.
-     *
      * Transfer creation date
      *
      * @required
@@ -175,7 +167,6 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Returns Updated At.
-     *
      * Transfer last update date
      */
     public function getUpdatedAt(): \DateTime
@@ -185,7 +176,6 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Sets Updated At.
-     *
      * Transfer last update date
      *
      * @required
@@ -199,7 +189,6 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Returns Bank Account.
-     *
      * Bank account
      */
     public function getBankAccount(): GetBankAccountResponse
@@ -209,7 +198,6 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Sets Bank Account.
-     *
      * Bank account
      *
      * @required
@@ -222,8 +210,9 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Returns Metadata.
-     *
      * Metadata
+     *
+     * @return array<string,string>
      */
     public function getMetadata(): array
     {
@@ -232,11 +221,12 @@ class GetTransferResponse implements \JsonSerializable
 
     /**
      * Sets Metadata.
-     *
      * Metadata
      *
      * @required
      * @maps metadata
+     *
+     * @param array<string,string> $metadata
      */
     public function setMetadata(array $metadata): void
     {
@@ -249,8 +239,9 @@ class GetTransferResponse implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];

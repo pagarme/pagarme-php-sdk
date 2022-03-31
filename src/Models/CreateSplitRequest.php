@@ -56,7 +56,6 @@ class CreateSplitRequest implements \JsonSerializable
 
     /**
      * Returns Type.
-     *
      * Split type
      */
     public function getType(): string
@@ -66,7 +65,6 @@ class CreateSplitRequest implements \JsonSerializable
 
     /**
      * Sets Type.
-     *
      * Split type
      *
      * @required
@@ -79,7 +77,6 @@ class CreateSplitRequest implements \JsonSerializable
 
     /**
      * Returns Amount.
-     *
      * Amount
      */
     public function getAmount(): int
@@ -89,7 +86,6 @@ class CreateSplitRequest implements \JsonSerializable
 
     /**
      * Sets Amount.
-     *
      * Amount
      *
      * @required
@@ -102,7 +98,6 @@ class CreateSplitRequest implements \JsonSerializable
 
     /**
      * Returns Recipient Id.
-     *
      * Recipient id
      */
     public function getRecipientId(): string
@@ -112,7 +107,6 @@ class CreateSplitRequest implements \JsonSerializable
 
     /**
      * Sets Recipient Id.
-     *
      * Recipient id
      *
      * @required
@@ -125,7 +119,6 @@ class CreateSplitRequest implements \JsonSerializable
 
     /**
      * Returns Options.
-     *
      * The split options request
      */
     public function getOptions(): ?CreateSplitOptionsRequest
@@ -135,7 +128,6 @@ class CreateSplitRequest implements \JsonSerializable
 
     /**
      * Sets Options.
-     *
      * The split options request
      *
      * @maps options
@@ -147,7 +139,6 @@ class CreateSplitRequest implements \JsonSerializable
 
     /**
      * Returns Split Rule Id.
-     *
      * Rule code used in cancellation.
      */
     public function getSplitRuleId(): ?string
@@ -157,7 +148,6 @@ class CreateSplitRequest implements \JsonSerializable
 
     /**
      * Sets Split Rule Id.
-     *
      * Rule code used in cancellation.
      *
      * @maps split_rule_id
@@ -173,8 +163,9 @@ class CreateSplitRequest implements \JsonSerializable
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
      *        are set. (default: false)
      *
-     * @return mixed
+     * @return array|stdClass
      */
+    #[\ReturnTypeWillChange] // @phan-suppress-current-line PhanUndeclaredClassAttribute for (php < 8.1)
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
