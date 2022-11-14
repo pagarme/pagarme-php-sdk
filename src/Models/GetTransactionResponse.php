@@ -102,6 +102,21 @@ class GetTransactionResponse implements \JsonSerializable
     private $split;
 
     /**
+     * @var GetInterestResponse|null
+     */
+    private $interest;
+
+    /**
+     * @var GetFineResponse|null
+     */
+    private $fine;
+
+    /**
+     * @var int|null
+     */
+    private $maxDaysToPayPastDue;
+
+    /**
      * @param string $gatewayId
      * @param int $amount
      * @param string $status
@@ -487,6 +502,60 @@ class GetTransactionResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Interest.
+     */
+    public function getInterest(): ?GetInterestResponse
+    {
+        return $this->interest;
+    }
+
+    /**
+     * Sets Interest.
+     *
+     * @maps interest
+     */
+    public function setInterest(?GetInterestResponse $interest): void
+    {
+        $this->interest = $interest;
+    }
+
+    /**
+     * Returns Fine.
+     */
+    public function getFine(): ?GetFineResponse
+    {
+        return $this->fine;
+    }
+
+    /**
+     * Sets Fine.
+     *
+     * @maps fine
+     */
+    public function setFine(?GetFineResponse $fine): void
+    {
+        $this->fine = $fine;
+    }
+
+    /**
+     * Returns Max Days to Pay Past Due.
+     */
+    public function getMaxDaysToPayPastDue(): ?int
+    {
+        return $this->maxDaysToPayPastDue;
+    }
+
+    /**
+     * Sets Max Days to Pay Past Due.
+     *
+     * @maps max_days_to_pay_past_due
+     */
+    public function setMaxDaysToPayPastDue(?int $maxDaysToPayPastDue): void
+    {
+        $this->maxDaysToPayPastDue = $maxDaysToPayPastDue;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -498,26 +567,35 @@ class GetTransactionResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['gateway_id']         = $this->gatewayId;
-        $json['amount']             = $this->amount;
-        $json['status']             = $this->status;
-        $json['success']            = $this->success;
-        $json['created_at']         = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']         = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        $json['attempt_count']      = $this->attemptCount;
-        $json['max_attempts']       = $this->maxAttempts;
-        $json['splits']             = $this->splits;
+        $json['gateway_id']                   = $this->gatewayId;
+        $json['amount']                       = $this->amount;
+        $json['status']                       = $this->status;
+        $json['success']                      = $this->success;
+        $json['created_at']                   = DateTimeHelper::toRfc3339DateTime($this->createdAt);
+        $json['updated_at']                   = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
+        $json['attempt_count']                = $this->attemptCount;
+        $json['max_attempts']                 = $this->maxAttempts;
+        $json['splits']                       = $this->splits;
         if (isset($this->nextAttempt)) {
-            $json['next_attempt']   = DateTimeHelper::toRfc3339DateTime($this->nextAttempt);
+            $json['next_attempt']             = DateTimeHelper::toRfc3339DateTime($this->nextAttempt);
         }
-        $json['transaction_type']   = $this->transactionType;
-        $json['id']                 = $this->id;
-        $json['gateway_response']   = $this->gatewayResponse;
-        $json['antifraud_response'] = $this->antifraudResponse;
+        $json['transaction_type']             = $this->transactionType ?? 'transaction';
+        $json['id']                           = $this->id;
+        $json['gateway_response']             = $this->gatewayResponse;
+        $json['antifraud_response']           = $this->antifraudResponse;
         if (isset($this->metadata)) {
-            $json['metadata']       = $this->metadata;
+            $json['metadata']                 = $this->metadata;
         }
-        $json['split']              = $this->split;
+        $json['split']                        = $this->split;
+        if (isset($this->interest)) {
+            $json['interest']                 = $this->interest;
+        }
+        if (isset($this->fine)) {
+            $json['fine']                     = $this->fine;
+        }
+        if (isset($this->maxDaysToPayPastDue)) {
+            $json['max_days_to_pay_past_due'] = $this->maxDaysToPayPastDue;
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

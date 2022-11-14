@@ -38,4 +38,22 @@ class ConfigurationDefaults
     public const BASIC_AUTH_USER_NAME = '';
 
     public const BASIC_AUTH_PASSWORD = '';
+
+    /**
+     * @var array Associative list of all default configurations
+     */
+    public const _ALL = [
+        'timeout' => self::TIMEOUT,
+        'enableRetries' => self::ENABLE_RETRIES,
+        'numberOfRetries' => self::NUMBER_OF_RETRIES,
+        'retryInterval' => self::RETRY_INTERVAL,
+        'backOffFactor' => self::BACK_OFF_FACTOR,
+        'maximumRetryWaitTime' => self::MAXIMUM_RETRY_WAIT_TIME,
+        'retryOnTimeout' => self::RETRY_ON_TIMEOUT,
+        'httpStatusCodesToRetry' => self::HTTP_STATUS_CODES_TO_RETRY,
+        'httpMethodsToRetry' => self::HTTP_METHODS_TO_RETRY,
+        'environment' => self::ENVIRONMENT,
+        'basicAuthUserName' => self::BASIC_AUTH_USER_NAME,
+        'basicAuthPassword' => self::BASIC_AUTH_PASSWORD
+    ];
 }

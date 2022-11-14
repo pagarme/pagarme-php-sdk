@@ -10,161 +10,91 @@ declare(strict_types=1);
 
 namespace PagarmeApiSDKLib\Controllers;
 
+use Core\Request\Parameters\BodyParam;
+use Core\Request\Parameters\HeaderParam;
+use Core\Request\Parameters\QueryParam;
+use Core\Request\Parameters\TemplateParam;
+use CoreInterfaces\Core\Request\RequestMethod;
 use PagarmeApiSDKLib\Exceptions\ApiException;
-use PagarmeApiSDKLib\ApiHelper;
-use PagarmeApiSDKLib\ConfigurationInterface;
-use PagarmeApiSDKLib\Models;
+use PagarmeApiSDKLib\Models\CreateAnticipationRequest;
+use PagarmeApiSDKLib\Models\CreateRecipientRequest;
+use PagarmeApiSDKLib\Models\CreateTransferRequest;
+use PagarmeApiSDKLib\Models\CreateWithdrawRequest;
+use PagarmeApiSDKLib\Models\GetAnticipationLimitResponse;
+use PagarmeApiSDKLib\Models\GetAnticipationResponse;
+use PagarmeApiSDKLib\Models\GetBalanceResponse;
+use PagarmeApiSDKLib\Models\GetRecipientResponse;
+use PagarmeApiSDKLib\Models\GetTransferResponse;
+use PagarmeApiSDKLib\Models\GetWithdrawResponse;
+use PagarmeApiSDKLib\Models\ListAnticipationResponse;
+use PagarmeApiSDKLib\Models\ListRecipientResponse;
+use PagarmeApiSDKLib\Models\ListTransferResponse;
+use PagarmeApiSDKLib\Models\ListWithdrawals;
+use PagarmeApiSDKLib\Models\UpdateAutomaticAnticipationSettingsRequest;
+use PagarmeApiSDKLib\Models\UpdateMetadataRequest;
+use PagarmeApiSDKLib\Models\UpdateRecipientBankAccountRequest;
+use PagarmeApiSDKLib\Models\UpdateRecipientRequest;
+use PagarmeApiSDKLib\Models\UpdateTransferSettingsRequest;
 use PagarmeApiSDKLib\Utils\DateTimeHelper;
-use PagarmeApiSDKLib\Http\HttpRequest;
-use PagarmeApiSDKLib\Http\HttpResponse;
-use PagarmeApiSDKLib\Http\HttpMethod;
-use PagarmeApiSDKLib\Http\HttpContext;
-use PagarmeApiSDKLib\Http\HttpCallBack;
-use Unirest\Request;
 
 class RecipientsController extends BaseController
 {
-    public function __construct(ConfigurationInterface $config, array $authManagers, ?HttpCallBack $httpCallBack)
-    {
-        parent::__construct($config, $authManagers, $httpCallBack);
-    }
-
     /**
      * Updates a recipient
      *
      * @param string $recipientId Recipient id
-     * @param Models\UpdateRecipientRequest $request Recipient data
+     * @param UpdateRecipientRequest $request Recipient data
      * @param string|null $idempotencyKey
      *
-     * @return Models\GetRecipientResponse Response from the API call
+     * @return GetRecipientResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
     public function updateRecipient(
         string $recipientId,
-        Models\UpdateRecipientRequest $request,
+        UpdateRecipientRequest $request,
         ?string $idempotencyKey = null
-    ): Models\GetRecipientResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}';
+    ): GetRecipientResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/recipients/{recipient_id}')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id'    => $recipientId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PUT, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::put($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetRecipientResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
      * Creates an anticipation
      *
      * @param string $recipientId Recipient id
-     * @param Models\CreateAnticipationRequest $request Anticipation data
+     * @param CreateAnticipationRequest $request Anticipation data
      * @param string|null $idempotencyKey
      *
-     * @return Models\GetAnticipationResponse Response from the API call
+     * @return GetAnticipationResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
     public function createAnticipation(
         string $recipientId,
-        Models\CreateAnticipationRequest $request,
+        CreateAnticipationRequest $request,
         ?string $idempotencyKey = null
-    ): Models\GetAnticipationResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/anticipations';
+    ): GetAnticipationResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients/{recipient_id}/anticipations')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id'    => $recipientId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetAnticipationResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetAnticipationResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
@@ -174,7 +104,7 @@ class RecipientsController extends BaseController
      * @param string $timeframe Timeframe
      * @param \DateTime $paymentDate Anticipation payment date
      *
-     * @return Models\GetAnticipationLimitResponse Response from the API call
+     * @return GetAnticipationLimitResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
@@ -182,59 +112,19 @@ class RecipientsController extends BaseController
         string $recipientId,
         string $timeframe,
         \DateTime $paymentDate
-    ): Models\GetAnticipationLimitResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/anticipation_limits';
+    ): GetAnticipationLimitResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/anticipation_limits')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                QueryParam::init('timeframe', $timeframe),
+                QueryParam::init('payment_date', $paymentDate)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime'])
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id' => $recipientId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetAnticipationLimitResponse::class);
 
-        //process optional query parameters
-        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
-            'timeframe'    => $timeframe,
-            'payment_date' => DateTimeHelper::toRfc3339DateTime($paymentDate),
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetAnticipationLimitResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
@@ -243,128 +133,145 @@ class RecipientsController extends BaseController
      * @param int|null $page Page number
      * @param int|null $size Page size
      *
-     * @return Models\ListRecipientResponse Response from the API call
+     * @return ListRecipientResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getRecipients(?int $page = null, ?int $size = null): Models\ListRecipientResponse
+    public function getRecipients(?int $page = null, ?int $size = null): ListRecipientResponse
     {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients';
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients')
+            ->auth('global')
+            ->parameters(QueryParam::init('page', $page), QueryParam::init('size', $size));
 
-        //process optional query parameters
-        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
-            'page' => $page,
-            'size' => $size,
-        ]);
+        $_resHandler = $this->responseHandler()->type(ListRecipientResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
 
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
+    /**
+     * @param string $recipientId
+     * @param string $withdrawalId
+     *
+     * @return GetWithdrawResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getWithdrawById(string $recipientId, string $withdrawalId): GetWithdrawResponse
+    {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::GET,
+            '/recipients/{recipient_id}/withdrawals/{withdrawal_id}'
+        )
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                TemplateParam::init('withdrawal_id', $withdrawalId)
+            );
 
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+        $_resHandler = $this->responseHandler()->type(GetWithdrawResponse::class);
 
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
 
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
+    /**
+     * Updates the default bank account from a recipient
+     *
+     * @param string $recipientId Recipient id
+     * @param UpdateRecipientBankAccountRequest $request Bank account data
+     * @param string|null $idempotencyKey
+     *
+     * @return GetRecipientResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateRecipientDefaultBankAccount(
+        string $recipientId,
+        UpdateRecipientBankAccountRequest $request,
+        ?string $idempotencyKey = null
+    ): GetRecipientResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::PATCH,
+            '/recipients/{recipient_id}/default-bank-account'
+        )
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
+        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'ListRecipientResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
      * Updates recipient metadata
      *
      * @param string $recipientId Recipient id
-     * @param Models\UpdateMetadataRequest $request Metadata
+     * @param UpdateMetadataRequest $request Metadata
      * @param string|null $idempotencyKey
      *
-     * @return Models\GetRecipientResponse Response from the API call
+     * @return GetRecipientResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
     public function updateRecipientMetadata(
         string $recipientId,
-        Models\UpdateMetadataRequest $request,
+        UpdateMetadataRequest $request,
         ?string $idempotencyKey = null
-    ): Models\GetRecipientResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/metadata';
+    ): GetRecipientResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/recipients/{recipient_id}/metadata')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id'    => $recipientId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
 
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
+    /**
+     * Gets a paginated list of transfers for the recipient
+     *
+     * @param string $recipientId Recipient id
+     * @param int|null $page Page number
+     * @param int|null $size Page size
+     * @param string|null $status Filter for transfer status
+     * @param \DateTime|null $createdSince Filter for start range of transfer creation date
+     * @param \DateTime|null $createdUntil Filter for end range of transfer creation date
+     *
+     * @return ListTransferResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getTransfers(
+        string $recipientId,
+        ?int $page = null,
+        ?int $size = null,
+        ?string $status = null,
+        ?\DateTime $createdSince = null,
+        ?\DateTime $createdUntil = null
+    ): ListTransferResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/transfers')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                QueryParam::init('page', $page),
+                QueryParam::init('size', $size),
+                QueryParam::init('status', $status),
+                QueryParam::init('created_since', $createdSince)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('created_until', $createdUntil)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime'])
+            );
 
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
+        $_resHandler = $this->responseHandler()->type(ListTransferResponse::class);
 
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetRecipientResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
@@ -373,59 +280,76 @@ class RecipientsController extends BaseController
      * @param string $recipientId Recipient id
      * @param string $transferId Transfer id
      *
-     * @return Models\GetTransferResponse Response from the API call
+     * @return GetTransferResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getTransfer(string $recipientId, string $transferId): Models\GetTransferResponse
+    public function getTransfer(string $recipientId, string $transferId): GetTransferResponse
     {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/transfers/{transfer_id}';
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::GET,
+            '/recipients/{recipient_id}/transfers/{transfer_id}'
+        )
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                TemplateParam::init('transfer_id', $transferId)
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id' => $recipientId,
-            'transfer_id'  => $transferId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetTransferResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
 
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
+    /**
+     * @param string $recipientId
+     * @param CreateWithdrawRequest $request
+     *
+     * @return GetWithdrawResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createWithdraw(string $recipientId, CreateWithdrawRequest $request): GetWithdrawResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients/{recipient_id}/withdrawals')
+            ->auth('global')
+            ->parameters(TemplateParam::init('recipient_id', $recipientId), BodyParam::init($request));
 
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+        $_resHandler = $this->responseHandler()->type(GetWithdrawResponse::class);
 
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
 
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
+    /**
+     * Updates recipient metadata
+     *
+     * @param string $recipientId Recipient id
+     * @param UpdateAutomaticAnticipationSettingsRequest $request Metadata
+     * @param string|null $idempotencyKey
+     *
+     * @return GetRecipientResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateAutomaticAnticipationSettings(
+        string $recipientId,
+        UpdateAutomaticAnticipationSettingsRequest $request,
+        ?string $idempotencyKey = null
+    ): GetRecipientResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::PATCH,
+            '/recipients/{recipient_id}/automatic-anticipation-settings'
+        )
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
+        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetTransferResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
@@ -434,126 +358,52 @@ class RecipientsController extends BaseController
      * @param string $recipientId Recipient id
      * @param string $anticipationId Anticipation id
      *
-     * @return Models\GetAnticipationResponse Response from the API call
+     * @return GetAnticipationResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getAnticipation(string $recipientId, string $anticipationId): Models\GetAnticipationResponse
+    public function getAnticipation(string $recipientId, string $anticipationId): GetAnticipationResponse
     {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/anticipations/{anticipation_id}';
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::GET,
+            '/recipients/{recipient_id}/anticipations/{anticipation_id}'
+        )
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                TemplateParam::init('anticipation_id', $anticipationId)
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id'    => $recipientId,
-            'anticipation_id' => $anticipationId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetAnticipationResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetAnticipationResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
      * @param string $recipientId Recipient Identificator
-     * @param Models\UpdateTransferSettingsRequest $request
+     * @param UpdateTransferSettingsRequest $request
      * @param string|null $idempotencyKey
      *
-     * @return Models\GetRecipientResponse Response from the API call
+     * @return GetRecipientResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
     public function updateRecipientTransferSettings(
         string $recipientId,
-        Models\UpdateTransferSettingsRequest $request,
+        UpdateTransferSettingsRequest $request,
         ?string $idempotencyKey = null
-    ): Models\GetRecipientResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/transfer-settings';
+    ): GetRecipientResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/recipients/{recipient_id}/transfer-settings')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id'    => $recipientId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetRecipientResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
@@ -569,7 +419,7 @@ class RecipientsController extends BaseController
      * @param \DateTime|null $createdSince Filter for start range for anticipation creation date
      * @param \DateTime|null $createdUntil Filter for end range for anticipation creation date
      *
-     * @return Models\ListAnticipationResponse Response from the API call
+     * @return ListAnticipationResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
@@ -583,457 +433,28 @@ class RecipientsController extends BaseController
         ?\DateTime $paymentDateUntil = null,
         ?\DateTime $createdSince = null,
         ?\DateTime $createdUntil = null
-    ): Models\ListAnticipationResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/anticipations';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id'       => $recipientId,
-        ]);
-
-        //process optional query parameters
-        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
-            'page'               => $page,
-            'size'               => $size,
-            'status'             => $status,
-            'timeframe'          => $timeframe,
-            'payment_date_since' => DateTimeHelper::toRfc3339DateTime($paymentDateSince),
-            'payment_date_until' => DateTimeHelper::toRfc3339DateTime($paymentDateUntil),
-            'created_since'      => DateTimeHelper::toRfc3339DateTime($createdSince),
-            'created_until'      => DateTimeHelper::toRfc3339DateTime($createdUntil),
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'       => self::$userAgent,
-            'Accept'           => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'ListAnticipationResponse');
-    }
-
-    /**
-     * Updates the default bank account from a recipient
-     *
-     * @param string $recipientId Recipient id
-     * @param Models\UpdateRecipientBankAccountRequest $request Bank account data
-     * @param string|null $idempotencyKey
-     *
-     * @return Models\GetRecipientResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateRecipientDefaultBankAccount(
-        string $recipientId,
-        Models\UpdateRecipientBankAccountRequest $request,
-        ?string $idempotencyKey = null
-    ): Models\GetRecipientResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/default-bank-account';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id'    => $recipientId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetRecipientResponse');
-    }
-
-    /**
-     * @param string $recipientId
-     * @param Models\CreateWithdrawRequest $request
-     *
-     * @return Models\GetWithdrawResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createWithdraw(
-        string $recipientId,
-        Models\CreateWithdrawRequest $request
-    ): Models\GetWithdrawResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/withdrawals';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id' => $recipientId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json'
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetWithdrawResponse');
-    }
-
-    /**
-     * Get balance information for a recipient
-     *
-     * @param string $recipientId Recipient id
-     *
-     * @return Models\GetBalanceResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getBalance(string $recipientId): Models\GetBalanceResponse
-    {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/balance';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id' => $recipientId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetBalanceResponse');
-    }
-
-    /**
-     * Creates a transfer for a recipient
-     *
-     * @param string $recipientId Recipient Id
-     * @param Models\CreateTransferRequest $request Transfer data
-     * @param string|null $idempotencyKey
-     *
-     * @return Models\GetTransferResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createTransfer(
-        string $recipientId,
-        Models\CreateTransferRequest $request,
-        ?string $idempotencyKey = null
-    ): Models\GetTransferResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/transfers';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id'    => $recipientId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetTransferResponse');
-    }
-
-    /**
-     * Creates a new recipient
-     *
-     * @param Models\CreateRecipientRequest $request Recipient data
-     * @param string|null $idempotencyKey
-     *
-     * @return Models\GetRecipientResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createRecipient(
-        Models\CreateRecipientRequest $request,
-        ?string $idempotencyKey = null
-    ): Models\GetRecipientResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients';
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetRecipientResponse');
-    }
-
-    /**
-     * Updates recipient metadata
-     *
-     * @param string $recipientId Recipient id
-     * @param Models\UpdateAutomaticAnticipationSettingsRequest $request Metadata
-     * @param string|null $idempotencyKey
-     *
-     * @return Models\GetRecipientResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateAutomaticAnticipationSettings(
-        string $recipientId,
-        Models\UpdateAutomaticAnticipationSettingsRequest $request,
-        ?string $idempotencyKey = null
-    ): Models\GetRecipientResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/automatic-anticipation-settings';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id'    => $recipientId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetRecipientResponse');
+    ): ListAnticipationResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/anticipations')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                QueryParam::init('page', $page),
+                QueryParam::init('size', $size),
+                QueryParam::init('status', $status),
+                QueryParam::init('timeframe', $timeframe),
+                QueryParam::init('payment_date_since', $paymentDateSince)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('payment_date_until', $paymentDateUntil)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('created_since', $createdSince)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('created_until', $createdUntil)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime'])
+            );
+
+        $_resHandler = $this->responseHandler()->type(ListAnticipationResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
@@ -1041,58 +462,39 @@ class RecipientsController extends BaseController
      *
      * @param string $recipientId Recipiend id
      *
-     * @return Models\GetRecipientResponse Response from the API call
+     * @return GetRecipientResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getRecipient(string $recipientId): Models\GetRecipientResponse
+    public function getRecipient(string $recipientId): GetRecipientResponse
     {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}';
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}')
+            ->auth('global')
+            ->parameters(TemplateParam::init('recipient_id', $recipientId));
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id' => $recipientId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
 
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
+    /**
+     * Get balance information for a recipient
+     *
+     * @param string $recipientId Recipient id
+     *
+     * @return GetBalanceResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getBalance(string $recipientId): GetBalanceResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/balance')
+            ->auth('global')
+            ->parameters(TemplateParam::init('recipient_id', $recipientId));
 
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+        $_resHandler = $this->responseHandler()->type(GetBalanceResponse::class);
 
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetRecipientResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
@@ -1105,7 +507,7 @@ class RecipientsController extends BaseController
      * @param \DateTime|null $createdSince
      * @param \DateTime|null $createdUntil
      *
-     * @return Models\ListWithdrawals Response from the API call
+     * @return ListWithdrawals Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
@@ -1116,200 +518,75 @@ class RecipientsController extends BaseController
         ?string $status = null,
         ?\DateTime $createdSince = null,
         ?\DateTime $createdUntil = null
-    ): Models\ListWithdrawals {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/withdrawals';
+    ): ListWithdrawals {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/withdrawals')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                QueryParam::init('page', $page),
+                QueryParam::init('size', $size),
+                QueryParam::init('status', $status),
+                QueryParam::init('created_since', $createdSince)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('created_until', $createdUntil)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime'])
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id'  => $recipientId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(ListWithdrawals::class);
 
-        //process optional query parameters
-        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
-            'page'          => $page,
-            'size'          => $size,
-            'status'        => $status,
-            'created_since' => DateTimeHelper::toRfc3339DateTime($createdSince),
-            'created_until' => DateTimeHelper::toRfc3339DateTime($createdUntil),
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'ListWithdrawals');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
-     * @param string $recipientId
-     * @param string $withdrawalId
+     * Creates a transfer for a recipient
      *
-     * @return Models\GetWithdrawResponse Response from the API call
+     * @param string $recipientId Recipient Id
+     * @param CreateTransferRequest $request Transfer data
+     * @param string|null $idempotencyKey
      *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getWithdrawById(string $recipientId, string $withdrawalId): Models\GetWithdrawResponse
-    {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/withdrawals/{withdrawal_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id'  => $recipientId,
-            'withdrawal_id' => $withdrawalId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetWithdrawResponse');
-    }
-
-    /**
-     * Gets a paginated list of transfers for the recipient
-     *
-     * @param string $recipientId Recipient id
-     * @param int|null $page Page number
-     * @param int|null $size Page size
-     * @param string|null $status Filter for transfer status
-     * @param \DateTime|null $createdSince Filter for start range of transfer creation date
-     * @param \DateTime|null $createdUntil Filter for end range of transfer creation date
-     *
-     * @return Models\ListTransferResponse Response from the API call
+     * @return GetTransferResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getTransfers(
+    public function createTransfer(
         string $recipientId,
-        ?int $page = null,
-        ?int $size = null,
-        ?string $status = null,
-        ?\DateTime $createdSince = null,
-        ?\DateTime $createdUntil = null
-    ): Models\ListTransferResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/transfers';
+        CreateTransferRequest $request,
+        ?string $idempotencyKey = null
+    ): GetTransferResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients/{recipient_id}/transfers')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'recipient_id'  => $recipientId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetTransferResponse::class);
 
-        //process optional query parameters
-        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
-            'page'          => $page,
-            'size'          => $size,
-            'status'        => $status,
-            'created_since' => DateTimeHelper::toRfc3339DateTime($createdSince),
-            'created_until' => DateTimeHelper::toRfc3339DateTime($createdUntil),
-        ]);
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+    /**
+     * Creates a new recipient
+     *
+     * @param CreateRecipientRequest $request Recipient data
+     * @param string|null $idempotencyKey
+     *
+     * @return GetRecipientResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createRecipient(
+        CreateRecipientRequest $request,
+        ?string $idempotencyKey = null
+    ): GetRecipientResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients')
+            ->auth('global')
+            ->parameters(BodyParam::init($request), HeaderParam::init('idempotency-key', $idempotencyKey));
 
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
+        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'ListTransferResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
@@ -1317,107 +594,32 @@ class RecipientsController extends BaseController
      *
      * @param string $code Recipient code
      *
-     * @return Models\GetRecipientResponse Response from the API call
+     * @return GetRecipientResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getRecipientByCode(string $code): Models\GetRecipientResponse
+    public function getRecipientByCode(string $code): GetRecipientResponse
     {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/{code}';
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{code}')
+            ->auth('global')
+            ->parameters(TemplateParam::init('code', $code));
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'code' => $code,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetRecipientResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
-     * @return Models\GetRecipientResponse Response from the API call
+     * @return GetRecipientResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getDefaultRecipient(): Models\GetRecipientResponse
+    public function getDefaultRecipient(): GetRecipientResponse
     {
-        //prepare query string for API call
-        $_queryBuilder = '/recipients/default';
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/default')->auth('global');
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetRecipientResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 }

@@ -81,7 +81,9 @@ Response object for getting an Order
       "paid_at": null,
       "canceled_at": null,
       "canceled_amount": 152,
-      "paid_amount": 122
+      "paid_amount": 122,
+      "interest_and_fine_paid": null,
+      "recurrency_cycle": null
     },
     {
       "id": "id9",
@@ -106,7 +108,9 @@ Response object for getting an Order
       "paid_at": null,
       "canceled_at": null,
       "canceled_amount": 153,
-      "paid_amount": 121
+      "paid_amount": 121,
+      "interest_and_fine_paid": null,
+      "recurrency_cycle": null
     }
   ],
   "invoice_url": "invoice_url2",

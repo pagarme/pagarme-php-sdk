@@ -380,6 +380,7 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
         $json['operation_type']            = $this->operationType;
         $json['card']                      = $this->card;
         $json = array_merge($json, parent::jsonSerialize(true));
+        $json['transaction_type'] = $this->getTransactionType() ?? 'voucher';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

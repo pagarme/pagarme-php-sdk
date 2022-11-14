@@ -408,6 +408,7 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
             $json['installments']          = $this->installments;
         }
         $json = array_merge($json, parent::jsonSerialize(true));
+        $json['transaction_type'] = $this->getTransactionType() ?? 'private_label';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

@@ -228,6 +228,7 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
             $json['paid_amount'] = $this->paidAmount;
         }
         $json = array_merge($json, parent::jsonSerialize(true));
+        $json['transaction_type'] = $this->getTransactionType() ?? 'bank_transfer';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

@@ -15,6 +15,7 @@ The settings for creating a voucher payment
 | `cardId` | `?string` | Optional | Card id | getCardId(): ?string | setCardId(?string cardId): void |
 | `cardToken` | `?string` | Optional | Card token | getCardToken(): ?string | setCardToken(?string cardToken): void |
 | `card` | [`?CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Card info | getCard(): ?CreateCardRequest | setCard(?CreateCardRequest card): void |
+| `recurrencyCycle` | `?string` | Optional | Defines whether the card has been used one or more times. | getRecurrencyCycle(): ?string | setRecurrencyCycle(?string recurrencyCycle): void |
 
 ## Example (as JSON)
 
@@ -23,7 +24,8 @@ The settings for creating a voucher payment
   "statement_descriptor": null,
   "card_id": null,
   "card_token": null,
-  "Card": null
+  "Card": null,
+  "recurrency_cycle": null
 }
 ```
 

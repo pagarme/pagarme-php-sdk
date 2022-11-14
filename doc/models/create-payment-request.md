@@ -57,7 +57,8 @@ Payment data
     "recurrence": null,
     "capture": null,
     "extended_limit_enabled": null,
-    "extended_limit_code": null
+    "extended_limit_code": null,
+    "recurrency_cycle": null
   },
   "pix": null
 }

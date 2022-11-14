@@ -13,7 +13,7 @@ namespace PagarmeApiSDKLib\Exceptions;
 /**
  * Api Error Exception
  */
-class ErrorException extends \PagarmeApiSDKLib\Exceptions\ApiException
+class ErrorException extends ApiException
 {
     /**
      * @var string

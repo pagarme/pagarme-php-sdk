@@ -10,31 +10,32 @@ declare(strict_types=1);
 
 namespace PagarmeApiSDKLib\Exceptions;
 
+use CoreInterfaces\Sdk\ExceptionInterface;
 use PagarmeApiSDKLib\Http\HttpResponse;
 use PagarmeApiSDKLib\Http\HttpRequest;
 
 /**
  * Thrown when there is a network error or HTTP response status code is not okay.
  */
-class ApiException extends \Exception implements Exception
+class ApiException extends \Exception implements ExceptionInterface
 {
     /**
      * HTTP request
      *
-     * @var \PagarmeApiSDKLib\Http\HttpRequest
+     * @var HttpRequest
      */
     private $request;
 
     /**
      * HTTP response
      *
-     * @var \PagarmeApiSDKLib\Http\HttpResponse|null
+     * @var HttpResponse|null
      */
     private $response;
 
     /**
      * @param string $reason the reason for raising an exception
-     * @param \PagarmeApiSDKLib\Http\HttpRequest $request
+     * @param HttpRequest $request
      */
     public function __construct(string $reason, HttpRequest $request, ?HttpResponse $response = null)
     {

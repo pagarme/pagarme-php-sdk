@@ -64,6 +64,21 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
     private $statementDescriptor;
 
     /**
+     * @var CreateInterestRequest|null
+     */
+    private $interest;
+
+    /**
+     * @var CreateFineRequest|null
+     */
+    private $fine;
+
+    /**
+     * @var int|null
+     */
+    private $maxDaysToPayPastDue;
+
+    /**
      * @param int $retries
      * @param string $bank
      * @param string $instructions
@@ -279,6 +294,60 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Interest.
+     */
+    public function getInterest(): ?CreateInterestRequest
+    {
+        return $this->interest;
+    }
+
+    /**
+     * Sets Interest.
+     *
+     * @maps interest
+     */
+    public function setInterest(?CreateInterestRequest $interest): void
+    {
+        $this->interest = $interest;
+    }
+
+    /**
+     * Returns Fine.
+     */
+    public function getFine(): ?CreateFineRequest
+    {
+        return $this->fine;
+    }
+
+    /**
+     * Sets Fine.
+     *
+     * @maps fine
+     */
+    public function setFine(?CreateFineRequest $fine): void
+    {
+        $this->fine = $fine;
+    }
+
+    /**
+     * Returns Max Days to Pay Past Due.
+     */
+    public function getMaxDaysToPayPastDue(): ?int
+    {
+        return $this->maxDaysToPayPastDue;
+    }
+
+    /**
+     * Sets Max Days to Pay Past Due.
+     *
+     * @maps max_days_to_pay_past_due
+     */
+    public function setMaxDaysToPayPastDue(?int $maxDaysToPayPastDue): void
+    {
+        $this->maxDaysToPayPastDue = $maxDaysToPayPastDue;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -290,19 +359,28 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['retries']              = $this->retries;
-        $json['bank']                 = $this->bank;
-        $json['instructions']         = $this->instructions;
+        $json['retries']                      = $this->retries;
+        $json['bank']                         = $this->bank;
+        $json['instructions']                 = $this->instructions;
         if (isset($this->dueAt)) {
-            $json['due_at']           = DateTimeHelper::toRfc3339DateTime($this->dueAt);
+            $json['due_at']                   = DateTimeHelper::toRfc3339DateTime($this->dueAt);
         }
-        $json['billing_address']      = $this->billingAddress;
-        $json['billing_address_id']   = $this->billingAddressId;
+        $json['billing_address']              = $this->billingAddress;
+        $json['billing_address_id']           = $this->billingAddressId;
         if (isset($this->nossoNumero)) {
-            $json['nosso_numero']     = $this->nossoNumero;
+            $json['nosso_numero']             = $this->nossoNumero;
         }
-        $json['document_number']      = $this->documentNumber;
-        $json['statement_descriptor'] = $this->statementDescriptor;
+        $json['document_number']              = $this->documentNumber;
+        $json['statement_descriptor']         = $this->statementDescriptor;
+        if (isset($this->interest)) {
+            $json['interest']                 = $this->interest;
+        }
+        if (isset($this->fine)) {
+            $json['fine']                     = $this->fine;
+        }
+        if (isset($this->maxDaysToPayPastDue)) {
+            $json['max_days_to_pay_past_due'] = $this->maxDaysToPayPastDue;
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

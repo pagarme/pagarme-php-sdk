@@ -41,7 +41,8 @@ Request for updating the payment method of a charge
     "authentication": null,
     "contactless": null,
     "auto_recovery": null,
-    "operation_type": null
+    "operation_type": null,
+    "recurrency_cycle": null
   },
   "debit_card": {
     "statement_descriptor": null,
@@ -75,13 +76,17 @@ Request for updating the payment method of a charge
     "billing_address_id": "billing_address_id6",
     "nosso_numero": null,
     "document_number": "document_number6",
-    "statement_descriptor": "statement_descriptor0"
+    "statement_descriptor": "statement_descriptor0",
+    "interest": null,
+    "fine": null,
+    "max_days_to_pay_past_due": null
   },
   "voucher": {
     "statement_descriptor": null,
     "card_id": null,
     "card_token": null,
-    "Card": null
+    "Card": null,
+    "recurrency_cycle": null
   },
   "cash": {
     "description": "description0",
@@ -100,7 +105,8 @@ Request for updating the payment method of a charge
     "recurrence": null,
     "capture": null,
     "extended_limit_enabled": null,
-    "extended_limit_code": null
+    "extended_limit_code": null,
+    "recurrency_cycle": null
   }
 }
 ```

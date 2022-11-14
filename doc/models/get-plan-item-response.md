@@ -137,38 +137,78 @@ Response object for getting a plan item
           "currency": "currency7",
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
-          "items": {
-            "id": "id5",
-            "name": "name5",
-            "status": "status7",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "pricing_scheme": {
-              "price": 103,
-              "scheme_type": "scheme_type3",
-              "price_brackets": [
-                {
-                  "start_quantity": 106,
-                  "price": 212,
-                  "end_quantity": null,
-                  "overage_price": null
-                },
-                {
-                  "start_quantity": 107,
-                  "price": 211,
-                  "end_quantity": null,
-                  "overage_price": null
-                }
-              ],
-              "minimum_price": null,
-              "percentage": null
+          "items": [
+            {
+              "id": "id4",
+              "name": "name4",
+              "status": "status6",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 208,
+                "scheme_type": "scheme_type4",
+                "price_brackets": [
+                  {
+                    "start_quantity": 1,
+                    "price": 61,
+                    "end_quantity": null,
+                    "overage_price": null
+                  },
+                  {
+                    "start_quantity": 2,
+                    "price": 60,
+                    "end_quantity": null,
+                    "overage_price": null
+                  },
+                  {
+                    "start_quantity": 3,
+                    "price": 59,
+                    "end_quantity": null,
+                    "overage_price": null
+                  }
+                ],
+                "minimum_price": null,
+                "percentage": null
+              },
+              "description": "description4",
+              "plan": null,
+              "quantity": null,
+              "cycles": null,
+              "deleted_at": null
             },
-            "description": "description5",
-            "plan": null,
-            "quantity": null,
-            "cycles": null,
-            "deleted_at": null
-          },
+            {
+              "id": "id5",
+              "name": "name5",
+              "status": "status7",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 209,
+                "scheme_type": "scheme_type3",
+                "price_brackets": [
+                  {
+                    "start_quantity": 0,
+                    "price": 62,
+                    "end_quantity": null,
+                    "overage_price": null
+                  },
+                  {
+                    "start_quantity": 1,
+                    "price": 61,
+                    "end_quantity": null,
+                    "overage_price": null
+                  }
+                ],
+                "minimum_price": null,
+                "percentage": null
+              },
+              "description": "description5",
+              "plan": null,
+              "quantity": null,
+              "cycles": null,
+              "deleted_at": null
+            }
+          ],
           "billing_days": [
             114,
             113
@@ -227,32 +267,104 @@ Response object for getting a plan item
           "currency": "currency8",
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
-          "items": {
-            "id": "id6",
-            "name": "name6",
-            "status": "status8",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "pricing_scheme": {
-              "price": 104,
-              "scheme_type": "scheme_type2",
-              "price_brackets": [
-                {
-                  "start_quantity": 105,
-                  "price": 213,
-                  "end_quantity": null,
-                  "overage_price": null
-                }
-              ],
-              "minimum_price": null,
-              "percentage": null
+          "items": [
+            {
+              "id": "id5",
+              "name": "name5",
+              "status": "status7",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 209,
+                "scheme_type": "scheme_type3",
+                "price_brackets": [
+                  {
+                    "start_quantity": 0,
+                    "price": 62,
+                    "end_quantity": null,
+                    "overage_price": null
+                  },
+                  {
+                    "start_quantity": 1,
+                    "price": 61,
+                    "end_quantity": null,
+                    "overage_price": null
+                  }
+                ],
+                "minimum_price": null,
+                "percentage": null
+              },
+              "description": "description5",
+              "plan": null,
+              "quantity": null,
+              "cycles": null,
+              "deleted_at": null
             },
-            "description": "description6",
-            "plan": null,
-            "quantity": null,
-            "cycles": null,
-            "deleted_at": null
-          },
+            {
+              "id": "id6",
+              "name": "name6",
+              "status": "status8",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 210,
+                "scheme_type": "scheme_type2",
+                "price_brackets": [
+                  {
+                    "start_quantity": 255,
+                    "price": 63,
+                    "end_quantity": null,
+                    "overage_price": null
+                  }
+                ],
+                "minimum_price": null,
+                "percentage": null
+              },
+              "description": "description6",
+              "plan": null,
+              "quantity": null,
+              "cycles": null,
+              "deleted_at": null
+            },
+            {
+              "id": "id7",
+              "name": "name7",
+              "status": "status9",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 211,
+                "scheme_type": "scheme_type1",
+                "price_brackets": [
+                  {
+                    "start_quantity": 254,
+                    "price": 64,
+                    "end_quantity": null,
+                    "overage_price": null
+                  },
+                  {
+                    "start_quantity": 255,
+                    "price": 63,
+                    "end_quantity": null,
+                    "overage_price": null
+                  },
+                  {
+                    "start_quantity": 0,
+                    "price": 62,
+                    "end_quantity": null,
+                    "overage_price": null
+                  }
+                ],
+                "minimum_price": null,
+                "percentage": null
+              },
+              "description": "description7",
+              "plan": null,
+              "quantity": null,
+              "cycles": null,
+              "deleted_at": null
+            }
+          ],
           "billing_days": [
             113,
             112,

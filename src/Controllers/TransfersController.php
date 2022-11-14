@@ -10,186 +10,65 @@ declare(strict_types=1);
 
 namespace PagarmeApiSDKLib\Controllers;
 
+use Core\Request\Parameters\BodyParam;
+use Core\Request\Parameters\TemplateParam;
+use CoreInterfaces\Core\Request\RequestMethod;
 use PagarmeApiSDKLib\Exceptions\ApiException;
-use PagarmeApiSDKLib\ApiHelper;
-use PagarmeApiSDKLib\ConfigurationInterface;
-use PagarmeApiSDKLib\Models;
-use PagarmeApiSDKLib\Http\HttpRequest;
-use PagarmeApiSDKLib\Http\HttpResponse;
-use PagarmeApiSDKLib\Http\HttpMethod;
-use PagarmeApiSDKLib\Http\HttpContext;
-use PagarmeApiSDKLib\Http\HttpCallBack;
-use Unirest\Request;
+use PagarmeApiSDKLib\Models\CreateTransfer;
+use PagarmeApiSDKLib\Models\GetTransfer;
+use PagarmeApiSDKLib\Models\ListTransfers;
 
 class TransfersController extends BaseController
 {
-    public function __construct(ConfigurationInterface $config, array $authManagers, ?HttpCallBack $httpCallBack)
+    /**
+     * @param string $transferId
+     *
+     * @return GetTransfer Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getTransferById(string $transferId): GetTransfer
     {
-        parent::__construct($config, $authManagers, $httpCallBack);
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/transfers/{transfer_id}')
+            ->auth('global')
+            ->parameters(TemplateParam::init('transfer_id', $transferId));
+
+        $_resHandler = $this->responseHandler()->type(GetTransfer::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param CreateTransfer $request
+     *
+     * @return GetTransfer Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createTransfer(CreateTransfer $request): GetTransfer
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/transfers/recipients')
+            ->auth('global')
+            ->parameters(BodyParam::init($request));
+
+        $_resHandler = $this->responseHandler()->type(GetTransfer::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
      * Gets all transfers
      *
-     * @return Models\ListTransfers Response from the API call
+     * @return ListTransfers Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getTransfers(): Models\ListTransfers
+    public function getTransfers(): ListTransfers
     {
-        //prepare query string for API call
-        $_queryBuilder = '/transfers';
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/transfers')->auth('global');
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+        $_resHandler = $this->responseHandler()->type(ListTransfers::class);
 
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'ListTransfers');
-    }
-
-    /**
-     * @param string $transferId
-     *
-     * @return Models\GetTransfer Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getTransferById(string $transferId): Models\GetTransfer
-    {
-        //prepare query string for API call
-        $_queryBuilder = '/transfers/{transfer_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'transfer_id' => $transferId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetTransfer');
-    }
-
-    /**
-     * @param Models\CreateTransfer $request
-     *
-     * @return Models\GetTransfer Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createTransfer(Models\CreateTransfer $request): Models\GetTransfer
-    {
-        //prepare query string for API call
-        $_queryBuilder = '/transfers/recipients';
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json'
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetTransfer');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 }

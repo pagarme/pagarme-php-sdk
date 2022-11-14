@@ -12,17 +12,17 @@ $chargesController = $client->getChargesController();
 
 * [Update Charge Metadata](../../doc/controllers/charges.md#update-charge-metadata)
 * [Update Charge Payment Method](../../doc/controllers/charges.md#update-charge-payment-method)
-* [Update Charge Card](../../doc/controllers/charges.md#update-charge-card)
-* [Get Charges Summary](../../doc/controllers/charges.md#get-charges-summary)
-* [Create Charge](../../doc/controllers/charges.md#create-charge)
 * [Get Charge Transactions](../../doc/controllers/charges.md#get-charge-transactions)
-* [Capture Charge](../../doc/controllers/charges.md#capture-charge)
-* [Get Charge](../../doc/controllers/charges.md#get-charge)
-* [Cancel Charge](../../doc/controllers/charges.md#cancel-charge)
-* [Get Charges](../../doc/controllers/charges.md#get-charges)
-* [Confirm Payment](../../doc/controllers/charges.md#confirm-payment)
 * [Update Charge Due Date](../../doc/controllers/charges.md#update-charge-due-date)
+* [Get Charges](../../doc/controllers/charges.md#get-charges)
+* [Capture Charge](../../doc/controllers/charges.md#capture-charge)
+* [Update Charge Card](../../doc/controllers/charges.md#update-charge-card)
+* [Get Charge](../../doc/controllers/charges.md#get-charge)
+* [Get Charges Summary](../../doc/controllers/charges.md#get-charges-summary)
 * [Retry Charge](../../doc/controllers/charges.md#retry-charge)
+* [Cancel Charge](../../doc/controllers/charges.md#cancel-charge)
+* [Create Charge](../../doc/controllers/charges.md#create-charge)
+* [Confirm Payment](../../doc/controllers/charges.md#confirm-payment)
 
 
 # Update Charge Metadata
@@ -92,8 +92,8 @@ function updateChargePaymentMethod(
 $chargeId = 'charge_id8';
 $request_updateSubscription = false;
 $request_paymentMethod = 'payment_method4';
-$request_creditCard = new Models\CreateCreditCardPaymentRequest;
-$request_debitCard = new Models\CreateDebitCardPaymentRequest;
+$request_creditCard = new Models\CreateCreditCardPaymentRequest();
+$request_debitCard = new Models\CreateDebitCardPaymentRequest();
 $request_boleto_retries = 10;
 $request_boleto_bank = 'bank4';
 $request_boleto_instructions = 'instructions4';
@@ -133,7 +133,7 @@ $request_boleto = new Models\CreateBoletoPaymentRequest(
     $request_boleto_documentNumber,
     $request_boleto_statementDescriptor
 );
-$request_voucher = new Models\CreateVoucherPaymentRequest;
+$request_voucher = new Models\CreateVoucherPaymentRequest();
 $request_cash_description = 'description6';
 $request_cash_confirm = false;
 $request_cash = new Models\CreateCashPaymentRequest(
@@ -146,7 +146,7 @@ $request_bankTransfer = new Models\CreateBankTransferPaymentRequest(
     $request_bankTransfer_bank,
     $request_bankTransfer_retries
 );
-$request_privateLabel = new Models\CreatePrivateLabelPaymentRequest;
+$request_privateLabel = new Models\CreatePrivateLabelPaymentRequest();
 $request = new Models\UpdateChargePaymentMethodRequest(
     $request_updateSubscription,
     $request_paymentMethod,
@@ -160,6 +160,147 @@ $request = new Models\UpdateChargePaymentMethodRequest(
 );
 
 $result = $chargesController->updateChargePaymentMethod($chargeId, $request);
+```
+
+
+# Get Charge Transactions
+
+```php
+function getChargeTransactions(
+    string $chargeId,
+    ?int $page = null,
+    ?int $size = null
+): ListChargeTransactionsResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge Id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+[`ListChargeTransactionsResponse`](../../doc/models/list-charge-transactions-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$result = $chargesController->getChargeTransactions($chargeId);
+```
+
+
+# Update Charge Due Date
+
+Updates the due date from a charge
+
+```php
+function updateChargeDueDate(
+    string $chargeId,
+    UpdateChargeDueDateRequest $request,
+    ?string $idempotencyKey = null
+): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge Id |
+| `request` | [`UpdateChargeDueDateRequest`](../../doc/models/update-charge-due-date-request.md) | Body, Required | Request for updating the due date |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+$request = new Models\UpdateChargeDueDateRequest();
+
+$result = $chargesController->updateChargeDueDate($chargeId, $request);
+```
+
+
+# Get Charges
+
+Lists all charges
+
+```php
+function getCharges(
+    ?int $page = null,
+    ?int $size = null,
+    ?string $code = null,
+    ?string $status = null,
+    ?string $paymentMethod = null,
+    ?string $customerId = null,
+    ?string $orderId = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListChargesResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `code` | `?string` | Query, Optional | Filter for charge's code |
+| `status` | `?string` | Query, Optional | Filter for charge's status |
+| `paymentMethod` | `?string` | Query, Optional | Filter for charge's payment method |
+| `customerId` | `?string` | Query, Optional | Filter for charge's customer id |
+| `orderId` | `?string` | Query, Optional | Filter for charge's order id |
+| `createdSince` | `?\DateTime` | Query, Optional | Filter for the beginning of the range for charge's creation |
+| `createdUntil` | `?\DateTime` | Query, Optional | Filter for the end of the range for charge's creation |
+
+## Response Type
+
+[`ListChargesResponse`](../../doc/models/list-charges-response.md)
+
+## Example Usage
+
+```php
+$result = $chargesController->getCharges();
+```
+
+
+# Capture Charge
+
+Captures a charge
+
+```php
+function captureCharge(
+    string $chargeId,
+    ?CreateCaptureChargeRequest $request = null,
+    ?string $idempotencyKey = null
+): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `request` | [`?CreateCaptureChargeRequest`](../../doc/models/create-capture-charge-request.md) | Body, Optional | Request for capturing a charge |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$result = $chargesController->captureCharge($chargeId);
 ```
 
 
@@ -259,6 +400,33 @@ $result = $chargesController->updateChargeCard($chargeId, $request);
 ```
 
 
+# Get Charge
+
+Get a charge from its id
+
+```php
+function getCharge(string $chargeId): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$result = $chargesController->getCharge($chargeId);
+```
+
+
 # Get Charges Summary
 
 ```php
@@ -287,6 +455,67 @@ function getChargesSummary(
 $status = 'status8';
 
 $result = $chargesController->getChargesSummary($status);
+```
+
+
+# Retry Charge
+
+Retries a charge
+
+```php
+function retryCharge(string $chargeId, ?string $idempotencyKey = null): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$result = $chargesController->retryCharge($chargeId);
+```
+
+
+# Cancel Charge
+
+Cancel a charge
+
+```php
+function cancelCharge(
+    string $chargeId,
+    ?CreateCancelChargeRequest $request = null,
+    ?string $idempotencyKey = null
+): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `request` | [`?CreateCancelChargeRequest`](../../doc/models/create-cancel-charge-request.md) | Body, Optional | Request for cancelling a charge |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$result = $chargesController->cancelCharge($chargeId);
 ```
 
 
@@ -346,7 +575,7 @@ $request_customer_address = new Models\CreateAddressRequest(
     $request_customer_address_line2
 );
 $request_customer_metadata = ['key0' => 'metadata3', 'key1' => 'metadata2', 'key2' => 'metadata1'];
-$request_customer_phones = new Models\CreatePhonesRequest;
+$request_customer_phones = new Models\CreatePhonesRequest();
 $request_customer_code = 'code4';
 $request_customer = new Models\CreateCustomerRequest(
     $request_customer_name,
@@ -359,7 +588,7 @@ $request_customer = new Models\CreateCustomerRequest(
     $request_customer_code
 );
 $request_payment_paymentMethod = 'payment_method2';
-$request_payment_privateLabel = new Models\CreatePrivateLabelPaymentRequest;
+$request_payment_privateLabel = new Models\CreatePrivateLabelPaymentRequest();
 $request_payment = new Models\CreatePaymentRequest(
     $request_payment_paymentMethod,
     $request_payment_privateLabel
@@ -387,173 +616,6 @@ $request = new Models\CreateChargeRequest(
 );
 
 $result = $chargesController->createCharge($request);
-```
-
-
-# Get Charge Transactions
-
-```php
-function getChargeTransactions(
-    string $chargeId,
-    ?int $page = null,
-    ?int $size = null
-): ListChargeTransactionsResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge Id |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-
-## Response Type
-
-[`ListChargeTransactionsResponse`](../../doc/models/list-charge-transactions-response.md)
-
-## Example Usage
-
-```php
-$chargeId = 'charge_id8';
-
-$result = $chargesController->getChargeTransactions($chargeId);
-```
-
-
-# Capture Charge
-
-Captures a charge
-
-```php
-function captureCharge(
-    string $chargeId,
-    ?CreateCaptureChargeRequest $request = null,
-    ?string $idempotencyKey = null
-): GetChargeResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge id |
-| `request` | [`?CreateCaptureChargeRequest`](../../doc/models/create-capture-charge-request.md) | Body, Optional | Request for capturing a charge |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```php
-$chargeId = 'charge_id8';
-
-$result = $chargesController->captureCharge($chargeId);
-```
-
-
-# Get Charge
-
-Get a charge from its id
-
-```php
-function getCharge(string $chargeId): GetChargeResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge id |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```php
-$chargeId = 'charge_id8';
-
-$result = $chargesController->getCharge($chargeId);
-```
-
-
-# Cancel Charge
-
-Cancel a charge
-
-```php
-function cancelCharge(
-    string $chargeId,
-    ?CreateCancelChargeRequest $request = null,
-    ?string $idempotencyKey = null
-): GetChargeResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge id |
-| `request` | [`?CreateCancelChargeRequest`](../../doc/models/create-cancel-charge-request.md) | Body, Optional | Request for cancelling a charge |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```php
-$chargeId = 'charge_id8';
-
-$result = $chargesController->cancelCharge($chargeId);
-```
-
-
-# Get Charges
-
-Lists all charges
-
-```php
-function getCharges(
-    ?int $page = null,
-    ?int $size = null,
-    ?string $code = null,
-    ?string $status = null,
-    ?string $paymentMethod = null,
-    ?string $customerId = null,
-    ?string $orderId = null,
-    ?\DateTime $createdSince = null,
-    ?\DateTime $createdUntil = null
-): ListChargesResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-| `code` | `?string` | Query, Optional | Filter for charge's code |
-| `status` | `?string` | Query, Optional | Filter for charge's status |
-| `paymentMethod` | `?string` | Query, Optional | Filter for charge's payment method |
-| `customerId` | `?string` | Query, Optional | Filter for charge's customer id |
-| `orderId` | `?string` | Query, Optional | Filter for charge's order id |
-| `createdSince` | `?\DateTime` | Query, Optional | Filter for the beginning of the range for charge's creation |
-| `createdUntil` | `?\DateTime` | Query, Optional | Filter for the end of the range for charge's creation |
-
-## Response Type
-
-[`ListChargesResponse`](../../doc/models/list-charges-response.md)
-
-## Example Usage
-
-```php
-$result = $chargesController->getCharges();
 ```
 
 
@@ -585,67 +647,5 @@ function confirmPayment(
 $chargeId = 'charge_id8';
 
 $result = $chargesController->confirmPayment($chargeId);
-```
-
-
-# Update Charge Due Date
-
-Updates the due date from a charge
-
-```php
-function updateChargeDueDate(
-    string $chargeId,
-    UpdateChargeDueDateRequest $request,
-    ?string $idempotencyKey = null
-): GetChargeResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge Id |
-| `request` | [`UpdateChargeDueDateRequest`](../../doc/models/update-charge-due-date-request.md) | Body, Required | Request for updating the due date |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```php
-$chargeId = 'charge_id8';
-$request = new Models\UpdateChargeDueDateRequest;
-
-$result = $chargesController->updateChargeDueDate($chargeId, $request);
-```
-
-
-# Retry Charge
-
-Retries a charge
-
-```php
-function retryCharge(string $chargeId, ?string $idempotencyKey = null): GetChargeResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `chargeId` | `string` | Template, Required | Charge id |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetChargeResponse`](../../doc/models/get-charge-response.md)
-
-## Example Usage
-
-```php
-$chargeId = 'charge_id8';
-
-$result = $chargesController->retryCharge($chargeId);
 ```
 

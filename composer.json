@@ -18,11 +18,10 @@
     ],
     "require": {
         "php": ">=7.2 <8.2",
-        "ext-curl": "*",
         "ext-json": "*",
-        "ext-mbstring": "*",
-        "apimatic/unirest-php": "^2.2.1",
-        "apimatic/jsonmapper": "^3.0.0"
+        "apimatic/unirest-php": "^4.0.0",
+        "apimatic/core-interfaces": "~0.1.0",
+        "apimatic/core": "~0.1.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
@@ -33,9 +32,20 @@
             "PagarmeApiSDKLib\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "PagarmeApiSDKLib\\Tests\\": "tests/"
+        }
+    },
     "scripts": {
-        "lint": "phpcs --standard=phpcs-ruleset.xml src/",
-        "lint-fix": "phpcbf --standard=phpcs-ruleset.xml src/",
-        "analyze": "phan --allow-polyfill-parser"
+        "lint-src": "phpcs --standard=phpcs-ruleset.xml src/",
+        "lint-src-fix": "phpcbf --standard=phpcs-ruleset.xml src/",
+        "lint-tests": "phpcs --standard=phpcs-ruleset.xml tests/",
+        "lint-tests-fix": "phpcbf --standard=phpcs-ruleset.xml tests/",
+        "analyze": "phan --allow-polyfill-parser",
+        "lint": [
+            "@lint-src",
+            "@lint-tests"
+        ]
     }
 }
