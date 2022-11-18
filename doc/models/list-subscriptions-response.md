@@ -201,150 +201,45 @@ Response object for listing subscriptions
               "first_six_digits": "first_six_digits2",
               "label": "label2"
             },
-            "items": {
-              "id": "id6",
-              "description": "description6",
-              "status": "status8",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "pricing_scheme": {
-                "price": 170,
-                "scheme_type": "scheme_type8",
-                "price_brackets": [
-                  {
-                    "start_quantity": 39,
-                    "price": 23,
-                    "end_quantity": null,
-                    "overage_price": null
-                  }
-                ],
-                "minimum_price": null,
-                "percentage": null
-              },
-              "discounts": [
-                {
-                  "id": "id7",
-                  "value": 197.39,
-                  "discount_type": "discount_type5",
-                  "status": "status9",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                }
-              ],
-              "increments": [
-                {
-                  "id": "id5",
-                  "value": 52.67,
-                  "increment_type": "increment_type7",
-                  "status": "status7",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                },
-                {
-                  "id": "id6",
-                  "value": 52.68,
-                  "increment_type": "increment_type8",
-                  "status": "status8",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                }
-              ],
-              "subscription": {
-                "id": "id2",
-                "code": "code0",
-                "start_at": "2016-03-13T12:52:32.123Z",
-                "interval": "interval0",
-                "interval_count": 214,
-                "billing_type": "billing_type4",
-                "current_cycle": null,
-                "payment_method": "payment_method8",
-                "currency": "currency2",
-                "installments": 126,
-                "status": "status6",
+            "items": [
+              {
+                "id": "id5",
+                "description": "description5",
+                "status": "status7",
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
-                "customer": null,
-                "card": {
-                  "id": "id4",
-                  "last_four_digits": "last_four_digits0",
-                  "brand": "brand8",
-                  "holder_name": "holder_name0",
-                  "exp_month": 104,
-                  "exp_year": 192,
-                  "status": "status4",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "updated_at": "2016-03-13T12:52:32.123Z",
-                  "billing_address": {
-                    "street": "street4",
-                    "number": "number8",
-                    "zip_code": "zip_code8",
-                    "neighborhood": "neighborhood0",
-                    "city": "city6",
-                    "state": "state0",
-                    "country": "country8",
-                    "complement": "complement0",
-                    "line_1": "line_12",
-                    "line_2": "line_22"
-                  },
-                  "customer": null,
-                  "metadata": {
-                    "key0": "metadata9",
-                    "key1": "metadata0"
-                  },
-                  "type": "type6",
-                  "holder_document": "holder_document2",
-                  "deleted_at": null,
-                  "first_six_digits": "first_six_digits4",
-                  "label": "label4"
+                "pricing_scheme": {
+                  "price": 65,
+                  "scheme_type": "scheme_type7",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 144,
+                      "price": 174,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 145,
+                      "price": 173,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 146,
+                      "price": 172,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
                 },
-                "items": null,
-                "statement_descriptor": "statement_descriptor2",
-                "metadata": {
-                  "key0": "metadata1",
-                  "key1": "metadata2"
-                },
-                "setup": {
-                  "id": "id6",
-                  "description": "description4",
-                  "amount": 150,
-                  "status": "status2"
-                },
-                "gateway_affiliation_id": "gateway_affiliation_id8",
-                "next_billing_at": null,
-                "billing_day": null,
-                "minimum_price": null,
-                "canceled_at": null,
-                "discounts": null,
-                "increments": [
-                  {
-                    "id": "id5",
-                    "value": 20.47,
-                    "increment_type": "increment_type3",
-                    "status": "status3",
-                    "created_at": "2016-03-13T12:52:32.123Z",
-                    "cycles": null,
-                    "deleted_at": null,
-                    "description": null,
-                    "subscription": null,
-                    "subscription_item": null
-                  },
+                "discounts": [
                   {
                     "id": "id6",
-                    "value": 20.48,
-                    "increment_type": "increment_type2",
-                    "status": "status2",
+                    "value": 16.68,
+                    "discount_type": "discount_type4",
+                    "status": "status8",
                     "created_at": "2016-03-13T12:52:32.123Z",
                     "cycles": null,
                     "deleted_at": null,
@@ -354,9 +249,21 @@ Response object for listing subscriptions
                   },
                   {
                     "id": "id7",
-                    "value": 20.49,
-                    "increment_type": "increment_type1",
-                    "status": "status1",
+                    "value": 16.69,
+                    "discount_type": "discount_type5",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id8",
+                    "value": 16.7,
+                    "discount_type": "discount_type6",
+                    "status": "status0",
                     "created_at": "2016-03-13T12:52:32.123Z",
                     "cycles": null,
                     "deleted_at": null,
@@ -365,42 +272,329 @@ Response object for listing subscriptions
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null,
-                "split": {
-                  "enabled": false,
-                  "rules": [
-                    {
-                      "type": "type8",
-                      "amount": 226,
-                      "recipient": null,
-                      "gateway_id": "gateway_id8",
-                      "options": null,
-                      "id": "id2"
+                "increments": [
+                  {
+                    "id": "id4",
+                    "value": 127.96,
+                    "increment_type": "increment_type6",
+                    "status": "status6",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "subscription": {
+                  "id": "id1",
+                  "code": "code9",
+                  "start_at": "2016-03-13T12:52:32.123Z",
+                  "interval": "interval9",
+                  "interval_count": 63,
+                  "billing_type": "billing_type5",
+                  "current_cycle": null,
+                  "payment_method": "payment_method9",
+                  "currency": "currency1",
+                  "installments": 231,
+                  "status": "status7",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": null,
+                  "card": {
+                    "id": "id5",
+                    "last_four_digits": "last_four_digits1",
+                    "brand": "brand9",
+                    "holder_name": "holder_name1",
+                    "exp_month": 209,
+                    "exp_year": 87,
+                    "status": "status3",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "billing_address": {
+                      "street": "street3",
+                      "number": "number9",
+                      "zip_code": "zip_code7",
+                      "neighborhood": "neighborhood9",
+                      "city": "city7",
+                      "state": "state1",
+                      "country": "country7",
+                      "complement": "complement1",
+                      "line_1": "line_13",
+                      "line_2": "line_21"
                     },
-                    {
-                      "type": "type7",
-                      "amount": 225,
-                      "recipient": null,
-                      "gateway_id": "gateway_id7",
-                      "options": null,
-                      "id": "id3"
+                    "customer": null,
+                    "metadata": {
+                      "key0": "metadata8"
                     },
+                    "type": "type5",
+                    "holder_document": "holder_document1",
+                    "deleted_at": null,
+                    "first_six_digits": "first_six_digits5",
+                    "label": "label5"
+                  },
+                  "items": [],
+                  "statement_descriptor": "statement_descriptor1",
+                  "metadata": {
+                    "key0": "metadata2",
+                    "key1": "metadata3",
+                    "key2": "metadata4"
+                  },
+                  "setup": {
+                    "id": "id5",
+                    "description": "description5",
+                    "amount": 255,
+                    "status": "status3"
+                  },
+                  "gateway_affiliation_id": "gateway_affiliation_id7",
+                  "next_billing_at": null,
+                  "billing_day": null,
+                  "minimum_price": null,
+                  "canceled_at": null,
+                  "discounts": null,
+                  "increments": [
                     {
-                      "type": "type6",
-                      "amount": 224,
-                      "recipient": null,
-                      "gateway_id": "gateway_id6",
-                      "options": null,
-                      "id": "id4"
+                      "id": "id4",
+                      "value": 45.86,
+                      "increment_type": "increment_type6",
+                      "status": "status4",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
                     }
-                  ]
-                }
+                  ],
+                  "boleto_due_days": null,
+                  "split": {
+                    "enabled": true,
+                    "rules": [
+                      {
+                        "type": "type9",
+                        "amount": 135,
+                        "recipient": null,
+                        "gateway_id": "gateway_id9",
+                        "options": null,
+                        "id": "id1"
+                      },
+                      {
+                        "type": "type8",
+                        "amount": 136,
+                        "recipient": null,
+                        "gateway_id": "gateway_id8",
+                        "options": null,
+                        "id": "id2"
+                      }
+                    ]
+                  }
+                },
+                "name": "name5",
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
               },
-              "name": "name6",
-              "quantity": null,
-              "cycles": null,
-              "deleted_at": null
-            },
+              {
+                "id": "id6",
+                "description": "description6",
+                "status": "status8",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 64,
+                  "scheme_type": "scheme_type8",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 145,
+                      "price": 173,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
+                },
+                "discounts": [
+                  {
+                    "id": "id7",
+                    "value": 16.69,
+                    "discount_type": "discount_type5",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "increments": [
+                  {
+                    "id": "id5",
+                    "value": 127.97,
+                    "increment_type": "increment_type7",
+                    "status": "status7",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id6",
+                    "value": 127.98,
+                    "increment_type": "increment_type8",
+                    "status": "status8",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "subscription": {
+                  "id": "id2",
+                  "code": "code0",
+                  "start_at": "2016-03-13T12:52:32.123Z",
+                  "interval": "interval0",
+                  "interval_count": 64,
+                  "billing_type": "billing_type4",
+                  "current_cycle": null,
+                  "payment_method": "payment_method8",
+                  "currency": "currency2",
+                  "installments": 232,
+                  "status": "status6",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": null,
+                  "card": {
+                    "id": "id4",
+                    "last_four_digits": "last_four_digits0",
+                    "brand": "brand8",
+                    "holder_name": "holder_name0",
+                    "exp_month": 210,
+                    "exp_year": 86,
+                    "status": "status4",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "billing_address": {
+                      "street": "street4",
+                      "number": "number8",
+                      "zip_code": "zip_code8",
+                      "neighborhood": "neighborhood0",
+                      "city": "city6",
+                      "state": "state0",
+                      "country": "country8",
+                      "complement": "complement0",
+                      "line_1": "line_12",
+                      "line_2": "line_22"
+                    },
+                    "customer": null,
+                    "metadata": {
+                      "key0": "metadata9",
+                      "key1": "metadata0"
+                    },
+                    "type": "type6",
+                    "holder_document": "holder_document2",
+                    "deleted_at": null,
+                    "first_six_digits": "first_six_digits4",
+                    "label": "label4"
+                  },
+                  "items": [],
+                  "statement_descriptor": "statement_descriptor2",
+                  "metadata": {
+                    "key0": "metadata1",
+                    "key1": "metadata2"
+                  },
+                  "setup": {
+                    "id": "id6",
+                    "description": "description4",
+                    "amount": 0,
+                    "status": "status2"
+                  },
+                  "gateway_affiliation_id": "gateway_affiliation_id8",
+                  "next_billing_at": null,
+                  "billing_day": null,
+                  "minimum_price": null,
+                  "canceled_at": null,
+                  "discounts": null,
+                  "increments": [
+                    {
+                      "id": "id5",
+                      "value": 45.87,
+                      "increment_type": "increment_type7",
+                      "status": "status3",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    },
+                    {
+                      "id": "id4",
+                      "value": 45.86,
+                      "increment_type": "increment_type6",
+                      "status": "status4",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    },
+                    {
+                      "id": "id3",
+                      "value": 45.85,
+                      "increment_type": "increment_type5",
+                      "status": "status5",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    }
+                  ],
+                  "boleto_due_days": null,
+                  "split": {
+                    "enabled": false,
+                    "rules": [
+                      {
+                        "type": "type8",
+                        "amount": 136,
+                        "recipient": null,
+                        "gateway_id": "gateway_id8",
+                        "options": null,
+                        "id": "id2"
+                      },
+                      {
+                        "type": "type7",
+                        "amount": 137,
+                        "recipient": null,
+                        "gateway_id": "gateway_id7",
+                        "options": null,
+                        "id": "id3"
+                      },
+                      {
+                        "type": "type6",
+                        "amount": 138,
+                        "recipient": null,
+                        "gateway_id": "gateway_id6",
+                        "options": null,
+                        "id": "id4"
+                      }
+                    ]
+                  }
+                },
+                "name": "name6",
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              }
+            ],
             "statement_descriptor": "statement_descriptor8",
             "metadata": {
               "key0": "metadata5",
@@ -568,168 +762,47 @@ Response object for listing subscriptions
               "first_six_digits": "first_six_digits3",
               "label": "label3"
             },
-            "items": {
-              "id": "id7",
-              "description": "description7",
-              "status": "status9",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "pricing_scheme": {
-                "price": 169,
-                "scheme_type": "scheme_type9",
-                "price_brackets": [
-                  {
-                    "start_quantity": 40,
-                    "price": 22,
-                    "end_quantity": null,
-                    "overage_price": null
-                  },
-                  {
-                    "start_quantity": 41,
-                    "price": 21,
-                    "end_quantity": null,
-                    "overage_price": null
-                  }
-                ],
-                "minimum_price": null,
-                "percentage": null
-              },
-              "discounts": [
-                {
-                  "id": "id8",
-                  "value": 197.4,
-                  "discount_type": "discount_type6",
-                  "status": "status0",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                },
-                {
-                  "id": "id9",
-                  "value": 197.41,
-                  "discount_type": "discount_type7",
-                  "status": "status1",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                }
-              ],
-              "increments": [
-                {
-                  "id": "id6",
-                  "value": 52.68,
-                  "increment_type": "increment_type8",
-                  "status": "status8",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                },
-                {
-                  "id": "id7",
-                  "value": 52.69,
-                  "increment_type": "increment_type9",
-                  "status": "status9",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                },
-                {
-                  "id": "id8",
-                  "value": 52.7,
-                  "increment_type": "increment_type0",
-                  "status": "status0",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                }
-              ],
-              "subscription": {
-                "id": "id3",
-                "code": "code1",
-                "start_at": "2016-03-13T12:52:32.123Z",
-                "interval": "interval9",
-                "interval_count": 215,
-                "billing_type": "billing_type3",
-                "current_cycle": null,
-                "payment_method": "payment_method7",
-                "currency": "currency3",
-                "installments": 127,
-                "status": "status5",
+            "items": [
+              {
+                "id": "id6",
+                "description": "description6",
+                "status": "status8",
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
-                "customer": null,
-                "card": {
-                  "id": "id3",
-                  "last_four_digits": "last_four_digits9",
-                  "brand": "brand7",
-                  "holder_name": "holder_name9",
-                  "exp_month": 105,
-                  "exp_year": 191,
-                  "status": "status5",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "updated_at": "2016-03-13T12:52:32.123Z",
-                  "billing_address": {
-                    "street": "street5",
-                    "number": "number7",
-                    "zip_code": "zip_code9",
-                    "neighborhood": "neighborhood1",
-                    "city": "city5",
-                    "state": "state9",
-                    "country": "country9",
-                    "complement": "complement9",
-                    "line_1": "line_11",
-                    "line_2": "line_23"
-                  },
-                  "customer": null,
-                  "metadata": {
-                    "key0": "metadata0",
-                    "key1": "metadata1",
-                    "key2": "metadata2"
-                  },
-                  "type": "type7",
-                  "holder_document": "holder_document3",
-                  "deleted_at": null,
-                  "first_six_digits": "first_six_digits3",
-                  "label": "label3"
+                "pricing_scheme": {
+                  "price": 64,
+                  "scheme_type": "scheme_type8",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 145,
+                      "price": 173,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
                 },
-                "items": null,
-                "statement_descriptor": "statement_descriptor3",
-                "metadata": {
-                  "key0": "metadata0"
-                },
-                "setup": {
-                  "id": "id7",
-                  "description": "description3",
-                  "amount": 151,
-                  "status": "status1"
-                },
-                "gateway_affiliation_id": "gateway_affiliation_id9",
-                "next_billing_at": null,
-                "billing_day": null,
-                "minimum_price": null,
-                "canceled_at": null,
-                "discounts": null,
+                "discounts": [
+                  {
+                    "id": "id7",
+                    "value": 16.69,
+                    "discount_type": "discount_type5",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
                 "increments": [
                   {
-                    "id": "id4",
-                    "value": 20.46,
-                    "increment_type": "increment_type4",
-                    "status": "status4",
+                    "id": "id5",
+                    "value": 127.97,
+                    "increment_type": "increment_type7",
+                    "status": "status7",
                     "created_at": "2016-03-13T12:52:32.123Z",
                     "cycles": null,
                     "deleted_at": null,
@@ -738,9 +811,421 @@ Response object for listing subscriptions
                     "subscription_item": null
                   },
                   {
-                    "id": "id5",
-                    "value": 20.47,
-                    "increment_type": "increment_type3",
+                    "id": "id6",
+                    "value": 127.98,
+                    "increment_type": "increment_type8",
+                    "status": "status8",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "subscription": {
+                  "id": "id2",
+                  "code": "code0",
+                  "start_at": "2016-03-13T12:52:32.123Z",
+                  "interval": "interval0",
+                  "interval_count": 64,
+                  "billing_type": "billing_type4",
+                  "current_cycle": null,
+                  "payment_method": "payment_method8",
+                  "currency": "currency2",
+                  "installments": 232,
+                  "status": "status6",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": null,
+                  "card": {
+                    "id": "id4",
+                    "last_four_digits": "last_four_digits0",
+                    "brand": "brand8",
+                    "holder_name": "holder_name0",
+                    "exp_month": 210,
+                    "exp_year": 86,
+                    "status": "status4",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "billing_address": {
+                      "street": "street4",
+                      "number": "number8",
+                      "zip_code": "zip_code8",
+                      "neighborhood": "neighborhood0",
+                      "city": "city6",
+                      "state": "state0",
+                      "country": "country8",
+                      "complement": "complement0",
+                      "line_1": "line_12",
+                      "line_2": "line_22"
+                    },
+                    "customer": null,
+                    "metadata": {
+                      "key0": "metadata9",
+                      "key1": "metadata0"
+                    },
+                    "type": "type6",
+                    "holder_document": "holder_document2",
+                    "deleted_at": null,
+                    "first_six_digits": "first_six_digits4",
+                    "label": "label4"
+                  },
+                  "items": [],
+                  "statement_descriptor": "statement_descriptor2",
+                  "metadata": {
+                    "key0": "metadata1",
+                    "key1": "metadata2"
+                  },
+                  "setup": {
+                    "id": "id6",
+                    "description": "description4",
+                    "amount": 0,
+                    "status": "status2"
+                  },
+                  "gateway_affiliation_id": "gateway_affiliation_id8",
+                  "next_billing_at": null,
+                  "billing_day": null,
+                  "minimum_price": null,
+                  "canceled_at": null,
+                  "discounts": null,
+                  "increments": [
+                    {
+                      "id": "id5",
+                      "value": 45.87,
+                      "increment_type": "increment_type7",
+                      "status": "status3",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    },
+                    {
+                      "id": "id4",
+                      "value": 45.86,
+                      "increment_type": "increment_type6",
+                      "status": "status4",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    },
+                    {
+                      "id": "id3",
+                      "value": 45.85,
+                      "increment_type": "increment_type5",
+                      "status": "status5",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    }
+                  ],
+                  "boleto_due_days": null,
+                  "split": {
+                    "enabled": false,
+                    "rules": [
+                      {
+                        "type": "type8",
+                        "amount": 136,
+                        "recipient": null,
+                        "gateway_id": "gateway_id8",
+                        "options": null,
+                        "id": "id2"
+                      },
+                      {
+                        "type": "type7",
+                        "amount": 137,
+                        "recipient": null,
+                        "gateway_id": "gateway_id7",
+                        "options": null,
+                        "id": "id3"
+                      },
+                      {
+                        "type": "type6",
+                        "amount": 138,
+                        "recipient": null,
+                        "gateway_id": "gateway_id6",
+                        "options": null,
+                        "id": "id4"
+                      }
+                    ]
+                  }
+                },
+                "name": "name6",
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              },
+              {
+                "id": "id7",
+                "description": "description7",
+                "status": "status9",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 63,
+                  "scheme_type": "scheme_type9",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 146,
+                      "price": 172,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 147,
+                      "price": 171,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
+                },
+                "discounts": [
+                  {
+                    "id": "id8",
+                    "value": 16.7,
+                    "discount_type": "discount_type6",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id9",
+                    "value": 16.71,
+                    "discount_type": "discount_type7",
+                    "status": "status1",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "increments": [
+                  {
+                    "id": "id6",
+                    "value": 127.98,
+                    "increment_type": "increment_type8",
+                    "status": "status8",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id7",
+                    "value": 127.99,
+                    "increment_type": "increment_type9",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id8",
+                    "value": 128.0,
+                    "increment_type": "increment_type0",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "subscription": {
+                  "id": "id3",
+                  "code": "code1",
+                  "start_at": "2016-03-13T12:52:32.123Z",
+                  "interval": "interval1",
+                  "interval_count": 65,
+                  "billing_type": "billing_type3",
+                  "current_cycle": null,
+                  "payment_method": "payment_method7",
+                  "currency": "currency3",
+                  "installments": 233,
+                  "status": "status5",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": null,
+                  "card": {
+                    "id": "id3",
+                    "last_four_digits": "last_four_digits9",
+                    "brand": "brand7",
+                    "holder_name": "holder_name9",
+                    "exp_month": 211,
+                    "exp_year": 85,
+                    "status": "status5",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "billing_address": {
+                      "street": "street5",
+                      "number": "number7",
+                      "zip_code": "zip_code9",
+                      "neighborhood": "neighborhood1",
+                      "city": "city5",
+                      "state": "state9",
+                      "country": "country9",
+                      "complement": "complement9",
+                      "line_1": "line_11",
+                      "line_2": "line_23"
+                    },
+                    "customer": null,
+                    "metadata": {
+                      "key0": "metadata0",
+                      "key1": "metadata1",
+                      "key2": "metadata2"
+                    },
+                    "type": "type7",
+                    "holder_document": "holder_document3",
+                    "deleted_at": null,
+                    "first_six_digits": "first_six_digits3",
+                    "label": "label3"
+                  },
+                  "items": [],
+                  "statement_descriptor": "statement_descriptor3",
+                  "metadata": {
+                    "key0": "metadata0"
+                  },
+                  "setup": {
+                    "id": "id7",
+                    "description": "description3",
+                    "amount": 1,
+                    "status": "status1"
+                  },
+                  "gateway_affiliation_id": "gateway_affiliation_id9",
+                  "next_billing_at": null,
+                  "billing_day": null,
+                  "minimum_price": null,
+                  "canceled_at": null,
+                  "discounts": null,
+                  "increments": [
+                    {
+                      "id": "id6",
+                      "value": 45.88,
+                      "increment_type": "increment_type8",
+                      "status": "status2",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    },
+                    {
+                      "id": "id5",
+                      "value": 45.87,
+                      "increment_type": "increment_type7",
+                      "status": "status3",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    }
+                  ],
+                  "boleto_due_days": null,
+                  "split": {
+                    "enabled": true,
+                    "rules": [
+                      {
+                        "type": "type7",
+                        "amount": 137,
+                        "recipient": null,
+                        "gateway_id": "gateway_id7",
+                        "options": null,
+                        "id": "id3"
+                      }
+                    ]
+                  }
+                },
+                "name": "name7",
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              },
+              {
+                "id": "id8",
+                "description": "description8",
+                "status": "status0",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 62,
+                  "scheme_type": "scheme_type0",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 147,
+                      "price": 171,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 148,
+                      "price": 170,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 149,
+                      "price": 169,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
+                },
+                "discounts": [
+                  {
+                    "id": "id9",
+                    "value": 16.71,
+                    "discount_type": "discount_type7",
+                    "status": "status1",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id0",
+                    "value": 16.72,
+                    "discount_type": "discount_type8",
+                    "status": "status2",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id1",
+                    "value": 16.73,
+                    "discount_type": "discount_type9",
                     "status": "status3",
                     "created_at": "2016-03-13T12:52:32.123Z",
                     "cycles": null,
@@ -750,26 +1235,129 @@ Response object for listing subscriptions
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null,
-                "split": {
-                  "enabled": true,
-                  "rules": [
+                "increments": [
+                  {
+                    "id": "id7",
+                    "value": 127.99,
+                    "increment_type": "increment_type9",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "subscription": {
+                  "id": "id4",
+                  "code": "code2",
+                  "start_at": "2016-03-13T12:52:32.123Z",
+                  "interval": "interval2",
+                  "interval_count": 66,
+                  "billing_type": "billing_type2",
+                  "current_cycle": null,
+                  "payment_method": "payment_method6",
+                  "currency": "currency4",
+                  "installments": 234,
+                  "status": "status4",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": null,
+                  "card": {
+                    "id": "id2",
+                    "last_four_digits": "last_four_digits8",
+                    "brand": "brand6",
+                    "holder_name": "holder_name8",
+                    "exp_month": 212,
+                    "exp_year": 84,
+                    "status": "status6",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "billing_address": {
+                      "street": "street6",
+                      "number": "number6",
+                      "zip_code": "zip_code0",
+                      "neighborhood": "neighborhood2",
+                      "city": "city4",
+                      "state": "state8",
+                      "country": "country0",
+                      "complement": "complement8",
+                      "line_1": "line_10",
+                      "line_2": "line_24"
+                    },
+                    "customer": null,
+                    "metadata": {
+                      "key0": "metadata1"
+                    },
+                    "type": "type8",
+                    "holder_document": "holder_document4",
+                    "deleted_at": null,
+                    "first_six_digits": "first_six_digits2",
+                    "label": "label2"
+                  },
+                  "items": [],
+                  "statement_descriptor": "statement_descriptor4",
+                  "metadata": {
+                    "key0": "metadata9",
+                    "key1": "metadata0",
+                    "key2": "metadata1"
+                  },
+                  "setup": {
+                    "id": "id8",
+                    "description": "description2",
+                    "amount": 2,
+                    "status": "status0"
+                  },
+                  "gateway_affiliation_id": "gateway_affiliation_id0",
+                  "next_billing_at": null,
+                  "billing_day": null,
+                  "minimum_price": null,
+                  "canceled_at": null,
+                  "discounts": null,
+                  "increments": [
                     {
-                      "type": "type7",
-                      "amount": 225,
-                      "recipient": null,
-                      "gateway_id": "gateway_id7",
-                      "options": null,
-                      "id": "id3"
+                      "id": "id7",
+                      "value": 45.89,
+                      "increment_type": "increment_type9",
+                      "status": "status1",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
                     }
-                  ]
-                }
-              },
-              "name": "name7",
-              "quantity": null,
-              "cycles": null,
-              "deleted_at": null
-            },
+                  ],
+                  "boleto_due_days": null,
+                  "split": {
+                    "enabled": false,
+                    "rules": [
+                      {
+                        "type": "type6",
+                        "amount": 138,
+                        "recipient": null,
+                        "gateway_id": "gateway_id6",
+                        "options": null,
+                        "id": "id4"
+                      },
+                      {
+                        "type": "type5",
+                        "amount": 139,
+                        "recipient": null,
+                        "gateway_id": "gateway_id5",
+                        "options": null,
+                        "id": "id5"
+                      }
+                    ]
+                  }
+                },
+                "name": "name8",
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              }
+            ],
             "statement_descriptor": "statement_descriptor9",
             "metadata": {
               "key0": "metadata6",
@@ -1059,168 +1647,47 @@ Response object for listing subscriptions
               "first_six_digits": "first_six_digits3",
               "label": "label3"
             },
-            "items": {
-              "id": "id7",
-              "description": "description7",
-              "status": "status9",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "pricing_scheme": {
-                "price": 169,
-                "scheme_type": "scheme_type9",
-                "price_brackets": [
-                  {
-                    "start_quantity": 40,
-                    "price": 22,
-                    "end_quantity": null,
-                    "overage_price": null
-                  },
-                  {
-                    "start_quantity": 41,
-                    "price": 21,
-                    "end_quantity": null,
-                    "overage_price": null
-                  }
-                ],
-                "minimum_price": null,
-                "percentage": null
-              },
-              "discounts": [
-                {
-                  "id": "id8",
-                  "value": 197.4,
-                  "discount_type": "discount_type6",
-                  "status": "status0",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                },
-                {
-                  "id": "id9",
-                  "value": 197.41,
-                  "discount_type": "discount_type7",
-                  "status": "status1",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                }
-              ],
-              "increments": [
-                {
-                  "id": "id6",
-                  "value": 52.68,
-                  "increment_type": "increment_type8",
-                  "status": "status8",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                },
-                {
-                  "id": "id7",
-                  "value": 52.69,
-                  "increment_type": "increment_type9",
-                  "status": "status9",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                },
-                {
-                  "id": "id8",
-                  "value": 52.7,
-                  "increment_type": "increment_type0",
-                  "status": "status0",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                }
-              ],
-              "subscription": {
-                "id": "id3",
-                "code": "code1",
-                "start_at": "2016-03-13T12:52:32.123Z",
-                "interval": "interval9",
-                "interval_count": 215,
-                "billing_type": "billing_type3",
-                "current_cycle": null,
-                "payment_method": "payment_method7",
-                "currency": "currency3",
-                "installments": 127,
-                "status": "status5",
+            "items": [
+              {
+                "id": "id6",
+                "description": "description6",
+                "status": "status8",
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
-                "customer": null,
-                "card": {
-                  "id": "id3",
-                  "last_four_digits": "last_four_digits9",
-                  "brand": "brand7",
-                  "holder_name": "holder_name9",
-                  "exp_month": 105,
-                  "exp_year": 191,
-                  "status": "status5",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "updated_at": "2016-03-13T12:52:32.123Z",
-                  "billing_address": {
-                    "street": "street5",
-                    "number": "number7",
-                    "zip_code": "zip_code9",
-                    "neighborhood": "neighborhood1",
-                    "city": "city5",
-                    "state": "state9",
-                    "country": "country9",
-                    "complement": "complement9",
-                    "line_1": "line_11",
-                    "line_2": "line_23"
-                  },
-                  "customer": null,
-                  "metadata": {
-                    "key0": "metadata0",
-                    "key1": "metadata1",
-                    "key2": "metadata2"
-                  },
-                  "type": "type7",
-                  "holder_document": "holder_document3",
-                  "deleted_at": null,
-                  "first_six_digits": "first_six_digits3",
-                  "label": "label3"
+                "pricing_scheme": {
+                  "price": 64,
+                  "scheme_type": "scheme_type8",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 145,
+                      "price": 173,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
                 },
-                "items": null,
-                "statement_descriptor": "statement_descriptor3",
-                "metadata": {
-                  "key0": "metadata0"
-                },
-                "setup": {
-                  "id": "id7",
-                  "description": "description3",
-                  "amount": 151,
-                  "status": "status1"
-                },
-                "gateway_affiliation_id": "gateway_affiliation_id9",
-                "next_billing_at": null,
-                "billing_day": null,
-                "minimum_price": null,
-                "canceled_at": null,
-                "discounts": null,
+                "discounts": [
+                  {
+                    "id": "id7",
+                    "value": 16.69,
+                    "discount_type": "discount_type5",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
                 "increments": [
                   {
-                    "id": "id4",
-                    "value": 20.46,
-                    "increment_type": "increment_type4",
-                    "status": "status4",
+                    "id": "id5",
+                    "value": 127.97,
+                    "increment_type": "increment_type7",
+                    "status": "status7",
                     "created_at": "2016-03-13T12:52:32.123Z",
                     "cycles": null,
                     "deleted_at": null,
@@ -1229,9 +1696,421 @@ Response object for listing subscriptions
                     "subscription_item": null
                   },
                   {
-                    "id": "id5",
-                    "value": 20.47,
-                    "increment_type": "increment_type3",
+                    "id": "id6",
+                    "value": 127.98,
+                    "increment_type": "increment_type8",
+                    "status": "status8",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "subscription": {
+                  "id": "id2",
+                  "code": "code0",
+                  "start_at": "2016-03-13T12:52:32.123Z",
+                  "interval": "interval0",
+                  "interval_count": 64,
+                  "billing_type": "billing_type4",
+                  "current_cycle": null,
+                  "payment_method": "payment_method8",
+                  "currency": "currency2",
+                  "installments": 232,
+                  "status": "status6",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": null,
+                  "card": {
+                    "id": "id4",
+                    "last_four_digits": "last_four_digits0",
+                    "brand": "brand8",
+                    "holder_name": "holder_name0",
+                    "exp_month": 210,
+                    "exp_year": 86,
+                    "status": "status4",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "billing_address": {
+                      "street": "street4",
+                      "number": "number8",
+                      "zip_code": "zip_code8",
+                      "neighborhood": "neighborhood0",
+                      "city": "city6",
+                      "state": "state0",
+                      "country": "country8",
+                      "complement": "complement0",
+                      "line_1": "line_12",
+                      "line_2": "line_22"
+                    },
+                    "customer": null,
+                    "metadata": {
+                      "key0": "metadata9",
+                      "key1": "metadata0"
+                    },
+                    "type": "type6",
+                    "holder_document": "holder_document2",
+                    "deleted_at": null,
+                    "first_six_digits": "first_six_digits4",
+                    "label": "label4"
+                  },
+                  "items": [],
+                  "statement_descriptor": "statement_descriptor2",
+                  "metadata": {
+                    "key0": "metadata1",
+                    "key1": "metadata2"
+                  },
+                  "setup": {
+                    "id": "id6",
+                    "description": "description4",
+                    "amount": 0,
+                    "status": "status2"
+                  },
+                  "gateway_affiliation_id": "gateway_affiliation_id8",
+                  "next_billing_at": null,
+                  "billing_day": null,
+                  "minimum_price": null,
+                  "canceled_at": null,
+                  "discounts": null,
+                  "increments": [
+                    {
+                      "id": "id5",
+                      "value": 45.87,
+                      "increment_type": "increment_type7",
+                      "status": "status3",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    },
+                    {
+                      "id": "id4",
+                      "value": 45.86,
+                      "increment_type": "increment_type6",
+                      "status": "status4",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    },
+                    {
+                      "id": "id3",
+                      "value": 45.85,
+                      "increment_type": "increment_type5",
+                      "status": "status5",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    }
+                  ],
+                  "boleto_due_days": null,
+                  "split": {
+                    "enabled": false,
+                    "rules": [
+                      {
+                        "type": "type8",
+                        "amount": 136,
+                        "recipient": null,
+                        "gateway_id": "gateway_id8",
+                        "options": null,
+                        "id": "id2"
+                      },
+                      {
+                        "type": "type7",
+                        "amount": 137,
+                        "recipient": null,
+                        "gateway_id": "gateway_id7",
+                        "options": null,
+                        "id": "id3"
+                      },
+                      {
+                        "type": "type6",
+                        "amount": 138,
+                        "recipient": null,
+                        "gateway_id": "gateway_id6",
+                        "options": null,
+                        "id": "id4"
+                      }
+                    ]
+                  }
+                },
+                "name": "name6",
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              },
+              {
+                "id": "id7",
+                "description": "description7",
+                "status": "status9",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 63,
+                  "scheme_type": "scheme_type9",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 146,
+                      "price": 172,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 147,
+                      "price": 171,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
+                },
+                "discounts": [
+                  {
+                    "id": "id8",
+                    "value": 16.7,
+                    "discount_type": "discount_type6",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id9",
+                    "value": 16.71,
+                    "discount_type": "discount_type7",
+                    "status": "status1",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "increments": [
+                  {
+                    "id": "id6",
+                    "value": 127.98,
+                    "increment_type": "increment_type8",
+                    "status": "status8",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id7",
+                    "value": 127.99,
+                    "increment_type": "increment_type9",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id8",
+                    "value": 128.0,
+                    "increment_type": "increment_type0",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "subscription": {
+                  "id": "id3",
+                  "code": "code1",
+                  "start_at": "2016-03-13T12:52:32.123Z",
+                  "interval": "interval1",
+                  "interval_count": 65,
+                  "billing_type": "billing_type3",
+                  "current_cycle": null,
+                  "payment_method": "payment_method7",
+                  "currency": "currency3",
+                  "installments": 233,
+                  "status": "status5",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": null,
+                  "card": {
+                    "id": "id3",
+                    "last_four_digits": "last_four_digits9",
+                    "brand": "brand7",
+                    "holder_name": "holder_name9",
+                    "exp_month": 211,
+                    "exp_year": 85,
+                    "status": "status5",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "billing_address": {
+                      "street": "street5",
+                      "number": "number7",
+                      "zip_code": "zip_code9",
+                      "neighborhood": "neighborhood1",
+                      "city": "city5",
+                      "state": "state9",
+                      "country": "country9",
+                      "complement": "complement9",
+                      "line_1": "line_11",
+                      "line_2": "line_23"
+                    },
+                    "customer": null,
+                    "metadata": {
+                      "key0": "metadata0",
+                      "key1": "metadata1",
+                      "key2": "metadata2"
+                    },
+                    "type": "type7",
+                    "holder_document": "holder_document3",
+                    "deleted_at": null,
+                    "first_six_digits": "first_six_digits3",
+                    "label": "label3"
+                  },
+                  "items": [],
+                  "statement_descriptor": "statement_descriptor3",
+                  "metadata": {
+                    "key0": "metadata0"
+                  },
+                  "setup": {
+                    "id": "id7",
+                    "description": "description3",
+                    "amount": 1,
+                    "status": "status1"
+                  },
+                  "gateway_affiliation_id": "gateway_affiliation_id9",
+                  "next_billing_at": null,
+                  "billing_day": null,
+                  "minimum_price": null,
+                  "canceled_at": null,
+                  "discounts": null,
+                  "increments": [
+                    {
+                      "id": "id6",
+                      "value": 45.88,
+                      "increment_type": "increment_type8",
+                      "status": "status2",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    },
+                    {
+                      "id": "id5",
+                      "value": 45.87,
+                      "increment_type": "increment_type7",
+                      "status": "status3",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    }
+                  ],
+                  "boleto_due_days": null,
+                  "split": {
+                    "enabled": true,
+                    "rules": [
+                      {
+                        "type": "type7",
+                        "amount": 137,
+                        "recipient": null,
+                        "gateway_id": "gateway_id7",
+                        "options": null,
+                        "id": "id3"
+                      }
+                    ]
+                  }
+                },
+                "name": "name7",
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              },
+              {
+                "id": "id8",
+                "description": "description8",
+                "status": "status0",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 62,
+                  "scheme_type": "scheme_type0",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 147,
+                      "price": 171,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 148,
+                      "price": 170,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 149,
+                      "price": 169,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
+                },
+                "discounts": [
+                  {
+                    "id": "id9",
+                    "value": 16.71,
+                    "discount_type": "discount_type7",
+                    "status": "status1",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id0",
+                    "value": 16.72,
+                    "discount_type": "discount_type8",
+                    "status": "status2",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id1",
+                    "value": 16.73,
+                    "discount_type": "discount_type9",
                     "status": "status3",
                     "created_at": "2016-03-13T12:52:32.123Z",
                     "cycles": null,
@@ -1241,26 +2120,129 @@ Response object for listing subscriptions
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null,
-                "split": {
-                  "enabled": true,
-                  "rules": [
+                "increments": [
+                  {
+                    "id": "id7",
+                    "value": 127.99,
+                    "increment_type": "increment_type9",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "subscription": {
+                  "id": "id4",
+                  "code": "code2",
+                  "start_at": "2016-03-13T12:52:32.123Z",
+                  "interval": "interval2",
+                  "interval_count": 66,
+                  "billing_type": "billing_type2",
+                  "current_cycle": null,
+                  "payment_method": "payment_method6",
+                  "currency": "currency4",
+                  "installments": 234,
+                  "status": "status4",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": null,
+                  "card": {
+                    "id": "id2",
+                    "last_four_digits": "last_four_digits8",
+                    "brand": "brand6",
+                    "holder_name": "holder_name8",
+                    "exp_month": 212,
+                    "exp_year": 84,
+                    "status": "status6",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "billing_address": {
+                      "street": "street6",
+                      "number": "number6",
+                      "zip_code": "zip_code0",
+                      "neighborhood": "neighborhood2",
+                      "city": "city4",
+                      "state": "state8",
+                      "country": "country0",
+                      "complement": "complement8",
+                      "line_1": "line_10",
+                      "line_2": "line_24"
+                    },
+                    "customer": null,
+                    "metadata": {
+                      "key0": "metadata1"
+                    },
+                    "type": "type8",
+                    "holder_document": "holder_document4",
+                    "deleted_at": null,
+                    "first_six_digits": "first_six_digits2",
+                    "label": "label2"
+                  },
+                  "items": [],
+                  "statement_descriptor": "statement_descriptor4",
+                  "metadata": {
+                    "key0": "metadata9",
+                    "key1": "metadata0",
+                    "key2": "metadata1"
+                  },
+                  "setup": {
+                    "id": "id8",
+                    "description": "description2",
+                    "amount": 2,
+                    "status": "status0"
+                  },
+                  "gateway_affiliation_id": "gateway_affiliation_id0",
+                  "next_billing_at": null,
+                  "billing_day": null,
+                  "minimum_price": null,
+                  "canceled_at": null,
+                  "discounts": null,
+                  "increments": [
                     {
-                      "type": "type7",
-                      "amount": 225,
-                      "recipient": null,
-                      "gateway_id": "gateway_id7",
-                      "options": null,
-                      "id": "id3"
+                      "id": "id7",
+                      "value": 45.89,
+                      "increment_type": "increment_type9",
+                      "status": "status1",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
                     }
-                  ]
-                }
-              },
-              "name": "name7",
-              "quantity": null,
-              "cycles": null,
-              "deleted_at": null
-            },
+                  ],
+                  "boleto_due_days": null,
+                  "split": {
+                    "enabled": false,
+                    "rules": [
+                      {
+                        "type": "type6",
+                        "amount": 138,
+                        "recipient": null,
+                        "gateway_id": "gateway_id6",
+                        "options": null,
+                        "id": "id4"
+                      },
+                      {
+                        "type": "type5",
+                        "amount": 139,
+                        "recipient": null,
+                        "gateway_id": "gateway_id5",
+                        "options": null,
+                        "id": "id5"
+                      }
+                    ]
+                  }
+                },
+                "name": "name8",
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              }
+            ],
             "statement_descriptor": "statement_descriptor9",
             "metadata": {
               "key0": "metadata6",
@@ -1479,162 +2461,51 @@ Response object for listing subscriptions
               "first_six_digits": "first_six_digits4",
               "label": "label4"
             },
-            "items": {
-              "id": "id8",
-              "description": "description8",
-              "status": "status0",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "pricing_scheme": {
-                "price": 168,
-                "scheme_type": "scheme_type0",
-                "price_brackets": [
-                  {
-                    "start_quantity": 41,
-                    "price": 21,
-                    "end_quantity": null,
-                    "overage_price": null
-                  },
-                  {
-                    "start_quantity": 42,
-                    "price": 20,
-                    "end_quantity": null,
-                    "overage_price": null
-                  },
-                  {
-                    "start_quantity": 43,
-                    "price": 19,
-                    "end_quantity": null,
-                    "overage_price": null
-                  }
-                ],
-                "minimum_price": null,
-                "percentage": null
-              },
-              "discounts": [
-                {
-                  "id": "id9",
-                  "value": 197.41,
-                  "discount_type": "discount_type7",
-                  "status": "status1",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                },
-                {
-                  "id": "id0",
-                  "value": 197.42,
-                  "discount_type": "discount_type8",
-                  "status": "status2",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                },
-                {
-                  "id": "id1",
-                  "value": 197.43,
-                  "discount_type": "discount_type9",
-                  "status": "status3",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                }
-              ],
-              "increments": [
-                {
-                  "id": "id7",
-                  "value": 52.69,
-                  "increment_type": "increment_type9",
-                  "status": "status9",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                }
-              ],
-              "subscription": {
-                "id": "id4",
-                "code": "code2",
-                "start_at": "2016-03-13T12:52:32.123Z",
-                "interval": "interval8",
-                "interval_count": 216,
-                "billing_type": "billing_type2",
-                "current_cycle": null,
-                "payment_method": "payment_method6",
-                "currency": "currency4",
-                "installments": 128,
-                "status": "status4",
+            "items": [
+              {
+                "id": "id7",
+                "description": "description7",
+                "status": "status9",
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
-                "customer": null,
-                "card": {
-                  "id": "id2",
-                  "last_four_digits": "last_four_digits8",
-                  "brand": "brand6",
-                  "holder_name": "holder_name8",
-                  "exp_month": 106,
-                  "exp_year": 190,
-                  "status": "status6",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "updated_at": "2016-03-13T12:52:32.123Z",
-                  "billing_address": {
-                    "street": "street6",
-                    "number": "number6",
-                    "zip_code": "zip_code0",
-                    "neighborhood": "neighborhood2",
-                    "city": "city4",
-                    "state": "state8",
-                    "country": "country0",
-                    "complement": "complement8",
-                    "line_1": "line_10",
-                    "line_2": "line_24"
-                  },
-                  "customer": null,
-                  "metadata": {
-                    "key0": "metadata1"
-                  },
-                  "type": "type8",
-                  "holder_document": "holder_document4",
-                  "deleted_at": null,
-                  "first_six_digits": "first_six_digits2",
-                  "label": "label2"
+                "pricing_scheme": {
+                  "price": 63,
+                  "scheme_type": "scheme_type9",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 146,
+                      "price": 172,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 147,
+                      "price": 171,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
                 },
-                "items": null,
-                "statement_descriptor": "statement_descriptor4",
-                "metadata": {
-                  "key0": "metadata9",
-                  "key1": "metadata0",
-                  "key2": "metadata1"
-                },
-                "setup": {
-                  "id": "id8",
-                  "description": "description2",
-                  "amount": 152,
-                  "status": "status0"
-                },
-                "gateway_affiliation_id": "gateway_affiliation_id0",
-                "next_billing_at": null,
-                "billing_day": null,
-                "minimum_price": null,
-                "canceled_at": null,
-                "discounts": null,
-                "increments": [
+                "discounts": [
                   {
-                    "id": "id3",
-                    "value": 20.45,
-                    "increment_type": "increment_type5",
-                    "status": "status5",
+                    "id": "id8",
+                    "value": 16.7,
+                    "discount_type": "discount_type6",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id9",
+                    "value": 16.71,
+                    "discount_type": "discount_type7",
+                    "status": "status1",
                     "created_at": "2016-03-13T12:52:32.123Z",
                     "cycles": null,
                     "deleted_at": null,
@@ -1643,34 +2514,157 @@ Response object for listing subscriptions
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null,
-                "split": {
-                  "enabled": false,
-                  "rules": [
+                "increments": [
+                  {
+                    "id": "id6",
+                    "value": 127.98,
+                    "increment_type": "increment_type8",
+                    "status": "status8",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id7",
+                    "value": 127.99,
+                    "increment_type": "increment_type9",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id8",
+                    "value": 128.0,
+                    "increment_type": "increment_type0",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "subscription": {
+                  "id": "id3",
+                  "code": "code1",
+                  "start_at": "2016-03-13T12:52:32.123Z",
+                  "interval": "interval1",
+                  "interval_count": 65,
+                  "billing_type": "billing_type3",
+                  "current_cycle": null,
+                  "payment_method": "payment_method7",
+                  "currency": "currency3",
+                  "installments": 233,
+                  "status": "status5",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": null,
+                  "card": {
+                    "id": "id3",
+                    "last_four_digits": "last_four_digits9",
+                    "brand": "brand7",
+                    "holder_name": "holder_name9",
+                    "exp_month": 211,
+                    "exp_year": 85,
+                    "status": "status5",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "billing_address": {
+                      "street": "street5",
+                      "number": "number7",
+                      "zip_code": "zip_code9",
+                      "neighborhood": "neighborhood1",
+                      "city": "city5",
+                      "state": "state9",
+                      "country": "country9",
+                      "complement": "complement9",
+                      "line_1": "line_11",
+                      "line_2": "line_23"
+                    },
+                    "customer": null,
+                    "metadata": {
+                      "key0": "metadata0",
+                      "key1": "metadata1",
+                      "key2": "metadata2"
+                    },
+                    "type": "type7",
+                    "holder_document": "holder_document3",
+                    "deleted_at": null,
+                    "first_six_digits": "first_six_digits3",
+                    "label": "label3"
+                  },
+                  "items": [],
+                  "statement_descriptor": "statement_descriptor3",
+                  "metadata": {
+                    "key0": "metadata0"
+                  },
+                  "setup": {
+                    "id": "id7",
+                    "description": "description3",
+                    "amount": 1,
+                    "status": "status1"
+                  },
+                  "gateway_affiliation_id": "gateway_affiliation_id9",
+                  "next_billing_at": null,
+                  "billing_day": null,
+                  "minimum_price": null,
+                  "canceled_at": null,
+                  "discounts": null,
+                  "increments": [
                     {
-                      "type": "type6",
-                      "amount": 224,
-                      "recipient": null,
-                      "gateway_id": "gateway_id6",
-                      "options": null,
-                      "id": "id4"
+                      "id": "id6",
+                      "value": 45.88,
+                      "increment_type": "increment_type8",
+                      "status": "status2",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
                     },
                     {
-                      "type": "type5",
-                      "amount": 223,
-                      "recipient": null,
-                      "gateway_id": "gateway_id5",
-                      "options": null,
-                      "id": "id5"
+                      "id": "id5",
+                      "value": 45.87,
+                      "increment_type": "increment_type7",
+                      "status": "status3",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
                     }
-                  ]
-                }
-              },
-              "name": "name8",
-              "quantity": null,
-              "cycles": null,
-              "deleted_at": null
-            },
+                  ],
+                  "boleto_due_days": null,
+                  "split": {
+                    "enabled": true,
+                    "rules": [
+                      {
+                        "type": "type7",
+                        "amount": 137,
+                        "recipient": null,
+                        "gateway_id": "gateway_id7",
+                        "options": null,
+                        "id": "id3"
+                      }
+                    ]
+                  }
+                },
+                "name": "name7",
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              }
+            ],
             "statement_descriptor": "statement_descriptor0",
             "metadata": {
               "key0": "metadata7"
@@ -1877,138 +2871,45 @@ Response object for listing subscriptions
               "first_six_digits": "first_six_digits5",
               "label": "label5"
             },
-            "items": {
-              "id": "id9",
-              "description": "description9",
-              "status": "status1",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "pricing_scheme": {
-                "price": 167,
-                "scheme_type": "scheme_type1",
-                "price_brackets": [
-                  {
-                    "start_quantity": 42,
-                    "price": 20,
-                    "end_quantity": null,
-                    "overage_price": null
-                  }
-                ],
-                "minimum_price": null,
-                "percentage": null
-              },
-              "discounts": [
-                {
-                  "id": "id0",
-                  "value": 197.42,
-                  "discount_type": "discount_type8",
-                  "status": "status2",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                }
-              ],
-              "increments": [
-                {
-                  "id": "id8",
-                  "value": 52.7,
-                  "increment_type": "increment_type0",
-                  "status": "status0",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                },
-                {
-                  "id": "id9",
-                  "value": 52.71,
-                  "increment_type": "increment_type1",
-                  "status": "status1",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "cycles": null,
-                  "deleted_at": null,
-                  "description": null,
-                  "subscription": null,
-                  "subscription_item": null
-                }
-              ],
-              "subscription": {
-                "id": "id5",
-                "code": "code3",
-                "start_at": "2016-03-13T12:52:32.123Z",
-                "interval": "interval7",
-                "interval_count": 217,
-                "billing_type": "billing_type1",
-                "current_cycle": null,
-                "payment_method": "payment_method5",
-                "currency": "currency5",
-                "installments": 129,
-                "status": "status3",
+            "items": [
+              {
+                "id": "id8",
+                "description": "description8",
+                "status": "status0",
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
-                "customer": null,
-                "card": {
-                  "id": "id1",
-                  "last_four_digits": "last_four_digits7",
-                  "brand": "brand5",
-                  "holder_name": "holder_name7",
-                  "exp_month": 107,
-                  "exp_year": 189,
-                  "status": "status7",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "updated_at": "2016-03-13T12:52:32.123Z",
-                  "billing_address": {
-                    "street": "street7",
-                    "number": "number5",
-                    "zip_code": "zip_code1",
-                    "neighborhood": "neighborhood3",
-                    "city": "city3",
-                    "state": "state7",
-                    "country": "country1",
-                    "complement": "complement7",
-                    "line_1": "line_19",
-                    "line_2": "line_25"
-                  },
-                  "customer": null,
-                  "metadata": {
-                    "key0": "metadata2",
-                    "key1": "metadata3"
-                  },
-                  "type": "type9",
-                  "holder_document": "holder_document5",
-                  "deleted_at": null,
-                  "first_six_digits": "first_six_digits1",
-                  "label": "label1"
+                "pricing_scheme": {
+                  "price": 62,
+                  "scheme_type": "scheme_type0",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 147,
+                      "price": 171,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 148,
+                      "price": 170,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 149,
+                      "price": 169,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
                 },
-                "items": null,
-                "statement_descriptor": "statement_descriptor5",
-                "metadata": {
-                  "key0": "metadata8",
-                  "key1": "metadata9"
-                },
-                "setup": {
-                  "id": "id9",
-                  "description": "description1",
-                  "amount": 153,
-                  "status": "status9"
-                },
-                "gateway_affiliation_id": "gateway_affiliation_id1",
-                "next_billing_at": null,
-                "billing_day": null,
-                "minimum_price": null,
-                "canceled_at": null,
-                "discounts": null,
-                "increments": [
+                "discounts": [
                   {
-                    "id": "id2",
-                    "value": 20.44,
-                    "increment_type": "increment_type6",
-                    "status": "status6",
+                    "id": "id9",
+                    "value": 16.71,
+                    "discount_type": "discount_type7",
+                    "status": "status1",
                     "created_at": "2016-03-13T12:52:32.123Z",
                     "cycles": null,
                     "deleted_at": null,
@@ -2017,10 +2918,10 @@ Response object for listing subscriptions
                     "subscription_item": null
                   },
                   {
-                    "id": "id3",
-                    "value": 20.45,
-                    "increment_type": "increment_type5",
-                    "status": "status5",
+                    "id": "id0",
+                    "value": 16.72,
+                    "discount_type": "discount_type8",
+                    "status": "status2",
                     "created_at": "2016-03-13T12:52:32.123Z",
                     "cycles": null,
                     "deleted_at": null,
@@ -2029,10 +2930,10 @@ Response object for listing subscriptions
                     "subscription_item": null
                   },
                   {
-                    "id": "id4",
-                    "value": 20.46,
-                    "increment_type": "increment_type4",
-                    "status": "status4",
+                    "id": "id1",
+                    "value": 16.73,
+                    "discount_type": "discount_type9",
+                    "status": "status3",
                     "created_at": "2016-03-13T12:52:32.123Z",
                     "cycles": null,
                     "deleted_at": null,
@@ -2041,42 +2942,329 @@ Response object for listing subscriptions
                     "subscription_item": null
                   }
                 ],
-                "boleto_due_days": null,
-                "split": {
-                  "enabled": true,
-                  "rules": [
-                    {
-                      "type": "type5",
-                      "amount": 223,
-                      "recipient": null,
-                      "gateway_id": "gateway_id5",
-                      "options": null,
-                      "id": "id5"
+                "increments": [
+                  {
+                    "id": "id7",
+                    "value": 127.99,
+                    "increment_type": "increment_type9",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "subscription": {
+                  "id": "id4",
+                  "code": "code2",
+                  "start_at": "2016-03-13T12:52:32.123Z",
+                  "interval": "interval2",
+                  "interval_count": 66,
+                  "billing_type": "billing_type2",
+                  "current_cycle": null,
+                  "payment_method": "payment_method6",
+                  "currency": "currency4",
+                  "installments": 234,
+                  "status": "status4",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": null,
+                  "card": {
+                    "id": "id2",
+                    "last_four_digits": "last_four_digits8",
+                    "brand": "brand6",
+                    "holder_name": "holder_name8",
+                    "exp_month": 212,
+                    "exp_year": 84,
+                    "status": "status6",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "billing_address": {
+                      "street": "street6",
+                      "number": "number6",
+                      "zip_code": "zip_code0",
+                      "neighborhood": "neighborhood2",
+                      "city": "city4",
+                      "state": "state8",
+                      "country": "country0",
+                      "complement": "complement8",
+                      "line_1": "line_10",
+                      "line_2": "line_24"
                     },
-                    {
-                      "type": "type4",
-                      "amount": 222,
-                      "recipient": null,
-                      "gateway_id": "gateway_id4",
-                      "options": null,
-                      "id": "id6"
+                    "customer": null,
+                    "metadata": {
+                      "key0": "metadata1"
                     },
+                    "type": "type8",
+                    "holder_document": "holder_document4",
+                    "deleted_at": null,
+                    "first_six_digits": "first_six_digits2",
+                    "label": "label2"
+                  },
+                  "items": [],
+                  "statement_descriptor": "statement_descriptor4",
+                  "metadata": {
+                    "key0": "metadata9",
+                    "key1": "metadata0",
+                    "key2": "metadata1"
+                  },
+                  "setup": {
+                    "id": "id8",
+                    "description": "description2",
+                    "amount": 2,
+                    "status": "status0"
+                  },
+                  "gateway_affiliation_id": "gateway_affiliation_id0",
+                  "next_billing_at": null,
+                  "billing_day": null,
+                  "minimum_price": null,
+                  "canceled_at": null,
+                  "discounts": null,
+                  "increments": [
                     {
-                      "type": "type3",
-                      "amount": 221,
-                      "recipient": null,
-                      "gateway_id": "gateway_id3",
-                      "options": null,
-                      "id": "id7"
+                      "id": "id7",
+                      "value": 45.89,
+                      "increment_type": "increment_type9",
+                      "status": "status1",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
                     }
-                  ]
-                }
+                  ],
+                  "boleto_due_days": null,
+                  "split": {
+                    "enabled": false,
+                    "rules": [
+                      {
+                        "type": "type6",
+                        "amount": 138,
+                        "recipient": null,
+                        "gateway_id": "gateway_id6",
+                        "options": null,
+                        "id": "id4"
+                      },
+                      {
+                        "type": "type5",
+                        "amount": 139,
+                        "recipient": null,
+                        "gateway_id": "gateway_id5",
+                        "options": null,
+                        "id": "id5"
+                      }
+                    ]
+                  }
+                },
+                "name": "name8",
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
               },
-              "name": "name9",
-              "quantity": null,
-              "cycles": null,
-              "deleted_at": null
-            },
+              {
+                "id": "id9",
+                "description": "description9",
+                "status": "status1",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 61,
+                  "scheme_type": "scheme_type1",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 148,
+                      "price": 170,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
+                },
+                "discounts": [
+                  {
+                    "id": "id0",
+                    "value": 16.72,
+                    "discount_type": "discount_type8",
+                    "status": "status2",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "increments": [
+                  {
+                    "id": "id8",
+                    "value": 128.0,
+                    "increment_type": "increment_type0",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  },
+                  {
+                    "id": "id9",
+                    "value": 128.01,
+                    "increment_type": "increment_type1",
+                    "status": "status1",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": null,
+                    "deleted_at": null,
+                    "description": null,
+                    "subscription": null,
+                    "subscription_item": null
+                  }
+                ],
+                "subscription": {
+                  "id": "id5",
+                  "code": "code3",
+                  "start_at": "2016-03-13T12:52:32.123Z",
+                  "interval": "interval3",
+                  "interval_count": 67,
+                  "billing_type": "billing_type1",
+                  "current_cycle": null,
+                  "payment_method": "payment_method5",
+                  "currency": "currency5",
+                  "installments": 235,
+                  "status": "status3",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": null,
+                  "card": {
+                    "id": "id1",
+                    "last_four_digits": "last_four_digits7",
+                    "brand": "brand5",
+                    "holder_name": "holder_name7",
+                    "exp_month": 213,
+                    "exp_year": 83,
+                    "status": "status7",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "billing_address": {
+                      "street": "street7",
+                      "number": "number5",
+                      "zip_code": "zip_code1",
+                      "neighborhood": "neighborhood3",
+                      "city": "city3",
+                      "state": "state7",
+                      "country": "country1",
+                      "complement": "complement7",
+                      "line_1": "line_19",
+                      "line_2": "line_25"
+                    },
+                    "customer": null,
+                    "metadata": {
+                      "key0": "metadata2",
+                      "key1": "metadata3"
+                    },
+                    "type": "type9",
+                    "holder_document": "holder_document5",
+                    "deleted_at": null,
+                    "first_six_digits": "first_six_digits1",
+                    "label": "label1"
+                  },
+                  "items": [],
+                  "statement_descriptor": "statement_descriptor5",
+                  "metadata": {
+                    "key0": "metadata8",
+                    "key1": "metadata9"
+                  },
+                  "setup": {
+                    "id": "id9",
+                    "description": "description1",
+                    "amount": 3,
+                    "status": "status9"
+                  },
+                  "gateway_affiliation_id": "gateway_affiliation_id1",
+                  "next_billing_at": null,
+                  "billing_day": null,
+                  "minimum_price": null,
+                  "canceled_at": null,
+                  "discounts": null,
+                  "increments": [
+                    {
+                      "id": "id8",
+                      "value": 45.9,
+                      "increment_type": "increment_type0",
+                      "status": "status0",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    },
+                    {
+                      "id": "id7",
+                      "value": 45.89,
+                      "increment_type": "increment_type9",
+                      "status": "status1",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    },
+                    {
+                      "id": "id6",
+                      "value": 45.88,
+                      "increment_type": "increment_type8",
+                      "status": "status2",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": null,
+                      "deleted_at": null,
+                      "description": null,
+                      "subscription": null,
+                      "subscription_item": null
+                    }
+                  ],
+                  "boleto_due_days": null,
+                  "split": {
+                    "enabled": true,
+                    "rules": [
+                      {
+                        "type": "type5",
+                        "amount": 139,
+                        "recipient": null,
+                        "gateway_id": "gateway_id5",
+                        "options": null,
+                        "id": "id5"
+                      },
+                      {
+                        "type": "type4",
+                        "amount": 140,
+                        "recipient": null,
+                        "gateway_id": "gateway_id4",
+                        "options": null,
+                        "id": "id6"
+                      },
+                      {
+                        "type": "type3",
+                        "amount": 141,
+                        "recipient": null,
+                        "gateway_id": "gateway_id3",
+                        "options": null,
+                        "id": "id7"
+                      }
+                    ]
+                  }
+                },
+                "name": "name9",
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              }
+            ],
             "statement_descriptor": "statement_descriptor1",
             "metadata": {
               "key0": "metadata8",

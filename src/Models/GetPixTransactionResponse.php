@@ -250,6 +250,7 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
         $json['end_to_end_id']          = $this->endToEndId;
         $json['payer']                  = $this->payer;
         $json = array_merge($json, parent::jsonSerialize(true));
+        $json['transaction_type'] = $this->getTransactionType() ?? 'pix';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

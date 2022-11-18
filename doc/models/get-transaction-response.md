@@ -27,6 +27,9 @@ Generic response object for getting a transaction.
 | `antifraudResponse` | [`GetAntifraudResponse`](../../doc/models/get-antifraud-response.md) | Required | - | getAntifraudResponse(): GetAntifraudResponse | setAntifraudResponse(GetAntifraudResponse antifraudResponse): void |
 | `metadata` | `?array<string,string>` | Optional | - | getMetadata(): ?array | setMetadata(?array metadata): void |
 | `split` | [`GetSplitResponse[]`](../../doc/models/get-split-response.md) | Required | - | getSplit(): array | setSplit(array split): void |
+| `interest` | [`?GetInterestResponse`](../../doc/models/get-interest-response.md) | Optional | - | getInterest(): ?GetInterestResponse | setInterest(?GetInterestResponse interest): void |
+| `fine` | [`?GetFineResponse`](../../doc/models/get-fine-response.md) | Optional | - | getFine(): ?GetFineResponse | setFine(?GetFineResponse fine): void |
+| `maxDaysToPayPastDue` | `?int` | Optional | - | getMaxDaysToPayPastDue(): ?int | setMaxDaysToPayPastDue(?int maxDaysToPayPastDue): void |
 
 ## Example (as JSON)
 
@@ -59,7 +62,6 @@ Generic response object for getting a transaction.
     }
   ],
   "next_attempt": null,
-  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",
@@ -108,7 +110,11 @@ Generic response object for getting a transaction.
       "options": null,
       "id": "id6"
     }
-  ]
+  ],
+  "interest": null,
+  "fine": null,
+  "max_days_to_pay_past_due": null,
+  "transaction_type": "transaction"
 }
 ```
 

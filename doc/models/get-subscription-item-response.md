@@ -290,78 +290,170 @@
             "first_six_digits": "first_six_digits9",
             "label": "label9"
           },
-          "items": {
-            "id": "id5",
-            "description": "description5",
-            "status": "status7",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "pricing_scheme": {
-              "price": 103,
-              "scheme_type": "scheme_type3",
-              "price_brackets": [
+          "items": [
+            {
+              "id": "id4",
+              "description": "description4",
+              "status": "status6",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 208,
+                "scheme_type": "scheme_type4",
+                "price_brackets": [
+                  {
+                    "start_quantity": 1,
+                    "price": 61,
+                    "end_quantity": null,
+                    "overage_price": null
+                  },
+                  {
+                    "start_quantity": 2,
+                    "price": 60,
+                    "end_quantity": null,
+                    "overage_price": null
+                  },
+                  {
+                    "start_quantity": 3,
+                    "price": 59,
+                    "end_quantity": null,
+                    "overage_price": null
+                  }
+                ],
+                "minimum_price": null,
+                "percentage": null
+              },
+              "discounts": [
                 {
-                  "start_quantity": 106,
-                  "price": 212,
-                  "end_quantity": null,
-                  "overage_price": null
+                  "id": "id5",
+                  "value": 205.97,
+                  "discount_type": "discount_type3",
+                  "status": "status7",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
                 },
                 {
-                  "start_quantity": 107,
-                  "price": 211,
-                  "end_quantity": null,
-                  "overage_price": null
+                  "id": "id6",
+                  "value": 205.98,
+                  "discount_type": "discount_type4",
+                  "status": "status8",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                },
+                {
+                  "id": "id7",
+                  "value": 205.99,
+                  "discount_type": "discount_type5",
+                  "status": "status9",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
                 }
               ],
-              "minimum_price": null,
-              "percentage": null
+              "increments": [
+                {
+                  "id": "id3",
+                  "value": 61.25,
+                  "increment_type": "increment_type5",
+                  "status": "status5",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                }
+              ],
+              "subscription": null,
+              "name": "name4",
+              "quantity": null,
+              "cycles": null,
+              "deleted_at": null
             },
-            "discounts": [
-              {
-                "id": "id6",
-                "value": 130.68,
-                "discount_type": "discount_type4",
-                "status": "status8",
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "cycles": null,
-                "deleted_at": null,
-                "description": null,
-                "subscription": null,
-                "subscription_item": null
-              }
-            ],
-            "increments": [
-              {
-                "id": "id6",
-                "value": 5.08,
-                "increment_type": "increment_type2",
-                "status": "status2",
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "cycles": null,
-                "deleted_at": null,
-                "description": null,
-                "subscription": null,
-                "subscription_item": null
+            {
+              "id": "id5",
+              "description": "description5",
+              "status": "status7",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 209,
+                "scheme_type": "scheme_type3",
+                "price_brackets": [
+                  {
+                    "start_quantity": 0,
+                    "price": 62,
+                    "end_quantity": null,
+                    "overage_price": null
+                  },
+                  {
+                    "start_quantity": 1,
+                    "price": 61,
+                    "end_quantity": null,
+                    "overage_price": null
+                  }
+                ],
+                "minimum_price": null,
+                "percentage": null
               },
-              {
-                "id": "id5",
-                "value": 5.07,
-                "increment_type": "increment_type3",
-                "status": "status3",
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "cycles": null,
-                "deleted_at": null,
-                "description": null,
-                "subscription": null,
-                "subscription_item": null
-              }
-            ],
-            "subscription": null,
-            "name": "name5",
-            "quantity": null,
-            "cycles": null,
-            "deleted_at": null
-          },
+              "discounts": [
+                {
+                  "id": "id6",
+                  "value": 205.98,
+                  "discount_type": "discount_type4",
+                  "status": "status8",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                }
+              ],
+              "increments": [
+                {
+                  "id": "id4",
+                  "value": 61.26,
+                  "increment_type": "increment_type6",
+                  "status": "status4",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                },
+                {
+                  "id": "id5",
+                  "value": 61.27,
+                  "increment_type": "increment_type7",
+                  "status": "status3",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                }
+              ],
+              "subscription": null,
+              "name": "name5",
+              "quantity": null,
+              "cycles": null,
+              "deleted_at": null
+            }
+          ],
           "statement_descriptor": "statement_descriptor7",
           "metadata": {
             "key0": "metadata6",
@@ -530,96 +622,260 @@
             "first_six_digits": "first_six_digits8",
             "label": "label8"
           },
-          "items": {
-            "id": "id6",
-            "description": "description6",
-            "status": "status8",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "pricing_scheme": {
-              "price": 104,
-              "scheme_type": "scheme_type2",
-              "price_brackets": [
+          "items": [
+            {
+              "id": "id5",
+              "description": "description5",
+              "status": "status7",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 209,
+                "scheme_type": "scheme_type3",
+                "price_brackets": [
+                  {
+                    "start_quantity": 0,
+                    "price": 62,
+                    "end_quantity": null,
+                    "overage_price": null
+                  },
+                  {
+                    "start_quantity": 1,
+                    "price": 61,
+                    "end_quantity": null,
+                    "overage_price": null
+                  }
+                ],
+                "minimum_price": null,
+                "percentage": null
+              },
+              "discounts": [
                 {
-                  "start_quantity": 105,
-                  "price": 213,
-                  "end_quantity": null,
-                  "overage_price": null
+                  "id": "id6",
+                  "value": 205.98,
+                  "discount_type": "discount_type4",
+                  "status": "status8",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
                 }
               ],
-              "minimum_price": null,
-              "percentage": null
+              "increments": [
+                {
+                  "id": "id4",
+                  "value": 61.26,
+                  "increment_type": "increment_type6",
+                  "status": "status4",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                },
+                {
+                  "id": "id5",
+                  "value": 61.27,
+                  "increment_type": "increment_type7",
+                  "status": "status3",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                }
+              ],
+              "subscription": null,
+              "name": "name5",
+              "quantity": null,
+              "cycles": null,
+              "deleted_at": null
             },
-            "discounts": [
-              {
-                "id": "id7",
-                "value": 130.69,
-                "discount_type": "discount_type5",
-                "status": "status9",
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "cycles": null,
-                "deleted_at": null,
-                "description": null,
-                "subscription": null,
-                "subscription_item": null
+            {
+              "id": "id6",
+              "description": "description6",
+              "status": "status8",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 210,
+                "scheme_type": "scheme_type2",
+                "price_brackets": [
+                  {
+                    "start_quantity": 255,
+                    "price": 63,
+                    "end_quantity": null,
+                    "overage_price": null
+                  }
+                ],
+                "minimum_price": null,
+                "percentage": null
               },
-              {
-                "id": "id8",
-                "value": 130.7,
-                "discount_type": "discount_type6",
-                "status": "status0",
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "cycles": null,
-                "deleted_at": null,
-                "description": null,
-                "subscription": null,
-                "subscription_item": null
-              }
-            ],
-            "increments": [
-              {
-                "id": "id5",
-                "value": 5.07,
-                "increment_type": "increment_type3",
-                "status": "status3",
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "cycles": null,
-                "deleted_at": null,
-                "description": null,
-                "subscription": null,
-                "subscription_item": null
+              "discounts": [
+                {
+                  "id": "id7",
+                  "value": 205.99,
+                  "discount_type": "discount_type5",
+                  "status": "status9",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                },
+                {
+                  "id": "id8",
+                  "value": 206.0,
+                  "discount_type": "discount_type6",
+                  "status": "status0",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                }
+              ],
+              "increments": [
+                {
+                  "id": "id5",
+                  "value": 61.27,
+                  "increment_type": "increment_type7",
+                  "status": "status3",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                },
+                {
+                  "id": "id6",
+                  "value": 61.28,
+                  "increment_type": "increment_type8",
+                  "status": "status2",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                },
+                {
+                  "id": "id7",
+                  "value": 61.29,
+                  "increment_type": "increment_type9",
+                  "status": "status1",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                }
+              ],
+              "subscription": null,
+              "name": "name6",
+              "quantity": null,
+              "cycles": null,
+              "deleted_at": null
+            },
+            {
+              "id": "id7",
+              "description": "description7",
+              "status": "status9",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 211,
+                "scheme_type": "scheme_type1",
+                "price_brackets": [
+                  {
+                    "start_quantity": 254,
+                    "price": 64,
+                    "end_quantity": null,
+                    "overage_price": null
+                  },
+                  {
+                    "start_quantity": 255,
+                    "price": 63,
+                    "end_quantity": null,
+                    "overage_price": null
+                  },
+                  {
+                    "start_quantity": 0,
+                    "price": 62,
+                    "end_quantity": null,
+                    "overage_price": null
+                  }
+                ],
+                "minimum_price": null,
+                "percentage": null
               },
-              {
-                "id": "id4",
-                "value": 5.06,
-                "increment_type": "increment_type4",
-                "status": "status4",
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "cycles": null,
-                "deleted_at": null,
-                "description": null,
-                "subscription": null,
-                "subscription_item": null
-              },
-              {
-                "id": "id3",
-                "value": 5.05,
-                "increment_type": "increment_type5",
-                "status": "status5",
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "cycles": null,
-                "deleted_at": null,
-                "description": null,
-                "subscription": null,
-                "subscription_item": null
-              }
-            ],
-            "subscription": null,
-            "name": "name6",
-            "quantity": null,
-            "cycles": null,
-            "deleted_at": null
-          },
+              "discounts": [
+                {
+                  "id": "id8",
+                  "value": 206.0,
+                  "discount_type": "discount_type6",
+                  "status": "status0",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                },
+                {
+                  "id": "id9",
+                  "value": 206.01,
+                  "discount_type": "discount_type7",
+                  "status": "status1",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                },
+                {
+                  "id": "id0",
+                  "value": 206.02,
+                  "discount_type": "discount_type8",
+                  "status": "status2",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                }
+              ],
+              "increments": [
+                {
+                  "id": "id6",
+                  "value": 61.28,
+                  "increment_type": "increment_type8",
+                  "status": "status2",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": null,
+                  "deleted_at": null,
+                  "description": null,
+                  "subscription": null,
+                  "subscription_item": null
+                }
+              ],
+              "subscription": null,
+              "name": "name7",
+              "quantity": null,
+              "cycles": null,
+              "deleted_at": null
+            }
+          ],
           "statement_descriptor": "statement_descriptor8",
           "metadata": {
             "key0": "metadata5",

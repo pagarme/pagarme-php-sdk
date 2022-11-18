@@ -30,6 +30,8 @@ Response object for getting a charge
 | `canceledAt` | `?\DateTime` | Optional | - | getCanceledAt(): ?\DateTime | setCanceledAt(?\DateTime canceledAt): void |
 | `canceledAmount` | `int` | Required | Canceled Amount | getCanceledAmount(): int | setCanceledAmount(int canceledAmount): void |
 | `paidAmount` | `int` | Required | Paid amount | getPaidAmount(): int | setPaidAmount(int paidAmount): void |
+| `interestAndFinePaid` | `?int` | Optional | interest and fine paid | getInterestAndFinePaid(): ?int | setInterestAndFinePaid(?int interestAndFinePaid): void |
+| `recurrencyCycle` | `?string` | Optional | Defines whether the card has been used one or more times. | getRecurrencyCycle(): ?string | setRecurrencyCycle(?string recurrencyCycle): void |
 
 ## Example (as JSON)
 
@@ -57,7 +59,9 @@ Response object for getting a charge
   "paid_at": null,
   "canceled_at": null,
   "canceled_amount": 64,
-  "paid_amount": 210
+  "paid_amount": 210,
+  "interest_and_fine_paid": null,
+  "recurrency_cycle": null
 }
 ```
 

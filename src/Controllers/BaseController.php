@@ -10,14 +10,11 @@ declare(strict_types=1);
 
 namespace PagarmeApiSDKLib\Controllers;
 
-use PagarmeApiSDKLib\Http\HttpCallBack;
-use PagarmeApiSDKLib\Http\HttpResponse;
-use PagarmeApiSDKLib\ApiHelper;
-use PagarmeApiSDKLib\Http\HttpRequest;
+use Core\ApiCall;
+use Core\Client;
+use Core\Request\RequestBuilder;
+use Core\Response\ResponseHandler;
 use PagarmeApiSDKLib\Exceptions\ApiException;
-use PagarmeApiSDKLib\ConfigurationInterface;
-use PagarmeApiSDKLib\AuthManagerInterface;
-use Unirest\Request;
 
 /**
  * Base controller
@@ -25,151 +22,35 @@ use Unirest\Request;
 class BaseController
 {
     /**
-     * Configuration instance
+     * Client instance
      *
-     * @var ConfigurationInterface
+     * @var Client
      */
-    protected $config;
+    private $client;
 
-    /**
-     * List of auth managers for this controller.
-     *
-     * @var array
-     */
-    private $authManagers = [];
-
-    /**
-     * HttpCallBack instance associated with this controller
-     *
-     * @var HttpCallBack|null
-     */
-    private $httpCallBack;
-
-    /**
-     * User-Agent header value to be sent with API calls.
-     *
-     * @var string
-     */
-    protected static $userAgent = 'PagarmeCoreApi - PHP 6.5.0';
-
-    /**
-     * Constructor that sets the timeout of requests
-     */
-    protected function __construct(ConfigurationInterface $config, array $authManagers, ?HttpCallBack $httpCallBack)
+    public function __construct(Client $client)
     {
-        $this->config = $config;
-        $this->authManagers = $authManagers;
-        $this->httpCallBack = $httpCallBack;
-
-        Request::timeout($config->getTimeout());
-        Request::enableRetries($config->shouldEnableRetries());
-        Request::maxNumberOfRetries($config->getNumberOfRetries());
-        Request::retryInterval($config->getRetryInterval());
-        Request::backoffFactor($config->getBackOffFactor());
-        Request::maximumRetryWaitTime($config->getMaximumRetryWaitTime());
-        Request::retryOnTimeout($config->shouldRetryOnTimeout());
-        Request::httpMethodsToRetry($config->getHttpMethodsToRetry());
-        Request::httpStatusCodesToRetry($config->getHttpStatusCodesToRetry());
+        $this->client = $client;
     }
 
     /**
-     * Get auth manager for the provided namespace key.
-     *
-     * @param  string   $key         Namespace key
-     * @return AuthManagerInterface  The AuthManager set for this key.
+     * @throws ApiException Thrown if API call fails
      */
-    protected function getAuthManager(string $key): AuthManagerInterface
+    protected function execute(RequestBuilder $requestBuilder, ?ResponseHandler $responseHandler = null)
     {
-        return $this->authManagers[$key];
+        return (new ApiCall($this->client))
+            ->requestBuilder($requestBuilder)
+            ->responseHandler($responseHandler ?? $this->responseHandler())
+            ->execute();
     }
 
-    /**
-     * Get HttpCallBack for this controller
-     *
-     * @return HttpCallBack|null The HttpCallBack object set for this controller
-     */
-    public function getHttpCallBack(): ?HttpCallBack
+    protected function requestBuilder(string $requestMethod, string $path): RequestBuilder
     {
-        return $this->httpCallBack;
+        return new RequestBuilder($requestMethod, $path);
     }
 
-    /**
-     * Validate response or throw exception based on the status code
-     */
-    protected function validateResponse(HttpResponse $response, HttpRequest $request): void
+    protected function responseHandler(): ResponseHandler
     {
-        if ($response->getStatusCode() == 400) {
-            throw $this->createExceptionFromJson(
-                '\\PagarmeApiSDKLib\\Exceptions\\ErrorException',
-                'Invalid request',
-                $request,
-                $response
-            );
-        }
-        if ($response->getStatusCode() == 401) {
-            throw $this->createExceptionFromJson(
-                '\\PagarmeApiSDKLib\\Exceptions\\ErrorException',
-                'Invalid API key',
-                $request,
-                $response
-            );
-        }
-        if ($response->getStatusCode() == 404) {
-            throw $this->createExceptionFromJson(
-                '\\PagarmeApiSDKLib\\Exceptions\\ErrorException',
-                'An informed resource was not found',
-                $request,
-                $response
-            );
-        }
-        if ($response->getStatusCode() == 412) {
-            throw $this->createExceptionFromJson(
-                '\\PagarmeApiSDKLib\\Exceptions\\ErrorException',
-                'Business validation error',
-                $request,
-                $response
-            );
-        }
-        if ($response->getStatusCode() == 422) {
-            throw $this->createExceptionFromJson(
-                '\\PagarmeApiSDKLib\\Exceptions\\ErrorException',
-                'Contract validation error',
-                $request,
-                $response
-            );
-        }
-        if ($response->getStatusCode() == 500) {
-            throw $this->createExceptionFromJson(
-                '\\PagarmeApiSDKLib\\Exceptions\\ErrorException',
-                'Internal server error',
-                $request,
-                $response
-            );
-        }
-        if (($response->getStatusCode() < 200) || ($response->getStatusCode() > 208)) { //[200,208] = HTTP OK
-            throw new ApiException('HTTP Response Not OK', $request, $response);
-        }
-    }
-
-    /**
-     * Create and get ApiException-derived exception instance
-     */
-    protected function createExceptionFromJson(
-        string $type,
-        string $reason,
-        HttpRequest $request,
-        HttpResponse $response
-    ) {
-        $body = json_decode($response->getRawBody());
-
-        if ($body === null) {
-            return new ApiException($reason, $request, $response);
-        } else {
-            $body->reason = $reason;
-            $body->request = $request;
-            $body->response = $response;
-        }
-
-        return ApiHelper::getJsonMapper()->mapClass($body, $type);
+        return $this->client->getGlobalResponseHandler();
     }
 }

@@ -46,7 +46,8 @@ Request for creating a Setup for a subscription. The setup is an order that will
       "recurrence": null,
       "capture": null,
       "extended_limit_enabled": null,
-      "extended_limit_code": null
+      "extended_limit_code": null,
+      "recurrency_cycle": null
     },
     "pix": null
   }

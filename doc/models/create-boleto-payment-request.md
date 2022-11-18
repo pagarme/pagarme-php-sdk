@@ -20,6 +20,9 @@ Contains the settings for creating a boleto payment
 | `nossoNumero` | `?string` | Optional | Customer identification number with the bank | getNossoNumero(): ?string | setNossoNumero(?string nossoNumero): void |
 | `documentNumber` | `string` | Required | Boleto identification | getDocumentNumber(): string | setDocumentNumber(string documentNumber): void |
 | `statementDescriptor` | `string` | Required | Soft Descriptor | getStatementDescriptor(): string | setStatementDescriptor(string statementDescriptor): void |
+| `interest` | [`?CreateInterestRequest`](../../doc/models/create-interest-request.md) | Optional | - | getInterest(): ?CreateInterestRequest | setInterest(?CreateInterestRequest interest): void |
+| `fine` | [`?CreateFineRequest`](../../doc/models/create-fine-request.md) | Optional | - | getFine(): ?CreateFineRequest | setFine(?CreateFineRequest fine): void |
+| `maxDaysToPayPastDue` | `?int` | Optional | - | getMaxDaysToPayPastDue(): ?int | setMaxDaysToPayPastDue(?int maxDaysToPayPastDue): void |
 
 ## Example (as JSON)
 
@@ -48,7 +51,10 @@ Contains the settings for creating a boleto payment
   "billing_address_id": "billing_address_id6",
   "nosso_numero": null,
   "document_number": "document_number6",
-  "statement_descriptor": "statement_descriptor0"
+  "statement_descriptor": "statement_descriptor0",
+  "interest": null,
+  "fine": null,
+  "max_days_to_pay_past_due": null
 }
 ```
 

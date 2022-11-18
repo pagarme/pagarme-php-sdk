@@ -10,13 +10,13 @@ declare(strict_types=1);
 
 namespace PagarmeApiSDKLib;
 
-use PagarmeApiSDKLib\Http\HttpRequest;
-use Unirest\Request;
+use Core\Authentication\CoreAuth;
+use Core\Request\Parameters\HeaderParam;
 
 /**
  * Utility class for authorization and token management.
  */
-class BasicAuthManager implements AuthManagerInterface, BasicAuthCredentials
+class BasicAuthManager extends CoreAuth implements BasicAuthCredentials
 {
     private $basicAuthUserName;
 
@@ -30,6 +30,10 @@ class BasicAuthManager implements AuthManagerInterface, BasicAuthCredentials
      */
     public function __construct(string $basicAuthUserName, string $basicAuthPassword)
     {
+        parent::__construct(
+            HeaderParam::init('Authorization', 'Basic ' . base64_encode("$basicAuthUserName:$basicAuthPassword"))
+                ->required()
+        );
         $this->basicAuthUserName = $basicAuthUserName;
         $this->basicAuthPassword = $basicAuthPassword;
     }
@@ -60,13 +64,5 @@ class BasicAuthManager implements AuthManagerInterface, BasicAuthCredentials
     {
         return $basicAuthUserName == $this->basicAuthUserName &&
             $basicAuthPassword == $this->basicAuthPassword;
-    }
-
-    /**
-     * Adds authentication to the given HttpRequest.
-     */
-    public function apply(HttpRequest $httpRequest)
-    {
-        Request::auth($this->basicAuthUserName, $this->basicAuthPassword);
     }
 }

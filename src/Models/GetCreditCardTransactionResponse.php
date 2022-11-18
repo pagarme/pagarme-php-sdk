@@ -438,6 +438,7 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
         }
         $json['threed_authentication_url'] = $this->threedAuthenticationUrl;
         $json = array_merge($json, parent::jsonSerialize(true));
+        $json['transaction_type'] = $this->getTransactionType() ?? 'credit_card';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

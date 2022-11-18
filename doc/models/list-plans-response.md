@@ -99,66 +99,142 @@ Response object for listing plans
             "currency": "currency8",
             "created_at": "2016-03-13T12:52:32.123Z",
             "updated_at": "2016-03-13T12:52:32.123Z",
-            "items": {
-              "id": "id6",
-              "name": "name6",
-              "status": "status8",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "pricing_scheme": {
-                "price": 172,
-                "scheme_type": "scheme_type8",
-                "price_brackets": [
-                  {
-                    "start_quantity": 125,
-                    "price": 63,
-                    "end_quantity": null,
-                    "overage_price": null
-                  }
-                ],
-                "minimum_price": null,
-                "percentage": null
-              },
-              "description": "description6",
-              "plan": {
-                "id": "id2",
-                "name": "name2",
-                "description": "description2",
-                "url": "url6",
-                "statement_descriptor": "statement_descriptor2",
-                "interval": "interval0",
-                "interval_count": 130,
-                "billing_type": "billing_type6",
-                "payment_methods": [
-                  "payment_methods3"
-                ],
-                "installments": [
-                  167
-                ],
-                "status": "status4",
-                "currency": "currency2",
+            "items": [
+              {
+                "id": "id5",
+                "name": "name5",
+                "status": "status7",
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
-                "items": null,
-                "billing_days": [
-                  131,
-                  132,
-                  133
-                ],
-                "shippable": false,
-                "metadata": {
-                  "key0": "metadata7",
-                  "key1": "metadata6",
-                  "key2": "metadata5"
+                "pricing_scheme": {
+                  "price": 21,
+                  "scheme_type": "scheme_type7",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 230,
+                      "price": 168,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 231,
+                      "price": 169,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 232,
+                      "price": 170,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
                 },
-                "trial_period_days": null,
-                "minimum_price": null,
+                "description": "description5",
+                "plan": {
+                  "id": "id1",
+                  "name": "name1",
+                  "description": "description1",
+                  "url": "url5",
+                  "statement_descriptor": "statement_descriptor1",
+                  "interval": "interval9",
+                  "interval_count": 235,
+                  "billing_type": "billing_type5",
+                  "payment_methods": [
+                    "payment_methods6",
+                    "payment_methods7",
+                    "payment_methods8"
+                  ],
+                  "installments": [
+                    16,
+                    17,
+                    18
+                  ],
+                  "status": "status3",
+                  "currency": "currency1",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "items": [],
+                  "billing_days": [
+                    236,
+                    237
+                  ],
+                  "shippable": true,
+                  "metadata": {
+                    "key0": "metadata8",
+                    "key1": "metadata7"
+                  },
+                  "trial_period_days": null,
+                  "minimum_price": null,
+                  "deleted_at": null
+                },
+                "quantity": null,
+                "cycles": null,
                 "deleted_at": null
               },
-              "quantity": null,
-              "cycles": null,
-              "deleted_at": null
-            },
+              {
+                "id": "id6",
+                "name": "name6",
+                "status": "status8",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 22,
+                  "scheme_type": "scheme_type8",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 231,
+                      "price": 169,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
+                },
+                "description": "description6",
+                "plan": {
+                  "id": "id2",
+                  "name": "name2",
+                  "description": "description2",
+                  "url": "url6",
+                  "statement_descriptor": "statement_descriptor2",
+                  "interval": "interval0",
+                  "interval_count": 236,
+                  "billing_type": "billing_type6",
+                  "payment_methods": [
+                    "payment_methods7"
+                  ],
+                  "installments": [
+                    17
+                  ],
+                  "status": "status4",
+                  "currency": "currency2",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "items": [],
+                  "billing_days": [
+                    237,
+                    238,
+                    239
+                  ],
+                  "shippable": false,
+                  "metadata": {
+                    "key0": "metadata7",
+                    "key1": "metadata6",
+                    "key2": "metadata5"
+                  },
+                  "trial_period_days": null,
+                  "minimum_price": null,
+                  "deleted_at": null
+                },
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              }
+            ],
             "billing_days": [
               243,
               244
@@ -216,70 +292,206 @@ Response object for listing plans
             "currency": "currency9",
             "created_at": "2016-03-13T12:52:32.123Z",
             "updated_at": "2016-03-13T12:52:32.123Z",
-            "items": {
-              "id": "id7",
-              "name": "name7",
-              "status": "status9",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "pricing_scheme": {
-                "price": 173,
-                "scheme_type": "scheme_type9",
-                "price_brackets": [
-                  {
-                    "start_quantity": 126,
-                    "price": 64,
-                    "end_quantity": null,
-                    "overage_price": null
-                  },
-                  {
-                    "start_quantity": 127,
-                    "price": 65,
-                    "end_quantity": null,
-                    "overage_price": null
-                  }
-                ],
-                "minimum_price": null,
-                "percentage": null
-              },
-              "description": "description7",
-              "plan": {
-                "id": "id3",
-                "name": "name3",
-                "description": "description3",
-                "url": "url7",
-                "statement_descriptor": "statement_descriptor3",
-                "interval": "interval1",
-                "interval_count": 131,
-                "billing_type": "billing_type7",
-                "payment_methods": [
-                  "payment_methods2",
-                  "payment_methods1"
-                ],
-                "installments": [
-                  168,
-                  169
-                ],
-                "status": "status5",
-                "currency": "currency3",
+            "items": [
+              {
+                "id": "id6",
+                "name": "name6",
+                "status": "status8",
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
-                "items": null,
-                "billing_days": [
-                  132
-                ],
-                "shippable": true,
-                "metadata": {
-                  "key0": "metadata6"
+                "pricing_scheme": {
+                  "price": 22,
+                  "scheme_type": "scheme_type8",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 231,
+                      "price": 169,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
                 },
-                "trial_period_days": null,
-                "minimum_price": null,
+                "description": "description6",
+                "plan": {
+                  "id": "id2",
+                  "name": "name2",
+                  "description": "description2",
+                  "url": "url6",
+                  "statement_descriptor": "statement_descriptor2",
+                  "interval": "interval0",
+                  "interval_count": 236,
+                  "billing_type": "billing_type6",
+                  "payment_methods": [
+                    "payment_methods7"
+                  ],
+                  "installments": [
+                    17
+                  ],
+                  "status": "status4",
+                  "currency": "currency2",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "items": [],
+                  "billing_days": [
+                    237,
+                    238,
+                    239
+                  ],
+                  "shippable": false,
+                  "metadata": {
+                    "key0": "metadata7",
+                    "key1": "metadata6",
+                    "key2": "metadata5"
+                  },
+                  "trial_period_days": null,
+                  "minimum_price": null,
+                  "deleted_at": null
+                },
+                "quantity": null,
+                "cycles": null,
                 "deleted_at": null
               },
-              "quantity": null,
-              "cycles": null,
-              "deleted_at": null
-            },
+              {
+                "id": "id7",
+                "name": "name7",
+                "status": "status9",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 23,
+                  "scheme_type": "scheme_type9",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 232,
+                      "price": 170,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 233,
+                      "price": 171,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
+                },
+                "description": "description7",
+                "plan": {
+                  "id": "id3",
+                  "name": "name3",
+                  "description": "description3",
+                  "url": "url7",
+                  "statement_descriptor": "statement_descriptor3",
+                  "interval": "interval1",
+                  "interval_count": 237,
+                  "billing_type": "billing_type7",
+                  "payment_methods": [
+                    "payment_methods8",
+                    "payment_methods9"
+                  ],
+                  "installments": [
+                    18,
+                    19
+                  ],
+                  "status": "status5",
+                  "currency": "currency3",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "items": [],
+                  "billing_days": [
+                    238
+                  ],
+                  "shippable": true,
+                  "metadata": {
+                    "key0": "metadata6"
+                  },
+                  "trial_period_days": null,
+                  "minimum_price": null,
+                  "deleted_at": null
+                },
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              },
+              {
+                "id": "id8",
+                "name": "name8",
+                "status": "status0",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 24,
+                  "scheme_type": "scheme_type0",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 233,
+                      "price": 171,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 234,
+                      "price": 172,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 235,
+                      "price": 173,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
+                },
+                "description": "description8",
+                "plan": {
+                  "id": "id4",
+                  "name": "name4",
+                  "description": "description4",
+                  "url": "url8",
+                  "statement_descriptor": "statement_descriptor4",
+                  "interval": "interval2",
+                  "interval_count": 238,
+                  "billing_type": "billing_type8",
+                  "payment_methods": [
+                    "payment_methods9",
+                    "payment_methods0",
+                    "payment_methods1"
+                  ],
+                  "installments": [
+                    19,
+                    20,
+                    21
+                  ],
+                  "status": "status6",
+                  "currency": "currency4",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "items": [],
+                  "billing_days": [
+                    239,
+                    240
+                  ],
+                  "shippable": false,
+                  "metadata": {
+                    "key0": "metadata5",
+                    "key1": "metadata4"
+                  },
+                  "trial_period_days": null,
+                  "minimum_price": null,
+                  "deleted_at": null
+                },
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              }
+            ],
             "billing_days": [
               244,
               245,
@@ -373,70 +585,206 @@ Response object for listing plans
             "currency": "currency9",
             "created_at": "2016-03-13T12:52:32.123Z",
             "updated_at": "2016-03-13T12:52:32.123Z",
-            "items": {
-              "id": "id7",
-              "name": "name7",
-              "status": "status9",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "pricing_scheme": {
-                "price": 173,
-                "scheme_type": "scheme_type9",
-                "price_brackets": [
-                  {
-                    "start_quantity": 126,
-                    "price": 64,
-                    "end_quantity": null,
-                    "overage_price": null
-                  },
-                  {
-                    "start_quantity": 127,
-                    "price": 65,
-                    "end_quantity": null,
-                    "overage_price": null
-                  }
-                ],
-                "minimum_price": null,
-                "percentage": null
-              },
-              "description": "description7",
-              "plan": {
-                "id": "id3",
-                "name": "name3",
-                "description": "description3",
-                "url": "url7",
-                "statement_descriptor": "statement_descriptor3",
-                "interval": "interval1",
-                "interval_count": 131,
-                "billing_type": "billing_type7",
-                "payment_methods": [
-                  "payment_methods2",
-                  "payment_methods1"
-                ],
-                "installments": [
-                  168,
-                  169
-                ],
-                "status": "status5",
-                "currency": "currency3",
+            "items": [
+              {
+                "id": "id6",
+                "name": "name6",
+                "status": "status8",
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
-                "items": null,
-                "billing_days": [
-                  132
-                ],
-                "shippable": true,
-                "metadata": {
-                  "key0": "metadata6"
+                "pricing_scheme": {
+                  "price": 22,
+                  "scheme_type": "scheme_type8",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 231,
+                      "price": 169,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
                 },
-                "trial_period_days": null,
-                "minimum_price": null,
+                "description": "description6",
+                "plan": {
+                  "id": "id2",
+                  "name": "name2",
+                  "description": "description2",
+                  "url": "url6",
+                  "statement_descriptor": "statement_descriptor2",
+                  "interval": "interval0",
+                  "interval_count": 236,
+                  "billing_type": "billing_type6",
+                  "payment_methods": [
+                    "payment_methods7"
+                  ],
+                  "installments": [
+                    17
+                  ],
+                  "status": "status4",
+                  "currency": "currency2",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "items": [],
+                  "billing_days": [
+                    237,
+                    238,
+                    239
+                  ],
+                  "shippable": false,
+                  "metadata": {
+                    "key0": "metadata7",
+                    "key1": "metadata6",
+                    "key2": "metadata5"
+                  },
+                  "trial_period_days": null,
+                  "minimum_price": null,
+                  "deleted_at": null
+                },
+                "quantity": null,
+                "cycles": null,
                 "deleted_at": null
               },
-              "quantity": null,
-              "cycles": null,
-              "deleted_at": null
-            },
+              {
+                "id": "id7",
+                "name": "name7",
+                "status": "status9",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 23,
+                  "scheme_type": "scheme_type9",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 232,
+                      "price": 170,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 233,
+                      "price": 171,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
+                },
+                "description": "description7",
+                "plan": {
+                  "id": "id3",
+                  "name": "name3",
+                  "description": "description3",
+                  "url": "url7",
+                  "statement_descriptor": "statement_descriptor3",
+                  "interval": "interval1",
+                  "interval_count": 237,
+                  "billing_type": "billing_type7",
+                  "payment_methods": [
+                    "payment_methods8",
+                    "payment_methods9"
+                  ],
+                  "installments": [
+                    18,
+                    19
+                  ],
+                  "status": "status5",
+                  "currency": "currency3",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "items": [],
+                  "billing_days": [
+                    238
+                  ],
+                  "shippable": true,
+                  "metadata": {
+                    "key0": "metadata6"
+                  },
+                  "trial_period_days": null,
+                  "minimum_price": null,
+                  "deleted_at": null
+                },
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              },
+              {
+                "id": "id8",
+                "name": "name8",
+                "status": "status0",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 24,
+                  "scheme_type": "scheme_type0",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 233,
+                      "price": 171,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 234,
+                      "price": 172,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 235,
+                      "price": 173,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
+                },
+                "description": "description8",
+                "plan": {
+                  "id": "id4",
+                  "name": "name4",
+                  "description": "description4",
+                  "url": "url8",
+                  "statement_descriptor": "statement_descriptor4",
+                  "interval": "interval2",
+                  "interval_count": 238,
+                  "billing_type": "billing_type8",
+                  "payment_methods": [
+                    "payment_methods9",
+                    "payment_methods0",
+                    "payment_methods1"
+                  ],
+                  "installments": [
+                    19,
+                    20,
+                    21
+                  ],
+                  "status": "status6",
+                  "currency": "currency4",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "items": [],
+                  "billing_days": [
+                    239,
+                    240
+                  ],
+                  "shippable": false,
+                  "metadata": {
+                    "key0": "metadata5",
+                    "key1": "metadata4"
+                  },
+                  "trial_period_days": null,
+                  "minimum_price": null,
+                  "deleted_at": null
+                },
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              }
+            ],
             "billing_days": [
               244,
               245,
@@ -504,80 +852,72 @@ Response object for listing plans
             "currency": "currency0",
             "created_at": "2016-03-13T12:52:32.123Z",
             "updated_at": "2016-03-13T12:52:32.123Z",
-            "items": {
-              "id": "id8",
-              "name": "name8",
-              "status": "status0",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "pricing_scheme": {
-                "price": 174,
-                "scheme_type": "scheme_type0",
-                "price_brackets": [
-                  {
-                    "start_quantity": 127,
-                    "price": 65,
-                    "end_quantity": null,
-                    "overage_price": null
-                  },
-                  {
-                    "start_quantity": 128,
-                    "price": 66,
-                    "end_quantity": null,
-                    "overage_price": null
-                  },
-                  {
-                    "start_quantity": 129,
-                    "price": 67,
-                    "end_quantity": null,
-                    "overage_price": null
-                  }
-                ],
-                "minimum_price": null,
-                "percentage": null
-              },
-              "description": "description8",
-              "plan": {
-                "id": "id4",
-                "name": "name4",
-                "description": "description4",
-                "url": "url8",
-                "statement_descriptor": "statement_descriptor4",
-                "interval": "interval2",
-                "interval_count": 132,
-                "billing_type": "billing_type8",
-                "payment_methods": [
-                  "payment_methods1",
-                  "payment_methods0",
-                  "payment_methods9"
-                ],
-                "installments": [
-                  169,
-                  170,
-                  171
-                ],
-                "status": "status6",
-                "currency": "currency4",
+            "items": [
+              {
+                "id": "id7",
+                "name": "name7",
+                "status": "status9",
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
-                "items": null,
-                "billing_days": [
-                  133,
-                  134
-                ],
-                "shippable": false,
-                "metadata": {
-                  "key0": "metadata5",
-                  "key1": "metadata4"
+                "pricing_scheme": {
+                  "price": 23,
+                  "scheme_type": "scheme_type9",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 232,
+                      "price": 170,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 233,
+                      "price": 171,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
                 },
-                "trial_period_days": null,
-                "minimum_price": null,
+                "description": "description7",
+                "plan": {
+                  "id": "id3",
+                  "name": "name3",
+                  "description": "description3",
+                  "url": "url7",
+                  "statement_descriptor": "statement_descriptor3",
+                  "interval": "interval1",
+                  "interval_count": 237,
+                  "billing_type": "billing_type7",
+                  "payment_methods": [
+                    "payment_methods8",
+                    "payment_methods9"
+                  ],
+                  "installments": [
+                    18,
+                    19
+                  ],
+                  "status": "status5",
+                  "currency": "currency3",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "items": [],
+                  "billing_days": [
+                    238
+                  ],
+                  "shippable": true,
+                  "metadata": {
+                    "key0": "metadata6"
+                  },
+                  "trial_period_days": null,
+                  "minimum_price": null,
+                  "deleted_at": null
+                },
+                "quantity": null,
+                "cycles": null,
                 "deleted_at": null
-              },
-              "quantity": null,
-              "cycles": null,
-              "deleted_at": null
-            },
+              }
+            ],
             "billing_days": [
               245
             ],
@@ -649,66 +989,142 @@ Response object for listing plans
             "currency": "currency1",
             "created_at": "2016-03-13T12:52:32.123Z",
             "updated_at": "2016-03-13T12:52:32.123Z",
-            "items": {
-              "id": "id9",
-              "name": "name9",
-              "status": "status1",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "pricing_scheme": {
-                "price": 175,
-                "scheme_type": "scheme_type1",
-                "price_brackets": [
-                  {
-                    "start_quantity": 128,
-                    "price": 66,
-                    "end_quantity": null,
-                    "overage_price": null
-                  }
-                ],
-                "minimum_price": null,
-                "percentage": null
-              },
-              "description": "description9",
-              "plan": {
-                "id": "id5",
-                "name": "name5",
-                "description": "description5",
-                "url": "url9",
-                "statement_descriptor": "statement_descriptor5",
-                "interval": "interval3",
-                "interval_count": 133,
-                "billing_type": "billing_type9",
-                "payment_methods": [
-                  "payment_methods0"
-                ],
-                "installments": [
-                  170
-                ],
-                "status": "status7",
-                "currency": "currency5",
+            "items": [
+              {
+                "id": "id8",
+                "name": "name8",
+                "status": "status0",
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
-                "items": null,
-                "billing_days": [
-                  134,
-                  135,
-                  136
-                ],
-                "shippable": true,
-                "metadata": {
-                  "key0": "metadata4",
-                  "key1": "metadata3",
-                  "key2": "metadata2"
+                "pricing_scheme": {
+                  "price": 24,
+                  "scheme_type": "scheme_type0",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 233,
+                      "price": 171,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 234,
+                      "price": 172,
+                      "end_quantity": null,
+                      "overage_price": null
+                    },
+                    {
+                      "start_quantity": 235,
+                      "price": 173,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
                 },
-                "trial_period_days": null,
-                "minimum_price": null,
+                "description": "description8",
+                "plan": {
+                  "id": "id4",
+                  "name": "name4",
+                  "description": "description4",
+                  "url": "url8",
+                  "statement_descriptor": "statement_descriptor4",
+                  "interval": "interval2",
+                  "interval_count": 238,
+                  "billing_type": "billing_type8",
+                  "payment_methods": [
+                    "payment_methods9",
+                    "payment_methods0",
+                    "payment_methods1"
+                  ],
+                  "installments": [
+                    19,
+                    20,
+                    21
+                  ],
+                  "status": "status6",
+                  "currency": "currency4",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "items": [],
+                  "billing_days": [
+                    239,
+                    240
+                  ],
+                  "shippable": false,
+                  "metadata": {
+                    "key0": "metadata5",
+                    "key1": "metadata4"
+                  },
+                  "trial_period_days": null,
+                  "minimum_price": null,
+                  "deleted_at": null
+                },
+                "quantity": null,
+                "cycles": null,
                 "deleted_at": null
               },
-              "quantity": null,
-              "cycles": null,
-              "deleted_at": null
-            },
+              {
+                "id": "id9",
+                "name": "name9",
+                "status": "status1",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 25,
+                  "scheme_type": "scheme_type1",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 234,
+                      "price": 172,
+                      "end_quantity": null,
+                      "overage_price": null
+                    }
+                  ],
+                  "minimum_price": null,
+                  "percentage": null
+                },
+                "description": "description9",
+                "plan": {
+                  "id": "id5",
+                  "name": "name5",
+                  "description": "description5",
+                  "url": "url9",
+                  "statement_descriptor": "statement_descriptor5",
+                  "interval": "interval3",
+                  "interval_count": 239,
+                  "billing_type": "billing_type9",
+                  "payment_methods": [
+                    "payment_methods0"
+                  ],
+                  "installments": [
+                    20
+                  ],
+                  "status": "status7",
+                  "currency": "currency5",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "items": [],
+                  "billing_days": [
+                    240,
+                    241,
+                    242
+                  ],
+                  "shippable": true,
+                  "metadata": {
+                    "key0": "metadata4",
+                    "key1": "metadata3",
+                    "key2": "metadata2"
+                  },
+                  "trial_period_days": null,
+                  "minimum_price": null,
+                  "deleted_at": null
+                },
+                "quantity": null,
+                "cycles": null,
+                "deleted_at": null
+              }
+            ],
             "billing_days": [
               246,
               247

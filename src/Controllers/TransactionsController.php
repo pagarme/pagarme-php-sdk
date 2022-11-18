@@ -10,78 +10,28 @@ declare(strict_types=1);
 
 namespace PagarmeApiSDKLib\Controllers;
 
+use Core\Request\Parameters\TemplateParam;
+use CoreInterfaces\Core\Request\RequestMethod;
 use PagarmeApiSDKLib\Exceptions\ApiException;
-use PagarmeApiSDKLib\ApiHelper;
-use PagarmeApiSDKLib\ConfigurationInterface;
-use PagarmeApiSDKLib\Models;
-use PagarmeApiSDKLib\Http\HttpRequest;
-use PagarmeApiSDKLib\Http\HttpResponse;
-use PagarmeApiSDKLib\Http\HttpMethod;
-use PagarmeApiSDKLib\Http\HttpContext;
-use PagarmeApiSDKLib\Http\HttpCallBack;
-use Unirest\Request;
+use PagarmeApiSDKLib\Models\GetTransactionResponse;
 
 class TransactionsController extends BaseController
 {
-    public function __construct(ConfigurationInterface $config, array $authManagers, ?HttpCallBack $httpCallBack)
-    {
-        parent::__construct($config, $authManagers, $httpCallBack);
-    }
-
     /**
      * @param string $transactionId
      *
-     * @return Models\GetTransactionResponse Response from the API call
+     * @return GetTransactionResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getTransaction(string $transactionId): Models\GetTransactionResponse
+    public function getTransaction(string $transactionId): GetTransactionResponse
     {
-        //prepare query string for API call
-        $_queryBuilder = '/transactions/{transaction_id}';
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/transactions/{transaction_id}')
+            ->auth('global')
+            ->parameters(TemplateParam::init('transaction_id', $transactionId));
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'transaction_id' => $transactionId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetTransactionResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetTransactionResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 }

@@ -41,7 +41,9 @@ Response object for listing charges
       "paid_at": null,
       "canceled_at": null,
       "canceled_amount": 231,
-      "paid_amount": 213
+      "paid_amount": 213,
+      "interest_and_fine_paid": null,
+      "recurrency_cycle": null
     },
     {
       "id": "id6",
@@ -66,7 +68,9 @@ Response object for listing charges
       "paid_at": null,
       "canceled_at": null,
       "canceled_amount": 232,
-      "paid_amount": 214
+      "paid_amount": 214,
+      "interest_and_fine_paid": null,
+      "recurrency_cycle": null
     }
   ],
   "paging": {

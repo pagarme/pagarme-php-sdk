@@ -10,28 +10,13 @@ declare(strict_types=1);
 
 namespace PagarmeApiSDKLib\Utils;
 
+use Core\Utils\DateHelper;
 use DateTime;
-use DateTimeZone;
 use Exception;
 use stdClass;
 
 class DateTimeHelper
 {
-    /**
-     * Match the pattern for a datetime string in simeple date format
-     */
-    public const SIMPLE_DATE = 'Y-m-d';
-
-    /**
-     * Match the pattern for a datetime string in Rfc1123 format
-     */
-    public const RFC1123 = 'D, d M Y H:i:s T';
-
-    /**
-     * Match the pattern for a datetime string in RFC3339 format
-     */
-    public const RFC3339 = 'Y-m-d\TH:i:sP';
-
     /**
      * Convert a DateTime object to a string in simple date format
      *
@@ -42,12 +27,7 @@ class DateTimeHelper
      */
     public static function toSimpleDate(?DateTime $date): ?string
     {
-        if (is_null($date)) {
-            return null;
-        } elseif ($date instanceof DateTime) {
-            return $date->format(static::SIMPLE_DATE);
-        }
-        throw new Exception('Not a valid DateTime object.');
+        return DateHelper::toSimpleDate($date);
     }
 
     /**
@@ -59,10 +39,7 @@ class DateTimeHelper
      */
     public static function toSimpleDateArray(?array $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        return array_map([self::class, 'toSimpleDate'], $dates);
+        return DateHelper::toSimpleDateArray($dates);
     }
 
     /**
@@ -74,10 +51,7 @@ class DateTimeHelper
      */
     public static function toSimpleDate2DArray(?array $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        return array_map([self::class, 'toSimpleDateArray'], $dates);
+        return DateHelper::toSimpleDate2DArray($dates);
     }
 
     /**
@@ -90,14 +64,7 @@ class DateTimeHelper
      */
     public static function fromSimpleDate(?string $date): ?DateTime
     {
-        if (is_null($date)) {
-            return null;
-        }
-        $x = DateTime::createFromFormat(static::SIMPLE_DATE, $date);
-        if ($x instanceof DateTime) {
-            return $x;
-        }
-        throw new Exception('Incorrect format.');
+        return DateHelper::fromSimpleDate($date);
     }
 
     /**
@@ -109,10 +76,7 @@ class DateTimeHelper
      */
     public static function fromSimpleDateArray(?array $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        return array_map([self::class, 'fromSimpleDate'], $dates);
+        return DateHelper::fromSimpleDateArray($dates);
     }
 
     /**
@@ -124,10 +88,7 @@ class DateTimeHelper
      */
     public static function fromSimpleDateArrayOfMap(?array $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        return array_map([self::class, 'fromSimpleDateMap'], $dates);
+        return DateHelper::fromSimpleDateArrayOfMap($dates);
     }
 
     /**
@@ -139,11 +100,7 @@ class DateTimeHelper
      */
     public static function fromSimpleDateMap(?stdClass $datetimes): ?array
     {
-        if (is_null($datetimes)) {
-            return null;
-        }
-        $array = json_decode(json_encode($datetimes), true);
-        return array_map([self::class, 'fromSimpleDate'], $array);
+        return DateHelper::fromSimpleDateMap($datetimes);
     }
 
     /**
@@ -155,11 +112,7 @@ class DateTimeHelper
      */
     public static function fromSimpleDateMapOfArray(?stdClass $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        $array = json_decode(json_encode($dates), true);
-        return array_map([self::class, 'fromSimpleDateArray'], $array);
+        return DateHelper::fromSimpleDateMapOfArray($dates);
     }
 
     /**
@@ -172,12 +125,7 @@ class DateTimeHelper
      */
     public static function toRfc1123DateTime(?DateTime $datetime): ?string
     {
-        if (is_null($datetime)) {
-            return null;
-        } elseif ($datetime instanceof DateTime) {
-            return $datetime->setTimeZone(new DateTimeZone('GMT'))->format(static::RFC1123);
-        }
-        throw new Exception('Not a valid DateTime object.');
+        return DateHelper::toRfc1123DateTime($datetime);
     }
 
     /**
@@ -189,10 +137,7 @@ class DateTimeHelper
      */
     public static function toRfc1123DateTimeArray(?array $datetimes): ?array
     {
-        if (is_null($datetimes)) {
-            return null;
-        }
-        return array_map([self::class, 'toRfc1123DateTime'], $datetimes);
+        return DateHelper::toRfc1123DateTimeArray($datetimes);
     }
 
     /**
@@ -204,10 +149,7 @@ class DateTimeHelper
      */
     public static function toRfc1123DateTime2DArray(?array $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        return array_map([self::class, 'toRfc1123DateTimeArray'], $dates);
+        return DateHelper::toRfc1123DateTime2DArray($dates);
     }
 
     /**
@@ -220,14 +162,7 @@ class DateTimeHelper
      */
     public static function fromRfc1123DateTime(?string $datetime): ?DateTime
     {
-        if (is_null($datetime)) {
-            return null;
-        }
-        $x = DateTime::createFromFormat(static::RFC1123, $datetime);
-        if ($x instanceof DateTime) {
-            return $x->setTimeZone(new DateTimeZone('GMT'));
-        }
-        throw new Exception('Incorrect format.');
+        return DateHelper::fromRfc1123DateTime($datetime);
     }
 
     /**
@@ -239,10 +174,7 @@ class DateTimeHelper
      */
     public static function fromRfc1123DateTimeArray(?array $datetimes): ?array
     {
-        if (is_null($datetimes)) {
-            return null;
-        }
-        return array_map([self::class, 'fromRfc1123DateTime'], $datetimes);
+        return DateHelper::fromRfc1123DateTimeArray($datetimes);
     }
 
     /**
@@ -254,10 +186,7 @@ class DateTimeHelper
      */
     public static function fromRfc1123DateTimeArrayOfMap(?array $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        return array_map([self::class, 'fromRfc1123DateTimeMap'], $dates);
+        return DateHelper::fromRfc1123DateTimeArrayOfMap($dates);
     }
 
     /**
@@ -269,11 +198,7 @@ class DateTimeHelper
      */
     public static function fromRfc1123DateTimeMap(?stdClass $datetimes): ?array
     {
-        if (is_null($datetimes)) {
-            return null;
-        }
-        $array = json_decode(json_encode($datetimes), true);
-        return array_map([self::class, 'fromRfc1123DateTime'], $array);
+        return DateHelper::fromRfc1123DateTimeMap($datetimes);
     }
 
     /**
@@ -285,11 +210,7 @@ class DateTimeHelper
      */
     public static function fromRfc1123DateTimeMapOfArray(?stdClass $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        $array = json_decode(json_encode($dates), true);
-        return array_map([self::class, 'fromRfc1123DateTimeArray'], $array);
+        return DateHelper::fromRfc1123DateTimeMapOfArray($dates);
     }
 
     /**
@@ -302,12 +223,7 @@ class DateTimeHelper
      */
     public static function toRfc3339DateTime(?DateTime $datetime): ?string
     {
-        if (is_null($datetime)) {
-            return null;
-        } elseif ($datetime instanceof DateTime) {
-            return $datetime->setTimeZone(new DateTimeZone('UTC'))->format(static::RFC3339);
-        }
-        throw new Exception('Not a valid DateTime object.');
+        return DateHelper::toRfc3339DateTime($datetime);
     }
 
     /**
@@ -319,10 +235,7 @@ class DateTimeHelper
      */
     public static function toRfc3339DateTimeArray(?array $datetimes): ?array
     {
-        if (is_null($datetimes)) {
-            return null;
-        }
-        return array_map([self::class, 'toRfc3339DateTime'], $datetimes);
+        return DateHelper::toRfc3339DateTimeArray($datetimes);
     }
 
     /**
@@ -334,10 +247,7 @@ class DateTimeHelper
      */
     public static function toRfc3339DateTime2DArray(?array $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        return array_map([self::class, 'toRfc3339DateTimeArray'], $dates);
+        return DateHelper::toRfc3339DateTime2DArray($dates);
     }
 
     /**
@@ -350,27 +260,7 @@ class DateTimeHelper
      */
     public static function fromRfc3339DateTime(?string $datetime): ?DateTime
     {
-        if (is_null($datetime)) {
-            return null;
-        }
-        // Check for timezone information and append it if missing
-        if (!(substr($datetime, strlen($datetime) - 1) == 'Z' || strpos($datetime, '+') !== false)) {
-            $datetime .= 'Z';
-        }
-
-        $x = DateTime::createFromFormat(static::RFC3339, $datetime);
-        if ($x instanceof DateTime) {
-            return $x->setTimeZone(new DateTimeZone('UTC'));
-        }
-        $x = DateTime::createFromFormat("Y-m-d\TH:i:s.uP", $datetime); // parse with up to 6 microseconds
-        if ($x instanceof DateTime) {
-            return $x->setTimeZone(new DateTimeZone('UTC'));
-        }
-        $x = DateTime::createFromFormat("Y-m-d\TH:i:s.uuP", $datetime); // parse with up to 12 microseconds
-        if ($x instanceof DateTime) {
-            return $x->setTimeZone(new DateTimeZone('UTC'));
-        }
-        throw new Exception('Incorrect format.');
+        return DateHelper::fromRfc3339DateTime($datetime);
     }
 
     /**
@@ -382,10 +272,7 @@ class DateTimeHelper
      */
     public static function fromRfc3339DateTimeArray(?array $datetimes): ?array
     {
-        if (is_null($datetimes)) {
-            return null;
-        }
-        return array_map([self::class, 'fromRfc3339DateTime'], $datetimes);
+        return DateHelper::fromRfc3339DateTimeArray($datetimes);
     }
 
     /**
@@ -397,10 +284,7 @@ class DateTimeHelper
      */
     public static function fromRfc3339DateTimeArrayOfMap(?array $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        return array_map([self::class, 'fromRfc3339DateTimeMap'], $dates);
+        return DateHelper::fromRfc3339DateTimeArrayOfMap($dates);
     }
 
     /**
@@ -412,11 +296,7 @@ class DateTimeHelper
      */
     public static function fromRfc3339DateTimeMap(?stdClass $datetimes): ?array
     {
-        if (is_null($datetimes)) {
-            return null;
-        }
-        $array = json_decode(json_encode($datetimes), true);
-        return array_map([self::class, 'fromRfc3339DateTime'], $array);
+        return DateHelper::fromRfc3339DateTimeMap($datetimes);
     }
 
     /**
@@ -428,11 +308,7 @@ class DateTimeHelper
      */
     public static function fromRfc3339DateTimeMapOfArray(?stdClass $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        $array = json_decode(json_encode($dates), true);
-        return array_map([self::class, 'fromRfc3339DateTimeArray'], $array);
+        return DateHelper::fromRfc3339DateTimeMapOfArray($dates);
     }
 
     /**
@@ -445,12 +321,7 @@ class DateTimeHelper
      */
     public static function toUnixTimestamp(?DateTime $datetime): ?int
     {
-        if (is_null($datetime)) {
-            return null;
-        } elseif ($datetime instanceof DateTime) {
-            return $datetime->getTimestamp();
-        }
-        throw new Exception('Not a valid DateTime object.');
+        return DateHelper::toUnixTimestamp($datetime);
     }
 
     /**
@@ -462,10 +333,7 @@ class DateTimeHelper
      */
     public static function toUnixTimestampArray(?array $datetimes): ?array
     {
-        if (is_null($datetimes)) {
-            return null;
-        }
-        return array_map([self::class, 'toUnixTimestamp'], $datetimes);
+        return DateHelper::toUnixTimestampArray($datetimes);
     }
 
     /**
@@ -477,10 +345,7 @@ class DateTimeHelper
      */
     public static function toUnixTimestamp2DArray(?array $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        return array_map([self::class, 'toUnixTimestampArray'], $dates);
+        return DateHelper::toUnixTimestamp2DArray($dates);
     }
 
     /**
@@ -493,14 +358,7 @@ class DateTimeHelper
      */
     public static function fromUnixTimestamp(?string $datetime): ?DateTime
     {
-        if (is_null($datetime)) {
-            return null;
-        }
-        $x = DateTime::createFromFormat("U", $datetime);
-        if ($x instanceof DateTime) {
-            return $x;
-        }
-        throw new Exception('Incorrect format.');
+        return DateHelper::fromUnixTimestamp($datetime);
     }
 
     /**
@@ -512,10 +370,7 @@ class DateTimeHelper
      */
     public static function fromUnixTimestampArray(?array $datetimes): ?array
     {
-        if (is_null($datetimes)) {
-            return null;
-        }
-        return array_map([self::class, 'fromUnixTimestamp'], array_map('strval', $datetimes));
+        return DateHelper::fromUnixTimestampArray($datetimes);
     }
 
     /**
@@ -527,10 +382,7 @@ class DateTimeHelper
      */
     public static function fromUnixTimestampArrayOfMap(?array $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        return array_map([self::class, 'fromUnixTimestampMap'], $dates);
+        return DateHelper::fromUnixTimestampArrayOfMap($dates);
     }
 
     /**
@@ -542,11 +394,7 @@ class DateTimeHelper
      */
     public static function fromUnixTimestampMap(?stdClass $datetimes): ?array
     {
-        if (is_null($datetimes)) {
-            return null;
-        }
-        $array = json_decode(json_encode($datetimes), true);
-        return array_map([self::class, 'fromUnixTimestamp'], array_map('strval', $array));
+        return DateHelper::fromUnixTimestampMap($datetimes);
     }
 
     /**
@@ -558,10 +406,6 @@ class DateTimeHelper
      */
     public static function fromUnixTimestampMapOfArray(?stdClass $dates): ?array
     {
-        if (is_null($dates)) {
-            return null;
-        }
-        $array = json_decode(json_encode($dates), true);
-        return array_map([self::class, 'fromUnixTimestampArray'], $array);
+        return DateHelper::fromUnixTimestampMapOfArray($dates);
     }
 }

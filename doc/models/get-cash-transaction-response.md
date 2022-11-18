@@ -22,6 +22,7 @@ Response object for getting a cash transaction
 ```json
 {
   "description": "description0",
+  "transaction_type": "cash",
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
@@ -49,7 +50,6 @@ Response object for getting a cash transaction
     }
   ],
   "next_attempt": null,
-  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",
@@ -98,7 +98,10 @@ Response object for getting a cash transaction
       "options": null,
       "id": "id6"
     }
-  ]
+  ],
+  "interest": null,
+  "fine": null,
+  "max_days_to_pay_past_due": null
 }
 ```
 

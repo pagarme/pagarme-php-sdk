@@ -28,6 +28,7 @@ Response object for getting a safety pay transaction
   "bank_tid": "bank_tid4",
   "paid_at": null,
   "paid_amount": null,
+  "transaction_type": "safetypay",
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
@@ -55,7 +56,6 @@ Response object for getting a safety pay transaction
     }
   ],
   "next_attempt": null,
-  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",
@@ -104,7 +104,10 @@ Response object for getting a safety pay transaction
       "options": null,
       "id": "id6"
     }
-  ]
+  ],
+  "interest": null,
+  "fine": null,
+  "max_days_to_pay_past_due": null
 }
 ```
 

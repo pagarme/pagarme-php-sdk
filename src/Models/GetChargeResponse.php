@@ -114,6 +114,16 @@ class GetChargeResponse implements \JsonSerializable
     private $paidAmount;
 
     /**
+     * @var int|null
+     */
+    private $interestAndFinePaid;
+
+    /**
+     * @var string|null
+     */
+    private $recurrencyCycle;
+
+    /**
      * @param string $id
      * @param string $code
      * @param string $gatewayId
@@ -527,6 +537,46 @@ class GetChargeResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Interest and Fine Paid.
+     * interest and fine paid
+     */
+    public function getInterestAndFinePaid(): ?int
+    {
+        return $this->interestAndFinePaid;
+    }
+
+    /**
+     * Sets Interest and Fine Paid.
+     * interest and fine paid
+     *
+     * @maps interest_and_fine_paid
+     */
+    public function setInterestAndFinePaid(?int $interestAndFinePaid): void
+    {
+        $this->interestAndFinePaid = $interestAndFinePaid;
+    }
+
+    /**
+     * Returns Recurrency Cycle.
+     * Defines whether the card has been used one or more times.
+     */
+    public function getRecurrencyCycle(): ?string
+    {
+        return $this->recurrencyCycle;
+    }
+
+    /**
+     * Sets Recurrency Cycle.
+     * Defines whether the card has been used one or more times.
+     *
+     * @maps recurrency_cycle
+     */
+    public function setRecurrencyCycle(?string $recurrencyCycle): void
+    {
+        $this->recurrencyCycle = $recurrencyCycle;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -538,37 +588,43 @@ class GetChargeResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']                   = $this->id;
-        $json['code']                 = $this->code;
-        $json['gateway_id']           = $this->gatewayId;
-        $json['amount']               = $this->amount;
-        $json['status']               = $this->status;
-        $json['currency']             = $this->currency;
-        $json['payment_method']       = $this->paymentMethod;
-        $json['due_at']               = DateTimeHelper::toRfc3339DateTime($this->dueAt);
-        $json['created_at']           = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']           = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
+        $json['id']                         = $this->id;
+        $json['code']                       = $this->code;
+        $json['gateway_id']                 = $this->gatewayId;
+        $json['amount']                     = $this->amount;
+        $json['status']                     = $this->status;
+        $json['currency']                   = $this->currency;
+        $json['payment_method']             = $this->paymentMethod;
+        $json['due_at']                     = DateTimeHelper::toRfc3339DateTime($this->dueAt);
+        $json['created_at']                 = DateTimeHelper::toRfc3339DateTime($this->createdAt);
+        $json['updated_at']                 = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
         if (isset($this->lastTransaction)) {
-            $json['last_transaction'] = $this->lastTransaction;
+            $json['last_transaction']       = $this->lastTransaction;
         }
         if (isset($this->invoice)) {
-            $json['invoice']          = $this->invoice;
+            $json['invoice']                = $this->invoice;
         }
         if (isset($this->order)) {
-            $json['order']            = $this->order;
+            $json['order']                  = $this->order;
         }
         if (isset($this->customer)) {
-            $json['customer']         = $this->customer;
+            $json['customer']               = $this->customer;
         }
-        $json['metadata']             = $this->metadata;
+        $json['metadata']                   = $this->metadata;
         if (isset($this->paidAt)) {
-            $json['paid_at']          = DateTimeHelper::toRfc3339DateTime($this->paidAt);
+            $json['paid_at']                = DateTimeHelper::toRfc3339DateTime($this->paidAt);
         }
         if (isset($this->canceledAt)) {
-            $json['canceled_at']      = DateTimeHelper::toRfc3339DateTime($this->canceledAt);
+            $json['canceled_at']            = DateTimeHelper::toRfc3339DateTime($this->canceledAt);
         }
-        $json['canceled_amount']      = $this->canceledAmount;
-        $json['paid_amount']          = $this->paidAmount;
+        $json['canceled_amount']            = $this->canceledAmount;
+        $json['paid_amount']                = $this->paidAmount;
+        if (isset($this->interestAndFinePaid)) {
+            $json['interest_and_fine_paid'] = $this->interestAndFinePaid;
+        }
+        if (isset($this->recurrencyCycle)) {
+            $json['recurrency_cycle']       = $this->recurrencyCycle;
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

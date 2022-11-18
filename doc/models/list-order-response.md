@@ -68,7 +68,9 @@ Response object for listing order objects
           "paid_at": null,
           "canceled_at": null,
           "canceled_amount": 223,
-          "paid_amount": 205
+          "paid_amount": 205,
+          "interest_and_fine_paid": null,
+          "recurrency_cycle": null
         },
         {
           "id": "id2",
@@ -93,7 +95,9 @@ Response object for listing order objects
           "paid_at": null,
           "canceled_at": null,
           "canceled_amount": 224,
-          "paid_amount": 206
+          "paid_amount": 206,
+          "interest_and_fine_paid": null,
+          "recurrency_cycle": null
         },
         {
           "id": "id3",
@@ -116,7 +120,9 @@ Response object for listing order objects
           "paid_at": null,
           "canceled_at": null,
           "canceled_amount": 225,
-          "paid_amount": 207
+          "paid_amount": 207,
+          "interest_and_fine_paid": null,
+          "recurrency_cycle": null
         }
       ],
       "invoice_url": "invoice_url7",
@@ -219,7 +225,9 @@ Response object for listing order objects
           "paid_at": null,
           "canceled_at": null,
           "canceled_amount": 224,
-          "paid_amount": 206
+          "paid_amount": 206,
+          "interest_and_fine_paid": null,
+          "recurrency_cycle": null
         }
       ],
       "invoice_url": "invoice_url8",

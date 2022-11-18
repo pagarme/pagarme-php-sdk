@@ -7,7 +7,7 @@ Pagarme API
 
 ## Building
 
-The generated code has dependencies over external libraries like UniRest. These dependencies are defined in the `composer.json` file that comes with the SDK. To resolve these dependencies, we use the Composer package manager which requires PHP greater than or equal to 7.2 installed in your system. Visit [https://getcomposer.org/download/](https://getcomposer.org/download/) to download the installer file for Composer and run it in your system. Open command prompt and type `composer --version`. This should display the current version of the Composer installed if the installation was successful.
+The generated code has dependencies over external libraries like UniRest and JsonMapper. JsonMapper requires docblock annotations like `@var`, `@maps`, and `@factory` to map JSON responses with our class definitions. Hence the docblocks in generated code cannot be disabled by deactivating the PHP configurations like `opcache.save_comments`. These dependencies are defined in the `composer.json` file that comes with the SDK. To resolve these dependencies, we use the Composer package manager which requires PHP greater than or equal to 7.2 installed in your system. Visit [https://getcomposer.org/download/](https://getcomposer.org/download/) to download the installer file for Composer and run it in your system. Open command prompt and type `composer --version`. This should display the current version of the Composer installed if the installation was successful.
 
 * Using command line, navigate to the directory containing the generated files (including `composer.json`) for the SDK.
 * Run the command `composer install`. This should install all the required dependencies and create the `vendor` directory in your project directory.
@@ -120,11 +120,10 @@ The following parameters are configurable for the API Client:
 The API client can be initialized as follows:
 
 ```php
-$client = new PagarmeApiSDKLib\PagarmeApiSDKClient([
-    // Set authentication parameters
-    'basicAuthUserName' => 'BasicAuthUserName',
-    'basicAuthPassword' => 'BasicAuthPassword',
-]);
+$client = PagarmeApiSDKLib\PagarmeApiSDKClientBuilder::init()
+    ->basicAuthUserName('BasicAuthUserName')
+    ->basicAuthPassword('BasicAuthPassword')
+    ->build();
 ```
 
 ## Authorization

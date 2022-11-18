@@ -63,6 +63,11 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
     private $extendedLimitCode;
 
     /**
+     * @var string|null
+     */
+    private $recurrencyCycle;
+
+    /**
      * Returns Installments.
      * Number of installments
      */
@@ -241,6 +246,26 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Recurrency Cycle.
+     * Defines whether the card has been used one or more times.
+     */
+    public function getRecurrencyCycle(): ?string
+    {
+        return $this->recurrencyCycle;
+    }
+
+    /**
+     * Sets Recurrency Cycle.
+     * Defines whether the card has been used one or more times.
+     *
+     * @maps recurrency_cycle
+     */
+    public function setRecurrencyCycle(?string $recurrencyCycle): void
+    {
+        $this->recurrencyCycle = $recurrencyCycle;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -278,6 +303,9 @@ class CreatePrivateLabelPaymentRequest implements \JsonSerializable
         }
         if (isset($this->extendedLimitCode)) {
             $json['extended_limit_code']    = $this->extendedLimitCode;
+        }
+        if (isset($this->recurrencyCycle)) {
+            $json['recurrency_cycle']       = $this->recurrencyCycle;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -10,192 +10,147 @@ declare(strict_types=1);
 
 namespace PagarmeApiSDKLib;
 
-use PagarmeApiSDKLib\Controllers;
+use Core\ClientBuilder;
+use Core\Response\Types\ErrorType;
+use Core\Utils\CoreHelper;
+use PagarmeApiSDKLib\Controllers\ChargesController;
+use PagarmeApiSDKLib\Controllers\CustomersController;
+use PagarmeApiSDKLib\Controllers\InvoicesController;
+use PagarmeApiSDKLib\Controllers\OrdersController;
+use PagarmeApiSDKLib\Controllers\PlansController;
+use PagarmeApiSDKLib\Controllers\RecipientsController;
+use PagarmeApiSDKLib\Controllers\SubscriptionsController;
+use PagarmeApiSDKLib\Controllers\TokensController;
+use PagarmeApiSDKLib\Controllers\TransactionsController;
+use PagarmeApiSDKLib\Controllers\TransfersController;
+use PagarmeApiSDKLib\Exceptions;
+use PagarmeApiSDKLib\Utils\CompatibilityConverter;
+use Unirest\Configuration;
+use Unirest\HttpClient;
 
-/**
- * PagarmeApiSDKLib client class
- */
 class PagarmeApiSDKClient implements ConfigurationInterface
 {
-    private $orders;
     private $plans;
+
     private $subscriptions;
+
     private $invoices;
+
+    private $orders;
+
     private $customers;
+
     private $recipients;
+
     private $charges;
-    private $tokens;
+
     private $transfers;
+
+    private $tokens;
+
     private $transactions;
 
-    private $timeout = ConfigurationDefaults::TIMEOUT;
-    private $enableRetries = ConfigurationDefaults::ENABLE_RETRIES;
-    private $numberOfRetries = ConfigurationDefaults::NUMBER_OF_RETRIES;
-    private $retryInterval = ConfigurationDefaults::RETRY_INTERVAL;
-    private $backOffFactor = ConfigurationDefaults::BACK_OFF_FACTOR;
-    private $maximumRetryWaitTime = ConfigurationDefaults::MAXIMUM_RETRY_WAIT_TIME;
-    private $retryOnTimeout = ConfigurationDefaults::RETRY_ON_TIMEOUT;
-    private $httpStatusCodesToRetry = ConfigurationDefaults::HTTP_STATUS_CODES_TO_RETRY;
-    private $httpMethodsToRetry = ConfigurationDefaults::HTTP_METHODS_TO_RETRY;
-    private $environment = ConfigurationDefaults::ENVIRONMENT;
-    private $basicAuthUserName = ConfigurationDefaults::BASIC_AUTH_USER_NAME;
-    private $basicAuthPassword = ConfigurationDefaults::BASIC_AUTH_PASSWORD;
     private $basicAuthManager;
-    private $authManagers = [];
-    private $httpCallback;
 
-    public function __construct(array $configOptions = null)
+    private $config;
+
+    private $client;
+
+    /**
+     * @see PagarmeApiSDKClientBuilder::init()
+     * @see PagarmeApiSDKClientBuilder::build()
+     *
+     * @param array $config
+     */
+    public function __construct(array $config = [])
     {
-        if (isset($configOptions['timeout'])) {
-            $this->timeout = $configOptions['timeout'];
-        }
-        if (isset($configOptions['enableRetries'])) {
-            $this->enableRetries = $configOptions['enableRetries'];
-        }
-        if (isset($configOptions['numberOfRetries'])) {
-            $this->numberOfRetries = $configOptions['numberOfRetries'];
-        }
-        if (isset($configOptions['retryInterval'])) {
-            $this->retryInterval = $configOptions['retryInterval'];
-        }
-        if (isset($configOptions['backOffFactor'])) {
-            $this->backOffFactor = $configOptions['backOffFactor'];
-        }
-        if (isset($configOptions['maximumRetryWaitTime'])) {
-            $this->maximumRetryWaitTime = $configOptions['maximumRetryWaitTime'];
-        }
-        if (isset($configOptions['retryOnTimeout'])) {
-            $this->retryOnTimeout = $configOptions['retryOnTimeout'];
-        }
-        if (isset($configOptions['httpStatusCodesToRetry'])) {
-            $this->httpStatusCodesToRetry = $configOptions['httpStatusCodesToRetry'];
-        }
-        if (isset($configOptions['httpMethodsToRetry'])) {
-            $this->httpMethodsToRetry = $configOptions['httpMethodsToRetry'];
-        }
-        if (isset($configOptions['environment'])) {
-            $this->environment = $configOptions['environment'];
-        }
-        if (isset($configOptions['basicAuthUserName'])) {
-            $this->basicAuthUserName = $configOptions['basicAuthUserName'];
-        }
-        if (isset($configOptions['basicAuthPassword'])) {
-            $this->basicAuthPassword = $configOptions['basicAuthPassword'];
-        }
-        if (isset($configOptions['httpCallback'])) {
-            $this->httpCallback = $configOptions['httpCallback'];
-        }
-
-        $this->basicAuthManager = new BasicAuthManager($this->basicAuthUserName, $this->basicAuthPassword);
-        $this->authManagers['global'] = $this->basicAuthManager;
+        $this->config = array_merge(ConfigurationDefaults::_ALL, CoreHelper::clone($config));
+        $this->basicAuthManager = new BasicAuthManager(
+            $this->config['basicAuthUserName'] ?? ConfigurationDefaults::BASIC_AUTH_USER_NAME,
+            $this->config['basicAuthPassword'] ?? ConfigurationDefaults::BASIC_AUTH_PASSWORD
+        );
+        $this->client = ClientBuilder::init(new HttpClient(Configuration::init($this)))
+            ->converter(new CompatibilityConverter())
+            ->jsonHelper(ApiHelper::getJsonHelper())
+            ->apiCallback($this->config['httpCallback'] ?? null)
+            ->userAgent('PagarmeCoreApi - PHP 6.6.0')
+            ->globalErrors($this->getGlobalErrors())
+            ->serverUrls(self::ENVIRONMENT_MAP[$this->getEnvironment()], Server::DEFAULT_)
+            ->authManagers(['global' => $this->basicAuthManager])
+            ->build();
     }
 
     /**
-     * Get the client configuration as an associative array
+     * Create a builder with the current client's configurations.
+     *
+     * @return PagarmeApiSDKClientBuilder PagarmeApiSDKClientBuilder instance
      */
-    public function getConfiguration(): array
+    public function toBuilder(): PagarmeApiSDKClientBuilder
     {
-        $configMap = [];
-
-        if (isset($this->timeout)) {
-            $configMap['timeout'] = $this->timeout;
-        }
-        if (isset($this->enableRetries)) {
-            $configMap['enableRetries'] = $this->enableRetries;
-        }
-        if (isset($this->numberOfRetries)) {
-            $configMap['numberOfRetries'] = $this->numberOfRetries;
-        }
-        if (isset($this->retryInterval)) {
-            $configMap['retryInterval'] = $this->retryInterval;
-        }
-        if (isset($this->backOffFactor)) {
-            $configMap['backOffFactor'] = $this->backOffFactor;
-        }
-        if (isset($this->maximumRetryWaitTime)) {
-            $configMap['maximumRetryWaitTime'] = $this->maximumRetryWaitTime;
-        }
-        if (isset($this->retryOnTimeout)) {
-            $configMap['retryOnTimeout'] = $this->retryOnTimeout;
-        }
-        if (isset($this->httpStatusCodesToRetry)) {
-            $configMap['httpStatusCodesToRetry'] = $this->httpStatusCodesToRetry;
-        }
-        if (isset($this->httpMethodsToRetry)) {
-            $configMap['httpMethodsToRetry'] = $this->httpMethodsToRetry;
-        }
-        if (isset($this->environment)) {
-            $configMap['environment'] = $this->environment;
-        }
-        if ($this->basicAuthManager->getBasicAuthUserName() !== null) {
-            $configMap['basicAuthUserName'] = $this->basicAuthManager->getBasicAuthUserName();
-        }
-        if ($this->basicAuthManager->getBasicAuthPassword() !== null) {
-            $configMap['basicAuthPassword'] = $this->basicAuthManager->getBasicAuthPassword();
-        }
-        if (isset($this->httpCallback)) {
-            $configMap['httpCallback'] = $this->httpCallback;
-        }
-
-        return $configMap;
-    }
-
-    /**
-     * Clone this client and override given configuration options
-     */
-    public function withConfiguration(array $configOptions): self
-    {
-        return new self(\array_merge($this->getConfiguration(), $configOptions));
+        return PagarmeApiSDKClientBuilder::init()
+            ->timeout($this->getTimeout())
+            ->enableRetries($this->shouldEnableRetries())
+            ->numberOfRetries($this->getNumberOfRetries())
+            ->retryInterval($this->getRetryInterval())
+            ->backOffFactor($this->getBackOffFactor())
+            ->maximumRetryWaitTime($this->getMaximumRetryWaitTime())
+            ->retryOnTimeout($this->shouldRetryOnTimeout())
+            ->httpStatusCodesToRetry($this->getHttpStatusCodesToRetry())
+            ->httpMethodsToRetry($this->getHttpMethodsToRetry())
+            ->environment($this->getEnvironment())
+            ->basicAuthUserName($this->basicAuthManager->getBasicAuthUserName())
+            ->basicAuthPassword($this->basicAuthManager->getBasicAuthPassword())
+            ->httpCallback($this->config['httpCallback'] ?? null);
     }
 
     public function getTimeout(): int
     {
-        return $this->timeout;
+        return $this->config['timeout'] ?? ConfigurationDefaults::TIMEOUT;
     }
 
     public function shouldEnableRetries(): bool
     {
-        return $this->enableRetries;
+        return $this->config['enableRetries'] ?? ConfigurationDefaults::ENABLE_RETRIES;
     }
 
     public function getNumberOfRetries(): int
     {
-        return $this->numberOfRetries;
+        return $this->config['numberOfRetries'] ?? ConfigurationDefaults::NUMBER_OF_RETRIES;
     }
 
     public function getRetryInterval(): float
     {
-        return $this->retryInterval;
+        return $this->config['retryInterval'] ?? ConfigurationDefaults::RETRY_INTERVAL;
     }
 
     public function getBackOffFactor(): float
     {
-        return $this->backOffFactor;
+        return $this->config['backOffFactor'] ?? ConfigurationDefaults::BACK_OFF_FACTOR;
     }
 
     public function getMaximumRetryWaitTime(): int
     {
-        return $this->maximumRetryWaitTime;
+        return $this->config['maximumRetryWaitTime'] ?? ConfigurationDefaults::MAXIMUM_RETRY_WAIT_TIME;
     }
 
     public function shouldRetryOnTimeout(): bool
     {
-        return $this->retryOnTimeout;
+        return $this->config['retryOnTimeout'] ?? ConfigurationDefaults::RETRY_ON_TIMEOUT;
     }
 
     public function getHttpStatusCodesToRetry(): array
     {
-        return $this->httpStatusCodesToRetry;
+        return $this->config['httpStatusCodesToRetry'] ?? ConfigurationDefaults::HTTP_STATUS_CODES_TO_RETRY;
     }
 
     public function getHttpMethodsToRetry(): array
     {
-        return $this->httpMethodsToRetry;
+        return $this->config['httpMethodsToRetry'] ?? ConfigurationDefaults::HTTP_METHODS_TO_RETRY;
     }
 
     public function getEnvironment(): string
     {
-        return $this->environment;
+        return $this->config['environment'] ?? ConfigurationDefaults::ENVIRONMENT;
     }
 
     public function getBasicAuthCredentials(): ?BasicAuthCredentials
@@ -204,39 +159,44 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
-     * Get the base uri for a given server in the current environment
+     * Get the client configuration as an associative array
      *
-     * @param  string $server Server name
-     *
-     * @return string         Base URI
+     * @see PagarmeApiSDKClientBuilder::getConfiguration()
      */
-    public function getBaseUri(string $server = Server::DEFAULT_): string
+    public function getConfiguration(): array
     {
-        return static::ENVIRONMENT_MAP[$this->environment][$server];
+        return $this->toBuilder()->getConfiguration();
     }
 
     /**
-     * Returns Orders Controller
+     * Clone this client and override given configuration options
+     *
+     * @see PagarmeApiSDKClientBuilder::build()
      */
-    public function getOrdersController(): Controllers\OrdersController
+    public function withConfiguration(array $config): self
     {
-        if ($this->orders == null) {
-            $this->orders = new Controllers\OrdersController(
-                $this,
-                $this->authManagers,
-                $this->httpCallback
-            );
-        }
-        return $this->orders;
+        return new self(array_merge($this->config, $config));
+    }
+
+    /**
+     * Get the base uri for a given server in the current environment.
+     *
+     * @param string $server Server name
+     *
+     * @return string Base URI
+     */
+    public function getBaseUri(string $server = Server::DEFAULT_): string
+    {
+        return $this->client->getGlobalRequest($server)->getQueryUrl();
     }
 
     /**
      * Returns Plans Controller
      */
-    public function getPlansController(): Controllers\PlansController
+    public function getPlansController(): PlansController
     {
         if ($this->plans == null) {
-            $this->plans = new Controllers\PlansController($this, $this->authManagers, $this->httpCallback);
+            $this->plans = new PlansController($this->client);
         }
         return $this->plans;
     }
@@ -244,14 +204,10 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     /**
      * Returns Subscriptions Controller
      */
-    public function getSubscriptionsController(): Controllers\SubscriptionsController
+    public function getSubscriptionsController(): SubscriptionsController
     {
         if ($this->subscriptions == null) {
-            $this->subscriptions = new Controllers\SubscriptionsController(
-                $this,
-                $this->authManagers,
-                $this->httpCallback
-            );
+            $this->subscriptions = new SubscriptionsController($this->client);
         }
         return $this->subscriptions;
     }
@@ -259,29 +215,32 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     /**
      * Returns Invoices Controller
      */
-    public function getInvoicesController(): Controllers\InvoicesController
+    public function getInvoicesController(): InvoicesController
     {
         if ($this->invoices == null) {
-            $this->invoices = new Controllers\InvoicesController(
-                $this,
-                $this->authManagers,
-                $this->httpCallback
-            );
+            $this->invoices = new InvoicesController($this->client);
         }
         return $this->invoices;
     }
 
     /**
+     * Returns Orders Controller
+     */
+    public function getOrdersController(): OrdersController
+    {
+        if ($this->orders == null) {
+            $this->orders = new OrdersController($this->client);
+        }
+        return $this->orders;
+    }
+
+    /**
      * Returns Customers Controller
      */
-    public function getCustomersController(): Controllers\CustomersController
+    public function getCustomersController(): CustomersController
     {
         if ($this->customers == null) {
-            $this->customers = new Controllers\CustomersController(
-                $this,
-                $this->authManagers,
-                $this->httpCallback
-            );
+            $this->customers = new CustomersController($this->client);
         }
         return $this->customers;
     }
@@ -289,14 +248,10 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     /**
      * Returns Recipients Controller
      */
-    public function getRecipientsController(): Controllers\RecipientsController
+    public function getRecipientsController(): RecipientsController
     {
         if ($this->recipients == null) {
-            $this->recipients = new Controllers\RecipientsController(
-                $this,
-                $this->authManagers,
-                $this->httpCallback
-            );
+            $this->recipients = new RecipientsController($this->client);
         }
         return $this->recipients;
     }
@@ -304,71 +259,66 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     /**
      * Returns Charges Controller
      */
-    public function getChargesController(): Controllers\ChargesController
+    public function getChargesController(): ChargesController
     {
         if ($this->charges == null) {
-            $this->charges = new Controllers\ChargesController(
-                $this,
-                $this->authManagers,
-                $this->httpCallback
-            );
+            $this->charges = new ChargesController($this->client);
         }
         return $this->charges;
     }
 
     /**
-     * Returns Tokens Controller
-     */
-    public function getTokensController(): Controllers\TokensController
-    {
-        if ($this->tokens == null) {
-            $this->tokens = new Controllers\TokensController(
-                $this,
-                $this->authManagers,
-                $this->httpCallback
-            );
-        }
-        return $this->tokens;
-    }
-
-    /**
      * Returns Transfers Controller
      */
-    public function getTransfersController(): Controllers\TransfersController
+    public function getTransfersController(): TransfersController
     {
         if ($this->transfers == null) {
-            $this->transfers = new Controllers\TransfersController(
-                $this,
-                $this->authManagers,
-                $this->httpCallback
-            );
+            $this->transfers = new TransfersController($this->client);
         }
         return $this->transfers;
     }
 
     /**
+     * Returns Tokens Controller
+     */
+    public function getTokensController(): TokensController
+    {
+        if ($this->tokens == null) {
+            $this->tokens = new TokensController($this->client);
+        }
+        return $this->tokens;
+    }
+
+    /**
      * Returns Transactions Controller
      */
-    public function getTransactionsController(): Controllers\TransactionsController
+    public function getTransactionsController(): TransactionsController
     {
         if ($this->transactions == null) {
-            $this->transactions = new Controllers\TransactionsController(
-                $this,
-                $this->authManagers,
-                $this->httpCallback
-            );
+            $this->transactions = new TransactionsController($this->client);
         }
         return $this->transactions;
     }
 
     /**
-     * A map of all baseurls used in different environments and servers
+     * Get the defined global errors
+     */
+    private function getGlobalErrors(): array
+    {
+        return [
+            400 => ErrorType::init('Invalid request', Exceptions\ErrorException::class),
+            401 => ErrorType::init('Invalid API key', Exceptions\ErrorException::class),
+            404 => ErrorType::init('An informed resource was not found', Exceptions\ErrorException::class),
+            412 => ErrorType::init('Business validation error', Exceptions\ErrorException::class),
+            422 => ErrorType::init('Contract validation error', Exceptions\ErrorException::class),
+            500 => ErrorType::init('Internal server error', Exceptions\ErrorException::class)
+        ];
+    }
+
+    /**
+     * A map of all base urls used in different environments and servers
      *
      * @var array
      */
-    private const ENVIRONMENT_MAP = [
-        Environment::PRODUCTION => [
-            Server::DEFAULT_ => 'https://api.pagar.me/core/v5',
-        ],
-    ];
+    private const ENVIRONMENT_MAP = [Environment::PRODUCTION => [Server::DEFAULT_ => 'https://api.pagar.me/core/v5']];
 }

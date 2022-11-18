@@ -10,220 +10,198 @@ declare(strict_types=1);
 
 namespace PagarmeApiSDKLib\Controllers;
 
+use Core\Request\Parameters\BodyParam;
+use Core\Request\Parameters\HeaderParam;
+use Core\Request\Parameters\QueryParam;
+use Core\Request\Parameters\TemplateParam;
+use CoreInterfaces\Core\Request\RequestMethod;
 use PagarmeApiSDKLib\Exceptions\ApiException;
-use PagarmeApiSDKLib\ApiHelper;
-use PagarmeApiSDKLib\ConfigurationInterface;
-use PagarmeApiSDKLib\Models;
+use PagarmeApiSDKLib\Models\CreatePlanItemRequest;
+use PagarmeApiSDKLib\Models\CreatePlanRequest;
+use PagarmeApiSDKLib\Models\GetPlanItemResponse;
+use PagarmeApiSDKLib\Models\GetPlanResponse;
+use PagarmeApiSDKLib\Models\ListPlansResponse;
+use PagarmeApiSDKLib\Models\UpdateMetadataRequest;
+use PagarmeApiSDKLib\Models\UpdatePlanItemRequest;
+use PagarmeApiSDKLib\Models\UpdatePlanRequest;
 use PagarmeApiSDKLib\Utils\DateTimeHelper;
-use PagarmeApiSDKLib\Http\HttpRequest;
-use PagarmeApiSDKLib\Http\HttpResponse;
-use PagarmeApiSDKLib\Http\HttpMethod;
-use PagarmeApiSDKLib\Http\HttpContext;
-use PagarmeApiSDKLib\Http\HttpCallBack;
-use Unirest\Request;
 
 class PlansController extends BaseController
 {
-    public function __construct(ConfigurationInterface $config, array $authManagers, ?HttpCallBack $httpCallBack)
-    {
-        parent::__construct($config, $authManagers, $httpCallBack);
-    }
-
     /**
      * Gets a plan
      *
      * @param string $planId Plan id
      *
-     * @return Models\GetPlanResponse Response from the API call
+     * @return GetPlanResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getPlan(string $planId): Models\GetPlanResponse
+    public function getPlan(string $planId): GetPlanResponse
     {
-        //prepare query string for API call
-        $_queryBuilder = '/plans/{plan_id}';
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/plans/{plan_id}')
+            ->auth('global')
+            ->parameters(TemplateParam::init('plan_id', $planId));
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'plan_id' => $planId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetPlanResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetPlanResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
-     * Updates a plan
+     * Deletes a plan
      *
      * @param string $planId Plan id
-     * @param Models\UpdatePlanRequest $request Request for updating a plan
      * @param string|null $idempotencyKey
      *
-     * @return Models\GetPlanResponse Response from the API call
+     * @return GetPlanResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function updatePlan(
-        string $planId,
-        Models\UpdatePlanRequest $request,
-        ?string $idempotencyKey = null
-    ): Models\GetPlanResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/plans/{plan_id}';
+    public function deletePlan(string $planId, ?string $idempotencyKey = null): GetPlanResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/plans/{plan_id}')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('plan_id', $planId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'plan_id'         => $planId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetPlanResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PUT, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::put($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetPlanResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
      * Updates the metadata from a plan
      *
      * @param string $planId The plan id
-     * @param Models\UpdateMetadataRequest $request Request for updating the plan metadata
+     * @param UpdateMetadataRequest $request Request for updating the plan metadata
      * @param string|null $idempotencyKey
      *
-     * @return Models\GetPlanResponse Response from the API call
+     * @return GetPlanResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
     public function updatePlanMetadata(
         string $planId,
-        Models\UpdateMetadataRequest $request,
+        UpdateMetadataRequest $request,
         ?string $idempotencyKey = null
-    ): Models\GetPlanResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/Plans/{plan_id}/metadata';
+    ): GetPlanResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Plans/{plan_id}/metadata')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('plan_id', $planId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'plan_id'         => $planId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetPlanResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
 
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
+    /**
+     * Updates a plan item
+     *
+     * @param string $planId Plan id
+     * @param string $planItemId Plan item id
+     * @param UpdatePlanItemRequest $body Request for updating the plan item
+     * @param string|null $idempotencyKey
+     *
+     * @return GetPlanItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updatePlanItem(
+        string $planId,
+        string $planItemId,
+        UpdatePlanItemRequest $body,
+        ?string $idempotencyKey = null
+    ): GetPlanItemResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/plans/{plan_id}/items/{plan_item_id}')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('plan_id', $planId),
+                TemplateParam::init('plan_item_id', $planItemId),
+                BodyParam::init($body),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
+        $_resHandler = $this->responseHandler()->type(GetPlanItemResponse::class);
 
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
 
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
+    /**
+     * Adds a new item to a plan
+     *
+     * @param string $planId Plan id
+     * @param CreatePlanItemRequest $request Request for creating a plan item
+     * @param string|null $idempotencyKey
+     *
+     * @return GetPlanItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createPlanItem(
+        string $planId,
+        CreatePlanItemRequest $request,
+        ?string $idempotencyKey = null
+    ): GetPlanItemResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/plans/{plan_id}/items')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('plan_id', $planId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
+        $_resHandler = $this->responseHandler()->type(GetPlanItemResponse::class);
 
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::patch($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
 
+    /**
+     * Gets a plan item
+     *
+     * @param string $planId Plan id
+     * @param string $planItemId Plan item id
+     *
+     * @return GetPlanItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getPlanItem(string $planId, string $planItemId): GetPlanItemResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/plans/{plan_id}/items/{plan_item_id}')
+            ->auth('global')
+            ->parameters(TemplateParam::init('plan_id', $planId), TemplateParam::init('plan_item_id', $planItemId));
 
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+        $_resHandler = $this->responseHandler()->type(GetPlanItemResponse::class);
 
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
 
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetPlanResponse');
+    /**
+     * Creates a new plan
+     *
+     * @param CreatePlanRequest $body Request for creating a plan
+     * @param string|null $idempotencyKey
+     *
+     * @return GetPlanResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createPlan(CreatePlanRequest $body, ?string $idempotencyKey = null): GetPlanResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/plans')
+            ->auth('global')
+            ->parameters(BodyParam::init($body), HeaderParam::init('idempotency-key', $idempotencyKey));
+
+        $_resHandler = $this->responseHandler()->type(GetPlanResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
@@ -233,7 +211,7 @@ class PlansController extends BaseController
      * @param string $planItemId Plan item id
      * @param string|null $idempotencyKey
      *
-     * @return Models\GetPlanItemResponse Response from the API call
+     * @return GetPlanItemResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
@@ -241,55 +219,18 @@ class PlansController extends BaseController
         string $planId,
         string $planItemId,
         ?string $idempotencyKey = null
-    ): Models\GetPlanItemResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/plans/{plan_id}/items/{plan_item_id}';
+    ): GetPlanItemResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/plans/{plan_id}/items/{plan_item_id}')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('plan_id', $planId),
+                TemplateParam::init('plan_item_id', $planItemId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'plan_id'         => $planId,
-            'plan_item_id'    => $planItemId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetPlanItemResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::DELETE, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::delete($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetPlanItemResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
@@ -303,7 +244,7 @@ class PlansController extends BaseController
      * @param \DateTime|null $createdSince Filter for plan's creation date start range
      * @param \DateTime|null $createdUntil Filter for plan's creation date end range
      *
-     * @return Models\ListPlansResponse Response from the API call
+     * @return ListPlansResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
@@ -315,381 +256,52 @@ class PlansController extends BaseController
         ?string $billingType = null,
         ?\DateTime $createdSince = null,
         ?\DateTime $createdUntil = null
-    ): Models\ListPlansResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/plans';
+    ): ListPlansResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/plans')
+            ->auth('global')
+            ->parameters(
+                QueryParam::init('page', $page),
+                QueryParam::init('size', $size),
+                QueryParam::init('name', $name),
+                QueryParam::init('status', $status),
+                QueryParam::init('billing_type', $billingType),
+                QueryParam::init('created_since', $createdSince)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('created_until', $createdUntil)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime'])
+            );
 
-        //process optional query parameters
-        ApiHelper::appendUrlWithQueryParameters($_queryBuilder, [
-            'page'          => $page,
-            'size'          => $size,
-            'name'          => $name,
-            'status'        => $status,
-            'billing_type'  => $billingType,
-            'created_since' => DateTimeHelper::toRfc3339DateTime($createdSince),
-            'created_until' => DateTimeHelper::toRfc3339DateTime($createdUntil),
-        ]);
+        $_resHandler = $this->responseHandler()->type(ListPlansResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'ListPlansResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
-     * Gets a plan item
+     * Updates a plan
      *
      * @param string $planId Plan id
-     * @param string $planItemId Plan item id
-     *
-     * @return Models\GetPlanItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getPlanItem(string $planId, string $planItemId): Models\GetPlanItemResponse
-    {
-        //prepare query string for API call
-        $_queryBuilder = '/plans/{plan_id}/items/{plan_item_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'plan_id'      => $planId,
-            'plan_item_id' => $planItemId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json'
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::get($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetPlanItemResponse');
-    }
-
-    /**
-     * Deletes a plan
-     *
-     * @param string $planId Plan id
+     * @param UpdatePlanRequest $request Request for updating a plan
      * @param string|null $idempotencyKey
      *
-     * @return Models\GetPlanResponse Response from the API call
+     * @return GetPlanResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function deletePlan(string $planId, ?string $idempotencyKey = null): Models\GetPlanResponse
-    {
-        //prepare query string for API call
-        $_queryBuilder = '/plans/{plan_id}';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'plan_id'         => $planId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        $_httpRequest = new HttpRequest(HttpMethod::DELETE, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::delete($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders());
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetPlanResponse');
-    }
-
-    /**
-     * Updates a plan item
-     *
-     * @param string $planId Plan id
-     * @param string $planItemId Plan item id
-     * @param Models\UpdatePlanItemRequest $body Request for updating the plan item
-     * @param string|null $idempotencyKey
-     *
-     * @return Models\GetPlanItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updatePlanItem(
+    public function updatePlan(
         string $planId,
-        string $planItemId,
-        Models\UpdatePlanItemRequest $body,
+        UpdatePlanRequest $request,
         ?string $idempotencyKey = null
-    ): Models\GetPlanItemResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/plans/{plan_id}/items/{plan_item_id}';
+    ): GetPlanResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/plans/{plan_id}')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('plan_id', $planId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'plan_id'         => $planId,
-            'plan_item_id'    => $planItemId,
-        ]);
+        $_resHandler = $this->responseHandler()->type(GetPlanResponse::class);
 
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($body);
-
-        $_httpRequest = new HttpRequest(HttpMethod::PUT, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::put($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetPlanItemResponse');
-    }
-
-    /**
-     * Adds a new item to a plan
-     *
-     * @param string $planId Plan id
-     * @param Models\CreatePlanItemRequest $request Request for creating a plan item
-     * @param string|null $idempotencyKey
-     *
-     * @return Models\GetPlanItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createPlanItem(
-        string $planId,
-        Models\CreatePlanItemRequest $request,
-        ?string $idempotencyKey = null
-    ): Models\GetPlanItemResponse {
-        //prepare query string for API call
-        $_queryBuilder = '/plans/{plan_id}/items';
-
-        //process optional query parameters
-        $_queryBuilder = ApiHelper::appendUrlWithTemplateParameters($_queryBuilder, [
-            'plan_id'         => $planId,
-        ]);
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($request);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetPlanItemResponse');
-    }
-
-    /**
-     * Creates a new plan
-     *
-     * @param Models\CreatePlanRequest $body Request for creating a plan
-     * @param string|null $idempotencyKey
-     *
-     * @return Models\GetPlanResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createPlan(Models\CreatePlanRequest $body, ?string $idempotencyKey = null): Models\GetPlanResponse
-    {
-        //prepare query string for API call
-        $_queryBuilder = '/plans';
-
-        //validate and preprocess url
-        $_queryUrl = ApiHelper::cleanUrl($this->config->getBaseUri() . $_queryBuilder);
-
-        //prepare headers
-        $_headers = [
-            'user-agent'    => self::$userAgent,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json',
-            'idempotency-key' => $idempotencyKey
-        ];
-
-        //json encode body
-        $_bodyJson = ApiHelper::serialize($body);
-
-        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
-
-        // Apply authorization to request
-        $this->getAuthManager('global')->apply($_httpRequest);
-
-        //call on-before Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
-        }
-
-        // and invoke the API call request to fetch the response
-        try {
-            $response = Request::post($_httpRequest->getQueryUrl(), $_httpRequest->getHeaders(), $_bodyJson);
-        } catch (\Unirest\Exception $ex) {
-            throw new ApiException($ex->getMessage(), $_httpRequest);
-        }
-
-
-        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
-
-        //call on-after Http callback
-        if ($this->getHttpCallBack() != null) {
-            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
-        }
-
-        //handle errors defined at the API level
-        $this->validateResponse($_httpResponse, $_httpRequest);
-        return ApiHelper::mapClass($_httpRequest, $_httpResponse, $response->body, 'GetPlanResponse');
+        return $this->execute($_reqBuilder, $_resHandler);
     }
 }
