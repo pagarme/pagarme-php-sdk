@@ -526,7 +526,8 @@ Response object for getting an invoice
                       "id": "id1"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name4",
               "quantity": null,
@@ -704,7 +705,8 @@ Response object for getting an invoice
                       "id": "id9"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name5",
               "quantity": null,
@@ -765,7 +767,8 @@ Response object for getting an invoice
                 "id": "id8"
               }
             ]
-          }
+          },
+          "boleto": null
         },
         "name": "name1",
         "quantity": null,
@@ -1052,7 +1055,8 @@ Response object for getting an invoice
                       "id": "id9"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name5",
               "quantity": null,
@@ -1276,7 +1280,8 @@ Response object for getting an invoice
                       "id": "id0"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name6",
               "quantity": null,
@@ -1468,7 +1473,8 @@ Response object for getting an invoice
                       "id": "id8"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name7",
               "quantity": null,
@@ -1560,7 +1566,8 @@ Response object for getting an invoice
                 "id": "id0"
               }
             ]
-          }
+          },
+          "boleto": null
         },
         "name": "name2",
         "quantity": null,
@@ -1621,7 +1628,8 @@ Response object for getting an invoice
           "id": "id5"
         }
       ]
-    }
+    },
+    "boleto": null
   },
   "cycle": null,
   "shipping": {

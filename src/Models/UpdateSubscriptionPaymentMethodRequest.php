@@ -38,6 +38,11 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
     private $cardToken;
 
     /**
+     * @var CreateSubscriptionBoletoRequest|null
+     */
+    private $boleto;
+
+    /**
      * @param string $paymentMethod
      * @param string $cardId
      * @param CreateCardRequest $card
@@ -133,6 +138,26 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Boleto.
+     * Information about fines and interest on the "boleto" used from payment
+     */
+    public function getBoleto(): ?CreateSubscriptionBoletoRequest
+    {
+        return $this->boleto;
+    }
+
+    /**
+     * Sets Boleto.
+     * Information about fines and interest on the "boleto" used from payment
+     *
+     * @maps boleto
+     */
+    public function setBoleto(?CreateSubscriptionBoletoRequest $boleto): void
+    {
+        $this->boleto = $boleto;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -149,6 +174,9 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
         $json['card']           = $this->card;
         if (isset($this->cardToken)) {
             $json['card_token'] = $this->cardToken;
+        }
+        if (isset($this->boleto)) {
+            $json['boleto']     = $this->boleto;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

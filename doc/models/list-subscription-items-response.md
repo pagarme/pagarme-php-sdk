@@ -500,7 +500,8 @@ Response model for listing subscription items
                     "id": "id3"
                   }
                 ]
-              }
+              },
+              "boleto": null
             },
             "name": "name8",
             "quantity": null,
@@ -763,7 +764,8 @@ Response model for listing subscription items
                     "id": "id5"
                   }
                 ]
-              }
+              },
+              "boleto": null
             },
             "name": "name9",
             "quantity": null,
@@ -824,7 +826,8 @@ Response model for listing subscription items
               "id": "id2"
             }
           ]
-        }
+        },
+        "boleto": null
       },
       "name": "name5",
       "quantity": null,
@@ -1195,7 +1198,8 @@ Response model for listing subscription items
                     "id": "id5"
                   }
                 ]
-              }
+              },
+              "boleto": null
             },
             "name": "name9",
             "quantity": null,
@@ -1678,7 +1682,8 @@ Response model for listing subscription items
                     "id": "id4"
                   }
                 ]
-              }
+              },
+              "boleto": null
             },
             "name": "name0",
             "quantity": null,
@@ -2033,7 +2038,8 @@ Response model for listing subscription items
                     "id": "id6"
                   }
                 ]
-              }
+              },
+              "boleto": null
             },
             "name": "name1",
             "quantity": null,
@@ -2113,7 +2119,8 @@ Response model for listing subscription items
               "id": "id4"
             }
           ]
-        }
+        },
+        "boleto": null
       },
       "name": "name6",
       "quantity": null,

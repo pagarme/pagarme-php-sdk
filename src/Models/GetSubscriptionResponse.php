@@ -156,6 +156,11 @@ class GetSubscriptionResponse implements \JsonSerializable
     private $split;
 
     /**
+     * @var GetSubscriptionBoletoResponse|null
+     */
+    private $boleto;
+
+    /**
      * @param string $id
      * @param string $code
      * @param \DateTime $startAt
@@ -777,6 +782,24 @@ class GetSubscriptionResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Boleto.
+     */
+    public function getBoleto(): ?GetSubscriptionBoletoResponse
+    {
+        return $this->boleto;
+    }
+
+    /**
+     * Sets Boleto.
+     *
+     * @maps boleto
+     */
+    public function setBoleto(?GetSubscriptionBoletoResponse $boleto): void
+    {
+        $this->boleto = $boleto;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -832,6 +855,9 @@ class GetSubscriptionResponse implements \JsonSerializable
             $json['boleto_due_days']    = $this->boletoDueDays;
         }
         $json['split']                  = $this->split;
+        if (isset($this->boleto)) {
+            $json['boleto']             = $this->boleto;
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

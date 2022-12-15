@@ -179,6 +179,11 @@ class CreateSubscriptionRequest implements \JsonSerializable
     private $split;
 
     /**
+     * @var CreateSubscriptionBoletoRequest|null
+     */
+    private $boleto;
+
+    /**
      * @param CreateCustomerRequest $customer
      * @param CreateCardRequest $card
      * @param string $code
@@ -908,6 +913,26 @@ class CreateSubscriptionRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Boleto.
+     * Information about fines and interest on the "boleto" used from payment
+     */
+    public function getBoleto(): ?CreateSubscriptionBoletoRequest
+    {
+        return $this->boleto;
+    }
+
+    /**
+     * Sets Boleto.
+     * Information about fines and interest on the "boleto" used from payment
+     *
+     * @maps boleto
+     */
+    public function setBoleto(?CreateSubscriptionBoletoRequest $boleto): void
+    {
+        $this->boleto = $boleto;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -980,6 +1005,9 @@ class CreateSubscriptionRequest implements \JsonSerializable
         }
         if (isset($this->split)) {
             $json['split']                  = $this->split;
+        }
+        if (isset($this->boleto)) {
+            $json['boleto']                 = $this->boleto;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
