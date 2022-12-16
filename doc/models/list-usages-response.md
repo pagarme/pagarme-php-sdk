@@ -635,7 +635,8 @@ Response model for listing the usages from a subscription item
                       "id": "id7"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name4",
               "quantity": null,
@@ -710,7 +711,8 @@ Response model for listing the usages from a subscription item
                 "id": "id7"
               }
             ]
-          }
+          },
+          "boleto": null
         },
         "name": "name1",
         "quantity": null,
@@ -1230,7 +1232,8 @@ Response model for listing the usages from a subscription item
                       "id": "id5"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name5",
               "quantity": null,
@@ -1481,7 +1484,8 @@ Response model for listing the usages from a subscription item
                       "id": "id6"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name6",
               "quantity": null,
@@ -1542,7 +1546,8 @@ Response model for listing the usages from a subscription item
                 "id": "id9"
               }
             ]
-          }
+          },
+          "boleto": null
         },
         "name": "name2",
         "quantity": null,

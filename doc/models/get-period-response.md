@@ -396,7 +396,8 @@ Response object for getting a period
                       "id": "id1"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name4",
               "quantity": null,
@@ -574,7 +575,8 @@ Response object for getting a period
                       "id": "id9"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name5",
               "quantity": null,
@@ -635,7 +637,8 @@ Response object for getting a period
                 "id": "id8"
               }
             ]
-          }
+          },
+          "boleto": null
         },
         "name": "name1",
         "quantity": null,
@@ -922,7 +925,8 @@ Response object for getting a period
                       "id": "id9"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name5",
               "quantity": null,
@@ -1146,7 +1150,8 @@ Response object for getting a period
                       "id": "id0"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name6",
               "quantity": null,
@@ -1338,7 +1343,8 @@ Response object for getting a period
                       "id": "id8"
                     }
                   ]
-                }
+                },
+                "boleto": null
               },
               "name": "name7",
               "quantity": null,
@@ -1430,7 +1436,8 @@ Response object for getting a period
                 "id": "id0"
               }
             ]
-          }
+          },
+          "boleto": null
         },
         "name": "name2",
         "quantity": null,
@@ -1491,7 +1498,8 @@ Response object for getting a period
           "id": "id5"
         }
       ]
-    }
+    },
+    "boleto": null
   },
   "status": "status8",
   "duration": 112,

@@ -600,7 +600,8 @@ Response object for getting a usage
                   "id": "id3"
                 }
               ]
-            }
+            },
+            "boleto": null
           },
           "name": "name5",
           "quantity": null,
@@ -893,7 +894,8 @@ Response object for getting a usage
                   "id": "id2"
                 }
               ]
-            }
+            },
+            "boleto": null
           },
           "name": "name6",
           "quantity": null,
@@ -1248,7 +1250,8 @@ Response object for getting a usage
                   "id": "id4"
                 }
               ]
-            }
+            },
+            "boleto": null
           },
           "name": "name7",
           "quantity": null,
@@ -1328,7 +1331,8 @@ Response object for getting a usage
             "id": "id0"
           }
         ]
-      }
+      },
+      "boleto": null
     },
     "name": "name6",
     "quantity": null,
