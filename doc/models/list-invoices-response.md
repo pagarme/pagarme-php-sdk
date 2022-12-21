@@ -501,7 +501,8 @@ Response object for listing invoices
                           "id": "id2"
                         }
                       ]
-                    }
+                    },
+                    "boleto": null
                   },
                   "name": "name3",
                   "quantity": null,
@@ -691,7 +692,8 @@ Response object for listing invoices
                           "id": "id0"
                         }
                       ]
-                    }
+                    },
+                    "boleto": null
                   },
                   "name": "name4",
                   "quantity": null,
@@ -752,7 +754,8 @@ Response object for listing invoices
                     "id": "id3"
                   }
                 ]
-              }
+              },
+              "boleto": null
             },
             "name": "name8",
             "quantity": null,
@@ -1073,7 +1076,8 @@ Response object for listing invoices
                           "id": "id4"
                         }
                       ]
-                    }
+                    },
+                    "boleto": null
                   },
                   "name": "name2",
                   "quantity": null,
@@ -1136,7 +1140,8 @@ Response object for listing invoices
                     "id": "id5"
                   }
                 ]
-              }
+              },
+              "boleto": null
             },
             "name": "name9",
             "quantity": null,
@@ -1197,7 +1202,8 @@ Response object for listing invoices
               "id": "id2"
             }
           ]
-        }
+        },
+        "boleto": null
       },
       "cycle": null,
       "shipping": {
@@ -1754,7 +1760,8 @@ Response object for listing invoices
                           "id": "id4"
                         }
                       ]
-                    }
+                    },
+                    "boleto": null
                   },
                   "name": "name2",
                   "quantity": null,
@@ -1817,7 +1824,8 @@ Response object for listing invoices
                     "id": "id5"
                   }
                 ]
-              }
+              },
+              "boleto": null
             },
             "name": "name9",
             "quantity": null,
@@ -2146,7 +2154,8 @@ Response object for listing invoices
                           "id": "id3"
                         }
                       ]
-                    }
+                    },
+                    "boleto": null
                   },
                   "name": "name1",
                   "quantity": null,
@@ -2357,7 +2366,8 @@ Response object for listing invoices
                           "id": "id4"
                         }
                       ]
-                    }
+                    },
+                    "boleto": null
                   },
                   "name": "name2",
                   "quantity": null,
@@ -2550,7 +2560,8 @@ Response object for listing invoices
                           "id": "id2"
                         }
                       ]
-                    }
+                    },
+                    "boleto": null
                   },
                   "name": "name3",
                   "quantity": null,
@@ -2642,7 +2653,8 @@ Response object for listing invoices
                     "id": "id4"
                   }
                 ]
-              }
+              },
+              "boleto": null
             },
             "name": "name0",
             "quantity": null,
@@ -2967,7 +2979,8 @@ Response object for listing invoices
                           "id": "id5"
                         }
                       ]
-                    }
+                    },
+                    "boleto": null
                   },
                   "name": "name0",
                   "quantity": null,
@@ -3157,7 +3170,8 @@ Response object for listing invoices
                           "id": "id3"
                         }
                       ]
-                    }
+                    },
+                    "boleto": null
                   },
                   "name": "name1",
                   "quantity": null,
@@ -3218,7 +3232,8 @@ Response object for listing invoices
                     "id": "id6"
                   }
                 ]
-              }
+              },
+              "boleto": null
             },
             "name": "name1",
             "quantity": null,
@@ -3298,7 +3313,8 @@ Response object for listing invoices
               "id": "id4"
             }
           ]
-        }
+        },
+        "boleto": null
       },
       "cycle": null,
       "shipping": {

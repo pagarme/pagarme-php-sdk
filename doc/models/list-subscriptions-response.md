@@ -387,7 +387,8 @@ Response object for listing subscriptions
                         "id": "id2"
                       }
                     ]
-                  }
+                  },
+                  "boleto": null
                 },
                 "name": "name5",
                 "quantity": null,
@@ -587,7 +588,8 @@ Response object for listing subscriptions
                         "id": "id4"
                       }
                     ]
-                  }
+                  },
+                  "boleto": null
                 },
                 "name": "name6",
                 "quantity": null,
@@ -648,7 +650,8 @@ Response object for listing subscriptions
                   "id": "id9"
                 }
               ]
-            }
+            },
+            "boleto": null
           },
           "name": "name2",
           "quantity": null,
@@ -956,7 +959,8 @@ Response object for listing subscriptions
                         "id": "id4"
                       }
                     ]
-                  }
+                  },
+                  "boleto": null
                 },
                 "name": "name6",
                 "quantity": null,
@@ -1158,7 +1162,8 @@ Response object for listing subscriptions
                         "id": "id3"
                       }
                     ]
-                  }
+                  },
+                  "boleto": null
                 },
                 "name": "name7",
                 "quantity": null,
@@ -1350,7 +1355,8 @@ Response object for listing subscriptions
                         "id": "id5"
                       }
                     ]
-                  }
+                  },
+                  "boleto": null
                 },
                 "name": "name8",
                 "quantity": null,
@@ -1430,7 +1436,8 @@ Response object for listing subscriptions
                   "id": "id1"
                 }
               ]
-            }
+            },
+            "boleto": null
           },
           "name": "name3",
           "quantity": null,
@@ -1490,7 +1497,8 @@ Response object for listing subscriptions
             "id": "id6"
           }
         ]
-      }
+      },
+      "boleto": null
     },
     {
       "id": "id6",
@@ -1841,7 +1849,8 @@ Response object for listing subscriptions
                         "id": "id4"
                       }
                     ]
-                  }
+                  },
+                  "boleto": null
                 },
                 "name": "name6",
                 "quantity": null,
@@ -2043,7 +2052,8 @@ Response object for listing subscriptions
                         "id": "id3"
                       }
                     ]
-                  }
+                  },
+                  "boleto": null
                 },
                 "name": "name7",
                 "quantity": null,
@@ -2235,7 +2245,8 @@ Response object for listing subscriptions
                         "id": "id5"
                       }
                     ]
-                  }
+                  },
+                  "boleto": null
                 },
                 "name": "name8",
                 "quantity": null,
@@ -2315,7 +2326,8 @@ Response object for listing subscriptions
                   "id": "id1"
                 }
               ]
-            }
+            },
+            "boleto": null
           },
           "name": "name3",
           "quantity": null,
@@ -2657,7 +2669,8 @@ Response object for listing subscriptions
                         "id": "id3"
                       }
                     ]
-                  }
+                  },
+                  "boleto": null
                 },
                 "name": "name7",
                 "quantity": null,
@@ -2732,7 +2745,8 @@ Response object for listing subscriptions
                   "id": "id0"
                 }
               ]
-            }
+            },
+            "boleto": null
           },
           "name": "name4",
           "quantity": null,
@@ -3057,7 +3071,8 @@ Response object for listing subscriptions
                         "id": "id5"
                       }
                     ]
-                  }
+                  },
+                  "boleto": null
                 },
                 "name": "name8",
                 "quantity": null,
@@ -3257,7 +3272,8 @@ Response object for listing subscriptions
                         "id": "id7"
                       }
                     ]
-                  }
+                  },
+                  "boleto": null
                 },
                 "name": "name9",
                 "quantity": null,
@@ -3318,7 +3334,8 @@ Response object for listing subscriptions
                   "id": "id2"
                 }
               ]
-            }
+            },
+            "boleto": null
           },
           "name": "name5",
           "quantity": null,
@@ -3399,7 +3416,8 @@ Response object for listing subscriptions
             "id": "id8"
           }
         ]
-      }
+      },
+      "boleto": null
     }
   ],
   "paging": {

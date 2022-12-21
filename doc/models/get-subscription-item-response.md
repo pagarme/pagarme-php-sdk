@@ -507,7 +507,8 @@
                 "id": "id8"
               }
             ]
-          }
+          },
+          "boleto": null
         },
         "name": "name1",
         "quantity": null,
@@ -960,7 +961,8 @@
                 "id": "id0"
               }
             ]
-          }
+          },
+          "boleto": null
         },
         "name": "name2",
         "quantity": null,
@@ -1021,7 +1023,8 @@
           "id": "id5"
         }
       ]
-    }
+    },
+    "boleto": null
   },
   "name": "name0",
   "quantity": null,
