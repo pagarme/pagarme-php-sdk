@@ -15,16 +15,16 @@ Response object for getting a private label transaction
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `statementDescriptor` | `string` | Required | Text that will appear on the credit card's statement | getStatementDescriptor(): string | setStatementDescriptor(string statementDescriptor): void |
-| `acquirerName` | `string` | Required | Acquirer name | getAcquirerName(): string | setAcquirerName(string acquirerName): void |
-| `acquirerAffiliationCode` | `string` | Required | Aquirer affiliation code | getAcquirerAffiliationCode(): string | setAcquirerAffiliationCode(string acquirerAffiliationCode): void |
-| `acquirerTid` | `string` | Required | Acquirer TID | getAcquirerTid(): string | setAcquirerTid(string acquirerTid): void |
-| `acquirerNsu` | `string` | Required | Acquirer NSU | getAcquirerNsu(): string | setAcquirerNsu(string acquirerNsu): void |
-| `acquirerAuthCode` | `string` | Required | Acquirer authorization code | getAcquirerAuthCode(): string | setAcquirerAuthCode(string acquirerAuthCode): void |
-| `operationType` | `string` | Required | Operation type | getOperationType(): string | setOperationType(string operationType): void |
-| `card` | [`GetCardResponse`](../../doc/models/get-card-response.md) | Required | Card data | getCard(): GetCardResponse | setCard(GetCardResponse card): void |
-| `acquirerMessage` | `string` | Required | Acquirer message | getAcquirerMessage(): string | setAcquirerMessage(string acquirerMessage): void |
-| `acquirerReturnCode` | `string` | Required | Acquirer Return Code | getAcquirerReturnCode(): string | setAcquirerReturnCode(string acquirerReturnCode): void |
+| `statementDescriptor` | `?string` | Required | Text that will appear on the credit card's statement | getStatementDescriptor(): ?string | setStatementDescriptor(?string statementDescriptor): void |
+| `acquirerName` | `?string` | Required | Acquirer name | getAcquirerName(): ?string | setAcquirerName(?string acquirerName): void |
+| `acquirerAffiliationCode` | `?string` | Required | Aquirer affiliation code | getAcquirerAffiliationCode(): ?string | setAcquirerAffiliationCode(?string acquirerAffiliationCode): void |
+| `acquirerTid` | `?string` | Required | Acquirer TID | getAcquirerTid(): ?string | setAcquirerTid(?string acquirerTid): void |
+| `acquirerNsu` | `?string` | Required | Acquirer NSU | getAcquirerNsu(): ?string | setAcquirerNsu(?string acquirerNsu): void |
+| `acquirerAuthCode` | `?string` | Required | Acquirer authorization code | getAcquirerAuthCode(): ?string | setAcquirerAuthCode(?string acquirerAuthCode): void |
+| `operationType` | `?string` | Required | Operation type | getOperationType(): ?string | setOperationType(?string operationType): void |
+| `card` | [`?GetCardResponse`](../../doc/models/get-card-response.md) | Required | Card data | getCard(): ?GetCardResponse | setCard(?GetCardResponse card): void |
+| `acquirerMessage` | `?string` | Required | Acquirer message | getAcquirerMessage(): ?string | setAcquirerMessage(?string acquirerMessage): void |
+| `acquirerReturnCode` | `?string` | Required | Acquirer Return Code | getAcquirerReturnCode(): ?string | setAcquirerReturnCode(?string acquirerReturnCode): void |
 | `installments` | `?int` | Optional | Number of installments | getInstallments(): ?int | setInstallments(?int installments): void |
 
 ## Example (as JSON)
@@ -73,7 +73,6 @@ Response object for getting a private label transaction
   "acquirer_message": "acquirer_message0",
   "acquirer_return_code": "acquirer_return_code8",
   "installments": null,
-  "transaction_type": "private_label",
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
@@ -101,6 +100,7 @@ Response object for getting a private label transaction
     }
   ],
   "next_attempt": null,
+  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",

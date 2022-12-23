@@ -16,46 +16,24 @@ namespace PagarmeApiSDKLib\Exceptions;
 class ErrorException extends ApiException
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $messageProperty;
 
     /**
-     * @var array
+     * @var array|null
      */
     private $errors;
 
     /**
-     * @var array
+     * @var array|null
      */
     private $request;
 
     /**
-     * @param string $reason
-     * @param \PagarmeApiSDKLib\Http\HttpRequest $request
-     * @param \PagarmeApiSDKLib\Http\HttpResponse $response
-     * @param string $messageProperty
-     * @param array $errors
-     * @param array $request
-     */
-    public function __construct(
-        string $reason,
-        \PagarmeApiSDKLib\Http\HttpRequest $request,
-        \PagarmeApiSDKLib\Http\HttpResponse $response,
-        string $messageProperty,
-        array $errors,
-        array $request
-    ) {
-        parent::__construct($reason, $request, $response);
-        $this->messageProperty = $messageProperty;
-        $this->errors = $errors;
-        $this->request = $request;
-    }
-
-    /**
      * Returns Message Property.
      */
-    public function getMessageProperty(): string
+    public function getMessageProperty(): ?string
     {
         return $this->messageProperty;
     }
@@ -63,10 +41,9 @@ class ErrorException extends ApiException
     /**
      * Sets Message Property.
      *
-     * @required
      * @maps message
      */
-    public function setMessageProperty(string $messageProperty): void
+    public function setMessageProperty(?string $messageProperty): void
     {
         $this->messageProperty = $messageProperty;
     }
@@ -74,7 +51,7 @@ class ErrorException extends ApiException
     /**
      * Returns Errors.
      */
-    public function getErrors(): array
+    public function getErrors(): ?array
     {
         return $this->errors;
     }
@@ -82,10 +59,9 @@ class ErrorException extends ApiException
     /**
      * Sets Errors.
      *
-     * @required
      * @maps errors
      */
-    public function setErrors(array $errors): void
+    public function setErrors(?array $errors): void
     {
         $this->errors = $errors;
     }
@@ -93,7 +69,7 @@ class ErrorException extends ApiException
     /**
      * Returns Request.
      */
-    public function getRequest(): array
+    public function getRequest(): ?array
     {
         return $this->request;
     }
@@ -101,10 +77,9 @@ class ErrorException extends ApiException
     /**
      * Sets Request.
      *
-     * @required
      * @maps request
      */
-    public function setRequest(array $request): void
+    public function setRequest(?array $request): void
     {
         $this->request = $request;
     }

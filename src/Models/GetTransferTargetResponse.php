@@ -15,29 +15,19 @@ use stdClass;
 class GetTransferTargetResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $targetId;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @param string $targetId
-     * @param string $type
-     */
-    public function __construct(string $targetId, string $type)
-    {
-        $this->targetId = $targetId;
-        $this->type = $type;
-    }
-
-    /**
      * Returns Target Id.
      */
-    public function getTargetId(): string
+    public function getTargetId(): ?string
     {
         return $this->targetId;
     }
@@ -45,10 +35,9 @@ class GetTransferTargetResponse implements \JsonSerializable
     /**
      * Sets Target Id.
      *
-     * @required
      * @maps target_id
      */
-    public function setTargetId(string $targetId): void
+    public function setTargetId(?string $targetId): void
     {
         $this->targetId = $targetId;
     }
@@ -56,7 +45,7 @@ class GetTransferTargetResponse implements \JsonSerializable
     /**
      * Returns Type.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -64,10 +53,9 @@ class GetTransferTargetResponse implements \JsonSerializable
     /**
      * Sets Type.
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }

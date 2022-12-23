@@ -15,40 +15,25 @@ use stdClass;
 class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $statementDescriptor;
 
     /**
-     * @var GetCheckoutCardInstallmentOptionsResponse[]
+     * @var GetCheckoutCardInstallmentOptionsResponse[]|null
      */
     private $installments;
 
     /**
-     * @var GetPaymentAuthenticationResponse
+     * @var GetPaymentAuthenticationResponse|null
      */
     private $authentication;
-
-    /**
-     * @param string $statementDescriptor
-     * @param GetCheckoutCardInstallmentOptionsResponse[] $installments
-     * @param GetPaymentAuthenticationResponse $authentication
-     */
-    public function __construct(
-        string $statementDescriptor,
-        array $installments,
-        GetPaymentAuthenticationResponse $authentication
-    ) {
-        $this->statementDescriptor = $statementDescriptor;
-        $this->installments = $installments;
-        $this->authentication = $authentication;
-    }
 
     /**
      * Returns Statement Descriptor.
      * Descrição na fatura
      */
-    public function getStatementDescriptor(): string
+    public function getStatementDescriptor(): ?string
     {
         return $this->statementDescriptor;
     }
@@ -57,10 +42,9 @@ class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
      * Sets Statement Descriptor.
      * Descrição na fatura
      *
-     * @required
      * @maps statementDescriptor
      */
-    public function setStatementDescriptor(string $statementDescriptor): void
+    public function setStatementDescriptor(?string $statementDescriptor): void
     {
         $this->statementDescriptor = $statementDescriptor;
     }
@@ -69,9 +53,9 @@ class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
      * Returns Installments.
      * Parcelas
      *
-     * @return GetCheckoutCardInstallmentOptionsResponse[]
+     * @return GetCheckoutCardInstallmentOptionsResponse[]|null
      */
-    public function getInstallments(): array
+    public function getInstallments(): ?array
     {
         return $this->installments;
     }
@@ -80,12 +64,11 @@ class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
      * Sets Installments.
      * Parcelas
      *
-     * @required
      * @maps installments
      *
-     * @param GetCheckoutCardInstallmentOptionsResponse[] $installments
+     * @param GetCheckoutCardInstallmentOptionsResponse[]|null $installments
      */
-    public function setInstallments(array $installments): void
+    public function setInstallments(?array $installments): void
     {
         $this->installments = $installments;
     }
@@ -94,7 +77,7 @@ class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
      * Returns Authentication.
      * Payment Authentication response
      */
-    public function getAuthentication(): GetPaymentAuthenticationResponse
+    public function getAuthentication(): ?GetPaymentAuthenticationResponse
     {
         return $this->authentication;
     }
@@ -103,10 +86,9 @@ class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
      * Sets Authentication.
      * Payment Authentication response
      *
-     * @required
      * @maps authentication
      */
-    public function setAuthentication(GetPaymentAuthenticationResponse $authentication): void
+    public function setAuthentication(?GetPaymentAuthenticationResponse $authentication): void
     {
         $this->authentication = $authentication;
     }

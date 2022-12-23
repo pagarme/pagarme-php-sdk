@@ -18,30 +18,20 @@ use stdClass;
 class GetGatewayResponseResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $code;
 
     /**
-     * @var GetGatewayErrorResponse[]
+     * @var GetGatewayErrorResponse[]|null
      */
     private $errors;
-
-    /**
-     * @param string $code
-     * @param GetGatewayErrorResponse[] $errors
-     */
-    public function __construct(string $code, array $errors)
-    {
-        $this->code = $code;
-        $this->errors = $errors;
-    }
 
     /**
      * Returns Code.
      * The error code
      */
-    public function getCode(): string
+    public function getCode(): ?string
     {
         return $this->code;
     }
@@ -50,10 +40,9 @@ class GetGatewayResponseResponse implements \JsonSerializable
      * Sets Code.
      * The error code
      *
-     * @required
      * @maps code
      */
-    public function setCode(string $code): void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
@@ -62,9 +51,9 @@ class GetGatewayResponseResponse implements \JsonSerializable
      * Returns Errors.
      * The gateway response errors list
      *
-     * @return GetGatewayErrorResponse[]
+     * @return GetGatewayErrorResponse[]|null
      */
-    public function getErrors(): array
+    public function getErrors(): ?array
     {
         return $this->errors;
     }
@@ -73,12 +62,11 @@ class GetGatewayResponseResponse implements \JsonSerializable
      * Sets Errors.
      * The gateway response errors list
      *
-     * @required
      * @maps errors
      *
-     * @param GetGatewayErrorResponse[] $errors
+     * @param GetGatewayErrorResponse[]|null $errors
      */
-    public function setErrors(array $errors): void
+    public function setErrors(?array $errors): void
     {
         $this->errors = $errors;
     }

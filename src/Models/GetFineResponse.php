@@ -18,37 +18,25 @@ use stdClass;
 class GetFineResponse implements \JsonSerializable
 {
     /**
-     * @var int
+     * @var int|null
      */
     private $days;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $amount;
-
-    /**
-     * @param int $days
-     * @param string $type
-     * @param int $amount
-     */
-    public function __construct(int $days, string $type, int $amount)
-    {
-        $this->days = $days;
-        $this->type = $type;
-        $this->amount = $amount;
-    }
 
     /**
      * Returns Days.
      * Days
      */
-    public function getDays(): int
+    public function getDays(): ?int
     {
         return $this->days;
     }
@@ -57,10 +45,9 @@ class GetFineResponse implements \JsonSerializable
      * Sets Days.
      * Days
      *
-     * @required
      * @maps days
      */
-    public function setDays(int $days): void
+    public function setDays(?int $days): void
     {
         $this->days = $days;
     }
@@ -69,7 +56,7 @@ class GetFineResponse implements \JsonSerializable
      * Returns Type.
      * Type
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -78,10 +65,9 @@ class GetFineResponse implements \JsonSerializable
      * Sets Type.
      * Type
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -90,7 +76,7 @@ class GetFineResponse implements \JsonSerializable
      * Returns Amount.
      * Amount
      */
-    public function getAmount(): int
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
@@ -99,10 +85,9 @@ class GetFineResponse implements \JsonSerializable
      * Sets Amount.
      * Amount
      *
-     * @required
      * @maps amount
      */
-    public function setAmount(int $amount): void
+    public function setAmount(?int $amount): void
     {
         $this->amount = $amount;
     }

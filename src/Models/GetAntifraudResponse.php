@@ -15,55 +15,34 @@ use stdClass;
 class GetAntifraudResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $returnCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $returnMessage;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $providerName;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $score;
 
     /**
-     * @param string $status
-     * @param string $returnCode
-     * @param string $returnMessage
-     * @param string $providerName
-     * @param string $score
-     */
-    public function __construct(
-        string $status,
-        string $returnCode,
-        string $returnMessage,
-        string $providerName,
-        string $score
-    ) {
-        $this->status = $status;
-        $this->returnCode = $returnCode;
-        $this->returnMessage = $returnMessage;
-        $this->providerName = $providerName;
-        $this->score = $score;
-    }
-
-    /**
      * Returns Status.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -71,10 +50,9 @@ class GetAntifraudResponse implements \JsonSerializable
     /**
      * Sets Status.
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -82,7 +60,7 @@ class GetAntifraudResponse implements \JsonSerializable
     /**
      * Returns Return Code.
      */
-    public function getReturnCode(): string
+    public function getReturnCode(): ?string
     {
         return $this->returnCode;
     }
@@ -90,10 +68,9 @@ class GetAntifraudResponse implements \JsonSerializable
     /**
      * Sets Return Code.
      *
-     * @required
      * @maps return_code
      */
-    public function setReturnCode(string $returnCode): void
+    public function setReturnCode(?string $returnCode): void
     {
         $this->returnCode = $returnCode;
     }
@@ -101,7 +78,7 @@ class GetAntifraudResponse implements \JsonSerializable
     /**
      * Returns Return Message.
      */
-    public function getReturnMessage(): string
+    public function getReturnMessage(): ?string
     {
         return $this->returnMessage;
     }
@@ -109,10 +86,9 @@ class GetAntifraudResponse implements \JsonSerializable
     /**
      * Sets Return Message.
      *
-     * @required
      * @maps return_message
      */
-    public function setReturnMessage(string $returnMessage): void
+    public function setReturnMessage(?string $returnMessage): void
     {
         $this->returnMessage = $returnMessage;
     }
@@ -120,7 +96,7 @@ class GetAntifraudResponse implements \JsonSerializable
     /**
      * Returns Provider Name.
      */
-    public function getProviderName(): string
+    public function getProviderName(): ?string
     {
         return $this->providerName;
     }
@@ -128,10 +104,9 @@ class GetAntifraudResponse implements \JsonSerializable
     /**
      * Sets Provider Name.
      *
-     * @required
      * @maps provider_name
      */
-    public function setProviderName(string $providerName): void
+    public function setProviderName(?string $providerName): void
     {
         $this->providerName = $providerName;
     }
@@ -139,7 +114,7 @@ class GetAntifraudResponse implements \JsonSerializable
     /**
      * Returns Score.
      */
-    public function getScore(): string
+    public function getScore(): ?string
     {
         return $this->score;
     }
@@ -147,10 +122,9 @@ class GetAntifraudResponse implements \JsonSerializable
     /**
      * Sets Score.
      *
-     * @required
      * @maps score
      */
-    public function setScore(string $score): void
+    public function setScore(?string $score): void
     {
         $this->score = $score;
     }

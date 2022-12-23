@@ -19,95 +19,59 @@ use stdClass;
 class GetPeriodResponse implements \JsonSerializable
 {
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $startAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $endAt;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $billingAt;
 
     /**
-     * @var GetSubscriptionResponse
+     * @var GetSubscriptionResponse|null
      */
     private $subscription;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $duration;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $createdAt;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $updatedAt;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $cycle;
 
     /**
-     * @param \DateTime $startAt
-     * @param \DateTime $endAt
-     * @param string $id
-     * @param \DateTime $billingAt
-     * @param GetSubscriptionResponse $subscription
-     * @param string $status
-     * @param int $duration
-     * @param string $createdAt
-     * @param string $updatedAt
-     * @param int $cycle
-     */
-    public function __construct(
-        \DateTime $startAt,
-        \DateTime $endAt,
-        string $id,
-        \DateTime $billingAt,
-        GetSubscriptionResponse $subscription,
-        string $status,
-        int $duration,
-        string $createdAt,
-        string $updatedAt,
-        int $cycle
-    ) {
-        $this->startAt = $startAt;
-        $this->endAt = $endAt;
-        $this->id = $id;
-        $this->billingAt = $billingAt;
-        $this->subscription = $subscription;
-        $this->status = $status;
-        $this->duration = $duration;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-        $this->cycle = $cycle;
-    }
-
-    /**
      * Returns Start At.
      */
-    public function getStartAt(): \DateTime
+    public function getStartAt(): ?\DateTime
     {
         return $this->startAt;
     }
@@ -115,11 +79,10 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Sets Start At.
      *
-     * @required
      * @maps start_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setStartAt(\DateTime $startAt): void
+    public function setStartAt(?\DateTime $startAt): void
     {
         $this->startAt = $startAt;
     }
@@ -127,7 +90,7 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Returns End At.
      */
-    public function getEndAt(): \DateTime
+    public function getEndAt(): ?\DateTime
     {
         return $this->endAt;
     }
@@ -135,11 +98,10 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Sets End At.
      *
-     * @required
      * @maps end_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setEndAt(\DateTime $endAt): void
+    public function setEndAt(?\DateTime $endAt): void
     {
         $this->endAt = $endAt;
     }
@@ -147,7 +109,7 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Returns Id.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -155,10 +117,9 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Sets Id.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -166,7 +127,7 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Returns Billing At.
      */
-    public function getBillingAt(): \DateTime
+    public function getBillingAt(): ?\DateTime
     {
         return $this->billingAt;
     }
@@ -174,11 +135,10 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Sets Billing At.
      *
-     * @required
      * @maps billing_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setBillingAt(\DateTime $billingAt): void
+    public function setBillingAt(?\DateTime $billingAt): void
     {
         $this->billingAt = $billingAt;
     }
@@ -186,7 +146,7 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Returns Subscription.
      */
-    public function getSubscription(): GetSubscriptionResponse
+    public function getSubscription(): ?GetSubscriptionResponse
     {
         return $this->subscription;
     }
@@ -194,10 +154,9 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Sets Subscription.
      *
-     * @required
      * @maps subscription
      */
-    public function setSubscription(GetSubscriptionResponse $subscription): void
+    public function setSubscription(?GetSubscriptionResponse $subscription): void
     {
         $this->subscription = $subscription;
     }
@@ -205,7 +164,7 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Returns Status.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -213,10 +172,9 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Sets Status.
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -224,7 +182,7 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Returns Duration.
      */
-    public function getDuration(): int
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
@@ -232,10 +190,9 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Sets Duration.
      *
-     * @required
      * @maps duration
      */
-    public function setDuration(int $duration): void
+    public function setDuration(?int $duration): void
     {
         $this->duration = $duration;
     }
@@ -243,7 +200,7 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Returns Created At.
      */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
@@ -251,10 +208,9 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Sets Created At.
      *
-     * @required
      * @maps created_at
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(?string $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -262,7 +218,7 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Returns Updated At.
      */
-    public function getUpdatedAt(): string
+    public function getUpdatedAt(): ?string
     {
         return $this->updatedAt;
     }
@@ -270,10 +226,9 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Sets Updated At.
      *
-     * @required
      * @maps updated_at
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(?string $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -281,7 +236,7 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Returns Cycle.
      */
-    public function getCycle(): int
+    public function getCycle(): ?int
     {
         return $this->cycle;
     }
@@ -289,10 +244,9 @@ class GetPeriodResponse implements \JsonSerializable
     /**
      * Sets Cycle.
      *
-     * @required
      * @maps cycle
      */
-    public function setCycle(int $cycle): void
+    public function setCycle(?int $cycle): void
     {
         $this->cycle = $cycle;
     }

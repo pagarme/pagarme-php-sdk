@@ -15,98 +15,39 @@ use stdClass;
 
 /**
  * Response object for getting a bank transfer transaction
- *
- * @discriminator transaction_type
- * @discriminatorType bank_transfer
  */
 class GetBankTransferTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $url;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $bankTid;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $bank;
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $paidAt;
+    private $paidAt = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $paidAmount;
-
-    /**
-     * @param string $gatewayId
-     * @param int $amount
-     * @param string $status
-     * @param bool $success
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param int $attemptCount
-     * @param int $maxAttempts
-     * @param GetSplitResponse[] $splits
-     * @param string $id
-     * @param GetGatewayResponseResponse $gatewayResponse
-     * @param GetAntifraudResponse $antifraudResponse
-     * @param GetSplitResponse[] $split
-     * @param string $url
-     * @param string $bankTid
-     * @param string $bank
-     */
-    public function __construct(
-        string $gatewayId,
-        int $amount,
-        string $status,
-        bool $success,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        int $attemptCount,
-        int $maxAttempts,
-        array $splits,
-        string $id,
-        GetGatewayResponseResponse $gatewayResponse,
-        GetAntifraudResponse $antifraudResponse,
-        array $split,
-        string $url,
-        string $bankTid,
-        string $bank
-    ) {
-        parent::__construct(
-            $gatewayId,
-            $amount,
-            $status,
-            $success,
-            $createdAt,
-            $updatedAt,
-            $attemptCount,
-            $maxAttempts,
-            $splits,
-            $id,
-            $gatewayResponse,
-            $antifraudResponse,
-            $split
-        );
-        $this->url = $url;
-        $this->bankTid = $bankTid;
-        $this->bank = $bank;
-    }
+    private $paidAmount = [];
 
     /**
      * Returns Url.
      * Payment url
      */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
@@ -115,10 +56,9 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Sets Url.
      * Payment url
      *
-     * @required
      * @maps url
      */
-    public function setUrl(string $url): void
+    public function setUrl(?string $url): void
     {
         $this->url = $url;
     }
@@ -127,7 +67,7 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Returns Bank Tid.
      * Transaction identifier for the bank
      */
-    public function getBankTid(): string
+    public function getBankTid(): ?string
     {
         return $this->bankTid;
     }
@@ -136,10 +76,9 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Sets Bank Tid.
      * Transaction identifier for the bank
      *
-     * @required
      * @maps bank_tid
      */
-    public function setBankTid(string $bankTid): void
+    public function setBankTid(?string $bankTid): void
     {
         $this->bankTid = $bankTid;
     }
@@ -148,7 +87,7 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Returns Bank.
      * Bank
      */
-    public function getBank(): string
+    public function getBank(): ?string
     {
         return $this->bank;
     }
@@ -157,10 +96,9 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Sets Bank.
      * Bank
      *
-     * @required
      * @maps bank
      */
-    public function setBank(string $bank): void
+    public function setBank(?string $bank): void
     {
         $this->bank = $bank;
     }
@@ -171,7 +109,10 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      */
     public function getPaidAt(): ?\DateTime
     {
-        return $this->paidAt;
+        if (count($this->paidAt) == 0) {
+            return null;
+        }
+        return $this->paidAt['value'];
     }
 
     /**
@@ -183,7 +124,16 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      */
     public function setPaidAt(?\DateTime $paidAt): void
     {
-        $this->paidAt = $paidAt;
+        $this->paidAt['value'] = $paidAt;
+    }
+
+    /**
+     * Unsets Paid At.
+     * Payment date
+     */
+    public function unsetPaidAt(): void
+    {
+        $this->paidAt = [];
     }
 
     /**
@@ -192,7 +142,10 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      */
     public function getPaidAmount(): ?int
     {
-        return $this->paidAmount;
+        if (count($this->paidAmount) == 0) {
+            return null;
+        }
+        return $this->paidAmount['value'];
     }
 
     /**
@@ -203,7 +156,16 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      */
     public function setPaidAmount(?int $paidAmount): void
     {
-        $this->paidAmount = $paidAmount;
+        $this->paidAmount['value'] = $paidAmount;
+    }
+
+    /**
+     * Unsets Paid Amount.
+     * Paid amount
+     */
+    public function unsetPaidAmount(): void
+    {
+        $this->paidAmount = [];
     }
 
     /**
@@ -221,14 +183,13 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
         $json['url']             = $this->url;
         $json['bank_tid']        = $this->bankTid;
         $json['bank']            = $this->bank;
-        if (isset($this->paidAt)) {
-            $json['paid_at']     = DateTimeHelper::toRfc3339DateTime($this->paidAt);
+        if (!empty($this->paidAt)) {
+            $json['paid_at']     = DateTimeHelper::toRfc3339DateTime($this->paidAt['value']);
         }
-        if (isset($this->paidAmount)) {
-            $json['paid_amount'] = $this->paidAmount;
+        if (!empty($this->paidAmount)) {
+            $json['paid_amount'] = $this->paidAmount['value'];
         }
         $json = array_merge($json, parent::jsonSerialize(true));
-        $json['transaction_type'] = $this->getTransactionType() ?? 'bank_transfer';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

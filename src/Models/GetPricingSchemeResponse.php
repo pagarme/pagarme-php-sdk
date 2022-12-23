@@ -18,46 +18,34 @@ use stdClass;
 class GetPricingSchemeResponse implements \JsonSerializable
 {
     /**
-     * @var int
+     * @var int|null
      */
     private $price;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $schemeType;
 
     /**
-     * @var GetPriceBracketResponse[]
+     * @var GetPriceBracketResponse[]|null
      */
     private $priceBrackets;
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $minimumPrice;
+    private $minimumPrice = [];
 
     /**
-     * @var float|null
+     * @var array
      */
-    private $percentage;
-
-    /**
-     * @param int $price
-     * @param string $schemeType
-     * @param GetPriceBracketResponse[] $priceBrackets
-     */
-    public function __construct(int $price, string $schemeType, array $priceBrackets)
-    {
-        $this->price = $price;
-        $this->schemeType = $schemeType;
-        $this->priceBrackets = $priceBrackets;
-    }
+    private $percentage = [];
 
     /**
      * Returns Price.
      */
-    public function getPrice(): int
+    public function getPrice(): ?int
     {
         return $this->price;
     }
@@ -65,10 +53,9 @@ class GetPricingSchemeResponse implements \JsonSerializable
     /**
      * Sets Price.
      *
-     * @required
      * @maps price
      */
-    public function setPrice(int $price): void
+    public function setPrice(?int $price): void
     {
         $this->price = $price;
     }
@@ -76,7 +63,7 @@ class GetPricingSchemeResponse implements \JsonSerializable
     /**
      * Returns Scheme Type.
      */
-    public function getSchemeType(): string
+    public function getSchemeType(): ?string
     {
         return $this->schemeType;
     }
@@ -84,10 +71,9 @@ class GetPricingSchemeResponse implements \JsonSerializable
     /**
      * Sets Scheme Type.
      *
-     * @required
      * @maps scheme_type
      */
-    public function setSchemeType(string $schemeType): void
+    public function setSchemeType(?string $schemeType): void
     {
         $this->schemeType = $schemeType;
     }
@@ -95,9 +81,9 @@ class GetPricingSchemeResponse implements \JsonSerializable
     /**
      * Returns Price Brackets.
      *
-     * @return GetPriceBracketResponse[]
+     * @return GetPriceBracketResponse[]|null
      */
-    public function getPriceBrackets(): array
+    public function getPriceBrackets(): ?array
     {
         return $this->priceBrackets;
     }
@@ -105,12 +91,11 @@ class GetPricingSchemeResponse implements \JsonSerializable
     /**
      * Sets Price Brackets.
      *
-     * @required
      * @maps price_brackets
      *
-     * @param GetPriceBracketResponse[] $priceBrackets
+     * @param GetPriceBracketResponse[]|null $priceBrackets
      */
-    public function setPriceBrackets(array $priceBrackets): void
+    public function setPriceBrackets(?array $priceBrackets): void
     {
         $this->priceBrackets = $priceBrackets;
     }
@@ -120,7 +105,10 @@ class GetPricingSchemeResponse implements \JsonSerializable
      */
     public function getMinimumPrice(): ?int
     {
-        return $this->minimumPrice;
+        if (count($this->minimumPrice) == 0) {
+            return null;
+        }
+        return $this->minimumPrice['value'];
     }
 
     /**
@@ -130,7 +118,15 @@ class GetPricingSchemeResponse implements \JsonSerializable
      */
     public function setMinimumPrice(?int $minimumPrice): void
     {
-        $this->minimumPrice = $minimumPrice;
+        $this->minimumPrice['value'] = $minimumPrice;
+    }
+
+    /**
+     * Unsets Minimum Price.
+     */
+    public function unsetMinimumPrice(): void
+    {
+        $this->minimumPrice = [];
     }
 
     /**
@@ -139,7 +135,10 @@ class GetPricingSchemeResponse implements \JsonSerializable
      */
     public function getPercentage(): ?float
     {
-        return $this->percentage;
+        if (count($this->percentage) == 0) {
+            return null;
+        }
+        return $this->percentage['value'];
     }
 
     /**
@@ -150,7 +149,16 @@ class GetPricingSchemeResponse implements \JsonSerializable
      */
     public function setPercentage(?float $percentage): void
     {
-        $this->percentage = $percentage;
+        $this->percentage['value'] = $percentage;
+    }
+
+    /**
+     * Unsets Percentage.
+     * percentual value used in pricing_scheme Percent
+     */
+    public function unsetPercentage(): void
+    {
+        $this->percentage = [];
     }
 
     /**
@@ -168,11 +176,11 @@ class GetPricingSchemeResponse implements \JsonSerializable
         $json['price']             = $this->price;
         $json['scheme_type']       = $this->schemeType;
         $json['price_brackets']    = $this->priceBrackets;
-        if (isset($this->minimumPrice)) {
-            $json['minimum_price'] = $this->minimumPrice;
+        if (!empty($this->minimumPrice)) {
+            $json['minimum_price'] = $this->minimumPrice['value'];
         }
-        if (isset($this->percentage)) {
-            $json['percentage']    = $this->percentage;
+        if (!empty($this->percentage)) {
+            $json['percentage']    = $this->percentage['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

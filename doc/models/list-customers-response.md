@@ -11,8 +11,8 @@ Response for listing the customers
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `data` | [`GetCustomerResponse[]`](../../doc/models/get-customer-response.md) | Required | The customer object | getData(): array | setData(array data): void |
-| `paging` | [`PagingResponse`](../../doc/models/paging-response.md) | Required | Paging object | getPaging(): PagingResponse | setPaging(PagingResponse paging): void |
+| `data` | [`?(GetCustomerResponse[])`](../../doc/models/get-customer-response.md) | Required | The customer object | getData(): ?array | setData(?array data): void |
+| `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Required | Paging object | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
 ## Example (as JSON)
 

@@ -18,32 +18,22 @@ use stdClass;
 class ListCardsResponse implements \JsonSerializable
 {
     /**
-     * @var GetCardResponse[]
+     * @var GetCardResponse[]|null
      */
     private $data;
 
     /**
-     * @var PagingResponse
+     * @var PagingResponse|null
      */
     private $paging;
-
-    /**
-     * @param GetCardResponse[] $data
-     * @param PagingResponse $paging
-     */
-    public function __construct(array $data, PagingResponse $paging)
-    {
-        $this->data = $data;
-        $this->paging = $paging;
-    }
 
     /**
      * Returns Data.
      * The card objects
      *
-     * @return GetCardResponse[]
+     * @return GetCardResponse[]|null
      */
-    public function getData(): array
+    public function getData(): ?array
     {
         return $this->data;
     }
@@ -52,12 +42,11 @@ class ListCardsResponse implements \JsonSerializable
      * Sets Data.
      * The card objects
      *
-     * @required
      * @maps data
      *
-     * @param GetCardResponse[] $data
+     * @param GetCardResponse[]|null $data
      */
-    public function setData(array $data): void
+    public function setData(?array $data): void
     {
         $this->data = $data;
     }
@@ -66,7 +55,7 @@ class ListCardsResponse implements \JsonSerializable
      * Returns Paging.
      * Paging object
      */
-    public function getPaging(): PagingResponse
+    public function getPaging(): ?PagingResponse
     {
         return $this->paging;
     }
@@ -75,10 +64,9 @@ class ListCardsResponse implements \JsonSerializable
      * Sets Paging.
      * Paging object
      *
-     * @required
      * @maps paging
      */
-    public function setPaging(PagingResponse $paging): void
+    public function setPaging(?PagingResponse $paging): void
     {
         $this->paging = $paging;
     }

@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `data` | [`GetDiscountResponse[]`](../../doc/models/get-discount-response.md) | Required | The Discounts response | getData(): array | setData(array data): void |
-| `paging` | [`PagingResponse`](../../doc/models/paging-response.md) | Required | Paging object | getPaging(): PagingResponse | setPaging(PagingResponse paging): void |
+| `data` | [`?(GetDiscountResponse[])`](../../doc/models/get-discount-response.md) | Required | The Discounts response | getData(): ?array | setData(?array data): void |
+| `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Required | Paging object | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
 ## Example (as JSON)
 

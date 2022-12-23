@@ -18,43 +18,29 @@ use stdClass;
 class GetSetupResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $amount;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @param string $id
-     * @param string $description
-     * @param int $amount
-     * @param string $status
-     */
-    public function __construct(string $id, string $description, int $amount, string $status)
-    {
-        $this->id = $id;
-        $this->description = $description;
-        $this->amount = $amount;
-        $this->status = $status;
-    }
-
-    /**
      * Returns Id.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -62,10 +48,9 @@ class GetSetupResponse implements \JsonSerializable
     /**
      * Sets Id.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -73,7 +58,7 @@ class GetSetupResponse implements \JsonSerializable
     /**
      * Returns Description.
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -81,10 +66,9 @@ class GetSetupResponse implements \JsonSerializable
     /**
      * Sets Description.
      *
-     * @required
      * @maps description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -92,7 +76,7 @@ class GetSetupResponse implements \JsonSerializable
     /**
      * Returns Amount.
      */
-    public function getAmount(): int
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
@@ -100,10 +84,9 @@ class GetSetupResponse implements \JsonSerializable
     /**
      * Sets Amount.
      *
-     * @required
      * @maps amount
      */
-    public function setAmount(int $amount): void
+    public function setAmount(?int $amount): void
     {
         $this->amount = $amount;
     }
@@ -111,7 +94,7 @@ class GetSetupResponse implements \JsonSerializable
     /**
      * Returns Status.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -119,10 +102,9 @@ class GetSetupResponse implements \JsonSerializable
     /**
      * Sets Status.
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }

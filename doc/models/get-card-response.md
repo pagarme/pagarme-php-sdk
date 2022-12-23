@@ -11,23 +11,23 @@ Response object for getting a credit card
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `string` | Required | - | getId(): string | setId(string id): void |
-| `lastFourDigits` | `string` | Required | - | getLastFourDigits(): string | setLastFourDigits(string lastFourDigits): void |
-| `brand` | `string` | Required | - | getBrand(): string | setBrand(string brand): void |
-| `holderName` | `string` | Required | - | getHolderName(): string | setHolderName(string holderName): void |
-| `expMonth` | `int` | Required | - | getExpMonth(): int | setExpMonth(int expMonth): void |
-| `expYear` | `int` | Required | - | getExpYear(): int | setExpYear(int expYear): void |
-| `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
-| `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
-| `updatedAt` | `\DateTime` | Required | - | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
-| `billingAddress` | [`GetBillingAddressResponse`](../../doc/models/get-billing-address-response.md) | Required | - | getBillingAddress(): GetBillingAddressResponse | setBillingAddress(GetBillingAddressResponse billingAddress): void |
+| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
+| `lastFourDigits` | `?string` | Required | - | getLastFourDigits(): ?string | setLastFourDigits(?string lastFourDigits): void |
+| `brand` | `?string` | Required | - | getBrand(): ?string | setBrand(?string brand): void |
+| `holderName` | `?string` | Required | - | getHolderName(): ?string | setHolderName(?string holderName): void |
+| `expMonth` | `?int` | Required | - | getExpMonth(): ?int | setExpMonth(?int expMonth): void |
+| `expYear` | `?int` | Required | - | getExpYear(): ?int | setExpYear(?int expYear): void |
+| `status` | `?string` | Required | - | getStatus(): ?string | setStatus(?string status): void |
+| `createdAt` | `?\DateTime` | Required | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
+| `updatedAt` | `?\DateTime` | Required | - | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
+| `billingAddress` | [`?GetBillingAddressResponse`](../../doc/models/get-billing-address-response.md) | Required | - | getBillingAddress(): ?GetBillingAddressResponse | setBillingAddress(?GetBillingAddressResponse billingAddress): void |
 | `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
-| `metadata` | `array<string,string>` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
-| `type` | `string` | Required | Card type | getType(): string | setType(string type): void |
-| `holderDocument` | `string` | Required | Document number for the card's holder | getHolderDocument(): string | setHolderDocument(string holderDocument): void |
+| `metadata` | `?array<string,string>` | Required | - | getMetadata(): ?array | setMetadata(?array metadata): void |
+| `type` | `?string` | Required | Card type | getType(): ?string | setType(?string type): void |
+| `holderDocument` | `?string` | Required | Document number for the card's holder | getHolderDocument(): ?string | setHolderDocument(?string holderDocument): void |
 | `deletedAt` | `?\DateTime` | Optional | - | getDeletedAt(): ?\DateTime | setDeletedAt(?\DateTime deletedAt): void |
-| `firstSixDigits` | `string` | Required | First six digits | getFirstSixDigits(): string | setFirstSixDigits(string firstSixDigits): void |
-| `label` | `string` | Required | - | getLabel(): string | setLabel(string label): void |
+| `firstSixDigits` | `?string` | Required | First six digits | getFirstSixDigits(): ?string | setFirstSixDigits(?string firstSixDigits): void |
+| `label` | `?string` | Required | - | getLabel(): ?string | setLabel(?string label): void |
 
 ## Example (as JSON)
 

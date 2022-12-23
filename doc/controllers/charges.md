@@ -588,10 +588,8 @@ $request_customer = new Models\CreateCustomerRequest(
     $request_customer_code
 );
 $request_payment_paymentMethod = 'payment_method2';
-$request_payment_privateLabel = new Models\CreatePrivateLabelPaymentRequest();
 $request_payment = new Models\CreatePaymentRequest(
-    $request_payment_paymentMethod,
-    $request_payment_privateLabel
+    $request_payment_paymentMethod
 );
 $request_metadata = ['key0' => 'metadata3'];
 $request_antifraud_type = 'type0';

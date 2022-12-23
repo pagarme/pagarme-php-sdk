@@ -18,65 +18,44 @@ use stdClass;
 class GetInvoiceItemResponse implements \JsonSerializable
 {
     /**
-     * @var int
+     * @var int|null
      */
     private $amount;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description;
 
     /**
-     * @var GetPricingSchemeResponse
+     * @var GetPricingSchemeResponse|null
      */
     private $pricingScheme;
 
     /**
-     * @var GetPriceBracketResponse
+     * @var GetPriceBracketResponse|null
      */
     private $priceBracket;
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $quantity;
+    private $quantity = [];
+
+    /**
+     * @var array
+     */
+    private $name = [];
 
     /**
      * @var string|null
      */
-    private $name;
-
-    /**
-     * @var string
-     */
     private $subscriptionItemId;
-
-    /**
-     * @param int $amount
-     * @param string $description
-     * @param GetPricingSchemeResponse $pricingScheme
-     * @param GetPriceBracketResponse $priceBracket
-     * @param string $subscriptionItemId
-     */
-    public function __construct(
-        int $amount,
-        string $description,
-        GetPricingSchemeResponse $pricingScheme,
-        GetPriceBracketResponse $priceBracket,
-        string $subscriptionItemId
-    ) {
-        $this->amount = $amount;
-        $this->description = $description;
-        $this->pricingScheme = $pricingScheme;
-        $this->priceBracket = $priceBracket;
-        $this->subscriptionItemId = $subscriptionItemId;
-    }
 
     /**
      * Returns Amount.
      */
-    public function getAmount(): int
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
@@ -84,10 +63,9 @@ class GetInvoiceItemResponse implements \JsonSerializable
     /**
      * Sets Amount.
      *
-     * @required
      * @maps amount
      */
-    public function setAmount(int $amount): void
+    public function setAmount(?int $amount): void
     {
         $this->amount = $amount;
     }
@@ -95,7 +73,7 @@ class GetInvoiceItemResponse implements \JsonSerializable
     /**
      * Returns Description.
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -103,10 +81,9 @@ class GetInvoiceItemResponse implements \JsonSerializable
     /**
      * Sets Description.
      *
-     * @required
      * @maps description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -114,7 +91,7 @@ class GetInvoiceItemResponse implements \JsonSerializable
     /**
      * Returns Pricing Scheme.
      */
-    public function getPricingScheme(): GetPricingSchemeResponse
+    public function getPricingScheme(): ?GetPricingSchemeResponse
     {
         return $this->pricingScheme;
     }
@@ -122,10 +99,9 @@ class GetInvoiceItemResponse implements \JsonSerializable
     /**
      * Sets Pricing Scheme.
      *
-     * @required
      * @maps pricing_scheme
      */
-    public function setPricingScheme(GetPricingSchemeResponse $pricingScheme): void
+    public function setPricingScheme(?GetPricingSchemeResponse $pricingScheme): void
     {
         $this->pricingScheme = $pricingScheme;
     }
@@ -133,7 +109,7 @@ class GetInvoiceItemResponse implements \JsonSerializable
     /**
      * Returns Price Bracket.
      */
-    public function getPriceBracket(): GetPriceBracketResponse
+    public function getPriceBracket(): ?GetPriceBracketResponse
     {
         return $this->priceBracket;
     }
@@ -141,10 +117,9 @@ class GetInvoiceItemResponse implements \JsonSerializable
     /**
      * Sets Price Bracket.
      *
-     * @required
      * @maps price_bracket
      */
-    public function setPriceBracket(GetPriceBracketResponse $priceBracket): void
+    public function setPriceBracket(?GetPriceBracketResponse $priceBracket): void
     {
         $this->priceBracket = $priceBracket;
     }
@@ -154,7 +129,10 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function getQuantity(): ?int
     {
-        return $this->quantity;
+        if (count($this->quantity) == 0) {
+            return null;
+        }
+        return $this->quantity['value'];
     }
 
     /**
@@ -164,7 +142,15 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function setQuantity(?int $quantity): void
     {
-        $this->quantity = $quantity;
+        $this->quantity['value'] = $quantity;
+    }
+
+    /**
+     * Unsets Quantity.
+     */
+    public function unsetQuantity(): void
+    {
+        $this->quantity = [];
     }
 
     /**
@@ -172,7 +158,10 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function getName(): ?string
     {
-        return $this->name;
+        if (count($this->name) == 0) {
+            return null;
+        }
+        return $this->name['value'];
     }
 
     /**
@@ -182,14 +171,22 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function setName(?string $name): void
     {
-        $this->name = $name;
+        $this->name['value'] = $name;
+    }
+
+    /**
+     * Unsets Name.
+     */
+    public function unsetName(): void
+    {
+        $this->name = [];
     }
 
     /**
      * Returns Subscription Item Id.
      * Subscription Item Id
      */
-    public function getSubscriptionItemId(): string
+    public function getSubscriptionItemId(): ?string
     {
         return $this->subscriptionItemId;
     }
@@ -198,10 +195,9 @@ class GetInvoiceItemResponse implements \JsonSerializable
      * Sets Subscription Item Id.
      * Subscription Item Id
      *
-     * @required
      * @maps subscription_item_id
      */
-    public function setSubscriptionItemId(string $subscriptionItemId): void
+    public function setSubscriptionItemId(?string $subscriptionItemId): void
     {
         $this->subscriptionItemId = $subscriptionItemId;
     }
@@ -222,11 +218,11 @@ class GetInvoiceItemResponse implements \JsonSerializable
         $json['description']          = $this->description;
         $json['pricing_scheme']       = $this->pricingScheme;
         $json['price_bracket']        = $this->priceBracket;
-        if (isset($this->quantity)) {
-            $json['quantity']         = $this->quantity;
+        if (!empty($this->quantity)) {
+            $json['quantity']         = $this->quantity['value'];
         }
-        if (isset($this->name)) {
-            $json['name']             = $this->name;
+        if (!empty($this->name)) {
+            $json['name']             = $this->name['value'];
         }
         $json['subscription_item_id'] = $this->subscriptionItemId;
 

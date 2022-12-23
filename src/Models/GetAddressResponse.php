@@ -19,145 +19,94 @@ use stdClass;
 class GetAddressResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $street;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $number;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $complement;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $zipCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $neighborhood;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $city;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $state;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $country;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $updatedAt;
 
     /**
-     * @var GetCustomerResponse|null
+     * @var array
      */
-    private $customer;
+    private $customer = [];
 
     /**
-     * @var array<string,string>
+     * @var array<string,string>|null
      */
     private $metadata;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $line1;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $line2;
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $deletedAt;
-
-    /**
-     * @param string $id
-     * @param string $street
-     * @param string $number
-     * @param string $complement
-     * @param string $zipCode
-     * @param string $neighborhood
-     * @param string $city
-     * @param string $state
-     * @param string $country
-     * @param string $status
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param array<string,string> $metadata
-     * @param string $line1
-     * @param string $line2
-     */
-    public function __construct(
-        string $id,
-        string $street,
-        string $number,
-        string $complement,
-        string $zipCode,
-        string $neighborhood,
-        string $city,
-        string $state,
-        string $country,
-        string $status,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        array $metadata,
-        string $line1,
-        string $line2
-    ) {
-        $this->id = $id;
-        $this->street = $street;
-        $this->number = $number;
-        $this->complement = $complement;
-        $this->zipCode = $zipCode;
-        $this->neighborhood = $neighborhood;
-        $this->city = $city;
-        $this->state = $state;
-        $this->country = $country;
-        $this->status = $status;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-        $this->metadata = $metadata;
-        $this->line1 = $line1;
-        $this->line2 = $line2;
-    }
+    private $deletedAt = [];
 
     /**
      * Returns Id.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -165,10 +114,9 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets Id.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -176,7 +124,7 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Returns Street.
      */
-    public function getStreet(): string
+    public function getStreet(): ?string
     {
         return $this->street;
     }
@@ -184,10 +132,9 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets Street.
      *
-     * @required
      * @maps street
      */
-    public function setStreet(string $street): void
+    public function setStreet(?string $street): void
     {
         $this->street = $street;
     }
@@ -195,7 +142,7 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Returns Number.
      */
-    public function getNumber(): string
+    public function getNumber(): ?string
     {
         return $this->number;
     }
@@ -203,10 +150,9 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets Number.
      *
-     * @required
      * @maps number
      */
-    public function setNumber(string $number): void
+    public function setNumber(?string $number): void
     {
         $this->number = $number;
     }
@@ -214,7 +160,7 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Returns Complement.
      */
-    public function getComplement(): string
+    public function getComplement(): ?string
     {
         return $this->complement;
     }
@@ -222,10 +168,9 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets Complement.
      *
-     * @required
      * @maps complement
      */
-    public function setComplement(string $complement): void
+    public function setComplement(?string $complement): void
     {
         $this->complement = $complement;
     }
@@ -233,7 +178,7 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Returns Zip Code.
      */
-    public function getZipCode(): string
+    public function getZipCode(): ?string
     {
         return $this->zipCode;
     }
@@ -241,10 +186,9 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets Zip Code.
      *
-     * @required
      * @maps zip_code
      */
-    public function setZipCode(string $zipCode): void
+    public function setZipCode(?string $zipCode): void
     {
         $this->zipCode = $zipCode;
     }
@@ -252,7 +196,7 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Returns Neighborhood.
      */
-    public function getNeighborhood(): string
+    public function getNeighborhood(): ?string
     {
         return $this->neighborhood;
     }
@@ -260,10 +204,9 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets Neighborhood.
      *
-     * @required
      * @maps neighborhood
      */
-    public function setNeighborhood(string $neighborhood): void
+    public function setNeighborhood(?string $neighborhood): void
     {
         $this->neighborhood = $neighborhood;
     }
@@ -271,7 +214,7 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Returns City.
      */
-    public function getCity(): string
+    public function getCity(): ?string
     {
         return $this->city;
     }
@@ -279,10 +222,9 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets City.
      *
-     * @required
      * @maps city
      */
-    public function setCity(string $city): void
+    public function setCity(?string $city): void
     {
         $this->city = $city;
     }
@@ -290,7 +232,7 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Returns State.
      */
-    public function getState(): string
+    public function getState(): ?string
     {
         return $this->state;
     }
@@ -298,10 +240,9 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets State.
      *
-     * @required
      * @maps state
      */
-    public function setState(string $state): void
+    public function setState(?string $state): void
     {
         $this->state = $state;
     }
@@ -309,7 +250,7 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Returns Country.
      */
-    public function getCountry(): string
+    public function getCountry(): ?string
     {
         return $this->country;
     }
@@ -317,10 +258,9 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets Country.
      *
-     * @required
      * @maps country
      */
-    public function setCountry(string $country): void
+    public function setCountry(?string $country): void
     {
         $this->country = $country;
     }
@@ -328,7 +268,7 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Returns Status.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -336,10 +276,9 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets Status.
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -347,7 +286,7 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Returns Created At.
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -355,11 +294,10 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets Created At.
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -367,7 +305,7 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Returns Updated At.
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
@@ -375,11 +313,10 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets Updated At.
      *
-     * @required
      * @maps updated_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(?\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -389,7 +326,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getCustomer(): ?GetCustomerResponse
     {
-        return $this->customer;
+        if (count($this->customer) == 0) {
+            return null;
+        }
+        return $this->customer['value'];
     }
 
     /**
@@ -399,15 +339,23 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setCustomer(?GetCustomerResponse $customer): void
     {
-        $this->customer = $customer;
+        $this->customer['value'] = $customer;
+    }
+
+    /**
+     * Unsets Customer.
+     */
+    public function unsetCustomer(): void
+    {
+        $this->customer = [];
     }
 
     /**
      * Returns Metadata.
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
-    public function getMetadata(): array
+    public function getMetadata(): ?array
     {
         return $this->metadata;
     }
@@ -415,12 +363,11 @@ class GetAddressResponse implements \JsonSerializable
     /**
      * Sets Metadata.
      *
-     * @required
      * @maps metadata
      *
-     * @param array<string,string> $metadata
+     * @param array<string,string>|null $metadata
      */
-    public function setMetadata(array $metadata): void
+    public function setMetadata(?array $metadata): void
     {
         $this->metadata = $metadata;
     }
@@ -429,7 +376,7 @@ class GetAddressResponse implements \JsonSerializable
      * Returns Line 1.
      * Line 1 for address
      */
-    public function getLine1(): string
+    public function getLine1(): ?string
     {
         return $this->line1;
     }
@@ -438,10 +385,9 @@ class GetAddressResponse implements \JsonSerializable
      * Sets Line 1.
      * Line 1 for address
      *
-     * @required
      * @maps line_1
      */
-    public function setLine1(string $line1): void
+    public function setLine1(?string $line1): void
     {
         $this->line1 = $line1;
     }
@@ -450,7 +396,7 @@ class GetAddressResponse implements \JsonSerializable
      * Returns Line 2.
      * Line 2 for address
      */
-    public function getLine2(): string
+    public function getLine2(): ?string
     {
         return $this->line2;
     }
@@ -459,10 +405,9 @@ class GetAddressResponse implements \JsonSerializable
      * Sets Line 2.
      * Line 2 for address
      *
-     * @required
      * @maps line_2
      */
-    public function setLine2(string $line2): void
+    public function setLine2(?string $line2): void
     {
         $this->line2 = $line2;
     }
@@ -472,7 +417,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getDeletedAt(): ?\DateTime
     {
-        return $this->deletedAt;
+        if (count($this->deletedAt) == 0) {
+            return null;
+        }
+        return $this->deletedAt['value'];
     }
 
     /**
@@ -483,7 +431,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setDeletedAt(?\DateTime $deletedAt): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deletedAt['value'] = $deletedAt;
+    }
+
+    /**
+     * Unsets Deleted At.
+     */
+    public function unsetDeletedAt(): void
+    {
+        $this->deletedAt = [];
     }
 
     /**
@@ -510,14 +466,14 @@ class GetAddressResponse implements \JsonSerializable
         $json['status']         = $this->status;
         $json['created_at']     = DateTimeHelper::toRfc3339DateTime($this->createdAt);
         $json['updated_at']     = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        if (isset($this->customer)) {
-            $json['customer']   = $this->customer;
+        if (!empty($this->customer)) {
+            $json['customer']   = $this->customer['value'];
         }
         $json['metadata']       = $this->metadata;
         $json['line_1']         = $this->line1;
         $json['line_2']         = $this->line2;
-        if (isset($this->deletedAt)) {
-            $json['deleted_at'] = DateTimeHelper::toRfc3339DateTime($this->deletedAt);
+        if (!empty($this->deletedAt)) {
+            $json['deleted_at'] = DateTimeHelper::toRfc3339DateTime($this->deletedAt['value']);
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

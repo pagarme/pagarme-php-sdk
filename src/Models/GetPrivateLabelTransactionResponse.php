@@ -14,149 +14,69 @@ use stdClass;
 
 /**
  * Response object for getting a private label transaction
- *
- * @discriminator transaction_type
- * @discriminatorType private_label
  */
 class GetPrivateLabelTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $statementDescriptor;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerName;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerAffiliationCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerTid;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerNsu;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerAuthCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $operationType;
 
     /**
-     * @var GetCardResponse
+     * @var GetCardResponse|null
      */
     private $card;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerMessage;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerReturnCode;
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $installments;
-
-    /**
-     * @param string $gatewayId
-     * @param int $amount
-     * @param string $status
-     * @param bool $success
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param int $attemptCount
-     * @param int $maxAttempts
-     * @param GetSplitResponse[] $splits
-     * @param string $id
-     * @param GetGatewayResponseResponse $gatewayResponse
-     * @param GetAntifraudResponse $antifraudResponse
-     * @param GetSplitResponse[] $split
-     * @param string $statementDescriptor
-     * @param string $acquirerName
-     * @param string $acquirerAffiliationCode
-     * @param string $acquirerTid
-     * @param string $acquirerNsu
-     * @param string $acquirerAuthCode
-     * @param string $operationType
-     * @param GetCardResponse $card
-     * @param string $acquirerMessage
-     * @param string $acquirerReturnCode
-     */
-    public function __construct(
-        string $gatewayId,
-        int $amount,
-        string $status,
-        bool $success,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        int $attemptCount,
-        int $maxAttempts,
-        array $splits,
-        string $id,
-        GetGatewayResponseResponse $gatewayResponse,
-        GetAntifraudResponse $antifraudResponse,
-        array $split,
-        string $statementDescriptor,
-        string $acquirerName,
-        string $acquirerAffiliationCode,
-        string $acquirerTid,
-        string $acquirerNsu,
-        string $acquirerAuthCode,
-        string $operationType,
-        GetCardResponse $card,
-        string $acquirerMessage,
-        string $acquirerReturnCode
-    ) {
-        parent::__construct(
-            $gatewayId,
-            $amount,
-            $status,
-            $success,
-            $createdAt,
-            $updatedAt,
-            $attemptCount,
-            $maxAttempts,
-            $splits,
-            $id,
-            $gatewayResponse,
-            $antifraudResponse,
-            $split
-        );
-        $this->statementDescriptor = $statementDescriptor;
-        $this->acquirerName = $acquirerName;
-        $this->acquirerAffiliationCode = $acquirerAffiliationCode;
-        $this->acquirerTid = $acquirerTid;
-        $this->acquirerNsu = $acquirerNsu;
-        $this->acquirerAuthCode = $acquirerAuthCode;
-        $this->operationType = $operationType;
-        $this->card = $card;
-        $this->acquirerMessage = $acquirerMessage;
-        $this->acquirerReturnCode = $acquirerReturnCode;
-    }
+    private $installments = [];
 
     /**
      * Returns Statement Descriptor.
      * Text that will appear on the credit card's statement
      */
-    public function getStatementDescriptor(): string
+    public function getStatementDescriptor(): ?string
     {
         return $this->statementDescriptor;
     }
@@ -165,10 +85,9 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Sets Statement Descriptor.
      * Text that will appear on the credit card's statement
      *
-     * @required
      * @maps statement_descriptor
      */
-    public function setStatementDescriptor(string $statementDescriptor): void
+    public function setStatementDescriptor(?string $statementDescriptor): void
     {
         $this->statementDescriptor = $statementDescriptor;
     }
@@ -177,7 +96,7 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Returns Acquirer Name.
      * Acquirer name
      */
-    public function getAcquirerName(): string
+    public function getAcquirerName(): ?string
     {
         return $this->acquirerName;
     }
@@ -186,10 +105,9 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Sets Acquirer Name.
      * Acquirer name
      *
-     * @required
      * @maps acquirer_name
      */
-    public function setAcquirerName(string $acquirerName): void
+    public function setAcquirerName(?string $acquirerName): void
     {
         $this->acquirerName = $acquirerName;
     }
@@ -198,7 +116,7 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Returns Acquirer Affiliation Code.
      * Aquirer affiliation code
      */
-    public function getAcquirerAffiliationCode(): string
+    public function getAcquirerAffiliationCode(): ?string
     {
         return $this->acquirerAffiliationCode;
     }
@@ -207,10 +125,9 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Sets Acquirer Affiliation Code.
      * Aquirer affiliation code
      *
-     * @required
      * @maps acquirer_affiliation_code
      */
-    public function setAcquirerAffiliationCode(string $acquirerAffiliationCode): void
+    public function setAcquirerAffiliationCode(?string $acquirerAffiliationCode): void
     {
         $this->acquirerAffiliationCode = $acquirerAffiliationCode;
     }
@@ -219,7 +136,7 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Returns Acquirer Tid.
      * Acquirer TID
      */
-    public function getAcquirerTid(): string
+    public function getAcquirerTid(): ?string
     {
         return $this->acquirerTid;
     }
@@ -228,10 +145,9 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Sets Acquirer Tid.
      * Acquirer TID
      *
-     * @required
      * @maps acquirer_tid
      */
-    public function setAcquirerTid(string $acquirerTid): void
+    public function setAcquirerTid(?string $acquirerTid): void
     {
         $this->acquirerTid = $acquirerTid;
     }
@@ -240,7 +156,7 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Returns Acquirer Nsu.
      * Acquirer NSU
      */
-    public function getAcquirerNsu(): string
+    public function getAcquirerNsu(): ?string
     {
         return $this->acquirerNsu;
     }
@@ -249,10 +165,9 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Sets Acquirer Nsu.
      * Acquirer NSU
      *
-     * @required
      * @maps acquirer_nsu
      */
-    public function setAcquirerNsu(string $acquirerNsu): void
+    public function setAcquirerNsu(?string $acquirerNsu): void
     {
         $this->acquirerNsu = $acquirerNsu;
     }
@@ -261,7 +176,7 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Returns Acquirer Auth Code.
      * Acquirer authorization code
      */
-    public function getAcquirerAuthCode(): string
+    public function getAcquirerAuthCode(): ?string
     {
         return $this->acquirerAuthCode;
     }
@@ -270,10 +185,9 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Sets Acquirer Auth Code.
      * Acquirer authorization code
      *
-     * @required
      * @maps acquirer_auth_code
      */
-    public function setAcquirerAuthCode(string $acquirerAuthCode): void
+    public function setAcquirerAuthCode(?string $acquirerAuthCode): void
     {
         $this->acquirerAuthCode = $acquirerAuthCode;
     }
@@ -282,7 +196,7 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Returns Operation Type.
      * Operation type
      */
-    public function getOperationType(): string
+    public function getOperationType(): ?string
     {
         return $this->operationType;
     }
@@ -291,10 +205,9 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Sets Operation Type.
      * Operation type
      *
-     * @required
      * @maps operation_type
      */
-    public function setOperationType(string $operationType): void
+    public function setOperationType(?string $operationType): void
     {
         $this->operationType = $operationType;
     }
@@ -303,7 +216,7 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Returns Card.
      * Card data
      */
-    public function getCard(): GetCardResponse
+    public function getCard(): ?GetCardResponse
     {
         return $this->card;
     }
@@ -312,10 +225,9 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Sets Card.
      * Card data
      *
-     * @required
      * @maps card
      */
-    public function setCard(GetCardResponse $card): void
+    public function setCard(?GetCardResponse $card): void
     {
         $this->card = $card;
     }
@@ -324,7 +236,7 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Returns Acquirer Message.
      * Acquirer message
      */
-    public function getAcquirerMessage(): string
+    public function getAcquirerMessage(): ?string
     {
         return $this->acquirerMessage;
     }
@@ -333,10 +245,9 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Sets Acquirer Message.
      * Acquirer message
      *
-     * @required
      * @maps acquirer_message
      */
-    public function setAcquirerMessage(string $acquirerMessage): void
+    public function setAcquirerMessage(?string $acquirerMessage): void
     {
         $this->acquirerMessage = $acquirerMessage;
     }
@@ -345,7 +256,7 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Returns Acquirer Return Code.
      * Acquirer Return Code
      */
-    public function getAcquirerReturnCode(): string
+    public function getAcquirerReturnCode(): ?string
     {
         return $this->acquirerReturnCode;
     }
@@ -354,10 +265,9 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      * Sets Acquirer Return Code.
      * Acquirer Return Code
      *
-     * @required
      * @maps acquirer_return_code
      */
-    public function setAcquirerReturnCode(string $acquirerReturnCode): void
+    public function setAcquirerReturnCode(?string $acquirerReturnCode): void
     {
         $this->acquirerReturnCode = $acquirerReturnCode;
     }
@@ -368,7 +278,10 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      */
     public function getInstallments(): ?int
     {
-        return $this->installments;
+        if (count($this->installments) == 0) {
+            return null;
+        }
+        return $this->installments['value'];
     }
 
     /**
@@ -379,7 +292,16 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
      */
     public function setInstallments(?int $installments): void
     {
-        $this->installments = $installments;
+        $this->installments['value'] = $installments;
+    }
+
+    /**
+     * Unsets Installments.
+     * Number of installments
+     */
+    public function unsetInstallments(): void
+    {
+        $this->installments = [];
     }
 
     /**
@@ -404,11 +326,10 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
         $json['card']                      = $this->card;
         $json['acquirer_message']          = $this->acquirerMessage;
         $json['acquirer_return_code']      = $this->acquirerReturnCode;
-        if (isset($this->installments)) {
-            $json['installments']          = $this->installments;
+        if (!empty($this->installments)) {
+            $json['installments']          = $this->installments['value'];
         }
         $json = array_merge($json, parent::jsonSerialize(true));
-        $json['transaction_type'] = $this->getTransactionType() ?? 'private_label';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

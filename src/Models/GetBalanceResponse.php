@@ -18,53 +18,35 @@ use stdClass;
 class GetBalanceResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $currency;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $availableAmount;
 
     /**
-     * @var GetRecipientResponse|null
+     * @var array
      */
-    private $recipient;
+    private $recipient = [];
 
     /**
-     * @var int
+     * @var int|null
      */
     private $transferredAmount;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $waitingFundsAmount;
-
-    /**
-     * @param string $currency
-     * @param int $availableAmount
-     * @param int $transferredAmount
-     * @param int $waitingFundsAmount
-     */
-    public function __construct(
-        string $currency,
-        int $availableAmount,
-        int $transferredAmount,
-        int $waitingFundsAmount
-    ) {
-        $this->currency = $currency;
-        $this->availableAmount = $availableAmount;
-        $this->transferredAmount = $transferredAmount;
-        $this->waitingFundsAmount = $waitingFundsAmount;
-    }
 
     /**
      * Returns Currency.
      * Currency
      */
-    public function getCurrency(): string
+    public function getCurrency(): ?string
     {
         return $this->currency;
     }
@@ -73,10 +55,9 @@ class GetBalanceResponse implements \JsonSerializable
      * Sets Currency.
      * Currency
      *
-     * @required
      * @maps currency
      */
-    public function setCurrency(string $currency): void
+    public function setCurrency(?string $currency): void
     {
         $this->currency = $currency;
     }
@@ -85,7 +66,7 @@ class GetBalanceResponse implements \JsonSerializable
      * Returns Available Amount.
      * Amount available for transferring
      */
-    public function getAvailableAmount(): int
+    public function getAvailableAmount(): ?int
     {
         return $this->availableAmount;
     }
@@ -94,10 +75,9 @@ class GetBalanceResponse implements \JsonSerializable
      * Sets Available Amount.
      * Amount available for transferring
      *
-     * @required
      * @maps available_amount
      */
-    public function setAvailableAmount(int $availableAmount): void
+    public function setAvailableAmount(?int $availableAmount): void
     {
         $this->availableAmount = $availableAmount;
     }
@@ -108,7 +88,10 @@ class GetBalanceResponse implements \JsonSerializable
      */
     public function getRecipient(): ?GetRecipientResponse
     {
-        return $this->recipient;
+        if (count($this->recipient) == 0) {
+            return null;
+        }
+        return $this->recipient['value'];
     }
 
     /**
@@ -119,13 +102,22 @@ class GetBalanceResponse implements \JsonSerializable
      */
     public function setRecipient(?GetRecipientResponse $recipient): void
     {
-        $this->recipient = $recipient;
+        $this->recipient['value'] = $recipient;
+    }
+
+    /**
+     * Unsets Recipient.
+     * Recipient
+     */
+    public function unsetRecipient(): void
+    {
+        $this->recipient = [];
     }
 
     /**
      * Returns Transferred Amount.
      */
-    public function getTransferredAmount(): int
+    public function getTransferredAmount(): ?int
     {
         return $this->transferredAmount;
     }
@@ -133,10 +125,9 @@ class GetBalanceResponse implements \JsonSerializable
     /**
      * Sets Transferred Amount.
      *
-     * @required
      * @maps transferred_amount
      */
-    public function setTransferredAmount(int $transferredAmount): void
+    public function setTransferredAmount(?int $transferredAmount): void
     {
         $this->transferredAmount = $transferredAmount;
     }
@@ -144,7 +135,7 @@ class GetBalanceResponse implements \JsonSerializable
     /**
      * Returns Waiting Funds Amount.
      */
-    public function getWaitingFundsAmount(): int
+    public function getWaitingFundsAmount(): ?int
     {
         return $this->waitingFundsAmount;
     }
@@ -152,10 +143,9 @@ class GetBalanceResponse implements \JsonSerializable
     /**
      * Sets Waiting Funds Amount.
      *
-     * @required
      * @maps waiting_funds_amount
      */
-    public function setWaitingFundsAmount(int $waitingFundsAmount): void
+    public function setWaitingFundsAmount(?int $waitingFundsAmount): void
     {
         $this->waitingFundsAmount = $waitingFundsAmount;
     }
@@ -174,8 +164,8 @@ class GetBalanceResponse implements \JsonSerializable
         $json = [];
         $json['currency']             = $this->currency;
         $json['available_amount']     = $this->availableAmount;
-        if (isset($this->recipient)) {
-            $json['recipient']        = $this->recipient;
+        if (!empty($this->recipient)) {
+            $json['recipient']        = $this->recipient['value'];
         }
         $json['transferred_amount']   = $this->transferredAmount;
         $json['waiting_funds_amount'] = $this->waitingFundsAmount;

@@ -11,9 +11,9 @@ Response object for getting a pricing scheme
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `price` | `int` | Required | - | getPrice(): int | setPrice(int price): void |
-| `schemeType` | `string` | Required | - | getSchemeType(): string | setSchemeType(string schemeType): void |
-| `priceBrackets` | [`GetPriceBracketResponse[]`](../../doc/models/get-price-bracket-response.md) | Required | - | getPriceBrackets(): array | setPriceBrackets(array priceBrackets): void |
+| `price` | `?int` | Required | - | getPrice(): ?int | setPrice(?int price): void |
+| `schemeType` | `?string` | Required | - | getSchemeType(): ?string | setSchemeType(?string schemeType): void |
+| `priceBrackets` | [`?(GetPriceBracketResponse[])`](../../doc/models/get-price-bracket-response.md) | Required | - | getPriceBrackets(): ?array | setPriceBrackets(?array priceBrackets): void |
 | `minimumPrice` | `?int` | Optional | - | getMinimumPrice(): ?int | setMinimumPrice(?int minimumPrice): void |
 | `percentage` | `?float` | Optional | percentual value used in pricing_scheme Percent | getPercentage(): ?float | setPercentage(?float percentage): void |
 

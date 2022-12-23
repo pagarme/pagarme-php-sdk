@@ -18,25 +18,17 @@ use stdClass;
 class GetCheckoutBankTransferPaymentResponse implements \JsonSerializable
 {
     /**
-     * @var string[]
+     * @var string[]|null
      */
     private $bank;
-
-    /**
-     * @param string[] $bank
-     */
-    public function __construct(array $bank)
-    {
-        $this->bank = $bank;
-    }
 
     /**
      * Returns Bank.
      * bank list response
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getBank(): array
+    public function getBank(): ?array
     {
         return $this->bank;
     }
@@ -45,12 +37,11 @@ class GetCheckoutBankTransferPaymentResponse implements \JsonSerializable
      * Sets Bank.
      * bank list response
      *
-     * @required
      * @maps bank
      *
-     * @param string[] $bank
+     * @param string[]|null $bank
      */
-    public function setBank(array $bank): void
+    public function setBank(?array $bank): void
     {
         $this->bank = $bank;
     }

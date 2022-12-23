@@ -18,23 +18,15 @@ use stdClass;
 class GetGatewayErrorResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $message;
-
-    /**
-     * @param string $message
-     */
-    public function __construct(string $message)
-    {
-        $this->message = $message;
-    }
 
     /**
      * Returns Message.
      * The message error
      */
-    public function getMessage(): string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
@@ -43,10 +35,9 @@ class GetGatewayErrorResponse implements \JsonSerializable
      * Sets Message.
      * The message error
      *
-     * @required
      * @maps message
      */
-    public function setMessage(string $message): void
+    public function setMessage(?string $message): void
     {
         $this->message = $message;
     }

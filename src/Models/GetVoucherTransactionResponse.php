@@ -14,144 +14,64 @@ use stdClass;
 
 /**
  * Response for voucher transactions
- *
- * @discriminator transaction_type
- * @discriminatorType voucher
  */
 class GetVoucherTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $statementDescriptor;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerName;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerAffiliationCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerTid;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerNsu;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerAuthCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerMessage;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerReturnCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $operationType;
 
     /**
-     * @var GetCardResponse
+     * @var GetCardResponse|null
      */
     private $card;
-
-    /**
-     * @param string $gatewayId
-     * @param int $amount
-     * @param string $status
-     * @param bool $success
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param int $attemptCount
-     * @param int $maxAttempts
-     * @param GetSplitResponse[] $splits
-     * @param string $id
-     * @param GetGatewayResponseResponse $gatewayResponse
-     * @param GetAntifraudResponse $antifraudResponse
-     * @param GetSplitResponse[] $split
-     * @param string $statementDescriptor
-     * @param string $acquirerName
-     * @param string $acquirerAffiliationCode
-     * @param string $acquirerTid
-     * @param string $acquirerNsu
-     * @param string $acquirerAuthCode
-     * @param string $acquirerMessage
-     * @param string $acquirerReturnCode
-     * @param string $operationType
-     * @param GetCardResponse $card
-     */
-    public function __construct(
-        string $gatewayId,
-        int $amount,
-        string $status,
-        bool $success,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        int $attemptCount,
-        int $maxAttempts,
-        array $splits,
-        string $id,
-        GetGatewayResponseResponse $gatewayResponse,
-        GetAntifraudResponse $antifraudResponse,
-        array $split,
-        string $statementDescriptor,
-        string $acquirerName,
-        string $acquirerAffiliationCode,
-        string $acquirerTid,
-        string $acquirerNsu,
-        string $acquirerAuthCode,
-        string $acquirerMessage,
-        string $acquirerReturnCode,
-        string $operationType,
-        GetCardResponse $card
-    ) {
-        parent::__construct(
-            $gatewayId,
-            $amount,
-            $status,
-            $success,
-            $createdAt,
-            $updatedAt,
-            $attemptCount,
-            $maxAttempts,
-            $splits,
-            $id,
-            $gatewayResponse,
-            $antifraudResponse,
-            $split
-        );
-        $this->statementDescriptor = $statementDescriptor;
-        $this->acquirerName = $acquirerName;
-        $this->acquirerAffiliationCode = $acquirerAffiliationCode;
-        $this->acquirerTid = $acquirerTid;
-        $this->acquirerNsu = $acquirerNsu;
-        $this->acquirerAuthCode = $acquirerAuthCode;
-        $this->acquirerMessage = $acquirerMessage;
-        $this->acquirerReturnCode = $acquirerReturnCode;
-        $this->operationType = $operationType;
-        $this->card = $card;
-    }
 
     /**
      * Returns Statement Descriptor.
      * Text that will appear on the voucher's statement
      */
-    public function getStatementDescriptor(): string
+    public function getStatementDescriptor(): ?string
     {
         return $this->statementDescriptor;
     }
@@ -160,10 +80,9 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Sets Statement Descriptor.
      * Text that will appear on the voucher's statement
      *
-     * @required
      * @maps statement_descriptor
      */
-    public function setStatementDescriptor(string $statementDescriptor): void
+    public function setStatementDescriptor(?string $statementDescriptor): void
     {
         $this->statementDescriptor = $statementDescriptor;
     }
@@ -172,7 +91,7 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Returns Acquirer Name.
      * Acquirer name
      */
-    public function getAcquirerName(): string
+    public function getAcquirerName(): ?string
     {
         return $this->acquirerName;
     }
@@ -181,10 +100,9 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Sets Acquirer Name.
      * Acquirer name
      *
-     * @required
      * @maps acquirer_name
      */
-    public function setAcquirerName(string $acquirerName): void
+    public function setAcquirerName(?string $acquirerName): void
     {
         $this->acquirerName = $acquirerName;
     }
@@ -193,7 +111,7 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Returns Acquirer Affiliation Code.
      * Acquirer affiliation code
      */
-    public function getAcquirerAffiliationCode(): string
+    public function getAcquirerAffiliationCode(): ?string
     {
         return $this->acquirerAffiliationCode;
     }
@@ -202,10 +120,9 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Sets Acquirer Affiliation Code.
      * Acquirer affiliation code
      *
-     * @required
      * @maps acquirer_affiliation_code
      */
-    public function setAcquirerAffiliationCode(string $acquirerAffiliationCode): void
+    public function setAcquirerAffiliationCode(?string $acquirerAffiliationCode): void
     {
         $this->acquirerAffiliationCode = $acquirerAffiliationCode;
     }
@@ -214,7 +131,7 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Returns Acquirer Tid.
      * Acquirer TID
      */
-    public function getAcquirerTid(): string
+    public function getAcquirerTid(): ?string
     {
         return $this->acquirerTid;
     }
@@ -223,10 +140,9 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Sets Acquirer Tid.
      * Acquirer TID
      *
-     * @required
      * @maps acquirer_tid
      */
-    public function setAcquirerTid(string $acquirerTid): void
+    public function setAcquirerTid(?string $acquirerTid): void
     {
         $this->acquirerTid = $acquirerTid;
     }
@@ -235,7 +151,7 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Returns Acquirer Nsu.
      * Acquirer NSU
      */
-    public function getAcquirerNsu(): string
+    public function getAcquirerNsu(): ?string
     {
         return $this->acquirerNsu;
     }
@@ -244,10 +160,9 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Sets Acquirer Nsu.
      * Acquirer NSU
      *
-     * @required
      * @maps acquirer_nsu
      */
-    public function setAcquirerNsu(string $acquirerNsu): void
+    public function setAcquirerNsu(?string $acquirerNsu): void
     {
         $this->acquirerNsu = $acquirerNsu;
     }
@@ -256,7 +171,7 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Returns Acquirer Auth Code.
      * Acquirer authorization code
      */
-    public function getAcquirerAuthCode(): string
+    public function getAcquirerAuthCode(): ?string
     {
         return $this->acquirerAuthCode;
     }
@@ -265,10 +180,9 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Sets Acquirer Auth Code.
      * Acquirer authorization code
      *
-     * @required
      * @maps acquirer_auth_code
      */
-    public function setAcquirerAuthCode(string $acquirerAuthCode): void
+    public function setAcquirerAuthCode(?string $acquirerAuthCode): void
     {
         $this->acquirerAuthCode = $acquirerAuthCode;
     }
@@ -277,7 +191,7 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Returns Acquirer Message.
      * acquirer_message
      */
-    public function getAcquirerMessage(): string
+    public function getAcquirerMessage(): ?string
     {
         return $this->acquirerMessage;
     }
@@ -286,10 +200,9 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Sets Acquirer Message.
      * acquirer_message
      *
-     * @required
      * @maps acquirer_message
      */
-    public function setAcquirerMessage(string $acquirerMessage): void
+    public function setAcquirerMessage(?string $acquirerMessage): void
     {
         $this->acquirerMessage = $acquirerMessage;
     }
@@ -298,7 +211,7 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Returns Acquirer Return Code.
      * Acquirer return code
      */
-    public function getAcquirerReturnCode(): string
+    public function getAcquirerReturnCode(): ?string
     {
         return $this->acquirerReturnCode;
     }
@@ -307,10 +220,9 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Sets Acquirer Return Code.
      * Acquirer return code
      *
-     * @required
      * @maps acquirer_return_code
      */
-    public function setAcquirerReturnCode(string $acquirerReturnCode): void
+    public function setAcquirerReturnCode(?string $acquirerReturnCode): void
     {
         $this->acquirerReturnCode = $acquirerReturnCode;
     }
@@ -319,7 +231,7 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Returns Operation Type.
      * Operation type
      */
-    public function getOperationType(): string
+    public function getOperationType(): ?string
     {
         return $this->operationType;
     }
@@ -328,10 +240,9 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Sets Operation Type.
      * Operation type
      *
-     * @required
      * @maps operation_type
      */
-    public function setOperationType(string $operationType): void
+    public function setOperationType(?string $operationType): void
     {
         $this->operationType = $operationType;
     }
@@ -340,7 +251,7 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Returns Card.
      * Card data
      */
-    public function getCard(): GetCardResponse
+    public function getCard(): ?GetCardResponse
     {
         return $this->card;
     }
@@ -349,10 +260,9 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
      * Sets Card.
      * Card data
      *
-     * @required
      * @maps card
      */
-    public function setCard(GetCardResponse $card): void
+    public function setCard(?GetCardResponse $card): void
     {
         $this->card = $card;
     }
@@ -380,7 +290,6 @@ class GetVoucherTransactionResponse extends GetTransactionResponse implements \J
         $json['operation_type']            = $this->operationType;
         $json['card']                      = $this->card;
         $json = array_merge($json, parent::jsonSerialize(true));
-        $json['transaction_type'] = $this->getTransactionType() ?? 'voucher';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

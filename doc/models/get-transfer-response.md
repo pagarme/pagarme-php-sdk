@@ -11,13 +11,13 @@ Transfer response
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `string` | Required | Id | getId(): string | setId(string id): void |
-| `amount` | `int` | Required | Transfer amount | getAmount(): int | setAmount(int amount): void |
-| `status` | `string` | Required | Transfer status | getStatus(): string | setStatus(string status): void |
-| `createdAt` | `\DateTime` | Required | Transfer creation date | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
-| `updatedAt` | `\DateTime` | Required | Transfer last update date | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
-| `bankAccount` | [`GetBankAccountResponse`](../../doc/models/get-bank-account-response.md) | Required | Bank account | getBankAccount(): GetBankAccountResponse | setBankAccount(GetBankAccountResponse bankAccount): void |
-| `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
+| `id` | `?string` | Required | Id | getId(): ?string | setId(?string id): void |
+| `amount` | `?int` | Required | Transfer amount | getAmount(): ?int | setAmount(?int amount): void |
+| `status` | `?string` | Required | Transfer status | getStatus(): ?string | setStatus(?string status): void |
+| `createdAt` | `?\DateTime` | Required | Transfer creation date | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
+| `updatedAt` | `?\DateTime` | Required | Transfer last update date | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
+| `bankAccount` | [`?GetBankAccountResponse`](../../doc/models/get-bank-account-response.md) | Required | Bank account | getBankAccount(): ?GetBankAccountResponse | setBankAccount(?GetBankAccountResponse bankAccount): void |
+| `metadata` | `?array<string,string>` | Required | Metadata | getMetadata(): ?array | setMetadata(?array metadata): void |
 
 ## Example (as JSON)
 

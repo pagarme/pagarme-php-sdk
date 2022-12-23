@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `name` | `string` | Required | - | getName(): string | setName(string name): void |
-| `date` | `\DateTime` | Required | - | getDate(): \DateTime | setDate(\DateTime date): void |
+| `name` | `?string` | Required | - | getName(): ?string | setName(?string name): void |
+| `date` | `?\DateTime` | Required | - | getDate(): ?\DateTime | setDate(?\DateTime date): void |
 
 ## Example (as JSON)
 

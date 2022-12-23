@@ -297,17 +297,13 @@ $body_customer = new Models\CreateCustomerRequest(
 $body_payments = [];
 
 $body_payments_0_paymentMethod = 'payment_method0';
-$body_payments_0_privateLabel = new Models\CreatePrivateLabelPaymentRequest();
 $body_payments[0] = new Models\CreatePaymentRequest(
-    $body_payments_0_paymentMethod,
-    $body_payments_0_privateLabel
+    $body_payments_0_paymentMethod
 );
 
 $body_payments_1_paymentMethod = 'payment_method9';
-$body_payments_1_privateLabel = new Models\CreatePrivateLabelPaymentRequest();
 $body_payments[1] = new Models\CreatePaymentRequest(
-    $body_payments_1_paymentMethod,
-    $body_payments_1_privateLabel
+    $body_payments_1_paymentMethod
 );
 
 $body_code = 'code4';

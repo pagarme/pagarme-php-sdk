@@ -19,94 +19,64 @@ use stdClass;
 class GetPlanItemResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $name;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $updatedAt;
 
     /**
-     * @var GetPricingSchemeResponse
+     * @var GetPricingSchemeResponse|null
      */
     private $pricingScheme;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description;
 
     /**
-     * @var GetPlanResponse
+     * @var GetPlanResponse|null
      */
     private $plan;
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $quantity;
+    private $quantity = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $cycles;
+    private $cycles = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $deletedAt;
-
-    /**
-     * @param string $id
-     * @param string $name
-     * @param string $status
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param GetPricingSchemeResponse $pricingScheme
-     * @param string $description
-     * @param GetPlanResponse $plan
-     */
-    public function __construct(
-        string $id,
-        string $name,
-        string $status,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        GetPricingSchemeResponse $pricingScheme,
-        string $description,
-        GetPlanResponse $plan
-    ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->status = $status;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-        $this->pricingScheme = $pricingScheme;
-        $this->description = $description;
-        $this->plan = $plan;
-    }
+    private $deletedAt = [];
 
     /**
      * Returns Id.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -114,10 +84,9 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Sets Id.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -125,7 +94,7 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Returns Name.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -133,10 +102,9 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Sets Name.
      *
-     * @required
      * @maps name
      */
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -144,7 +112,7 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Returns Status.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -152,10 +120,9 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Sets Status.
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -163,7 +130,7 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Returns Created At.
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -171,11 +138,10 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Sets Created At.
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -183,7 +149,7 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Returns Updated At.
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
@@ -191,11 +157,10 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Sets Updated At.
      *
-     * @required
      * @maps updated_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(?\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -203,7 +168,7 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Returns Pricing Scheme.
      */
-    public function getPricingScheme(): GetPricingSchemeResponse
+    public function getPricingScheme(): ?GetPricingSchemeResponse
     {
         return $this->pricingScheme;
     }
@@ -211,10 +176,9 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Sets Pricing Scheme.
      *
-     * @required
      * @maps pricing_scheme
      */
-    public function setPricingScheme(GetPricingSchemeResponse $pricingScheme): void
+    public function setPricingScheme(?GetPricingSchemeResponse $pricingScheme): void
     {
         $this->pricingScheme = $pricingScheme;
     }
@@ -222,7 +186,7 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Returns Description.
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -230,10 +194,9 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Sets Description.
      *
-     * @required
      * @maps description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -241,7 +204,7 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Returns Plan.
      */
-    public function getPlan(): GetPlanResponse
+    public function getPlan(): ?GetPlanResponse
     {
         return $this->plan;
     }
@@ -249,10 +212,9 @@ class GetPlanItemResponse implements \JsonSerializable
     /**
      * Sets Plan.
      *
-     * @required
      * @maps plan
      */
-    public function setPlan(GetPlanResponse $plan): void
+    public function setPlan(?GetPlanResponse $plan): void
     {
         $this->plan = $plan;
     }
@@ -262,7 +224,10 @@ class GetPlanItemResponse implements \JsonSerializable
      */
     public function getQuantity(): ?int
     {
-        return $this->quantity;
+        if (count($this->quantity) == 0) {
+            return null;
+        }
+        return $this->quantity['value'];
     }
 
     /**
@@ -272,7 +237,15 @@ class GetPlanItemResponse implements \JsonSerializable
      */
     public function setQuantity(?int $quantity): void
     {
-        $this->quantity = $quantity;
+        $this->quantity['value'] = $quantity;
+    }
+
+    /**
+     * Unsets Quantity.
+     */
+    public function unsetQuantity(): void
+    {
+        $this->quantity = [];
     }
 
     /**
@@ -280,7 +253,10 @@ class GetPlanItemResponse implements \JsonSerializable
      */
     public function getCycles(): ?int
     {
-        return $this->cycles;
+        if (count($this->cycles) == 0) {
+            return null;
+        }
+        return $this->cycles['value'];
     }
 
     /**
@@ -290,7 +266,15 @@ class GetPlanItemResponse implements \JsonSerializable
      */
     public function setCycles(?int $cycles): void
     {
-        $this->cycles = $cycles;
+        $this->cycles['value'] = $cycles;
+    }
+
+    /**
+     * Unsets Cycles.
+     */
+    public function unsetCycles(): void
+    {
+        $this->cycles = [];
     }
 
     /**
@@ -298,7 +282,10 @@ class GetPlanItemResponse implements \JsonSerializable
      */
     public function getDeletedAt(): ?\DateTime
     {
-        return $this->deletedAt;
+        if (count($this->deletedAt) == 0) {
+            return null;
+        }
+        return $this->deletedAt['value'];
     }
 
     /**
@@ -309,7 +296,15 @@ class GetPlanItemResponse implements \JsonSerializable
      */
     public function setDeletedAt(?\DateTime $deletedAt): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deletedAt['value'] = $deletedAt;
+    }
+
+    /**
+     * Unsets Deleted At.
+     */
+    public function unsetDeletedAt(): void
+    {
+        $this->deletedAt = [];
     }
 
     /**
@@ -332,14 +327,14 @@ class GetPlanItemResponse implements \JsonSerializable
         $json['pricing_scheme'] = $this->pricingScheme;
         $json['description']    = $this->description;
         $json['plan']           = $this->plan;
-        if (isset($this->quantity)) {
-            $json['quantity']   = $this->quantity;
+        if (!empty($this->quantity)) {
+            $json['quantity']   = $this->quantity['value'];
         }
-        if (isset($this->cycles)) {
-            $json['cycles']     = $this->cycles;
+        if (!empty($this->cycles)) {
+            $json['cycles']     = $this->cycles['value'];
         }
-        if (isset($this->deletedAt)) {
-            $json['deleted_at'] = DateTimeHelper::toRfc3339DateTime($this->deletedAt);
+        if (!empty($this->deletedAt)) {
+            $json['deleted_at'] = DateTimeHelper::toRfc3339DateTime($this->deletedAt['value']);
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

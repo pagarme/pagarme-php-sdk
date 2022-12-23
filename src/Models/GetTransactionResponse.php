@@ -15,157 +15,109 @@ use stdClass;
 
 /**
  * Generic response object for getting a transaction.
- *
- * @discriminator transaction_type
- * @discriminatorType transaction
  */
 class GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $gatewayId;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $amount;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $success;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $updatedAt;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $attemptCount;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $maxAttempts;
 
     /**
-     * @var GetSplitResponse[]
+     * @var GetSplitResponse[]|null
      */
     private $splits;
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $nextAttempt;
+    private $nextAttempt = [];
+
+    /**
+     * @var array
+     */
+    private $transactionType = [];
 
     /**
      * @var string|null
      */
-    private $transactionType;
-
-    /**
-     * @var string
-     */
     private $id;
 
     /**
-     * @var GetGatewayResponseResponse
+     * @var GetGatewayResponseResponse|null
      */
     private $gatewayResponse;
 
     /**
-     * @var GetAntifraudResponse
+     * @var GetAntifraudResponse|null
      */
     private $antifraudResponse;
 
     /**
-     * @var array<string,string>|null
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
-     * @var GetSplitResponse[]
+     * @var GetSplitResponse[]|null
      */
     private $split;
 
     /**
-     * @var GetInterestResponse|null
+     * @var array
      */
-    private $interest;
+    private $interest = [];
 
     /**
-     * @var GetFineResponse|null
+     * @var array
      */
-    private $fine;
+    private $fine = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $maxDaysToPayPastDue;
-
-    /**
-     * @param string $gatewayId
-     * @param int $amount
-     * @param string $status
-     * @param bool $success
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param int $attemptCount
-     * @param int $maxAttempts
-     * @param GetSplitResponse[] $splits
-     * @param string $id
-     * @param GetGatewayResponseResponse $gatewayResponse
-     * @param GetAntifraudResponse $antifraudResponse
-     * @param GetSplitResponse[] $split
-     */
-    public function __construct(
-        string $gatewayId,
-        int $amount,
-        string $status,
-        bool $success,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        int $attemptCount,
-        int $maxAttempts,
-        array $splits,
-        string $id,
-        GetGatewayResponseResponse $gatewayResponse,
-        GetAntifraudResponse $antifraudResponse,
-        array $split
-    ) {
-        $this->gatewayId = $gatewayId;
-        $this->amount = $amount;
-        $this->status = $status;
-        $this->success = $success;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-        $this->attemptCount = $attemptCount;
-        $this->maxAttempts = $maxAttempts;
-        $this->splits = $splits;
-        $this->id = $id;
-        $this->gatewayResponse = $gatewayResponse;
-        $this->antifraudResponse = $antifraudResponse;
-        $this->split = $split;
-    }
+    private $maxDaysToPayPastDue = [];
 
     /**
      * Returns Gateway Id.
      * Gateway transaction id
      */
-    public function getGatewayId(): string
+    public function getGatewayId(): ?string
     {
         return $this->gatewayId;
     }
@@ -174,10 +126,9 @@ class GetTransactionResponse implements \JsonSerializable
      * Sets Gateway Id.
      * Gateway transaction id
      *
-     * @required
      * @maps gateway_id
      */
-    public function setGatewayId(string $gatewayId): void
+    public function setGatewayId(?string $gatewayId): void
     {
         $this->gatewayId = $gatewayId;
     }
@@ -186,7 +137,7 @@ class GetTransactionResponse implements \JsonSerializable
      * Returns Amount.
      * Amount in cents
      */
-    public function getAmount(): int
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
@@ -195,10 +146,9 @@ class GetTransactionResponse implements \JsonSerializable
      * Sets Amount.
      * Amount in cents
      *
-     * @required
      * @maps amount
      */
-    public function setAmount(int $amount): void
+    public function setAmount(?int $amount): void
     {
         $this->amount = $amount;
     }
@@ -207,7 +157,7 @@ class GetTransactionResponse implements \JsonSerializable
      * Returns Status.
      * Transaction status
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -216,10 +166,9 @@ class GetTransactionResponse implements \JsonSerializable
      * Sets Status.
      * Transaction status
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -228,7 +177,7 @@ class GetTransactionResponse implements \JsonSerializable
      * Returns Success.
      * Indicates if the transaction ocurred successfuly
      */
-    public function getSuccess(): bool
+    public function getSuccess(): ?bool
     {
         return $this->success;
     }
@@ -237,10 +186,9 @@ class GetTransactionResponse implements \JsonSerializable
      * Sets Success.
      * Indicates if the transaction ocurred successfuly
      *
-     * @required
      * @maps success
      */
-    public function setSuccess(bool $success): void
+    public function setSuccess(?bool $success): void
     {
         $this->success = $success;
     }
@@ -249,7 +197,7 @@ class GetTransactionResponse implements \JsonSerializable
      * Returns Created At.
      * Creation date
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -258,11 +206,10 @@ class GetTransactionResponse implements \JsonSerializable
      * Sets Created At.
      * Creation date
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -271,7 +218,7 @@ class GetTransactionResponse implements \JsonSerializable
      * Returns Updated At.
      * Last update date
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
@@ -280,11 +227,10 @@ class GetTransactionResponse implements \JsonSerializable
      * Sets Updated At.
      * Last update date
      *
-     * @required
      * @maps updated_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(?\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -293,7 +239,7 @@ class GetTransactionResponse implements \JsonSerializable
      * Returns Attempt Count.
      * Number of attempts tried
      */
-    public function getAttemptCount(): int
+    public function getAttemptCount(): ?int
     {
         return $this->attemptCount;
     }
@@ -302,10 +248,9 @@ class GetTransactionResponse implements \JsonSerializable
      * Sets Attempt Count.
      * Number of attempts tried
      *
-     * @required
      * @maps attempt_count
      */
-    public function setAttemptCount(int $attemptCount): void
+    public function setAttemptCount(?int $attemptCount): void
     {
         $this->attemptCount = $attemptCount;
     }
@@ -314,7 +259,7 @@ class GetTransactionResponse implements \JsonSerializable
      * Returns Max Attempts.
      * Max attempts
      */
-    public function getMaxAttempts(): int
+    public function getMaxAttempts(): ?int
     {
         return $this->maxAttempts;
     }
@@ -323,10 +268,9 @@ class GetTransactionResponse implements \JsonSerializable
      * Sets Max Attempts.
      * Max attempts
      *
-     * @required
      * @maps max_attempts
      */
-    public function setMaxAttempts(int $maxAttempts): void
+    public function setMaxAttempts(?int $maxAttempts): void
     {
         $this->maxAttempts = $maxAttempts;
     }
@@ -335,9 +279,9 @@ class GetTransactionResponse implements \JsonSerializable
      * Returns Splits.
      * Splits
      *
-     * @return GetSplitResponse[]
+     * @return GetSplitResponse[]|null
      */
-    public function getSplits(): array
+    public function getSplits(): ?array
     {
         return $this->splits;
     }
@@ -346,12 +290,11 @@ class GetTransactionResponse implements \JsonSerializable
      * Sets Splits.
      * Splits
      *
-     * @required
      * @maps splits
      *
-     * @param GetSplitResponse[] $splits
+     * @param GetSplitResponse[]|null $splits
      */
-    public function setSplits(array $splits): void
+    public function setSplits(?array $splits): void
     {
         $this->splits = $splits;
     }
@@ -362,7 +305,10 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function getNextAttempt(): ?\DateTime
     {
-        return $this->nextAttempt;
+        if (count($this->nextAttempt) == 0) {
+            return null;
+        }
+        return $this->nextAttempt['value'];
     }
 
     /**
@@ -374,7 +320,16 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function setNextAttempt(?\DateTime $nextAttempt): void
     {
-        $this->nextAttempt = $nextAttempt;
+        $this->nextAttempt['value'] = $nextAttempt;
+    }
+
+    /**
+     * Unsets Next Attempt.
+     * Date and time of the next attempt
+     */
+    public function unsetNextAttempt(): void
+    {
+        $this->nextAttempt = [];
     }
 
     /**
@@ -382,7 +337,10 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function getTransactionType(): ?string
     {
-        return $this->transactionType;
+        if (count($this->transactionType) == 0) {
+            return null;
+        }
+        return $this->transactionType['value'];
     }
 
     /**
@@ -392,14 +350,22 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function setTransactionType(?string $transactionType): void
     {
-        $this->transactionType = $transactionType;
+        $this->transactionType['value'] = $transactionType;
+    }
+
+    /**
+     * Unsets Transaction Type.
+     */
+    public function unsetTransactionType(): void
+    {
+        $this->transactionType = [];
     }
 
     /**
      * Returns Id.
      * Código da transação
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -408,10 +374,9 @@ class GetTransactionResponse implements \JsonSerializable
      * Sets Id.
      * Código da transação
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -420,7 +385,7 @@ class GetTransactionResponse implements \JsonSerializable
      * Returns Gateway Response.
      * The Gateway Response
      */
-    public function getGatewayResponse(): GetGatewayResponseResponse
+    public function getGatewayResponse(): ?GetGatewayResponseResponse
     {
         return $this->gatewayResponse;
     }
@@ -429,10 +394,9 @@ class GetTransactionResponse implements \JsonSerializable
      * Sets Gateway Response.
      * The Gateway Response
      *
-     * @required
      * @maps gateway_response
      */
-    public function setGatewayResponse(GetGatewayResponseResponse $gatewayResponse): void
+    public function setGatewayResponse(?GetGatewayResponseResponse $gatewayResponse): void
     {
         $this->gatewayResponse = $gatewayResponse;
     }
@@ -440,7 +404,7 @@ class GetTransactionResponse implements \JsonSerializable
     /**
      * Returns Antifraud Response.
      */
-    public function getAntifraudResponse(): GetAntifraudResponse
+    public function getAntifraudResponse(): ?GetAntifraudResponse
     {
         return $this->antifraudResponse;
     }
@@ -448,10 +412,9 @@ class GetTransactionResponse implements \JsonSerializable
     /**
      * Sets Antifraud Response.
      *
-     * @required
      * @maps antifraud_response
      */
-    public function setAntifraudResponse(GetAntifraudResponse $antifraudResponse): void
+    public function setAntifraudResponse(?GetAntifraudResponse $antifraudResponse): void
     {
         $this->antifraudResponse = $antifraudResponse;
     }
@@ -463,7 +426,10 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
@@ -475,15 +441,23 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
      * Returns Split.
      *
-     * @return GetSplitResponse[]
+     * @return GetSplitResponse[]|null
      */
-    public function getSplit(): array
+    public function getSplit(): ?array
     {
         return $this->split;
     }
@@ -491,12 +465,11 @@ class GetTransactionResponse implements \JsonSerializable
     /**
      * Sets Split.
      *
-     * @required
      * @maps split
      *
-     * @param GetSplitResponse[] $split
+     * @param GetSplitResponse[]|null $split
      */
-    public function setSplit(array $split): void
+    public function setSplit(?array $split): void
     {
         $this->split = $split;
     }
@@ -506,7 +479,10 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function getInterest(): ?GetInterestResponse
     {
-        return $this->interest;
+        if (count($this->interest) == 0) {
+            return null;
+        }
+        return $this->interest['value'];
     }
 
     /**
@@ -516,7 +492,15 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function setInterest(?GetInterestResponse $interest): void
     {
-        $this->interest = $interest;
+        $this->interest['value'] = $interest;
+    }
+
+    /**
+     * Unsets Interest.
+     */
+    public function unsetInterest(): void
+    {
+        $this->interest = [];
     }
 
     /**
@@ -524,7 +508,10 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function getFine(): ?GetFineResponse
     {
-        return $this->fine;
+        if (count($this->fine) == 0) {
+            return null;
+        }
+        return $this->fine['value'];
     }
 
     /**
@@ -534,7 +521,15 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function setFine(?GetFineResponse $fine): void
     {
-        $this->fine = $fine;
+        $this->fine['value'] = $fine;
+    }
+
+    /**
+     * Unsets Fine.
+     */
+    public function unsetFine(): void
+    {
+        $this->fine = [];
     }
 
     /**
@@ -542,7 +537,10 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function getMaxDaysToPayPastDue(): ?int
     {
-        return $this->maxDaysToPayPastDue;
+        if (count($this->maxDaysToPayPastDue) == 0) {
+            return null;
+        }
+        return $this->maxDaysToPayPastDue['value'];
     }
 
     /**
@@ -552,7 +550,15 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function setMaxDaysToPayPastDue(?int $maxDaysToPayPastDue): void
     {
-        $this->maxDaysToPayPastDue = $maxDaysToPayPastDue;
+        $this->maxDaysToPayPastDue['value'] = $maxDaysToPayPastDue;
+    }
+
+    /**
+     * Unsets Max Days to Pay Past Due.
+     */
+    public function unsetMaxDaysToPayPastDue(): void
+    {
+        $this->maxDaysToPayPastDue = [];
     }
 
     /**
@@ -576,25 +582,27 @@ class GetTransactionResponse implements \JsonSerializable
         $json['attempt_count']                = $this->attemptCount;
         $json['max_attempts']                 = $this->maxAttempts;
         $json['splits']                       = $this->splits;
-        if (isset($this->nextAttempt)) {
-            $json['next_attempt']             = DateTimeHelper::toRfc3339DateTime($this->nextAttempt);
+        if (!empty($this->nextAttempt)) {
+            $json['next_attempt']             = DateTimeHelper::toRfc3339DateTime($this->nextAttempt['value']);
         }
-        $json['transaction_type']             = $this->transactionType ?? 'transaction';
+        if (!empty($this->transactionType)) {
+            $json['transaction_type']         = $this->transactionType['value'];
+        }
         $json['id']                           = $this->id;
         $json['gateway_response']             = $this->gatewayResponse;
         $json['antifraud_response']           = $this->antifraudResponse;
-        if (isset($this->metadata)) {
-            $json['metadata']                 = $this->metadata;
+        if (!empty($this->metadata)) {
+            $json['metadata']                 = $this->metadata['value'];
         }
         $json['split']                        = $this->split;
-        if (isset($this->interest)) {
-            $json['interest']                 = $this->interest;
+        if (!empty($this->interest)) {
+            $json['interest']                 = $this->interest['value'];
         }
-        if (isset($this->fine)) {
-            $json['fine']                     = $this->fine;
+        if (!empty($this->fine)) {
+            $json['fine']                     = $this->fine['value'];
         }
-        if (isset($this->maxDaysToPayPastDue)) {
-            $json['max_days_to_pay_past_due'] = $this->maxDaysToPayPastDue;
+        if (!empty($this->maxDaysToPayPastDue)) {
+            $json['max_days_to_pay_past_due'] = $this->maxDaysToPayPastDue['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

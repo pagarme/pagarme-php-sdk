@@ -11,10 +11,10 @@ Checkout Payment Settings Response
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `successUrl` | `string` | Required | Success Url | getSuccessUrl(): string | setSuccessUrl(string successUrl): void |
-| `paymentUrl` | `string` | Required | Payment Url | getPaymentUrl(): string | setPaymentUrl(string paymentUrl): void |
-| `acceptedPaymentMethods` | `string[]` | Required | Accepted Payment Methods | getAcceptedPaymentMethods(): array | setAcceptedPaymentMethods(array acceptedPaymentMethods): void |
-| `status` | `string` | Required | Status | getStatus(): string | setStatus(string status): void |
+| `successUrl` | `?string` | Required | Success Url | getSuccessUrl(): ?string | setSuccessUrl(?string successUrl): void |
+| `paymentUrl` | `?string` | Required | Payment Url | getPaymentUrl(): ?string | setPaymentUrl(?string paymentUrl): void |
+| `acceptedPaymentMethods` | `?(string[])` | Required | Accepted Payment Methods | getAcceptedPaymentMethods(): ?array | setAcceptedPaymentMethods(?array acceptedPaymentMethods): void |
+| `status` | `?string` | Required | Status | getStatus(): ?string | setStatus(?string status): void |
 | `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | Customer | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
 | `amount` | `?int` | Optional | Payment amount | getAmount(): ?int | setAmount(?int amount): void |
 | `defaultPaymentMethod` | `?string` | Optional | Default Payment Method | getDefaultPaymentMethod(): ?string | setDefaultPaymentMethod(?string defaultPaymentMethod): void |

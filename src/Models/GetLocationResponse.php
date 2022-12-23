@@ -18,30 +18,20 @@ use stdClass;
 class GetLocationResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $latitude;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $longitude;
-
-    /**
-     * @param string $latitude
-     * @param string $longitude
-     */
-    public function __construct(string $latitude, string $longitude)
-    {
-        $this->latitude = $latitude;
-        $this->longitude = $longitude;
-    }
 
     /**
      * Returns Latitude.
      * Latitude
      */
-    public function getLatitude(): string
+    public function getLatitude(): ?string
     {
         return $this->latitude;
     }
@@ -50,10 +40,9 @@ class GetLocationResponse implements \JsonSerializable
      * Sets Latitude.
      * Latitude
      *
-     * @required
      * @maps latitude
      */
-    public function setLatitude(string $latitude): void
+    public function setLatitude(?string $latitude): void
     {
         $this->latitude = $latitude;
     }
@@ -62,7 +51,7 @@ class GetLocationResponse implements \JsonSerializable
      * Returns Longitude.
      * Longitude
      */
-    public function getLongitude(): string
+    public function getLongitude(): ?string
     {
         return $this->longitude;
     }
@@ -71,10 +60,9 @@ class GetLocationResponse implements \JsonSerializable
      * Sets Longitude.
      * Longitude
      *
-     * @required
      * @maps longitude
      */
-    public function setLongitude(string $longitude): void
+    public function setLongitude(?string $longitude): void
     {
         $this->longitude = $longitude;
     }

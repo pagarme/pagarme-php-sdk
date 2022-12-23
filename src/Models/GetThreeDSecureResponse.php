@@ -18,51 +18,35 @@ use stdClass;
 class GetThreeDSecureResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $mpi;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $eci;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $cavv;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $transactionId;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $successUrl;
-
-    /**
-     * @param string $mpi
-     * @param string $eci
-     * @param string $cavv
-     * @param string $transactionId
-     * @param string $successUrl
-     */
-    public function __construct(string $mpi, string $eci, string $cavv, string $transactionId, string $successUrl)
-    {
-        $this->mpi = $mpi;
-        $this->eci = $eci;
-        $this->cavv = $cavv;
-        $this->transactionId = $transactionId;
-        $this->successUrl = $successUrl;
-    }
 
     /**
      * Returns Mpi.
      * MPI Vendor
      */
-    public function getMpi(): string
+    public function getMpi(): ?string
     {
         return $this->mpi;
     }
@@ -71,10 +55,9 @@ class GetThreeDSecureResponse implements \JsonSerializable
      * Sets Mpi.
      * MPI Vendor
      *
-     * @required
      * @maps mpi
      */
-    public function setMpi(string $mpi): void
+    public function setMpi(?string $mpi): void
     {
         $this->mpi = $mpi;
     }
@@ -83,7 +66,7 @@ class GetThreeDSecureResponse implements \JsonSerializable
      * Returns Eci.
      * Electronic Commerce Indicator (ECI) (Opcional)
      */
-    public function getEci(): string
+    public function getEci(): ?string
     {
         return $this->eci;
     }
@@ -92,10 +75,9 @@ class GetThreeDSecureResponse implements \JsonSerializable
      * Sets Eci.
      * Electronic Commerce Indicator (ECI) (Opcional)
      *
-     * @required
      * @maps eci
      */
-    public function setEci(string $eci): void
+    public function setEci(?string $eci): void
     {
         $this->eci = $eci;
     }
@@ -104,7 +86,7 @@ class GetThreeDSecureResponse implements \JsonSerializable
      * Returns Cavv.
      * Online payment cryptogram, definido pelo 3-D Secure.
      */
-    public function getCavv(): string
+    public function getCavv(): ?string
     {
         return $this->cavv;
     }
@@ -113,10 +95,9 @@ class GetThreeDSecureResponse implements \JsonSerializable
      * Sets Cavv.
      * Online payment cryptogram, definido pelo 3-D Secure.
      *
-     * @required
      * @maps cavv
      */
-    public function setCavv(string $cavv): void
+    public function setCavv(?string $cavv): void
     {
         $this->cavv = $cavv;
     }
@@ -125,7 +106,7 @@ class GetThreeDSecureResponse implements \JsonSerializable
      * Returns Transaction Id.
      * Identificador da transação (XID)
      */
-    public function getTransactionId(): string
+    public function getTransactionId(): ?string
     {
         return $this->transactionId;
     }
@@ -134,10 +115,9 @@ class GetThreeDSecureResponse implements \JsonSerializable
      * Sets Transaction Id.
      * Identificador da transação (XID)
      *
-     * @required
      * @maps transaction_Id
      */
-    public function setTransactionId(string $transactionId): void
+    public function setTransactionId(?string $transactionId): void
     {
         $this->transactionId = $transactionId;
     }
@@ -146,7 +126,7 @@ class GetThreeDSecureResponse implements \JsonSerializable
      * Returns Success Url.
      * Url de redirecionamento de sucessso
      */
-    public function getSuccessUrl(): string
+    public function getSuccessUrl(): ?string
     {
         return $this->successUrl;
     }
@@ -155,10 +135,9 @@ class GetThreeDSecureResponse implements \JsonSerializable
      * Sets Success Url.
      * Url de redirecionamento de sucessso
      *
-     * @required
      * @maps success_url
      */
-    public function setSuccessUrl(string $successUrl): void
+    public function setSuccessUrl(?string $successUrl): void
     {
         $this->successUrl = $successUrl;
     }

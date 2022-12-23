@@ -19,145 +19,94 @@ use stdClass;
 class GetCardResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $lastFourDigits;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $brand;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $holderName;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $expMonth;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $expYear;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $updatedAt;
 
     /**
-     * @var GetBillingAddressResponse
+     * @var GetBillingAddressResponse|null
      */
     private $billingAddress;
 
     /**
-     * @var GetCustomerResponse|null
+     * @var array
      */
-    private $customer;
+    private $customer = [];
 
     /**
-     * @var array<string,string>
+     * @var array<string,string>|null
      */
     private $metadata;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $holderDocument;
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $deletedAt;
+    private $deletedAt = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $firstSixDigits;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $label;
 
     /**
-     * @param string $id
-     * @param string $lastFourDigits
-     * @param string $brand
-     * @param string $holderName
-     * @param int $expMonth
-     * @param int $expYear
-     * @param string $status
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param GetBillingAddressResponse $billingAddress
-     * @param array<string,string> $metadata
-     * @param string $type
-     * @param string $holderDocument
-     * @param string $firstSixDigits
-     * @param string $label
-     */
-    public function __construct(
-        string $id,
-        string $lastFourDigits,
-        string $brand,
-        string $holderName,
-        int $expMonth,
-        int $expYear,
-        string $status,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        GetBillingAddressResponse $billingAddress,
-        array $metadata,
-        string $type,
-        string $holderDocument,
-        string $firstSixDigits,
-        string $label
-    ) {
-        $this->id = $id;
-        $this->lastFourDigits = $lastFourDigits;
-        $this->brand = $brand;
-        $this->holderName = $holderName;
-        $this->expMonth = $expMonth;
-        $this->expYear = $expYear;
-        $this->status = $status;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-        $this->billingAddress = $billingAddress;
-        $this->metadata = $metadata;
-        $this->type = $type;
-        $this->holderDocument = $holderDocument;
-        $this->firstSixDigits = $firstSixDigits;
-        $this->label = $label;
-    }
-
-    /**
      * Returns Id.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -165,10 +114,9 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Sets Id.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -176,7 +124,7 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Returns Last Four Digits.
      */
-    public function getLastFourDigits(): string
+    public function getLastFourDigits(): ?string
     {
         return $this->lastFourDigits;
     }
@@ -184,10 +132,9 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Sets Last Four Digits.
      *
-     * @required
      * @maps last_four_digits
      */
-    public function setLastFourDigits(string $lastFourDigits): void
+    public function setLastFourDigits(?string $lastFourDigits): void
     {
         $this->lastFourDigits = $lastFourDigits;
     }
@@ -195,7 +142,7 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Returns Brand.
      */
-    public function getBrand(): string
+    public function getBrand(): ?string
     {
         return $this->brand;
     }
@@ -203,10 +150,9 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Sets Brand.
      *
-     * @required
      * @maps brand
      */
-    public function setBrand(string $brand): void
+    public function setBrand(?string $brand): void
     {
         $this->brand = $brand;
     }
@@ -214,7 +160,7 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Returns Holder Name.
      */
-    public function getHolderName(): string
+    public function getHolderName(): ?string
     {
         return $this->holderName;
     }
@@ -222,10 +168,9 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Sets Holder Name.
      *
-     * @required
      * @maps holder_name
      */
-    public function setHolderName(string $holderName): void
+    public function setHolderName(?string $holderName): void
     {
         $this->holderName = $holderName;
     }
@@ -233,7 +178,7 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Returns Exp Month.
      */
-    public function getExpMonth(): int
+    public function getExpMonth(): ?int
     {
         return $this->expMonth;
     }
@@ -241,10 +186,9 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Sets Exp Month.
      *
-     * @required
      * @maps exp_month
      */
-    public function setExpMonth(int $expMonth): void
+    public function setExpMonth(?int $expMonth): void
     {
         $this->expMonth = $expMonth;
     }
@@ -252,7 +196,7 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Returns Exp Year.
      */
-    public function getExpYear(): int
+    public function getExpYear(): ?int
     {
         return $this->expYear;
     }
@@ -260,10 +204,9 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Sets Exp Year.
      *
-     * @required
      * @maps exp_year
      */
-    public function setExpYear(int $expYear): void
+    public function setExpYear(?int $expYear): void
     {
         $this->expYear = $expYear;
     }
@@ -271,7 +214,7 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Returns Status.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -279,10 +222,9 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Sets Status.
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -290,7 +232,7 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Returns Created At.
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -298,11 +240,10 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Sets Created At.
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -310,7 +251,7 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Returns Updated At.
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
@@ -318,11 +259,10 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Sets Updated At.
      *
-     * @required
      * @maps updated_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(?\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -330,7 +270,7 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Returns Billing Address.
      */
-    public function getBillingAddress(): GetBillingAddressResponse
+    public function getBillingAddress(): ?GetBillingAddressResponse
     {
         return $this->billingAddress;
     }
@@ -338,10 +278,9 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Sets Billing Address.
      *
-     * @required
      * @maps billing_address
      */
-    public function setBillingAddress(GetBillingAddressResponse $billingAddress): void
+    public function setBillingAddress(?GetBillingAddressResponse $billingAddress): void
     {
         $this->billingAddress = $billingAddress;
     }
@@ -351,7 +290,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getCustomer(): ?GetCustomerResponse
     {
-        return $this->customer;
+        if (count($this->customer) == 0) {
+            return null;
+        }
+        return $this->customer['value'];
     }
 
     /**
@@ -361,15 +303,23 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setCustomer(?GetCustomerResponse $customer): void
     {
-        $this->customer = $customer;
+        $this->customer['value'] = $customer;
+    }
+
+    /**
+     * Unsets Customer.
+     */
+    public function unsetCustomer(): void
+    {
+        $this->customer = [];
     }
 
     /**
      * Returns Metadata.
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
-    public function getMetadata(): array
+    public function getMetadata(): ?array
     {
         return $this->metadata;
     }
@@ -377,12 +327,11 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Sets Metadata.
      *
-     * @required
      * @maps metadata
      *
-     * @param array<string,string> $metadata
+     * @param array<string,string>|null $metadata
      */
-    public function setMetadata(array $metadata): void
+    public function setMetadata(?array $metadata): void
     {
         $this->metadata = $metadata;
     }
@@ -391,7 +340,7 @@ class GetCardResponse implements \JsonSerializable
      * Returns Type.
      * Card type
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -400,10 +349,9 @@ class GetCardResponse implements \JsonSerializable
      * Sets Type.
      * Card type
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -412,7 +360,7 @@ class GetCardResponse implements \JsonSerializable
      * Returns Holder Document.
      * Document number for the card's holder
      */
-    public function getHolderDocument(): string
+    public function getHolderDocument(): ?string
     {
         return $this->holderDocument;
     }
@@ -421,10 +369,9 @@ class GetCardResponse implements \JsonSerializable
      * Sets Holder Document.
      * Document number for the card's holder
      *
-     * @required
      * @maps holder_document
      */
-    public function setHolderDocument(string $holderDocument): void
+    public function setHolderDocument(?string $holderDocument): void
     {
         $this->holderDocument = $holderDocument;
     }
@@ -434,7 +381,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getDeletedAt(): ?\DateTime
     {
-        return $this->deletedAt;
+        if (count($this->deletedAt) == 0) {
+            return null;
+        }
+        return $this->deletedAt['value'];
     }
 
     /**
@@ -445,14 +395,22 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setDeletedAt(?\DateTime $deletedAt): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deletedAt['value'] = $deletedAt;
+    }
+
+    /**
+     * Unsets Deleted At.
+     */
+    public function unsetDeletedAt(): void
+    {
+        $this->deletedAt = [];
     }
 
     /**
      * Returns First Six Digits.
      * First six digits
      */
-    public function getFirstSixDigits(): string
+    public function getFirstSixDigits(): ?string
     {
         return $this->firstSixDigits;
     }
@@ -461,10 +419,9 @@ class GetCardResponse implements \JsonSerializable
      * Sets First Six Digits.
      * First six digits
      *
-     * @required
      * @maps first_six_digits
      */
-    public function setFirstSixDigits(string $firstSixDigits): void
+    public function setFirstSixDigits(?string $firstSixDigits): void
     {
         $this->firstSixDigits = $firstSixDigits;
     }
@@ -472,7 +429,7 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Returns Label.
      */
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -480,10 +437,9 @@ class GetCardResponse implements \JsonSerializable
     /**
      * Sets Label.
      *
-     * @required
      * @maps label
      */
-    public function setLabel(string $label): void
+    public function setLabel(?string $label): void
     {
         $this->label = $label;
     }
@@ -510,14 +466,14 @@ class GetCardResponse implements \JsonSerializable
         $json['created_at']       = DateTimeHelper::toRfc3339DateTime($this->createdAt);
         $json['updated_at']       = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
         $json['billing_address']  = $this->billingAddress;
-        if (isset($this->customer)) {
-            $json['customer']     = $this->customer;
+        if (!empty($this->customer)) {
+            $json['customer']     = $this->customer['value'];
         }
         $json['metadata']         = $this->metadata;
         $json['type']             = $this->type;
         $json['holder_document']  = $this->holderDocument;
-        if (isset($this->deletedAt)) {
-            $json['deleted_at']   = DateTimeHelper::toRfc3339DateTime($this->deletedAt);
+        if (!empty($this->deletedAt)) {
+            $json['deleted_at']   = DateTimeHelper::toRfc3339DateTime($this->deletedAt['value']);
         }
         $json['first_six_digits'] = $this->firstSixDigits;
         $json['label']            = $this->label;

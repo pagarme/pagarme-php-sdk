@@ -15,16 +15,16 @@ Response for voucher transactions
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `statementDescriptor` | `string` | Required | Text that will appear on the voucher's statement | getStatementDescriptor(): string | setStatementDescriptor(string statementDescriptor): void |
-| `acquirerName` | `string` | Required | Acquirer name | getAcquirerName(): string | setAcquirerName(string acquirerName): void |
-| `acquirerAffiliationCode` | `string` | Required | Acquirer affiliation code | getAcquirerAffiliationCode(): string | setAcquirerAffiliationCode(string acquirerAffiliationCode): void |
-| `acquirerTid` | `string` | Required | Acquirer TID | getAcquirerTid(): string | setAcquirerTid(string acquirerTid): void |
-| `acquirerNsu` | `string` | Required | Acquirer NSU | getAcquirerNsu(): string | setAcquirerNsu(string acquirerNsu): void |
-| `acquirerAuthCode` | `string` | Required | Acquirer authorization code | getAcquirerAuthCode(): string | setAcquirerAuthCode(string acquirerAuthCode): void |
-| `acquirerMessage` | `string` | Required | acquirer_message | getAcquirerMessage(): string | setAcquirerMessage(string acquirerMessage): void |
-| `acquirerReturnCode` | `string` | Required | Acquirer return code | getAcquirerReturnCode(): string | setAcquirerReturnCode(string acquirerReturnCode): void |
-| `operationType` | `string` | Required | Operation type | getOperationType(): string | setOperationType(string operationType): void |
-| `card` | [`GetCardResponse`](../../doc/models/get-card-response.md) | Required | Card data | getCard(): GetCardResponse | setCard(GetCardResponse card): void |
+| `statementDescriptor` | `?string` | Required | Text that will appear on the voucher's statement | getStatementDescriptor(): ?string | setStatementDescriptor(?string statementDescriptor): void |
+| `acquirerName` | `?string` | Required | Acquirer name | getAcquirerName(): ?string | setAcquirerName(?string acquirerName): void |
+| `acquirerAffiliationCode` | `?string` | Required | Acquirer affiliation code | getAcquirerAffiliationCode(): ?string | setAcquirerAffiliationCode(?string acquirerAffiliationCode): void |
+| `acquirerTid` | `?string` | Required | Acquirer TID | getAcquirerTid(): ?string | setAcquirerTid(?string acquirerTid): void |
+| `acquirerNsu` | `?string` | Required | Acquirer NSU | getAcquirerNsu(): ?string | setAcquirerNsu(?string acquirerNsu): void |
+| `acquirerAuthCode` | `?string` | Required | Acquirer authorization code | getAcquirerAuthCode(): ?string | setAcquirerAuthCode(?string acquirerAuthCode): void |
+| `acquirerMessage` | `?string` | Required | acquirer_message | getAcquirerMessage(): ?string | setAcquirerMessage(?string acquirerMessage): void |
+| `acquirerReturnCode` | `?string` | Required | Acquirer return code | getAcquirerReturnCode(): ?string | setAcquirerReturnCode(?string acquirerReturnCode): void |
+| `operationType` | `?string` | Required | Operation type | getOperationType(): ?string | setOperationType(?string operationType): void |
+| `card` | [`?GetCardResponse`](../../doc/models/get-card-response.md) | Required | Card data | getCard(): ?GetCardResponse | setCard(?GetCardResponse card): void |
 
 ## Example (as JSON)
 
@@ -71,7 +71,6 @@ Response for voucher transactions
     "first_six_digits": "first_six_digits6",
     "label": "label6"
   },
-  "transaction_type": "voucher",
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
@@ -99,6 +98,7 @@ Response for voucher transactions
     }
   ],
   "next_attempt": null,
+  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",

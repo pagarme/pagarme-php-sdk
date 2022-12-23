@@ -16,30 +16,20 @@ use stdClass;
 class GetCheckoutBoletoPaymentResponse implements \JsonSerializable
 {
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $dueAt;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $instructions;
-
-    /**
-     * @param \DateTime $dueAt
-     * @param string $instructions
-     */
-    public function __construct(\DateTime $dueAt, string $instructions)
-    {
-        $this->dueAt = $dueAt;
-        $this->instructions = $instructions;
-    }
 
     /**
      * Returns Due At.
      * Data de vencimento do boleto
      */
-    public function getDueAt(): \DateTime
+    public function getDueAt(): ?\DateTime
     {
         return $this->dueAt;
     }
@@ -48,11 +38,10 @@ class GetCheckoutBoletoPaymentResponse implements \JsonSerializable
      * Sets Due At.
      * Data de vencimento do boleto
      *
-     * @required
      * @maps due_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setDueAt(\DateTime $dueAt): void
+    public function setDueAt(?\DateTime $dueAt): void
     {
         $this->dueAt = $dueAt;
     }
@@ -61,7 +50,7 @@ class GetCheckoutBoletoPaymentResponse implements \JsonSerializable
      * Returns Instructions.
      * Instruções do boleto
      */
-    public function getInstructions(): string
+    public function getInstructions(): ?string
     {
         return $this->instructions;
     }
@@ -70,10 +59,9 @@ class GetCheckoutBoletoPaymentResponse implements \JsonSerializable
      * Sets Instructions.
      * Instruções do boleto
      *
-     * @required
      * @maps instructions
      */
-    public function setInstructions(string $instructions): void
+    public function setInstructions(?string $instructions): void
     {
         $this->instructions = $instructions;
     }

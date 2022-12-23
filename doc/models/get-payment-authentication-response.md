@@ -11,8 +11,8 @@ Payment Authentication response
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `type` | `string` | Required | - | getType(): string | setType(string type): void |
-| `threedSecure` | [`GetThreeDSecureResponse`](../../doc/models/get-three-d-secure-response.md) | Required | 3D-S payment authentication response | getThreedSecure(): GetThreeDSecureResponse | setThreedSecure(GetThreeDSecureResponse threedSecure): void |
+| `type` | `?string` | Required | - | getType(): ?string | setType(?string type): void |
+| `threedSecure` | [`?GetThreeDSecureResponse`](../../doc/models/get-three-d-secure-response.md) | Required | 3D-S payment authentication response | getThreedSecure(): ?GetThreeDSecureResponse | setThreedSecure(?GetThreeDSecureResponse threedSecure): void |
 
 ## Example (as JSON)
 

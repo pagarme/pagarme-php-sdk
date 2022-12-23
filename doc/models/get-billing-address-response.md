@@ -11,16 +11,16 @@ Response object for getting a billing address
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `street` | `string` | Required | - | getStreet(): string | setStreet(string street): void |
-| `number` | `string` | Required | - | getNumber(): string | setNumber(string number): void |
-| `zipCode` | `string` | Required | - | getZipCode(): string | setZipCode(string zipCode): void |
-| `neighborhood` | `string` | Required | - | getNeighborhood(): string | setNeighborhood(string neighborhood): void |
-| `city` | `string` | Required | - | getCity(): string | setCity(string city): void |
-| `state` | `string` | Required | - | getState(): string | setState(string state): void |
-| `country` | `string` | Required | - | getCountry(): string | setCountry(string country): void |
-| `complement` | `string` | Required | - | getComplement(): string | setComplement(string complement): void |
-| `line1` | `string` | Required | Line 1 for address | getLine1(): string | setLine1(string line1): void |
-| `line2` | `string` | Required | Line 2 for address | getLine2(): string | setLine2(string line2): void |
+| `street` | `?string` | Required | - | getStreet(): ?string | setStreet(?string street): void |
+| `number` | `?string` | Required | - | getNumber(): ?string | setNumber(?string number): void |
+| `zipCode` | `?string` | Required | - | getZipCode(): ?string | setZipCode(?string zipCode): void |
+| `neighborhood` | `?string` | Required | - | getNeighborhood(): ?string | setNeighborhood(?string neighborhood): void |
+| `city` | `?string` | Required | - | getCity(): ?string | setCity(?string city): void |
+| `state` | `?string` | Required | - | getState(): ?string | setState(?string state): void |
+| `country` | `?string` | Required | - | getCountry(): ?string | setCountry(?string country): void |
+| `complement` | `?string` | Required | - | getComplement(): ?string | setComplement(?string complement): void |
+| `line1` | `?string` | Required | Line 1 for address | getLine1(): ?string | setLine1(?string line1): void |
+| `line2` | `?string` | Required | Line 2 for address | getLine2(): ?string | setLine2(?string line2): void |
 
 ## Example (as JSON)
 

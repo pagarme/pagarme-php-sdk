@@ -93,7 +93,7 @@ class CreatePaymentRequest implements \JsonSerializable
     private $cash;
 
     /**
-     * @var CreatePrivateLabelPaymentRequest
+     * @var CreatePrivateLabelPaymentRequest|null
      */
     private $privateLabel;
 
@@ -104,12 +104,10 @@ class CreatePaymentRequest implements \JsonSerializable
 
     /**
      * @param string $paymentMethod
-     * @param CreatePrivateLabelPaymentRequest $privateLabel
      */
-    public function __construct(string $paymentMethod, CreatePrivateLabelPaymentRequest $privateLabel)
+    public function __construct(string $paymentMethod)
     {
         $this->paymentMethod = $paymentMethod;
-        $this->privateLabel = $privateLabel;
     }
 
     /**
@@ -425,7 +423,7 @@ class CreatePaymentRequest implements \JsonSerializable
      * Returns Private Label.
      * Settings for private label payment
      */
-    public function getPrivateLabel(): CreatePrivateLabelPaymentRequest
+    public function getPrivateLabel(): ?CreatePrivateLabelPaymentRequest
     {
         return $this->privateLabel;
     }
@@ -434,10 +432,9 @@ class CreatePaymentRequest implements \JsonSerializable
      * Sets Private Label.
      * Settings for private label payment
      *
-     * @required
      * @maps private_label
      */
-    public function setPrivateLabel(CreatePrivateLabelPaymentRequest $privateLabel): void
+    public function setPrivateLabel(?CreatePrivateLabelPaymentRequest $privateLabel): void
     {
         $this->privateLabel = $privateLabel;
     }
@@ -517,7 +514,9 @@ class CreatePaymentRequest implements \JsonSerializable
         if (isset($this->cash)) {
             $json['cash']                   = $this->cash;
         }
-        $json['private_label']              = $this->privateLabel;
+        if (isset($this->privateLabel)) {
+            $json['private_label']          = $this->privateLabel;
+        }
         if (isset($this->pix)) {
             $json['pix']                    = $this->pix;
         }

@@ -9,16 +9,16 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `string` | Required | - | getId(): string | setId(string id): void |
-| `description` | `string` | Required | - | getDescription(): string | setDescription(string description): void |
-| `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
-| `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
-| `updatedAt` | `\DateTime` | Required | - | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
-| `pricingScheme` | [`GetPricingSchemeResponse`](../../doc/models/get-pricing-scheme-response.md) | Required | - | getPricingScheme(): GetPricingSchemeResponse | setPricingScheme(GetPricingSchemeResponse pricingScheme): void |
-| `discounts` | [`GetDiscountResponse[]`](../../doc/models/get-discount-response.md) | Required | - | getDiscounts(): array | setDiscounts(array discounts): void |
-| `increments` | [`GetIncrementResponse[]`](../../doc/models/get-increment-response.md) | Required | - | getIncrements(): array | setIncrements(array increments): void |
-| `subscription` | [`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md) | Required | - | getSubscription(): GetSubscriptionResponse | setSubscription(GetSubscriptionResponse subscription): void |
-| `name` | `string` | Required | Item name | getName(): string | setName(string name): void |
+| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
+| `description` | `?string` | Required | - | getDescription(): ?string | setDescription(?string description): void |
+| `status` | `?string` | Required | - | getStatus(): ?string | setStatus(?string status): void |
+| `createdAt` | `?\DateTime` | Required | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
+| `updatedAt` | `?\DateTime` | Required | - | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
+| `pricingScheme` | [`?GetPricingSchemeResponse`](../../doc/models/get-pricing-scheme-response.md) | Required | - | getPricingScheme(): ?GetPricingSchemeResponse | setPricingScheme(?GetPricingSchemeResponse pricingScheme): void |
+| `discounts` | [`?(GetDiscountResponse[])`](../../doc/models/get-discount-response.md) | Required | - | getDiscounts(): ?array | setDiscounts(?array discounts): void |
+| `increments` | [`?(GetIncrementResponse[])`](../../doc/models/get-increment-response.md) | Required | - | getIncrements(): ?array | setIncrements(?array increments): void |
+| `subscription` | [`?GetSubscriptionResponse`](../../doc/models/get-subscription-response.md) | Required | - | getSubscription(): ?GetSubscriptionResponse | setSubscription(?GetSubscriptionResponse subscription): void |
+| `name` | `?string` | Required | Item name | getName(): ?string | setName(?string name): void |
 | `quantity` | `?int` | Optional | - | getQuantity(): ?int | setQuantity(?int quantity): void |
 | `cycles` | `?int` | Optional | - | getCycles(): ?int | setCycles(?int cycles): void |
 | `deletedAt` | `?\DateTime` | Optional | - | getDeletedAt(): ?\DateTime | setDeletedAt(?\DateTime deletedAt): void |

@@ -18,9 +18,9 @@ use stdClass;
 class GetDeviceResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $platform;
+    private $platform = [];
 
     /**
      * Returns Platform.
@@ -28,7 +28,10 @@ class GetDeviceResponse implements \JsonSerializable
      */
     public function getPlatform(): ?string
     {
-        return $this->platform;
+        if (count($this->platform) == 0) {
+            return null;
+        }
+        return $this->platform['value'];
     }
 
     /**
@@ -39,7 +42,16 @@ class GetDeviceResponse implements \JsonSerializable
      */
     public function setPlatform(?string $platform): void
     {
-        $this->platform = $platform;
+        $this->platform['value'] = $platform;
+    }
+
+    /**
+     * Unsets Platform.
+     * Device's platform name
+     */
+    public function unsetPlatform(): void
+    {
+        $this->platform = [];
     }
 
     /**
@@ -54,8 +66,8 @@ class GetDeviceResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        if (isset($this->platform)) {
-            $json['platform'] = $this->platform;
+        if (!empty($this->platform)) {
+            $json['platform'] = $this->platform['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -15,30 +15,20 @@ use stdClass;
 class GetCheckoutCardInstallmentOptionsResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $number;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $total;
-
-    /**
-     * @param string $number
-     * @param int $total
-     */
-    public function __construct(string $number, int $total)
-    {
-        $this->number = $number;
-        $this->total = $total;
-    }
 
     /**
      * Returns Number.
      * Número de parcelas
      */
-    public function getNumber(): string
+    public function getNumber(): ?string
     {
         return $this->number;
     }
@@ -47,10 +37,9 @@ class GetCheckoutCardInstallmentOptionsResponse implements \JsonSerializable
      * Sets Number.
      * Número de parcelas
      *
-     * @required
      * @maps number
      */
-    public function setNumber(string $number): void
+    public function setNumber(?string $number): void
     {
         $this->number = $number;
     }
@@ -59,7 +48,7 @@ class GetCheckoutCardInstallmentOptionsResponse implements \JsonSerializable
      * Returns Total.
      * Valor total da compra
      */
-    public function getTotal(): int
+    public function getTotal(): ?int
     {
         return $this->total;
     }
@@ -68,10 +57,9 @@ class GetCheckoutCardInstallmentOptionsResponse implements \JsonSerializable
      * Sets Total.
      * Valor total da compra
      *
-     * @required
      * @maps total
      */
-    public function setTotal(int $total): void
+    public function setTotal(?int $total): void
     {
         $this->total = $total;
     }

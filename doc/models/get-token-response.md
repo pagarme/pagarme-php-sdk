@@ -11,11 +11,11 @@ Token data
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `string` | Required | - | getId(): string | setId(string id): void |
-| `type` | `string` | Required | - | getType(): string | setType(string type): void |
-| `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
-| `expiresAt` | `string` | Required | - | getExpiresAt(): string | setExpiresAt(string expiresAt): void |
-| `card` | [`GetCardTokenResponse`](../../doc/models/get-card-token-response.md) | Required | - | getCard(): GetCardTokenResponse | setCard(GetCardTokenResponse card): void |
+| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
+| `type` | `?string` | Required | - | getType(): ?string | setType(?string type): void |
+| `createdAt` | `?\DateTime` | Required | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
+| `expiresAt` | `?string` | Required | - | getExpiresAt(): ?string | setExpiresAt(?string expiresAt): void |
+| `card` | [`?GetCardTokenResponse`](../../doc/models/get-card-token-response.md) | Required | - | getCard(): ?GetCardTokenResponse | setCard(?GetCardTokenResponse card): void |
 
 ## Example (as JSON)
 

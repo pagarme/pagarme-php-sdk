@@ -15,36 +15,24 @@ use stdClass;
 class GetTransferSettingsResponse implements \JsonSerializable
 {
     /**
-     * @var bool
+     * @var bool|null
      */
     private $transferEnabled;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $transferInterval;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $transferDay;
 
     /**
-     * @param bool $transferEnabled
-     * @param string $transferInterval
-     * @param int $transferDay
-     */
-    public function __construct(bool $transferEnabled, string $transferInterval, int $transferDay)
-    {
-        $this->transferEnabled = $transferEnabled;
-        $this->transferInterval = $transferInterval;
-        $this->transferDay = $transferDay;
-    }
-
-    /**
      * Returns Transfer Enabled.
      */
-    public function getTransferEnabled(): bool
+    public function getTransferEnabled(): ?bool
     {
         return $this->transferEnabled;
     }
@@ -52,10 +40,9 @@ class GetTransferSettingsResponse implements \JsonSerializable
     /**
      * Sets Transfer Enabled.
      *
-     * @required
      * @maps transfer_enabled
      */
-    public function setTransferEnabled(bool $transferEnabled): void
+    public function setTransferEnabled(?bool $transferEnabled): void
     {
         $this->transferEnabled = $transferEnabled;
     }
@@ -63,7 +50,7 @@ class GetTransferSettingsResponse implements \JsonSerializable
     /**
      * Returns Transfer Interval.
      */
-    public function getTransferInterval(): string
+    public function getTransferInterval(): ?string
     {
         return $this->transferInterval;
     }
@@ -71,10 +58,9 @@ class GetTransferSettingsResponse implements \JsonSerializable
     /**
      * Sets Transfer Interval.
      *
-     * @required
      * @maps transfer_interval
      */
-    public function setTransferInterval(string $transferInterval): void
+    public function setTransferInterval(?string $transferInterval): void
     {
         $this->transferInterval = $transferInterval;
     }
@@ -82,7 +68,7 @@ class GetTransferSettingsResponse implements \JsonSerializable
     /**
      * Returns Transfer Day.
      */
-    public function getTransferDay(): int
+    public function getTransferDay(): ?int
     {
         return $this->transferDay;
     }
@@ -90,10 +76,9 @@ class GetTransferSettingsResponse implements \JsonSerializable
     /**
      * Sets Transfer Day.
      *
-     * @required
      * @maps transfer_day
      */
-    public function setTransferDay(int $transferDay): void
+    public function setTransferDay(?int $transferDay): void
     {
         $this->transferDay = $transferDay;
     }

@@ -18,30 +18,20 @@ use stdClass;
 class GetAnticipationLimitResponse implements \JsonSerializable
 {
     /**
-     * @var int
+     * @var int|null
      */
     private $amount;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $anticipationFee;
-
-    /**
-     * @param int $amount
-     * @param int $anticipationFee
-     */
-    public function __construct(int $amount, int $anticipationFee)
-    {
-        $this->amount = $amount;
-        $this->anticipationFee = $anticipationFee;
-    }
 
     /**
      * Returns Amount.
      * Amount
      */
-    public function getAmount(): int
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
@@ -50,10 +40,9 @@ class GetAnticipationLimitResponse implements \JsonSerializable
      * Sets Amount.
      * Amount
      *
-     * @required
      * @maps amount
      */
-    public function setAmount(int $amount): void
+    public function setAmount(?int $amount): void
     {
         $this->amount = $amount;
     }
@@ -62,7 +51,7 @@ class GetAnticipationLimitResponse implements \JsonSerializable
      * Returns Anticipation Fee.
      * Anticipation fee
      */
-    public function getAnticipationFee(): int
+    public function getAnticipationFee(): ?int
     {
         return $this->anticipationFee;
     }
@@ -71,10 +60,9 @@ class GetAnticipationLimitResponse implements \JsonSerializable
      * Sets Anticipation Fee.
      * Anticipation fee
      *
-     * @required
      * @maps anticipation_fee
      */
-    public function setAnticipationFee(int $anticipationFee): void
+    public function setAnticipationFee(?int $anticipationFee): void
     {
         $this->anticipationFee = $anticipationFee;
     }

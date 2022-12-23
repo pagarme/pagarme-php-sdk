@@ -18,32 +18,22 @@ use stdClass;
 class ListSubscriptionItemsResponse implements \JsonSerializable
 {
     /**
-     * @var GetSubscriptionItemResponse[]
+     * @var GetSubscriptionItemResponse[]|null
      */
     private $data;
 
     /**
-     * @var PagingResponse
+     * @var PagingResponse|null
      */
     private $paging;
-
-    /**
-     * @param GetSubscriptionItemResponse[] $data
-     * @param PagingResponse $paging
-     */
-    public function __construct(array $data, PagingResponse $paging)
-    {
-        $this->data = $data;
-        $this->paging = $paging;
-    }
 
     /**
      * Returns Data.
      * The subscription items
      *
-     * @return GetSubscriptionItemResponse[]
+     * @return GetSubscriptionItemResponse[]|null
      */
-    public function getData(): array
+    public function getData(): ?array
     {
         return $this->data;
     }
@@ -52,12 +42,11 @@ class ListSubscriptionItemsResponse implements \JsonSerializable
      * Sets Data.
      * The subscription items
      *
-     * @required
      * @maps data
      *
-     * @param GetSubscriptionItemResponse[] $data
+     * @param GetSubscriptionItemResponse[]|null $data
      */
-    public function setData(array $data): void
+    public function setData(?array $data): void
     {
         $this->data = $data;
     }
@@ -66,7 +55,7 @@ class ListSubscriptionItemsResponse implements \JsonSerializable
      * Returns Paging.
      * Paging object
      */
-    public function getPaging(): PagingResponse
+    public function getPaging(): ?PagingResponse
     {
         return $this->paging;
     }
@@ -75,10 +64,9 @@ class ListSubscriptionItemsResponse implements \JsonSerializable
      * Sets Paging.
      * Paging object
      *
-     * @required
      * @maps paging
      */
-    public function setPaging(PagingResponse $paging): void
+    public function setPaging(?PagingResponse $paging): void
     {
         $this->paging = $paging;
     }

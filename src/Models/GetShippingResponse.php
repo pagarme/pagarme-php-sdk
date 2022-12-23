@@ -19,73 +19,49 @@ use stdClass;
 class GetShippingResponse implements \JsonSerializable
 {
     /**
-     * @var int
+     * @var int|null
      */
     private $amount;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $recipientName;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $recipientPhone;
 
     /**
-     * @var GetAddressResponse
+     * @var GetAddressResponse|null
      */
     private $address;
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $maxDeliveryDate;
+    private $maxDeliveryDate = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $estimatedDeliveryDate;
+    private $estimatedDeliveryDate = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @param int $amount
-     * @param string $description
-     * @param string $recipientName
-     * @param string $recipientPhone
-     * @param GetAddressResponse $address
-     * @param string $type
-     */
-    public function __construct(
-        int $amount,
-        string $description,
-        string $recipientName,
-        string $recipientPhone,
-        GetAddressResponse $address,
-        string $type
-    ) {
-        $this->amount = $amount;
-        $this->description = $description;
-        $this->recipientName = $recipientName;
-        $this->recipientPhone = $recipientPhone;
-        $this->address = $address;
-        $this->type = $type;
-    }
-
-    /**
      * Returns Amount.
      */
-    public function getAmount(): int
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
@@ -93,10 +69,9 @@ class GetShippingResponse implements \JsonSerializable
     /**
      * Sets Amount.
      *
-     * @required
      * @maps amount
      */
-    public function setAmount(int $amount): void
+    public function setAmount(?int $amount): void
     {
         $this->amount = $amount;
     }
@@ -104,7 +79,7 @@ class GetShippingResponse implements \JsonSerializable
     /**
      * Returns Description.
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -112,10 +87,9 @@ class GetShippingResponse implements \JsonSerializable
     /**
      * Sets Description.
      *
-     * @required
      * @maps description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -123,7 +97,7 @@ class GetShippingResponse implements \JsonSerializable
     /**
      * Returns Recipient Name.
      */
-    public function getRecipientName(): string
+    public function getRecipientName(): ?string
     {
         return $this->recipientName;
     }
@@ -131,10 +105,9 @@ class GetShippingResponse implements \JsonSerializable
     /**
      * Sets Recipient Name.
      *
-     * @required
      * @maps recipient_name
      */
-    public function setRecipientName(string $recipientName): void
+    public function setRecipientName(?string $recipientName): void
     {
         $this->recipientName = $recipientName;
     }
@@ -142,7 +115,7 @@ class GetShippingResponse implements \JsonSerializable
     /**
      * Returns Recipient Phone.
      */
-    public function getRecipientPhone(): string
+    public function getRecipientPhone(): ?string
     {
         return $this->recipientPhone;
     }
@@ -150,10 +123,9 @@ class GetShippingResponse implements \JsonSerializable
     /**
      * Sets Recipient Phone.
      *
-     * @required
      * @maps recipient_phone
      */
-    public function setRecipientPhone(string $recipientPhone): void
+    public function setRecipientPhone(?string $recipientPhone): void
     {
         $this->recipientPhone = $recipientPhone;
     }
@@ -161,7 +133,7 @@ class GetShippingResponse implements \JsonSerializable
     /**
      * Returns Address.
      */
-    public function getAddress(): GetAddressResponse
+    public function getAddress(): ?GetAddressResponse
     {
         return $this->address;
     }
@@ -169,10 +141,9 @@ class GetShippingResponse implements \JsonSerializable
     /**
      * Sets Address.
      *
-     * @required
      * @maps address
      */
-    public function setAddress(GetAddressResponse $address): void
+    public function setAddress(?GetAddressResponse $address): void
     {
         $this->address = $address;
     }
@@ -183,7 +154,10 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function getMaxDeliveryDate(): ?\DateTime
     {
-        return $this->maxDeliveryDate;
+        if (count($this->maxDeliveryDate) == 0) {
+            return null;
+        }
+        return $this->maxDeliveryDate['value'];
     }
 
     /**
@@ -195,7 +169,16 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function setMaxDeliveryDate(?\DateTime $maxDeliveryDate): void
     {
-        $this->maxDeliveryDate = $maxDeliveryDate;
+        $this->maxDeliveryDate['value'] = $maxDeliveryDate;
+    }
+
+    /**
+     * Unsets Max Delivery Date.
+     * Data máxima de entrega
+     */
+    public function unsetMaxDeliveryDate(): void
+    {
+        $this->maxDeliveryDate = [];
     }
 
     /**
@@ -204,7 +187,10 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function getEstimatedDeliveryDate(): ?\DateTime
     {
-        return $this->estimatedDeliveryDate;
+        if (count($this->estimatedDeliveryDate) == 0) {
+            return null;
+        }
+        return $this->estimatedDeliveryDate['value'];
     }
 
     /**
@@ -216,14 +202,23 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function setEstimatedDeliveryDate(?\DateTime $estimatedDeliveryDate): void
     {
-        $this->estimatedDeliveryDate = $estimatedDeliveryDate;
+        $this->estimatedDeliveryDate['value'] = $estimatedDeliveryDate;
+    }
+
+    /**
+     * Unsets Estimated Delivery Date.
+     * Prazo estimado de entrega
+     */
+    public function unsetEstimatedDeliveryDate(): void
+    {
+        $this->estimatedDeliveryDate = [];
     }
 
     /**
      * Returns Type.
      * Shipping Type
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -232,10 +227,9 @@ class GetShippingResponse implements \JsonSerializable
      * Sets Type.
      * Shipping Type
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -257,11 +251,11 @@ class GetShippingResponse implements \JsonSerializable
         $json['recipient_name']              = $this->recipientName;
         $json['recipient_phone']             = $this->recipientPhone;
         $json['address']                     = $this->address;
-        if (isset($this->maxDeliveryDate)) {
-            $json['max_delivery_date']       = DateTimeHelper::toRfc3339DateTime($this->maxDeliveryDate);
+        if (!empty($this->maxDeliveryDate)) {
+            $json['max_delivery_date']       = DateTimeHelper::toRfc3339DateTime($this->maxDeliveryDate['value']);
         }
-        if (isset($this->estimatedDeliveryDate)) {
-            $json['estimated_delivery_date'] = DateTimeHelper::toRfc3339DateTime($this->estimatedDeliveryDate);
+        if (!empty($this->estimatedDeliveryDate)) {
+            $json['estimated_delivery_date'] = DateTimeHelper::toRfc3339DateTime($this->estimatedDeliveryDate['value']);
         }
         $json['type']                        = $this->type;
 

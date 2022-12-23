@@ -19,92 +19,65 @@ use stdClass;
 class GetUsageResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $quantity;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $usedAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $deletedAt;
+    private $deletedAt = [];
 
     /**
-     * @var GetSubscriptionItemResponse
+     * @var GetSubscriptionItemResponse|null
      */
     private $subscriptionItem;
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $code;
+    private $code = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $group;
+    private $group = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $amount;
-
-    /**
-     * @param string $id
-     * @param int $quantity
-     * @param string $description
-     * @param \DateTime $usedAt
-     * @param \DateTime $createdAt
-     * @param string $status
-     * @param GetSubscriptionItemResponse $subscriptionItem
-     */
-    public function __construct(
-        string $id,
-        int $quantity,
-        string $description,
-        \DateTime $usedAt,
-        \DateTime $createdAt,
-        string $status,
-        GetSubscriptionItemResponse $subscriptionItem
-    ) {
-        $this->id = $id;
-        $this->quantity = $quantity;
-        $this->description = $description;
-        $this->usedAt = $usedAt;
-        $this->createdAt = $createdAt;
-        $this->status = $status;
-        $this->subscriptionItem = $subscriptionItem;
-    }
+    private $amount = [];
 
     /**
      * Returns Id.
      * Id
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -113,10 +86,9 @@ class GetUsageResponse implements \JsonSerializable
      * Sets Id.
      * Id
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -125,7 +97,7 @@ class GetUsageResponse implements \JsonSerializable
      * Returns Quantity.
      * Quantity
      */
-    public function getQuantity(): int
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
@@ -134,10 +106,9 @@ class GetUsageResponse implements \JsonSerializable
      * Sets Quantity.
      * Quantity
      *
-     * @required
      * @maps quantity
      */
-    public function setQuantity(int $quantity): void
+    public function setQuantity(?int $quantity): void
     {
         $this->quantity = $quantity;
     }
@@ -146,7 +117,7 @@ class GetUsageResponse implements \JsonSerializable
      * Returns Description.
      * Description
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -155,10 +126,9 @@ class GetUsageResponse implements \JsonSerializable
      * Sets Description.
      * Description
      *
-     * @required
      * @maps description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -167,7 +137,7 @@ class GetUsageResponse implements \JsonSerializable
      * Returns Used At.
      * Used at
      */
-    public function getUsedAt(): \DateTime
+    public function getUsedAt(): ?\DateTime
     {
         return $this->usedAt;
     }
@@ -176,11 +146,10 @@ class GetUsageResponse implements \JsonSerializable
      * Sets Used At.
      * Used at
      *
-     * @required
      * @maps used_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setUsedAt(\DateTime $usedAt): void
+    public function setUsedAt(?\DateTime $usedAt): void
     {
         $this->usedAt = $usedAt;
     }
@@ -189,7 +158,7 @@ class GetUsageResponse implements \JsonSerializable
      * Returns Created At.
      * Creation date
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -198,11 +167,10 @@ class GetUsageResponse implements \JsonSerializable
      * Sets Created At.
      * Creation date
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -211,7 +179,7 @@ class GetUsageResponse implements \JsonSerializable
      * Returns Status.
      * Status
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -220,10 +188,9 @@ class GetUsageResponse implements \JsonSerializable
      * Sets Status.
      * Status
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -233,7 +200,10 @@ class GetUsageResponse implements \JsonSerializable
      */
     public function getDeletedAt(): ?\DateTime
     {
-        return $this->deletedAt;
+        if (count($this->deletedAt) == 0) {
+            return null;
+        }
+        return $this->deletedAt['value'];
     }
 
     /**
@@ -244,14 +214,22 @@ class GetUsageResponse implements \JsonSerializable
      */
     public function setDeletedAt(?\DateTime $deletedAt): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deletedAt['value'] = $deletedAt;
+    }
+
+    /**
+     * Unsets Deleted At.
+     */
+    public function unsetDeletedAt(): void
+    {
+        $this->deletedAt = [];
     }
 
     /**
      * Returns Subscription Item.
      * Subscription item
      */
-    public function getSubscriptionItem(): GetSubscriptionItemResponse
+    public function getSubscriptionItem(): ?GetSubscriptionItemResponse
     {
         return $this->subscriptionItem;
     }
@@ -260,10 +238,9 @@ class GetUsageResponse implements \JsonSerializable
      * Sets Subscription Item.
      * Subscription item
      *
-     * @required
      * @maps subscription_item
      */
-    public function setSubscriptionItem(GetSubscriptionItemResponse $subscriptionItem): void
+    public function setSubscriptionItem(?GetSubscriptionItemResponse $subscriptionItem): void
     {
         $this->subscriptionItem = $subscriptionItem;
     }
@@ -274,7 +251,10 @@ class GetUsageResponse implements \JsonSerializable
      */
     public function getCode(): ?string
     {
-        return $this->code;
+        if (count($this->code) == 0) {
+            return null;
+        }
+        return $this->code['value'];
     }
 
     /**
@@ -285,7 +265,16 @@ class GetUsageResponse implements \JsonSerializable
      */
     public function setCode(?string $code): void
     {
-        $this->code = $code;
+        $this->code['value'] = $code;
+    }
+
+    /**
+     * Unsets Code.
+     * Identification code in the client system
+     */
+    public function unsetCode(): void
+    {
+        $this->code = [];
     }
 
     /**
@@ -294,7 +283,10 @@ class GetUsageResponse implements \JsonSerializable
      */
     public function getGroup(): ?string
     {
-        return $this->group;
+        if (count($this->group) == 0) {
+            return null;
+        }
+        return $this->group['value'];
     }
 
     /**
@@ -305,7 +297,16 @@ class GetUsageResponse implements \JsonSerializable
      */
     public function setGroup(?string $group): void
     {
-        $this->group = $group;
+        $this->group['value'] = $group;
+    }
+
+    /**
+     * Unsets Group.
+     * Identification group in the client system
+     */
+    public function unsetGroup(): void
+    {
+        $this->group = [];
     }
 
     /**
@@ -314,7 +315,10 @@ class GetUsageResponse implements \JsonSerializable
      */
     public function getAmount(): ?int
     {
-        return $this->amount;
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
     }
 
     /**
@@ -325,7 +329,16 @@ class GetUsageResponse implements \JsonSerializable
      */
     public function setAmount(?int $amount): void
     {
-        $this->amount = $amount;
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     * Field used in item scheme type 'Percent'
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
     }
 
     /**
@@ -346,18 +359,18 @@ class GetUsageResponse implements \JsonSerializable
         $json['used_at']           = DateTimeHelper::toRfc3339DateTime($this->usedAt);
         $json['created_at']        = DateTimeHelper::toRfc3339DateTime($this->createdAt);
         $json['status']            = $this->status;
-        if (isset($this->deletedAt)) {
-            $json['deleted_at']    = DateTimeHelper::toRfc3339DateTime($this->deletedAt);
+        if (!empty($this->deletedAt)) {
+            $json['deleted_at']    = DateTimeHelper::toRfc3339DateTime($this->deletedAt['value']);
         }
         $json['subscription_item'] = $this->subscriptionItem;
-        if (isset($this->code)) {
-            $json['code']          = $this->code;
+        if (!empty($this->code)) {
+            $json['code']          = $this->code['value'];
         }
-        if (isset($this->group)) {
-            $json['group']         = $this->group;
+        if (!empty($this->group)) {
+            $json['group']         = $this->group['value'];
         }
-        if (isset($this->amount)) {
-            $json['amount']        = $this->amount;
+        if (!empty($this->amount)) {
+            $json['amount']        = $this->amount['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `enabled` | `bool` | Required | Defines if the split is enabled | getEnabled(): bool | setEnabled(bool enabled): void |
-| `rules` | [`GetSplitResponse[]`](../../doc/models/get-split-response.md) | Required | Split | getRules(): array | setRules(array rules): void |
+| `enabled` | `?bool` | Required | Defines if the split is enabled | getEnabled(): ?bool | setEnabled(?bool enabled): void |
+| `rules` | [`?(GetSplitResponse[])`](../../doc/models/get-split-response.md) | Required | Split | getRules(): ?array | setRules(?array rules): void |
 
 ## Example (as JSON)
 

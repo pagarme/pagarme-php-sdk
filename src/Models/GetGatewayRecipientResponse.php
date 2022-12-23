@@ -18,51 +18,35 @@ use stdClass;
 class GetGatewayRecipientResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $gateway;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $pgid;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $createdAt;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $updatedAt;
-
-    /**
-     * @param string $gateway
-     * @param string $status
-     * @param string $pgid
-     * @param string $createdAt
-     * @param string $updatedAt
-     */
-    public function __construct(string $gateway, string $status, string $pgid, string $createdAt, string $updatedAt)
-    {
-        $this->gateway = $gateway;
-        $this->status = $status;
-        $this->pgid = $pgid;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-    }
 
     /**
      * Returns Gateway.
      * Gateway name
      */
-    public function getGateway(): string
+    public function getGateway(): ?string
     {
         return $this->gateway;
     }
@@ -71,10 +55,9 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      * Sets Gateway.
      * Gateway name
      *
-     * @required
      * @maps gateway
      */
-    public function setGateway(string $gateway): void
+    public function setGateway(?string $gateway): void
     {
         $this->gateway = $gateway;
     }
@@ -83,7 +66,7 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      * Returns Status.
      * Status of the recipient on the gateway
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -92,10 +75,9 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      * Sets Status.
      * Status of the recipient on the gateway
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -104,7 +86,7 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      * Returns Pgid.
      * Recipient id on the gateway
      */
-    public function getPgid(): string
+    public function getPgid(): ?string
     {
         return $this->pgid;
     }
@@ -113,10 +95,9 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      * Sets Pgid.
      * Recipient id on the gateway
      *
-     * @required
      * @maps pgid
      */
-    public function setPgid(string $pgid): void
+    public function setPgid(?string $pgid): void
     {
         $this->pgid = $pgid;
     }
@@ -125,7 +106,7 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      * Returns Created At.
      * Creation date
      */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
@@ -134,10 +115,9 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      * Sets Created At.
      * Creation date
      *
-     * @required
      * @maps created_at
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(?string $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -146,7 +126,7 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      * Returns Updated At.
      * Last update date
      */
-    public function getUpdatedAt(): string
+    public function getUpdatedAt(): ?string
     {
         return $this->updatedAt;
     }
@@ -155,10 +135,9 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      * Sets Updated At.
      * Last update date
      *
-     * @required
      * @maps updated_at
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(?string $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }

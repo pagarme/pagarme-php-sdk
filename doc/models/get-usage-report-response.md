@@ -9,9 +9,9 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `url` | `string` | Required | - | getUrl(): string | setUrl(string url): void |
-| `usageReportUrl` | `string` | Required | - | getUsageReportUrl(): string | setUsageReportUrl(string usageReportUrl): void |
-| `groupedReportUrl` | `string` | Required | - | getGroupedReportUrl(): string | setGroupedReportUrl(string groupedReportUrl): void |
+| `url` | `?string` | Required | - | getUrl(): ?string | setUrl(?string url): void |
+| `usageReportUrl` | `?string` | Required | - | getUsageReportUrl(): ?string | setUsageReportUrl(?string usageReportUrl): void |
+| `groupedReportUrl` | `?string` | Required | - | getGroupedReportUrl(): ?string | setGroupedReportUrl(?string groupedReportUrl): void |
 
 ## Example (as JSON)
 

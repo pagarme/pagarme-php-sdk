@@ -15,26 +15,29 @@ use stdClass;
 class GetPhoneResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $countryCode;
+    private $countryCode = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $number;
+    private $number = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $areaCode;
+    private $areaCode = [];
 
     /**
      * Returns Country Code.
      */
     public function getCountryCode(): ?string
     {
-        return $this->countryCode;
+        if (count($this->countryCode) == 0) {
+            return null;
+        }
+        return $this->countryCode['value'];
     }
 
     /**
@@ -44,7 +47,15 @@ class GetPhoneResponse implements \JsonSerializable
      */
     public function setCountryCode(?string $countryCode): void
     {
-        $this->countryCode = $countryCode;
+        $this->countryCode['value'] = $countryCode;
+    }
+
+    /**
+     * Unsets Country Code.
+     */
+    public function unsetCountryCode(): void
+    {
+        $this->countryCode = [];
     }
 
     /**
@@ -52,7 +63,10 @@ class GetPhoneResponse implements \JsonSerializable
      */
     public function getNumber(): ?string
     {
-        return $this->number;
+        if (count($this->number) == 0) {
+            return null;
+        }
+        return $this->number['value'];
     }
 
     /**
@@ -62,7 +76,15 @@ class GetPhoneResponse implements \JsonSerializable
      */
     public function setNumber(?string $number): void
     {
-        $this->number = $number;
+        $this->number['value'] = $number;
+    }
+
+    /**
+     * Unsets Number.
+     */
+    public function unsetNumber(): void
+    {
+        $this->number = [];
     }
 
     /**
@@ -70,7 +92,10 @@ class GetPhoneResponse implements \JsonSerializable
      */
     public function getAreaCode(): ?string
     {
-        return $this->areaCode;
+        if (count($this->areaCode) == 0) {
+            return null;
+        }
+        return $this->areaCode['value'];
     }
 
     /**
@@ -80,7 +105,15 @@ class GetPhoneResponse implements \JsonSerializable
      */
     public function setAreaCode(?string $areaCode): void
     {
-        $this->areaCode = $areaCode;
+        $this->areaCode['value'] = $areaCode;
+    }
+
+    /**
+     * Unsets Area Code.
+     */
+    public function unsetAreaCode(): void
+    {
+        $this->areaCode = [];
     }
 
     /**
@@ -95,14 +128,14 @@ class GetPhoneResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        if (isset($this->countryCode)) {
-            $json['country_code'] = $this->countryCode;
+        if (!empty($this->countryCode)) {
+            $json['country_code'] = $this->countryCode['value'];
         }
-        if (isset($this->number)) {
-            $json['number']       = $this->number;
+        if (!empty($this->number)) {
+            $json['number']       = $this->number['value'];
         }
-        if (isset($this->areaCode)) {
-            $json['area_code']    = $this->areaCode;
+        if (!empty($this->areaCode)) {
+            $json['area_code']    = $this->areaCode['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

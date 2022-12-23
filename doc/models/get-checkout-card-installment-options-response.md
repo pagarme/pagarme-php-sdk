@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `number` | `string` | Required | Número de parcelas | getNumber(): string | setNumber(string number): void |
-| `total` | `int` | Required | Valor total da compra | getTotal(): int | setTotal(int total): void |
+| `number` | `?string` | Required | Número de parcelas | getNumber(): ?string | setNumber(?string number): void |
+| `total` | `?int` | Required | Valor total da compra | getTotal(): ?int | setTotal(?int total): void |
 
 ## Example (as JSON)
 

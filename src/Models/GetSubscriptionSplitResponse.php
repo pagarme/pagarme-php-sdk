@@ -15,30 +15,20 @@ use stdClass;
 class GetSubscriptionSplitResponse implements \JsonSerializable
 {
     /**
-     * @var bool
+     * @var bool|null
      */
     private $enabled;
 
     /**
-     * @var GetSplitResponse[]
+     * @var GetSplitResponse[]|null
      */
     private $rules;
-
-    /**
-     * @param bool $enabled
-     * @param GetSplitResponse[] $rules
-     */
-    public function __construct(bool $enabled, array $rules)
-    {
-        $this->enabled = $enabled;
-        $this->rules = $rules;
-    }
 
     /**
      * Returns Enabled.
      * Defines if the split is enabled
      */
-    public function getEnabled(): bool
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
@@ -47,10 +37,9 @@ class GetSubscriptionSplitResponse implements \JsonSerializable
      * Sets Enabled.
      * Defines if the split is enabled
      *
-     * @required
      * @maps enabled
      */
-    public function setEnabled(bool $enabled): void
+    public function setEnabled(?bool $enabled): void
     {
         $this->enabled = $enabled;
     }
@@ -59,9 +48,9 @@ class GetSubscriptionSplitResponse implements \JsonSerializable
      * Returns Rules.
      * Split
      *
-     * @return GetSplitResponse[]
+     * @return GetSplitResponse[]|null
      */
-    public function getRules(): array
+    public function getRules(): ?array
     {
         return $this->rules;
     }
@@ -70,12 +59,11 @@ class GetSubscriptionSplitResponse implements \JsonSerializable
      * Sets Rules.
      * Split
      *
-     * @required
      * @maps rules
      *
-     * @param GetSplitResponse[] $rules
+     * @param GetSplitResponse[]|null $rules
      */
-    public function setRules(array $rules): void
+    public function setRules(?array $rules): void
     {
         $this->rules = $rules;
     }

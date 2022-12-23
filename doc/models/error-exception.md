@@ -11,9 +11,9 @@ Api Error Exception
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `message` | `string` | Required | - | getMessage(): string | setMessage(string message): void |
-| `errors` | `array` | Required | - | getErrors(): array | setErrors(array errors): void |
-| `request` | `array` | Required | - | getRequest(): array | setRequest(array request): void |
+| `message` | `?string` | Required | - | getMessage(): ?string | setMessage(?string message): void |
+| `errors` | `?array` | Required | - | getErrors(): ?array | setErrors(?array errors): void |
+| `request` | `?array` | Required | - | getRequest(): ?array | setRequest(?array request): void |
 
 ## Example (as JSON)
 

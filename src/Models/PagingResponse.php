@@ -18,37 +18,25 @@ use stdClass;
 class PagingResponse implements \JsonSerializable
 {
     /**
-     * @var int
+     * @var int|null
      */
     private $total;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $previous;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $next;
-
-    /**
-     * @param int $total
-     * @param string $previous
-     * @param string $next
-     */
-    public function __construct(int $total, string $previous, string $next)
-    {
-        $this->total = $total;
-        $this->previous = $previous;
-        $this->next = $next;
-    }
 
     /**
      * Returns Total.
      * Total number of pages
      */
-    public function getTotal(): int
+    public function getTotal(): ?int
     {
         return $this->total;
     }
@@ -57,10 +45,9 @@ class PagingResponse implements \JsonSerializable
      * Sets Total.
      * Total number of pages
      *
-     * @required
      * @maps total
      */
-    public function setTotal(int $total): void
+    public function setTotal(?int $total): void
     {
         $this->total = $total;
     }
@@ -69,7 +56,7 @@ class PagingResponse implements \JsonSerializable
      * Returns Previous.
      * Previous page
      */
-    public function getPrevious(): string
+    public function getPrevious(): ?string
     {
         return $this->previous;
     }
@@ -78,10 +65,9 @@ class PagingResponse implements \JsonSerializable
      * Sets Previous.
      * Previous page
      *
-     * @required
      * @maps previous
      */
-    public function setPrevious(string $previous): void
+    public function setPrevious(?string $previous): void
     {
         $this->previous = $previous;
     }
@@ -90,7 +76,7 @@ class PagingResponse implements \JsonSerializable
      * Returns Next.
      * Next page
      */
-    public function getNext(): string
+    public function getNext(): ?string
     {
         return $this->next;
     }
@@ -99,10 +85,9 @@ class PagingResponse implements \JsonSerializable
      * Sets Next.
      * Next page
      *
-     * @required
      * @maps next
      */
-    public function setNext(string $next): void
+    public function setNext(?string $next): void
     {
         $this->next = $next;
     }
