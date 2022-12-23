@@ -11,21 +11,21 @@ Response object for getting a customer
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `string` | Required | - | getId(): string | setId(string id): void |
-| `name` | `string` | Required | - | getName(): string | setName(string name): void |
-| `email` | `string` | Required | - | getEmail(): string | setEmail(string email): void |
-| `delinquent` | `bool` | Required | - | getDelinquent(): bool | setDelinquent(bool delinquent): void |
-| `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
-| `updatedAt` | `\DateTime` | Required | - | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
-| `document` | `string` | Required | - | getDocument(): string | setDocument(string document): void |
-| `type` | `string` | Required | - | getType(): string | setType(string type): void |
-| `fbAccessToken` | `string` | Required | - | getFbAccessToken(): string | setFbAccessToken(string fbAccessToken): void |
-| `address` | [`GetAddressResponse`](../../doc/models/get-address-response.md) | Required | - | getAddress(): GetAddressResponse | setAddress(GetAddressResponse address): void |
-| `metadata` | `array<string,string>` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
-| `phones` | [`GetPhonesResponse`](../../doc/models/get-phones-response.md) | Required | - | getPhones(): GetPhonesResponse | setPhones(GetPhonesResponse phones): void |
+| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
+| `name` | `?string` | Required | - | getName(): ?string | setName(?string name): void |
+| `email` | `?string` | Required | - | getEmail(): ?string | setEmail(?string email): void |
+| `delinquent` | `?bool` | Required | - | getDelinquent(): ?bool | setDelinquent(?bool delinquent): void |
+| `createdAt` | `?\DateTime` | Required | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
+| `updatedAt` | `?\DateTime` | Required | - | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
+| `document` | `?string` | Required | - | getDocument(): ?string | setDocument(?string document): void |
+| `type` | `?string` | Required | - | getType(): ?string | setType(?string type): void |
+| `fbAccessToken` | `?string` | Required | - | getFbAccessToken(): ?string | setFbAccessToken(?string fbAccessToken): void |
+| `address` | [`?GetAddressResponse`](../../doc/models/get-address-response.md) | Required | - | getAddress(): ?GetAddressResponse | setAddress(?GetAddressResponse address): void |
+| `metadata` | `?array<string,string>` | Required | - | getMetadata(): ?array | setMetadata(?array metadata): void |
+| `phones` | [`?GetPhonesResponse`](../../doc/models/get-phones-response.md) | Required | - | getPhones(): ?GetPhonesResponse | setPhones(?GetPhonesResponse phones): void |
 | `fbId` | `?int` | Optional | - | getFbId(): ?int | setFbId(?int fbId): void |
-| `code` | `string` | Required | Código de referência do cliente no sistema da loja. Max: 52 caracteres | getCode(): string | setCode(string code): void |
-| `documentType` | `string` | Required | - | getDocumentType(): string | setDocumentType(string documentType): void |
+| `code` | `?string` | Required | Código de referência do cliente no sistema da loja. Max: 52 caracteres | getCode(): ?string | setCode(?string code): void |
+| `documentType` | `?string` | Required | - | getDocumentType(): ?string | setDocumentType(?string documentType): void |
 
 ## Example (as JSON)
 

@@ -19,55 +19,34 @@ use stdClass;
 class GetTokenResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $expiresAt;
 
     /**
-     * @var GetCardTokenResponse
+     * @var GetCardTokenResponse|null
      */
     private $card;
 
     /**
-     * @param string $id
-     * @param string $type
-     * @param \DateTime $createdAt
-     * @param string $expiresAt
-     * @param GetCardTokenResponse $card
-     */
-    public function __construct(
-        string $id,
-        string $type,
-        \DateTime $createdAt,
-        string $expiresAt,
-        GetCardTokenResponse $card
-    ) {
-        $this->id = $id;
-        $this->type = $type;
-        $this->createdAt = $createdAt;
-        $this->expiresAt = $expiresAt;
-        $this->card = $card;
-    }
-
-    /**
      * Returns Id.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -75,10 +54,9 @@ class GetTokenResponse implements \JsonSerializable
     /**
      * Sets Id.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -86,7 +64,7 @@ class GetTokenResponse implements \JsonSerializable
     /**
      * Returns Type.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -94,10 +72,9 @@ class GetTokenResponse implements \JsonSerializable
     /**
      * Sets Type.
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -105,7 +82,7 @@ class GetTokenResponse implements \JsonSerializable
     /**
      * Returns Created At.
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -113,11 +90,10 @@ class GetTokenResponse implements \JsonSerializable
     /**
      * Sets Created At.
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -125,7 +101,7 @@ class GetTokenResponse implements \JsonSerializable
     /**
      * Returns Expires At.
      */
-    public function getExpiresAt(): string
+    public function getExpiresAt(): ?string
     {
         return $this->expiresAt;
     }
@@ -133,10 +109,9 @@ class GetTokenResponse implements \JsonSerializable
     /**
      * Sets Expires At.
      *
-     * @required
      * @maps expires_at
      */
-    public function setExpiresAt(string $expiresAt): void
+    public function setExpiresAt(?string $expiresAt): void
     {
         $this->expiresAt = $expiresAt;
     }
@@ -144,7 +119,7 @@ class GetTokenResponse implements \JsonSerializable
     /**
      * Returns Card.
      */
-    public function getCard(): GetCardTokenResponse
+    public function getCard(): ?GetCardTokenResponse
     {
         return $this->card;
     }
@@ -152,10 +127,9 @@ class GetTokenResponse implements \JsonSerializable
     /**
      * Sets Card.
      *
-     * @required
      * @maps card
      */
-    public function setCard(GetCardTokenResponse $card): void
+    public function setCard(?GetCardTokenResponse $card): void
     {
         $this->card = $card;
     }

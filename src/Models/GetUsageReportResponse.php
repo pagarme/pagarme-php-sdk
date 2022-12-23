@@ -15,36 +15,24 @@ use stdClass;
 class GetUsageReportResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $url;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $usageReportUrl;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $groupedReportUrl;
 
     /**
-     * @param string $url
-     * @param string $usageReportUrl
-     * @param string $groupedReportUrl
-     */
-    public function __construct(string $url, string $usageReportUrl, string $groupedReportUrl)
-    {
-        $this->url = $url;
-        $this->usageReportUrl = $usageReportUrl;
-        $this->groupedReportUrl = $groupedReportUrl;
-    }
-
-    /**
      * Returns Url.
      */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
@@ -52,10 +40,9 @@ class GetUsageReportResponse implements \JsonSerializable
     /**
      * Sets Url.
      *
-     * @required
      * @maps url
      */
-    public function setUrl(string $url): void
+    public function setUrl(?string $url): void
     {
         $this->url = $url;
     }
@@ -63,7 +50,7 @@ class GetUsageReportResponse implements \JsonSerializable
     /**
      * Returns Usage Report Url.
      */
-    public function getUsageReportUrl(): string
+    public function getUsageReportUrl(): ?string
     {
         return $this->usageReportUrl;
     }
@@ -71,10 +58,9 @@ class GetUsageReportResponse implements \JsonSerializable
     /**
      * Sets Usage Report Url.
      *
-     * @required
      * @maps usage_report_url
      */
-    public function setUsageReportUrl(string $usageReportUrl): void
+    public function setUsageReportUrl(?string $usageReportUrl): void
     {
         $this->usageReportUrl = $usageReportUrl;
     }
@@ -82,7 +68,7 @@ class GetUsageReportResponse implements \JsonSerializable
     /**
      * Returns Grouped Report Url.
      */
-    public function getGroupedReportUrl(): string
+    public function getGroupedReportUrl(): ?string
     {
         return $this->groupedReportUrl;
     }
@@ -90,10 +76,9 @@ class GetUsageReportResponse implements \JsonSerializable
     /**
      * Sets Grouped Report Url.
      *
-     * @required
      * @maps grouped_report_url
      */
-    public function setGroupedReportUrl(string $groupedReportUrl): void
+    public function setGroupedReportUrl(?string $groupedReportUrl): void
     {
         $this->groupedReportUrl = $groupedReportUrl;
     }

@@ -18,32 +18,22 @@ use stdClass;
 class ListChargeTransactionsResponse implements \JsonSerializable
 {
     /**
-     * @var GetTransactionResponse[]
+     * @var GetTransactionResponse[]|null
      */
     private $data;
 
     /**
-     * @var PagingResponse
+     * @var PagingResponse|null
      */
     private $paging;
-
-    /**
-     * @param GetTransactionResponse[] $data
-     * @param PagingResponse $paging
-     */
-    public function __construct(array $data, PagingResponse $paging)
-    {
-        $this->data = $data;
-        $this->paging = $paging;
-    }
 
     /**
      * Returns Data.
      * The charge transactions objects
      *
-     * @return GetTransactionResponse[]
+     * @return GetTransactionResponse[]|null
      */
-    public function getData(): array
+    public function getData(): ?array
     {
         return $this->data;
     }
@@ -52,12 +42,11 @@ class ListChargeTransactionsResponse implements \JsonSerializable
      * Sets Data.
      * The charge transactions objects
      *
-     * @required
      * @maps data
      *
-     * @param GetTransactionResponse[] $data
+     * @param GetTransactionResponse[]|null $data
      */
-    public function setData(array $data): void
+    public function setData(?array $data): void
     {
         $this->data = $data;
     }
@@ -66,7 +55,7 @@ class ListChargeTransactionsResponse implements \JsonSerializable
      * Returns Paging.
      * Paging object
      */
-    public function getPaging(): PagingResponse
+    public function getPaging(): ?PagingResponse
     {
         return $this->paging;
     }
@@ -75,10 +64,9 @@ class ListChargeTransactionsResponse implements \JsonSerializable
      * Sets Paging.
      * Paging object
      *
-     * @required
      * @maps paging
      */
-    public function setPaging(PagingResponse $paging): void
+    public function setPaging(?PagingResponse $paging): void
     {
         $this->paging = $paging;
     }

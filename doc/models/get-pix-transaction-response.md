@@ -15,12 +15,12 @@ Response object when getting a pix transaction
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `qrCode` | `string` | Required | - | getQrCode(): string | setQrCode(string qrCode): void |
-| `qrCodeUrl` | `string` | Required | - | getQrCodeUrl(): string | setQrCodeUrl(string qrCodeUrl): void |
-| `expiresAt` | `\DateTime` | Required | - | getExpiresAt(): \DateTime | setExpiresAt(\DateTime expiresAt): void |
-| `additionalInformation` | [`PixAdditionalInformation[]`](../../doc/models/pix-additional-information.md) | Required | - | getAdditionalInformation(): array | setAdditionalInformation(array additionalInformation): void |
+| `qrCode` | `?string` | Required | - | getQrCode(): ?string | setQrCode(?string qrCode): void |
+| `qrCodeUrl` | `?string` | Required | - | getQrCodeUrl(): ?string | setQrCodeUrl(?string qrCodeUrl): void |
+| `expiresAt` | `?\DateTime` | Required | - | getExpiresAt(): ?\DateTime | setExpiresAt(?\DateTime expiresAt): void |
+| `additionalInformation` | [`?(PixAdditionalInformation[])`](../../doc/models/pix-additional-information.md) | Required | - | getAdditionalInformation(): ?array | setAdditionalInformation(?array additionalInformation): void |
 | `endToEndId` | `?string` | Required | - | getEndToEndId(): ?string | setEndToEndId(?string endToEndId): void |
-| `payer` | [`GetPixPayerResponse`](../../doc/models/get-pix-payer-response.md) | Required | - | getPayer(): GetPixPayerResponse | setPayer(GetPixPayerResponse payer): void |
+| `payer` | [`?GetPixPayerResponse`](../../doc/models/get-pix-payer-response.md) | Required | - | getPayer(): ?GetPixPayerResponse | setPayer(?GetPixPayerResponse payer): void |
 
 ## Example (as JSON)
 
@@ -51,7 +51,6 @@ Response object when getting a pix transaction
       "account_number": "account_number2"
     }
   },
-  "transaction_type": "pix",
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
@@ -79,6 +78,7 @@ Response object when getting a pix transaction
     }
   ],
   "next_attempt": null,
+  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",

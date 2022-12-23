@@ -18,54 +18,40 @@ use stdClass;
 class GetSplitResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $amount;
 
     /**
-     * @var GetRecipientResponse|null
+     * @var array
      */
-    private $recipient;
+    private $recipient = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $gatewayId;
 
     /**
-     * @var GetSplitOptionsResponse|null
+     * @var array
      */
-    private $options;
+    private $options = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
-
-    /**
-     * @param string $type
-     * @param int $amount
-     * @param string $gatewayId
-     * @param string $id
-     */
-    public function __construct(string $type, int $amount, string $gatewayId, string $id)
-    {
-        $this->type = $type;
-        $this->amount = $amount;
-        $this->gatewayId = $gatewayId;
-        $this->id = $id;
-    }
 
     /**
      * Returns Type.
      * Type
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -74,10 +60,9 @@ class GetSplitResponse implements \JsonSerializable
      * Sets Type.
      * Type
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -86,7 +71,7 @@ class GetSplitResponse implements \JsonSerializable
      * Returns Amount.
      * Amount
      */
-    public function getAmount(): int
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
@@ -95,10 +80,9 @@ class GetSplitResponse implements \JsonSerializable
      * Sets Amount.
      * Amount
      *
-     * @required
      * @maps amount
      */
-    public function setAmount(int $amount): void
+    public function setAmount(?int $amount): void
     {
         $this->amount = $amount;
     }
@@ -109,7 +93,10 @@ class GetSplitResponse implements \JsonSerializable
      */
     public function getRecipient(): ?GetRecipientResponse
     {
-        return $this->recipient;
+        if (count($this->recipient) == 0) {
+            return null;
+        }
+        return $this->recipient['value'];
     }
 
     /**
@@ -120,14 +107,23 @@ class GetSplitResponse implements \JsonSerializable
      */
     public function setRecipient(?GetRecipientResponse $recipient): void
     {
-        $this->recipient = $recipient;
+        $this->recipient['value'] = $recipient;
+    }
+
+    /**
+     * Unsets Recipient.
+     * Recipient
+     */
+    public function unsetRecipient(): void
+    {
+        $this->recipient = [];
     }
 
     /**
      * Returns Gateway Id.
      * The split rule gateway id
      */
-    public function getGatewayId(): string
+    public function getGatewayId(): ?string
     {
         return $this->gatewayId;
     }
@@ -136,10 +132,9 @@ class GetSplitResponse implements \JsonSerializable
      * Sets Gateway Id.
      * The split rule gateway id
      *
-     * @required
      * @maps gateway_id
      */
-    public function setGatewayId(string $gatewayId): void
+    public function setGatewayId(?string $gatewayId): void
     {
         $this->gatewayId = $gatewayId;
     }
@@ -149,7 +144,10 @@ class GetSplitResponse implements \JsonSerializable
      */
     public function getOptions(): ?GetSplitOptionsResponse
     {
-        return $this->options;
+        if (count($this->options) == 0) {
+            return null;
+        }
+        return $this->options['value'];
     }
 
     /**
@@ -159,13 +157,21 @@ class GetSplitResponse implements \JsonSerializable
      */
     public function setOptions(?GetSplitOptionsResponse $options): void
     {
-        $this->options = $options;
+        $this->options['value'] = $options;
+    }
+
+    /**
+     * Unsets Options.
+     */
+    public function unsetOptions(): void
+    {
+        $this->options = [];
     }
 
     /**
      * Returns Id.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -173,10 +179,9 @@ class GetSplitResponse implements \JsonSerializable
     /**
      * Sets Id.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -195,12 +200,12 @@ class GetSplitResponse implements \JsonSerializable
         $json = [];
         $json['type']          = $this->type;
         $json['amount']        = $this->amount;
-        if (isset($this->recipient)) {
-            $json['recipient'] = $this->recipient;
+        if (!empty($this->recipient)) {
+            $json['recipient'] = $this->recipient['value'];
         }
         $json['gateway_id']    = $this->gatewayId;
-        if (isset($this->options)) {
-            $json['options']   = $this->options;
+        if (!empty($this->options)) {
+            $json['options']   = $this->options['value'];
         }
         $json['id']            = $this->id;
 

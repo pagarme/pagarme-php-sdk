@@ -15,8 +15,8 @@ Response object for getting a safety pay transaction
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `url` | `string` | Required | Payment url | getUrl(): string | setUrl(string url): void |
-| `bankTid` | `string` | Required | Transaction identifier on bank | getBankTid(): string | setBankTid(string bankTid): void |
+| `url` | `?string` | Required | Payment url | getUrl(): ?string | setUrl(?string url): void |
+| `bankTid` | `?string` | Required | Transaction identifier on bank | getBankTid(): ?string | setBankTid(?string bankTid): void |
 | `paidAt` | `?\DateTime` | Optional | Payment date | getPaidAt(): ?\DateTime | setPaidAt(?\DateTime paidAt): void |
 | `paidAmount` | `?int` | Optional | Paid amount | getPaidAmount(): ?int | setPaidAmount(?int paidAmount): void |
 
@@ -28,7 +28,6 @@ Response object for getting a safety pay transaction
   "bank_tid": "bank_tid4",
   "paid_at": null,
   "paid_amount": null,
-  "transaction_type": "safetypay",
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
@@ -56,6 +55,7 @@ Response object for getting a safety pay transaction
     }
   ],
   "next_attempt": null,
+  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",

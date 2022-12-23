@@ -18,95 +18,59 @@ use stdClass;
 class GetBillingAddressResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $street;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $number;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $zipCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $neighborhood;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $city;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $state;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $country;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $complement;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $line1;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $line2;
 
     /**
-     * @param string $street
-     * @param string $number
-     * @param string $zipCode
-     * @param string $neighborhood
-     * @param string $city
-     * @param string $state
-     * @param string $country
-     * @param string $complement
-     * @param string $line1
-     * @param string $line2
-     */
-    public function __construct(
-        string $street,
-        string $number,
-        string $zipCode,
-        string $neighborhood,
-        string $city,
-        string $state,
-        string $country,
-        string $complement,
-        string $line1,
-        string $line2
-    ) {
-        $this->street = $street;
-        $this->number = $number;
-        $this->zipCode = $zipCode;
-        $this->neighborhood = $neighborhood;
-        $this->city = $city;
-        $this->state = $state;
-        $this->country = $country;
-        $this->complement = $complement;
-        $this->line1 = $line1;
-        $this->line2 = $line2;
-    }
-
-    /**
      * Returns Street.
      */
-    public function getStreet(): string
+    public function getStreet(): ?string
     {
         return $this->street;
     }
@@ -114,10 +78,9 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Sets Street.
      *
-     * @required
      * @maps street
      */
-    public function setStreet(string $street): void
+    public function setStreet(?string $street): void
     {
         $this->street = $street;
     }
@@ -125,7 +88,7 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Returns Number.
      */
-    public function getNumber(): string
+    public function getNumber(): ?string
     {
         return $this->number;
     }
@@ -133,10 +96,9 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Sets Number.
      *
-     * @required
      * @maps number
      */
-    public function setNumber(string $number): void
+    public function setNumber(?string $number): void
     {
         $this->number = $number;
     }
@@ -144,7 +106,7 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Returns Zip Code.
      */
-    public function getZipCode(): string
+    public function getZipCode(): ?string
     {
         return $this->zipCode;
     }
@@ -152,10 +114,9 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Sets Zip Code.
      *
-     * @required
      * @maps zip_code
      */
-    public function setZipCode(string $zipCode): void
+    public function setZipCode(?string $zipCode): void
     {
         $this->zipCode = $zipCode;
     }
@@ -163,7 +124,7 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Returns Neighborhood.
      */
-    public function getNeighborhood(): string
+    public function getNeighborhood(): ?string
     {
         return $this->neighborhood;
     }
@@ -171,10 +132,9 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Sets Neighborhood.
      *
-     * @required
      * @maps neighborhood
      */
-    public function setNeighborhood(string $neighborhood): void
+    public function setNeighborhood(?string $neighborhood): void
     {
         $this->neighborhood = $neighborhood;
     }
@@ -182,7 +142,7 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Returns City.
      */
-    public function getCity(): string
+    public function getCity(): ?string
     {
         return $this->city;
     }
@@ -190,10 +150,9 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Sets City.
      *
-     * @required
      * @maps city
      */
-    public function setCity(string $city): void
+    public function setCity(?string $city): void
     {
         $this->city = $city;
     }
@@ -201,7 +160,7 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Returns State.
      */
-    public function getState(): string
+    public function getState(): ?string
     {
         return $this->state;
     }
@@ -209,10 +168,9 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Sets State.
      *
-     * @required
      * @maps state
      */
-    public function setState(string $state): void
+    public function setState(?string $state): void
     {
         $this->state = $state;
     }
@@ -220,7 +178,7 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Returns Country.
      */
-    public function getCountry(): string
+    public function getCountry(): ?string
     {
         return $this->country;
     }
@@ -228,10 +186,9 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Sets Country.
      *
-     * @required
      * @maps country
      */
-    public function setCountry(string $country): void
+    public function setCountry(?string $country): void
     {
         $this->country = $country;
     }
@@ -239,7 +196,7 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Returns Complement.
      */
-    public function getComplement(): string
+    public function getComplement(): ?string
     {
         return $this->complement;
     }
@@ -247,10 +204,9 @@ class GetBillingAddressResponse implements \JsonSerializable
     /**
      * Sets Complement.
      *
-     * @required
      * @maps complement
      */
-    public function setComplement(string $complement): void
+    public function setComplement(?string $complement): void
     {
         $this->complement = $complement;
     }
@@ -259,7 +215,7 @@ class GetBillingAddressResponse implements \JsonSerializable
      * Returns Line 1.
      * Line 1 for address
      */
-    public function getLine1(): string
+    public function getLine1(): ?string
     {
         return $this->line1;
     }
@@ -268,10 +224,9 @@ class GetBillingAddressResponse implements \JsonSerializable
      * Sets Line 1.
      * Line 1 for address
      *
-     * @required
      * @maps line_1
      */
-    public function setLine1(string $line1): void
+    public function setLine1(?string $line1): void
     {
         $this->line1 = $line1;
     }
@@ -280,7 +235,7 @@ class GetBillingAddressResponse implements \JsonSerializable
      * Returns Line 2.
      * Line 2 for address
      */
-    public function getLine2(): string
+    public function getLine2(): ?string
     {
         return $this->line2;
     }
@@ -289,10 +244,9 @@ class GetBillingAddressResponse implements \JsonSerializable
      * Sets Line 2.
      * Line 2 for address
      *
-     * @required
      * @maps line_2
      */
-    public function setLine2(string $line2): void
+    public function setLine2(?string $line2): void
     {
         $this->line2 = $line2;
     }

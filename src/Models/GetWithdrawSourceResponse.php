@@ -15,29 +15,19 @@ use stdClass;
 class GetWithdrawSourceResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $sourceId;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @param string $sourceId
-     * @param string $type
-     */
-    public function __construct(string $sourceId, string $type)
-    {
-        $this->sourceId = $sourceId;
-        $this->type = $type;
-    }
-
-    /**
      * Returns Source Id.
      */
-    public function getSourceId(): string
+    public function getSourceId(): ?string
     {
         return $this->sourceId;
     }
@@ -45,10 +35,9 @@ class GetWithdrawSourceResponse implements \JsonSerializable
     /**
      * Sets Source Id.
      *
-     * @required
      * @maps source_id
      */
-    public function setSourceId(string $sourceId): void
+    public function setSourceId(?string $sourceId): void
     {
         $this->sourceId = $sourceId;
     }
@@ -56,7 +45,7 @@ class GetWithdrawSourceResponse implements \JsonSerializable
     /**
      * Returns Type.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -64,10 +53,9 @@ class GetWithdrawSourceResponse implements \JsonSerializable
     /**
      * Sets Type.
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }

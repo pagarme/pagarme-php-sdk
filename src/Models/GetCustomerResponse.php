@@ -19,132 +19,84 @@ use stdClass;
 class GetCustomerResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $name;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $email;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $delinquent;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $updatedAt;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $document;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $fbAccessToken;
 
     /**
-     * @var GetAddressResponse
+     * @var GetAddressResponse|null
      */
     private $address;
 
     /**
-     * @var array<string,string>
+     * @var array<string,string>|null
      */
     private $metadata;
 
     /**
-     * @var GetPhonesResponse
+     * @var GetPhonesResponse|null
      */
     private $phones;
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $fbId;
+    private $fbId = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $code;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $documentType;
 
     /**
-     * @param string $id
-     * @param string $name
-     * @param string $email
-     * @param bool $delinquent
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param string $document
-     * @param string $type
-     * @param string $fbAccessToken
-     * @param GetAddressResponse $address
-     * @param array<string,string> $metadata
-     * @param GetPhonesResponse $phones
-     * @param string $code
-     * @param string $documentType
-     */
-    public function __construct(
-        string $id,
-        string $name,
-        string $email,
-        bool $delinquent,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        string $document,
-        string $type,
-        string $fbAccessToken,
-        GetAddressResponse $address,
-        array $metadata,
-        GetPhonesResponse $phones,
-        string $code,
-        string $documentType
-    ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->email = $email;
-        $this->delinquent = $delinquent;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-        $this->document = $document;
-        $this->type = $type;
-        $this->fbAccessToken = $fbAccessToken;
-        $this->address = $address;
-        $this->metadata = $metadata;
-        $this->phones = $phones;
-        $this->code = $code;
-        $this->documentType = $documentType;
-    }
-
-    /**
      * Returns Id.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -152,10 +104,9 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Id.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -163,7 +114,7 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Returns Name.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -171,10 +122,9 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Name.
      *
-     * @required
      * @maps name
      */
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -182,7 +132,7 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Returns Email.
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -190,10 +140,9 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Email.
      *
-     * @required
      * @maps email
      */
-    public function setEmail(string $email): void
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
     }
@@ -201,7 +150,7 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Returns Delinquent.
      */
-    public function getDelinquent(): bool
+    public function getDelinquent(): ?bool
     {
         return $this->delinquent;
     }
@@ -209,10 +158,9 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Delinquent.
      *
-     * @required
      * @maps delinquent
      */
-    public function setDelinquent(bool $delinquent): void
+    public function setDelinquent(?bool $delinquent): void
     {
         $this->delinquent = $delinquent;
     }
@@ -220,7 +168,7 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Returns Created At.
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -228,11 +176,10 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Created At.
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -240,7 +187,7 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Returns Updated At.
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
@@ -248,11 +195,10 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Updated At.
      *
-     * @required
      * @maps updated_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(?\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -260,7 +206,7 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Returns Document.
      */
-    public function getDocument(): string
+    public function getDocument(): ?string
     {
         return $this->document;
     }
@@ -268,10 +214,9 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Document.
      *
-     * @required
      * @maps document
      */
-    public function setDocument(string $document): void
+    public function setDocument(?string $document): void
     {
         $this->document = $document;
     }
@@ -279,7 +224,7 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Returns Type.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -287,10 +232,9 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Type.
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -298,7 +242,7 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Returns Fb Access Token.
      */
-    public function getFbAccessToken(): string
+    public function getFbAccessToken(): ?string
     {
         return $this->fbAccessToken;
     }
@@ -306,10 +250,9 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Fb Access Token.
      *
-     * @required
      * @maps fb_access_token
      */
-    public function setFbAccessToken(string $fbAccessToken): void
+    public function setFbAccessToken(?string $fbAccessToken): void
     {
         $this->fbAccessToken = $fbAccessToken;
     }
@@ -317,7 +260,7 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Returns Address.
      */
-    public function getAddress(): GetAddressResponse
+    public function getAddress(): ?GetAddressResponse
     {
         return $this->address;
     }
@@ -325,10 +268,9 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Address.
      *
-     * @required
      * @maps address
      */
-    public function setAddress(GetAddressResponse $address): void
+    public function setAddress(?GetAddressResponse $address): void
     {
         $this->address = $address;
     }
@@ -336,9 +278,9 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Returns Metadata.
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
-    public function getMetadata(): array
+    public function getMetadata(): ?array
     {
         return $this->metadata;
     }
@@ -346,12 +288,11 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Metadata.
      *
-     * @required
      * @maps metadata
      *
-     * @param array<string,string> $metadata
+     * @param array<string,string>|null $metadata
      */
-    public function setMetadata(array $metadata): void
+    public function setMetadata(?array $metadata): void
     {
         $this->metadata = $metadata;
     }
@@ -359,7 +300,7 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Returns Phones.
      */
-    public function getPhones(): GetPhonesResponse
+    public function getPhones(): ?GetPhonesResponse
     {
         return $this->phones;
     }
@@ -367,10 +308,9 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Phones.
      *
-     * @required
      * @maps phones
      */
-    public function setPhones(GetPhonesResponse $phones): void
+    public function setPhones(?GetPhonesResponse $phones): void
     {
         $this->phones = $phones;
     }
@@ -380,7 +320,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getFbId(): ?int
     {
-        return $this->fbId;
+        if (count($this->fbId) == 0) {
+            return null;
+        }
+        return $this->fbId['value'];
     }
 
     /**
@@ -390,14 +333,22 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setFbId(?int $fbId): void
     {
-        $this->fbId = $fbId;
+        $this->fbId['value'] = $fbId;
+    }
+
+    /**
+     * Unsets Fb Id.
+     */
+    public function unsetFbId(): void
+    {
+        $this->fbId = [];
     }
 
     /**
      * Returns Code.
      * Código de referência do cliente no sistema da loja. Max: 52 caracteres
      */
-    public function getCode(): string
+    public function getCode(): ?string
     {
         return $this->code;
     }
@@ -406,10 +357,9 @@ class GetCustomerResponse implements \JsonSerializable
      * Sets Code.
      * Código de referência do cliente no sistema da loja. Max: 52 caracteres
      *
-     * @required
      * @maps code
      */
-    public function setCode(string $code): void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
@@ -417,7 +367,7 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Returns Document Type.
      */
-    public function getDocumentType(): string
+    public function getDocumentType(): ?string
     {
         return $this->documentType;
     }
@@ -425,10 +375,9 @@ class GetCustomerResponse implements \JsonSerializable
     /**
      * Sets Document Type.
      *
-     * @required
      * @maps document_type
      */
-    public function setDocumentType(string $documentType): void
+    public function setDocumentType(?string $documentType): void
     {
         $this->documentType = $documentType;
     }
@@ -457,8 +406,8 @@ class GetCustomerResponse implements \JsonSerializable
         $json['address']         = $this->address;
         $json['metadata']        = $this->metadata;
         $json['phones']          = $this->phones;
-        if (isset($this->fbId)) {
-            $json['fb_id']       = $this->fbId;
+        if (!empty($this->fbId)) {
+            $json['fb_id']       = $this->fbId['value'];
         }
         $json['code']            = $this->code;
         $json['document_type']   = $this->documentType;

@@ -15,20 +15,20 @@ Response object for getting a debit card transaction
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `statementDescriptor` | `string` | Required | Text that will appear on the debit card's statement | getStatementDescriptor(): string | setStatementDescriptor(string statementDescriptor): void |
-| `acquirerName` | `string` | Required | Acquirer name | getAcquirerName(): string | setAcquirerName(string acquirerName): void |
-| `acquirerAffiliationCode` | `string` | Required | Aquirer affiliation code | getAcquirerAffiliationCode(): string | setAcquirerAffiliationCode(string acquirerAffiliationCode): void |
-| `acquirerTid` | `string` | Required | Acquirer TID | getAcquirerTid(): string | setAcquirerTid(string acquirerTid): void |
-| `acquirerNsu` | `string` | Required | Acquirer NSU | getAcquirerNsu(): string | setAcquirerNsu(string acquirerNsu): void |
-| `acquirerAuthCode` | `string` | Required | Acquirer authorization code | getAcquirerAuthCode(): string | setAcquirerAuthCode(string acquirerAuthCode): void |
-| `operationType` | `string` | Required | Operation type | getOperationType(): string | setOperationType(string operationType): void |
-| `card` | [`GetCardResponse`](../../doc/models/get-card-response.md) | Required | Card data | getCard(): GetCardResponse | setCard(GetCardResponse card): void |
-| `acquirerMessage` | `string` | Required | Acquirer message | getAcquirerMessage(): string | setAcquirerMessage(string acquirerMessage): void |
-| `acquirerReturnCode` | `string` | Required | Acquirer Return Code | getAcquirerReturnCode(): string | setAcquirerReturnCode(string acquirerReturnCode): void |
-| `mpi` | `string` | Required | Merchant Plugin | getMpi(): string | setMpi(string mpi): void |
-| `eci` | `string` | Required | Electronic Commerce Indicator (ECI) | getEci(): string | setEci(string eci): void |
-| `authenticationType` | `string` | Required | Authentication type | getAuthenticationType(): string | setAuthenticationType(string authenticationType): void |
-| `threedAuthenticationUrl` | `string` | Required | 3D-S Authentication Url | getThreedAuthenticationUrl(): string | setThreedAuthenticationUrl(string threedAuthenticationUrl): void |
+| `statementDescriptor` | `?string` | Required | Text that will appear on the debit card's statement | getStatementDescriptor(): ?string | setStatementDescriptor(?string statementDescriptor): void |
+| `acquirerName` | `?string` | Required | Acquirer name | getAcquirerName(): ?string | setAcquirerName(?string acquirerName): void |
+| `acquirerAffiliationCode` | `?string` | Required | Aquirer affiliation code | getAcquirerAffiliationCode(): ?string | setAcquirerAffiliationCode(?string acquirerAffiliationCode): void |
+| `acquirerTid` | `?string` | Required | Acquirer TID | getAcquirerTid(): ?string | setAcquirerTid(?string acquirerTid): void |
+| `acquirerNsu` | `?string` | Required | Acquirer NSU | getAcquirerNsu(): ?string | setAcquirerNsu(?string acquirerNsu): void |
+| `acquirerAuthCode` | `?string` | Required | Acquirer authorization code | getAcquirerAuthCode(): ?string | setAcquirerAuthCode(?string acquirerAuthCode): void |
+| `operationType` | `?string` | Required | Operation type | getOperationType(): ?string | setOperationType(?string operationType): void |
+| `card` | [`?GetCardResponse`](../../doc/models/get-card-response.md) | Required | Card data | getCard(): ?GetCardResponse | setCard(?GetCardResponse card): void |
+| `acquirerMessage` | `?string` | Required | Acquirer message | getAcquirerMessage(): ?string | setAcquirerMessage(?string acquirerMessage): void |
+| `acquirerReturnCode` | `?string` | Required | Acquirer Return Code | getAcquirerReturnCode(): ?string | setAcquirerReturnCode(?string acquirerReturnCode): void |
+| `mpi` | `?string` | Required | Merchant Plugin | getMpi(): ?string | setMpi(?string mpi): void |
+| `eci` | `?string` | Required | Electronic Commerce Indicator (ECI) | getEci(): ?string | setEci(?string eci): void |
+| `authenticationType` | `?string` | Required | Authentication type | getAuthenticationType(): ?string | setAuthenticationType(?string authenticationType): void |
+| `threedAuthenticationUrl` | `?string` | Required | 3D-S Authentication Url | getThreedAuthenticationUrl(): ?string | setThreedAuthenticationUrl(?string threedAuthenticationUrl): void |
 
 ## Example (as JSON)
 
@@ -79,7 +79,6 @@ Response object for getting a debit card transaction
   "eci": "eci0",
   "authentication_type": "authentication_type2",
   "threed_authentication_url": "threed_authentication_url6",
-  "transaction_type": "debit_card",
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
@@ -107,6 +106,7 @@ Response object for getting a debit card transaction
     }
   ],
   "next_attempt": null,
+  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",

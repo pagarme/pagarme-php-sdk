@@ -14,176 +14,84 @@ use stdClass;
 
 /**
  * Response object for getting a debit card transaction
- *
- * @discriminator transaction_type
- * @discriminatorType debit_card
  */
 class GetDebitCardTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $statementDescriptor;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerName;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerAffiliationCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerTid;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerNsu;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerAuthCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $operationType;
 
     /**
-     * @var GetCardResponse
+     * @var GetCardResponse|null
      */
     private $card;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerMessage;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerReturnCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $mpi;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $eci;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authenticationType;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $threedAuthenticationUrl;
-
-    /**
-     * @param string $gatewayId
-     * @param int $amount
-     * @param string $status
-     * @param bool $success
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param int $attemptCount
-     * @param int $maxAttempts
-     * @param GetSplitResponse[] $splits
-     * @param string $id
-     * @param GetGatewayResponseResponse $gatewayResponse
-     * @param GetAntifraudResponse $antifraudResponse
-     * @param GetSplitResponse[] $split
-     * @param string $statementDescriptor
-     * @param string $acquirerName
-     * @param string $acquirerAffiliationCode
-     * @param string $acquirerTid
-     * @param string $acquirerNsu
-     * @param string $acquirerAuthCode
-     * @param string $operationType
-     * @param GetCardResponse $card
-     * @param string $acquirerMessage
-     * @param string $acquirerReturnCode
-     * @param string $mpi
-     * @param string $eci
-     * @param string $authenticationType
-     * @param string $threedAuthenticationUrl
-     */
-    public function __construct(
-        string $gatewayId,
-        int $amount,
-        string $status,
-        bool $success,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        int $attemptCount,
-        int $maxAttempts,
-        array $splits,
-        string $id,
-        GetGatewayResponseResponse $gatewayResponse,
-        GetAntifraudResponse $antifraudResponse,
-        array $split,
-        string $statementDescriptor,
-        string $acquirerName,
-        string $acquirerAffiliationCode,
-        string $acquirerTid,
-        string $acquirerNsu,
-        string $acquirerAuthCode,
-        string $operationType,
-        GetCardResponse $card,
-        string $acquirerMessage,
-        string $acquirerReturnCode,
-        string $mpi,
-        string $eci,
-        string $authenticationType,
-        string $threedAuthenticationUrl
-    ) {
-        parent::__construct(
-            $gatewayId,
-            $amount,
-            $status,
-            $success,
-            $createdAt,
-            $updatedAt,
-            $attemptCount,
-            $maxAttempts,
-            $splits,
-            $id,
-            $gatewayResponse,
-            $antifraudResponse,
-            $split
-        );
-        $this->statementDescriptor = $statementDescriptor;
-        $this->acquirerName = $acquirerName;
-        $this->acquirerAffiliationCode = $acquirerAffiliationCode;
-        $this->acquirerTid = $acquirerTid;
-        $this->acquirerNsu = $acquirerNsu;
-        $this->acquirerAuthCode = $acquirerAuthCode;
-        $this->operationType = $operationType;
-        $this->card = $card;
-        $this->acquirerMessage = $acquirerMessage;
-        $this->acquirerReturnCode = $acquirerReturnCode;
-        $this->mpi = $mpi;
-        $this->eci = $eci;
-        $this->authenticationType = $authenticationType;
-        $this->threedAuthenticationUrl = $threedAuthenticationUrl;
-    }
 
     /**
      * Returns Statement Descriptor.
      * Text that will appear on the debit card's statement
      */
-    public function getStatementDescriptor(): string
+    public function getStatementDescriptor(): ?string
     {
         return $this->statementDescriptor;
     }
@@ -192,10 +100,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Statement Descriptor.
      * Text that will appear on the debit card's statement
      *
-     * @required
      * @maps statement_descriptor
      */
-    public function setStatementDescriptor(string $statementDescriptor): void
+    public function setStatementDescriptor(?string $statementDescriptor): void
     {
         $this->statementDescriptor = $statementDescriptor;
     }
@@ -204,7 +111,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Acquirer Name.
      * Acquirer name
      */
-    public function getAcquirerName(): string
+    public function getAcquirerName(): ?string
     {
         return $this->acquirerName;
     }
@@ -213,10 +120,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Acquirer Name.
      * Acquirer name
      *
-     * @required
      * @maps acquirer_name
      */
-    public function setAcquirerName(string $acquirerName): void
+    public function setAcquirerName(?string $acquirerName): void
     {
         $this->acquirerName = $acquirerName;
     }
@@ -225,7 +131,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Acquirer Affiliation Code.
      * Aquirer affiliation code
      */
-    public function getAcquirerAffiliationCode(): string
+    public function getAcquirerAffiliationCode(): ?string
     {
         return $this->acquirerAffiliationCode;
     }
@@ -234,10 +140,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Acquirer Affiliation Code.
      * Aquirer affiliation code
      *
-     * @required
      * @maps acquirer_affiliation_code
      */
-    public function setAcquirerAffiliationCode(string $acquirerAffiliationCode): void
+    public function setAcquirerAffiliationCode(?string $acquirerAffiliationCode): void
     {
         $this->acquirerAffiliationCode = $acquirerAffiliationCode;
     }
@@ -246,7 +151,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Acquirer Tid.
      * Acquirer TID
      */
-    public function getAcquirerTid(): string
+    public function getAcquirerTid(): ?string
     {
         return $this->acquirerTid;
     }
@@ -255,10 +160,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Acquirer Tid.
      * Acquirer TID
      *
-     * @required
      * @maps acquirer_tid
      */
-    public function setAcquirerTid(string $acquirerTid): void
+    public function setAcquirerTid(?string $acquirerTid): void
     {
         $this->acquirerTid = $acquirerTid;
     }
@@ -267,7 +171,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Acquirer Nsu.
      * Acquirer NSU
      */
-    public function getAcquirerNsu(): string
+    public function getAcquirerNsu(): ?string
     {
         return $this->acquirerNsu;
     }
@@ -276,10 +180,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Acquirer Nsu.
      * Acquirer NSU
      *
-     * @required
      * @maps acquirer_nsu
      */
-    public function setAcquirerNsu(string $acquirerNsu): void
+    public function setAcquirerNsu(?string $acquirerNsu): void
     {
         $this->acquirerNsu = $acquirerNsu;
     }
@@ -288,7 +191,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Acquirer Auth Code.
      * Acquirer authorization code
      */
-    public function getAcquirerAuthCode(): string
+    public function getAcquirerAuthCode(): ?string
     {
         return $this->acquirerAuthCode;
     }
@@ -297,10 +200,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Acquirer Auth Code.
      * Acquirer authorization code
      *
-     * @required
      * @maps acquirer_auth_code
      */
-    public function setAcquirerAuthCode(string $acquirerAuthCode): void
+    public function setAcquirerAuthCode(?string $acquirerAuthCode): void
     {
         $this->acquirerAuthCode = $acquirerAuthCode;
     }
@@ -309,7 +211,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Operation Type.
      * Operation type
      */
-    public function getOperationType(): string
+    public function getOperationType(): ?string
     {
         return $this->operationType;
     }
@@ -318,10 +220,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Operation Type.
      * Operation type
      *
-     * @required
      * @maps operation_type
      */
-    public function setOperationType(string $operationType): void
+    public function setOperationType(?string $operationType): void
     {
         $this->operationType = $operationType;
     }
@@ -330,7 +231,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Card.
      * Card data
      */
-    public function getCard(): GetCardResponse
+    public function getCard(): ?GetCardResponse
     {
         return $this->card;
     }
@@ -339,10 +240,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Card.
      * Card data
      *
-     * @required
      * @maps card
      */
-    public function setCard(GetCardResponse $card): void
+    public function setCard(?GetCardResponse $card): void
     {
         $this->card = $card;
     }
@@ -351,7 +251,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Acquirer Message.
      * Acquirer message
      */
-    public function getAcquirerMessage(): string
+    public function getAcquirerMessage(): ?string
     {
         return $this->acquirerMessage;
     }
@@ -360,10 +260,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Acquirer Message.
      * Acquirer message
      *
-     * @required
      * @maps acquirer_message
      */
-    public function setAcquirerMessage(string $acquirerMessage): void
+    public function setAcquirerMessage(?string $acquirerMessage): void
     {
         $this->acquirerMessage = $acquirerMessage;
     }
@@ -372,7 +271,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Acquirer Return Code.
      * Acquirer Return Code
      */
-    public function getAcquirerReturnCode(): string
+    public function getAcquirerReturnCode(): ?string
     {
         return $this->acquirerReturnCode;
     }
@@ -381,10 +280,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Acquirer Return Code.
      * Acquirer Return Code
      *
-     * @required
      * @maps acquirer_return_code
      */
-    public function setAcquirerReturnCode(string $acquirerReturnCode): void
+    public function setAcquirerReturnCode(?string $acquirerReturnCode): void
     {
         $this->acquirerReturnCode = $acquirerReturnCode;
     }
@@ -393,7 +291,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Mpi.
      * Merchant Plugin
      */
-    public function getMpi(): string
+    public function getMpi(): ?string
     {
         return $this->mpi;
     }
@@ -402,10 +300,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Mpi.
      * Merchant Plugin
      *
-     * @required
      * @maps mpi
      */
-    public function setMpi(string $mpi): void
+    public function setMpi(?string $mpi): void
     {
         $this->mpi = $mpi;
     }
@@ -414,7 +311,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Eci.
      * Electronic Commerce Indicator (ECI)
      */
-    public function getEci(): string
+    public function getEci(): ?string
     {
         return $this->eci;
     }
@@ -423,10 +320,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Eci.
      * Electronic Commerce Indicator (ECI)
      *
-     * @required
      * @maps eci
      */
-    public function setEci(string $eci): void
+    public function setEci(?string $eci): void
     {
         $this->eci = $eci;
     }
@@ -435,7 +331,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Authentication Type.
      * Authentication type
      */
-    public function getAuthenticationType(): string
+    public function getAuthenticationType(): ?string
     {
         return $this->authenticationType;
     }
@@ -444,10 +340,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Authentication Type.
      * Authentication type
      *
-     * @required
      * @maps authentication_type
      */
-    public function setAuthenticationType(string $authenticationType): void
+    public function setAuthenticationType(?string $authenticationType): void
     {
         $this->authenticationType = $authenticationType;
     }
@@ -456,7 +351,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Returns Threed Authentication Url.
      * 3D-S Authentication Url
      */
-    public function getThreedAuthenticationUrl(): string
+    public function getThreedAuthenticationUrl(): ?string
     {
         return $this->threedAuthenticationUrl;
     }
@@ -465,10 +360,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      * Sets Threed Authentication Url.
      * 3D-S Authentication Url
      *
-     * @required
      * @maps threed_authentication_url
      */
-    public function setThreedAuthenticationUrl(string $threedAuthenticationUrl): void
+    public function setThreedAuthenticationUrl(?string $threedAuthenticationUrl): void
     {
         $this->threedAuthenticationUrl = $threedAuthenticationUrl;
     }
@@ -500,7 +394,6 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
         $json['authentication_type']       = $this->authenticationType;
         $json['threed_authentication_url'] = $this->threedAuthenticationUrl;
         $json = array_merge($json, parent::jsonSerialize(true));
-        $json['transaction_type'] = $this->getTransactionType() ?? 'debit_card';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

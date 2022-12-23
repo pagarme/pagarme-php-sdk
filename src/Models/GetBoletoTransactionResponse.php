@@ -15,190 +15,98 @@ use stdClass;
 
 /**
  * Response object for getting a boleto transaction
- *
- * @discriminator transaction_type
- * @discriminatorType boleto
  */
 class GetBoletoTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $url;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $barcode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nossoNumero;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $bank;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $documentNumber;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $instructions;
 
     /**
-     * @var GetBillingAddressResponse
+     * @var GetBillingAddressResponse|null
      */
     private $billingAddress;
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $dueAt;
+    private $dueAt = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $qrCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $line;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $pdfPassword;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $pdf;
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $paidAt;
+    private $paidAt = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $paidAmount;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $creditAt;
+    private $creditAt = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $statementDescriptor;
 
     /**
-     * @param string $gatewayId
-     * @param int $amount
-     * @param string $status
-     * @param bool $success
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param int $attemptCount
-     * @param int $maxAttempts
-     * @param GetSplitResponse[] $splits
-     * @param string $id
-     * @param GetGatewayResponseResponse $gatewayResponse
-     * @param GetAntifraudResponse $antifraudResponse
-     * @param GetSplitResponse[] $split
-     * @param string $url
-     * @param string $barcode
-     * @param string $nossoNumero
-     * @param string $bank
-     * @param string $documentNumber
-     * @param string $instructions
-     * @param GetBillingAddressResponse $billingAddress
-     * @param string $qrCode
-     * @param string $line
-     * @param string $pdfPassword
-     * @param string $pdf
-     * @param string $paidAmount
-     * @param string $type
-     * @param string $statementDescriptor
-     */
-    public function __construct(
-        string $gatewayId,
-        int $amount,
-        string $status,
-        bool $success,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        int $attemptCount,
-        int $maxAttempts,
-        array $splits,
-        string $id,
-        GetGatewayResponseResponse $gatewayResponse,
-        GetAntifraudResponse $antifraudResponse,
-        array $split,
-        string $url,
-        string $barcode,
-        string $nossoNumero,
-        string $bank,
-        string $documentNumber,
-        string $instructions,
-        GetBillingAddressResponse $billingAddress,
-        string $qrCode,
-        string $line,
-        string $pdfPassword,
-        string $pdf,
-        string $paidAmount,
-        string $type,
-        string $statementDescriptor
-    ) {
-        parent::__construct(
-            $gatewayId,
-            $amount,
-            $status,
-            $success,
-            $createdAt,
-            $updatedAt,
-            $attemptCount,
-            $maxAttempts,
-            $splits,
-            $id,
-            $gatewayResponse,
-            $antifraudResponse,
-            $split
-        );
-        $this->url = $url;
-        $this->barcode = $barcode;
-        $this->nossoNumero = $nossoNumero;
-        $this->bank = $bank;
-        $this->documentNumber = $documentNumber;
-        $this->instructions = $instructions;
-        $this->billingAddress = $billingAddress;
-        $this->qrCode = $qrCode;
-        $this->line = $line;
-        $this->pdfPassword = $pdfPassword;
-        $this->pdf = $pdf;
-        $this->paidAmount = $paidAmount;
-        $this->type = $type;
-        $this->statementDescriptor = $statementDescriptor;
-    }
-
-    /**
      * Returns Url.
      */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
@@ -206,10 +114,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Url.
      *
-     * @required
      * @maps url
      */
-    public function setUrl(string $url): void
+    public function setUrl(?string $url): void
     {
         $this->url = $url;
     }
@@ -217,7 +124,7 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Returns Barcode.
      */
-    public function getBarcode(): string
+    public function getBarcode(): ?string
     {
         return $this->barcode;
     }
@@ -225,10 +132,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Barcode.
      *
-     * @required
      * @maps barcode
      */
-    public function setBarcode(string $barcode): void
+    public function setBarcode(?string $barcode): void
     {
         $this->barcode = $barcode;
     }
@@ -236,7 +142,7 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Returns Nosso Numero.
      */
-    public function getNossoNumero(): string
+    public function getNossoNumero(): ?string
     {
         return $this->nossoNumero;
     }
@@ -244,10 +150,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Nosso Numero.
      *
-     * @required
      * @maps nosso_numero
      */
-    public function setNossoNumero(string $nossoNumero): void
+    public function setNossoNumero(?string $nossoNumero): void
     {
         $this->nossoNumero = $nossoNumero;
     }
@@ -255,7 +160,7 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Returns Bank.
      */
-    public function getBank(): string
+    public function getBank(): ?string
     {
         return $this->bank;
     }
@@ -263,10 +168,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Bank.
      *
-     * @required
      * @maps bank
      */
-    public function setBank(string $bank): void
+    public function setBank(?string $bank): void
     {
         $this->bank = $bank;
     }
@@ -274,7 +178,7 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Returns Document Number.
      */
-    public function getDocumentNumber(): string
+    public function getDocumentNumber(): ?string
     {
         return $this->documentNumber;
     }
@@ -282,10 +186,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Document Number.
      *
-     * @required
      * @maps document_number
      */
-    public function setDocumentNumber(string $documentNumber): void
+    public function setDocumentNumber(?string $documentNumber): void
     {
         $this->documentNumber = $documentNumber;
     }
@@ -293,7 +196,7 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Returns Instructions.
      */
-    public function getInstructions(): string
+    public function getInstructions(): ?string
     {
         return $this->instructions;
     }
@@ -301,10 +204,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Instructions.
      *
-     * @required
      * @maps instructions
      */
-    public function setInstructions(string $instructions): void
+    public function setInstructions(?string $instructions): void
     {
         $this->instructions = $instructions;
     }
@@ -312,7 +214,7 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Returns Billing Address.
      */
-    public function getBillingAddress(): GetBillingAddressResponse
+    public function getBillingAddress(): ?GetBillingAddressResponse
     {
         return $this->billingAddress;
     }
@@ -320,10 +222,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Billing Address.
      *
-     * @required
      * @maps billing_address
      */
-    public function setBillingAddress(GetBillingAddressResponse $billingAddress): void
+    public function setBillingAddress(?GetBillingAddressResponse $billingAddress): void
     {
         $this->billingAddress = $billingAddress;
     }
@@ -333,7 +234,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getDueAt(): ?\DateTime
     {
-        return $this->dueAt;
+        if (count($this->dueAt) == 0) {
+            return null;
+        }
+        return $this->dueAt['value'];
     }
 
     /**
@@ -344,13 +248,21 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setDueAt(?\DateTime $dueAt): void
     {
-        $this->dueAt = $dueAt;
+        $this->dueAt['value'] = $dueAt;
+    }
+
+    /**
+     * Unsets Due At.
+     */
+    public function unsetDueAt(): void
+    {
+        $this->dueAt = [];
     }
 
     /**
      * Returns Qr Code.
      */
-    public function getQrCode(): string
+    public function getQrCode(): ?string
     {
         return $this->qrCode;
     }
@@ -358,10 +270,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Qr Code.
      *
-     * @required
      * @maps qr_code
      */
-    public function setQrCode(string $qrCode): void
+    public function setQrCode(?string $qrCode): void
     {
         $this->qrCode = $qrCode;
     }
@@ -369,7 +280,7 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Returns Line.
      */
-    public function getLine(): string
+    public function getLine(): ?string
     {
         return $this->line;
     }
@@ -377,10 +288,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Line.
      *
-     * @required
      * @maps line
      */
-    public function setLine(string $line): void
+    public function setLine(?string $line): void
     {
         $this->line = $line;
     }
@@ -388,7 +298,7 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Returns Pdf Password.
      */
-    public function getPdfPassword(): string
+    public function getPdfPassword(): ?string
     {
         return $this->pdfPassword;
     }
@@ -396,10 +306,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Pdf Password.
      *
-     * @required
      * @maps pdf_password
      */
-    public function setPdfPassword(string $pdfPassword): void
+    public function setPdfPassword(?string $pdfPassword): void
     {
         $this->pdfPassword = $pdfPassword;
     }
@@ -407,7 +316,7 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Returns Pdf.
      */
-    public function getPdf(): string
+    public function getPdf(): ?string
     {
         return $this->pdf;
     }
@@ -415,10 +324,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Pdf.
      *
-     * @required
      * @maps pdf
      */
-    public function setPdf(string $pdf): void
+    public function setPdf(?string $pdf): void
     {
         $this->pdf = $pdf;
     }
@@ -428,7 +336,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getPaidAt(): ?\DateTime
     {
-        return $this->paidAt;
+        if (count($this->paidAt) == 0) {
+            return null;
+        }
+        return $this->paidAt['value'];
     }
 
     /**
@@ -439,13 +350,21 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setPaidAt(?\DateTime $paidAt): void
     {
-        $this->paidAt = $paidAt;
+        $this->paidAt['value'] = $paidAt;
+    }
+
+    /**
+     * Unsets Paid At.
+     */
+    public function unsetPaidAt(): void
+    {
+        $this->paidAt = [];
     }
 
     /**
      * Returns Paid Amount.
      */
-    public function getPaidAmount(): string
+    public function getPaidAmount(): ?string
     {
         return $this->paidAmount;
     }
@@ -453,10 +372,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Paid Amount.
      *
-     * @required
      * @maps paid_amount
      */
-    public function setPaidAmount(string $paidAmount): void
+    public function setPaidAmount(?string $paidAmount): void
     {
         $this->paidAmount = $paidAmount;
     }
@@ -464,7 +382,7 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Returns Type.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -472,10 +390,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     /**
      * Sets Type.
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -485,7 +402,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getCreditAt(): ?\DateTime
     {
-        return $this->creditAt;
+        if (count($this->creditAt) == 0) {
+            return null;
+        }
+        return $this->creditAt['value'];
     }
 
     /**
@@ -496,14 +416,22 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setCreditAt(?\DateTime $creditAt): void
     {
-        $this->creditAt = $creditAt;
+        $this->creditAt['value'] = $creditAt;
+    }
+
+    /**
+     * Unsets Credit At.
+     */
+    public function unsetCreditAt(): void
+    {
+        $this->creditAt = [];
     }
 
     /**
      * Returns Statement Descriptor.
      * Soft Descriptor
      */
-    public function getStatementDescriptor(): string
+    public function getStatementDescriptor(): ?string
     {
         return $this->statementDescriptor;
     }
@@ -512,10 +440,9 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      * Sets Statement Descriptor.
      * Soft Descriptor
      *
-     * @required
      * @maps statement_descriptor
      */
-    public function setStatementDescriptor(string $statementDescriptor): void
+    public function setStatementDescriptor(?string $statementDescriptor): void
     {
         $this->statementDescriptor = $statementDescriptor;
     }
@@ -539,24 +466,23 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
         $json['document_number']      = $this->documentNumber;
         $json['instructions']         = $this->instructions;
         $json['billing_address']      = $this->billingAddress;
-        if (isset($this->dueAt)) {
-            $json['due_at']           = DateTimeHelper::toRfc3339DateTime($this->dueAt);
+        if (!empty($this->dueAt)) {
+            $json['due_at']           = DateTimeHelper::toRfc3339DateTime($this->dueAt['value']);
         }
         $json['qr_code']              = $this->qrCode;
         $json['line']                 = $this->line;
         $json['pdf_password']         = $this->pdfPassword;
         $json['pdf']                  = $this->pdf;
-        if (isset($this->paidAt)) {
-            $json['paid_at']          = DateTimeHelper::toRfc3339DateTime($this->paidAt);
+        if (!empty($this->paidAt)) {
+            $json['paid_at']          = DateTimeHelper::toRfc3339DateTime($this->paidAt['value']);
         }
         $json['paid_amount']          = $this->paidAmount;
         $json['type']                 = $this->type;
-        if (isset($this->creditAt)) {
-            $json['credit_at']        = DateTimeHelper::toRfc3339DateTime($this->creditAt);
+        if (!empty($this->creditAt)) {
+            $json['credit_at']        = DateTimeHelper::toRfc3339DateTime($this->creditAt['value']);
         }
         $json['statement_descriptor'] = $this->statementDescriptor;
         $json = array_merge($json, parent::jsonSerialize(true));
-        $json['transaction_type'] = $this->getTransactionType() ?? 'boleto';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

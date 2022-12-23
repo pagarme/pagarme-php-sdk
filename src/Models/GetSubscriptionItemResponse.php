@@ -16,110 +16,74 @@ use stdClass;
 class GetSubscriptionItemResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $updatedAt;
 
     /**
-     * @var GetPricingSchemeResponse
+     * @var GetPricingSchemeResponse|null
      */
     private $pricingScheme;
 
     /**
-     * @var GetDiscountResponse[]
+     * @var GetDiscountResponse[]|null
      */
     private $discounts;
 
     /**
-     * @var GetIncrementResponse[]
+     * @var GetIncrementResponse[]|null
      */
     private $increments;
 
     /**
-     * @var GetSubscriptionResponse
+     * @var GetSubscriptionResponse|null
      */
     private $subscription;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $name;
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $quantity;
+    private $quantity = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $cycles;
+    private $cycles = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $deletedAt;
-
-    /**
-     * @param string $id
-     * @param string $description
-     * @param string $status
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param GetPricingSchemeResponse $pricingScheme
-     * @param GetDiscountResponse[] $discounts
-     * @param GetIncrementResponse[] $increments
-     * @param GetSubscriptionResponse $subscription
-     * @param string $name
-     */
-    public function __construct(
-        string $id,
-        string $description,
-        string $status,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        GetPricingSchemeResponse $pricingScheme,
-        array $discounts,
-        array $increments,
-        GetSubscriptionResponse $subscription,
-        string $name
-    ) {
-        $this->id = $id;
-        $this->description = $description;
-        $this->status = $status;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-        $this->pricingScheme = $pricingScheme;
-        $this->discounts = $discounts;
-        $this->increments = $increments;
-        $this->subscription = $subscription;
-        $this->name = $name;
-    }
+    private $deletedAt = [];
 
     /**
      * Returns Id.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -127,10 +91,9 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Sets Id.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -138,7 +101,7 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Returns Description.
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -146,10 +109,9 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Sets Description.
      *
-     * @required
      * @maps description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -157,7 +119,7 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Returns Status.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -165,10 +127,9 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Sets Status.
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -176,7 +137,7 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Returns Created At.
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -184,11 +145,10 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Sets Created At.
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -196,7 +156,7 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Returns Updated At.
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
@@ -204,11 +164,10 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Sets Updated At.
      *
-     * @required
      * @maps updated_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(?\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -216,7 +175,7 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Returns Pricing Scheme.
      */
-    public function getPricingScheme(): GetPricingSchemeResponse
+    public function getPricingScheme(): ?GetPricingSchemeResponse
     {
         return $this->pricingScheme;
     }
@@ -224,10 +183,9 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Sets Pricing Scheme.
      *
-     * @required
      * @maps pricing_scheme
      */
-    public function setPricingScheme(GetPricingSchemeResponse $pricingScheme): void
+    public function setPricingScheme(?GetPricingSchemeResponse $pricingScheme): void
     {
         $this->pricingScheme = $pricingScheme;
     }
@@ -235,9 +193,9 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Returns Discounts.
      *
-     * @return GetDiscountResponse[]
+     * @return GetDiscountResponse[]|null
      */
-    public function getDiscounts(): array
+    public function getDiscounts(): ?array
     {
         return $this->discounts;
     }
@@ -245,12 +203,11 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Sets Discounts.
      *
-     * @required
      * @maps discounts
      *
-     * @param GetDiscountResponse[] $discounts
+     * @param GetDiscountResponse[]|null $discounts
      */
-    public function setDiscounts(array $discounts): void
+    public function setDiscounts(?array $discounts): void
     {
         $this->discounts = $discounts;
     }
@@ -258,9 +215,9 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Returns Increments.
      *
-     * @return GetIncrementResponse[]
+     * @return GetIncrementResponse[]|null
      */
-    public function getIncrements(): array
+    public function getIncrements(): ?array
     {
         return $this->increments;
     }
@@ -268,12 +225,11 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Sets Increments.
      *
-     * @required
      * @maps increments
      *
-     * @param GetIncrementResponse[] $increments
+     * @param GetIncrementResponse[]|null $increments
      */
-    public function setIncrements(array $increments): void
+    public function setIncrements(?array $increments): void
     {
         $this->increments = $increments;
     }
@@ -281,7 +237,7 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Returns Subscription.
      */
-    public function getSubscription(): GetSubscriptionResponse
+    public function getSubscription(): ?GetSubscriptionResponse
     {
         return $this->subscription;
     }
@@ -289,10 +245,9 @@ class GetSubscriptionItemResponse implements \JsonSerializable
     /**
      * Sets Subscription.
      *
-     * @required
      * @maps subscription
      */
-    public function setSubscription(GetSubscriptionResponse $subscription): void
+    public function setSubscription(?GetSubscriptionResponse $subscription): void
     {
         $this->subscription = $subscription;
     }
@@ -301,7 +256,7 @@ class GetSubscriptionItemResponse implements \JsonSerializable
      * Returns Name.
      * Item name
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -310,10 +265,9 @@ class GetSubscriptionItemResponse implements \JsonSerializable
      * Sets Name.
      * Item name
      *
-     * @required
      * @maps name
      */
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -323,7 +277,10 @@ class GetSubscriptionItemResponse implements \JsonSerializable
      */
     public function getQuantity(): ?int
     {
-        return $this->quantity;
+        if (count($this->quantity) == 0) {
+            return null;
+        }
+        return $this->quantity['value'];
     }
 
     /**
@@ -333,7 +290,15 @@ class GetSubscriptionItemResponse implements \JsonSerializable
      */
     public function setQuantity(?int $quantity): void
     {
-        $this->quantity = $quantity;
+        $this->quantity['value'] = $quantity;
+    }
+
+    /**
+     * Unsets Quantity.
+     */
+    public function unsetQuantity(): void
+    {
+        $this->quantity = [];
     }
 
     /**
@@ -341,7 +306,10 @@ class GetSubscriptionItemResponse implements \JsonSerializable
      */
     public function getCycles(): ?int
     {
-        return $this->cycles;
+        if (count($this->cycles) == 0) {
+            return null;
+        }
+        return $this->cycles['value'];
     }
 
     /**
@@ -351,7 +319,15 @@ class GetSubscriptionItemResponse implements \JsonSerializable
      */
     public function setCycles(?int $cycles): void
     {
-        $this->cycles = $cycles;
+        $this->cycles['value'] = $cycles;
+    }
+
+    /**
+     * Unsets Cycles.
+     */
+    public function unsetCycles(): void
+    {
+        $this->cycles = [];
     }
 
     /**
@@ -359,7 +335,10 @@ class GetSubscriptionItemResponse implements \JsonSerializable
      */
     public function getDeletedAt(): ?\DateTime
     {
-        return $this->deletedAt;
+        if (count($this->deletedAt) == 0) {
+            return null;
+        }
+        return $this->deletedAt['value'];
     }
 
     /**
@@ -370,7 +349,15 @@ class GetSubscriptionItemResponse implements \JsonSerializable
      */
     public function setDeletedAt(?\DateTime $deletedAt): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deletedAt['value'] = $deletedAt;
+    }
+
+    /**
+     * Unsets Deleted At.
+     */
+    public function unsetDeletedAt(): void
+    {
+        $this->deletedAt = [];
     }
 
     /**
@@ -395,14 +382,14 @@ class GetSubscriptionItemResponse implements \JsonSerializable
         $json['increments']     = $this->increments;
         $json['subscription']   = $this->subscription;
         $json['name']           = $this->name;
-        if (isset($this->quantity)) {
-            $json['quantity']   = $this->quantity;
+        if (!empty($this->quantity)) {
+            $json['quantity']   = $this->quantity['value'];
         }
-        if (isset($this->cycles)) {
-            $json['cycles']     = $this->cycles;
+        if (!empty($this->cycles)) {
+            $json['cycles']     = $this->cycles['value'];
         }
-        if (isset($this->deletedAt)) {
-            $json['deleted_at'] = DateTimeHelper::toRfc3339DateTime($this->deletedAt);
+        if (!empty($this->deletedAt)) {
+            $json['deleted_at'] = DateTimeHelper::toRfc3339DateTime($this->deletedAt['value']);
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

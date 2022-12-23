@@ -9,11 +9,11 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
-| `returnCode` | `string` | Required | - | getReturnCode(): string | setReturnCode(string returnCode): void |
-| `returnMessage` | `string` | Required | - | getReturnMessage(): string | setReturnMessage(string returnMessage): void |
-| `providerName` | `string` | Required | - | getProviderName(): string | setProviderName(string providerName): void |
-| `score` | `string` | Required | - | getScore(): string | setScore(string score): void |
+| `status` | `?string` | Required | - | getStatus(): ?string | setStatus(?string status): void |
+| `returnCode` | `?string` | Required | - | getReturnCode(): ?string | setReturnCode(?string returnCode): void |
+| `returnMessage` | `?string` | Required | - | getReturnMessage(): ?string | setReturnMessage(?string returnMessage): void |
+| `providerName` | `?string` | Required | - | getProviderName(): ?string | setProviderName(?string providerName): void |
+| `score` | `?string` | Required | - | getScore(): ?string | setScore(?string score): void |
 
 ## Example (as JSON)
 

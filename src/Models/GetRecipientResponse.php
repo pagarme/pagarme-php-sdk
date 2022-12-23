@@ -19,146 +19,95 @@ use stdClass;
 class GetRecipientResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $name;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $email;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $document;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $updatedAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $deletedAt;
 
     /**
-     * @var GetBankAccountResponse
+     * @var GetBankAccountResponse|null
      */
     private $defaultBankAccount;
 
     /**
-     * @var GetGatewayRecipientResponse[]
+     * @var GetGatewayRecipientResponse[]|null
      */
     private $gatewayRecipients;
 
     /**
-     * @var array<string,string>
+     * @var array<string,string>|null
      */
     private $metadata;
 
     /**
-     * @var GetAutomaticAnticipationResponse|null
+     * @var array
      */
-    private $automaticAnticipationSettings;
+    private $automaticAnticipationSettings = [];
 
     /**
-     * @var GetTransferSettingsResponse|null
+     * @var array
      */
-    private $transferSettings;
+    private $transferSettings = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $code;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $paymentMode;
-
-    /**
-     * @param string $id
-     * @param string $name
-     * @param string $email
-     * @param string $document
-     * @param string $description
-     * @param string $type
-     * @param string $status
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param \DateTime $deletedAt
-     * @param GetBankAccountResponse $defaultBankAccount
-     * @param GetGatewayRecipientResponse[] $gatewayRecipients
-     * @param array<string,string> $metadata
-     * @param string $code
-     * @param string $paymentMode
-     */
-    public function __construct(
-        string $id,
-        string $name,
-        string $email,
-        string $document,
-        string $description,
-        string $type,
-        string $status,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        \DateTime $deletedAt,
-        GetBankAccountResponse $defaultBankAccount,
-        array $gatewayRecipients,
-        array $metadata,
-        string $code,
-        string $paymentMode
-    ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->email = $email;
-        $this->document = $document;
-        $this->description = $description;
-        $this->type = $type;
-        $this->status = $status;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-        $this->deletedAt = $deletedAt;
-        $this->defaultBankAccount = $defaultBankAccount;
-        $this->gatewayRecipients = $gatewayRecipients;
-        $this->metadata = $metadata;
-        $this->code = $code;
-        $this->paymentMode = $paymentMode;
-    }
+    private $paymentMode = 'bank_transfer';
 
     /**
      * Returns Id.
      * Id
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -167,10 +116,9 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Id.
      * Id
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -179,7 +127,7 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Name.
      * Name
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -188,10 +136,9 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Name.
      * Name
      *
-     * @required
      * @maps name
      */
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -200,7 +147,7 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Email.
      * Email
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -209,10 +156,9 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Email.
      * Email
      *
-     * @required
      * @maps email
      */
-    public function setEmail(string $email): void
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
     }
@@ -221,7 +167,7 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Document.
      * Document
      */
-    public function getDocument(): string
+    public function getDocument(): ?string
     {
         return $this->document;
     }
@@ -230,10 +176,9 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Document.
      * Document
      *
-     * @required
      * @maps document
      */
-    public function setDocument(string $document): void
+    public function setDocument(?string $document): void
     {
         $this->document = $document;
     }
@@ -242,7 +187,7 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Description.
      * Description
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -251,10 +196,9 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Description.
      * Description
      *
-     * @required
      * @maps description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -263,7 +207,7 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Type.
      * Type
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -272,10 +216,9 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Type.
      * Type
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -284,7 +227,7 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Status.
      * Status
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -293,10 +236,9 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Status.
      * Status
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -305,7 +247,7 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Created At.
      * Creation date
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -314,11 +256,10 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Created At.
      * Creation date
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -327,7 +268,7 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Updated At.
      * Last update date
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
@@ -336,11 +277,10 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Updated At.
      * Last update date
      *
-     * @required
      * @maps updated_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(?\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -349,7 +289,7 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Deleted At.
      * Deletion date
      */
-    public function getDeletedAt(): \DateTime
+    public function getDeletedAt(): ?\DateTime
     {
         return $this->deletedAt;
     }
@@ -358,11 +298,10 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Deleted At.
      * Deletion date
      *
-     * @required
      * @maps deleted_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setDeletedAt(\DateTime $deletedAt): void
+    public function setDeletedAt(?\DateTime $deletedAt): void
     {
         $this->deletedAt = $deletedAt;
     }
@@ -371,7 +310,7 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Default Bank Account.
      * Default bank account
      */
-    public function getDefaultBankAccount(): GetBankAccountResponse
+    public function getDefaultBankAccount(): ?GetBankAccountResponse
     {
         return $this->defaultBankAccount;
     }
@@ -380,10 +319,9 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Default Bank Account.
      * Default bank account
      *
-     * @required
      * @maps default_bank_account
      */
-    public function setDefaultBankAccount(GetBankAccountResponse $defaultBankAccount): void
+    public function setDefaultBankAccount(?GetBankAccountResponse $defaultBankAccount): void
     {
         $this->defaultBankAccount = $defaultBankAccount;
     }
@@ -392,9 +330,9 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Gateway Recipients.
      * Info about the recipient on the gateway
      *
-     * @return GetGatewayRecipientResponse[]
+     * @return GetGatewayRecipientResponse[]|null
      */
-    public function getGatewayRecipients(): array
+    public function getGatewayRecipients(): ?array
     {
         return $this->gatewayRecipients;
     }
@@ -403,12 +341,11 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Gateway Recipients.
      * Info about the recipient on the gateway
      *
-     * @required
      * @maps gateway_recipients
      *
-     * @param GetGatewayRecipientResponse[] $gatewayRecipients
+     * @param GetGatewayRecipientResponse[]|null $gatewayRecipients
      */
-    public function setGatewayRecipients(array $gatewayRecipients): void
+    public function setGatewayRecipients(?array $gatewayRecipients): void
     {
         $this->gatewayRecipients = $gatewayRecipients;
     }
@@ -417,9 +354,9 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Metadata.
      * Metadata
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
-    public function getMetadata(): array
+    public function getMetadata(): ?array
     {
         return $this->metadata;
     }
@@ -428,12 +365,11 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Metadata.
      * Metadata
      *
-     * @required
      * @maps metadata
      *
-     * @param array<string,string> $metadata
+     * @param array<string,string>|null $metadata
      */
-    public function setMetadata(array $metadata): void
+    public function setMetadata(?array $metadata): void
     {
         $this->metadata = $metadata;
     }
@@ -443,7 +379,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getAutomaticAnticipationSettings(): ?GetAutomaticAnticipationResponse
     {
-        return $this->automaticAnticipationSettings;
+        if (count($this->automaticAnticipationSettings) == 0) {
+            return null;
+        }
+        return $this->automaticAnticipationSettings['value'];
     }
 
     /**
@@ -454,7 +393,15 @@ class GetRecipientResponse implements \JsonSerializable
     public function setAutomaticAnticipationSettings(
         ?GetAutomaticAnticipationResponse $automaticAnticipationSettings
     ): void {
-        $this->automaticAnticipationSettings = $automaticAnticipationSettings;
+        $this->automaticAnticipationSettings['value'] = $automaticAnticipationSettings;
+    }
+
+    /**
+     * Unsets Automatic Anticipation Settings.
+     */
+    public function unsetAutomaticAnticipationSettings(): void
+    {
+        $this->automaticAnticipationSettings = [];
     }
 
     /**
@@ -462,7 +409,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getTransferSettings(): ?GetTransferSettingsResponse
     {
-        return $this->transferSettings;
+        if (count($this->transferSettings) == 0) {
+            return null;
+        }
+        return $this->transferSettings['value'];
     }
 
     /**
@@ -472,14 +422,22 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setTransferSettings(?GetTransferSettingsResponse $transferSettings): void
     {
-        $this->transferSettings = $transferSettings;
+        $this->transferSettings['value'] = $transferSettings;
+    }
+
+    /**
+     * Unsets Transfer Settings.
+     */
+    public function unsetTransferSettings(): void
+    {
+        $this->transferSettings = [];
     }
 
     /**
      * Returns Code.
      * Recipient code
      */
-    public function getCode(): string
+    public function getCode(): ?string
     {
         return $this->code;
     }
@@ -488,10 +446,9 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Code.
      * Recipient code
      *
-     * @required
      * @maps code
      */
-    public function setCode(string $code): void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
@@ -500,7 +457,7 @@ class GetRecipientResponse implements \JsonSerializable
      * Returns Payment Mode.
      * Payment mode
      */
-    public function getPaymentMode(): string
+    public function getPaymentMode(): ?string
     {
         return $this->paymentMode;
     }
@@ -509,10 +466,9 @@ class GetRecipientResponse implements \JsonSerializable
      * Sets Payment Mode.
      * Payment mode
      *
-     * @required
      * @maps payment_mode
      */
-    public function setPaymentMode(string $paymentMode): void
+    public function setPaymentMode(?string $paymentMode): void
     {
         $this->paymentMode = $paymentMode;
     }
@@ -542,11 +498,11 @@ class GetRecipientResponse implements \JsonSerializable
         $json['default_bank_account']                = $this->defaultBankAccount;
         $json['gateway_recipients']                  = $this->gatewayRecipients;
         $json['metadata']                            = $this->metadata;
-        if (isset($this->automaticAnticipationSettings)) {
-            $json['automatic_anticipation_settings'] = $this->automaticAnticipationSettings;
+        if (!empty($this->automaticAnticipationSettings)) {
+            $json['automatic_anticipation_settings'] = $this->automaticAnticipationSettings['value'];
         }
-        if (isset($this->transferSettings)) {
-            $json['transfer_settings']               = $this->transferSettings;
+        if (!empty($this->transferSettings)) {
+            $json['transfer_settings']               = $this->transferSettings['value'];
         }
         $json['code']                                = $this->code;
         $json['payment_mode']                        = $this->paymentMode;

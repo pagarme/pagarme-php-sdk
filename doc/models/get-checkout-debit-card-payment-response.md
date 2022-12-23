@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `statementDescriptor` | `string` | Required | Descrição na fatura | getStatementDescriptor(): string | setStatementDescriptor(string statementDescriptor): void |
-| `authentication` | [`GetPaymentAuthenticationResponse`](../../doc/models/get-payment-authentication-response.md) | Required | Payment Authentication response object data | getAuthentication(): GetPaymentAuthenticationResponse | setAuthentication(GetPaymentAuthenticationResponse authentication): void |
+| `statementDescriptor` | `?string` | Required | Descrição na fatura | getStatementDescriptor(): ?string | setStatementDescriptor(?string statementDescriptor): void |
+| `authentication` | [`?GetPaymentAuthenticationResponse`](../../doc/models/get-payment-authentication-response.md) | Required | Payment Authentication response object data | getAuthentication(): ?GetPaymentAuthenticationResponse | setAuthentication(?GetPaymentAuthenticationResponse authentication): void |
 
 ## Example (as JSON)
 

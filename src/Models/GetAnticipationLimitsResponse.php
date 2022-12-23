@@ -18,30 +18,20 @@ use stdClass;
 class GetAnticipationLimitsResponse implements \JsonSerializable
 {
     /**
-     * @var GetAnticipationLimitResponse
+     * @var GetAnticipationLimitResponse|null
      */
     private $max;
 
     /**
-     * @var GetAnticipationLimitResponse
+     * @var GetAnticipationLimitResponse|null
      */
     private $min;
-
-    /**
-     * @param GetAnticipationLimitResponse $max
-     * @param GetAnticipationLimitResponse $min
-     */
-    public function __construct(GetAnticipationLimitResponse $max, GetAnticipationLimitResponse $min)
-    {
-        $this->max = $max;
-        $this->min = $min;
-    }
 
     /**
      * Returns Max.
      * Max limit
      */
-    public function getMax(): GetAnticipationLimitResponse
+    public function getMax(): ?GetAnticipationLimitResponse
     {
         return $this->max;
     }
@@ -50,10 +40,9 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
      * Sets Max.
      * Max limit
      *
-     * @required
      * @maps max
      */
-    public function setMax(GetAnticipationLimitResponse $max): void
+    public function setMax(?GetAnticipationLimitResponse $max): void
     {
         $this->max = $max;
     }
@@ -62,7 +51,7 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
      * Returns Min.
      * Min limit
      */
-    public function getMin(): GetAnticipationLimitResponse
+    public function getMin(): ?GetAnticipationLimitResponse
     {
         return $this->min;
     }
@@ -71,10 +60,9 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
      * Sets Min.
      * Min limit
      *
-     * @required
      * @maps min
      */
-    public function setMin(GetAnticipationLimitResponse $min): void
+    public function setMin(?GetAnticipationLimitResponse $min): void
     {
         $this->min = $min;
     }

@@ -18,32 +18,22 @@ use stdClass;
 class ListAddressesResponse implements \JsonSerializable
 {
     /**
-     * @var GetAddressResponse[]
+     * @var GetAddressResponse[]|null
      */
     private $data;
 
     /**
-     * @var PagingResponse
+     * @var PagingResponse|null
      */
     private $paging;
-
-    /**
-     * @param GetAddressResponse[] $data
-     * @param PagingResponse $paging
-     */
-    public function __construct(array $data, PagingResponse $paging)
-    {
-        $this->data = $data;
-        $this->paging = $paging;
-    }
 
     /**
      * Returns Data.
      * The address objects
      *
-     * @return GetAddressResponse[]
+     * @return GetAddressResponse[]|null
      */
-    public function getData(): array
+    public function getData(): ?array
     {
         return $this->data;
     }
@@ -52,12 +42,11 @@ class ListAddressesResponse implements \JsonSerializable
      * Sets Data.
      * The address objects
      *
-     * @required
      * @maps data
      *
-     * @param GetAddressResponse[] $data
+     * @param GetAddressResponse[]|null $data
      */
-    public function setData(array $data): void
+    public function setData(?array $data): void
     {
         $this->data = $data;
     }
@@ -66,7 +55,7 @@ class ListAddressesResponse implements \JsonSerializable
      * Returns Paging.
      * Paging object
      */
-    public function getPaging(): PagingResponse
+    public function getPaging(): ?PagingResponse
     {
         return $this->paging;
     }
@@ -75,10 +64,9 @@ class ListAddressesResponse implements \JsonSerializable
      * Sets Paging.
      * Paging object
      *
-     * @required
      * @maps paging
      */
-    public function setPaging(PagingResponse $paging): void
+    public function setPaging(?PagingResponse $paging): void
     {
         $this->paging = $paging;
     }

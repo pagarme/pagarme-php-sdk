@@ -16,107 +16,74 @@ use stdClass;
 class GetWithdrawResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $gatewayId;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $amount;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $updatedAt;
 
     /**
-     * @var string[]|null
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $fee;
+    private $fee = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $fundingDate;
+    private $fundingDate = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $fundingEstimatedDate;
+    private $fundingEstimatedDate = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @var GetWithdrawSourceResponse
+     * @var GetWithdrawSourceResponse|null
      */
     private $source;
 
     /**
-     * @var GetWithdrawTargetResponse
+     * @var GetWithdrawTargetResponse|null
      */
     private $target;
 
     /**
-     * @param string $id
-     * @param string $gatewayId
-     * @param int $amount
-     * @param string $status
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param string $type
-     * @param GetWithdrawSourceResponse $source
-     * @param GetWithdrawTargetResponse $target
-     */
-    public function __construct(
-        string $id,
-        string $gatewayId,
-        int $amount,
-        string $status,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        string $type,
-        GetWithdrawSourceResponse $source,
-        GetWithdrawTargetResponse $target
-    ) {
-        $this->id = $id;
-        $this->gatewayId = $gatewayId;
-        $this->amount = $amount;
-        $this->status = $status;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-        $this->type = $type;
-        $this->source = $source;
-        $this->target = $target;
-    }
-
-    /**
      * Returns Id.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -124,10 +91,9 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Sets Id.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -135,7 +101,7 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Returns Gateway Id.
      */
-    public function getGatewayId(): string
+    public function getGatewayId(): ?string
     {
         return $this->gatewayId;
     }
@@ -143,10 +109,9 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Sets Gateway Id.
      *
-     * @required
      * @maps gateway_id
      */
-    public function setGatewayId(string $gatewayId): void
+    public function setGatewayId(?string $gatewayId): void
     {
         $this->gatewayId = $gatewayId;
     }
@@ -154,7 +119,7 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Returns Amount.
      */
-    public function getAmount(): int
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
@@ -162,10 +127,9 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Sets Amount.
      *
-     * @required
      * @maps amount
      */
-    public function setAmount(int $amount): void
+    public function setAmount(?int $amount): void
     {
         $this->amount = $amount;
     }
@@ -173,7 +137,7 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Returns Status.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -181,10 +145,9 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Sets Status.
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -192,7 +155,7 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Returns Created At.
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -200,11 +163,10 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Sets Created At.
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -212,7 +174,7 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Returns Updated At.
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
@@ -220,11 +182,10 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Sets Updated At.
      *
-     * @required
      * @maps updated_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(?\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -236,7 +197,10 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
@@ -248,7 +212,15 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -256,7 +228,10 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function getFee(): ?int
     {
-        return $this->fee;
+        if (count($this->fee) == 0) {
+            return null;
+        }
+        return $this->fee['value'];
     }
 
     /**
@@ -266,7 +241,15 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setFee(?int $fee): void
     {
-        $this->fee = $fee;
+        $this->fee['value'] = $fee;
+    }
+
+    /**
+     * Unsets Fee.
+     */
+    public function unsetFee(): void
+    {
+        $this->fee = [];
     }
 
     /**
@@ -274,7 +257,10 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function getFundingDate(): ?\DateTime
     {
-        return $this->fundingDate;
+        if (count($this->fundingDate) == 0) {
+            return null;
+        }
+        return $this->fundingDate['value'];
     }
 
     /**
@@ -285,7 +271,15 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setFundingDate(?\DateTime $fundingDate): void
     {
-        $this->fundingDate = $fundingDate;
+        $this->fundingDate['value'] = $fundingDate;
+    }
+
+    /**
+     * Unsets Funding Date.
+     */
+    public function unsetFundingDate(): void
+    {
+        $this->fundingDate = [];
     }
 
     /**
@@ -293,7 +287,10 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function getFundingEstimatedDate(): ?\DateTime
     {
-        return $this->fundingEstimatedDate;
+        if (count($this->fundingEstimatedDate) == 0) {
+            return null;
+        }
+        return $this->fundingEstimatedDate['value'];
     }
 
     /**
@@ -304,13 +301,21 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setFundingEstimatedDate(?\DateTime $fundingEstimatedDate): void
     {
-        $this->fundingEstimatedDate = $fundingEstimatedDate;
+        $this->fundingEstimatedDate['value'] = $fundingEstimatedDate;
+    }
+
+    /**
+     * Unsets Funding Estimated Date.
+     */
+    public function unsetFundingEstimatedDate(): void
+    {
+        $this->fundingEstimatedDate = [];
     }
 
     /**
      * Returns Type.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -318,10 +323,9 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Sets Type.
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -329,7 +333,7 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Returns Source.
      */
-    public function getSource(): GetWithdrawSourceResponse
+    public function getSource(): ?GetWithdrawSourceResponse
     {
         return $this->source;
     }
@@ -337,10 +341,9 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Sets Source.
      *
-     * @required
      * @maps source
      */
-    public function setSource(GetWithdrawSourceResponse $source): void
+    public function setSource(?GetWithdrawSourceResponse $source): void
     {
         $this->source = $source;
     }
@@ -348,7 +351,7 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Returns Target.
      */
-    public function getTarget(): GetWithdrawTargetResponse
+    public function getTarget(): ?GetWithdrawTargetResponse
     {
         return $this->target;
     }
@@ -356,10 +359,9 @@ class GetWithdrawResponse implements \JsonSerializable
     /**
      * Sets Target.
      *
-     * @required
      * @maps target
      */
-    public function setTarget(GetWithdrawTargetResponse $target): void
+    public function setTarget(?GetWithdrawTargetResponse $target): void
     {
         $this->target = $target;
     }
@@ -382,17 +384,17 @@ class GetWithdrawResponse implements \JsonSerializable
         $json['status']                     = $this->status;
         $json['created_at']                 = DateTimeHelper::toRfc3339DateTime($this->createdAt);
         $json['updated_at']                 = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        if (isset($this->metadata)) {
-            $json['metadata']               = $this->metadata;
+        if (!empty($this->metadata)) {
+            $json['metadata']               = $this->metadata['value'];
         }
-        if (isset($this->fee)) {
-            $json['fee']                    = $this->fee;
+        if (!empty($this->fee)) {
+            $json['fee']                    = $this->fee['value'];
         }
-        if (isset($this->fundingDate)) {
-            $json['funding_date']           = DateTimeHelper::toRfc3339DateTime($this->fundingDate);
+        if (!empty($this->fundingDate)) {
+            $json['funding_date']           = DateTimeHelper::toRfc3339DateTime($this->fundingDate['value']);
         }
-        if (isset($this->fundingEstimatedDate)) {
-            $json['funding_estimated_date'] = DateTimeHelper::toRfc3339DateTime($this->fundingEstimatedDate);
+        if (!empty($this->fundingEstimatedDate)) {
+            $json['funding_estimated_date'] = DateTimeHelper::toRfc3339DateTime($this->fundingEstimatedDate['value']);
         }
         $json['type']                       = $this->type;
         $json['source']                     = $this->source;

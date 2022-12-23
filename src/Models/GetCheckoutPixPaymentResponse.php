@@ -19,30 +19,20 @@ use stdClass;
 class GetCheckoutPixPaymentResponse implements \JsonSerializable
 {
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $expiresAt;
 
     /**
-     * @var PixAdditionalInformation[]
+     * @var PixAdditionalInformation[]|null
      */
     private $additionalInformation;
-
-    /**
-     * @param \DateTime $expiresAt
-     * @param PixAdditionalInformation[] $additionalInformation
-     */
-    public function __construct(\DateTime $expiresAt, array $additionalInformation)
-    {
-        $this->expiresAt = $expiresAt;
-        $this->additionalInformation = $additionalInformation;
-    }
 
     /**
      * Returns Expires At.
      * Expires at
      */
-    public function getExpiresAt(): \DateTime
+    public function getExpiresAt(): ?\DateTime
     {
         return $this->expiresAt;
     }
@@ -51,11 +41,10 @@ class GetCheckoutPixPaymentResponse implements \JsonSerializable
      * Sets Expires At.
      * Expires at
      *
-     * @required
      * @maps expires_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setExpiresAt(\DateTime $expiresAt): void
+    public function setExpiresAt(?\DateTime $expiresAt): void
     {
         $this->expiresAt = $expiresAt;
     }
@@ -64,9 +53,9 @@ class GetCheckoutPixPaymentResponse implements \JsonSerializable
      * Returns Additional Information.
      * Additional information
      *
-     * @return PixAdditionalInformation[]
+     * @return PixAdditionalInformation[]|null
      */
-    public function getAdditionalInformation(): array
+    public function getAdditionalInformation(): ?array
     {
         return $this->additionalInformation;
     }
@@ -75,12 +64,11 @@ class GetCheckoutPixPaymentResponse implements \JsonSerializable
      * Sets Additional Information.
      * Additional information
      *
-     * @required
      * @maps additional_information
      *
-     * @param PixAdditionalInformation[] $additionalInformation
+     * @param PixAdditionalInformation[]|null $additionalInformation
      */
-    public function setAdditionalInformation(array $additionalInformation): void
+    public function setAdditionalInformation(?array $additionalInformation): void
     {
         $this->additionalInformation = $additionalInformation;
     }

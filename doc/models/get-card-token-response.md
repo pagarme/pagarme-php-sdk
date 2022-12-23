@@ -11,14 +11,14 @@ Card token data
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `lastFourDigits` | `string` | Required | - | getLastFourDigits(): string | setLastFourDigits(string lastFourDigits): void |
-| `holderName` | `string` | Required | - | getHolderName(): string | setHolderName(string holderName): void |
-| `holderDocument` | `string` | Required | - | getHolderDocument(): string | setHolderDocument(string holderDocument): void |
-| `expMonth` | `string` | Required | - | getExpMonth(): string | setExpMonth(string expMonth): void |
-| `expYear` | `string` | Required | - | getExpYear(): string | setExpYear(string expYear): void |
-| `brand` | `string` | Required | - | getBrand(): string | setBrand(string brand): void |
-| `type` | `string` | Required | - | getType(): string | setType(string type): void |
-| `label` | `string` | Required | - | getLabel(): string | setLabel(string label): void |
+| `lastFourDigits` | `?string` | Required | - | getLastFourDigits(): ?string | setLastFourDigits(?string lastFourDigits): void |
+| `holderName` | `?string` | Required | - | getHolderName(): ?string | setHolderName(?string holderName): void |
+| `holderDocument` | `?string` | Required | - | getHolderDocument(): ?string | setHolderDocument(?string holderDocument): void |
+| `expMonth` | `?string` | Required | - | getExpMonth(): ?string | setExpMonth(?string expMonth): void |
+| `expYear` | `?string` | Required | - | getExpYear(): ?string | setExpYear(?string expYear): void |
+| `brand` | `?string` | Required | - | getBrand(): ?string | setBrand(?string brand): void |
+| `type` | `?string` | Required | - | getType(): ?string | setType(?string type): void |
+| `label` | `?string` | Required | - | getLabel(): ?string | setLabel(?string label): void |
 
 ## Example (as JSON)
 

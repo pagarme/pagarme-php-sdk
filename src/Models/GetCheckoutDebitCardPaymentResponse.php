@@ -15,30 +15,20 @@ use stdClass;
 class GetCheckoutDebitCardPaymentResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $statementDescriptor;
 
     /**
-     * @var GetPaymentAuthenticationResponse
+     * @var GetPaymentAuthenticationResponse|null
      */
     private $authentication;
-
-    /**
-     * @param string $statementDescriptor
-     * @param GetPaymentAuthenticationResponse $authentication
-     */
-    public function __construct(string $statementDescriptor, GetPaymentAuthenticationResponse $authentication)
-    {
-        $this->statementDescriptor = $statementDescriptor;
-        $this->authentication = $authentication;
-    }
 
     /**
      * Returns Statement Descriptor.
      * Descrição na fatura
      */
-    public function getStatementDescriptor(): string
+    public function getStatementDescriptor(): ?string
     {
         return $this->statementDescriptor;
     }
@@ -47,10 +37,9 @@ class GetCheckoutDebitCardPaymentResponse implements \JsonSerializable
      * Sets Statement Descriptor.
      * Descrição na fatura
      *
-     * @required
      * @maps statement_descriptor
      */
-    public function setStatementDescriptor(string $statementDescriptor): void
+    public function setStatementDescriptor(?string $statementDescriptor): void
     {
         $this->statementDescriptor = $statementDescriptor;
     }
@@ -59,7 +48,7 @@ class GetCheckoutDebitCardPaymentResponse implements \JsonSerializable
      * Returns Authentication.
      * Payment Authentication response object data
      */
-    public function getAuthentication(): GetPaymentAuthenticationResponse
+    public function getAuthentication(): ?GetPaymentAuthenticationResponse
     {
         return $this->authentication;
     }
@@ -68,10 +57,9 @@ class GetCheckoutDebitCardPaymentResponse implements \JsonSerializable
      * Sets Authentication.
      * Payment Authentication response object data
      *
-     * @required
      * @maps authentication
      */
-    public function setAuthentication(GetPaymentAuthenticationResponse $authentication): void
+    public function setAuthentication(?GetPaymentAuthenticationResponse $authentication): void
     {
         $this->authentication = $authentication;
     }

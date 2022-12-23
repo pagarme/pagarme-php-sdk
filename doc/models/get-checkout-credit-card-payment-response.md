@@ -9,9 +9,9 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `statementDescriptor` | `string` | Required | Descrição na fatura | getStatementDescriptor(): string | setStatementDescriptor(string statementDescriptor): void |
-| `installments` | [`GetCheckoutCardInstallmentOptionsResponse[]`](../../doc/models/get-checkout-card-installment-options-response.md) | Required | Parcelas | getInstallments(): array | setInstallments(array installments): void |
-| `authentication` | [`GetPaymentAuthenticationResponse`](../../doc/models/get-payment-authentication-response.md) | Required | Payment Authentication response | getAuthentication(): GetPaymentAuthenticationResponse | setAuthentication(GetPaymentAuthenticationResponse authentication): void |
+| `statementDescriptor` | `?string` | Required | Descrição na fatura | getStatementDescriptor(): ?string | setStatementDescriptor(?string statementDescriptor): void |
+| `installments` | [`?(GetCheckoutCardInstallmentOptionsResponse[])`](../../doc/models/get-checkout-card-installment-options-response.md) | Required | Parcelas | getInstallments(): ?array | setInstallments(?array installments): void |
+| `authentication` | [`?GetPaymentAuthenticationResponse`](../../doc/models/get-payment-authentication-response.md) | Required | Payment Authentication response | getAuthentication(): ?GetPaymentAuthenticationResponse | setAuthentication(?GetPaymentAuthenticationResponse authentication): void |
 
 ## Example (as JSON)
 

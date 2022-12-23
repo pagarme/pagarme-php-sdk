@@ -3,9 +3,7 @@
 
 ## Introduction
 
-Pagarme API 
-
-Under maintenance :hammer: :construction:
+Pagarme API
 
 ## Building
 

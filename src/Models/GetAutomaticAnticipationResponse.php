@@ -15,50 +15,34 @@ use stdClass;
 class GetAutomaticAnticipationResponse implements \JsonSerializable
 {
     /**
-     * @var bool
+     * @var bool|null
      */
     private $enabled;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $volumePercentage;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $delay;
 
     /**
-     * @var int[]
+     * @var int[]|null
      */
     private $days;
 
     /**
-     * @param bool $enabled
-     * @param string $type
-     * @param int $volumePercentage
-     * @param int $delay
-     * @param int[] $days
-     */
-    public function __construct(bool $enabled, string $type, int $volumePercentage, int $delay, array $days)
-    {
-        $this->enabled = $enabled;
-        $this->type = $type;
-        $this->volumePercentage = $volumePercentage;
-        $this->delay = $delay;
-        $this->days = $days;
-    }
-
-    /**
      * Returns Enabled.
      */
-    public function getEnabled(): bool
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
@@ -66,10 +50,9 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
     /**
      * Sets Enabled.
      *
-     * @required
      * @maps enabled
      */
-    public function setEnabled(bool $enabled): void
+    public function setEnabled(?bool $enabled): void
     {
         $this->enabled = $enabled;
     }
@@ -77,7 +60,7 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
     /**
      * Returns Type.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -85,10 +68,9 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
     /**
      * Sets Type.
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -96,7 +78,7 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
     /**
      * Returns Volume Percentage.
      */
-    public function getVolumePercentage(): int
+    public function getVolumePercentage(): ?int
     {
         return $this->volumePercentage;
     }
@@ -104,10 +86,9 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
     /**
      * Sets Volume Percentage.
      *
-     * @required
      * @maps volume_percentage
      */
-    public function setVolumePercentage(int $volumePercentage): void
+    public function setVolumePercentage(?int $volumePercentage): void
     {
         $this->volumePercentage = $volumePercentage;
     }
@@ -115,7 +96,7 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
     /**
      * Returns Delay.
      */
-    public function getDelay(): int
+    public function getDelay(): ?int
     {
         return $this->delay;
     }
@@ -123,10 +104,9 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
     /**
      * Sets Delay.
      *
-     * @required
      * @maps delay
      */
-    public function setDelay(int $delay): void
+    public function setDelay(?int $delay): void
     {
         $this->delay = $delay;
     }
@@ -134,9 +114,9 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
     /**
      * Returns Days.
      *
-     * @return int[]
+     * @return int[]|null
      */
-    public function getDays(): array
+    public function getDays(): ?array
     {
         return $this->days;
     }
@@ -144,12 +124,11 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
     /**
      * Sets Days.
      *
-     * @required
      * @maps days
      *
-     * @param int[] $days
+     * @param int[]|null $days
      */
-    public function setDays(array $days): void
+    public function setDays(?array $days): void
     {
         $this->days = $days;
     }

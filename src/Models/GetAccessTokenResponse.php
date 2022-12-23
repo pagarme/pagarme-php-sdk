@@ -19,48 +19,34 @@ use stdClass;
 class GetAccessTokenResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $code;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var GetCustomerResponse|null
+     * @var array
      */
-    private $customer;
-
-    /**
-     * @param string $id
-     * @param string $code
-     * @param string $status
-     * @param \DateTime $createdAt
-     */
-    public function __construct(string $id, string $code, string $status, \DateTime $createdAt)
-    {
-        $this->id = $id;
-        $this->code = $code;
-        $this->status = $status;
-        $this->createdAt = $createdAt;
-    }
+    private $customer = [];
 
     /**
      * Returns Id.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -68,10 +54,9 @@ class GetAccessTokenResponse implements \JsonSerializable
     /**
      * Sets Id.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -79,7 +64,7 @@ class GetAccessTokenResponse implements \JsonSerializable
     /**
      * Returns Code.
      */
-    public function getCode(): string
+    public function getCode(): ?string
     {
         return $this->code;
     }
@@ -87,10 +72,9 @@ class GetAccessTokenResponse implements \JsonSerializable
     /**
      * Sets Code.
      *
-     * @required
      * @maps code
      */
-    public function setCode(string $code): void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
@@ -98,7 +82,7 @@ class GetAccessTokenResponse implements \JsonSerializable
     /**
      * Returns Status.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -106,10 +90,9 @@ class GetAccessTokenResponse implements \JsonSerializable
     /**
      * Sets Status.
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -117,7 +100,7 @@ class GetAccessTokenResponse implements \JsonSerializable
     /**
      * Returns Created At.
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -125,11 +108,10 @@ class GetAccessTokenResponse implements \JsonSerializable
     /**
      * Sets Created At.
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -139,7 +121,10 @@ class GetAccessTokenResponse implements \JsonSerializable
      */
     public function getCustomer(): ?GetCustomerResponse
     {
-        return $this->customer;
+        if (count($this->customer) == 0) {
+            return null;
+        }
+        return $this->customer['value'];
     }
 
     /**
@@ -149,7 +134,15 @@ class GetAccessTokenResponse implements \JsonSerializable
      */
     public function setCustomer(?GetCustomerResponse $customer): void
     {
-        $this->customer = $customer;
+        $this->customer['value'] = $customer;
+    }
+
+    /**
+     * Unsets Customer.
+     */
+    public function unsetCustomer(): void
+    {
+        $this->customer = [];
     }
 
     /**
@@ -168,8 +161,8 @@ class GetAccessTokenResponse implements \JsonSerializable
         $json['code']         = $this->code;
         $json['status']       = $this->status;
         $json['created_at']   = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        if (isset($this->customer)) {
-            $json['customer'] = $this->customer;
+        if (!empty($this->customer)) {
+            $json['customer'] = $this->customer['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

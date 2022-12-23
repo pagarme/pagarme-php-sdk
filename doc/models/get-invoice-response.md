@@ -11,29 +11,29 @@ Response object for getting an invoice
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `string` | Required | - | getId(): string | setId(string id): void |
-| `code` | `string` | Required | - | getCode(): string | setCode(string code): void |
-| `url` | `string` | Required | - | getUrl(): string | setUrl(string url): void |
-| `amount` | `int` | Required | - | getAmount(): int | setAmount(int amount): void |
-| `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
-| `paymentMethod` | `string` | Required | - | getPaymentMethod(): string | setPaymentMethod(string paymentMethod): void |
-| `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
-| `items` | [`GetInvoiceItemResponse[]`](../../doc/models/get-invoice-item-response.md) | Required | - | getItems(): array | setItems(array items): void |
+| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
+| `code` | `?string` | Required | - | getCode(): ?string | setCode(?string code): void |
+| `url` | `?string` | Required | - | getUrl(): ?string | setUrl(?string url): void |
+| `amount` | `?int` | Required | - | getAmount(): ?int | setAmount(?int amount): void |
+| `status` | `?string` | Required | - | getStatus(): ?string | setStatus(?string status): void |
+| `paymentMethod` | `?string` | Required | - | getPaymentMethod(): ?string | setPaymentMethod(?string paymentMethod): void |
+| `createdAt` | `?\DateTime` | Required | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
+| `items` | [`?(GetInvoiceItemResponse[])`](../../doc/models/get-invoice-item-response.md) | Required | - | getItems(): ?array | setItems(?array items): void |
 | `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
-| `charge` | [`GetChargeResponse`](../../doc/models/get-charge-response.md) | Required | - | getCharge(): GetChargeResponse | setCharge(GetChargeResponse charge): void |
-| `installments` | `int` | Required | - | getInstallments(): int | setInstallments(int installments): void |
-| `billingAddress` | [`GetBillingAddressResponse`](../../doc/models/get-billing-address-response.md) | Required | - | getBillingAddress(): GetBillingAddressResponse | setBillingAddress(GetBillingAddressResponse billingAddress): void |
-| `subscription` | [`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md) | Required | - | getSubscription(): GetSubscriptionResponse | setSubscription(GetSubscriptionResponse subscription): void |
+| `charge` | [`?GetChargeResponse`](../../doc/models/get-charge-response.md) | Required | - | getCharge(): ?GetChargeResponse | setCharge(?GetChargeResponse charge): void |
+| `installments` | `?int` | Required | - | getInstallments(): ?int | setInstallments(?int installments): void |
+| `billingAddress` | [`?GetBillingAddressResponse`](../../doc/models/get-billing-address-response.md) | Required | - | getBillingAddress(): ?GetBillingAddressResponse | setBillingAddress(?GetBillingAddressResponse billingAddress): void |
+| `subscription` | [`?GetSubscriptionResponse`](../../doc/models/get-subscription-response.md) | Required | - | getSubscription(): ?GetSubscriptionResponse | setSubscription(?GetSubscriptionResponse subscription): void |
 | `cycle` | [`?GetPeriodResponse`](../../doc/models/get-period-response.md) | Optional | - | getCycle(): ?GetPeriodResponse | setCycle(?GetPeriodResponse cycle): void |
-| `shipping` | [`GetShippingResponse`](../../doc/models/get-shipping-response.md) | Required | - | getShipping(): GetShippingResponse | setShipping(GetShippingResponse shipping): void |
-| `metadata` | `array<string,string>` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
+| `shipping` | [`?GetShippingResponse`](../../doc/models/get-shipping-response.md) | Required | - | getShipping(): ?GetShippingResponse | setShipping(?GetShippingResponse shipping): void |
+| `metadata` | `?array<string,string>` | Required | - | getMetadata(): ?array | setMetadata(?array metadata): void |
 | `dueAt` | `?\DateTime` | Optional | - | getDueAt(): ?\DateTime | setDueAt(?\DateTime dueAt): void |
 | `canceledAt` | `?\DateTime` | Optional | - | getCanceledAt(): ?\DateTime | setCanceledAt(?\DateTime canceledAt): void |
 | `billingAt` | `?\DateTime` | Optional | - | getBillingAt(): ?\DateTime | setBillingAt(?\DateTime billingAt): void |
 | `seenAt` | `?\DateTime` | Optional | - | getSeenAt(): ?\DateTime | setSeenAt(?\DateTime seenAt): void |
 | `totalDiscount` | `?int` | Optional | Total discounted value | getTotalDiscount(): ?int | setTotalDiscount(?int totalDiscount): void |
 | `totalIncrement` | `?int` | Optional | Total discounted value | getTotalIncrement(): ?int | setTotalIncrement(?int totalIncrement): void |
-| `subscriptionId` | `string` | Required | Subscription Id | getSubscriptionId(): string | setSubscriptionId(string subscriptionId): void |
+| `subscriptionId` | `?string` | Required | Subscription Id | getSubscriptionId(): ?string | setSubscriptionId(?string subscriptionId): void |
 
 ## Example (as JSON)
 

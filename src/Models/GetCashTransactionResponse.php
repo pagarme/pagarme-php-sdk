@@ -14,72 +14,19 @@ use stdClass;
 
 /**
  * Response object for getting a cash transaction
- *
- * @discriminator transaction_type
- * @discriminatorType cash
  */
 class GetCashTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $description;
-
-    /**
-     * @param string $gatewayId
-     * @param int $amount
-     * @param string $status
-     * @param bool $success
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param int $attemptCount
-     * @param int $maxAttempts
-     * @param GetSplitResponse[] $splits
-     * @param string $id
-     * @param GetGatewayResponseResponse $gatewayResponse
-     * @param GetAntifraudResponse $antifraudResponse
-     * @param GetSplitResponse[] $split
-     * @param string $description
-     */
-    public function __construct(
-        string $gatewayId,
-        int $amount,
-        string $status,
-        bool $success,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        int $attemptCount,
-        int $maxAttempts,
-        array $splits,
-        string $id,
-        GetGatewayResponseResponse $gatewayResponse,
-        GetAntifraudResponse $antifraudResponse,
-        array $split,
-        string $description
-    ) {
-        parent::__construct(
-            $gatewayId,
-            $amount,
-            $status,
-            $success,
-            $createdAt,
-            $updatedAt,
-            $attemptCount,
-            $maxAttempts,
-            $splits,
-            $id,
-            $gatewayResponse,
-            $antifraudResponse,
-            $split
-        );
-        $this->description = $description;
-    }
 
     /**
      * Returns Description.
      * Description
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -88,10 +35,9 @@ class GetCashTransactionResponse extends GetTransactionResponse implements \Json
      * Sets Description.
      * Description
      *
-     * @required
      * @maps description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -110,7 +56,6 @@ class GetCashTransactionResponse extends GetTransactionResponse implements \Json
         $json = [];
         $json['description'] = $this->description;
         $json = array_merge($json, parent::jsonSerialize(true));
-        $json['transaction_type'] = $this->getTransactionType() ?? 'cash';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

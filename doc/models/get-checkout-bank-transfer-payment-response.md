@@ -11,7 +11,7 @@ Bank transfer checkout response
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `bank` | `string[]` | Required | bank list response | getBank(): array | setBank(array bank): void |
+| `bank` | `?(string[])` | Required | bank list response | getBank(): ?array | setBank(?array bank): void |
 
 ## Example (as JSON)
 

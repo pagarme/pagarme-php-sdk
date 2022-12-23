@@ -11,16 +11,16 @@ Response object for getting a period
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `startAt` | `\DateTime` | Required | - | getStartAt(): \DateTime | setStartAt(\DateTime startAt): void |
-| `endAt` | `\DateTime` | Required | - | getEndAt(): \DateTime | setEndAt(\DateTime endAt): void |
-| `id` | `string` | Required | - | getId(): string | setId(string id): void |
-| `billingAt` | `\DateTime` | Required | - | getBillingAt(): \DateTime | setBillingAt(\DateTime billingAt): void |
-| `subscription` | [`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md) | Required | - | getSubscription(): GetSubscriptionResponse | setSubscription(GetSubscriptionResponse subscription): void |
-| `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
-| `duration` | `int` | Required | - | getDuration(): int | setDuration(int duration): void |
-| `createdAt` | `string` | Required | - | getCreatedAt(): string | setCreatedAt(string createdAt): void |
-| `updatedAt` | `string` | Required | - | getUpdatedAt(): string | setUpdatedAt(string updatedAt): void |
-| `cycle` | `int` | Required | - | getCycle(): int | setCycle(int cycle): void |
+| `startAt` | `?\DateTime` | Required | - | getStartAt(): ?\DateTime | setStartAt(?\DateTime startAt): void |
+| `endAt` | `?\DateTime` | Required | - | getEndAt(): ?\DateTime | setEndAt(?\DateTime endAt): void |
+| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
+| `billingAt` | `?\DateTime` | Required | - | getBillingAt(): ?\DateTime | setBillingAt(?\DateTime billingAt): void |
+| `subscription` | [`?GetSubscriptionResponse`](../../doc/models/get-subscription-response.md) | Required | - | getSubscription(): ?GetSubscriptionResponse | setSubscription(?GetSubscriptionResponse subscription): void |
+| `status` | `?string` | Required | - | getStatus(): ?string | setStatus(?string status): void |
+| `duration` | `?int` | Required | - | getDuration(): ?int | setDuration(?int duration): void |
+| `createdAt` | `?string` | Required | - | getCreatedAt(): ?string | setCreatedAt(?string createdAt): void |
+| `updatedAt` | `?string` | Required | - | getUpdatedAt(): ?string | setUpdatedAt(?string updatedAt): void |
+| `cycle` | `?int` | Required | - | getCycle(): ?int | setCycle(?int cycle): void |
 
 ## Example (as JSON)
 

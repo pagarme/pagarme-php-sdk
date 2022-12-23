@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `sourceId` | `string` | Required | - | getSourceId(): string | setSourceId(string sourceId): void |
-| `type` | `string` | Required | - | getType(): string | setType(string type): void |
+| `sourceId` | `?string` | Required | - | getSourceId(): ?string | setSourceId(?string sourceId): void |
+| `type` | `?string` | Required | - | getType(): ?string | setType(?string type): void |
 
 ## Example (as JSON)
 

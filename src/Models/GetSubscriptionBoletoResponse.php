@@ -18,14 +18,14 @@ use stdClass;
 class GetSubscriptionBoletoResponse implements \JsonSerializable
 {
     /**
-     * @var GetInterestResponse|null
+     * @var array
      */
-    private $interest;
+    private $interest = [];
 
     /**
-     * @var GetFineResponse|null
+     * @var array
      */
-    private $fine;
+    private $fine = [];
 
     /**
      * @var array
@@ -38,7 +38,10 @@ class GetSubscriptionBoletoResponse implements \JsonSerializable
      */
     public function getInterest(): ?GetInterestResponse
     {
-        return $this->interest;
+        if (count($this->interest) == 0) {
+            return null;
+        }
+        return $this->interest['value'];
     }
 
     /**
@@ -49,7 +52,16 @@ class GetSubscriptionBoletoResponse implements \JsonSerializable
      */
     public function setInterest(?GetInterestResponse $interest): void
     {
-        $this->interest = $interest;
+        $this->interest['value'] = $interest;
+    }
+
+    /**
+     * Unsets Interest.
+     * Interest
+     */
+    public function unsetInterest(): void
+    {
+        $this->interest = [];
     }
 
     /**
@@ -58,7 +70,10 @@ class GetSubscriptionBoletoResponse implements \JsonSerializable
      */
     public function getFine(): ?GetFineResponse
     {
-        return $this->fine;
+        if (count($this->fine) == 0) {
+            return null;
+        }
+        return $this->fine['value'];
     }
 
     /**
@@ -69,7 +84,16 @@ class GetSubscriptionBoletoResponse implements \JsonSerializable
      */
     public function setFine(?GetFineResponse $fine): void
     {
-        $this->fine = $fine;
+        $this->fine['value'] = $fine;
+    }
+
+    /**
+     * Unsets Fine.
+     * Fine
+     */
+    public function unsetFine(): void
+    {
+        $this->fine = [];
     }
 
     /**
@@ -113,11 +137,11 @@ class GetSubscriptionBoletoResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        if (isset($this->interest)) {
-            $json['interest']                 = $this->interest;
+        if (!empty($this->interest)) {
+            $json['interest']                 = $this->interest['value'];
         }
-        if (isset($this->fine)) {
-            $json['fine']                     = $this->fine;
+        if (!empty($this->fine)) {
+            $json['fine']                     = $this->fine['value'];
         }
         if (!empty($this->maxDaysToPayPastDue)) {
             $json['max_days_to_pay_past_due'] = $this->maxDaysToPayPastDue['value'];

@@ -18,39 +18,29 @@ use stdClass;
 class GetPriceBracketResponse implements \JsonSerializable
 {
     /**
-     * @var int
+     * @var int|null
      */
     private $startQuantity;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $price;
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $endQuantity;
+    private $endQuantity = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $overagePrice;
-
-    /**
-     * @param int $startQuantity
-     * @param int $price
-     */
-    public function __construct(int $startQuantity, int $price)
-    {
-        $this->startQuantity = $startQuantity;
-        $this->price = $price;
-    }
+    private $overagePrice = [];
 
     /**
      * Returns Start Quantity.
      */
-    public function getStartQuantity(): int
+    public function getStartQuantity(): ?int
     {
         return $this->startQuantity;
     }
@@ -58,10 +48,9 @@ class GetPriceBracketResponse implements \JsonSerializable
     /**
      * Sets Start Quantity.
      *
-     * @required
      * @maps start_quantity
      */
-    public function setStartQuantity(int $startQuantity): void
+    public function setStartQuantity(?int $startQuantity): void
     {
         $this->startQuantity = $startQuantity;
     }
@@ -69,7 +58,7 @@ class GetPriceBracketResponse implements \JsonSerializable
     /**
      * Returns Price.
      */
-    public function getPrice(): int
+    public function getPrice(): ?int
     {
         return $this->price;
     }
@@ -77,10 +66,9 @@ class GetPriceBracketResponse implements \JsonSerializable
     /**
      * Sets Price.
      *
-     * @required
      * @maps price
      */
-    public function setPrice(int $price): void
+    public function setPrice(?int $price): void
     {
         $this->price = $price;
     }
@@ -90,7 +78,10 @@ class GetPriceBracketResponse implements \JsonSerializable
      */
     public function getEndQuantity(): ?int
     {
-        return $this->endQuantity;
+        if (count($this->endQuantity) == 0) {
+            return null;
+        }
+        return $this->endQuantity['value'];
     }
 
     /**
@@ -100,7 +91,15 @@ class GetPriceBracketResponse implements \JsonSerializable
      */
     public function setEndQuantity(?int $endQuantity): void
     {
-        $this->endQuantity = $endQuantity;
+        $this->endQuantity['value'] = $endQuantity;
+    }
+
+    /**
+     * Unsets End Quantity.
+     */
+    public function unsetEndQuantity(): void
+    {
+        $this->endQuantity = [];
     }
 
     /**
@@ -108,7 +107,10 @@ class GetPriceBracketResponse implements \JsonSerializable
      */
     public function getOveragePrice(): ?int
     {
-        return $this->overagePrice;
+        if (count($this->overagePrice) == 0) {
+            return null;
+        }
+        return $this->overagePrice['value'];
     }
 
     /**
@@ -118,7 +120,15 @@ class GetPriceBracketResponse implements \JsonSerializable
      */
     public function setOveragePrice(?int $overagePrice): void
     {
-        $this->overagePrice = $overagePrice;
+        $this->overagePrice['value'] = $overagePrice;
+    }
+
+    /**
+     * Unsets Overage Price.
+     */
+    public function unsetOveragePrice(): void
+    {
+        $this->overagePrice = [];
     }
 
     /**
@@ -135,11 +145,11 @@ class GetPriceBracketResponse implements \JsonSerializable
         $json = [];
         $json['start_quantity']    = $this->startQuantity;
         $json['price']             = $this->price;
-        if (isset($this->endQuantity)) {
-            $json['end_quantity']  = $this->endQuantity;
+        if (!empty($this->endQuantity)) {
+            $json['end_quantity']  = $this->endQuantity['value'];
         }
-        if (isset($this->overagePrice)) {
-            $json['overage_price'] = $this->overagePrice;
+        if (!empty($this->overagePrice)) {
+            $json['overage_price'] = $this->overagePrice['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

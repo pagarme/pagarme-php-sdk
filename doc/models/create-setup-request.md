@@ -37,18 +37,7 @@ Request for creating a Setup for a subscription. The setup is an order that will
     "customer": null,
     "metadata": null,
     "cash": null,
-    "private_label": {
-      "installments": null,
-      "statement_descriptor": null,
-      "card": null,
-      "card_id": null,
-      "card_token": null,
-      "recurrence": null,
-      "capture": null,
-      "extended_limit_enabled": null,
-      "extended_limit_code": null,
-      "recurrency_cycle": null
-    },
+    "private_label": null,
     "pix": null
   }
 }

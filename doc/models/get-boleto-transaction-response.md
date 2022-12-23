@@ -15,23 +15,23 @@ Response object for getting a boleto transaction
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `url` | `string` | Required | - | getUrl(): string | setUrl(string url): void |
-| `barcode` | `string` | Required | - | getBarcode(): string | setBarcode(string barcode): void |
-| `nossoNumero` | `string` | Required | - | getNossoNumero(): string | setNossoNumero(string nossoNumero): void |
-| `bank` | `string` | Required | - | getBank(): string | setBank(string bank): void |
-| `documentNumber` | `string` | Required | - | getDocumentNumber(): string | setDocumentNumber(string documentNumber): void |
-| `instructions` | `string` | Required | - | getInstructions(): string | setInstructions(string instructions): void |
-| `billingAddress` | [`GetBillingAddressResponse`](../../doc/models/get-billing-address-response.md) | Required | - | getBillingAddress(): GetBillingAddressResponse | setBillingAddress(GetBillingAddressResponse billingAddress): void |
+| `url` | `?string` | Required | - | getUrl(): ?string | setUrl(?string url): void |
+| `barcode` | `?string` | Required | - | getBarcode(): ?string | setBarcode(?string barcode): void |
+| `nossoNumero` | `?string` | Required | - | getNossoNumero(): ?string | setNossoNumero(?string nossoNumero): void |
+| `bank` | `?string` | Required | - | getBank(): ?string | setBank(?string bank): void |
+| `documentNumber` | `?string` | Required | - | getDocumentNumber(): ?string | setDocumentNumber(?string documentNumber): void |
+| `instructions` | `?string` | Required | - | getInstructions(): ?string | setInstructions(?string instructions): void |
+| `billingAddress` | [`?GetBillingAddressResponse`](../../doc/models/get-billing-address-response.md) | Required | - | getBillingAddress(): ?GetBillingAddressResponse | setBillingAddress(?GetBillingAddressResponse billingAddress): void |
 | `dueAt` | `?\DateTime` | Optional | - | getDueAt(): ?\DateTime | setDueAt(?\DateTime dueAt): void |
-| `qrCode` | `string` | Required | - | getQrCode(): string | setQrCode(string qrCode): void |
-| `line` | `string` | Required | - | getLine(): string | setLine(string line): void |
-| `pdfPassword` | `string` | Required | - | getPdfPassword(): string | setPdfPassword(string pdfPassword): void |
-| `pdf` | `string` | Required | - | getPdf(): string | setPdf(string pdf): void |
+| `qrCode` | `?string` | Required | - | getQrCode(): ?string | setQrCode(?string qrCode): void |
+| `line` | `?string` | Required | - | getLine(): ?string | setLine(?string line): void |
+| `pdfPassword` | `?string` | Required | - | getPdfPassword(): ?string | setPdfPassword(?string pdfPassword): void |
+| `pdf` | `?string` | Required | - | getPdf(): ?string | setPdf(?string pdf): void |
 | `paidAt` | `?\DateTime` | Optional | - | getPaidAt(): ?\DateTime | setPaidAt(?\DateTime paidAt): void |
-| `paidAmount` | `string` | Required | - | getPaidAmount(): string | setPaidAmount(string paidAmount): void |
-| `type` | `string` | Required | - | getType(): string | setType(string type): void |
+| `paidAmount` | `?string` | Required | - | getPaidAmount(): ?string | setPaidAmount(?string paidAmount): void |
+| `type` | `?string` | Required | - | getType(): ?string | setType(?string type): void |
 | `creditAt` | `?\DateTime` | Optional | - | getCreditAt(): ?\DateTime | setCreditAt(?\DateTime creditAt): void |
-| `statementDescriptor` | `string` | Required | Soft Descriptor | getStatementDescriptor(): string | setStatementDescriptor(string statementDescriptor): void |
+| `statementDescriptor` | `?string` | Required | Soft Descriptor | getStatementDescriptor(): ?string | setStatementDescriptor(?string statementDescriptor): void |
 
 ## Example (as JSON)
 
@@ -65,7 +65,6 @@ Response object for getting a boleto transaction
   "type": "type0",
   "credit_at": null,
   "statement_descriptor": "statement_descriptor0",
-  "transaction_type": "boleto",
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
@@ -93,6 +92,7 @@ Response object for getting a boleto transaction
     }
   ],
   "next_attempt": null,
+  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",

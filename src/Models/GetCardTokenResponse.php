@@ -18,79 +18,49 @@ use stdClass;
 class GetCardTokenResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $lastFourDigits;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $holderName;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $holderDocument;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $expMonth;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $expYear;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $brand;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $label;
 
     /**
-     * @param string $lastFourDigits
-     * @param string $holderName
-     * @param string $holderDocument
-     * @param string $expMonth
-     * @param string $expYear
-     * @param string $brand
-     * @param string $type
-     * @param string $label
-     */
-    public function __construct(
-        string $lastFourDigits,
-        string $holderName,
-        string $holderDocument,
-        string $expMonth,
-        string $expYear,
-        string $brand,
-        string $type,
-        string $label
-    ) {
-        $this->lastFourDigits = $lastFourDigits;
-        $this->holderName = $holderName;
-        $this->holderDocument = $holderDocument;
-        $this->expMonth = $expMonth;
-        $this->expYear = $expYear;
-        $this->brand = $brand;
-        $this->type = $type;
-        $this->label = $label;
-    }
-
-    /**
      * Returns Last Four Digits.
      */
-    public function getLastFourDigits(): string
+    public function getLastFourDigits(): ?string
     {
         return $this->lastFourDigits;
     }
@@ -98,10 +68,9 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Sets Last Four Digits.
      *
-     * @required
      * @maps last_four_digits
      */
-    public function setLastFourDigits(string $lastFourDigits): void
+    public function setLastFourDigits(?string $lastFourDigits): void
     {
         $this->lastFourDigits = $lastFourDigits;
     }
@@ -109,7 +78,7 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Returns Holder Name.
      */
-    public function getHolderName(): string
+    public function getHolderName(): ?string
     {
         return $this->holderName;
     }
@@ -117,10 +86,9 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Sets Holder Name.
      *
-     * @required
      * @maps holder_name
      */
-    public function setHolderName(string $holderName): void
+    public function setHolderName(?string $holderName): void
     {
         $this->holderName = $holderName;
     }
@@ -128,7 +96,7 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Returns Holder Document.
      */
-    public function getHolderDocument(): string
+    public function getHolderDocument(): ?string
     {
         return $this->holderDocument;
     }
@@ -136,10 +104,9 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Sets Holder Document.
      *
-     * @required
      * @maps holder_document
      */
-    public function setHolderDocument(string $holderDocument): void
+    public function setHolderDocument(?string $holderDocument): void
     {
         $this->holderDocument = $holderDocument;
     }
@@ -147,7 +114,7 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Returns Exp Month.
      */
-    public function getExpMonth(): string
+    public function getExpMonth(): ?string
     {
         return $this->expMonth;
     }
@@ -155,10 +122,9 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Sets Exp Month.
      *
-     * @required
      * @maps exp_month
      */
-    public function setExpMonth(string $expMonth): void
+    public function setExpMonth(?string $expMonth): void
     {
         $this->expMonth = $expMonth;
     }
@@ -166,7 +132,7 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Returns Exp Year.
      */
-    public function getExpYear(): string
+    public function getExpYear(): ?string
     {
         return $this->expYear;
     }
@@ -174,10 +140,9 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Sets Exp Year.
      *
-     * @required
      * @maps exp_year
      */
-    public function setExpYear(string $expYear): void
+    public function setExpYear(?string $expYear): void
     {
         $this->expYear = $expYear;
     }
@@ -185,7 +150,7 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Returns Brand.
      */
-    public function getBrand(): string
+    public function getBrand(): ?string
     {
         return $this->brand;
     }
@@ -193,10 +158,9 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Sets Brand.
      *
-     * @required
      * @maps brand
      */
-    public function setBrand(string $brand): void
+    public function setBrand(?string $brand): void
     {
         $this->brand = $brand;
     }
@@ -204,7 +168,7 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Returns Type.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -212,10 +176,9 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Sets Type.
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -223,7 +186,7 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Returns Label.
      */
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -231,10 +194,9 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Sets Label.
      *
-     * @required
      * @maps label
      */
-    public function setLabel(string $label): void
+    public function setLabel(?string $label): void
     {
         $this->label = $label;
     }

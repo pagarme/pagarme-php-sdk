@@ -19,72 +19,45 @@ use stdClass;
 class GetTransferResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $amount;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $updatedAt;
 
     /**
-     * @var GetBankAccountResponse
+     * @var GetBankAccountResponse|null
      */
     private $bankAccount;
 
     /**
-     * @var array<string,string>
+     * @var array<string,string>|null
      */
     private $metadata;
-
-    /**
-     * @param string $id
-     * @param int $amount
-     * @param string $status
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param GetBankAccountResponse $bankAccount
-     * @param array<string,string> $metadata
-     */
-    public function __construct(
-        string $id,
-        int $amount,
-        string $status,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        GetBankAccountResponse $bankAccount,
-        array $metadata
-    ) {
-        $this->id = $id;
-        $this->amount = $amount;
-        $this->status = $status;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-        $this->bankAccount = $bankAccount;
-        $this->metadata = $metadata;
-    }
 
     /**
      * Returns Id.
      * Id
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -93,10 +66,9 @@ class GetTransferResponse implements \JsonSerializable
      * Sets Id.
      * Id
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -105,7 +77,7 @@ class GetTransferResponse implements \JsonSerializable
      * Returns Amount.
      * Transfer amount
      */
-    public function getAmount(): int
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
@@ -114,10 +86,9 @@ class GetTransferResponse implements \JsonSerializable
      * Sets Amount.
      * Transfer amount
      *
-     * @required
      * @maps amount
      */
-    public function setAmount(int $amount): void
+    public function setAmount(?int $amount): void
     {
         $this->amount = $amount;
     }
@@ -126,7 +97,7 @@ class GetTransferResponse implements \JsonSerializable
      * Returns Status.
      * Transfer status
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -135,10 +106,9 @@ class GetTransferResponse implements \JsonSerializable
      * Sets Status.
      * Transfer status
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -147,7 +117,7 @@ class GetTransferResponse implements \JsonSerializable
      * Returns Created At.
      * Transfer creation date
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -156,11 +126,10 @@ class GetTransferResponse implements \JsonSerializable
      * Sets Created At.
      * Transfer creation date
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -169,7 +138,7 @@ class GetTransferResponse implements \JsonSerializable
      * Returns Updated At.
      * Transfer last update date
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
@@ -178,11 +147,10 @@ class GetTransferResponse implements \JsonSerializable
      * Sets Updated At.
      * Transfer last update date
      *
-     * @required
      * @maps updated_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(?\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -191,7 +159,7 @@ class GetTransferResponse implements \JsonSerializable
      * Returns Bank Account.
      * Bank account
      */
-    public function getBankAccount(): GetBankAccountResponse
+    public function getBankAccount(): ?GetBankAccountResponse
     {
         return $this->bankAccount;
     }
@@ -200,10 +168,9 @@ class GetTransferResponse implements \JsonSerializable
      * Sets Bank Account.
      * Bank account
      *
-     * @required
      * @maps bank_account
      */
-    public function setBankAccount(GetBankAccountResponse $bankAccount): void
+    public function setBankAccount(?GetBankAccountResponse $bankAccount): void
     {
         $this->bankAccount = $bankAccount;
     }
@@ -212,9 +179,9 @@ class GetTransferResponse implements \JsonSerializable
      * Returns Metadata.
      * Metadata
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
-    public function getMetadata(): array
+    public function getMetadata(): ?array
     {
         return $this->metadata;
     }
@@ -223,12 +190,11 @@ class GetTransferResponse implements \JsonSerializable
      * Sets Metadata.
      * Metadata
      *
-     * @required
      * @maps metadata
      *
-     * @param array<string,string> $metadata
+     * @param array<string,string>|null $metadata
      */
-    public function setMetadata(array $metadata): void
+    public function setMetadata(?array $metadata): void
     {
         $this->metadata = $metadata;
     }

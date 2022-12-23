@@ -1078,10 +1078,8 @@ $body_metadata = ['key0' => 'metadata7', 'key1' => 'metadata8'];
 $body_setup_amount = 150;
 $body_setup_description = 'description0';
 $body_setup_payment_paymentMethod = 'payment_method4';
-$body_setup_payment_privateLabel = new Models\CreatePrivateLabelPaymentRequest();
 $body_setup_payment = new Models\CreatePaymentRequest(
-    $body_setup_payment_paymentMethod,
-    $body_setup_payment_privateLabel
+    $body_setup_payment_paymentMethod
 );
 $body_setup = new Models\CreateSetupRequest(
     $body_setup_amount,

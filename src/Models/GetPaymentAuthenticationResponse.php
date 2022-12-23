@@ -18,29 +18,19 @@ use stdClass;
 class GetPaymentAuthenticationResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @var GetThreeDSecureResponse
+     * @var GetThreeDSecureResponse|null
      */
     private $threedSecure;
 
     /**
-     * @param string $type
-     * @param GetThreeDSecureResponse $threedSecure
-     */
-    public function __construct(string $type, GetThreeDSecureResponse $threedSecure)
-    {
-        $this->type = $type;
-        $this->threedSecure = $threedSecure;
-    }
-
-    /**
      * Returns Type.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -48,10 +38,9 @@ class GetPaymentAuthenticationResponse implements \JsonSerializable
     /**
      * Sets Type.
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -60,7 +49,7 @@ class GetPaymentAuthenticationResponse implements \JsonSerializable
      * Returns Threed Secure.
      * 3D-S payment authentication response
      */
-    public function getThreedSecure(): GetThreeDSecureResponse
+    public function getThreedSecure(): ?GetThreeDSecureResponse
     {
         return $this->threedSecure;
     }
@@ -69,10 +58,9 @@ class GetPaymentAuthenticationResponse implements \JsonSerializable
      * Sets Threed Secure.
      * 3D-S payment authentication response
      *
-     * @required
      * @maps threed_secure
      */
-    public function setThreedSecure(GetThreeDSecureResponse $threedSecure): void
+    public function setThreedSecure(?GetThreeDSecureResponse $threedSecure): void
     {
         $this->threedSecure = $threedSecure;
     }

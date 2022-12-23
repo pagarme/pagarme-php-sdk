@@ -11,24 +11,24 @@ Response object for getting a plan
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `string` | Required | - | getId(): string | setId(string id): void |
-| `name` | `string` | Required | - | getName(): string | setName(string name): void |
-| `description` | `string` | Required | - | getDescription(): string | setDescription(string description): void |
-| `url` | `string` | Required | - | getUrl(): string | setUrl(string url): void |
-| `statementDescriptor` | `string` | Required | - | getStatementDescriptor(): string | setStatementDescriptor(string statementDescriptor): void |
-| `interval` | `string` | Required | - | getInterval(): string | setInterval(string interval): void |
-| `intervalCount` | `int` | Required | - | getIntervalCount(): int | setIntervalCount(int intervalCount): void |
-| `billingType` | `string` | Required | - | getBillingType(): string | setBillingType(string billingType): void |
-| `paymentMethods` | `string[]` | Required | - | getPaymentMethods(): array | setPaymentMethods(array paymentMethods): void |
-| `installments` | `int[]` | Required | - | getInstallments(): array | setInstallments(array installments): void |
-| `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
-| `currency` | `string` | Required | - | getCurrency(): string | setCurrency(string currency): void |
-| `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
-| `updatedAt` | `\DateTime` | Required | - | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
-| `items` | [`GetPlanItemResponse[]`](../../doc/models/get-plan-item-response.md) | Required | - | getItems(): array | setItems(array items): void |
-| `billingDays` | `int[]` | Required | - | getBillingDays(): array | setBillingDays(array billingDays): void |
-| `shippable` | `bool` | Required | - | getShippable(): bool | setShippable(bool shippable): void |
-| `metadata` | `array<string,string>` | Required | - | getMetadata(): array | setMetadata(array metadata): void |
+| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
+| `name` | `?string` | Required | - | getName(): ?string | setName(?string name): void |
+| `description` | `?string` | Required | - | getDescription(): ?string | setDescription(?string description): void |
+| `url` | `?string` | Required | - | getUrl(): ?string | setUrl(?string url): void |
+| `statementDescriptor` | `?string` | Required | - | getStatementDescriptor(): ?string | setStatementDescriptor(?string statementDescriptor): void |
+| `interval` | `?string` | Required | - | getInterval(): ?string | setInterval(?string interval): void |
+| `intervalCount` | `?int` | Required | - | getIntervalCount(): ?int | setIntervalCount(?int intervalCount): void |
+| `billingType` | `?string` | Required | - | getBillingType(): ?string | setBillingType(?string billingType): void |
+| `paymentMethods` | `?(string[])` | Required | - | getPaymentMethods(): ?array | setPaymentMethods(?array paymentMethods): void |
+| `installments` | `?(int[])` | Required | - | getInstallments(): ?array | setInstallments(?array installments): void |
+| `status` | `?string` | Required | - | getStatus(): ?string | setStatus(?string status): void |
+| `currency` | `?string` | Required | - | getCurrency(): ?string | setCurrency(?string currency): void |
+| `createdAt` | `?\DateTime` | Required | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
+| `updatedAt` | `?\DateTime` | Required | - | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
+| `items` | [`?(GetPlanItemResponse[])`](../../doc/models/get-plan-item-response.md) | Required | - | getItems(): ?array | setItems(?array items): void |
+| `billingDays` | `?(int[])` | Required | - | getBillingDays(): ?array | setBillingDays(?array billingDays): void |
+| `shippable` | `?bool` | Required | - | getShippable(): ?bool | setShippable(?bool shippable): void |
+| `metadata` | `?array<string,string>` | Required | - | getMetadata(): ?array | setMetadata(?array metadata): void |
 | `trialPeriodDays` | `?int` | Optional | - | getTrialPeriodDays(): ?int | setTrialPeriodDays(?int trialPeriodDays): void |
 | `minimumPrice` | `?int` | Optional | - | getMinimumPrice(): ?int | setMinimumPrice(?int minimumPrice): void |
 | `deletedAt` | `?\DateTime` | Optional | - | getDeletedAt(): ?\DateTime | setDeletedAt(?\DateTime deletedAt): void |

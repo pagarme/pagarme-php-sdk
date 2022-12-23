@@ -9,19 +9,19 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `string` | Required | - | getId(): string | setId(string id): void |
-| `gatewayId` | `string` | Required | - | getGatewayId(): string | setGatewayId(string gatewayId): void |
-| `amount` | `int` | Required | - | getAmount(): int | setAmount(int amount): void |
-| `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
-| `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
-| `updatedAt` | `\DateTime` | Required | - | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
+| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
+| `gatewayId` | `?string` | Required | - | getGatewayId(): ?string | setGatewayId(?string gatewayId): void |
+| `amount` | `?int` | Required | - | getAmount(): ?int | setAmount(?int amount): void |
+| `status` | `?string` | Required | - | getStatus(): ?string | setStatus(?string status): void |
+| `createdAt` | `?\DateTime` | Required | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
+| `updatedAt` | `?\DateTime` | Required | - | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
 | `metadata` | `?(string[])` | Optional | - | getMetadata(): ?array | setMetadata(?array metadata): void |
 | `fee` | `?int` | Optional | - | getFee(): ?int | setFee(?int fee): void |
 | `fundingDate` | `?\DateTime` | Optional | - | getFundingDate(): ?\DateTime | setFundingDate(?\DateTime fundingDate): void |
 | `fundingEstimatedDate` | `?\DateTime` | Optional | - | getFundingEstimatedDate(): ?\DateTime | setFundingEstimatedDate(?\DateTime fundingEstimatedDate): void |
-| `type` | `string` | Required | - | getType(): string | setType(string type): void |
-| `source` | [`GetWithdrawSourceResponse`](../../doc/models/get-withdraw-source-response.md) | Required | - | getSource(): GetWithdrawSourceResponse | setSource(GetWithdrawSourceResponse source): void |
-| `target` | [`GetWithdrawTargetResponse`](../../doc/models/get-withdraw-target-response.md) | Required | - | getTarget(): GetWithdrawTargetResponse | setTarget(GetWithdrawTargetResponse target): void |
+| `type` | `?string` | Required | - | getType(): ?string | setType(?string type): void |
+| `source` | [`?GetWithdrawSourceResponse`](../../doc/models/get-withdraw-source-response.md) | Required | - | getSource(): ?GetWithdrawSourceResponse | setSource(?GetWithdrawSourceResponse source): void |
+| `target` | [`?GetWithdrawTargetResponse`](../../doc/models/get-withdraw-target-response.md) | Required | - | getTarget(): ?GetWithdrawTargetResponse | setTarget(?GetWithdrawTargetResponse target): void |
 
 ## Example (as JSON)
 

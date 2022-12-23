@@ -11,32 +11,32 @@ Resposta das configurações de pagamento do checkout
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `string` | Required | - | getId(): string | setId(string id): void |
+| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
 | `amount` | `?int` | Optional | Valor em centavos | getAmount(): ?int | setAmount(?int amount): void |
-| `defaultPaymentMethod` | `string` | Required | Meio de pagamento padrão no checkout | getDefaultPaymentMethod(): string | setDefaultPaymentMethod(string defaultPaymentMethod): void |
-| `successUrl` | `string` | Required | Url de redirecionamento de sucesso após o checkou | getSuccessUrl(): string | setSuccessUrl(string successUrl): void |
-| `paymentUrl` | `string` | Required | Url para pagamento usando o checkout | getPaymentUrl(): string | setPaymentUrl(string paymentUrl): void |
-| `gatewayAffiliationId` | `string` | Required | Código da afiliação onde o pagamento será processado no gateway | getGatewayAffiliationId(): string | setGatewayAffiliationId(string gatewayAffiliationId): void |
-| `acceptedPaymentMethods` | `string[]` | Required | Meios de pagamento aceitos no checkout | getAcceptedPaymentMethods(): array | setAcceptedPaymentMethods(array acceptedPaymentMethods): void |
-| `status` | `string` | Required | Status do checkout | getStatus(): string | setStatus(string status): void |
-| `skipCheckoutSuccessPage` | `bool` | Required | Pular tela de sucesso pós-pagamento? | getSkipCheckoutSuccessPage(): bool | setSkipCheckoutSuccessPage(bool skipCheckoutSuccessPage): void |
-| `createdAt` | `\DateTime` | Required | Data de criação | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
-| `updatedAt` | `\DateTime` | Required | Data de atualização | getUpdatedAt(): \DateTime | setUpdatedAt(\DateTime updatedAt): void |
+| `defaultPaymentMethod` | `?string` | Required | Meio de pagamento padrão no checkout | getDefaultPaymentMethod(): ?string | setDefaultPaymentMethod(?string defaultPaymentMethod): void |
+| `successUrl` | `?string` | Required | Url de redirecionamento de sucesso após o checkou | getSuccessUrl(): ?string | setSuccessUrl(?string successUrl): void |
+| `paymentUrl` | `?string` | Required | Url para pagamento usando o checkout | getPaymentUrl(): ?string | setPaymentUrl(?string paymentUrl): void |
+| `gatewayAffiliationId` | `?string` | Required | Código da afiliação onde o pagamento será processado no gateway | getGatewayAffiliationId(): ?string | setGatewayAffiliationId(?string gatewayAffiliationId): void |
+| `acceptedPaymentMethods` | `?(string[])` | Required | Meios de pagamento aceitos no checkout | getAcceptedPaymentMethods(): ?array | setAcceptedPaymentMethods(?array acceptedPaymentMethods): void |
+| `status` | `?string` | Required | Status do checkout | getStatus(): ?string | setStatus(?string status): void |
+| `skipCheckoutSuccessPage` | `?bool` | Required | Pular tela de sucesso pós-pagamento? | getSkipCheckoutSuccessPage(): ?bool | setSkipCheckoutSuccessPage(?bool skipCheckoutSuccessPage): void |
+| `createdAt` | `?\DateTime` | Required | Data de criação | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
+| `updatedAt` | `?\DateTime` | Required | Data de atualização | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
 | `canceledAt` | `?\DateTime` | Optional | Data de cancelamento | getCanceledAt(): ?\DateTime | setCanceledAt(?\DateTime canceledAt): void |
-| `customerEditable` | `bool` | Required | Torna o objeto customer editável | getCustomerEditable(): bool | setCustomerEditable(bool customerEditable): void |
+| `customerEditable` | `?bool` | Required | Torna o objeto customer editável | getCustomerEditable(): ?bool | setCustomerEditable(?bool customerEditable): void |
 | `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | Dados do comprador | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
-| `billingaddress` | [`GetAddressResponse`](../../doc/models/get-address-response.md) | Required | Dados do endereço de cobrança | getBillingaddress(): GetAddressResponse | setBillingaddress(GetAddressResponse billingaddress): void |
-| `creditCard` | [`GetCheckoutCreditCardPaymentResponse`](../../doc/models/get-checkout-credit-card-payment-response.md) | Required | Configurações de cartão de crédito | getCreditCard(): GetCheckoutCreditCardPaymentResponse | setCreditCard(GetCheckoutCreditCardPaymentResponse creditCard): void |
-| `boleto` | [`GetCheckoutBoletoPaymentResponse`](../../doc/models/get-checkout-boleto-payment-response.md) | Required | Configurações de boleto | getBoleto(): GetCheckoutBoletoPaymentResponse | setBoleto(GetCheckoutBoletoPaymentResponse boleto): void |
-| `billingAddressEditable` | `bool` | Required | Indica se o billing address poderá ser editado | getBillingAddressEditable(): bool | setBillingAddressEditable(bool billingAddressEditable): void |
-| `shipping` | [`GetShippingResponse`](../../doc/models/get-shipping-response.md) | Required | Configurações  de entrega | getShipping(): GetShippingResponse | setShipping(GetShippingResponse shipping): void |
-| `shippable` | `bool` | Required | Indica se possui entrega | getShippable(): bool | setShippable(bool shippable): void |
+| `billingaddress` | [`?GetAddressResponse`](../../doc/models/get-address-response.md) | Required | Dados do endereço de cobrança | getBillingaddress(): ?GetAddressResponse | setBillingaddress(?GetAddressResponse billingaddress): void |
+| `creditCard` | [`?GetCheckoutCreditCardPaymentResponse`](../../doc/models/get-checkout-credit-card-payment-response.md) | Required | Configurações de cartão de crédito | getCreditCard(): ?GetCheckoutCreditCardPaymentResponse | setCreditCard(?GetCheckoutCreditCardPaymentResponse creditCard): void |
+| `boleto` | [`?GetCheckoutBoletoPaymentResponse`](../../doc/models/get-checkout-boleto-payment-response.md) | Required | Configurações de boleto | getBoleto(): ?GetCheckoutBoletoPaymentResponse | setBoleto(?GetCheckoutBoletoPaymentResponse boleto): void |
+| `billingAddressEditable` | `?bool` | Required | Indica se o billing address poderá ser editado | getBillingAddressEditable(): ?bool | setBillingAddressEditable(?bool billingAddressEditable): void |
+| `shipping` | [`?GetShippingResponse`](../../doc/models/get-shipping-response.md) | Required | Configurações  de entrega | getShipping(): ?GetShippingResponse | setShipping(?GetShippingResponse shipping): void |
+| `shippable` | `?bool` | Required | Indica se possui entrega | getShippable(): ?bool | setShippable(?bool shippable): void |
 | `closedAt` | `?\DateTime` | Optional | Data de fechamento | getClosedAt(): ?\DateTime | setClosedAt(?\DateTime closedAt): void |
 | `expiresAt` | `?\DateTime` | Optional | Data de expiração | getExpiresAt(): ?\DateTime | setExpiresAt(?\DateTime expiresAt): void |
-| `currency` | `string` | Required | Moeda | getCurrency(): string | setCurrency(string currency): void |
+| `currency` | `?string` | Required | Moeda | getCurrency(): ?string | setCurrency(?string currency): void |
 | `debitCard` | [`?GetCheckoutDebitCardPaymentResponse`](../../doc/models/get-checkout-debit-card-payment-response.md) | Optional | Configurações de cartão de débito | getDebitCard(): ?GetCheckoutDebitCardPaymentResponse | setDebitCard(?GetCheckoutDebitCardPaymentResponse debitCard): void |
 | `bankTransfer` | [`?GetCheckoutBankTransferPaymentResponse`](../../doc/models/get-checkout-bank-transfer-payment-response.md) | Optional | Bank transfer payment response | getBankTransfer(): ?GetCheckoutBankTransferPaymentResponse | setBankTransfer(?GetCheckoutBankTransferPaymentResponse bankTransfer): void |
-| `acceptedBrands` | `string[]` | Required | Accepted Brands | getAcceptedBrands(): array | setAcceptedBrands(array acceptedBrands): void |
+| `acceptedBrands` | `?(string[])` | Required | Accepted Brands | getAcceptedBrands(): ?array | setAcceptedBrands(?array acceptedBrands): void |
 | `pix` | [`?GetCheckoutPixPaymentResponse`](../../doc/models/get-checkout-pix-payment-response.md) | Optional | Pix payment response | getPix(): ?GetCheckoutPixPaymentResponse | setPix(?GetCheckoutPixPaymentResponse pix): void |
 
 ## Example (as JSON)

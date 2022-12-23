@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `dueAt` | `\DateTime` | Required | Data de vencimento do boleto | getDueAt(): \DateTime | setDueAt(\DateTime dueAt): void |
-| `instructions` | `string` | Required | Instruções do boleto | getInstructions(): string | setInstructions(string instructions): void |
+| `dueAt` | `?\DateTime` | Required | Data de vencimento do boleto | getDueAt(): ?\DateTime | setDueAt(?\DateTime dueAt): void |
+| `instructions` | `?string` | Required | Instruções do boleto | getInstructions(): ?string | setInstructions(?string instructions): void |
 
 ## Example (as JSON)
 

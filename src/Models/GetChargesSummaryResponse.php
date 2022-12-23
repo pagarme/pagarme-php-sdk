@@ -15,22 +15,14 @@ use stdClass;
 class GetChargesSummaryResponse implements \JsonSerializable
 {
     /**
-     * @var int
+     * @var int|null
      */
     private $total;
 
     /**
-     * @param int $total
-     */
-    public function __construct(int $total)
-    {
-        $this->total = $total;
-    }
-
-    /**
      * Returns Total.
      */
-    public function getTotal(): int
+    public function getTotal(): ?int
     {
         return $this->total;
     }
@@ -38,10 +30,9 @@ class GetChargesSummaryResponse implements \JsonSerializable
     /**
      * Sets Total.
      *
-     * @required
      * @maps total
      */
-    public function setTotal(int $total): void
+    public function setTotal(?int $total): void
     {
         $this->total = $total;
     }

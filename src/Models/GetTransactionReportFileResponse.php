@@ -16,29 +16,19 @@ use stdClass;
 class GetTransactionReportFileResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $name;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $date;
 
     /**
-     * @param string $name
-     * @param \DateTime $date
-     */
-    public function __construct(string $name, \DateTime $date)
-    {
-        $this->name = $name;
-        $this->date = $date;
-    }
-
-    /**
      * Returns Name.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -46,10 +36,9 @@ class GetTransactionReportFileResponse implements \JsonSerializable
     /**
      * Sets Name.
      *
-     * @required
      * @maps name
      */
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -57,7 +46,7 @@ class GetTransactionReportFileResponse implements \JsonSerializable
     /**
      * Returns Date.
      */
-    public function getDate(): \DateTime
+    public function getDate(): ?\DateTime
     {
         return $this->date;
     }
@@ -65,11 +54,10 @@ class GetTransactionReportFileResponse implements \JsonSerializable
     /**
      * Sets Date.
      *
-     * @required
      * @maps date
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setDate(\DateTime $date): void
+    public function setDate(?\DateTime $date): void
     {
         $this->date = $date;
     }

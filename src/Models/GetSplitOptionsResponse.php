@@ -15,36 +15,24 @@ use stdClass;
 class GetSplitOptionsResponse implements \JsonSerializable
 {
     /**
-     * @var bool
+     * @var bool|null
      */
     private $liable;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $chargeProcessingFee;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $chargeRemainderFee;
 
     /**
-     * @param bool $liable
-     * @param bool $chargeProcessingFee
-     * @param string $chargeRemainderFee
-     */
-    public function __construct(bool $liable, bool $chargeProcessingFee, string $chargeRemainderFee)
-    {
-        $this->liable = $liable;
-        $this->chargeProcessingFee = $chargeProcessingFee;
-        $this->chargeRemainderFee = $chargeRemainderFee;
-    }
-
-    /**
      * Returns Liable.
      */
-    public function getLiable(): bool
+    public function getLiable(): ?bool
     {
         return $this->liable;
     }
@@ -52,10 +40,9 @@ class GetSplitOptionsResponse implements \JsonSerializable
     /**
      * Sets Liable.
      *
-     * @required
      * @maps liable
      */
-    public function setLiable(bool $liable): void
+    public function setLiable(?bool $liable): void
     {
         $this->liable = $liable;
     }
@@ -63,7 +50,7 @@ class GetSplitOptionsResponse implements \JsonSerializable
     /**
      * Returns Charge Processing Fee.
      */
-    public function getChargeProcessingFee(): bool
+    public function getChargeProcessingFee(): ?bool
     {
         return $this->chargeProcessingFee;
     }
@@ -71,10 +58,9 @@ class GetSplitOptionsResponse implements \JsonSerializable
     /**
      * Sets Charge Processing Fee.
      *
-     * @required
      * @maps charge_processing_fee
      */
-    public function setChargeProcessingFee(bool $chargeProcessingFee): void
+    public function setChargeProcessingFee(?bool $chargeProcessingFee): void
     {
         $this->chargeProcessingFee = $chargeProcessingFee;
     }
@@ -82,7 +68,7 @@ class GetSplitOptionsResponse implements \JsonSerializable
     /**
      * Returns Charge Remainder Fee.
      */
-    public function getChargeRemainderFee(): string
+    public function getChargeRemainderFee(): ?string
     {
         return $this->chargeRemainderFee;
     }
@@ -90,10 +76,9 @@ class GetSplitOptionsResponse implements \JsonSerializable
     /**
      * Sets Charge Remainder Fee.
      *
-     * @required
      * @maps charge_remainder_fee
      */
-    public function setChargeRemainderFee(string $chargeRemainderFee): void
+    public function setChargeRemainderFee(?string $chargeRemainderFee): void
     {
         $this->chargeRemainderFee = $chargeRemainderFee;
     }

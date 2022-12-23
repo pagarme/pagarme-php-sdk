@@ -11,8 +11,8 @@ List of paginated transfer objects
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `data` | [`GetTransferResponse[]`](../../doc/models/get-transfer-response.md) | Required | Transfers | getData(): array | setData(array data): void |
-| `paging` | [`PagingResponse`](../../doc/models/paging-response.md) | Required | Paging | getPaging(): PagingResponse | setPaging(PagingResponse paging): void |
+| `data` | [`?(GetTransferResponse[])`](../../doc/models/get-transfer-response.md) | Required | Transfers | getData(): ?array | setData(?array data): void |
+| `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Required | Paging | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
 ## Example (as JSON)
 

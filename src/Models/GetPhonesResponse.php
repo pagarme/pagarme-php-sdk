@@ -15,29 +15,19 @@ use stdClass;
 class GetPhonesResponse implements \JsonSerializable
 {
     /**
-     * @var GetPhoneResponse
+     * @var GetPhoneResponse|null
      */
     private $homePhone;
 
     /**
-     * @var GetPhoneResponse
+     * @var GetPhoneResponse|null
      */
     private $mobilePhone;
 
     /**
-     * @param GetPhoneResponse $homePhone
-     * @param GetPhoneResponse $mobilePhone
-     */
-    public function __construct(GetPhoneResponse $homePhone, GetPhoneResponse $mobilePhone)
-    {
-        $this->homePhone = $homePhone;
-        $this->mobilePhone = $mobilePhone;
-    }
-
-    /**
      * Returns Home Phone.
      */
-    public function getHomePhone(): GetPhoneResponse
+    public function getHomePhone(): ?GetPhoneResponse
     {
         return $this->homePhone;
     }
@@ -45,10 +35,9 @@ class GetPhonesResponse implements \JsonSerializable
     /**
      * Sets Home Phone.
      *
-     * @required
      * @maps home_phone
      */
-    public function setHomePhone(GetPhoneResponse $homePhone): void
+    public function setHomePhone(?GetPhoneResponse $homePhone): void
     {
         $this->homePhone = $homePhone;
     }
@@ -56,7 +45,7 @@ class GetPhonesResponse implements \JsonSerializable
     /**
      * Returns Mobile Phone.
      */
-    public function getMobilePhone(): GetPhoneResponse
+    public function getMobilePhone(): ?GetPhoneResponse
     {
         return $this->mobilePhone;
     }
@@ -64,10 +53,9 @@ class GetPhonesResponse implements \JsonSerializable
     /**
      * Sets Mobile Phone.
      *
-     * @required
      * @maps mobile_phone
      */
-    public function setMobilePhone(GetPhoneResponse $mobilePhone): void
+    public function setMobilePhone(?GetPhoneResponse $mobilePhone): void
     {
         $this->mobilePhone = $mobilePhone;
     }

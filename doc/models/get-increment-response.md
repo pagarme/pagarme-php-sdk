@@ -11,11 +11,11 @@ Response object for getting a increment
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `string` | Required | - | getId(): string | setId(string id): void |
-| `value` | `float` | Required | - | getValue(): float | setValue(float value): void |
-| `incrementType` | `string` | Required | - | getIncrementType(): string | setIncrementType(string incrementType): void |
-| `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
-| `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
+| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
+| `value` | `?float` | Required | - | getValue(): ?float | setValue(?float value): void |
+| `incrementType` | `?string` | Required | - | getIncrementType(): ?string | setIncrementType(?string incrementType): void |
+| `status` | `?string` | Required | - | getStatus(): ?string | setStatus(?string status): void |
+| `createdAt` | `?\DateTime` | Required | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
 | `cycles` | `?int` | Optional | - | getCycles(): ?int | setCycles(?int cycles): void |
 | `deletedAt` | `?\DateTime` | Optional | - | getDeletedAt(): ?\DateTime | setDeletedAt(?\DateTime deletedAt): void |
 | `description` | `?string` | Optional | - | getDescription(): ?string | setDescription(?string description): void |

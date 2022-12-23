@@ -26,7 +26,7 @@ Payment data
 | `customer` | [`?CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Optional | Customer | getCustomer(): ?CreateCustomerRequest | setCustomer(?CreateCustomerRequest customer): void |
 | `metadata` | `?array<string,string>` | Optional | Metadata | getMetadata(): ?array | setMetadata(?array metadata): void |
 | `cash` | [`?CreateCashPaymentRequest`](../../doc/models/create-cash-payment-request.md) | Optional | Settings for cash payment | getCash(): ?CreateCashPaymentRequest | setCash(?CreateCashPaymentRequest cash): void |
-| `privateLabel` | [`CreatePrivateLabelPaymentRequest`](../../doc/models/create-private-label-payment-request.md) | Required | Settings for private label payment | getPrivateLabel(): CreatePrivateLabelPaymentRequest | setPrivateLabel(CreatePrivateLabelPaymentRequest privateLabel): void |
+| `privateLabel` | [`?CreatePrivateLabelPaymentRequest`](../../doc/models/create-private-label-payment-request.md) | Optional | Settings for private label payment | getPrivateLabel(): ?CreatePrivateLabelPaymentRequest | setPrivateLabel(?CreatePrivateLabelPaymentRequest privateLabel): void |
 | `pix` | [`?CreatePixPaymentRequest`](../../doc/models/create-pix-payment-request.md) | Optional | Settings for pix payment | getPix(): ?CreatePixPaymentRequest | setPix(?CreatePixPaymentRequest pix): void |
 
 ## Example (as JSON)
@@ -48,18 +48,7 @@ Payment data
   "customer": null,
   "metadata": null,
   "cash": null,
-  "private_label": {
-    "installments": null,
-    "statement_descriptor": null,
-    "card": null,
-    "card_id": null,
-    "card_token": null,
-    "recurrence": null,
-    "capture": null,
-    "extended_limit_enabled": null,
-    "extended_limit_code": null,
-    "recurrency_cycle": null
-  },
+  "private_label": null,
   "pix": null
 }
 ```

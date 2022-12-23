@@ -11,10 +11,10 @@ Response object for getting a access token
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `string` | Required | - | getId(): string | setId(string id): void |
-| `code` | `string` | Required | - | getCode(): string | setCode(string code): void |
-| `status` | `string` | Required | - | getStatus(): string | setStatus(string status): void |
-| `createdAt` | `\DateTime` | Required | - | getCreatedAt(): \DateTime | setCreatedAt(\DateTime createdAt): void |
+| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
+| `code` | `?string` | Required | - | getCode(): ?string | setCode(?string code): void |
+| `status` | `?string` | Required | - | getStatus(): ?string | setStatus(?string status): void |
+| `createdAt` | `?\DateTime` | Required | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
 | `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
 
 ## Example (as JSON)

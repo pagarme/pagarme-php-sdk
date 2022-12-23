@@ -19,174 +19,114 @@ use stdClass;
 class GetPlanResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $name;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $url;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $statementDescriptor;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $interval;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $intervalCount;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $billingType;
 
     /**
-     * @var string[]
+     * @var string[]|null
      */
     private $paymentMethods;
 
     /**
-     * @var int[]
+     * @var int[]|null
      */
     private $installments;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $status;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $currency;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $updatedAt;
 
     /**
-     * @var GetPlanItemResponse[]
+     * @var GetPlanItemResponse[]|null
      */
     private $items;
 
     /**
-     * @var int[]
+     * @var int[]|null
      */
     private $billingDays;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $shippable;
 
     /**
-     * @var array<string,string>
+     * @var array<string,string>|null
      */
     private $metadata;
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $trialPeriodDays;
+    private $trialPeriodDays = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $minimumPrice;
+    private $minimumPrice = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $deletedAt;
-
-    /**
-     * @param string $id
-     * @param string $name
-     * @param string $description
-     * @param string $url
-     * @param string $statementDescriptor
-     * @param string $interval
-     * @param int $intervalCount
-     * @param string $billingType
-     * @param string[] $paymentMethods
-     * @param int[] $installments
-     * @param string $status
-     * @param string $currency
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
-     * @param GetPlanItemResponse[] $items
-     * @param int[] $billingDays
-     * @param bool $shippable
-     * @param array<string,string> $metadata
-     */
-    public function __construct(
-        string $id,
-        string $name,
-        string $description,
-        string $url,
-        string $statementDescriptor,
-        string $interval,
-        int $intervalCount,
-        string $billingType,
-        array $paymentMethods,
-        array $installments,
-        string $status,
-        string $currency,
-        \DateTime $createdAt,
-        \DateTime $updatedAt,
-        array $items,
-        array $billingDays,
-        bool $shippable,
-        array $metadata
-    ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->description = $description;
-        $this->url = $url;
-        $this->statementDescriptor = $statementDescriptor;
-        $this->interval = $interval;
-        $this->intervalCount = $intervalCount;
-        $this->billingType = $billingType;
-        $this->paymentMethods = $paymentMethods;
-        $this->installments = $installments;
-        $this->status = $status;
-        $this->currency = $currency;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
-        $this->items = $items;
-        $this->billingDays = $billingDays;
-        $this->shippable = $shippable;
-        $this->metadata = $metadata;
-    }
+    private $deletedAt = [];
 
     /**
      * Returns Id.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -194,10 +134,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Id.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
@@ -205,7 +144,7 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Name.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -213,10 +152,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Name.
      *
-     * @required
      * @maps name
      */
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -224,7 +162,7 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Description.
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -232,10 +170,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Description.
      *
-     * @required
      * @maps description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -243,7 +180,7 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Url.
      */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
@@ -251,10 +188,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Url.
      *
-     * @required
      * @maps url
      */
-    public function setUrl(string $url): void
+    public function setUrl(?string $url): void
     {
         $this->url = $url;
     }
@@ -262,7 +198,7 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Statement Descriptor.
      */
-    public function getStatementDescriptor(): string
+    public function getStatementDescriptor(): ?string
     {
         return $this->statementDescriptor;
     }
@@ -270,10 +206,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Statement Descriptor.
      *
-     * @required
      * @maps statement_descriptor
      */
-    public function setStatementDescriptor(string $statementDescriptor): void
+    public function setStatementDescriptor(?string $statementDescriptor): void
     {
         $this->statementDescriptor = $statementDescriptor;
     }
@@ -281,7 +216,7 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Interval.
      */
-    public function getInterval(): string
+    public function getInterval(): ?string
     {
         return $this->interval;
     }
@@ -289,10 +224,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Interval.
      *
-     * @required
      * @maps interval
      */
-    public function setInterval(string $interval): void
+    public function setInterval(?string $interval): void
     {
         $this->interval = $interval;
     }
@@ -300,7 +234,7 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Interval Count.
      */
-    public function getIntervalCount(): int
+    public function getIntervalCount(): ?int
     {
         return $this->intervalCount;
     }
@@ -308,10 +242,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Interval Count.
      *
-     * @required
      * @maps interval_count
      */
-    public function setIntervalCount(int $intervalCount): void
+    public function setIntervalCount(?int $intervalCount): void
     {
         $this->intervalCount = $intervalCount;
     }
@@ -319,7 +252,7 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Billing Type.
      */
-    public function getBillingType(): string
+    public function getBillingType(): ?string
     {
         return $this->billingType;
     }
@@ -327,10 +260,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Billing Type.
      *
-     * @required
      * @maps billing_type
      */
-    public function setBillingType(string $billingType): void
+    public function setBillingType(?string $billingType): void
     {
         $this->billingType = $billingType;
     }
@@ -338,9 +270,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Payment Methods.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getPaymentMethods(): array
+    public function getPaymentMethods(): ?array
     {
         return $this->paymentMethods;
     }
@@ -348,12 +280,11 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Payment Methods.
      *
-     * @required
      * @maps payment_methods
      *
-     * @param string[] $paymentMethods
+     * @param string[]|null $paymentMethods
      */
-    public function setPaymentMethods(array $paymentMethods): void
+    public function setPaymentMethods(?array $paymentMethods): void
     {
         $this->paymentMethods = $paymentMethods;
     }
@@ -361,9 +292,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Installments.
      *
-     * @return int[]
+     * @return int[]|null
      */
-    public function getInstallments(): array
+    public function getInstallments(): ?array
     {
         return $this->installments;
     }
@@ -371,12 +302,11 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Installments.
      *
-     * @required
      * @maps installments
      *
-     * @param int[] $installments
+     * @param int[]|null $installments
      */
-    public function setInstallments(array $installments): void
+    public function setInstallments(?array $installments): void
     {
         $this->installments = $installments;
     }
@@ -384,7 +314,7 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Status.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -392,10 +322,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Status.
      *
-     * @required
      * @maps status
      */
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
@@ -403,7 +332,7 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Currency.
      */
-    public function getCurrency(): string
+    public function getCurrency(): ?string
     {
         return $this->currency;
     }
@@ -411,10 +340,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Currency.
      *
-     * @required
      * @maps currency
      */
-    public function setCurrency(string $currency): void
+    public function setCurrency(?string $currency): void
     {
         $this->currency = $currency;
     }
@@ -422,7 +350,7 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Created At.
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
@@ -430,11 +358,10 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Created At.
      *
-     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -442,7 +369,7 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Updated At.
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
@@ -450,11 +377,10 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Updated At.
      *
-     * @required
      * @maps updated_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(?\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -462,9 +388,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Items.
      *
-     * @return GetPlanItemResponse[]
+     * @return GetPlanItemResponse[]|null
      */
-    public function getItems(): array
+    public function getItems(): ?array
     {
         return $this->items;
     }
@@ -472,12 +398,11 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Items.
      *
-     * @required
      * @maps items
      *
-     * @param GetPlanItemResponse[] $items
+     * @param GetPlanItemResponse[]|null $items
      */
-    public function setItems(array $items): void
+    public function setItems(?array $items): void
     {
         $this->items = $items;
     }
@@ -485,9 +410,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Billing Days.
      *
-     * @return int[]
+     * @return int[]|null
      */
-    public function getBillingDays(): array
+    public function getBillingDays(): ?array
     {
         return $this->billingDays;
     }
@@ -495,12 +420,11 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Billing Days.
      *
-     * @required
      * @maps billing_days
      *
-     * @param int[] $billingDays
+     * @param int[]|null $billingDays
      */
-    public function setBillingDays(array $billingDays): void
+    public function setBillingDays(?array $billingDays): void
     {
         $this->billingDays = $billingDays;
     }
@@ -508,7 +432,7 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Shippable.
      */
-    public function getShippable(): bool
+    public function getShippable(): ?bool
     {
         return $this->shippable;
     }
@@ -516,10 +440,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Shippable.
      *
-     * @required
      * @maps shippable
      */
-    public function setShippable(bool $shippable): void
+    public function setShippable(?bool $shippable): void
     {
         $this->shippable = $shippable;
     }
@@ -527,9 +450,9 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Returns Metadata.
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
-    public function getMetadata(): array
+    public function getMetadata(): ?array
     {
         return $this->metadata;
     }
@@ -537,12 +460,11 @@ class GetPlanResponse implements \JsonSerializable
     /**
      * Sets Metadata.
      *
-     * @required
      * @maps metadata
      *
-     * @param array<string,string> $metadata
+     * @param array<string,string>|null $metadata
      */
-    public function setMetadata(array $metadata): void
+    public function setMetadata(?array $metadata): void
     {
         $this->metadata = $metadata;
     }
@@ -552,7 +474,10 @@ class GetPlanResponse implements \JsonSerializable
      */
     public function getTrialPeriodDays(): ?int
     {
-        return $this->trialPeriodDays;
+        if (count($this->trialPeriodDays) == 0) {
+            return null;
+        }
+        return $this->trialPeriodDays['value'];
     }
 
     /**
@@ -562,7 +487,15 @@ class GetPlanResponse implements \JsonSerializable
      */
     public function setTrialPeriodDays(?int $trialPeriodDays): void
     {
-        $this->trialPeriodDays = $trialPeriodDays;
+        $this->trialPeriodDays['value'] = $trialPeriodDays;
+    }
+
+    /**
+     * Unsets Trial Period Days.
+     */
+    public function unsetTrialPeriodDays(): void
+    {
+        $this->trialPeriodDays = [];
     }
 
     /**
@@ -570,7 +503,10 @@ class GetPlanResponse implements \JsonSerializable
      */
     public function getMinimumPrice(): ?int
     {
-        return $this->minimumPrice;
+        if (count($this->minimumPrice) == 0) {
+            return null;
+        }
+        return $this->minimumPrice['value'];
     }
 
     /**
@@ -580,7 +516,15 @@ class GetPlanResponse implements \JsonSerializable
      */
     public function setMinimumPrice(?int $minimumPrice): void
     {
-        $this->minimumPrice = $minimumPrice;
+        $this->minimumPrice['value'] = $minimumPrice;
+    }
+
+    /**
+     * Unsets Minimum Price.
+     */
+    public function unsetMinimumPrice(): void
+    {
+        $this->minimumPrice = [];
     }
 
     /**
@@ -588,7 +532,10 @@ class GetPlanResponse implements \JsonSerializable
      */
     public function getDeletedAt(): ?\DateTime
     {
-        return $this->deletedAt;
+        if (count($this->deletedAt) == 0) {
+            return null;
+        }
+        return $this->deletedAt['value'];
     }
 
     /**
@@ -599,7 +546,15 @@ class GetPlanResponse implements \JsonSerializable
      */
     public function setDeletedAt(?\DateTime $deletedAt): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deletedAt['value'] = $deletedAt;
+    }
+
+    /**
+     * Unsets Deleted At.
+     */
+    public function unsetDeletedAt(): void
+    {
+        $this->deletedAt = [];
     }
 
     /**
@@ -632,14 +587,14 @@ class GetPlanResponse implements \JsonSerializable
         $json['billing_days']          = $this->billingDays;
         $json['shippable']             = $this->shippable;
         $json['metadata']              = $this->metadata;
-        if (isset($this->trialPeriodDays)) {
-            $json['trial_period_days'] = $this->trialPeriodDays;
+        if (!empty($this->trialPeriodDays)) {
+            $json['trial_period_days'] = $this->trialPeriodDays['value'];
         }
-        if (isset($this->minimumPrice)) {
-            $json['minimum_price']     = $this->minimumPrice;
+        if (!empty($this->minimumPrice)) {
+            $json['minimum_price']     = $this->minimumPrice['value'];
         }
-        if (isset($this->deletedAt)) {
-            $json['deleted_at']        = DateTimeHelper::toRfc3339DateTime($this->deletedAt);
+        if (!empty($this->deletedAt)) {
+            $json['deleted_at']        = DateTimeHelper::toRfc3339DateTime($this->deletedAt['value']);
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
