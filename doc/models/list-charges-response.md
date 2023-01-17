@@ -30,7 +30,69 @@ Response object for listing charges
       "due_at": "2016-03-13T12:52:32.123Z",
       "created_at": "2016-03-13T12:52:32.123Z",
       "updated_at": "2016-03-13T12:52:32.123Z",
-      "last_transaction": null,
+      "last_transaction": {
+        "gateway_id": "gateway_id7",
+        "amount": 179,
+        "status": "status9",
+        "success": true,
+        "created_at": "2016-03-13T12:52:32.123Z",
+        "updated_at": "2016-03-13T12:52:32.123Z",
+        "attempt_count": 155,
+        "max_attempts": 143,
+        "splits": [
+          {
+            "type": "type9",
+            "amount": 111,
+            "recipient": null,
+            "gateway_id": "gateway_id9",
+            "options": null,
+            "id": "id9"
+          },
+          {
+            "type": "type0",
+            "amount": 112,
+            "recipient": null,
+            "gateway_id": "gateway_id0",
+            "options": null,
+            "id": "id0"
+          }
+        ],
+        "next_attempt": null,
+        "id": "id7",
+        "gateway_response": {
+          "code": "code7",
+          "errors": [
+            {
+              "message": "message4"
+            },
+            {
+              "message": "message5"
+            }
+          ]
+        },
+        "antifraud_response": {
+          "status": "status7",
+          "return_code": "return_code5",
+          "return_message": "return_message3",
+          "provider_name": "provider_name3",
+          "score": "score5"
+        },
+        "metadata": null,
+        "split": [
+          {
+            "type": "type5",
+            "amount": 125,
+            "recipient": null,
+            "gateway_id": "gateway_id5",
+            "options": null,
+            "id": "id5"
+          }
+        ],
+        "interest": null,
+        "fine": null,
+        "max_days_to_pay_past_due": null,
+        "transaction_type": "transaction"
+      },
       "invoice": null,
       "order": null,
       "customer": null,
@@ -56,7 +118,88 @@ Response object for listing charges
       "due_at": "2016-03-13T12:52:32.123Z",
       "created_at": "2016-03-13T12:52:32.123Z",
       "updated_at": "2016-03-13T12:52:32.123Z",
-      "last_transaction": null,
+      "last_transaction": {
+        "gateway_id": "gateway_id8",
+        "amount": 180,
+        "status": "status0",
+        "success": false,
+        "created_at": "2016-03-13T12:52:32.123Z",
+        "updated_at": "2016-03-13T12:52:32.123Z",
+        "attempt_count": 156,
+        "max_attempts": 144,
+        "splits": [
+          {
+            "type": "type0",
+            "amount": 112,
+            "recipient": null,
+            "gateway_id": "gateway_id0",
+            "options": null,
+            "id": "id0"
+          },
+          {
+            "type": "type1",
+            "amount": 113,
+            "recipient": null,
+            "gateway_id": "gateway_id1",
+            "options": null,
+            "id": "id1"
+          },
+          {
+            "type": "type2",
+            "amount": 114,
+            "recipient": null,
+            "gateway_id": "gateway_id2",
+            "options": null,
+            "id": "id2"
+          }
+        ],
+        "next_attempt": null,
+        "id": "id8",
+        "gateway_response": {
+          "code": "code8",
+          "errors": [
+            {
+              "message": "message5"
+            },
+            {
+              "message": "message6"
+            },
+            {
+              "message": "message7"
+            }
+          ]
+        },
+        "antifraud_response": {
+          "status": "status8",
+          "return_code": "return_code6",
+          "return_message": "return_message4",
+          "provider_name": "provider_name4",
+          "score": "score6"
+        },
+        "metadata": null,
+        "split": [
+          {
+            "type": "type6",
+            "amount": 126,
+            "recipient": null,
+            "gateway_id": "gateway_id6",
+            "options": null,
+            "id": "id6"
+          },
+          {
+            "type": "type7",
+            "amount": 127,
+            "recipient": null,
+            "gateway_id": "gateway_id7",
+            "options": null,
+            "id": "id7"
+          }
+        ],
+        "interest": null,
+        "fine": null,
+        "max_days_to_pay_past_due": null,
+        "transaction_type": "transaction"
+      },
       "invoice": null,
       "order": null,
       "customer": null,

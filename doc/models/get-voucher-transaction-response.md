@@ -71,6 +71,7 @@ Response for voucher transactions
     "first_six_digits": "first_six_digits6",
     "label": "label6"
   },
+  "transaction_type": "voucher",
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
@@ -98,7 +99,6 @@ Response for voucher transactions
     }
   ],
   "next_attempt": null,
-  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",

@@ -71,7 +71,74 @@ Response object for getting an Order
       "due_at": "2016-03-13T12:52:32.123Z",
       "created_at": "2016-03-13T12:52:32.123Z",
       "updated_at": "2016-03-13T12:52:32.123Z",
-      "last_transaction": null,
+      "last_transaction": {
+        "gateway_id": "gateway_id0",
+        "amount": 100,
+        "status": "status2",
+        "success": false,
+        "created_at": "2016-03-13T12:52:32.123Z",
+        "updated_at": "2016-03-13T12:52:32.123Z",
+        "attempt_count": 76,
+        "max_attempts": 64,
+        "splits": [
+          {
+            "type": "type8",
+            "amount": 32,
+            "recipient": null,
+            "gateway_id": "gateway_id8",
+            "options": null,
+            "id": "id2"
+          }
+        ],
+        "next_attempt": null,
+        "id": "id0",
+        "gateway_response": {
+          "code": "code0",
+          "errors": [
+            {
+              "message": "message7"
+            }
+          ]
+        },
+        "antifraud_response": {
+          "status": "status0",
+          "return_code": "return_code8",
+          "return_message": "return_message6",
+          "provider_name": "provider_name6",
+          "score": "score8"
+        },
+        "metadata": null,
+        "split": [
+          {
+            "type": "type8",
+            "amount": 46,
+            "recipient": null,
+            "gateway_id": "gateway_id8",
+            "options": null,
+            "id": "id8"
+          },
+          {
+            "type": "type9",
+            "amount": 47,
+            "recipient": null,
+            "gateway_id": "gateway_id9",
+            "options": null,
+            "id": "id9"
+          },
+          {
+            "type": "type0",
+            "amount": 48,
+            "recipient": null,
+            "gateway_id": "gateway_id0",
+            "options": null,
+            "id": "id0"
+          }
+        ],
+        "interest": null,
+        "fine": null,
+        "max_days_to_pay_past_due": null,
+        "transaction_type": "transaction"
+      },
       "invoice": null,
       "order": null,
       "customer": null,
@@ -96,7 +163,69 @@ Response object for getting an Order
       "due_at": "2016-03-13T12:52:32.123Z",
       "created_at": "2016-03-13T12:52:32.123Z",
       "updated_at": "2016-03-13T12:52:32.123Z",
-      "last_transaction": null,
+      "last_transaction": {
+        "gateway_id": "gateway_id1",
+        "amount": 101,
+        "status": "status3",
+        "success": true,
+        "created_at": "2016-03-13T12:52:32.123Z",
+        "updated_at": "2016-03-13T12:52:32.123Z",
+        "attempt_count": 77,
+        "max_attempts": 65,
+        "splits": [
+          {
+            "type": "type7",
+            "amount": 33,
+            "recipient": null,
+            "gateway_id": "gateway_id7",
+            "options": null,
+            "id": "id3"
+          },
+          {
+            "type": "type6",
+            "amount": 34,
+            "recipient": null,
+            "gateway_id": "gateway_id6",
+            "options": null,
+            "id": "id4"
+          }
+        ],
+        "next_attempt": null,
+        "id": "id1",
+        "gateway_response": {
+          "code": "code1",
+          "errors": [
+            {
+              "message": "message8"
+            },
+            {
+              "message": "message9"
+            }
+          ]
+        },
+        "antifraud_response": {
+          "status": "status1",
+          "return_code": "return_code9",
+          "return_message": "return_message7",
+          "provider_name": "provider_name7",
+          "score": "score9"
+        },
+        "metadata": null,
+        "split": [
+          {
+            "type": "type9",
+            "amount": 47,
+            "recipient": null,
+            "gateway_id": "gateway_id9",
+            "options": null,
+            "id": "id9"
+          }
+        ],
+        "interest": null,
+        "fine": null,
+        "max_days_to_pay_past_due": null,
+        "transaction_type": "transaction"
+      },
       "invoice": null,
       "order": null,
       "customer": null,

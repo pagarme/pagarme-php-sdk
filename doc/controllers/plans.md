@@ -210,18 +210,8 @@ function createPlanItem(
 $planId = 'plan_id8';
 $request_name = 'name6';
 $request_pricingScheme_schemeType = 'scheme_type2';
-$request_pricingScheme_priceBrackets = [];
-
-$request_pricingScheme_priceBrackets_0_startQuantity = 87;
-$request_pricingScheme_priceBrackets_0_price = 231;
-$request_pricingScheme_priceBrackets[0] = new Models\CreatePriceBracketRequest(
-    $request_pricingScheme_priceBrackets_0_startQuantity,
-    $request_pricingScheme_priceBrackets_0_price
-);
-
 $request_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $request_pricingScheme_schemeType,
-    $request_pricingScheme_priceBrackets
+    $request_pricingScheme_schemeType
 );
 $request_id = 'id6';
 $request_description = 'description6';
@@ -294,25 +284,8 @@ $body_items = [];
 
 $body_items_0_name = 'name3';
 $body_items_0_pricingScheme_schemeType = 'scheme_type5';
-$body_items_0_pricingScheme_priceBrackets = [];
-
-$body_items_0_pricingScheme_priceBrackets_0_startQuantity = 228;
-$body_items_0_pricingScheme_priceBrackets_0_price = 90;
-$body_items_0_pricingScheme_priceBrackets[0] = new Models\CreatePriceBracketRequest(
-    $body_items_0_pricingScheme_priceBrackets_0_startQuantity,
-    $body_items_0_pricingScheme_priceBrackets_0_price
-);
-
-$body_items_0_pricingScheme_priceBrackets_1_startQuantity = 229;
-$body_items_0_pricingScheme_priceBrackets_1_price = 89;
-$body_items_0_pricingScheme_priceBrackets[1] = new Models\CreatePriceBracketRequest(
-    $body_items_0_pricingScheme_priceBrackets_1_startQuantity,
-    $body_items_0_pricingScheme_priceBrackets_1_price
-);
-
 $body_items_0_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $body_items_0_pricingScheme_schemeType,
-    $body_items_0_pricingScheme_priceBrackets
+    $body_items_0_pricingScheme_schemeType
 );
 $body_items_0_id = 'id3';
 $body_items_0_description = 'description3';
@@ -325,18 +298,8 @@ $body_items[0] = new Models\CreatePlanItemRequest(
 
 $body_items_1_name = 'name4';
 $body_items_1_pricingScheme_schemeType = 'scheme_type4';
-$body_items_1_pricingScheme_priceBrackets = [];
-
-$body_items_1_pricingScheme_priceBrackets_0_startQuantity = 227;
-$body_items_1_pricingScheme_priceBrackets_0_price = 91;
-$body_items_1_pricingScheme_priceBrackets[0] = new Models\CreatePriceBracketRequest(
-    $body_items_1_pricingScheme_priceBrackets_0_startQuantity,
-    $body_items_1_pricingScheme_priceBrackets_0_price
-);
-
 $body_items_1_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $body_items_1_pricingScheme_schemeType,
-    $body_items_1_pricingScheme_priceBrackets
+    $body_items_1_pricingScheme_schemeType
 );
 $body_items_1_id = 'id4';
 $body_items_1_description = 'description4';
@@ -349,32 +312,8 @@ $body_items[1] = new Models\CreatePlanItemRequest(
 
 $body_items_2_name = 'name5';
 $body_items_2_pricingScheme_schemeType = 'scheme_type3';
-$body_items_2_pricingScheme_priceBrackets = [];
-
-$body_items_2_pricingScheme_priceBrackets_0_startQuantity = 226;
-$body_items_2_pricingScheme_priceBrackets_0_price = 92;
-$body_items_2_pricingScheme_priceBrackets[0] = new Models\CreatePriceBracketRequest(
-    $body_items_2_pricingScheme_priceBrackets_0_startQuantity,
-    $body_items_2_pricingScheme_priceBrackets_0_price
-);
-
-$body_items_2_pricingScheme_priceBrackets_1_startQuantity = 227;
-$body_items_2_pricingScheme_priceBrackets_1_price = 91;
-$body_items_2_pricingScheme_priceBrackets[1] = new Models\CreatePriceBracketRequest(
-    $body_items_2_pricingScheme_priceBrackets_1_startQuantity,
-    $body_items_2_pricingScheme_priceBrackets_1_price
-);
-
-$body_items_2_pricingScheme_priceBrackets_2_startQuantity = 228;
-$body_items_2_pricingScheme_priceBrackets_2_price = 90;
-$body_items_2_pricingScheme_priceBrackets[2] = new Models\CreatePriceBracketRequest(
-    $body_items_2_pricingScheme_priceBrackets_2_startQuantity,
-    $body_items_2_pricingScheme_priceBrackets_2_price
-);
-
 $body_items_2_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $body_items_2_pricingScheme_schemeType,
-    $body_items_2_pricingScheme_priceBrackets
+    $body_items_2_pricingScheme_schemeType
 );
 $body_items_2_id = 'id5';
 $body_items_2_description = 'description5';
@@ -394,25 +333,8 @@ $body_intervalCount = 170;
 $body_billingDays = [201, 200];
 $body_billingType = 'billing_type0';
 $body_pricingScheme_schemeType = 'scheme_type2';
-$body_pricingScheme_priceBrackets = [];
-
-$body_pricingScheme_priceBrackets_0_startQuantity = 31;
-$body_pricingScheme_priceBrackets_0_price = 225;
-$body_pricingScheme_priceBrackets[0] = new Models\CreatePriceBracketRequest(
-    $body_pricingScheme_priceBrackets_0_startQuantity,
-    $body_pricingScheme_priceBrackets_0_price
-);
-
-$body_pricingScheme_priceBrackets_1_startQuantity = 32;
-$body_pricingScheme_priceBrackets_1_price = 226;
-$body_pricingScheme_priceBrackets[1] = new Models\CreatePriceBracketRequest(
-    $body_pricingScheme_priceBrackets_1_startQuantity,
-    $body_pricingScheme_priceBrackets_1_price
-);
-
 $body_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $body_pricingScheme_schemeType,
-    $body_pricingScheme_priceBrackets
+    $body_pricingScheme_schemeType
 );
 $body_metadata = ['key0' => 'metadata7', 'key1' => 'metadata8'];
 $body = new Models\CreatePlanRequest(

@@ -14,6 +14,9 @@ use stdClass;
 
 /**
  * Response object for getting a credit card transaction
+ *
+ * @discriminator transaction_type
+ * @discriminatorType credit_card
  */
 class GetCreditCardTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
@@ -23,7 +26,7 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
     private $statementDescriptor;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $acquirerName;
 
@@ -33,12 +36,12 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
     private $acquirerAffiliationCode;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $acquirerTid;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $acquirerNsu;
 
@@ -78,6 +81,18 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
     private $threedAuthenticationUrl;
 
     /**
+     * @param string $acquirerName
+     * @param string $acquirerTid
+     * @param string $acquirerNsu
+     */
+    public function __construct(string $acquirerName, string $acquirerTid, string $acquirerNsu)
+    {
+        $this->acquirerName = $acquirerName;
+        $this->acquirerTid = $acquirerTid;
+        $this->acquirerNsu = $acquirerNsu;
+    }
+
+    /**
      * Returns Statement Descriptor.
      * Text that will appear on the credit card's statement
      */
@@ -101,7 +116,7 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      * Returns Acquirer Name.
      * Acquirer name
      */
-    public function getAcquirerName(): ?string
+    public function getAcquirerName(): string
     {
         return $this->acquirerName;
     }
@@ -110,9 +125,10 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      * Sets Acquirer Name.
      * Acquirer name
      *
+     * @required
      * @maps acquirer_name
      */
-    public function setAcquirerName(?string $acquirerName): void
+    public function setAcquirerName(string $acquirerName): void
     {
         $this->acquirerName = $acquirerName;
     }
@@ -141,7 +157,7 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      * Returns Acquirer Tid.
      * Acquirer TID
      */
-    public function getAcquirerTid(): ?string
+    public function getAcquirerTid(): string
     {
         return $this->acquirerTid;
     }
@@ -150,9 +166,10 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      * Sets Acquirer Tid.
      * Acquirer TID
      *
+     * @required
      * @maps acquirer_tid
      */
-    public function setAcquirerTid(?string $acquirerTid): void
+    public function setAcquirerTid(string $acquirerTid): void
     {
         $this->acquirerTid = $acquirerTid;
     }
@@ -161,7 +178,7 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      * Returns Acquirer Nsu.
      * Acquirer NSU
      */
-    public function getAcquirerNsu(): ?string
+    public function getAcquirerNsu(): string
     {
         return $this->acquirerNsu;
     }
@@ -170,9 +187,10 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      * Sets Acquirer Nsu.
      * Acquirer NSU
      *
+     * @required
      * @maps acquirer_nsu
      */
-    public function setAcquirerNsu(?string $acquirerNsu): void
+    public function setAcquirerNsu(string $acquirerNsu): void
     {
         $this->acquirerNsu = $acquirerNsu;
     }
@@ -356,6 +374,7 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
         }
         $json['threed_authentication_url'] = $this->threedAuthenticationUrl;
         $json = array_merge($json, parent::jsonSerialize(true));
+        $json['transaction_type'] = $this->getTransactionType() ?? 'credit_card';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

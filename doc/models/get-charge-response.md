@@ -21,7 +21,7 @@ Response object for getting a charge
 | `dueAt` | `?\DateTime` | Required | - | getDueAt(): ?\DateTime | setDueAt(?\DateTime dueAt): void |
 | `createdAt` | `?\DateTime` | Required | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
 | `updatedAt` | `?\DateTime` | Required | - | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
-| `lastTransaction` | [`?GetTransactionResponse`](../../doc/models/get-transaction-response.md) | Optional | - | getLastTransaction(): ?GetTransactionResponse | setLastTransaction(?GetTransactionResponse lastTransaction): void |
+| `lastTransaction` | [`GetTransactionResponse`](../../doc/models/get-transaction-response.md) | Required | - | getLastTransaction(): GetTransactionResponse | setLastTransaction(GetTransactionResponse lastTransaction): void |
 | `invoice` | [`?GetInvoiceResponse`](../../doc/models/get-invoice-response.md) | Optional | - | getInvoice(): ?GetInvoiceResponse | setInvoice(?GetInvoiceResponse invoice): void |
 | `order` | [`?GetOrderResponse`](../../doc/models/get-order-response.md) | Optional | - | getOrder(): ?GetOrderResponse | setOrder(?GetOrderResponse order): void |
 | `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
@@ -47,7 +47,69 @@ Response object for getting a charge
   "due_at": "2016-03-13T12:52:32.123Z",
   "created_at": "2016-03-13T12:52:32.123Z",
   "updated_at": "2016-03-13T12:52:32.123Z",
-  "last_transaction": null,
+  "last_transaction": {
+    "gateway_id": "gateway_id8",
+    "amount": 12,
+    "status": "status4",
+    "success": false,
+    "created_at": "2016-03-13T12:52:32.123Z",
+    "updated_at": "2016-03-13T12:52:32.123Z",
+    "attempt_count": 244,
+    "max_attempts": 232,
+    "splits": [
+      {
+        "type": "type6",
+        "amount": 200,
+        "recipient": null,
+        "gateway_id": "gateway_id6",
+        "options": null,
+        "id": "id4"
+      },
+      {
+        "type": "type5",
+        "amount": 201,
+        "recipient": null,
+        "gateway_id": "gateway_id5",
+        "options": null,
+        "id": "id5"
+      }
+    ],
+    "next_attempt": null,
+    "id": "id2",
+    "gateway_response": {
+      "code": "code2",
+      "errors": [
+        {
+          "message": "message9"
+        },
+        {
+          "message": "message0"
+        }
+      ]
+    },
+    "antifraud_response": {
+      "status": "status2",
+      "return_code": "return_code0",
+      "return_message": "return_message8",
+      "provider_name": "provider_name8",
+      "score": "score0"
+    },
+    "metadata": null,
+    "split": [
+      {
+        "type": "type0",
+        "amount": 214,
+        "recipient": null,
+        "gateway_id": "gateway_id0",
+        "options": null,
+        "id": "id0"
+      }
+    ],
+    "interest": null,
+    "fine": null,
+    "max_days_to_pay_past_due": null,
+    "transaction_type": "transaction"
+  },
   "invoice": null,
   "order": null,
   "customer": null,

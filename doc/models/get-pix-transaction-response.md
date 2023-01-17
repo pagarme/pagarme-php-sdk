@@ -51,6 +51,7 @@ Response object when getting a pix transaction
       "account_number": "account_number2"
     }
   },
+  "transaction_type": "pix",
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
@@ -78,7 +79,6 @@ Response object when getting a pix transaction
     }
   ],
   "next_attempt": null,
-  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",

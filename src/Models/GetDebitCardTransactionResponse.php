@@ -14,6 +14,9 @@ use stdClass;
 
 /**
  * Response object for getting a debit card transaction
+ *
+ * @discriminator transaction_type
+ * @discriminatorType debit_card
  */
 class GetDebitCardTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
@@ -394,6 +397,7 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
         $json['authentication_type']       = $this->authenticationType;
         $json['threed_authentication_url'] = $this->threedAuthenticationUrl;
         $json = array_merge($json, parent::jsonSerialize(true));
+        $json['transaction_type'] = $this->getTransactionType() ?? 'debit_card';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

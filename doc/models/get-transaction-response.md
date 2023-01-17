@@ -62,7 +62,6 @@ Generic response object for getting a transaction.
     }
   ],
   "next_attempt": null,
-  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",
@@ -114,7 +113,8 @@ Generic response object for getting a transaction.
   ],
   "interest": null,
   "fine": null,
-  "max_days_to_pay_past_due": null
+  "max_days_to_pay_past_due": null,
+  "transaction_type": "transaction"
 }
 ```
 

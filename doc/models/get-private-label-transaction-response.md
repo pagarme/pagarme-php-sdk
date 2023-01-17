@@ -73,6 +73,7 @@ Response object for getting a private label transaction
   "acquirer_message": "acquirer_message0",
   "acquirer_return_code": "acquirer_return_code8",
   "installments": null,
+  "transaction_type": "private_label",
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
@@ -100,7 +101,6 @@ Response object for getting a private label transaction
     }
   ],
   "next_attempt": null,
-  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",

@@ -14,6 +14,9 @@ use stdClass;
 
 /**
  * Response object for getting a cash transaction
+ *
+ * @discriminator transaction_type
+ * @discriminatorType cash
  */
 class GetCashTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
@@ -56,6 +59,7 @@ class GetCashTransactionResponse extends GetTransactionResponse implements \Json
         $json = [];
         $json['description'] = $this->description;
         $json = array_merge($json, parent::jsonSerialize(true));
+        $json['transaction_type'] = $this->getTransactionType() ?? 'cash';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

@@ -23,7 +23,7 @@ class CreatePricingSchemeRequest implements \JsonSerializable
     private $schemeType;
 
     /**
-     * @var CreatePriceBracketRequest[]
+     * @var CreatePriceBracketRequest[]|null
      */
     private $priceBrackets;
 
@@ -44,12 +44,10 @@ class CreatePricingSchemeRequest implements \JsonSerializable
 
     /**
      * @param string $schemeType
-     * @param CreatePriceBracketRequest[] $priceBrackets
      */
-    public function __construct(string $schemeType, array $priceBrackets)
+    public function __construct(string $schemeType)
     {
         $this->schemeType = $schemeType;
-        $this->priceBrackets = $priceBrackets;
     }
 
     /**
@@ -77,9 +75,9 @@ class CreatePricingSchemeRequest implements \JsonSerializable
      * Returns Price Brackets.
      * Price brackets
      *
-     * @return CreatePriceBracketRequest[]
+     * @return CreatePriceBracketRequest[]|null
      */
-    public function getPriceBrackets(): array
+    public function getPriceBrackets(): ?array
     {
         return $this->priceBrackets;
     }
@@ -88,12 +86,11 @@ class CreatePricingSchemeRequest implements \JsonSerializable
      * Sets Price Brackets.
      * Price brackets
      *
-     * @required
      * @maps price_brackets
      *
-     * @param CreatePriceBracketRequest[] $priceBrackets
+     * @param CreatePriceBracketRequest[]|null $priceBrackets
      */
-    public function setPriceBrackets(array $priceBrackets): void
+    public function setPriceBrackets(?array $priceBrackets): void
     {
         $this->priceBrackets = $priceBrackets;
     }
@@ -170,16 +167,18 @@ class CreatePricingSchemeRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['scheme_type']       = $this->schemeType;
-        $json['price_brackets']    = $this->priceBrackets;
+        $json['scheme_type']        = $this->schemeType;
+        if (isset($this->priceBrackets)) {
+            $json['price_brackets'] = $this->priceBrackets;
+        }
         if (isset($this->price)) {
-            $json['price']         = $this->price;
+            $json['price']          = $this->price;
         }
         if (isset($this->minimumPrice)) {
-            $json['minimum_price'] = $this->minimumPrice;
+            $json['minimum_price']  = $this->minimumPrice;
         }
         if (isset($this->percentage)) {
-            $json['percentage']    = $this->percentage;
+            $json['percentage']     = $this->percentage;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
