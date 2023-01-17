@@ -57,7 +57,69 @@ Response object for listing order objects
           "due_at": "2016-03-13T12:52:32.123Z",
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
-          "last_transaction": null,
+          "last_transaction": {
+            "gateway_id": "gateway_id3",
+            "amount": 171,
+            "status": "status5",
+            "success": true,
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "attempt_count": 147,
+            "max_attempts": 135,
+            "splits": [
+              {
+                "type": "type5",
+                "amount": 103,
+                "recipient": null,
+                "gateway_id": "gateway_id5",
+                "options": null,
+                "id": "id5"
+              },
+              {
+                "type": "type6",
+                "amount": 104,
+                "recipient": null,
+                "gateway_id": "gateway_id6",
+                "options": null,
+                "id": "id6"
+              }
+            ],
+            "next_attempt": null,
+            "id": "id3",
+            "gateway_response": {
+              "code": "code3",
+              "errors": [
+                {
+                  "message": "message0"
+                },
+                {
+                  "message": "message1"
+                }
+              ]
+            },
+            "antifraud_response": {
+              "status": "status3",
+              "return_code": "return_code1",
+              "return_message": "return_message9",
+              "provider_name": "provider_name9",
+              "score": "score1"
+            },
+            "metadata": null,
+            "split": [
+              {
+                "type": "type1",
+                "amount": 117,
+                "recipient": null,
+                "gateway_id": "gateway_id1",
+                "options": null,
+                "id": "id1"
+              }
+            ],
+            "interest": null,
+            "fine": null,
+            "max_days_to_pay_past_due": null,
+            "transaction_type": "transaction"
+          },
           "invoice": null,
           "order": null,
           "customer": null,
@@ -83,7 +145,88 @@ Response object for listing order objects
           "due_at": "2016-03-13T12:52:32.123Z",
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
-          "last_transaction": null,
+          "last_transaction": {
+            "gateway_id": "gateway_id4",
+            "amount": 172,
+            "status": "status6",
+            "success": false,
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "attempt_count": 148,
+            "max_attempts": 136,
+            "splits": [
+              {
+                "type": "type6",
+                "amount": 104,
+                "recipient": null,
+                "gateway_id": "gateway_id6",
+                "options": null,
+                "id": "id6"
+              },
+              {
+                "type": "type7",
+                "amount": 105,
+                "recipient": null,
+                "gateway_id": "gateway_id7",
+                "options": null,
+                "id": "id7"
+              },
+              {
+                "type": "type8",
+                "amount": 106,
+                "recipient": null,
+                "gateway_id": "gateway_id8",
+                "options": null,
+                "id": "id8"
+              }
+            ],
+            "next_attempt": null,
+            "id": "id4",
+            "gateway_response": {
+              "code": "code4",
+              "errors": [
+                {
+                  "message": "message1"
+                },
+                {
+                  "message": "message2"
+                },
+                {
+                  "message": "message3"
+                }
+              ]
+            },
+            "antifraud_response": {
+              "status": "status4",
+              "return_code": "return_code2",
+              "return_message": "return_message0",
+              "provider_name": "provider_name0",
+              "score": "score2"
+            },
+            "metadata": null,
+            "split": [
+              {
+                "type": "type2",
+                "amount": 118,
+                "recipient": null,
+                "gateway_id": "gateway_id2",
+                "options": null,
+                "id": "id2"
+              },
+              {
+                "type": "type3",
+                "amount": 119,
+                "recipient": null,
+                "gateway_id": "gateway_id3",
+                "options": null,
+                "id": "id3"
+              }
+            ],
+            "interest": null,
+            "fine": null,
+            "max_days_to_pay_past_due": null,
+            "transaction_type": "transaction"
+          },
           "invoice": null,
           "order": null,
           "customer": null,
@@ -110,7 +253,74 @@ Response object for listing order objects
           "due_at": "2016-03-13T12:52:32.123Z",
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
-          "last_transaction": null,
+          "last_transaction": {
+            "gateway_id": "gateway_id5",
+            "amount": 173,
+            "status": "status7",
+            "success": true,
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "attempt_count": 149,
+            "max_attempts": 137,
+            "splits": [
+              {
+                "type": "type7",
+                "amount": 105,
+                "recipient": null,
+                "gateway_id": "gateway_id7",
+                "options": null,
+                "id": "id7"
+              }
+            ],
+            "next_attempt": null,
+            "id": "id5",
+            "gateway_response": {
+              "code": "code5",
+              "errors": [
+                {
+                  "message": "message2"
+                }
+              ]
+            },
+            "antifraud_response": {
+              "status": "status5",
+              "return_code": "return_code3",
+              "return_message": "return_message1",
+              "provider_name": "provider_name1",
+              "score": "score3"
+            },
+            "metadata": null,
+            "split": [
+              {
+                "type": "type3",
+                "amount": 119,
+                "recipient": null,
+                "gateway_id": "gateway_id3",
+                "options": null,
+                "id": "id3"
+              },
+              {
+                "type": "type4",
+                "amount": 120,
+                "recipient": null,
+                "gateway_id": "gateway_id4",
+                "options": null,
+                "id": "id4"
+              },
+              {
+                "type": "type5",
+                "amount": 121,
+                "recipient": null,
+                "gateway_id": "gateway_id5",
+                "options": null,
+                "id": "id5"
+              }
+            ],
+            "interest": null,
+            "fine": null,
+            "max_days_to_pay_past_due": null,
+            "transaction_type": "transaction"
+          },
           "invoice": null,
           "order": null,
           "customer": null,
@@ -213,7 +423,88 @@ Response object for listing order objects
           "due_at": "2016-03-13T12:52:32.123Z",
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
-          "last_transaction": null,
+          "last_transaction": {
+            "gateway_id": "gateway_id4",
+            "amount": 172,
+            "status": "status6",
+            "success": false,
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "attempt_count": 148,
+            "max_attempts": 136,
+            "splits": [
+              {
+                "type": "type6",
+                "amount": 104,
+                "recipient": null,
+                "gateway_id": "gateway_id6",
+                "options": null,
+                "id": "id6"
+              },
+              {
+                "type": "type7",
+                "amount": 105,
+                "recipient": null,
+                "gateway_id": "gateway_id7",
+                "options": null,
+                "id": "id7"
+              },
+              {
+                "type": "type8",
+                "amount": 106,
+                "recipient": null,
+                "gateway_id": "gateway_id8",
+                "options": null,
+                "id": "id8"
+              }
+            ],
+            "next_attempt": null,
+            "id": "id4",
+            "gateway_response": {
+              "code": "code4",
+              "errors": [
+                {
+                  "message": "message1"
+                },
+                {
+                  "message": "message2"
+                },
+                {
+                  "message": "message3"
+                }
+              ]
+            },
+            "antifraud_response": {
+              "status": "status4",
+              "return_code": "return_code2",
+              "return_message": "return_message0",
+              "provider_name": "provider_name0",
+              "score": "score2"
+            },
+            "metadata": null,
+            "split": [
+              {
+                "type": "type2",
+                "amount": 118,
+                "recipient": null,
+                "gateway_id": "gateway_id2",
+                "options": null,
+                "id": "id2"
+              },
+              {
+                "type": "type3",
+                "amount": 119,
+                "recipient": null,
+                "gateway_id": "gateway_id3",
+                "options": null,
+                "id": "id3"
+              }
+            ],
+            "interest": null,
+            "fine": null,
+            "max_days_to_pay_past_due": null,
+            "transaction_type": "transaction"
+          },
           "invoice": null,
           "order": null,
           "customer": null,

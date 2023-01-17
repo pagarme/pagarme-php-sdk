@@ -69,9 +69,9 @@ class GetChargeResponse implements \JsonSerializable
     private $updatedAt;
 
     /**
-     * @var array
+     * @var GetTransactionResponse
      */
-    private $lastTransaction = [];
+    private $lastTransaction;
 
     /**
      * @var array
@@ -122,6 +122,14 @@ class GetChargeResponse implements \JsonSerializable
      * @var array
      */
     private $recurrencyCycle = [];
+
+    /**
+     * @param GetTransactionResponse $lastTransaction
+     */
+    public function __construct(GetTransactionResponse $lastTransaction)
+    {
+        $this->lastTransaction = $lastTransaction;
+    }
 
     /**
      * Returns Id.
@@ -309,30 +317,20 @@ class GetChargeResponse implements \JsonSerializable
     /**
      * Returns Last Transaction.
      */
-    public function getLastTransaction(): ?GetTransactionResponse
+    public function getLastTransaction(): GetTransactionResponse
     {
-        if (count($this->lastTransaction) == 0) {
-            return null;
-        }
-        return $this->lastTransaction['value'];
+        return $this->lastTransaction;
     }
 
     /**
      * Sets Last Transaction.
      *
+     * @required
      * @maps last_transaction
      */
-    public function setLastTransaction(?GetTransactionResponse $lastTransaction): void
+    public function setLastTransaction(GetTransactionResponse $lastTransaction): void
     {
-        $this->lastTransaction['value'] = $lastTransaction;
-    }
-
-    /**
-     * Unsets Last Transaction.
-     */
-    public function unsetLastTransaction(): void
-    {
-        $this->lastTransaction = [];
+        $this->lastTransaction = $lastTransaction;
     }
 
     /**
@@ -630,9 +628,7 @@ class GetChargeResponse implements \JsonSerializable
         $json['due_at']                     = DateTimeHelper::toRfc3339DateTime($this->dueAt);
         $json['created_at']                 = DateTimeHelper::toRfc3339DateTime($this->createdAt);
         $json['updated_at']                 = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        if (!empty($this->lastTransaction)) {
-            $json['last_transaction']       = $this->lastTransaction['value'];
-        }
+        $json['last_transaction']           = $this->lastTransaction;
         if (!empty($this->invoice)) {
             $json['invoice']                = $this->invoice['value'];
         }

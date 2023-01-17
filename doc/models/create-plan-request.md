@@ -42,26 +42,7 @@ Request for creating a plan
       "name": "name7",
       "pricing_scheme": {
         "scheme_type": "scheme_type1",
-        "price_brackets": [
-          {
-            "start_quantity": 60,
-            "price": 2,
-            "end_quantity": null,
-            "overage_price": null
-          },
-          {
-            "start_quantity": 61,
-            "price": 1,
-            "end_quantity": null,
-            "overage_price": null
-          },
-          {
-            "start_quantity": 62,
-            "price": 0,
-            "end_quantity": null,
-            "overage_price": null
-          }
-        ],
+        "price_brackets": null,
         "price": null,
         "minimum_price": null,
         "percentage": null
@@ -75,20 +56,7 @@ Request for creating a plan
       "name": "name8",
       "pricing_scheme": {
         "scheme_type": "scheme_type0",
-        "price_brackets": [
-          {
-            "start_quantity": 59,
-            "price": 3,
-            "end_quantity": null,
-            "overage_price": null
-          },
-          {
-            "start_quantity": 60,
-            "price": 2,
-            "end_quantity": null,
-            "overage_price": null
-          }
-        ],
+        "price_brackets": null,
         "price": null,
         "minimum_price": null,
         "percentage": null
@@ -120,26 +88,7 @@ Request for creating a plan
   "billing_type": "billing_type6",
   "pricing_scheme": {
     "scheme_type": "scheme_type8",
-    "price_brackets": [
-      {
-        "start_quantity": 119,
-        "price": 57,
-        "end_quantity": null,
-        "overage_price": null
-      },
-      {
-        "start_quantity": 120,
-        "price": 58,
-        "end_quantity": null,
-        "overage_price": null
-      },
-      {
-        "start_quantity": 121,
-        "price": 59,
-        "end_quantity": null,
-        "overage_price": null
-      }
-    ],
+    "price_brackets": null,
     "price": null,
     "minimum_price": null,
     "percentage": null

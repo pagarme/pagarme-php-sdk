@@ -94,7 +94,7 @@ class CreateSubscriptionRequest implements \JsonSerializable
     private $metadata;
 
     /**
-     * @var CreateSetupRequest
+     * @var CreateSetupRequest|null
      */
     private $setup;
 
@@ -199,7 +199,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
      * @param CreateShippingRequest $shipping
      * @param CreateDiscountRequest[] $discounts
      * @param array<string,string> $metadata
-     * @param CreateSetupRequest $setup
      * @param CreateIncrementRequest[] $increments
      */
     public function __construct(
@@ -218,7 +217,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
         CreateShippingRequest $shipping,
         array $discounts,
         array $metadata,
-        CreateSetupRequest $setup,
         array $increments
     ) {
         $this->customer = $customer;
@@ -236,7 +234,6 @@ class CreateSubscriptionRequest implements \JsonSerializable
         $this->shipping = $shipping;
         $this->discounts = $discounts;
         $this->metadata = $metadata;
-        $this->setup = $setup;
         $this->increments = $increments;
     }
 
@@ -571,7 +568,7 @@ class CreateSubscriptionRequest implements \JsonSerializable
      * Returns Setup.
      * Setup data
      */
-    public function getSetup(): CreateSetupRequest
+    public function getSetup(): ?CreateSetupRequest
     {
         return $this->setup;
     }
@@ -580,10 +577,9 @@ class CreateSubscriptionRequest implements \JsonSerializable
      * Sets Setup.
      * Setup data
      *
-     * @required
      * @maps setup
      */
-    public function setSetup(CreateSetupRequest $setup): void
+    public function setSetup(?CreateSetupRequest $setup): void
     {
         $this->setup = $setup;
     }
@@ -959,7 +955,9 @@ class CreateSubscriptionRequest implements \JsonSerializable
         $json['shipping']                   = $this->shipping;
         $json['discounts']                  = $this->discounts;
         $json['metadata']                   = $this->metadata;
-        $json['setup']                      = $this->setup;
+        if (isset($this->setup)) {
+            $json['setup']                  = $this->setup;
+        }
         if (isset($this->planId)) {
             $json['plan_id']                = $this->planId;
         }

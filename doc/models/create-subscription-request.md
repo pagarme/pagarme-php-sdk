@@ -26,7 +26,7 @@ Request for creating a subcription
 | `shipping` | [`CreateShippingRequest`](../../doc/models/create-shipping-request.md) | Required | Shipping | getShipping(): CreateShippingRequest | setShipping(CreateShippingRequest shipping): void |
 | `discounts` | [`CreateDiscountRequest[]`](../../doc/models/create-discount-request.md) | Required | Discounts | getDiscounts(): array | setDiscounts(array discounts): void |
 | `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
-| `setup` | [`CreateSetupRequest`](../../doc/models/create-setup-request.md) | Required | Setup data | getSetup(): CreateSetupRequest | setSetup(CreateSetupRequest setup): void |
+| `setup` | [`?CreateSetupRequest`](../../doc/models/create-setup-request.md) | Optional | Setup data | getSetup(): ?CreateSetupRequest | setSetup(?CreateSetupRequest setup): void |
 | `planId` | `?string` | Optional | Plan id | getPlanId(): ?string | setPlanId(?string planId): void |
 | `customerId` | `?string` | Optional | Customer id | getCustomerId(): ?string | setCustomerId(?string customerId): void |
 | `cardId` | `?string` | Optional | Card id | getCardId(): ?string | setCardId(?string cardId): void |
@@ -87,7 +87,6 @@ Request for creating a subcription
   "shipping": null,
   "discounts": null,
   "metadata": null,
-  "setup": null,
   "increments": null
 }
 ```

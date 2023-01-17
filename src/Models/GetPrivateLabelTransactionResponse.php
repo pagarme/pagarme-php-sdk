@@ -14,6 +14,9 @@ use stdClass;
 
 /**
  * Response object for getting a private label transaction
+ *
+ * @discriminator transaction_type
+ * @discriminatorType private_label
  */
 class GetPrivateLabelTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
@@ -330,6 +333,7 @@ class GetPrivateLabelTransactionResponse extends GetTransactionResponse implemen
             $json['installments']          = $this->installments['value'];
         }
         $json = array_merge($json, parent::jsonSerialize(true));
+        $json['transaction_type'] = $this->getTransactionType() ?? 'private_label';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

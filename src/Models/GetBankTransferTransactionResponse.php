@@ -15,39 +15,54 @@ use stdClass;
 
 /**
  * Response object for getting a bank transfer transaction
+ *
+ * @discriminator transaction_type
+ * @discriminatorType bank_transfer
  */
 class GetBankTransferTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var string
      */
     private $url;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $bankTid;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $bank;
 
     /**
-     * @var array
+     * @var \DateTime|null
      */
-    private $paidAt = [];
+    private $paidAt;
 
     /**
-     * @var array
+     * @var int|null
      */
-    private $paidAmount = [];
+    private $paidAmount;
+
+    /**
+     * @param string $url
+     * @param string $bankTid
+     * @param string $bank
+     */
+    public function __construct(string $url, string $bankTid, string $bank)
+    {
+        $this->url = $url;
+        $this->bankTid = $bankTid;
+        $this->bank = $bank;
+    }
 
     /**
      * Returns Url.
      * Payment url
      */
-    public function getUrl(): ?string
+    public function getUrl(): string
     {
         return $this->url;
     }
@@ -56,9 +71,10 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Sets Url.
      * Payment url
      *
+     * @required
      * @maps url
      */
-    public function setUrl(?string $url): void
+    public function setUrl(string $url): void
     {
         $this->url = $url;
     }
@@ -67,7 +83,7 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Returns Bank Tid.
      * Transaction identifier for the bank
      */
-    public function getBankTid(): ?string
+    public function getBankTid(): string
     {
         return $this->bankTid;
     }
@@ -76,9 +92,10 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Sets Bank Tid.
      * Transaction identifier for the bank
      *
+     * @required
      * @maps bank_tid
      */
-    public function setBankTid(?string $bankTid): void
+    public function setBankTid(string $bankTid): void
     {
         $this->bankTid = $bankTid;
     }
@@ -87,7 +104,7 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Returns Bank.
      * Bank
      */
-    public function getBank(): ?string
+    public function getBank(): string
     {
         return $this->bank;
     }
@@ -96,9 +113,10 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Sets Bank.
      * Bank
      *
+     * @required
      * @maps bank
      */
-    public function setBank(?string $bank): void
+    public function setBank(string $bank): void
     {
         $this->bank = $bank;
     }
@@ -109,10 +127,7 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      */
     public function getPaidAt(): ?\DateTime
     {
-        if (count($this->paidAt) == 0) {
-            return null;
-        }
-        return $this->paidAt['value'];
+        return $this->paidAt;
     }
 
     /**
@@ -124,16 +139,7 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      */
     public function setPaidAt(?\DateTime $paidAt): void
     {
-        $this->paidAt['value'] = $paidAt;
-    }
-
-    /**
-     * Unsets Paid At.
-     * Payment date
-     */
-    public function unsetPaidAt(): void
-    {
-        $this->paidAt = [];
+        $this->paidAt = $paidAt;
     }
 
     /**
@@ -142,10 +148,7 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      */
     public function getPaidAmount(): ?int
     {
-        if (count($this->paidAmount) == 0) {
-            return null;
-        }
-        return $this->paidAmount['value'];
+        return $this->paidAmount;
     }
 
     /**
@@ -156,16 +159,7 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      */
     public function setPaidAmount(?int $paidAmount): void
     {
-        $this->paidAmount['value'] = $paidAmount;
-    }
-
-    /**
-     * Unsets Paid Amount.
-     * Paid amount
-     */
-    public function unsetPaidAmount(): void
-    {
-        $this->paidAmount = [];
+        $this->paidAmount = $paidAmount;
     }
 
     /**
@@ -183,13 +177,14 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
         $json['url']             = $this->url;
         $json['bank_tid']        = $this->bankTid;
         $json['bank']            = $this->bank;
-        if (!empty($this->paidAt)) {
-            $json['paid_at']     = DateTimeHelper::toRfc3339DateTime($this->paidAt['value']);
+        if (isset($this->paidAt)) {
+            $json['paid_at']     = DateTimeHelper::toRfc3339DateTime($this->paidAt);
         }
-        if (!empty($this->paidAmount)) {
-            $json['paid_amount'] = $this->paidAmount['value'];
+        if (isset($this->paidAmount)) {
+            $json['paid_amount'] = $this->paidAmount;
         }
         $json = array_merge($json, parent::jsonSerialize(true));
+        $json['transaction_type'] = $this->getTransactionType() ?? 'bank_transfer';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

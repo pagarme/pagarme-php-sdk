@@ -15,6 +15,9 @@ use stdClass;
 
 /**
  * Response object for getting a boleto transaction
+ *
+ * @discriminator transaction_type
+ * @discriminatorType boleto
  */
 class GetBoletoTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
@@ -483,6 +486,7 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
         }
         $json['statement_descriptor'] = $this->statementDescriptor;
         $json = array_merge($json, parent::jsonSerialize(true));
+        $json['transaction_type'] = $this->getTransactionType() ?? 'boleto';
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

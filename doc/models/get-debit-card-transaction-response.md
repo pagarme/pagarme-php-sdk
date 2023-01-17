@@ -79,6 +79,7 @@ Response object for getting a debit card transaction
   "eci": "eci0",
   "authentication_type": "authentication_type2",
   "threed_authentication_url": "threed_authentication_url6",
+  "transaction_type": "debit_card",
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
@@ -106,7 +107,6 @@ Response object for getting a debit card transaction
     }
   ],
   "next_attempt": null,
-  "transaction_type": null,
   "id": "id0",
   "gateway_response": {
     "code": "code6",

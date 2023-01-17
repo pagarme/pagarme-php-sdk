@@ -15,6 +15,9 @@ use stdClass;
 
 /**
  * Generic response object for getting a transaction.
+ *
+ * @discriminator transaction_type
+ * @discriminatorType transaction
  */
 class GetTransactionResponse implements \JsonSerializable
 {
@@ -69,9 +72,9 @@ class GetTransactionResponse implements \JsonSerializable
     private $nextAttempt = [];
 
     /**
-     * @var array
+     * @var string|null
      */
-    private $transactionType = [];
+    private $transactionType;
 
     /**
      * @var string|null
@@ -337,10 +340,7 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function getTransactionType(): ?string
     {
-        if (count($this->transactionType) == 0) {
-            return null;
-        }
-        return $this->transactionType['value'];
+        return $this->transactionType;
     }
 
     /**
@@ -350,15 +350,7 @@ class GetTransactionResponse implements \JsonSerializable
      */
     public function setTransactionType(?string $transactionType): void
     {
-        $this->transactionType['value'] = $transactionType;
-    }
-
-    /**
-     * Unsets Transaction Type.
-     */
-    public function unsetTransactionType(): void
-    {
-        $this->transactionType = [];
+        $this->transactionType = $transactionType;
     }
 
     /**
@@ -585,9 +577,7 @@ class GetTransactionResponse implements \JsonSerializable
         if (!empty($this->nextAttempt)) {
             $json['next_attempt']             = DateTimeHelper::toRfc3339DateTime($this->nextAttempt['value']);
         }
-        if (!empty($this->transactionType)) {
-            $json['transaction_type']         = $this->transactionType['value'];
-        }
+        $json['transaction_type']             = $this->transactionType ?? 'transaction';
         $json['id']                           = $this->id;
         $json['gateway_response']             = $this->gatewayResponse;
         $json['antifraud_response']           = $this->antifraudResponse;
