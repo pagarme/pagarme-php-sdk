@@ -19,69 +19,69 @@ use stdClass;
 class GetRecipientResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $name;
+    private $name = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $email;
+    private $email = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $document;
+    private $document = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $description;
+    private $description = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $deletedAt;
+    private $deletedAt = [];
 
     /**
-     * @var GetBankAccountResponse|null
+     * @var array
      */
-    private $defaultBankAccount;
+    private $defaultBankAccount = [];
 
     /**
-     * @var GetGatewayRecipientResponse[]|null
+     * @var array
      */
-    private $gatewayRecipients;
+    private $gatewayRecipients = [];
 
     /**
-     * @var array<string,string>|null
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
      * @var array
@@ -94,14 +94,14 @@ class GetRecipientResponse implements \JsonSerializable
     private $transferSettings = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $code;
+    private $code = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $paymentMode = 'bank_transfer';
+    private $paymentMode = ['value' => 'bank_transfer'];
 
     /**
      * Returns Id.
@@ -109,7 +109,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -120,7 +123,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     * Id
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -129,7 +141,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getName(): ?string
     {
-        return $this->name;
+        if (count($this->name) == 0) {
+            return null;
+        }
+        return $this->name['value'];
     }
 
     /**
@@ -140,7 +155,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setName(?string $name): void
     {
-        $this->name = $name;
+        $this->name['value'] = $name;
+    }
+
+    /**
+     * Unsets Name.
+     * Name
+     */
+    public function unsetName(): void
+    {
+        $this->name = [];
     }
 
     /**
@@ -149,7 +173,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getEmail(): ?string
     {
-        return $this->email;
+        if (count($this->email) == 0) {
+            return null;
+        }
+        return $this->email['value'];
     }
 
     /**
@@ -160,7 +187,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setEmail(?string $email): void
     {
-        $this->email = $email;
+        $this->email['value'] = $email;
+    }
+
+    /**
+     * Unsets Email.
+     * Email
+     */
+    public function unsetEmail(): void
+    {
+        $this->email = [];
     }
 
     /**
@@ -169,7 +205,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getDocument(): ?string
     {
-        return $this->document;
+        if (count($this->document) == 0) {
+            return null;
+        }
+        return $this->document['value'];
     }
 
     /**
@@ -180,7 +219,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setDocument(?string $document): void
     {
-        $this->document = $document;
+        $this->document['value'] = $document;
+    }
+
+    /**
+     * Unsets Document.
+     * Document
+     */
+    public function unsetDocument(): void
+    {
+        $this->document = [];
     }
 
     /**
@@ -189,7 +237,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getDescription(): ?string
     {
-        return $this->description;
+        if (count($this->description) == 0) {
+            return null;
+        }
+        return $this->description['value'];
     }
 
     /**
@@ -200,7 +251,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setDescription(?string $description): void
     {
-        $this->description = $description;
+        $this->description['value'] = $description;
+    }
+
+    /**
+     * Unsets Description.
+     * Description
+     */
+    public function unsetDescription(): void
+    {
+        $this->description = [];
     }
 
     /**
@@ -209,7 +269,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -220,7 +283,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     * Type
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -229,7 +301,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -240,7 +315,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     * Status
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -249,7 +333,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -261,7 +348,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     * Creation date
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -270,7 +366,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -282,7 +381,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?\DateTime $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     * Last update date
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
@@ -291,7 +399,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getDeletedAt(): ?\DateTime
     {
-        return $this->deletedAt;
+        if (count($this->deletedAt) == 0) {
+            return null;
+        }
+        return $this->deletedAt['value'];
     }
 
     /**
@@ -303,7 +414,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setDeletedAt(?\DateTime $deletedAt): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deletedAt['value'] = $deletedAt;
+    }
+
+    /**
+     * Unsets Deleted At.
+     * Deletion date
+     */
+    public function unsetDeletedAt(): void
+    {
+        $this->deletedAt = [];
     }
 
     /**
@@ -312,7 +432,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getDefaultBankAccount(): ?GetBankAccountResponse
     {
-        return $this->defaultBankAccount;
+        if (count($this->defaultBankAccount) == 0) {
+            return null;
+        }
+        return $this->defaultBankAccount['value'];
     }
 
     /**
@@ -323,7 +446,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setDefaultBankAccount(?GetBankAccountResponse $defaultBankAccount): void
     {
-        $this->defaultBankAccount = $defaultBankAccount;
+        $this->defaultBankAccount['value'] = $defaultBankAccount;
+    }
+
+    /**
+     * Unsets Default Bank Account.
+     * Default bank account
+     */
+    public function unsetDefaultBankAccount(): void
+    {
+        $this->defaultBankAccount = [];
     }
 
     /**
@@ -334,7 +466,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getGatewayRecipients(): ?array
     {
-        return $this->gatewayRecipients;
+        if (count($this->gatewayRecipients) == 0) {
+            return null;
+        }
+        return $this->gatewayRecipients['value'];
     }
 
     /**
@@ -347,7 +482,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setGatewayRecipients(?array $gatewayRecipients): void
     {
-        $this->gatewayRecipients = $gatewayRecipients;
+        $this->gatewayRecipients['value'] = $gatewayRecipients;
+    }
+
+    /**
+     * Unsets Gateway Recipients.
+     * Info about the recipient on the gateway
+     */
+    public function unsetGatewayRecipients(): void
+    {
+        $this->gatewayRecipients = [];
     }
 
     /**
@@ -358,7 +502,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
@@ -371,7 +518,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     * Metadata
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -439,7 +595,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getCode(): ?string
     {
-        return $this->code;
+        if (count($this->code) == 0) {
+            return null;
+        }
+        return $this->code['value'];
     }
 
     /**
@@ -450,7 +609,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setCode(?string $code): void
     {
-        $this->code = $code;
+        $this->code['value'] = $code;
+    }
+
+    /**
+     * Unsets Code.
+     * Recipient code
+     */
+    public function unsetCode(): void
+    {
+        $this->code = [];
     }
 
     /**
@@ -459,7 +627,10 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function getPaymentMode(): ?string
     {
-        return $this->paymentMode;
+        if (count($this->paymentMode) == 0) {
+            return null;
+        }
+        return $this->paymentMode['value'];
     }
 
     /**
@@ -470,7 +641,16 @@ class GetRecipientResponse implements \JsonSerializable
      */
     public function setPaymentMode(?string $paymentMode): void
     {
-        $this->paymentMode = $paymentMode;
+        $this->paymentMode['value'] = $paymentMode;
+    }
+
+    /**
+     * Unsets Payment Mode.
+     * Payment mode
+     */
+    public function unsetPaymentMode(): void
+    {
+        $this->paymentMode = [];
     }
 
     /**
@@ -485,27 +665,57 @@ class GetRecipientResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']                                  = $this->id;
-        $json['name']                                = $this->name;
-        $json['email']                               = $this->email;
-        $json['document']                            = $this->document;
-        $json['description']                         = $this->description;
-        $json['type']                                = $this->type;
-        $json['status']                              = $this->status;
-        $json['created_at']                          = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']                          = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        $json['deleted_at']                          = DateTimeHelper::toRfc3339DateTime($this->deletedAt);
-        $json['default_bank_account']                = $this->defaultBankAccount;
-        $json['gateway_recipients']                  = $this->gatewayRecipients;
-        $json['metadata']                            = $this->metadata;
+        if (!empty($this->id)) {
+            $json['id']                              = $this->id['value'];
+        }
+        if (!empty($this->name)) {
+            $json['name']                            = $this->name['value'];
+        }
+        if (!empty($this->email)) {
+            $json['email']                           = $this->email['value'];
+        }
+        if (!empty($this->document)) {
+            $json['document']                        = $this->document['value'];
+        }
+        if (!empty($this->description)) {
+            $json['description']                     = $this->description['value'];
+        }
+        if (!empty($this->type)) {
+            $json['type']                            = $this->type['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']                          = $this->status['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']                      = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']                      = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
+        }
+        if (!empty($this->deletedAt)) {
+            $json['deleted_at']                      = DateTimeHelper::toRfc3339DateTime($this->deletedAt['value']);
+        }
+        if (!empty($this->defaultBankAccount)) {
+            $json['default_bank_account']            = $this->defaultBankAccount['value'];
+        }
+        if (!empty($this->gatewayRecipients)) {
+            $json['gateway_recipients']              = $this->gatewayRecipients['value'];
+        }
+        if (!empty($this->metadata)) {
+            $json['metadata']                        = $this->metadata['value'];
+        }
         if (!empty($this->automaticAnticipationSettings)) {
             $json['automatic_anticipation_settings'] = $this->automaticAnticipationSettings['value'];
         }
         if (!empty($this->transferSettings)) {
             $json['transfer_settings']               = $this->transferSettings['value'];
         }
-        $json['code']                                = $this->code;
-        $json['payment_mode']                        = $this->paymentMode;
+        if (!empty($this->code)) {
+            $json['code']                            = $this->code['value'];
+        }
+        if (!empty($this->paymentMode)) {
+            $json['payment_mode']                    = $this->paymentMode['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

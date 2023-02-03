@@ -18,31 +18,34 @@ use stdClass;
 class GetPixBankAccountResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $bankName;
+    private $bankName = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $ispb;
+    private $ispb = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $branchCode;
+    private $branchCode = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $accountNumber;
+    private $accountNumber = [];
 
     /**
      * Returns Bank Name.
      */
     public function getBankName(): ?string
     {
-        return $this->bankName;
+        if (count($this->bankName) == 0) {
+            return null;
+        }
+        return $this->bankName['value'];
     }
 
     /**
@@ -52,7 +55,15 @@ class GetPixBankAccountResponse implements \JsonSerializable
      */
     public function setBankName(?string $bankName): void
     {
-        $this->bankName = $bankName;
+        $this->bankName['value'] = $bankName;
+    }
+
+    /**
+     * Unsets Bank Name.
+     */
+    public function unsetBankName(): void
+    {
+        $this->bankName = [];
     }
 
     /**
@@ -60,7 +71,10 @@ class GetPixBankAccountResponse implements \JsonSerializable
      */
     public function getIspb(): ?string
     {
-        return $this->ispb;
+        if (count($this->ispb) == 0) {
+            return null;
+        }
+        return $this->ispb['value'];
     }
 
     /**
@@ -70,7 +84,15 @@ class GetPixBankAccountResponse implements \JsonSerializable
      */
     public function setIspb(?string $ispb): void
     {
-        $this->ispb = $ispb;
+        $this->ispb['value'] = $ispb;
+    }
+
+    /**
+     * Unsets Ispb.
+     */
+    public function unsetIspb(): void
+    {
+        $this->ispb = [];
     }
 
     /**
@@ -78,7 +100,10 @@ class GetPixBankAccountResponse implements \JsonSerializable
      */
     public function getBranchCode(): ?string
     {
-        return $this->branchCode;
+        if (count($this->branchCode) == 0) {
+            return null;
+        }
+        return $this->branchCode['value'];
     }
 
     /**
@@ -88,7 +113,15 @@ class GetPixBankAccountResponse implements \JsonSerializable
      */
     public function setBranchCode(?string $branchCode): void
     {
-        $this->branchCode = $branchCode;
+        $this->branchCode['value'] = $branchCode;
+    }
+
+    /**
+     * Unsets Branch Code.
+     */
+    public function unsetBranchCode(): void
+    {
+        $this->branchCode = [];
     }
 
     /**
@@ -96,7 +129,10 @@ class GetPixBankAccountResponse implements \JsonSerializable
      */
     public function getAccountNumber(): ?string
     {
-        return $this->accountNumber;
+        if (count($this->accountNumber) == 0) {
+            return null;
+        }
+        return $this->accountNumber['value'];
     }
 
     /**
@@ -106,7 +142,15 @@ class GetPixBankAccountResponse implements \JsonSerializable
      */
     public function setAccountNumber(?string $accountNumber): void
     {
-        $this->accountNumber = $accountNumber;
+        $this->accountNumber['value'] = $accountNumber;
+    }
+
+    /**
+     * Unsets Account Number.
+     */
+    public function unsetAccountNumber(): void
+    {
+        $this->accountNumber = [];
     }
 
     /**
@@ -121,10 +165,18 @@ class GetPixBankAccountResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['bank_name']      = $this->bankName;
-        $json['ispb']           = $this->ispb;
-        $json['branch_code']    = $this->branchCode;
-        $json['account_number'] = $this->accountNumber;
+        if (!empty($this->bankName)) {
+            $json['bank_name']      = $this->bankName['value'];
+        }
+        if (!empty($this->ispb)) {
+            $json['ispb']           = $this->ispb['value'];
+        }
+        if (!empty($this->branchCode)) {
+            $json['branch_code']    = $this->branchCode['value'];
+        }
+        if (!empty($this->accountNumber)) {
+            $json['account_number'] = $this->accountNumber['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

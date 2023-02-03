@@ -15,21 +15,24 @@ use stdClass;
 class GetPhonesResponse implements \JsonSerializable
 {
     /**
-     * @var GetPhoneResponse|null
+     * @var array
      */
-    private $homePhone;
+    private $homePhone = [];
 
     /**
-     * @var GetPhoneResponse|null
+     * @var array
      */
-    private $mobilePhone;
+    private $mobilePhone = [];
 
     /**
      * Returns Home Phone.
      */
     public function getHomePhone(): ?GetPhoneResponse
     {
-        return $this->homePhone;
+        if (count($this->homePhone) == 0) {
+            return null;
+        }
+        return $this->homePhone['value'];
     }
 
     /**
@@ -39,7 +42,15 @@ class GetPhonesResponse implements \JsonSerializable
      */
     public function setHomePhone(?GetPhoneResponse $homePhone): void
     {
-        $this->homePhone = $homePhone;
+        $this->homePhone['value'] = $homePhone;
+    }
+
+    /**
+     * Unsets Home Phone.
+     */
+    public function unsetHomePhone(): void
+    {
+        $this->homePhone = [];
     }
 
     /**
@@ -47,7 +58,10 @@ class GetPhonesResponse implements \JsonSerializable
      */
     public function getMobilePhone(): ?GetPhoneResponse
     {
-        return $this->mobilePhone;
+        if (count($this->mobilePhone) == 0) {
+            return null;
+        }
+        return $this->mobilePhone['value'];
     }
 
     /**
@@ -57,7 +71,15 @@ class GetPhonesResponse implements \JsonSerializable
      */
     public function setMobilePhone(?GetPhoneResponse $mobilePhone): void
     {
-        $this->mobilePhone = $mobilePhone;
+        $this->mobilePhone['value'] = $mobilePhone;
+    }
+
+    /**
+     * Unsets Mobile Phone.
+     */
+    public function unsetMobilePhone(): void
+    {
+        $this->mobilePhone = [];
     }
 
     /**
@@ -72,8 +94,12 @@ class GetPhonesResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['home_phone']   = $this->homePhone;
-        $json['mobile_phone'] = $this->mobilePhone;
+        if (!empty($this->homePhone)) {
+            $json['home_phone']   = $this->homePhone['value'];
+        }
+        if (!empty($this->mobilePhone)) {
+            $json['mobile_phone'] = $this->mobilePhone['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

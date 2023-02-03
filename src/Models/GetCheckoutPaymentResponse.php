@@ -19,9 +19,9 @@ use stdClass;
 class GetCheckoutPaymentResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
      * @var array
@@ -29,49 +29,49 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
     private $amount = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $defaultPaymentMethod;
+    private $defaultPaymentMethod = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $successUrl;
+    private $successUrl = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $paymentUrl;
+    private $paymentUrl = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $gatewayAffiliationId;
+    private $gatewayAffiliationId = [];
 
     /**
-     * @var string[]|null
+     * @var array
      */
-    private $acceptedPaymentMethods;
+    private $acceptedPaymentMethods = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var bool|null
+     * @var array
      */
-    private $skipCheckoutSuccessPage;
+    private $skipCheckoutSuccessPage = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
      * @var array
@@ -79,9 +79,9 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
     private $canceledAt = [];
 
     /**
-     * @var bool|null
+     * @var array
      */
-    private $customerEditable;
+    private $customerEditable = [];
 
     /**
      * @var array
@@ -89,34 +89,34 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
     private $customer = [];
 
     /**
-     * @var GetAddressResponse|null
+     * @var array
      */
-    private $billingaddress;
+    private $billingaddress = [];
 
     /**
-     * @var GetCheckoutCreditCardPaymentResponse|null
+     * @var array
      */
-    private $creditCard;
+    private $creditCard = [];
 
     /**
-     * @var GetCheckoutBoletoPaymentResponse|null
+     * @var array
      */
-    private $boleto;
+    private $boleto = [];
 
     /**
-     * @var bool|null
+     * @var array
      */
-    private $billingAddressEditable;
+    private $billingAddressEditable = [];
 
     /**
-     * @var GetShippingResponse|null
+     * @var array
      */
-    private $shipping;
+    private $shipping = [];
 
     /**
-     * @var bool|null
+     * @var array
      */
-    private $shippable;
+    private $shippable = [];
 
     /**
      * @var array
@@ -129,9 +129,9 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
     private $expiresAt = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $currency;
+    private $currency = [];
 
     /**
      * @var array
@@ -144,9 +144,9 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
     private $bankTransfer = [];
 
     /**
-     * @var string[]|null
+     * @var array
      */
-    private $acceptedBrands;
+    private $acceptedBrands = [];
 
     /**
      * @var array
@@ -158,7 +158,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -168,7 +171,15 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -209,7 +220,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getDefaultPaymentMethod(): ?string
     {
-        return $this->defaultPaymentMethod;
+        if (count($this->defaultPaymentMethod) == 0) {
+            return null;
+        }
+        return $this->defaultPaymentMethod['value'];
     }
 
     /**
@@ -220,7 +234,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setDefaultPaymentMethod(?string $defaultPaymentMethod): void
     {
-        $this->defaultPaymentMethod = $defaultPaymentMethod;
+        $this->defaultPaymentMethod['value'] = $defaultPaymentMethod;
+    }
+
+    /**
+     * Unsets Default Payment Method.
+     * Meio de pagamento padrão no checkout
+     */
+    public function unsetDefaultPaymentMethod(): void
+    {
+        $this->defaultPaymentMethod = [];
     }
 
     /**
@@ -229,7 +252,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getSuccessUrl(): ?string
     {
-        return $this->successUrl;
+        if (count($this->successUrl) == 0) {
+            return null;
+        }
+        return $this->successUrl['value'];
     }
 
     /**
@@ -240,7 +266,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setSuccessUrl(?string $successUrl): void
     {
-        $this->successUrl = $successUrl;
+        $this->successUrl['value'] = $successUrl;
+    }
+
+    /**
+     * Unsets Success Url.
+     * Url de redirecionamento de sucesso após o checkou
+     */
+    public function unsetSuccessUrl(): void
+    {
+        $this->successUrl = [];
     }
 
     /**
@@ -249,7 +284,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getPaymentUrl(): ?string
     {
-        return $this->paymentUrl;
+        if (count($this->paymentUrl) == 0) {
+            return null;
+        }
+        return $this->paymentUrl['value'];
     }
 
     /**
@@ -260,7 +298,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setPaymentUrl(?string $paymentUrl): void
     {
-        $this->paymentUrl = $paymentUrl;
+        $this->paymentUrl['value'] = $paymentUrl;
+    }
+
+    /**
+     * Unsets Payment Url.
+     * Url para pagamento usando o checkout
+     */
+    public function unsetPaymentUrl(): void
+    {
+        $this->paymentUrl = [];
     }
 
     /**
@@ -269,7 +316,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getGatewayAffiliationId(): ?string
     {
-        return $this->gatewayAffiliationId;
+        if (count($this->gatewayAffiliationId) == 0) {
+            return null;
+        }
+        return $this->gatewayAffiliationId['value'];
     }
 
     /**
@@ -280,7 +330,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setGatewayAffiliationId(?string $gatewayAffiliationId): void
     {
-        $this->gatewayAffiliationId = $gatewayAffiliationId;
+        $this->gatewayAffiliationId['value'] = $gatewayAffiliationId;
+    }
+
+    /**
+     * Unsets Gateway Affiliation Id.
+     * Código da afiliação onde o pagamento será processado no gateway
+     */
+    public function unsetGatewayAffiliationId(): void
+    {
+        $this->gatewayAffiliationId = [];
     }
 
     /**
@@ -291,7 +350,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getAcceptedPaymentMethods(): ?array
     {
-        return $this->acceptedPaymentMethods;
+        if (count($this->acceptedPaymentMethods) == 0) {
+            return null;
+        }
+        return $this->acceptedPaymentMethods['value'];
     }
 
     /**
@@ -304,7 +366,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setAcceptedPaymentMethods(?array $acceptedPaymentMethods): void
     {
-        $this->acceptedPaymentMethods = $acceptedPaymentMethods;
+        $this->acceptedPaymentMethods['value'] = $acceptedPaymentMethods;
+    }
+
+    /**
+     * Unsets Accepted Payment Methods.
+     * Meios de pagamento aceitos no checkout
+     */
+    public function unsetAcceptedPaymentMethods(): void
+    {
+        $this->acceptedPaymentMethods = [];
     }
 
     /**
@@ -313,7 +384,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -324,7 +398,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     * Status do checkout
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -333,7 +416,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getSkipCheckoutSuccessPage(): ?bool
     {
-        return $this->skipCheckoutSuccessPage;
+        if (count($this->skipCheckoutSuccessPage) == 0) {
+            return null;
+        }
+        return $this->skipCheckoutSuccessPage['value'];
     }
 
     /**
@@ -344,7 +430,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setSkipCheckoutSuccessPage(?bool $skipCheckoutSuccessPage): void
     {
-        $this->skipCheckoutSuccessPage = $skipCheckoutSuccessPage;
+        $this->skipCheckoutSuccessPage['value'] = $skipCheckoutSuccessPage;
+    }
+
+    /**
+     * Unsets Skip Checkout Success Page.
+     * Pular tela de sucesso pós-pagamento?
+     */
+    public function unsetSkipCheckoutSuccessPage(): void
+    {
+        $this->skipCheckoutSuccessPage = [];
     }
 
     /**
@@ -353,7 +448,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -365,7 +463,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     * Data de criação
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -374,7 +481,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -386,7 +496,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?\DateTime $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     * Data de atualização
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
@@ -428,7 +547,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getCustomerEditable(): ?bool
     {
-        return $this->customerEditable;
+        if (count($this->customerEditable) == 0) {
+            return null;
+        }
+        return $this->customerEditable['value'];
     }
 
     /**
@@ -439,7 +561,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setCustomerEditable(?bool $customerEditable): void
     {
-        $this->customerEditable = $customerEditable;
+        $this->customerEditable['value'] = $customerEditable;
+    }
+
+    /**
+     * Unsets Customer Editable.
+     * Torna o objeto customer editável
+     */
+    public function unsetCustomerEditable(): void
+    {
+        $this->customerEditable = [];
     }
 
     /**
@@ -480,7 +611,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getBillingaddress(): ?GetAddressResponse
     {
-        return $this->billingaddress;
+        if (count($this->billingaddress) == 0) {
+            return null;
+        }
+        return $this->billingaddress['value'];
     }
 
     /**
@@ -491,7 +625,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setBillingaddress(?GetAddressResponse $billingaddress): void
     {
-        $this->billingaddress = $billingaddress;
+        $this->billingaddress['value'] = $billingaddress;
+    }
+
+    /**
+     * Unsets Billingaddress.
+     * Dados do endereço de cobrança
+     */
+    public function unsetBillingaddress(): void
+    {
+        $this->billingaddress = [];
     }
 
     /**
@@ -500,7 +643,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getCreditCard(): ?GetCheckoutCreditCardPaymentResponse
     {
-        return $this->creditCard;
+        if (count($this->creditCard) == 0) {
+            return null;
+        }
+        return $this->creditCard['value'];
     }
 
     /**
@@ -511,7 +657,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setCreditCard(?GetCheckoutCreditCardPaymentResponse $creditCard): void
     {
-        $this->creditCard = $creditCard;
+        $this->creditCard['value'] = $creditCard;
+    }
+
+    /**
+     * Unsets Credit Card.
+     * Configurações de cartão de crédito
+     */
+    public function unsetCreditCard(): void
+    {
+        $this->creditCard = [];
     }
 
     /**
@@ -520,7 +675,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getBoleto(): ?GetCheckoutBoletoPaymentResponse
     {
-        return $this->boleto;
+        if (count($this->boleto) == 0) {
+            return null;
+        }
+        return $this->boleto['value'];
     }
 
     /**
@@ -531,7 +689,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setBoleto(?GetCheckoutBoletoPaymentResponse $boleto): void
     {
-        $this->boleto = $boleto;
+        $this->boleto['value'] = $boleto;
+    }
+
+    /**
+     * Unsets Boleto.
+     * Configurações de boleto
+     */
+    public function unsetBoleto(): void
+    {
+        $this->boleto = [];
     }
 
     /**
@@ -540,7 +707,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getBillingAddressEditable(): ?bool
     {
-        return $this->billingAddressEditable;
+        if (count($this->billingAddressEditable) == 0) {
+            return null;
+        }
+        return $this->billingAddressEditable['value'];
     }
 
     /**
@@ -551,7 +721,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setBillingAddressEditable(?bool $billingAddressEditable): void
     {
-        $this->billingAddressEditable = $billingAddressEditable;
+        $this->billingAddressEditable['value'] = $billingAddressEditable;
+    }
+
+    /**
+     * Unsets Billing Address Editable.
+     * Indica se o billing address poderá ser editado
+     */
+    public function unsetBillingAddressEditable(): void
+    {
+        $this->billingAddressEditable = [];
     }
 
     /**
@@ -560,7 +739,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getShipping(): ?GetShippingResponse
     {
-        return $this->shipping;
+        if (count($this->shipping) == 0) {
+            return null;
+        }
+        return $this->shipping['value'];
     }
 
     /**
@@ -571,7 +753,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setShipping(?GetShippingResponse $shipping): void
     {
-        $this->shipping = $shipping;
+        $this->shipping['value'] = $shipping;
+    }
+
+    /**
+     * Unsets Shipping.
+     * Configurações  de entrega
+     */
+    public function unsetShipping(): void
+    {
+        $this->shipping = [];
     }
 
     /**
@@ -580,7 +771,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getShippable(): ?bool
     {
-        return $this->shippable;
+        if (count($this->shippable) == 0) {
+            return null;
+        }
+        return $this->shippable['value'];
     }
 
     /**
@@ -591,7 +785,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setShippable(?bool $shippable): void
     {
-        $this->shippable = $shippable;
+        $this->shippable['value'] = $shippable;
+    }
+
+    /**
+     * Unsets Shippable.
+     * Indica se possui entrega
+     */
+    public function unsetShippable(): void
+    {
+        $this->shippable = [];
     }
 
     /**
@@ -666,7 +869,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getCurrency(): ?string
     {
-        return $this->currency;
+        if (count($this->currency) == 0) {
+            return null;
+        }
+        return $this->currency['value'];
     }
 
     /**
@@ -677,7 +883,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setCurrency(?string $currency): void
     {
-        $this->currency = $currency;
+        $this->currency['value'] = $currency;
+    }
+
+    /**
+     * Unsets Currency.
+     * Moeda
+     */
+    public function unsetCurrency(): void
+    {
+        $this->currency = [];
     }
 
     /**
@@ -752,7 +967,10 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function getAcceptedBrands(): ?array
     {
-        return $this->acceptedBrands;
+        if (count($this->acceptedBrands) == 0) {
+            return null;
+        }
+        return $this->acceptedBrands['value'];
     }
 
     /**
@@ -765,7 +983,16 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
      */
     public function setAcceptedBrands(?array $acceptedBrands): void
     {
-        $this->acceptedBrands = $acceptedBrands;
+        $this->acceptedBrands['value'] = $acceptedBrands;
+    }
+
+    /**
+     * Unsets Accepted Brands.
+     * Accepted Brands
+     */
+    public function unsetAcceptedBrands(): void
+    {
+        $this->acceptedBrands = [];
     }
 
     /**
@@ -812,48 +1039,86 @@ class GetCheckoutPaymentResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']                         = $this->id;
+        if (!empty($this->id)) {
+            $json['id']                         = $this->id['value'];
+        }
         if (!empty($this->amount)) {
-            $json['amount']                 = $this->amount['value'];
+            $json['amount']                     = $this->amount['value'];
         }
-        $json['default_payment_method']     = $this->defaultPaymentMethod;
-        $json['success_url']                = $this->successUrl;
-        $json['payment_url']                = $this->paymentUrl;
-        $json['gateway_affiliation_id']     = $this->gatewayAffiliationId;
-        $json['accepted_payment_methods']   = $this->acceptedPaymentMethods;
-        $json['status']                     = $this->status;
-        $json['skip_checkout_success_page'] = $this->skipCheckoutSuccessPage;
-        $json['created_at']                 = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']                 = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
+        if (!empty($this->defaultPaymentMethod)) {
+            $json['default_payment_method']     = $this->defaultPaymentMethod['value'];
+        }
+        if (!empty($this->successUrl)) {
+            $json['success_url']                = $this->successUrl['value'];
+        }
+        if (!empty($this->paymentUrl)) {
+            $json['payment_url']                = $this->paymentUrl['value'];
+        }
+        if (!empty($this->gatewayAffiliationId)) {
+            $json['gateway_affiliation_id']     = $this->gatewayAffiliationId['value'];
+        }
+        if (!empty($this->acceptedPaymentMethods)) {
+            $json['accepted_payment_methods']   = $this->acceptedPaymentMethods['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']                     = $this->status['value'];
+        }
+        if (!empty($this->skipCheckoutSuccessPage)) {
+            $json['skip_checkout_success_page'] = $this->skipCheckoutSuccessPage['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']                 = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']                 = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
+        }
         if (!empty($this->canceledAt)) {
-            $json['canceled_at']            = DateTimeHelper::toRfc3339DateTime($this->canceledAt['value']);
+            $json['canceled_at']                = DateTimeHelper::toRfc3339DateTime($this->canceledAt['value']);
         }
-        $json['customer_editable']          = $this->customerEditable;
+        if (!empty($this->customerEditable)) {
+            $json['customer_editable']          = $this->customerEditable['value'];
+        }
         if (!empty($this->customer)) {
-            $json['customer']               = $this->customer['value'];
+            $json['customer']                   = $this->customer['value'];
         }
-        $json['billingaddress']             = $this->billingaddress;
-        $json['credit_card']                = $this->creditCard;
-        $json['boleto']                     = $this->boleto;
-        $json['billing_address_editable']   = $this->billingAddressEditable;
-        $json['shipping']                   = $this->shipping;
-        $json['shippable']                  = $this->shippable;
+        if (!empty($this->billingaddress)) {
+            $json['billingaddress']             = $this->billingaddress['value'];
+        }
+        if (!empty($this->creditCard)) {
+            $json['credit_card']                = $this->creditCard['value'];
+        }
+        if (!empty($this->boleto)) {
+            $json['boleto']                     = $this->boleto['value'];
+        }
+        if (!empty($this->billingAddressEditable)) {
+            $json['billing_address_editable']   = $this->billingAddressEditable['value'];
+        }
+        if (!empty($this->shipping)) {
+            $json['shipping']                   = $this->shipping['value'];
+        }
+        if (!empty($this->shippable)) {
+            $json['shippable']                  = $this->shippable['value'];
+        }
         if (!empty($this->closedAt)) {
-            $json['closed_at']              = DateTimeHelper::toRfc3339DateTime($this->closedAt['value']);
+            $json['closed_at']                  = DateTimeHelper::toRfc3339DateTime($this->closedAt['value']);
         }
         if (!empty($this->expiresAt)) {
-            $json['expires_at']             = DateTimeHelper::toRfc3339DateTime($this->expiresAt['value']);
+            $json['expires_at']                 = DateTimeHelper::toRfc3339DateTime($this->expiresAt['value']);
         }
-        $json['currency']                   = $this->currency;
+        if (!empty($this->currency)) {
+            $json['currency']                   = $this->currency['value'];
+        }
         if (!empty($this->debitCard)) {
-            $json['debit_card']             = $this->debitCard['value'];
+            $json['debit_card']                 = $this->debitCard['value'];
         }
         if (!empty($this->bankTransfer)) {
-            $json['bank_transfer']          = $this->bankTransfer['value'];
+            $json['bank_transfer']              = $this->bankTransfer['value'];
         }
-        $json['accepted_brands']            = $this->acceptedBrands;
+        if (!empty($this->acceptedBrands)) {
+            $json['accepted_brands']            = $this->acceptedBrands['value'];
+        }
         if (!empty($this->pix)) {
-            $json['pix']                    = $this->pix['value'];
+            $json['pix']                        = $this->pix['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -18,31 +18,34 @@ use stdClass;
 class GetSetupResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $description;
+    private $description = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $amount;
+    private $amount = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
      * Returns Id.
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -52,7 +55,15 @@ class GetSetupResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -60,7 +71,10 @@ class GetSetupResponse implements \JsonSerializable
      */
     public function getDescription(): ?string
     {
-        return $this->description;
+        if (count($this->description) == 0) {
+            return null;
+        }
+        return $this->description['value'];
     }
 
     /**
@@ -70,7 +84,15 @@ class GetSetupResponse implements \JsonSerializable
      */
     public function setDescription(?string $description): void
     {
-        $this->description = $description;
+        $this->description['value'] = $description;
+    }
+
+    /**
+     * Unsets Description.
+     */
+    public function unsetDescription(): void
+    {
+        $this->description = [];
     }
 
     /**
@@ -78,7 +100,10 @@ class GetSetupResponse implements \JsonSerializable
      */
     public function getAmount(): ?int
     {
-        return $this->amount;
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
     }
 
     /**
@@ -88,7 +113,15 @@ class GetSetupResponse implements \JsonSerializable
      */
     public function setAmount(?int $amount): void
     {
-        $this->amount = $amount;
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
     }
 
     /**
@@ -96,7 +129,10 @@ class GetSetupResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -106,7 +142,15 @@ class GetSetupResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -121,10 +165,18 @@ class GetSetupResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']          = $this->id;
-        $json['description'] = $this->description;
-        $json['amount']      = $this->amount;
-        $json['status']      = $this->status;
+        if (!empty($this->id)) {
+            $json['id']          = $this->id['value'];
+        }
+        if (!empty($this->description)) {
+            $json['description'] = $this->description['value'];
+        }
+        if (!empty($this->amount)) {
+            $json['amount']      = $this->amount['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']      = $this->status['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

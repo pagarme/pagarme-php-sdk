@@ -18,29 +18,29 @@ use stdClass;
 class GetThreeDSecureResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $mpi;
+    private $mpi = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $eci;
+    private $eci = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $cavv;
+    private $cavv = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $transactionId;
+    private $transactionId = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $successUrl;
+    private $successUrl = [];
 
     /**
      * Returns Mpi.
@@ -48,7 +48,10 @@ class GetThreeDSecureResponse implements \JsonSerializable
      */
     public function getMpi(): ?string
     {
-        return $this->mpi;
+        if (count($this->mpi) == 0) {
+            return null;
+        }
+        return $this->mpi['value'];
     }
 
     /**
@@ -59,7 +62,16 @@ class GetThreeDSecureResponse implements \JsonSerializable
      */
     public function setMpi(?string $mpi): void
     {
-        $this->mpi = $mpi;
+        $this->mpi['value'] = $mpi;
+    }
+
+    /**
+     * Unsets Mpi.
+     * MPI Vendor
+     */
+    public function unsetMpi(): void
+    {
+        $this->mpi = [];
     }
 
     /**
@@ -68,7 +80,10 @@ class GetThreeDSecureResponse implements \JsonSerializable
      */
     public function getEci(): ?string
     {
-        return $this->eci;
+        if (count($this->eci) == 0) {
+            return null;
+        }
+        return $this->eci['value'];
     }
 
     /**
@@ -79,7 +94,16 @@ class GetThreeDSecureResponse implements \JsonSerializable
      */
     public function setEci(?string $eci): void
     {
-        $this->eci = $eci;
+        $this->eci['value'] = $eci;
+    }
+
+    /**
+     * Unsets Eci.
+     * Electronic Commerce Indicator (ECI) (Opcional)
+     */
+    public function unsetEci(): void
+    {
+        $this->eci = [];
     }
 
     /**
@@ -88,7 +112,10 @@ class GetThreeDSecureResponse implements \JsonSerializable
      */
     public function getCavv(): ?string
     {
-        return $this->cavv;
+        if (count($this->cavv) == 0) {
+            return null;
+        }
+        return $this->cavv['value'];
     }
 
     /**
@@ -99,7 +126,16 @@ class GetThreeDSecureResponse implements \JsonSerializable
      */
     public function setCavv(?string $cavv): void
     {
-        $this->cavv = $cavv;
+        $this->cavv['value'] = $cavv;
+    }
+
+    /**
+     * Unsets Cavv.
+     * Online payment cryptogram, definido pelo 3-D Secure.
+     */
+    public function unsetCavv(): void
+    {
+        $this->cavv = [];
     }
 
     /**
@@ -108,7 +144,10 @@ class GetThreeDSecureResponse implements \JsonSerializable
      */
     public function getTransactionId(): ?string
     {
-        return $this->transactionId;
+        if (count($this->transactionId) == 0) {
+            return null;
+        }
+        return $this->transactionId['value'];
     }
 
     /**
@@ -119,7 +158,16 @@ class GetThreeDSecureResponse implements \JsonSerializable
      */
     public function setTransactionId(?string $transactionId): void
     {
-        $this->transactionId = $transactionId;
+        $this->transactionId['value'] = $transactionId;
+    }
+
+    /**
+     * Unsets Transaction Id.
+     * Identificador da transação (XID)
+     */
+    public function unsetTransactionId(): void
+    {
+        $this->transactionId = [];
     }
 
     /**
@@ -128,7 +176,10 @@ class GetThreeDSecureResponse implements \JsonSerializable
      */
     public function getSuccessUrl(): ?string
     {
-        return $this->successUrl;
+        if (count($this->successUrl) == 0) {
+            return null;
+        }
+        return $this->successUrl['value'];
     }
 
     /**
@@ -139,7 +190,16 @@ class GetThreeDSecureResponse implements \JsonSerializable
      */
     public function setSuccessUrl(?string $successUrl): void
     {
-        $this->successUrl = $successUrl;
+        $this->successUrl['value'] = $successUrl;
+    }
+
+    /**
+     * Unsets Success Url.
+     * Url de redirecionamento de sucessso
+     */
+    public function unsetSuccessUrl(): void
+    {
+        $this->successUrl = [];
     }
 
     /**
@@ -154,11 +214,21 @@ class GetThreeDSecureResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['mpi']            = $this->mpi;
-        $json['eci']            = $this->eci;
-        $json['cavv']           = $this->cavv;
-        $json['transaction_Id'] = $this->transactionId;
-        $json['success_url']    = $this->successUrl;
+        if (!empty($this->mpi)) {
+            $json['mpi']            = $this->mpi['value'];
+        }
+        if (!empty($this->eci)) {
+            $json['eci']            = $this->eci['value'];
+        }
+        if (!empty($this->cavv)) {
+            $json['cavv']           = $this->cavv['value'];
+        }
+        if (!empty($this->transactionId)) {
+            $json['transaction_Id'] = $this->transactionId['value'];
+        }
+        if (!empty($this->successUrl)) {
+            $json['success_url']    = $this->successUrl['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

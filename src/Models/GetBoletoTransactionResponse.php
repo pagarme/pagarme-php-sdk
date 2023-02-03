@@ -22,39 +22,39 @@ use stdClass;
 class GetBoletoTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $url;
+    private $url = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $barcode;
+    private $barcode = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $nossoNumero;
+    private $nossoNumero = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $bank;
+    private $bank = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $documentNumber;
+    private $documentNumber = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $instructions;
+    private $instructions = [];
 
     /**
-     * @var GetBillingAddressResponse|null
+     * @var array
      */
-    private $billingAddress;
+    private $billingAddress = [];
 
     /**
      * @var array
@@ -62,24 +62,24 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     private $dueAt = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $qrCode;
+    private $qrCode = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $line;
+    private $line = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $pdfPassword;
+    private $pdfPassword = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $pdf;
+    private $pdf = [];
 
     /**
      * @var array
@@ -87,14 +87,14 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     private $paidAt = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $paidAmount;
+    private $paidAmount = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
      * @var array
@@ -102,16 +102,19 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     private $creditAt = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $statementDescriptor;
+    private $statementDescriptor = [];
 
     /**
      * Returns Url.
      */
     public function getUrl(): ?string
     {
-        return $this->url;
+        if (count($this->url) == 0) {
+            return null;
+        }
+        return $this->url['value'];
     }
 
     /**
@@ -121,7 +124,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setUrl(?string $url): void
     {
-        $this->url = $url;
+        $this->url['value'] = $url;
+    }
+
+    /**
+     * Unsets Url.
+     */
+    public function unsetUrl(): void
+    {
+        $this->url = [];
     }
 
     /**
@@ -129,7 +140,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getBarcode(): ?string
     {
-        return $this->barcode;
+        if (count($this->barcode) == 0) {
+            return null;
+        }
+        return $this->barcode['value'];
     }
 
     /**
@@ -139,7 +153,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setBarcode(?string $barcode): void
     {
-        $this->barcode = $barcode;
+        $this->barcode['value'] = $barcode;
+    }
+
+    /**
+     * Unsets Barcode.
+     */
+    public function unsetBarcode(): void
+    {
+        $this->barcode = [];
     }
 
     /**
@@ -147,7 +169,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getNossoNumero(): ?string
     {
-        return $this->nossoNumero;
+        if (count($this->nossoNumero) == 0) {
+            return null;
+        }
+        return $this->nossoNumero['value'];
     }
 
     /**
@@ -157,7 +182,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setNossoNumero(?string $nossoNumero): void
     {
-        $this->nossoNumero = $nossoNumero;
+        $this->nossoNumero['value'] = $nossoNumero;
+    }
+
+    /**
+     * Unsets Nosso Numero.
+     */
+    public function unsetNossoNumero(): void
+    {
+        $this->nossoNumero = [];
     }
 
     /**
@@ -165,7 +198,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getBank(): ?string
     {
-        return $this->bank;
+        if (count($this->bank) == 0) {
+            return null;
+        }
+        return $this->bank['value'];
     }
 
     /**
@@ -175,7 +211,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setBank(?string $bank): void
     {
-        $this->bank = $bank;
+        $this->bank['value'] = $bank;
+    }
+
+    /**
+     * Unsets Bank.
+     */
+    public function unsetBank(): void
+    {
+        $this->bank = [];
     }
 
     /**
@@ -183,7 +227,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getDocumentNumber(): ?string
     {
-        return $this->documentNumber;
+        if (count($this->documentNumber) == 0) {
+            return null;
+        }
+        return $this->documentNumber['value'];
     }
 
     /**
@@ -193,7 +240,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setDocumentNumber(?string $documentNumber): void
     {
-        $this->documentNumber = $documentNumber;
+        $this->documentNumber['value'] = $documentNumber;
+    }
+
+    /**
+     * Unsets Document Number.
+     */
+    public function unsetDocumentNumber(): void
+    {
+        $this->documentNumber = [];
     }
 
     /**
@@ -201,7 +256,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getInstructions(): ?string
     {
-        return $this->instructions;
+        if (count($this->instructions) == 0) {
+            return null;
+        }
+        return $this->instructions['value'];
     }
 
     /**
@@ -211,7 +269,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setInstructions(?string $instructions): void
     {
-        $this->instructions = $instructions;
+        $this->instructions['value'] = $instructions;
+    }
+
+    /**
+     * Unsets Instructions.
+     */
+    public function unsetInstructions(): void
+    {
+        $this->instructions = [];
     }
 
     /**
@@ -219,7 +285,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getBillingAddress(): ?GetBillingAddressResponse
     {
-        return $this->billingAddress;
+        if (count($this->billingAddress) == 0) {
+            return null;
+        }
+        return $this->billingAddress['value'];
     }
 
     /**
@@ -229,7 +298,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setBillingAddress(?GetBillingAddressResponse $billingAddress): void
     {
-        $this->billingAddress = $billingAddress;
+        $this->billingAddress['value'] = $billingAddress;
+    }
+
+    /**
+     * Unsets Billing Address.
+     */
+    public function unsetBillingAddress(): void
+    {
+        $this->billingAddress = [];
     }
 
     /**
@@ -267,7 +344,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getQrCode(): ?string
     {
-        return $this->qrCode;
+        if (count($this->qrCode) == 0) {
+            return null;
+        }
+        return $this->qrCode['value'];
     }
 
     /**
@@ -277,7 +357,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setQrCode(?string $qrCode): void
     {
-        $this->qrCode = $qrCode;
+        $this->qrCode['value'] = $qrCode;
+    }
+
+    /**
+     * Unsets Qr Code.
+     */
+    public function unsetQrCode(): void
+    {
+        $this->qrCode = [];
     }
 
     /**
@@ -285,7 +373,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getLine(): ?string
     {
-        return $this->line;
+        if (count($this->line) == 0) {
+            return null;
+        }
+        return $this->line['value'];
     }
 
     /**
@@ -295,7 +386,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setLine(?string $line): void
     {
-        $this->line = $line;
+        $this->line['value'] = $line;
+    }
+
+    /**
+     * Unsets Line.
+     */
+    public function unsetLine(): void
+    {
+        $this->line = [];
     }
 
     /**
@@ -303,7 +402,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getPdfPassword(): ?string
     {
-        return $this->pdfPassword;
+        if (count($this->pdfPassword) == 0) {
+            return null;
+        }
+        return $this->pdfPassword['value'];
     }
 
     /**
@@ -313,7 +415,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setPdfPassword(?string $pdfPassword): void
     {
-        $this->pdfPassword = $pdfPassword;
+        $this->pdfPassword['value'] = $pdfPassword;
+    }
+
+    /**
+     * Unsets Pdf Password.
+     */
+    public function unsetPdfPassword(): void
+    {
+        $this->pdfPassword = [];
     }
 
     /**
@@ -321,7 +431,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getPdf(): ?string
     {
-        return $this->pdf;
+        if (count($this->pdf) == 0) {
+            return null;
+        }
+        return $this->pdf['value'];
     }
 
     /**
@@ -331,7 +444,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setPdf(?string $pdf): void
     {
-        $this->pdf = $pdf;
+        $this->pdf['value'] = $pdf;
+    }
+
+    /**
+     * Unsets Pdf.
+     */
+    public function unsetPdf(): void
+    {
+        $this->pdf = [];
     }
 
     /**
@@ -369,7 +490,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getPaidAmount(): ?string
     {
-        return $this->paidAmount;
+        if (count($this->paidAmount) == 0) {
+            return null;
+        }
+        return $this->paidAmount['value'];
     }
 
     /**
@@ -379,7 +503,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setPaidAmount(?string $paidAmount): void
     {
-        $this->paidAmount = $paidAmount;
+        $this->paidAmount['value'] = $paidAmount;
+    }
+
+    /**
+     * Unsets Paid Amount.
+     */
+    public function unsetPaidAmount(): void
+    {
+        $this->paidAmount = [];
     }
 
     /**
@@ -387,7 +519,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -397,7 +532,15 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -436,7 +579,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function getStatementDescriptor(): ?string
     {
-        return $this->statementDescriptor;
+        if (count($this->statementDescriptor) == 0) {
+            return null;
+        }
+        return $this->statementDescriptor['value'];
     }
 
     /**
@@ -447,7 +593,16 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
      */
     public function setStatementDescriptor(?string $statementDescriptor): void
     {
-        $this->statementDescriptor = $statementDescriptor;
+        $this->statementDescriptor['value'] = $statementDescriptor;
+    }
+
+    /**
+     * Unsets Statement Descriptor.
+     * Soft Descriptor
+     */
+    public function unsetStatementDescriptor(): void
+    {
+        $this->statementDescriptor = [];
     }
 
     /**
@@ -462,29 +617,57 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements \Js
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['url']                  = $this->url;
-        $json['barcode']              = $this->barcode;
-        $json['nosso_numero']         = $this->nossoNumero;
-        $json['bank']                 = $this->bank;
-        $json['document_number']      = $this->documentNumber;
-        $json['instructions']         = $this->instructions;
-        $json['billing_address']      = $this->billingAddress;
+        if (!empty($this->url)) {
+            $json['url']                  = $this->url['value'];
+        }
+        if (!empty($this->barcode)) {
+            $json['barcode']              = $this->barcode['value'];
+        }
+        if (!empty($this->nossoNumero)) {
+            $json['nosso_numero']         = $this->nossoNumero['value'];
+        }
+        if (!empty($this->bank)) {
+            $json['bank']                 = $this->bank['value'];
+        }
+        if (!empty($this->documentNumber)) {
+            $json['document_number']      = $this->documentNumber['value'];
+        }
+        if (!empty($this->instructions)) {
+            $json['instructions']         = $this->instructions['value'];
+        }
+        if (!empty($this->billingAddress)) {
+            $json['billing_address']      = $this->billingAddress['value'];
+        }
         if (!empty($this->dueAt)) {
-            $json['due_at']           = DateTimeHelper::toRfc3339DateTime($this->dueAt['value']);
+            $json['due_at']               = DateTimeHelper::toRfc3339DateTime($this->dueAt['value']);
         }
-        $json['qr_code']              = $this->qrCode;
-        $json['line']                 = $this->line;
-        $json['pdf_password']         = $this->pdfPassword;
-        $json['pdf']                  = $this->pdf;
+        if (!empty($this->qrCode)) {
+            $json['qr_code']              = $this->qrCode['value'];
+        }
+        if (!empty($this->line)) {
+            $json['line']                 = $this->line['value'];
+        }
+        if (!empty($this->pdfPassword)) {
+            $json['pdf_password']         = $this->pdfPassword['value'];
+        }
+        if (!empty($this->pdf)) {
+            $json['pdf']                  = $this->pdf['value'];
+        }
         if (!empty($this->paidAt)) {
-            $json['paid_at']          = DateTimeHelper::toRfc3339DateTime($this->paidAt['value']);
+            $json['paid_at']              = DateTimeHelper::toRfc3339DateTime($this->paidAt['value']);
         }
-        $json['paid_amount']          = $this->paidAmount;
-        $json['type']                 = $this->type;
+        if (!empty($this->paidAmount)) {
+            $json['paid_amount']          = $this->paidAmount['value'];
+        }
+        if (!empty($this->type)) {
+            $json['type']                 = $this->type['value'];
+        }
         if (!empty($this->creditAt)) {
-            $json['credit_at']        = DateTimeHelper::toRfc3339DateTime($this->creditAt['value']);
+            $json['credit_at']            = DateTimeHelper::toRfc3339DateTime($this->creditAt['value']);
         }
-        $json['statement_descriptor'] = $this->statementDescriptor;
+        if (!empty($this->statementDescriptor)) {
+            $json['statement_descriptor'] = $this->statementDescriptor['value'];
+        }
         $json = array_merge($json, parent::jsonSerialize(true));
         $json['transaction_type'] = $this->getTransactionType() ?? 'boleto';
 

@@ -16,34 +16,34 @@ use stdClass;
 class GetWithdrawResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $gatewayId;
+    private $gatewayId = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $amount;
+    private $amount = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
      * @var array
@@ -66,26 +66,29 @@ class GetWithdrawResponse implements \JsonSerializable
     private $fundingEstimatedDate = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
-     * @var GetWithdrawSourceResponse|null
+     * @var array
      */
-    private $source;
+    private $source = [];
 
     /**
-     * @var GetWithdrawTargetResponse|null
+     * @var array
      */
-    private $target;
+    private $target = [];
 
     /**
      * Returns Id.
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -95,7 +98,15 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -103,7 +114,10 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function getGatewayId(): ?string
     {
-        return $this->gatewayId;
+        if (count($this->gatewayId) == 0) {
+            return null;
+        }
+        return $this->gatewayId['value'];
     }
 
     /**
@@ -113,7 +127,15 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setGatewayId(?string $gatewayId): void
     {
-        $this->gatewayId = $gatewayId;
+        $this->gatewayId['value'] = $gatewayId;
+    }
+
+    /**
+     * Unsets Gateway Id.
+     */
+    public function unsetGatewayId(): void
+    {
+        $this->gatewayId = [];
     }
 
     /**
@@ -121,7 +143,10 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function getAmount(): ?int
     {
-        return $this->amount;
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
     }
 
     /**
@@ -131,7 +156,15 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setAmount(?int $amount): void
     {
-        $this->amount = $amount;
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
     }
 
     /**
@@ -139,7 +172,10 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -149,7 +185,15 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -157,7 +201,10 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -168,7 +215,15 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -176,7 +231,10 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -187,7 +245,15 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?\DateTime $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
@@ -317,7 +383,10 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -327,7 +396,15 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -335,7 +412,10 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function getSource(): ?GetWithdrawSourceResponse
     {
-        return $this->source;
+        if (count($this->source) == 0) {
+            return null;
+        }
+        return $this->source['value'];
     }
 
     /**
@@ -345,7 +425,15 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setSource(?GetWithdrawSourceResponse $source): void
     {
-        $this->source = $source;
+        $this->source['value'] = $source;
+    }
+
+    /**
+     * Unsets Source.
+     */
+    public function unsetSource(): void
+    {
+        $this->source = [];
     }
 
     /**
@@ -353,7 +441,10 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function getTarget(): ?GetWithdrawTargetResponse
     {
-        return $this->target;
+        if (count($this->target) == 0) {
+            return null;
+        }
+        return $this->target['value'];
     }
 
     /**
@@ -363,7 +454,15 @@ class GetWithdrawResponse implements \JsonSerializable
      */
     public function setTarget(?GetWithdrawTargetResponse $target): void
     {
-        $this->target = $target;
+        $this->target['value'] = $target;
+    }
+
+    /**
+     * Unsets Target.
+     */
+    public function unsetTarget(): void
+    {
+        $this->target = [];
     }
 
     /**
@@ -378,12 +477,24 @@ class GetWithdrawResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']                         = $this->id;
-        $json['gateway_id']                 = $this->gatewayId;
-        $json['amount']                     = $this->amount;
-        $json['status']                     = $this->status;
-        $json['created_at']                 = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']                 = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
+        if (!empty($this->id)) {
+            $json['id']                     = $this->id['value'];
+        }
+        if (!empty($this->gatewayId)) {
+            $json['gateway_id']             = $this->gatewayId['value'];
+        }
+        if (!empty($this->amount)) {
+            $json['amount']                 = $this->amount['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']                 = $this->status['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']             = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']             = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
+        }
         if (!empty($this->metadata)) {
             $json['metadata']               = $this->metadata['value'];
         }
@@ -396,9 +507,15 @@ class GetWithdrawResponse implements \JsonSerializable
         if (!empty($this->fundingEstimatedDate)) {
             $json['funding_estimated_date'] = DateTimeHelper::toRfc3339DateTime($this->fundingEstimatedDate['value']);
         }
-        $json['type']                       = $this->type;
-        $json['source']                     = $this->source;
-        $json['target']                     = $this->target;
+        if (!empty($this->type)) {
+            $json['type']                   = $this->type['value'];
+        }
+        if (!empty($this->source)) {
+            $json['source']                 = $this->source['value'];
+        }
+        if (!empty($this->target)) {
+            $json['target']                 = $this->target['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

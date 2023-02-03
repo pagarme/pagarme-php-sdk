@@ -15,36 +15,39 @@ use stdClass;
 class GetAntifraudResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $returnCode;
+    private $returnCode = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $returnMessage;
+    private $returnMessage = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $providerName;
+    private $providerName = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $score;
+    private $score = [];
 
     /**
      * Returns Status.
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -54,7 +57,15 @@ class GetAntifraudResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -62,7 +73,10 @@ class GetAntifraudResponse implements \JsonSerializable
      */
     public function getReturnCode(): ?string
     {
-        return $this->returnCode;
+        if (count($this->returnCode) == 0) {
+            return null;
+        }
+        return $this->returnCode['value'];
     }
 
     /**
@@ -72,7 +86,15 @@ class GetAntifraudResponse implements \JsonSerializable
      */
     public function setReturnCode(?string $returnCode): void
     {
-        $this->returnCode = $returnCode;
+        $this->returnCode['value'] = $returnCode;
+    }
+
+    /**
+     * Unsets Return Code.
+     */
+    public function unsetReturnCode(): void
+    {
+        $this->returnCode = [];
     }
 
     /**
@@ -80,7 +102,10 @@ class GetAntifraudResponse implements \JsonSerializable
      */
     public function getReturnMessage(): ?string
     {
-        return $this->returnMessage;
+        if (count($this->returnMessage) == 0) {
+            return null;
+        }
+        return $this->returnMessage['value'];
     }
 
     /**
@@ -90,7 +115,15 @@ class GetAntifraudResponse implements \JsonSerializable
      */
     public function setReturnMessage(?string $returnMessage): void
     {
-        $this->returnMessage = $returnMessage;
+        $this->returnMessage['value'] = $returnMessage;
+    }
+
+    /**
+     * Unsets Return Message.
+     */
+    public function unsetReturnMessage(): void
+    {
+        $this->returnMessage = [];
     }
 
     /**
@@ -98,7 +131,10 @@ class GetAntifraudResponse implements \JsonSerializable
      */
     public function getProviderName(): ?string
     {
-        return $this->providerName;
+        if (count($this->providerName) == 0) {
+            return null;
+        }
+        return $this->providerName['value'];
     }
 
     /**
@@ -108,7 +144,15 @@ class GetAntifraudResponse implements \JsonSerializable
      */
     public function setProviderName(?string $providerName): void
     {
-        $this->providerName = $providerName;
+        $this->providerName['value'] = $providerName;
+    }
+
+    /**
+     * Unsets Provider Name.
+     */
+    public function unsetProviderName(): void
+    {
+        $this->providerName = [];
     }
 
     /**
@@ -116,7 +160,10 @@ class GetAntifraudResponse implements \JsonSerializable
      */
     public function getScore(): ?string
     {
-        return $this->score;
+        if (count($this->score) == 0) {
+            return null;
+        }
+        return $this->score['value'];
     }
 
     /**
@@ -126,7 +173,15 @@ class GetAntifraudResponse implements \JsonSerializable
      */
     public function setScore(?string $score): void
     {
-        $this->score = $score;
+        $this->score['value'] = $score;
+    }
+
+    /**
+     * Unsets Score.
+     */
+    public function unsetScore(): void
+    {
+        $this->score = [];
     }
 
     /**
@@ -141,11 +196,21 @@ class GetAntifraudResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['status']         = $this->status;
-        $json['return_code']    = $this->returnCode;
-        $json['return_message'] = $this->returnMessage;
-        $json['provider_name']  = $this->providerName;
-        $json['score']          = $this->score;
+        if (!empty($this->status)) {
+            $json['status']         = $this->status['value'];
+        }
+        if (!empty($this->returnCode)) {
+            $json['return_code']    = $this->returnCode['value'];
+        }
+        if (!empty($this->returnMessage)) {
+            $json['return_message'] = $this->returnMessage['value'];
+        }
+        if (!empty($this->providerName)) {
+            $json['provider_name']  = $this->providerName['value'];
+        }
+        if (!empty($this->score)) {
+            $json['score']          = $this->score['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

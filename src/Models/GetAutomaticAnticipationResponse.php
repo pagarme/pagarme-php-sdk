@@ -15,36 +15,39 @@ use stdClass;
 class GetAutomaticAnticipationResponse implements \JsonSerializable
 {
     /**
-     * @var bool|null
+     * @var array
      */
-    private $enabled;
+    private $enabled = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $volumePercentage;
+    private $volumePercentage = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $delay;
+    private $delay = [];
 
     /**
-     * @var int[]|null
+     * @var array
      */
-    private $days;
+    private $days = [];
 
     /**
      * Returns Enabled.
      */
     public function getEnabled(): ?bool
     {
-        return $this->enabled;
+        if (count($this->enabled) == 0) {
+            return null;
+        }
+        return $this->enabled['value'];
     }
 
     /**
@@ -54,7 +57,15 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
      */
     public function setEnabled(?bool $enabled): void
     {
-        $this->enabled = $enabled;
+        $this->enabled['value'] = $enabled;
+    }
+
+    /**
+     * Unsets Enabled.
+     */
+    public function unsetEnabled(): void
+    {
+        $this->enabled = [];
     }
 
     /**
@@ -62,7 +73,10 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -72,7 +86,15 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -80,7 +102,10 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
      */
     public function getVolumePercentage(): ?int
     {
-        return $this->volumePercentage;
+        if (count($this->volumePercentage) == 0) {
+            return null;
+        }
+        return $this->volumePercentage['value'];
     }
 
     /**
@@ -90,7 +115,15 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
      */
     public function setVolumePercentage(?int $volumePercentage): void
     {
-        $this->volumePercentage = $volumePercentage;
+        $this->volumePercentage['value'] = $volumePercentage;
+    }
+
+    /**
+     * Unsets Volume Percentage.
+     */
+    public function unsetVolumePercentage(): void
+    {
+        $this->volumePercentage = [];
     }
 
     /**
@@ -98,7 +131,10 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
      */
     public function getDelay(): ?int
     {
-        return $this->delay;
+        if (count($this->delay) == 0) {
+            return null;
+        }
+        return $this->delay['value'];
     }
 
     /**
@@ -108,7 +144,15 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
      */
     public function setDelay(?int $delay): void
     {
-        $this->delay = $delay;
+        $this->delay['value'] = $delay;
+    }
+
+    /**
+     * Unsets Delay.
+     */
+    public function unsetDelay(): void
+    {
+        $this->delay = [];
     }
 
     /**
@@ -118,7 +162,10 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
      */
     public function getDays(): ?array
     {
-        return $this->days;
+        if (count($this->days) == 0) {
+            return null;
+        }
+        return $this->days['value'];
     }
 
     /**
@@ -130,7 +177,15 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
      */
     public function setDays(?array $days): void
     {
-        $this->days = $days;
+        $this->days['value'] = $days;
+    }
+
+    /**
+     * Unsets Days.
+     */
+    public function unsetDays(): void
+    {
+        $this->days = [];
     }
 
     /**
@@ -145,11 +200,21 @@ class GetAutomaticAnticipationResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['enabled']           = $this->enabled;
-        $json['type']              = $this->type;
-        $json['volume_percentage'] = $this->volumePercentage;
-        $json['delay']             = $this->delay;
-        $json['days']              = $this->days;
+        if (!empty($this->enabled)) {
+            $json['enabled']           = $this->enabled['value'];
+        }
+        if (!empty($this->type)) {
+            $json['type']              = $this->type['value'];
+        }
+        if (!empty($this->volumePercentage)) {
+            $json['volume_percentage'] = $this->volumePercentage['value'];
+        }
+        if (!empty($this->delay)) {
+            $json['delay']             = $this->delay['value'];
+        }
+        if (!empty($this->days)) {
+            $json['days']              = $this->days['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

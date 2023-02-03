@@ -15,16 +15,19 @@ use stdClass;
 class GetChargesSummaryResponse implements \JsonSerializable
 {
     /**
-     * @var int|null
+     * @var array
      */
-    private $total;
+    private $total = [];
 
     /**
      * Returns Total.
      */
     public function getTotal(): ?int
     {
-        return $this->total;
+        if (count($this->total) == 0) {
+            return null;
+        }
+        return $this->total['value'];
     }
 
     /**
@@ -34,7 +37,15 @@ class GetChargesSummaryResponse implements \JsonSerializable
      */
     public function setTotal(?int $total): void
     {
-        $this->total = $total;
+        $this->total['value'] = $total;
+    }
+
+    /**
+     * Unsets Total.
+     */
+    public function unsetTotal(): void
+    {
+        $this->total = [];
     }
 
     /**
@@ -49,7 +60,9 @@ class GetChargesSummaryResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['total'] = $this->total;
+        if (!empty($this->total)) {
+            $json['total'] = $this->total['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

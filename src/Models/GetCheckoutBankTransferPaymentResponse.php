@@ -18,9 +18,9 @@ use stdClass;
 class GetCheckoutBankTransferPaymentResponse implements \JsonSerializable
 {
     /**
-     * @var string[]|null
+     * @var array
      */
-    private $bank;
+    private $bank = [];
 
     /**
      * Returns Bank.
@@ -30,7 +30,10 @@ class GetCheckoutBankTransferPaymentResponse implements \JsonSerializable
      */
     public function getBank(): ?array
     {
-        return $this->bank;
+        if (count($this->bank) == 0) {
+            return null;
+        }
+        return $this->bank['value'];
     }
 
     /**
@@ -43,7 +46,16 @@ class GetCheckoutBankTransferPaymentResponse implements \JsonSerializable
      */
     public function setBank(?array $bank): void
     {
-        $this->bank = $bank;
+        $this->bank['value'] = $bank;
+    }
+
+    /**
+     * Unsets Bank.
+     * bank list response
+     */
+    public function unsetBank(): void
+    {
+        $this->bank = [];
     }
 
     /**
@@ -58,7 +70,9 @@ class GetCheckoutBankTransferPaymentResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['bank'] = $this->bank;
+        if (!empty($this->bank)) {
+            $json['bank'] = $this->bank['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

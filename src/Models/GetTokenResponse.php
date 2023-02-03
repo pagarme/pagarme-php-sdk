@@ -19,36 +19,39 @@ use stdClass;
 class GetTokenResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $expiresAt;
+    private $expiresAt = [];
 
     /**
-     * @var GetCardTokenResponse|null
+     * @var array
      */
-    private $card;
+    private $card = [];
 
     /**
      * Returns Id.
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -58,7 +61,15 @@ class GetTokenResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -66,7 +77,10 @@ class GetTokenResponse implements \JsonSerializable
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -76,7 +90,15 @@ class GetTokenResponse implements \JsonSerializable
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -84,7 +106,10 @@ class GetTokenResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -95,7 +120,15 @@ class GetTokenResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -103,7 +136,10 @@ class GetTokenResponse implements \JsonSerializable
      */
     public function getExpiresAt(): ?string
     {
-        return $this->expiresAt;
+        if (count($this->expiresAt) == 0) {
+            return null;
+        }
+        return $this->expiresAt['value'];
     }
 
     /**
@@ -113,7 +149,15 @@ class GetTokenResponse implements \JsonSerializable
      */
     public function setExpiresAt(?string $expiresAt): void
     {
-        $this->expiresAt = $expiresAt;
+        $this->expiresAt['value'] = $expiresAt;
+    }
+
+    /**
+     * Unsets Expires At.
+     */
+    public function unsetExpiresAt(): void
+    {
+        $this->expiresAt = [];
     }
 
     /**
@@ -121,7 +165,10 @@ class GetTokenResponse implements \JsonSerializable
      */
     public function getCard(): ?GetCardTokenResponse
     {
-        return $this->card;
+        if (count($this->card) == 0) {
+            return null;
+        }
+        return $this->card['value'];
     }
 
     /**
@@ -131,7 +178,15 @@ class GetTokenResponse implements \JsonSerializable
      */
     public function setCard(?GetCardTokenResponse $card): void
     {
-        $this->card = $card;
+        $this->card['value'] = $card;
+    }
+
+    /**
+     * Unsets Card.
+     */
+    public function unsetCard(): void
+    {
+        $this->card = [];
     }
 
     /**
@@ -146,11 +201,21 @@ class GetTokenResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']         = $this->id;
-        $json['type']       = $this->type;
-        $json['created_at'] = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['expires_at'] = $this->expiresAt;
-        $json['card']       = $this->card;
+        if (!empty($this->id)) {
+            $json['id']         = $this->id['value'];
+        }
+        if (!empty($this->type)) {
+            $json['type']       = $this->type['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at'] = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->expiresAt)) {
+            $json['expires_at'] = $this->expiresAt['value'];
+        }
+        if (!empty($this->card)) {
+            $json['card']       = $this->card['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

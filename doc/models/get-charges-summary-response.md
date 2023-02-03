@@ -9,13 +9,13 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `total` | `?int` | Required | - | getTotal(): ?int | setTotal(?int total): void |
+| `total` | `?int` | Optional | - | getTotal(): ?int | setTotal(?int total): void |
 
 ## Example (as JSON)
 
 ```json
 {
-  "total": 10
+  "total": null
 }
 ```
 

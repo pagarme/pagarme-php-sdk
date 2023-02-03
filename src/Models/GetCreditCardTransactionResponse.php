@@ -21,54 +21,54 @@ use stdClass;
 class GetCreditCardTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $statementDescriptor;
+    private $statementDescriptor = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerName;
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $acquirerAffiliationCode;
+    private $acquirerAffiliationCode = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerTid;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $acquirerNsu;
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $acquirerAuthCode;
+    private $acquirerAuthCode = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $operationType;
+    private $operationType = [];
 
     /**
-     * @var GetCardResponse|null
+     * @var array
      */
-    private $card;
+    private $card = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $acquirerMessage;
+    private $acquirerMessage = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $acquirerReturnCode;
+    private $acquirerReturnCode = [];
 
     /**
      * @var array
@@ -76,21 +76,9 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
     private $installments = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $threedAuthenticationUrl;
-
-    /**
-     * @param string $acquirerName
-     * @param string $acquirerTid
-     * @param string $acquirerNsu
-     */
-    public function __construct(string $acquirerName, string $acquirerTid, string $acquirerNsu)
-    {
-        $this->acquirerName = $acquirerName;
-        $this->acquirerTid = $acquirerTid;
-        $this->acquirerNsu = $acquirerNsu;
-    }
+    private $threedAuthenticationUrl = [];
 
     /**
      * Returns Statement Descriptor.
@@ -98,7 +86,10 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function getStatementDescriptor(): ?string
     {
-        return $this->statementDescriptor;
+        if (count($this->statementDescriptor) == 0) {
+            return null;
+        }
+        return $this->statementDescriptor['value'];
     }
 
     /**
@@ -109,14 +100,23 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function setStatementDescriptor(?string $statementDescriptor): void
     {
-        $this->statementDescriptor = $statementDescriptor;
+        $this->statementDescriptor['value'] = $statementDescriptor;
+    }
+
+    /**
+     * Unsets Statement Descriptor.
+     * Text that will appear on the credit card's statement
+     */
+    public function unsetStatementDescriptor(): void
+    {
+        $this->statementDescriptor = [];
     }
 
     /**
      * Returns Acquirer Name.
      * Acquirer name
      */
-    public function getAcquirerName(): string
+    public function getAcquirerName(): ?string
     {
         return $this->acquirerName;
     }
@@ -125,10 +125,9 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      * Sets Acquirer Name.
      * Acquirer name
      *
-     * @required
      * @maps acquirer_name
      */
-    public function setAcquirerName(string $acquirerName): void
+    public function setAcquirerName(?string $acquirerName): void
     {
         $this->acquirerName = $acquirerName;
     }
@@ -139,7 +138,10 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function getAcquirerAffiliationCode(): ?string
     {
-        return $this->acquirerAffiliationCode;
+        if (count($this->acquirerAffiliationCode) == 0) {
+            return null;
+        }
+        return $this->acquirerAffiliationCode['value'];
     }
 
     /**
@@ -150,14 +152,23 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function setAcquirerAffiliationCode(?string $acquirerAffiliationCode): void
     {
-        $this->acquirerAffiliationCode = $acquirerAffiliationCode;
+        $this->acquirerAffiliationCode['value'] = $acquirerAffiliationCode;
+    }
+
+    /**
+     * Unsets Acquirer Affiliation Code.
+     * Aquirer affiliation code
+     */
+    public function unsetAcquirerAffiliationCode(): void
+    {
+        $this->acquirerAffiliationCode = [];
     }
 
     /**
      * Returns Acquirer Tid.
      * Acquirer TID
      */
-    public function getAcquirerTid(): string
+    public function getAcquirerTid(): ?string
     {
         return $this->acquirerTid;
     }
@@ -166,10 +177,9 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      * Sets Acquirer Tid.
      * Acquirer TID
      *
-     * @required
      * @maps acquirer_tid
      */
-    public function setAcquirerTid(string $acquirerTid): void
+    public function setAcquirerTid(?string $acquirerTid): void
     {
         $this->acquirerTid = $acquirerTid;
     }
@@ -178,7 +188,7 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      * Returns Acquirer Nsu.
      * Acquirer NSU
      */
-    public function getAcquirerNsu(): string
+    public function getAcquirerNsu(): ?string
     {
         return $this->acquirerNsu;
     }
@@ -187,10 +197,9 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      * Sets Acquirer Nsu.
      * Acquirer NSU
      *
-     * @required
      * @maps acquirer_nsu
      */
-    public function setAcquirerNsu(string $acquirerNsu): void
+    public function setAcquirerNsu(?string $acquirerNsu): void
     {
         $this->acquirerNsu = $acquirerNsu;
     }
@@ -201,7 +210,10 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function getAcquirerAuthCode(): ?string
     {
-        return $this->acquirerAuthCode;
+        if (count($this->acquirerAuthCode) == 0) {
+            return null;
+        }
+        return $this->acquirerAuthCode['value'];
     }
 
     /**
@@ -212,7 +224,16 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function setAcquirerAuthCode(?string $acquirerAuthCode): void
     {
-        $this->acquirerAuthCode = $acquirerAuthCode;
+        $this->acquirerAuthCode['value'] = $acquirerAuthCode;
+    }
+
+    /**
+     * Unsets Acquirer Auth Code.
+     * Acquirer authorization code
+     */
+    public function unsetAcquirerAuthCode(): void
+    {
+        $this->acquirerAuthCode = [];
     }
 
     /**
@@ -221,7 +242,10 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function getOperationType(): ?string
     {
-        return $this->operationType;
+        if (count($this->operationType) == 0) {
+            return null;
+        }
+        return $this->operationType['value'];
     }
 
     /**
@@ -232,7 +256,16 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function setOperationType(?string $operationType): void
     {
-        $this->operationType = $operationType;
+        $this->operationType['value'] = $operationType;
+    }
+
+    /**
+     * Unsets Operation Type.
+     * Operation type
+     */
+    public function unsetOperationType(): void
+    {
+        $this->operationType = [];
     }
 
     /**
@@ -241,7 +274,10 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function getCard(): ?GetCardResponse
     {
-        return $this->card;
+        if (count($this->card) == 0) {
+            return null;
+        }
+        return $this->card['value'];
     }
 
     /**
@@ -252,7 +288,16 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function setCard(?GetCardResponse $card): void
     {
-        $this->card = $card;
+        $this->card['value'] = $card;
+    }
+
+    /**
+     * Unsets Card.
+     * Card data
+     */
+    public function unsetCard(): void
+    {
+        $this->card = [];
     }
 
     /**
@@ -261,7 +306,10 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function getAcquirerMessage(): ?string
     {
-        return $this->acquirerMessage;
+        if (count($this->acquirerMessage) == 0) {
+            return null;
+        }
+        return $this->acquirerMessage['value'];
     }
 
     /**
@@ -272,7 +320,16 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function setAcquirerMessage(?string $acquirerMessage): void
     {
-        $this->acquirerMessage = $acquirerMessage;
+        $this->acquirerMessage['value'] = $acquirerMessage;
+    }
+
+    /**
+     * Unsets Acquirer Message.
+     * Acquirer message
+     */
+    public function unsetAcquirerMessage(): void
+    {
+        $this->acquirerMessage = [];
     }
 
     /**
@@ -281,7 +338,10 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function getAcquirerReturnCode(): ?string
     {
-        return $this->acquirerReturnCode;
+        if (count($this->acquirerReturnCode) == 0) {
+            return null;
+        }
+        return $this->acquirerReturnCode['value'];
     }
 
     /**
@@ -292,7 +352,16 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function setAcquirerReturnCode(?string $acquirerReturnCode): void
     {
-        $this->acquirerReturnCode = $acquirerReturnCode;
+        $this->acquirerReturnCode['value'] = $acquirerReturnCode;
+    }
+
+    /**
+     * Unsets Acquirer Return Code.
+     * Acquirer Return Code
+     */
+    public function unsetAcquirerReturnCode(): void
+    {
+        $this->acquirerReturnCode = [];
     }
 
     /**
@@ -333,7 +402,10 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function getThreedAuthenticationUrl(): ?string
     {
-        return $this->threedAuthenticationUrl;
+        if (count($this->threedAuthenticationUrl) == 0) {
+            return null;
+        }
+        return $this->threedAuthenticationUrl['value'];
     }
 
     /**
@@ -344,7 +416,16 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
      */
     public function setThreedAuthenticationUrl(?string $threedAuthenticationUrl): void
     {
-        $this->threedAuthenticationUrl = $threedAuthenticationUrl;
+        $this->threedAuthenticationUrl['value'] = $threedAuthenticationUrl;
+    }
+
+    /**
+     * Unsets Threed Authentication Url.
+     * 3D-S authentication Url
+     */
+    public function unsetThreedAuthenticationUrl(): void
+    {
+        $this->threedAuthenticationUrl = [];
     }
 
     /**
@@ -359,20 +440,42 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['statement_descriptor']      = $this->statementDescriptor;
-        $json['acquirer_name']             = $this->acquirerName;
-        $json['acquirer_affiliation_code'] = $this->acquirerAffiliationCode;
-        $json['acquirer_tid']              = $this->acquirerTid;
-        $json['acquirer_nsu']              = $this->acquirerNsu;
-        $json['acquirer_auth_code']        = $this->acquirerAuthCode;
-        $json['operation_type']            = $this->operationType;
-        $json['card']                      = $this->card;
-        $json['acquirer_message']          = $this->acquirerMessage;
-        $json['acquirer_return_code']      = $this->acquirerReturnCode;
-        if (!empty($this->installments)) {
-            $json['installments']          = $this->installments['value'];
+        if (!empty($this->statementDescriptor)) {
+            $json['statement_descriptor']      = $this->statementDescriptor['value'];
         }
-        $json['threed_authentication_url'] = $this->threedAuthenticationUrl;
+        if (isset($this->acquirerName)) {
+            $json['acquirer_name']             = $this->acquirerName;
+        }
+        if (!empty($this->acquirerAffiliationCode)) {
+            $json['acquirer_affiliation_code'] = $this->acquirerAffiliationCode['value'];
+        }
+        if (isset($this->acquirerTid)) {
+            $json['acquirer_tid']              = $this->acquirerTid;
+        }
+        if (isset($this->acquirerNsu)) {
+            $json['acquirer_nsu']              = $this->acquirerNsu;
+        }
+        if (!empty($this->acquirerAuthCode)) {
+            $json['acquirer_auth_code']        = $this->acquirerAuthCode['value'];
+        }
+        if (!empty($this->operationType)) {
+            $json['operation_type']            = $this->operationType['value'];
+        }
+        if (!empty($this->card)) {
+            $json['card']                      = $this->card['value'];
+        }
+        if (!empty($this->acquirerMessage)) {
+            $json['acquirer_message']          = $this->acquirerMessage['value'];
+        }
+        if (!empty($this->acquirerReturnCode)) {
+            $json['acquirer_return_code']      = $this->acquirerReturnCode['value'];
+        }
+        if (!empty($this->installments)) {
+            $json['installments']              = $this->installments['value'];
+        }
+        if (!empty($this->threedAuthenticationUrl)) {
+            $json['threed_authentication_url'] = $this->threedAuthenticationUrl['value'];
+        }
         $json = array_merge($json, parent::jsonSerialize(true));
         $json['transaction_type'] = $this->getTransactionType() ?? 'credit_card';
 

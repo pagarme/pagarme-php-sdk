@@ -19,64 +19,64 @@ use stdClass;
 class GetAddressResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $street;
+    private $street = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $number;
+    private $number = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $complement;
+    private $complement = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $zipCode;
+    private $zipCode = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $neighborhood;
+    private $neighborhood = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $city;
+    private $city = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $state;
+    private $state = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $country;
+    private $country = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
      * @var array
@@ -84,19 +84,19 @@ class GetAddressResponse implements \JsonSerializable
     private $customer = [];
 
     /**
-     * @var array<string,string>|null
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $line1;
+    private $line1 = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $line2;
+    private $line2 = [];
 
     /**
      * @var array
@@ -108,7 +108,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -118,7 +121,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -126,7 +137,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getStreet(): ?string
     {
-        return $this->street;
+        if (count($this->street) == 0) {
+            return null;
+        }
+        return $this->street['value'];
     }
 
     /**
@@ -136,7 +150,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setStreet(?string $street): void
     {
-        $this->street = $street;
+        $this->street['value'] = $street;
+    }
+
+    /**
+     * Unsets Street.
+     */
+    public function unsetStreet(): void
+    {
+        $this->street = [];
     }
 
     /**
@@ -144,7 +166,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getNumber(): ?string
     {
-        return $this->number;
+        if (count($this->number) == 0) {
+            return null;
+        }
+        return $this->number['value'];
     }
 
     /**
@@ -154,7 +179,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setNumber(?string $number): void
     {
-        $this->number = $number;
+        $this->number['value'] = $number;
+    }
+
+    /**
+     * Unsets Number.
+     */
+    public function unsetNumber(): void
+    {
+        $this->number = [];
     }
 
     /**
@@ -162,7 +195,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getComplement(): ?string
     {
-        return $this->complement;
+        if (count($this->complement) == 0) {
+            return null;
+        }
+        return $this->complement['value'];
     }
 
     /**
@@ -172,7 +208,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setComplement(?string $complement): void
     {
-        $this->complement = $complement;
+        $this->complement['value'] = $complement;
+    }
+
+    /**
+     * Unsets Complement.
+     */
+    public function unsetComplement(): void
+    {
+        $this->complement = [];
     }
 
     /**
@@ -180,7 +224,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getZipCode(): ?string
     {
-        return $this->zipCode;
+        if (count($this->zipCode) == 0) {
+            return null;
+        }
+        return $this->zipCode['value'];
     }
 
     /**
@@ -190,7 +237,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setZipCode(?string $zipCode): void
     {
-        $this->zipCode = $zipCode;
+        $this->zipCode['value'] = $zipCode;
+    }
+
+    /**
+     * Unsets Zip Code.
+     */
+    public function unsetZipCode(): void
+    {
+        $this->zipCode = [];
     }
 
     /**
@@ -198,7 +253,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getNeighborhood(): ?string
     {
-        return $this->neighborhood;
+        if (count($this->neighborhood) == 0) {
+            return null;
+        }
+        return $this->neighborhood['value'];
     }
 
     /**
@@ -208,7 +266,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setNeighborhood(?string $neighborhood): void
     {
-        $this->neighborhood = $neighborhood;
+        $this->neighborhood['value'] = $neighborhood;
+    }
+
+    /**
+     * Unsets Neighborhood.
+     */
+    public function unsetNeighborhood(): void
+    {
+        $this->neighborhood = [];
     }
 
     /**
@@ -216,7 +282,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getCity(): ?string
     {
-        return $this->city;
+        if (count($this->city) == 0) {
+            return null;
+        }
+        return $this->city['value'];
     }
 
     /**
@@ -226,7 +295,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setCity(?string $city): void
     {
-        $this->city = $city;
+        $this->city['value'] = $city;
+    }
+
+    /**
+     * Unsets City.
+     */
+    public function unsetCity(): void
+    {
+        $this->city = [];
     }
 
     /**
@@ -234,7 +311,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getState(): ?string
     {
-        return $this->state;
+        if (count($this->state) == 0) {
+            return null;
+        }
+        return $this->state['value'];
     }
 
     /**
@@ -244,7 +324,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setState(?string $state): void
     {
-        $this->state = $state;
+        $this->state['value'] = $state;
+    }
+
+    /**
+     * Unsets State.
+     */
+    public function unsetState(): void
+    {
+        $this->state = [];
     }
 
     /**
@@ -252,7 +340,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getCountry(): ?string
     {
-        return $this->country;
+        if (count($this->country) == 0) {
+            return null;
+        }
+        return $this->country['value'];
     }
 
     /**
@@ -262,7 +353,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setCountry(?string $country): void
     {
-        $this->country = $country;
+        $this->country['value'] = $country;
+    }
+
+    /**
+     * Unsets Country.
+     */
+    public function unsetCountry(): void
+    {
+        $this->country = [];
     }
 
     /**
@@ -270,7 +369,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -280,7 +382,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -288,7 +398,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -299,7 +412,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -307,7 +428,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -318,7 +442,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?\DateTime $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
@@ -357,7 +489,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
@@ -369,7 +504,15 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -378,7 +521,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getLine1(): ?string
     {
-        return $this->line1;
+        if (count($this->line1) == 0) {
+            return null;
+        }
+        return $this->line1['value'];
     }
 
     /**
@@ -389,7 +535,16 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setLine1(?string $line1): void
     {
-        $this->line1 = $line1;
+        $this->line1['value'] = $line1;
+    }
+
+    /**
+     * Unsets Line 1.
+     * Line 1 for address
+     */
+    public function unsetLine1(): void
+    {
+        $this->line1 = [];
     }
 
     /**
@@ -398,7 +553,10 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function getLine2(): ?string
     {
-        return $this->line2;
+        if (count($this->line2) == 0) {
+            return null;
+        }
+        return $this->line2['value'];
     }
 
     /**
@@ -409,7 +567,16 @@ class GetAddressResponse implements \JsonSerializable
      */
     public function setLine2(?string $line2): void
     {
-        $this->line2 = $line2;
+        $this->line2['value'] = $line2;
+    }
+
+    /**
+     * Unsets Line 2.
+     * Line 2 for address
+     */
+    public function unsetLine2(): void
+    {
+        $this->line2 = [];
     }
 
     /**
@@ -454,26 +621,56 @@ class GetAddressResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']             = $this->id;
-        $json['street']         = $this->street;
-        $json['number']         = $this->number;
-        $json['complement']     = $this->complement;
-        $json['zip_code']       = $this->zipCode;
-        $json['neighborhood']   = $this->neighborhood;
-        $json['city']           = $this->city;
-        $json['state']          = $this->state;
-        $json['country']        = $this->country;
-        $json['status']         = $this->status;
-        $json['created_at']     = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']     = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        if (!empty($this->customer)) {
-            $json['customer']   = $this->customer['value'];
+        if (!empty($this->id)) {
+            $json['id']           = $this->id['value'];
         }
-        $json['metadata']       = $this->metadata;
-        $json['line_1']         = $this->line1;
-        $json['line_2']         = $this->line2;
+        if (!empty($this->street)) {
+            $json['street']       = $this->street['value'];
+        }
+        if (!empty($this->number)) {
+            $json['number']       = $this->number['value'];
+        }
+        if (!empty($this->complement)) {
+            $json['complement']   = $this->complement['value'];
+        }
+        if (!empty($this->zipCode)) {
+            $json['zip_code']     = $this->zipCode['value'];
+        }
+        if (!empty($this->neighborhood)) {
+            $json['neighborhood'] = $this->neighborhood['value'];
+        }
+        if (!empty($this->city)) {
+            $json['city']         = $this->city['value'];
+        }
+        if (!empty($this->state)) {
+            $json['state']        = $this->state['value'];
+        }
+        if (!empty($this->country)) {
+            $json['country']      = $this->country['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']       = $this->status['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']   = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']   = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
+        }
+        if (!empty($this->customer)) {
+            $json['customer']     = $this->customer['value'];
+        }
+        if (!empty($this->metadata)) {
+            $json['metadata']     = $this->metadata['value'];
+        }
+        if (!empty($this->line1)) {
+            $json['line_1']       = $this->line1['value'];
+        }
+        if (!empty($this->line2)) {
+            $json['line_2']       = $this->line2['value'];
+        }
         if (!empty($this->deletedAt)) {
-            $json['deleted_at'] = DateTimeHelper::toRfc3339DateTime($this->deletedAt['value']);
+            $json['deleted_at']   = DateTimeHelper::toRfc3339DateTime($this->deletedAt['value']);
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

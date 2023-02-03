@@ -18,21 +18,24 @@ use stdClass;
 class GetPaymentAuthenticationResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
-     * @var GetThreeDSecureResponse|null
+     * @var array
      */
-    private $threedSecure;
+    private $threedSecure = [];
 
     /**
      * Returns Type.
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -42,7 +45,15 @@ class GetPaymentAuthenticationResponse implements \JsonSerializable
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -51,7 +62,10 @@ class GetPaymentAuthenticationResponse implements \JsonSerializable
      */
     public function getThreedSecure(): ?GetThreeDSecureResponse
     {
-        return $this->threedSecure;
+        if (count($this->threedSecure) == 0) {
+            return null;
+        }
+        return $this->threedSecure['value'];
     }
 
     /**
@@ -62,7 +76,16 @@ class GetPaymentAuthenticationResponse implements \JsonSerializable
      */
     public function setThreedSecure(?GetThreeDSecureResponse $threedSecure): void
     {
-        $this->threedSecure = $threedSecure;
+        $this->threedSecure['value'] = $threedSecure;
+    }
+
+    /**
+     * Unsets Threed Secure.
+     * 3D-S payment authentication response
+     */
+    public function unsetThreedSecure(): void
+    {
+        $this->threedSecure = [];
     }
 
     /**
@@ -77,8 +100,12 @@ class GetPaymentAuthenticationResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['type']          = $this->type;
-        $json['threed_secure'] = $this->threedSecure;
+        if (!empty($this->type)) {
+            $json['type']          = $this->type['value'];
+        }
+        if (!empty($this->threedSecure)) {
+            $json['threed_secure'] = $this->threedSecure['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

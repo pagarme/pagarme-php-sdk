@@ -24,19 +24,19 @@ class GetOrderResponse implements \JsonSerializable
     private $id;
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $code;
+    private $code = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $currency;
+    private $currency = [];
 
     /**
-     * @var GetOrderItemResponse[]|null
+     * @var array
      */
-    private $items;
+    private $items = [];
 
     /**
      * @var array
@@ -44,39 +44,39 @@ class GetOrderResponse implements \JsonSerializable
     private $customer = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
-     * @var GetChargeResponse[]|null
+     * @var array
      */
-    private $charges;
+    private $charges = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $invoiceUrl;
+    private $invoiceUrl = [];
 
     /**
-     * @var GetShippingResponse|null
+     * @var array
      */
-    private $shipping;
+    private $shipping = [];
 
     /**
-     * @var array<string,string>|null
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
      * @var array
@@ -104,9 +104,9 @@ class GetOrderResponse implements \JsonSerializable
     private $device = [];
 
     /**
-     * @var bool|null
+     * @var array
      */
-    private $closed;
+    private $closed = [];
 
     /**
      * Returns Id.
@@ -131,7 +131,10 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function getCode(): ?string
     {
-        return $this->code;
+        if (count($this->code) == 0) {
+            return null;
+        }
+        return $this->code['value'];
     }
 
     /**
@@ -141,7 +144,15 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function setCode(?string $code): void
     {
-        $this->code = $code;
+        $this->code['value'] = $code;
+    }
+
+    /**
+     * Unsets Code.
+     */
+    public function unsetCode(): void
+    {
+        $this->code = [];
     }
 
     /**
@@ -149,7 +160,10 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function getCurrency(): ?string
     {
-        return $this->currency;
+        if (count($this->currency) == 0) {
+            return null;
+        }
+        return $this->currency['value'];
     }
 
     /**
@@ -159,7 +173,15 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function setCurrency(?string $currency): void
     {
-        $this->currency = $currency;
+        $this->currency['value'] = $currency;
+    }
+
+    /**
+     * Unsets Currency.
+     */
+    public function unsetCurrency(): void
+    {
+        $this->currency = [];
     }
 
     /**
@@ -169,7 +191,10 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function getItems(): ?array
     {
-        return $this->items;
+        if (count($this->items) == 0) {
+            return null;
+        }
+        return $this->items['value'];
     }
 
     /**
@@ -181,7 +206,15 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function setItems(?array $items): void
     {
-        $this->items = $items;
+        $this->items['value'] = $items;
+    }
+
+    /**
+     * Unsets Items.
+     */
+    public function unsetItems(): void
+    {
+        $this->items = [];
     }
 
     /**
@@ -218,7 +251,10 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -228,7 +264,15 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -236,7 +280,10 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -247,7 +294,15 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -255,7 +310,10 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -266,7 +324,15 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?\DateTime $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
@@ -276,7 +342,10 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function getCharges(): ?array
     {
-        return $this->charges;
+        if (count($this->charges) == 0) {
+            return null;
+        }
+        return $this->charges['value'];
     }
 
     /**
@@ -288,7 +357,15 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function setCharges(?array $charges): void
     {
-        $this->charges = $charges;
+        $this->charges['value'] = $charges;
+    }
+
+    /**
+     * Unsets Charges.
+     */
+    public function unsetCharges(): void
+    {
+        $this->charges = [];
     }
 
     /**
@@ -296,7 +373,10 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function getInvoiceUrl(): ?string
     {
-        return $this->invoiceUrl;
+        if (count($this->invoiceUrl) == 0) {
+            return null;
+        }
+        return $this->invoiceUrl['value'];
     }
 
     /**
@@ -306,7 +386,15 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function setInvoiceUrl(?string $invoiceUrl): void
     {
-        $this->invoiceUrl = $invoiceUrl;
+        $this->invoiceUrl['value'] = $invoiceUrl;
+    }
+
+    /**
+     * Unsets Invoice Url.
+     */
+    public function unsetInvoiceUrl(): void
+    {
+        $this->invoiceUrl = [];
     }
 
     /**
@@ -314,7 +402,10 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function getShipping(): ?GetShippingResponse
     {
-        return $this->shipping;
+        if (count($this->shipping) == 0) {
+            return null;
+        }
+        return $this->shipping['value'];
     }
 
     /**
@@ -324,7 +415,15 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function setShipping(?GetShippingResponse $shipping): void
     {
-        $this->shipping = $shipping;
+        $this->shipping['value'] = $shipping;
+    }
+
+    /**
+     * Unsets Shipping.
+     */
+    public function unsetShipping(): void
+    {
+        $this->shipping = [];
     }
 
     /**
@@ -334,7 +433,10 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
@@ -346,7 +448,15 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -519,7 +629,10 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function getClosed(): ?bool
     {
-        return $this->closed;
+        if (count($this->closed) == 0) {
+            return null;
+        }
+        return $this->closed['value'];
     }
 
     /**
@@ -530,7 +643,16 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function setClosed(?bool $closed): void
     {
-        $this->closed = $closed;
+        $this->closed['value'] = $closed;
+    }
+
+    /**
+     * Unsets Closed.
+     * Indicates whether the order is closed
+     */
+    public function unsetClosed(): void
+    {
+        $this->closed = [];
     }
 
     /**
@@ -545,36 +667,58 @@ class GetOrderResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']             = $this->id;
-        $json['code']           = $this->code;
-        $json['currency']       = $this->currency;
-        $json['items']          = $this->items;
-        if (!empty($this->customer)) {
-            $json['customer']   = $this->customer['value'];
+        $json['id']              = $this->id;
+        if (!empty($this->code)) {
+            $json['code']        = $this->code['value'];
         }
-        $json['status']         = $this->status;
-        $json['created_at']     = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']     = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        $json['charges']        = $this->charges;
-        $json['invoice_url']    = $this->invoiceUrl;
-        $json['shipping']       = $this->shipping;
-        $json['metadata']       = $this->metadata;
+        if (!empty($this->currency)) {
+            $json['currency']    = $this->currency['value'];
+        }
+        if (!empty($this->items)) {
+            $json['items']       = $this->items['value'];
+        }
+        if (!empty($this->customer)) {
+            $json['customer']    = $this->customer['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']      = $this->status['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']  = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']  = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
+        }
+        if (!empty($this->charges)) {
+            $json['charges']     = $this->charges['value'];
+        }
+        if (!empty($this->invoiceUrl)) {
+            $json['invoice_url'] = $this->invoiceUrl['value'];
+        }
+        if (!empty($this->shipping)) {
+            $json['shipping']    = $this->shipping['value'];
+        }
+        if (!empty($this->metadata)) {
+            $json['metadata']    = $this->metadata['value'];
+        }
         if (!empty($this->checkouts)) {
-            $json['checkouts']  = $this->checkouts['value'];
+            $json['checkouts']   = $this->checkouts['value'];
         }
         if (!empty($this->ip)) {
-            $json['ip']         = $this->ip['value'];
+            $json['ip']          = $this->ip['value'];
         }
         if (!empty($this->sessionId)) {
-            $json['session_id'] = $this->sessionId['value'];
+            $json['session_id']  = $this->sessionId['value'];
         }
         if (!empty($this->location)) {
-            $json['location']   = $this->location['value'];
+            $json['location']    = $this->location['value'];
         }
         if (!empty($this->device)) {
-            $json['device']     = $this->device['value'];
+            $json['device']      = $this->device['value'];
         }
-        $json['closed']         = $this->closed;
+        if (!empty($this->closed)) {
+            $json['closed']      = $this->closed['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

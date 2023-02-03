@@ -15,14 +15,14 @@ use stdClass;
 class GetSubscriptionSplitResponse implements \JsonSerializable
 {
     /**
-     * @var bool|null
+     * @var array
      */
-    private $enabled;
+    private $enabled = [];
 
     /**
-     * @var GetSplitResponse[]|null
+     * @var array
      */
-    private $rules;
+    private $rules = [];
 
     /**
      * Returns Enabled.
@@ -30,7 +30,10 @@ class GetSubscriptionSplitResponse implements \JsonSerializable
      */
     public function getEnabled(): ?bool
     {
-        return $this->enabled;
+        if (count($this->enabled) == 0) {
+            return null;
+        }
+        return $this->enabled['value'];
     }
 
     /**
@@ -41,7 +44,16 @@ class GetSubscriptionSplitResponse implements \JsonSerializable
      */
     public function setEnabled(?bool $enabled): void
     {
-        $this->enabled = $enabled;
+        $this->enabled['value'] = $enabled;
+    }
+
+    /**
+     * Unsets Enabled.
+     * Defines if the split is enabled
+     */
+    public function unsetEnabled(): void
+    {
+        $this->enabled = [];
     }
 
     /**
@@ -52,7 +64,10 @@ class GetSubscriptionSplitResponse implements \JsonSerializable
      */
     public function getRules(): ?array
     {
-        return $this->rules;
+        if (count($this->rules) == 0) {
+            return null;
+        }
+        return $this->rules['value'];
     }
 
     /**
@@ -65,7 +80,16 @@ class GetSubscriptionSplitResponse implements \JsonSerializable
      */
     public function setRules(?array $rules): void
     {
-        $this->rules = $rules;
+        $this->rules['value'] = $rules;
+    }
+
+    /**
+     * Unsets Rules.
+     * Split
+     */
+    public function unsetRules(): void
+    {
+        $this->rules = [];
     }
 
     /**
@@ -80,8 +104,12 @@ class GetSubscriptionSplitResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['enabled'] = $this->enabled;
-        $json['rules']   = $this->rules;
+        if (!empty($this->enabled)) {
+            $json['enabled'] = $this->enabled['value'];
+        }
+        if (!empty($this->rules)) {
+            $json['rules']   = $this->rules['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

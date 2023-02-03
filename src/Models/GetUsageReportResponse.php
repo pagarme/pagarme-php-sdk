@@ -15,26 +15,29 @@ use stdClass;
 class GetUsageReportResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $url;
+    private $url = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $usageReportUrl;
+    private $usageReportUrl = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $groupedReportUrl;
+    private $groupedReportUrl = [];
 
     /**
      * Returns Url.
      */
     public function getUrl(): ?string
     {
-        return $this->url;
+        if (count($this->url) == 0) {
+            return null;
+        }
+        return $this->url['value'];
     }
 
     /**
@@ -44,7 +47,15 @@ class GetUsageReportResponse implements \JsonSerializable
      */
     public function setUrl(?string $url): void
     {
-        $this->url = $url;
+        $this->url['value'] = $url;
+    }
+
+    /**
+     * Unsets Url.
+     */
+    public function unsetUrl(): void
+    {
+        $this->url = [];
     }
 
     /**
@@ -52,7 +63,10 @@ class GetUsageReportResponse implements \JsonSerializable
      */
     public function getUsageReportUrl(): ?string
     {
-        return $this->usageReportUrl;
+        if (count($this->usageReportUrl) == 0) {
+            return null;
+        }
+        return $this->usageReportUrl['value'];
     }
 
     /**
@@ -62,7 +76,15 @@ class GetUsageReportResponse implements \JsonSerializable
      */
     public function setUsageReportUrl(?string $usageReportUrl): void
     {
-        $this->usageReportUrl = $usageReportUrl;
+        $this->usageReportUrl['value'] = $usageReportUrl;
+    }
+
+    /**
+     * Unsets Usage Report Url.
+     */
+    public function unsetUsageReportUrl(): void
+    {
+        $this->usageReportUrl = [];
     }
 
     /**
@@ -70,7 +92,10 @@ class GetUsageReportResponse implements \JsonSerializable
      */
     public function getGroupedReportUrl(): ?string
     {
-        return $this->groupedReportUrl;
+        if (count($this->groupedReportUrl) == 0) {
+            return null;
+        }
+        return $this->groupedReportUrl['value'];
     }
 
     /**
@@ -80,7 +105,15 @@ class GetUsageReportResponse implements \JsonSerializable
      */
     public function setGroupedReportUrl(?string $groupedReportUrl): void
     {
-        $this->groupedReportUrl = $groupedReportUrl;
+        $this->groupedReportUrl['value'] = $groupedReportUrl;
+    }
+
+    /**
+     * Unsets Grouped Report Url.
+     */
+    public function unsetGroupedReportUrl(): void
+    {
+        $this->groupedReportUrl = [];
     }
 
     /**
@@ -95,9 +128,15 @@ class GetUsageReportResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['url']                = $this->url;
-        $json['usage_report_url']   = $this->usageReportUrl;
-        $json['grouped_report_url'] = $this->groupedReportUrl;
+        if (!empty($this->url)) {
+            $json['url']                = $this->url['value'];
+        }
+        if (!empty($this->usageReportUrl)) {
+            $json['usage_report_url']   = $this->usageReportUrl['value'];
+        }
+        if (!empty($this->groupedReportUrl)) {
+            $json['grouped_report_url'] = $this->groupedReportUrl['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

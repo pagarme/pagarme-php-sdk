@@ -9,17 +9,17 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `liable` | `?bool` | Required | - | getLiable(): ?bool | setLiable(?bool liable): void |
-| `chargeProcessingFee` | `?bool` | Required | - | getChargeProcessingFee(): ?bool | setChargeProcessingFee(?bool chargeProcessingFee): void |
-| `chargeRemainderFee` | `?string` | Required | - | getChargeRemainderFee(): ?string | setChargeRemainderFee(?string chargeRemainderFee): void |
+| `liable` | `?bool` | Optional | - | getLiable(): ?bool | setLiable(?bool liable): void |
+| `chargeProcessingFee` | `?bool` | Optional | - | getChargeProcessingFee(): ?bool | setChargeProcessingFee(?bool chargeProcessingFee): void |
+| `chargeRemainderFee` | `?string` | Optional | - | getChargeRemainderFee(): ?string | setChargeRemainderFee(?string chargeRemainderFee): void |
 
 ## Example (as JSON)
 
 ```json
 {
-  "liable": false,
-  "charge_processing_fee": false,
-  "charge_remainder_fee": "charge_remainder_fee8"
+  "liable": null,
+  "charge_processing_fee": null,
+  "charge_remainder_fee": null
 }
 ```
 

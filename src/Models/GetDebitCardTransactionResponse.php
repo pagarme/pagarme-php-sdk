@@ -21,74 +21,74 @@ use stdClass;
 class GetDebitCardTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $statementDescriptor;
+    private $statementDescriptor = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $acquirerName;
+    private $acquirerName = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $acquirerAffiliationCode;
+    private $acquirerAffiliationCode = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $acquirerTid;
+    private $acquirerTid = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $acquirerNsu;
+    private $acquirerNsu = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $acquirerAuthCode;
+    private $acquirerAuthCode = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $operationType;
+    private $operationType = [];
 
     /**
-     * @var GetCardResponse|null
+     * @var array
      */
-    private $card;
+    private $card = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $acquirerMessage;
+    private $acquirerMessage = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $acquirerReturnCode;
+    private $acquirerReturnCode = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $mpi;
+    private $mpi = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $eci;
+    private $eci = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $authenticationType;
+    private $authenticationType = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $threedAuthenticationUrl;
+    private $threedAuthenticationUrl = [];
 
     /**
      * Returns Statement Descriptor.
@@ -96,7 +96,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getStatementDescriptor(): ?string
     {
-        return $this->statementDescriptor;
+        if (count($this->statementDescriptor) == 0) {
+            return null;
+        }
+        return $this->statementDescriptor['value'];
     }
 
     /**
@@ -107,7 +110,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setStatementDescriptor(?string $statementDescriptor): void
     {
-        $this->statementDescriptor = $statementDescriptor;
+        $this->statementDescriptor['value'] = $statementDescriptor;
+    }
+
+    /**
+     * Unsets Statement Descriptor.
+     * Text that will appear on the debit card's statement
+     */
+    public function unsetStatementDescriptor(): void
+    {
+        $this->statementDescriptor = [];
     }
 
     /**
@@ -116,7 +128,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getAcquirerName(): ?string
     {
-        return $this->acquirerName;
+        if (count($this->acquirerName) == 0) {
+            return null;
+        }
+        return $this->acquirerName['value'];
     }
 
     /**
@@ -127,7 +142,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setAcquirerName(?string $acquirerName): void
     {
-        $this->acquirerName = $acquirerName;
+        $this->acquirerName['value'] = $acquirerName;
+    }
+
+    /**
+     * Unsets Acquirer Name.
+     * Acquirer name
+     */
+    public function unsetAcquirerName(): void
+    {
+        $this->acquirerName = [];
     }
 
     /**
@@ -136,7 +160,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getAcquirerAffiliationCode(): ?string
     {
-        return $this->acquirerAffiliationCode;
+        if (count($this->acquirerAffiliationCode) == 0) {
+            return null;
+        }
+        return $this->acquirerAffiliationCode['value'];
     }
 
     /**
@@ -147,7 +174,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setAcquirerAffiliationCode(?string $acquirerAffiliationCode): void
     {
-        $this->acquirerAffiliationCode = $acquirerAffiliationCode;
+        $this->acquirerAffiliationCode['value'] = $acquirerAffiliationCode;
+    }
+
+    /**
+     * Unsets Acquirer Affiliation Code.
+     * Aquirer affiliation code
+     */
+    public function unsetAcquirerAffiliationCode(): void
+    {
+        $this->acquirerAffiliationCode = [];
     }
 
     /**
@@ -156,7 +192,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getAcquirerTid(): ?string
     {
-        return $this->acquirerTid;
+        if (count($this->acquirerTid) == 0) {
+            return null;
+        }
+        return $this->acquirerTid['value'];
     }
 
     /**
@@ -167,7 +206,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setAcquirerTid(?string $acquirerTid): void
     {
-        $this->acquirerTid = $acquirerTid;
+        $this->acquirerTid['value'] = $acquirerTid;
+    }
+
+    /**
+     * Unsets Acquirer Tid.
+     * Acquirer TID
+     */
+    public function unsetAcquirerTid(): void
+    {
+        $this->acquirerTid = [];
     }
 
     /**
@@ -176,7 +224,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getAcquirerNsu(): ?string
     {
-        return $this->acquirerNsu;
+        if (count($this->acquirerNsu) == 0) {
+            return null;
+        }
+        return $this->acquirerNsu['value'];
     }
 
     /**
@@ -187,7 +238,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setAcquirerNsu(?string $acquirerNsu): void
     {
-        $this->acquirerNsu = $acquirerNsu;
+        $this->acquirerNsu['value'] = $acquirerNsu;
+    }
+
+    /**
+     * Unsets Acquirer Nsu.
+     * Acquirer NSU
+     */
+    public function unsetAcquirerNsu(): void
+    {
+        $this->acquirerNsu = [];
     }
 
     /**
@@ -196,7 +256,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getAcquirerAuthCode(): ?string
     {
-        return $this->acquirerAuthCode;
+        if (count($this->acquirerAuthCode) == 0) {
+            return null;
+        }
+        return $this->acquirerAuthCode['value'];
     }
 
     /**
@@ -207,7 +270,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setAcquirerAuthCode(?string $acquirerAuthCode): void
     {
-        $this->acquirerAuthCode = $acquirerAuthCode;
+        $this->acquirerAuthCode['value'] = $acquirerAuthCode;
+    }
+
+    /**
+     * Unsets Acquirer Auth Code.
+     * Acquirer authorization code
+     */
+    public function unsetAcquirerAuthCode(): void
+    {
+        $this->acquirerAuthCode = [];
     }
 
     /**
@@ -216,7 +288,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getOperationType(): ?string
     {
-        return $this->operationType;
+        if (count($this->operationType) == 0) {
+            return null;
+        }
+        return $this->operationType['value'];
     }
 
     /**
@@ -227,7 +302,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setOperationType(?string $operationType): void
     {
-        $this->operationType = $operationType;
+        $this->operationType['value'] = $operationType;
+    }
+
+    /**
+     * Unsets Operation Type.
+     * Operation type
+     */
+    public function unsetOperationType(): void
+    {
+        $this->operationType = [];
     }
 
     /**
@@ -236,7 +320,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getCard(): ?GetCardResponse
     {
-        return $this->card;
+        if (count($this->card) == 0) {
+            return null;
+        }
+        return $this->card['value'];
     }
 
     /**
@@ -247,7 +334,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setCard(?GetCardResponse $card): void
     {
-        $this->card = $card;
+        $this->card['value'] = $card;
+    }
+
+    /**
+     * Unsets Card.
+     * Card data
+     */
+    public function unsetCard(): void
+    {
+        $this->card = [];
     }
 
     /**
@@ -256,7 +352,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getAcquirerMessage(): ?string
     {
-        return $this->acquirerMessage;
+        if (count($this->acquirerMessage) == 0) {
+            return null;
+        }
+        return $this->acquirerMessage['value'];
     }
 
     /**
@@ -267,7 +366,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setAcquirerMessage(?string $acquirerMessage): void
     {
-        $this->acquirerMessage = $acquirerMessage;
+        $this->acquirerMessage['value'] = $acquirerMessage;
+    }
+
+    /**
+     * Unsets Acquirer Message.
+     * Acquirer message
+     */
+    public function unsetAcquirerMessage(): void
+    {
+        $this->acquirerMessage = [];
     }
 
     /**
@@ -276,7 +384,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getAcquirerReturnCode(): ?string
     {
-        return $this->acquirerReturnCode;
+        if (count($this->acquirerReturnCode) == 0) {
+            return null;
+        }
+        return $this->acquirerReturnCode['value'];
     }
 
     /**
@@ -287,7 +398,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setAcquirerReturnCode(?string $acquirerReturnCode): void
     {
-        $this->acquirerReturnCode = $acquirerReturnCode;
+        $this->acquirerReturnCode['value'] = $acquirerReturnCode;
+    }
+
+    /**
+     * Unsets Acquirer Return Code.
+     * Acquirer Return Code
+     */
+    public function unsetAcquirerReturnCode(): void
+    {
+        $this->acquirerReturnCode = [];
     }
 
     /**
@@ -296,7 +416,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getMpi(): ?string
     {
-        return $this->mpi;
+        if (count($this->mpi) == 0) {
+            return null;
+        }
+        return $this->mpi['value'];
     }
 
     /**
@@ -307,7 +430,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setMpi(?string $mpi): void
     {
-        $this->mpi = $mpi;
+        $this->mpi['value'] = $mpi;
+    }
+
+    /**
+     * Unsets Mpi.
+     * Merchant Plugin
+     */
+    public function unsetMpi(): void
+    {
+        $this->mpi = [];
     }
 
     /**
@@ -316,7 +448,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getEci(): ?string
     {
-        return $this->eci;
+        if (count($this->eci) == 0) {
+            return null;
+        }
+        return $this->eci['value'];
     }
 
     /**
@@ -327,7 +462,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setEci(?string $eci): void
     {
-        $this->eci = $eci;
+        $this->eci['value'] = $eci;
+    }
+
+    /**
+     * Unsets Eci.
+     * Electronic Commerce Indicator (ECI)
+     */
+    public function unsetEci(): void
+    {
+        $this->eci = [];
     }
 
     /**
@@ -336,7 +480,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getAuthenticationType(): ?string
     {
-        return $this->authenticationType;
+        if (count($this->authenticationType) == 0) {
+            return null;
+        }
+        return $this->authenticationType['value'];
     }
 
     /**
@@ -347,7 +494,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setAuthenticationType(?string $authenticationType): void
     {
-        $this->authenticationType = $authenticationType;
+        $this->authenticationType['value'] = $authenticationType;
+    }
+
+    /**
+     * Unsets Authentication Type.
+     * Authentication type
+     */
+    public function unsetAuthenticationType(): void
+    {
+        $this->authenticationType = [];
     }
 
     /**
@@ -356,7 +512,10 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function getThreedAuthenticationUrl(): ?string
     {
-        return $this->threedAuthenticationUrl;
+        if (count($this->threedAuthenticationUrl) == 0) {
+            return null;
+        }
+        return $this->threedAuthenticationUrl['value'];
     }
 
     /**
@@ -367,7 +526,16 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
      */
     public function setThreedAuthenticationUrl(?string $threedAuthenticationUrl): void
     {
-        $this->threedAuthenticationUrl = $threedAuthenticationUrl;
+        $this->threedAuthenticationUrl['value'] = $threedAuthenticationUrl;
+    }
+
+    /**
+     * Unsets Threed Authentication Url.
+     * 3D-S Authentication Url
+     */
+    public function unsetThreedAuthenticationUrl(): void
+    {
+        $this->threedAuthenticationUrl = [];
     }
 
     /**
@@ -382,20 +550,48 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['statement_descriptor']      = $this->statementDescriptor;
-        $json['acquirer_name']             = $this->acquirerName;
-        $json['acquirer_affiliation_code'] = $this->acquirerAffiliationCode;
-        $json['acquirer_tid']              = $this->acquirerTid;
-        $json['acquirer_nsu']              = $this->acquirerNsu;
-        $json['acquirer_auth_code']        = $this->acquirerAuthCode;
-        $json['operation_type']            = $this->operationType;
-        $json['card']                      = $this->card;
-        $json['acquirer_message']          = $this->acquirerMessage;
-        $json['acquirer_return_code']      = $this->acquirerReturnCode;
-        $json['mpi']                       = $this->mpi;
-        $json['eci']                       = $this->eci;
-        $json['authentication_type']       = $this->authenticationType;
-        $json['threed_authentication_url'] = $this->threedAuthenticationUrl;
+        if (!empty($this->statementDescriptor)) {
+            $json['statement_descriptor']      = $this->statementDescriptor['value'];
+        }
+        if (!empty($this->acquirerName)) {
+            $json['acquirer_name']             = $this->acquirerName['value'];
+        }
+        if (!empty($this->acquirerAffiliationCode)) {
+            $json['acquirer_affiliation_code'] = $this->acquirerAffiliationCode['value'];
+        }
+        if (!empty($this->acquirerTid)) {
+            $json['acquirer_tid']              = $this->acquirerTid['value'];
+        }
+        if (!empty($this->acquirerNsu)) {
+            $json['acquirer_nsu']              = $this->acquirerNsu['value'];
+        }
+        if (!empty($this->acquirerAuthCode)) {
+            $json['acquirer_auth_code']        = $this->acquirerAuthCode['value'];
+        }
+        if (!empty($this->operationType)) {
+            $json['operation_type']            = $this->operationType['value'];
+        }
+        if (!empty($this->card)) {
+            $json['card']                      = $this->card['value'];
+        }
+        if (!empty($this->acquirerMessage)) {
+            $json['acquirer_message']          = $this->acquirerMessage['value'];
+        }
+        if (!empty($this->acquirerReturnCode)) {
+            $json['acquirer_return_code']      = $this->acquirerReturnCode['value'];
+        }
+        if (!empty($this->mpi)) {
+            $json['mpi']                       = $this->mpi['value'];
+        }
+        if (!empty($this->eci)) {
+            $json['eci']                       = $this->eci['value'];
+        }
+        if (!empty($this->authenticationType)) {
+            $json['authentication_type']       = $this->authenticationType['value'];
+        }
+        if (!empty($this->threedAuthenticationUrl)) {
+            $json['threed_authentication_url'] = $this->threedAuthenticationUrl['value'];
+        }
         $json = array_merge($json, parent::jsonSerialize(true));
         $json['transaction_type'] = $this->getTransactionType() ?? 'debit_card';
 

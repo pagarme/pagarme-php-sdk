@@ -18,24 +18,24 @@ use stdClass;
 class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $successUrl;
+    private $successUrl = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $paymentUrl;
+    private $paymentUrl = [];
 
     /**
-     * @var string[]|null
+     * @var array
      */
-    private $acceptedPaymentMethods;
+    private $acceptedPaymentMethods = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
      * @var array
@@ -63,7 +63,10 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
      */
     public function getSuccessUrl(): ?string
     {
-        return $this->successUrl;
+        if (count($this->successUrl) == 0) {
+            return null;
+        }
+        return $this->successUrl['value'];
     }
 
     /**
@@ -74,7 +77,16 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
      */
     public function setSuccessUrl(?string $successUrl): void
     {
-        $this->successUrl = $successUrl;
+        $this->successUrl['value'] = $successUrl;
+    }
+
+    /**
+     * Unsets Success Url.
+     * Success Url
+     */
+    public function unsetSuccessUrl(): void
+    {
+        $this->successUrl = [];
     }
 
     /**
@@ -83,7 +95,10 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
      */
     public function getPaymentUrl(): ?string
     {
-        return $this->paymentUrl;
+        if (count($this->paymentUrl) == 0) {
+            return null;
+        }
+        return $this->paymentUrl['value'];
     }
 
     /**
@@ -94,7 +109,16 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
      */
     public function setPaymentUrl(?string $paymentUrl): void
     {
-        $this->paymentUrl = $paymentUrl;
+        $this->paymentUrl['value'] = $paymentUrl;
+    }
+
+    /**
+     * Unsets Payment Url.
+     * Payment Url
+     */
+    public function unsetPaymentUrl(): void
+    {
+        $this->paymentUrl = [];
     }
 
     /**
@@ -105,7 +129,10 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
      */
     public function getAcceptedPaymentMethods(): ?array
     {
-        return $this->acceptedPaymentMethods;
+        if (count($this->acceptedPaymentMethods) == 0) {
+            return null;
+        }
+        return $this->acceptedPaymentMethods['value'];
     }
 
     /**
@@ -118,7 +145,16 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
      */
     public function setAcceptedPaymentMethods(?array $acceptedPaymentMethods): void
     {
-        $this->acceptedPaymentMethods = $acceptedPaymentMethods;
+        $this->acceptedPaymentMethods['value'] = $acceptedPaymentMethods;
+    }
+
+    /**
+     * Unsets Accepted Payment Methods.
+     * Accepted Payment Methods
+     */
+    public function unsetAcceptedPaymentMethods(): void
+    {
+        $this->acceptedPaymentMethods = [];
     }
 
     /**
@@ -127,7 +163,10 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -138,7 +177,16 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     * Status
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -281,21 +329,29 @@ class GetCheckoutPaymentSettingsResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['success_url']                = $this->successUrl;
-        $json['payment_url']                = $this->paymentUrl;
-        $json['accepted_payment_methods']   = $this->acceptedPaymentMethods;
-        $json['status']                     = $this->status;
+        if (!empty($this->successUrl)) {
+            $json['success_url']              = $this->successUrl['value'];
+        }
+        if (!empty($this->paymentUrl)) {
+            $json['payment_url']              = $this->paymentUrl['value'];
+        }
+        if (!empty($this->acceptedPaymentMethods)) {
+            $json['accepted_payment_methods'] = $this->acceptedPaymentMethods['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']                   = $this->status['value'];
+        }
         if (!empty($this->customer)) {
-            $json['customer']               = $this->customer['value'];
+            $json['customer']                 = $this->customer['value'];
         }
         if (!empty($this->amount)) {
-            $json['amount']                 = $this->amount['value'];
+            $json['amount']                   = $this->amount['value'];
         }
         if (!empty($this->defaultPaymentMethod)) {
-            $json['default_payment_method'] = $this->defaultPaymentMethod['value'];
+            $json['default_payment_method']   = $this->defaultPaymentMethod['value'];
         }
         if (!empty($this->gatewayAffiliationId)) {
-            $json['gateway_affiliation_id'] = $this->gatewayAffiliationId['value'];
+            $json['gateway_affiliation_id']   = $this->gatewayAffiliationId['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

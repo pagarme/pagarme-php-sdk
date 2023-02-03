@@ -18,14 +18,14 @@ use stdClass;
 class GetAnticipationLimitsResponse implements \JsonSerializable
 {
     /**
-     * @var GetAnticipationLimitResponse|null
+     * @var array
      */
-    private $max;
+    private $max = [];
 
     /**
-     * @var GetAnticipationLimitResponse|null
+     * @var array
      */
-    private $min;
+    private $min = [];
 
     /**
      * Returns Max.
@@ -33,7 +33,10 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
      */
     public function getMax(): ?GetAnticipationLimitResponse
     {
-        return $this->max;
+        if (count($this->max) == 0) {
+            return null;
+        }
+        return $this->max['value'];
     }
 
     /**
@@ -44,7 +47,16 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
      */
     public function setMax(?GetAnticipationLimitResponse $max): void
     {
-        $this->max = $max;
+        $this->max['value'] = $max;
+    }
+
+    /**
+     * Unsets Max.
+     * Max limit
+     */
+    public function unsetMax(): void
+    {
+        $this->max = [];
     }
 
     /**
@@ -53,7 +65,10 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
      */
     public function getMin(): ?GetAnticipationLimitResponse
     {
-        return $this->min;
+        if (count($this->min) == 0) {
+            return null;
+        }
+        return $this->min['value'];
     }
 
     /**
@@ -64,7 +79,16 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
      */
     public function setMin(?GetAnticipationLimitResponse $min): void
     {
-        $this->min = $min;
+        $this->min['value'] = $min;
+    }
+
+    /**
+     * Unsets Min.
+     * Min limit
+     */
+    public function unsetMin(): void
+    {
+        $this->min = [];
     }
 
     /**
@@ -79,8 +103,12 @@ class GetAnticipationLimitsResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['max'] = $this->max;
-        $json['min'] = $this->min;
+        if (!empty($this->max)) {
+            $json['max'] = $this->max['value'];
+        }
+        if (!empty($this->min)) {
+            $json['min'] = $this->min['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

@@ -19,29 +19,29 @@ use stdClass;
 class GetDiscountResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var float|null
+     * @var array
      */
-    private $value;
+    private $value = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $discountType;
+    private $discountType = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
      * @var array
@@ -73,7 +73,10 @@ class GetDiscountResponse implements \JsonSerializable
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -83,7 +86,15 @@ class GetDiscountResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -91,7 +102,10 @@ class GetDiscountResponse implements \JsonSerializable
      */
     public function getValue(): ?float
     {
-        return $this->value;
+        if (count($this->value) == 0) {
+            return null;
+        }
+        return $this->value['value'];
     }
 
     /**
@@ -101,7 +115,15 @@ class GetDiscountResponse implements \JsonSerializable
      */
     public function setValue(?float $value): void
     {
-        $this->value = $value;
+        $this->value['value'] = $value;
+    }
+
+    /**
+     * Unsets Value.
+     */
+    public function unsetValue(): void
+    {
+        $this->value = [];
     }
 
     /**
@@ -109,7 +131,10 @@ class GetDiscountResponse implements \JsonSerializable
      */
     public function getDiscountType(): ?string
     {
-        return $this->discountType;
+        if (count($this->discountType) == 0) {
+            return null;
+        }
+        return $this->discountType['value'];
     }
 
     /**
@@ -119,7 +144,15 @@ class GetDiscountResponse implements \JsonSerializable
      */
     public function setDiscountType(?string $discountType): void
     {
-        $this->discountType = $discountType;
+        $this->discountType['value'] = $discountType;
+    }
+
+    /**
+     * Unsets Discount Type.
+     */
+    public function unsetDiscountType(): void
+    {
+        $this->discountType = [];
     }
 
     /**
@@ -127,7 +160,10 @@ class GetDiscountResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -137,7 +173,15 @@ class GetDiscountResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -145,7 +189,10 @@ class GetDiscountResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -156,7 +203,15 @@ class GetDiscountResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -320,11 +375,21 @@ class GetDiscountResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']                    = $this->id;
-        $json['value']                 = $this->value;
-        $json['discount_type']         = $this->discountType;
-        $json['status']                = $this->status;
-        $json['created_at']            = DateTimeHelper::toRfc3339DateTime($this->createdAt);
+        if (!empty($this->id)) {
+            $json['id']                = $this->id['value'];
+        }
+        if (!empty($this->value)) {
+            $json['value']             = $this->value['value'];
+        }
+        if (!empty($this->discountType)) {
+            $json['discount_type']     = $this->discountType['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']            = $this->status['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']        = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
         if (!empty($this->cycles)) {
             $json['cycles']            = $this->cycles['value'];
         }

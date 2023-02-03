@@ -19,44 +19,44 @@ use stdClass;
 class GetInvoiceResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $code;
+    private $code = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $url;
+    private $url = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $amount;
+    private $amount = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $paymentMethod;
+    private $paymentMethod = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var GetInvoiceItemResponse[]|null
+     * @var array
      */
-    private $items;
+    private $items = [];
 
     /**
      * @var array
@@ -64,24 +64,24 @@ class GetInvoiceResponse implements \JsonSerializable
     private $customer = [];
 
     /**
-     * @var GetChargeResponse|null
+     * @var array
      */
-    private $charge;
+    private $charge = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $installments;
+    private $installments = [];
 
     /**
-     * @var GetBillingAddressResponse|null
+     * @var array
      */
-    private $billingAddress;
+    private $billingAddress = [];
 
     /**
-     * @var GetSubscriptionResponse|null
+     * @var array
      */
-    private $subscription;
+    private $subscription = [];
 
     /**
      * @var array
@@ -89,14 +89,14 @@ class GetInvoiceResponse implements \JsonSerializable
     private $cycle = [];
 
     /**
-     * @var GetShippingResponse|null
+     * @var array
      */
-    private $shipping;
+    private $shipping = [];
 
     /**
-     * @var array<string,string>|null
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
      * @var array
@@ -129,16 +129,19 @@ class GetInvoiceResponse implements \JsonSerializable
     private $totalIncrement = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $subscriptionId;
+    private $subscriptionId = [];
 
     /**
      * Returns Id.
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -148,7 +151,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -156,7 +167,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getCode(): ?string
     {
-        return $this->code;
+        if (count($this->code) == 0) {
+            return null;
+        }
+        return $this->code['value'];
     }
 
     /**
@@ -166,7 +180,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setCode(?string $code): void
     {
-        $this->code = $code;
+        $this->code['value'] = $code;
+    }
+
+    /**
+     * Unsets Code.
+     */
+    public function unsetCode(): void
+    {
+        $this->code = [];
     }
 
     /**
@@ -174,7 +196,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getUrl(): ?string
     {
-        return $this->url;
+        if (count($this->url) == 0) {
+            return null;
+        }
+        return $this->url['value'];
     }
 
     /**
@@ -184,7 +209,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setUrl(?string $url): void
     {
-        $this->url = $url;
+        $this->url['value'] = $url;
+    }
+
+    /**
+     * Unsets Url.
+     */
+    public function unsetUrl(): void
+    {
+        $this->url = [];
     }
 
     /**
@@ -192,7 +225,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getAmount(): ?int
     {
-        return $this->amount;
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
     }
 
     /**
@@ -202,7 +238,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setAmount(?int $amount): void
     {
-        $this->amount = $amount;
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
     }
 
     /**
@@ -210,7 +254,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -220,7 +267,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -228,7 +283,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getPaymentMethod(): ?string
     {
-        return $this->paymentMethod;
+        if (count($this->paymentMethod) == 0) {
+            return null;
+        }
+        return $this->paymentMethod['value'];
     }
 
     /**
@@ -238,7 +296,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setPaymentMethod(?string $paymentMethod): void
     {
-        $this->paymentMethod = $paymentMethod;
+        $this->paymentMethod['value'] = $paymentMethod;
+    }
+
+    /**
+     * Unsets Payment Method.
+     */
+    public function unsetPaymentMethod(): void
+    {
+        $this->paymentMethod = [];
     }
 
     /**
@@ -246,7 +312,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -257,7 +326,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -267,7 +344,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getItems(): ?array
     {
-        return $this->items;
+        if (count($this->items) == 0) {
+            return null;
+        }
+        return $this->items['value'];
     }
 
     /**
@@ -279,7 +359,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setItems(?array $items): void
     {
-        $this->items = $items;
+        $this->items['value'] = $items;
+    }
+
+    /**
+     * Unsets Items.
+     */
+    public function unsetItems(): void
+    {
+        $this->items = [];
     }
 
     /**
@@ -316,7 +404,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getCharge(): ?GetChargeResponse
     {
-        return $this->charge;
+        if (count($this->charge) == 0) {
+            return null;
+        }
+        return $this->charge['value'];
     }
 
     /**
@@ -326,7 +417,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setCharge(?GetChargeResponse $charge): void
     {
-        $this->charge = $charge;
+        $this->charge['value'] = $charge;
+    }
+
+    /**
+     * Unsets Charge.
+     */
+    public function unsetCharge(): void
+    {
+        $this->charge = [];
     }
 
     /**
@@ -334,7 +433,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getInstallments(): ?int
     {
-        return $this->installments;
+        if (count($this->installments) == 0) {
+            return null;
+        }
+        return $this->installments['value'];
     }
 
     /**
@@ -344,7 +446,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setInstallments(?int $installments): void
     {
-        $this->installments = $installments;
+        $this->installments['value'] = $installments;
+    }
+
+    /**
+     * Unsets Installments.
+     */
+    public function unsetInstallments(): void
+    {
+        $this->installments = [];
     }
 
     /**
@@ -352,7 +462,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getBillingAddress(): ?GetBillingAddressResponse
     {
-        return $this->billingAddress;
+        if (count($this->billingAddress) == 0) {
+            return null;
+        }
+        return $this->billingAddress['value'];
     }
 
     /**
@@ -362,7 +475,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setBillingAddress(?GetBillingAddressResponse $billingAddress): void
     {
-        $this->billingAddress = $billingAddress;
+        $this->billingAddress['value'] = $billingAddress;
+    }
+
+    /**
+     * Unsets Billing Address.
+     */
+    public function unsetBillingAddress(): void
+    {
+        $this->billingAddress = [];
     }
 
     /**
@@ -370,7 +491,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getSubscription(): ?GetSubscriptionResponse
     {
-        return $this->subscription;
+        if (count($this->subscription) == 0) {
+            return null;
+        }
+        return $this->subscription['value'];
     }
 
     /**
@@ -380,7 +504,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setSubscription(?GetSubscriptionResponse $subscription): void
     {
-        $this->subscription = $subscription;
+        $this->subscription['value'] = $subscription;
+    }
+
+    /**
+     * Unsets Subscription.
+     */
+    public function unsetSubscription(): void
+    {
+        $this->subscription = [];
     }
 
     /**
@@ -417,7 +549,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getShipping(): ?GetShippingResponse
     {
-        return $this->shipping;
+        if (count($this->shipping) == 0) {
+            return null;
+        }
+        return $this->shipping['value'];
     }
 
     /**
@@ -427,7 +562,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setShipping(?GetShippingResponse $shipping): void
     {
-        $this->shipping = $shipping;
+        $this->shipping['value'] = $shipping;
+    }
+
+    /**
+     * Unsets Shipping.
+     */
+    public function unsetShipping(): void
+    {
+        $this->shipping = [];
     }
 
     /**
@@ -437,7 +580,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
@@ -449,7 +595,15 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -642,7 +796,10 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function getSubscriptionId(): ?string
     {
-        return $this->subscriptionId;
+        if (count($this->subscriptionId) == 0) {
+            return null;
+        }
+        return $this->subscriptionId['value'];
     }
 
     /**
@@ -653,7 +810,16 @@ class GetInvoiceResponse implements \JsonSerializable
      */
     public function setSubscriptionId(?string $subscriptionId): void
     {
-        $this->subscriptionId = $subscriptionId;
+        $this->subscriptionId['value'] = $subscriptionId;
+    }
+
+    /**
+     * Unsets Subscription Id.
+     * Subscription Id
+     */
+    public function unsetSubscriptionId(): void
+    {
+        $this->subscriptionId = [];
     }
 
     /**
@@ -668,26 +834,54 @@ class GetInvoiceResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']                  = $this->id;
-        $json['code']                = $this->code;
-        $json['url']                 = $this->url;
-        $json['amount']              = $this->amount;
-        $json['status']              = $this->status;
-        $json['payment_method']      = $this->paymentMethod;
-        $json['created_at']          = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['items']               = $this->items;
+        if (!empty($this->id)) {
+            $json['id']              = $this->id['value'];
+        }
+        if (!empty($this->code)) {
+            $json['code']            = $this->code['value'];
+        }
+        if (!empty($this->url)) {
+            $json['url']             = $this->url['value'];
+        }
+        if (!empty($this->amount)) {
+            $json['amount']          = $this->amount['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']          = $this->status['value'];
+        }
+        if (!empty($this->paymentMethod)) {
+            $json['payment_method']  = $this->paymentMethod['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']      = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->items)) {
+            $json['items']           = $this->items['value'];
+        }
         if (!empty($this->customer)) {
             $json['customer']        = $this->customer['value'];
         }
-        $json['charge']              = $this->charge;
-        $json['installments']        = $this->installments;
-        $json['billing_address']     = $this->billingAddress;
-        $json['subscription']        = $this->subscription;
+        if (!empty($this->charge)) {
+            $json['charge']          = $this->charge['value'];
+        }
+        if (!empty($this->installments)) {
+            $json['installments']    = $this->installments['value'];
+        }
+        if (!empty($this->billingAddress)) {
+            $json['billing_address'] = $this->billingAddress['value'];
+        }
+        if (!empty($this->subscription)) {
+            $json['subscription']    = $this->subscription['value'];
+        }
         if (!empty($this->cycle)) {
             $json['cycle']           = $this->cycle['value'];
         }
-        $json['shipping']            = $this->shipping;
-        $json['metadata']            = $this->metadata;
+        if (!empty($this->shipping)) {
+            $json['shipping']        = $this->shipping['value'];
+        }
+        if (!empty($this->metadata)) {
+            $json['metadata']        = $this->metadata['value'];
+        }
         if (!empty($this->dueAt)) {
             $json['due_at']          = DateTimeHelper::toRfc3339DateTime($this->dueAt['value']);
         }
@@ -706,7 +900,9 @@ class GetInvoiceResponse implements \JsonSerializable
         if (!empty($this->totalIncrement)) {
             $json['total_increment'] = $this->totalIncrement['value'];
         }
-        $json['subscription_id']     = $this->subscriptionId;
+        if (!empty($this->subscriptionId)) {
+            $json['subscription_id'] = $this->subscriptionId['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

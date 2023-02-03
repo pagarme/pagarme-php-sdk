@@ -18,29 +18,29 @@ use stdClass;
 class GetGatewayRecipientResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $gateway;
+    private $gateway = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $pgid;
+    private $pgid = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
      * Returns Gateway.
@@ -48,7 +48,10 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      */
     public function getGateway(): ?string
     {
-        return $this->gateway;
+        if (count($this->gateway) == 0) {
+            return null;
+        }
+        return $this->gateway['value'];
     }
 
     /**
@@ -59,7 +62,16 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      */
     public function setGateway(?string $gateway): void
     {
-        $this->gateway = $gateway;
+        $this->gateway['value'] = $gateway;
+    }
+
+    /**
+     * Unsets Gateway.
+     * Gateway name
+     */
+    public function unsetGateway(): void
+    {
+        $this->gateway = [];
     }
 
     /**
@@ -68,7 +80,10 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -79,7 +94,16 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     * Status of the recipient on the gateway
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -88,7 +112,10 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      */
     public function getPgid(): ?string
     {
-        return $this->pgid;
+        if (count($this->pgid) == 0) {
+            return null;
+        }
+        return $this->pgid['value'];
     }
 
     /**
@@ -99,7 +126,16 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      */
     public function setPgid(?string $pgid): void
     {
-        $this->pgid = $pgid;
+        $this->pgid['value'] = $pgid;
+    }
+
+    /**
+     * Unsets Pgid.
+     * Recipient id on the gateway
+     */
+    public function unsetPgid(): void
+    {
+        $this->pgid = [];
     }
 
     /**
@@ -108,7 +144,10 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?string
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -119,7 +158,16 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      */
     public function setCreatedAt(?string $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     * Creation date
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -128,7 +176,10 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?string
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -139,7 +190,16 @@ class GetGatewayRecipientResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?string $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     * Last update date
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
@@ -154,11 +214,21 @@ class GetGatewayRecipientResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['gateway']    = $this->gateway;
-        $json['status']     = $this->status;
-        $json['pgid']       = $this->pgid;
-        $json['created_at'] = $this->createdAt;
-        $json['updated_at'] = $this->updatedAt;
+        if (!empty($this->gateway)) {
+            $json['gateway']    = $this->gateway['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']     = $this->status['value'];
+        }
+        if (!empty($this->pgid)) {
+            $json['pgid']       = $this->pgid['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at'] = $this->createdAt['value'];
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at'] = $this->updatedAt['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

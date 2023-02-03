@@ -18,19 +18,19 @@ use stdClass;
 class PagingResponse implements \JsonSerializable
 {
     /**
-     * @var int|null
+     * @var array
      */
-    private $total;
+    private $total = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $previous;
+    private $previous = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $next;
+    private $next = [];
 
     /**
      * Returns Total.
@@ -38,7 +38,10 @@ class PagingResponse implements \JsonSerializable
      */
     public function getTotal(): ?int
     {
-        return $this->total;
+        if (count($this->total) == 0) {
+            return null;
+        }
+        return $this->total['value'];
     }
 
     /**
@@ -49,7 +52,16 @@ class PagingResponse implements \JsonSerializable
      */
     public function setTotal(?int $total): void
     {
-        $this->total = $total;
+        $this->total['value'] = $total;
+    }
+
+    /**
+     * Unsets Total.
+     * Total number of pages
+     */
+    public function unsetTotal(): void
+    {
+        $this->total = [];
     }
 
     /**
@@ -58,7 +70,10 @@ class PagingResponse implements \JsonSerializable
      */
     public function getPrevious(): ?string
     {
-        return $this->previous;
+        if (count($this->previous) == 0) {
+            return null;
+        }
+        return $this->previous['value'];
     }
 
     /**
@@ -69,7 +84,16 @@ class PagingResponse implements \JsonSerializable
      */
     public function setPrevious(?string $previous): void
     {
-        $this->previous = $previous;
+        $this->previous['value'] = $previous;
+    }
+
+    /**
+     * Unsets Previous.
+     * Previous page
+     */
+    public function unsetPrevious(): void
+    {
+        $this->previous = [];
     }
 
     /**
@@ -78,7 +102,10 @@ class PagingResponse implements \JsonSerializable
      */
     public function getNext(): ?string
     {
-        return $this->next;
+        if (count($this->next) == 0) {
+            return null;
+        }
+        return $this->next['value'];
     }
 
     /**
@@ -89,7 +116,16 @@ class PagingResponse implements \JsonSerializable
      */
     public function setNext(?string $next): void
     {
-        $this->next = $next;
+        $this->next['value'] = $next;
+    }
+
+    /**
+     * Unsets Next.
+     * Next page
+     */
+    public function unsetNext(): void
+    {
+        $this->next = [];
     }
 
     /**
@@ -104,9 +140,15 @@ class PagingResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['total']    = $this->total;
-        $json['previous'] = $this->previous;
-        $json['next']     = $this->next;
+        if (!empty($this->total)) {
+            $json['total']    = $this->total['value'];
+        }
+        if (!empty($this->previous)) {
+            $json['previous'] = $this->previous['value'];
+        }
+        if (!empty($this->next)) {
+            $json['next']     = $this->next['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

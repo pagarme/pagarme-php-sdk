@@ -19,24 +19,24 @@ use stdClass;
 class GetAccessTokenResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $code;
+    private $code = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
      * @var array
@@ -48,7 +48,10 @@ class GetAccessTokenResponse implements \JsonSerializable
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -58,7 +61,15 @@ class GetAccessTokenResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -66,7 +77,10 @@ class GetAccessTokenResponse implements \JsonSerializable
      */
     public function getCode(): ?string
     {
-        return $this->code;
+        if (count($this->code) == 0) {
+            return null;
+        }
+        return $this->code['value'];
     }
 
     /**
@@ -76,7 +90,15 @@ class GetAccessTokenResponse implements \JsonSerializable
      */
     public function setCode(?string $code): void
     {
-        $this->code = $code;
+        $this->code['value'] = $code;
+    }
+
+    /**
+     * Unsets Code.
+     */
+    public function unsetCode(): void
+    {
+        $this->code = [];
     }
 
     /**
@@ -84,7 +106,10 @@ class GetAccessTokenResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -94,7 +119,15 @@ class GetAccessTokenResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -102,7 +135,10 @@ class GetAccessTokenResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -113,7 +149,15 @@ class GetAccessTokenResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -157,12 +201,20 @@ class GetAccessTokenResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']           = $this->id;
-        $json['code']         = $this->code;
-        $json['status']       = $this->status;
-        $json['created_at']   = DateTimeHelper::toRfc3339DateTime($this->createdAt);
+        if (!empty($this->id)) {
+            $json['id']         = $this->id['value'];
+        }
+        if (!empty($this->code)) {
+            $json['code']       = $this->code['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']     = $this->status['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at'] = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
         if (!empty($this->customer)) {
-            $json['customer'] = $this->customer['value'];
+            $json['customer']   = $this->customer['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -16,14 +16,14 @@ use stdClass;
 class GetCheckoutBoletoPaymentResponse implements \JsonSerializable
 {
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $dueAt;
+    private $dueAt = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $instructions;
+    private $instructions = [];
 
     /**
      * Returns Due At.
@@ -31,7 +31,10 @@ class GetCheckoutBoletoPaymentResponse implements \JsonSerializable
      */
     public function getDueAt(): ?\DateTime
     {
-        return $this->dueAt;
+        if (count($this->dueAt) == 0) {
+            return null;
+        }
+        return $this->dueAt['value'];
     }
 
     /**
@@ -43,7 +46,16 @@ class GetCheckoutBoletoPaymentResponse implements \JsonSerializable
      */
     public function setDueAt(?\DateTime $dueAt): void
     {
-        $this->dueAt = $dueAt;
+        $this->dueAt['value'] = $dueAt;
+    }
+
+    /**
+     * Unsets Due At.
+     * Data de vencimento do boleto
+     */
+    public function unsetDueAt(): void
+    {
+        $this->dueAt = [];
     }
 
     /**
@@ -52,7 +64,10 @@ class GetCheckoutBoletoPaymentResponse implements \JsonSerializable
      */
     public function getInstructions(): ?string
     {
-        return $this->instructions;
+        if (count($this->instructions) == 0) {
+            return null;
+        }
+        return $this->instructions['value'];
     }
 
     /**
@@ -63,7 +78,16 @@ class GetCheckoutBoletoPaymentResponse implements \JsonSerializable
      */
     public function setInstructions(?string $instructions): void
     {
-        $this->instructions = $instructions;
+        $this->instructions['value'] = $instructions;
+    }
+
+    /**
+     * Unsets Instructions.
+     * Instruções do boleto
+     */
+    public function unsetInstructions(): void
+    {
+        $this->instructions = [];
     }
 
     /**
@@ -78,8 +102,12 @@ class GetCheckoutBoletoPaymentResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['due_at']       = DateTimeHelper::toRfc3339DateTime($this->dueAt);
-        $json['instructions'] = $this->instructions;
+        if (!empty($this->dueAt)) {
+            $json['due_at']       = DateTimeHelper::toRfc3339DateTime($this->dueAt['value']);
+        }
+        if (!empty($this->instructions)) {
+            $json['instructions'] = $this->instructions['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

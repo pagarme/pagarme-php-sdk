@@ -15,14 +15,14 @@ use stdClass;
 class GetCheckoutDebitCardPaymentResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $statementDescriptor;
+    private $statementDescriptor = [];
 
     /**
-     * @var GetPaymentAuthenticationResponse|null
+     * @var array
      */
-    private $authentication;
+    private $authentication = [];
 
     /**
      * Returns Statement Descriptor.
@@ -30,7 +30,10 @@ class GetCheckoutDebitCardPaymentResponse implements \JsonSerializable
      */
     public function getStatementDescriptor(): ?string
     {
-        return $this->statementDescriptor;
+        if (count($this->statementDescriptor) == 0) {
+            return null;
+        }
+        return $this->statementDescriptor['value'];
     }
 
     /**
@@ -41,7 +44,16 @@ class GetCheckoutDebitCardPaymentResponse implements \JsonSerializable
      */
     public function setStatementDescriptor(?string $statementDescriptor): void
     {
-        $this->statementDescriptor = $statementDescriptor;
+        $this->statementDescriptor['value'] = $statementDescriptor;
+    }
+
+    /**
+     * Unsets Statement Descriptor.
+     * Descrição na fatura
+     */
+    public function unsetStatementDescriptor(): void
+    {
+        $this->statementDescriptor = [];
     }
 
     /**
@@ -50,7 +62,10 @@ class GetCheckoutDebitCardPaymentResponse implements \JsonSerializable
      */
     public function getAuthentication(): ?GetPaymentAuthenticationResponse
     {
-        return $this->authentication;
+        if (count($this->authentication) == 0) {
+            return null;
+        }
+        return $this->authentication['value'];
     }
 
     /**
@@ -61,7 +76,16 @@ class GetCheckoutDebitCardPaymentResponse implements \JsonSerializable
      */
     public function setAuthentication(?GetPaymentAuthenticationResponse $authentication): void
     {
-        $this->authentication = $authentication;
+        $this->authentication['value'] = $authentication;
+    }
+
+    /**
+     * Unsets Authentication.
+     * Payment Authentication response object data
+     */
+    public function unsetAuthentication(): void
+    {
+        $this->authentication = [];
     }
 
     /**
@@ -76,8 +100,12 @@ class GetCheckoutDebitCardPaymentResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['statement_descriptor'] = $this->statementDescriptor;
-        $json['authentication']       = $this->authentication;
+        if (!empty($this->statementDescriptor)) {
+            $json['statement_descriptor'] = $this->statementDescriptor['value'];
+        }
+        if (!empty($this->authentication)) {
+            $json['authentication']       = $this->authentication['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

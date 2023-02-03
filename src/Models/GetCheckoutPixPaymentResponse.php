@@ -19,14 +19,14 @@ use stdClass;
 class GetCheckoutPixPaymentResponse implements \JsonSerializable
 {
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $expiresAt;
+    private $expiresAt = [];
 
     /**
-     * @var PixAdditionalInformation[]|null
+     * @var array
      */
-    private $additionalInformation;
+    private $additionalInformation = [];
 
     /**
      * Returns Expires At.
@@ -34,7 +34,10 @@ class GetCheckoutPixPaymentResponse implements \JsonSerializable
      */
     public function getExpiresAt(): ?\DateTime
     {
-        return $this->expiresAt;
+        if (count($this->expiresAt) == 0) {
+            return null;
+        }
+        return $this->expiresAt['value'];
     }
 
     /**
@@ -46,7 +49,16 @@ class GetCheckoutPixPaymentResponse implements \JsonSerializable
      */
     public function setExpiresAt(?\DateTime $expiresAt): void
     {
-        $this->expiresAt = $expiresAt;
+        $this->expiresAt['value'] = $expiresAt;
+    }
+
+    /**
+     * Unsets Expires At.
+     * Expires at
+     */
+    public function unsetExpiresAt(): void
+    {
+        $this->expiresAt = [];
     }
 
     /**
@@ -57,7 +69,10 @@ class GetCheckoutPixPaymentResponse implements \JsonSerializable
      */
     public function getAdditionalInformation(): ?array
     {
-        return $this->additionalInformation;
+        if (count($this->additionalInformation) == 0) {
+            return null;
+        }
+        return $this->additionalInformation['value'];
     }
 
     /**
@@ -70,7 +85,16 @@ class GetCheckoutPixPaymentResponse implements \JsonSerializable
      */
     public function setAdditionalInformation(?array $additionalInformation): void
     {
-        $this->additionalInformation = $additionalInformation;
+        $this->additionalInformation['value'] = $additionalInformation;
+    }
+
+    /**
+     * Unsets Additional Information.
+     * Additional information
+     */
+    public function unsetAdditionalInformation(): void
+    {
+        $this->additionalInformation = [];
     }
 
     /**
@@ -85,8 +109,12 @@ class GetCheckoutPixPaymentResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['expires_at']             = DateTimeHelper::toRfc3339DateTime($this->expiresAt);
-        $json['additional_information'] = $this->additionalInformation;
+        if (!empty($this->expiresAt)) {
+            $json['expires_at']             = DateTimeHelper::toRfc3339DateTime($this->expiresAt['value']);
+        }
+        if (!empty($this->additionalInformation)) {
+            $json['additional_information'] = $this->additionalInformation['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

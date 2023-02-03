@@ -19,59 +19,59 @@ use stdClass;
 class GetChargeResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $code;
+    private $code = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $gatewayId;
+    private $gatewayId = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $amount;
+    private $amount = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $currency;
+    private $currency = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $paymentMethod;
+    private $paymentMethod = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $dueAt;
+    private $dueAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
-     * @var GetTransactionResponse
+     * @var array
      */
-    private $lastTransaction;
+    private $lastTransaction = [];
 
     /**
      * @var array
@@ -89,9 +89,9 @@ class GetChargeResponse implements \JsonSerializable
     private $customer = [];
 
     /**
-     * @var array<string,string>|null
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
      * @var array
@@ -104,14 +104,14 @@ class GetChargeResponse implements \JsonSerializable
     private $canceledAt = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $canceledAmount;
+    private $canceledAmount = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $paidAmount;
+    private $paidAmount = [];
 
     /**
      * @var array
@@ -124,19 +124,14 @@ class GetChargeResponse implements \JsonSerializable
     private $recurrencyCycle = [];
 
     /**
-     * @param GetTransactionResponse $lastTransaction
-     */
-    public function __construct(GetTransactionResponse $lastTransaction)
-    {
-        $this->lastTransaction = $lastTransaction;
-    }
-
-    /**
      * Returns Id.
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -146,7 +141,15 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -154,7 +157,10 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function getCode(): ?string
     {
-        return $this->code;
+        if (count($this->code) == 0) {
+            return null;
+        }
+        return $this->code['value'];
     }
 
     /**
@@ -164,7 +170,15 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setCode(?string $code): void
     {
-        $this->code = $code;
+        $this->code['value'] = $code;
+    }
+
+    /**
+     * Unsets Code.
+     */
+    public function unsetCode(): void
+    {
+        $this->code = [];
     }
 
     /**
@@ -172,7 +186,10 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function getGatewayId(): ?string
     {
-        return $this->gatewayId;
+        if (count($this->gatewayId) == 0) {
+            return null;
+        }
+        return $this->gatewayId['value'];
     }
 
     /**
@@ -182,7 +199,15 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setGatewayId(?string $gatewayId): void
     {
-        $this->gatewayId = $gatewayId;
+        $this->gatewayId['value'] = $gatewayId;
+    }
+
+    /**
+     * Unsets Gateway Id.
+     */
+    public function unsetGatewayId(): void
+    {
+        $this->gatewayId = [];
     }
 
     /**
@@ -190,7 +215,10 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function getAmount(): ?int
     {
-        return $this->amount;
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
     }
 
     /**
@@ -200,7 +228,15 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setAmount(?int $amount): void
     {
-        $this->amount = $amount;
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
     }
 
     /**
@@ -208,7 +244,10 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -218,7 +257,15 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -226,7 +273,10 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function getCurrency(): ?string
     {
-        return $this->currency;
+        if (count($this->currency) == 0) {
+            return null;
+        }
+        return $this->currency['value'];
     }
 
     /**
@@ -236,7 +286,15 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setCurrency(?string $currency): void
     {
-        $this->currency = $currency;
+        $this->currency['value'] = $currency;
+    }
+
+    /**
+     * Unsets Currency.
+     */
+    public function unsetCurrency(): void
+    {
+        $this->currency = [];
     }
 
     /**
@@ -244,7 +302,10 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function getPaymentMethod(): ?string
     {
-        return $this->paymentMethod;
+        if (count($this->paymentMethod) == 0) {
+            return null;
+        }
+        return $this->paymentMethod['value'];
     }
 
     /**
@@ -254,7 +315,15 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setPaymentMethod(?string $paymentMethod): void
     {
-        $this->paymentMethod = $paymentMethod;
+        $this->paymentMethod['value'] = $paymentMethod;
+    }
+
+    /**
+     * Unsets Payment Method.
+     */
+    public function unsetPaymentMethod(): void
+    {
+        $this->paymentMethod = [];
     }
 
     /**
@@ -262,7 +331,10 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function getDueAt(): ?\DateTime
     {
-        return $this->dueAt;
+        if (count($this->dueAt) == 0) {
+            return null;
+        }
+        return $this->dueAt['value'];
     }
 
     /**
@@ -273,7 +345,15 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setDueAt(?\DateTime $dueAt): void
     {
-        $this->dueAt = $dueAt;
+        $this->dueAt['value'] = $dueAt;
+    }
+
+    /**
+     * Unsets Due At.
+     */
+    public function unsetDueAt(): void
+    {
+        $this->dueAt = [];
     }
 
     /**
@@ -281,7 +361,10 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -292,7 +375,15 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -300,7 +391,10 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -311,26 +405,44 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?\DateTime $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
      * Returns Last Transaction.
      */
-    public function getLastTransaction(): GetTransactionResponse
+    public function getLastTransaction(): ?GetTransactionResponse
     {
-        return $this->lastTransaction;
+        if (count($this->lastTransaction) == 0) {
+            return null;
+        }
+        return $this->lastTransaction['value'];
     }
 
     /**
      * Sets Last Transaction.
      *
-     * @required
      * @maps last_transaction
      */
-    public function setLastTransaction(GetTransactionResponse $lastTransaction): void
+    public function setLastTransaction(?GetTransactionResponse $lastTransaction): void
     {
-        $this->lastTransaction = $lastTransaction;
+        $this->lastTransaction['value'] = $lastTransaction;
+    }
+
+    /**
+     * Unsets Last Transaction.
+     */
+    public function unsetLastTransaction(): void
+    {
+        $this->lastTransaction = [];
     }
 
     /**
@@ -427,7 +539,10 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
@@ -439,7 +554,15 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -508,7 +631,10 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function getCanceledAmount(): ?int
     {
-        return $this->canceledAmount;
+        if (count($this->canceledAmount) == 0) {
+            return null;
+        }
+        return $this->canceledAmount['value'];
     }
 
     /**
@@ -519,7 +645,16 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setCanceledAmount(?int $canceledAmount): void
     {
-        $this->canceledAmount = $canceledAmount;
+        $this->canceledAmount['value'] = $canceledAmount;
+    }
+
+    /**
+     * Unsets Canceled Amount.
+     * Canceled Amount
+     */
+    public function unsetCanceledAmount(): void
+    {
+        $this->canceledAmount = [];
     }
 
     /**
@@ -528,7 +663,10 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function getPaidAmount(): ?int
     {
-        return $this->paidAmount;
+        if (count($this->paidAmount) == 0) {
+            return null;
+        }
+        return $this->paidAmount['value'];
     }
 
     /**
@@ -539,7 +677,16 @@ class GetChargeResponse implements \JsonSerializable
      */
     public function setPaidAmount(?int $paidAmount): void
     {
-        $this->paidAmount = $paidAmount;
+        $this->paidAmount['value'] = $paidAmount;
+    }
+
+    /**
+     * Unsets Paid Amount.
+     * Paid amount
+     */
+    public function unsetPaidAmount(): void
+    {
+        $this->paidAmount = [];
     }
 
     /**
@@ -618,17 +765,39 @@ class GetChargeResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']                         = $this->id;
-        $json['code']                       = $this->code;
-        $json['gateway_id']                 = $this->gatewayId;
-        $json['amount']                     = $this->amount;
-        $json['status']                     = $this->status;
-        $json['currency']                   = $this->currency;
-        $json['payment_method']             = $this->paymentMethod;
-        $json['due_at']                     = DateTimeHelper::toRfc3339DateTime($this->dueAt);
-        $json['created_at']                 = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']                 = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        $json['last_transaction']           = $this->lastTransaction;
+        if (!empty($this->id)) {
+            $json['id']                     = $this->id['value'];
+        }
+        if (!empty($this->code)) {
+            $json['code']                   = $this->code['value'];
+        }
+        if (!empty($this->gatewayId)) {
+            $json['gateway_id']             = $this->gatewayId['value'];
+        }
+        if (!empty($this->amount)) {
+            $json['amount']                 = $this->amount['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']                 = $this->status['value'];
+        }
+        if (!empty($this->currency)) {
+            $json['currency']               = $this->currency['value'];
+        }
+        if (!empty($this->paymentMethod)) {
+            $json['payment_method']         = $this->paymentMethod['value'];
+        }
+        if (!empty($this->dueAt)) {
+            $json['due_at']                 = DateTimeHelper::toRfc3339DateTime($this->dueAt['value']);
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']             = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']             = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
+        }
+        if (!empty($this->lastTransaction)) {
+            $json['last_transaction']       = $this->lastTransaction['value'];
+        }
         if (!empty($this->invoice)) {
             $json['invoice']                = $this->invoice['value'];
         }
@@ -638,15 +807,21 @@ class GetChargeResponse implements \JsonSerializable
         if (!empty($this->customer)) {
             $json['customer']               = $this->customer['value'];
         }
-        $json['metadata']                   = $this->metadata;
+        if (!empty($this->metadata)) {
+            $json['metadata']               = $this->metadata['value'];
+        }
         if (!empty($this->paidAt)) {
             $json['paid_at']                = DateTimeHelper::toRfc3339DateTime($this->paidAt['value']);
         }
         if (!empty($this->canceledAt)) {
             $json['canceled_at']            = DateTimeHelper::toRfc3339DateTime($this->canceledAt['value']);
         }
-        $json['canceled_amount']            = $this->canceledAmount;
-        $json['paid_amount']                = $this->paidAmount;
+        if (!empty($this->canceledAmount)) {
+            $json['canceled_amount']        = $this->canceledAmount['value'];
+        }
+        if (!empty($this->paidAmount)) {
+            $json['paid_amount']            = $this->paidAmount['value'];
+        }
         if (!empty($this->interestAndFinePaid)) {
             $json['interest_and_fine_paid'] = $this->interestAndFinePaid['value'];
         }

@@ -22,17 +22,17 @@ use stdClass;
 class GetBankTransferTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $url;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $bankTid;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $bank;
 
@@ -47,22 +47,10 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
     private $paidAmount;
 
     /**
-     * @param string $url
-     * @param string $bankTid
-     * @param string $bank
-     */
-    public function __construct(string $url, string $bankTid, string $bank)
-    {
-        $this->url = $url;
-        $this->bankTid = $bankTid;
-        $this->bank = $bank;
-    }
-
-    /**
      * Returns Url.
      * Payment url
      */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
@@ -71,10 +59,9 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Sets Url.
      * Payment url
      *
-     * @required
      * @maps url
      */
-    public function setUrl(string $url): void
+    public function setUrl(?string $url): void
     {
         $this->url = $url;
     }
@@ -83,7 +70,7 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Returns Bank Tid.
      * Transaction identifier for the bank
      */
-    public function getBankTid(): string
+    public function getBankTid(): ?string
     {
         return $this->bankTid;
     }
@@ -92,10 +79,9 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Sets Bank Tid.
      * Transaction identifier for the bank
      *
-     * @required
      * @maps bank_tid
      */
-    public function setBankTid(string $bankTid): void
+    public function setBankTid(?string $bankTid): void
     {
         $this->bankTid = $bankTid;
     }
@@ -104,7 +90,7 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Returns Bank.
      * Bank
      */
-    public function getBank(): string
+    public function getBank(): ?string
     {
         return $this->bank;
     }
@@ -113,10 +99,9 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
      * Sets Bank.
      * Bank
      *
-     * @required
      * @maps bank
      */
-    public function setBank(string $bank): void
+    public function setBank(?string $bank): void
     {
         $this->bank = $bank;
     }
@@ -174,9 +159,15 @@ class GetBankTransferTransactionResponse extends GetTransactionResponse implemen
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['url']             = $this->url;
-        $json['bank_tid']        = $this->bankTid;
-        $json['bank']            = $this->bank;
+        if (isset($this->url)) {
+            $json['url']         = $this->url;
+        }
+        if (isset($this->bankTid)) {
+            $json['bank_tid']    = $this->bankTid;
+        }
+        if (isset($this->bank)) {
+            $json['bank']        = $this->bank;
+        }
         if (isset($this->paidAt)) {
             $json['paid_at']     = DateTimeHelper::toRfc3339DateTime($this->paidAt);
         }

@@ -18,19 +18,19 @@ use stdClass;
 class GetFineResponse implements \JsonSerializable
 {
     /**
-     * @var int|null
+     * @var array
      */
-    private $days;
+    private $days = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $amount;
+    private $amount = [];
 
     /**
      * Returns Days.
@@ -38,7 +38,10 @@ class GetFineResponse implements \JsonSerializable
      */
     public function getDays(): ?int
     {
-        return $this->days;
+        if (count($this->days) == 0) {
+            return null;
+        }
+        return $this->days['value'];
     }
 
     /**
@@ -49,7 +52,16 @@ class GetFineResponse implements \JsonSerializable
      */
     public function setDays(?int $days): void
     {
-        $this->days = $days;
+        $this->days['value'] = $days;
+    }
+
+    /**
+     * Unsets Days.
+     * Days
+     */
+    public function unsetDays(): void
+    {
+        $this->days = [];
     }
 
     /**
@@ -58,7 +70,10 @@ class GetFineResponse implements \JsonSerializable
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -69,7 +84,16 @@ class GetFineResponse implements \JsonSerializable
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     * Type
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -78,7 +102,10 @@ class GetFineResponse implements \JsonSerializable
      */
     public function getAmount(): ?int
     {
-        return $this->amount;
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
     }
 
     /**
@@ -89,7 +116,16 @@ class GetFineResponse implements \JsonSerializable
      */
     public function setAmount(?int $amount): void
     {
-        $this->amount = $amount;
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     * Amount
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
     }
 
     /**
@@ -104,9 +140,15 @@ class GetFineResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['days']   = $this->days;
-        $json['type']   = $this->type;
-        $json['amount'] = $this->amount;
+        if (!empty($this->days)) {
+            $json['days']   = $this->days['value'];
+        }
+        if (!empty($this->type)) {
+            $json['type']   = $this->type['value'];
+        }
+        if (!empty($this->amount)) {
+            $json['amount'] = $this->amount['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }
