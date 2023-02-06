@@ -11,21 +11,21 @@ Information about the recipient on the gateway
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `gateway` | `?string` | Required | Gateway name | getGateway(): ?string | setGateway(?string gateway): void |
-| `status` | `?string` | Required | Status of the recipient on the gateway | getStatus(): ?string | setStatus(?string status): void |
-| `pgid` | `?string` | Required | Recipient id on the gateway | getPgid(): ?string | setPgid(?string pgid): void |
-| `createdAt` | `?string` | Required | Creation date | getCreatedAt(): ?string | setCreatedAt(?string createdAt): void |
-| `updatedAt` | `?string` | Required | Last update date | getUpdatedAt(): ?string | setUpdatedAt(?string updatedAt): void |
+| `gateway` | `?string` | Optional | Gateway name | getGateway(): ?string | setGateway(?string gateway): void |
+| `status` | `?string` | Optional | Status of the recipient on the gateway | getStatus(): ?string | setStatus(?string status): void |
+| `pgid` | `?string` | Optional | Recipient id on the gateway | getPgid(): ?string | setPgid(?string pgid): void |
+| `createdAt` | `?string` | Optional | Creation date | getCreatedAt(): ?string | setCreatedAt(?string createdAt): void |
+| `updatedAt` | `?string` | Optional | Last update date | getUpdatedAt(): ?string | setUpdatedAt(?string updatedAt): void |
 
 ## Example (as JSON)
 
 ```json
 {
-  "gateway": "gateway0",
-  "status": "status8",
-  "pgid": "pgid4",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4"
+  "gateway": null,
+  "status": null,
+  "pgid": null,
+  "created_at": null,
+  "updated_at": null
 }
 ```
 

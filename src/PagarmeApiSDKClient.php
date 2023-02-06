@@ -30,13 +30,13 @@ use Unirest\HttpClient;
 
 class PagarmeApiSDKClient implements ConfigurationInterface
 {
+    private $orders;
+
     private $plans;
 
     private $subscriptions;
 
     private $invoices;
-
-    private $orders;
 
     private $customers;
 
@@ -44,9 +44,9 @@ class PagarmeApiSDKClient implements ConfigurationInterface
 
     private $charges;
 
-    private $transfers;
-
     private $tokens;
+
+    private $transfers;
 
     private $transactions;
 
@@ -73,7 +73,7 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
             ->apiCallback($this->config['httpCallback'] ?? null)
-            ->userAgent('PagarmeApiSDK - PHP 6.7.2')
+            ->userAgent('PagarmeApiSDK - PHP 6.7.3')
             ->globalErrors($this->getGlobalErrors())
             ->serverUrls(self::ENVIRONMENT_MAP[$this->getEnvironment()], Server::DEFAULT_)
             ->authManagers(['global' => $this->basicAuthManager])
@@ -191,6 +191,17 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
+     * Returns Orders Controller
+     */
+    public function getOrdersController(): OrdersController
+    {
+        if ($this->orders == null) {
+            $this->orders = new OrdersController($this->client);
+        }
+        return $this->orders;
+    }
+
+    /**
      * Returns Plans Controller
      */
     public function getPlansController(): PlansController
@@ -221,17 +232,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             $this->invoices = new InvoicesController($this->client);
         }
         return $this->invoices;
-    }
-
-    /**
-     * Returns Orders Controller
-     */
-    public function getOrdersController(): OrdersController
-    {
-        if ($this->orders == null) {
-            $this->orders = new OrdersController($this->client);
-        }
-        return $this->orders;
     }
 
     /**
@@ -268,17 +268,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
-     * Returns Transfers Controller
-     */
-    public function getTransfersController(): TransfersController
-    {
-        if ($this->transfers == null) {
-            $this->transfers = new TransfersController($this->client);
-        }
-        return $this->transfers;
-    }
-
-    /**
      * Returns Tokens Controller
      */
     public function getTokensController(): TokensController
@@ -287,6 +276,17 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             $this->tokens = new TokensController($this->client);
         }
         return $this->tokens;
+    }
+
+    /**
+     * Returns Transfers Controller
+     */
+    public function getTransfersController(): TransfersController
+    {
+        if ($this->transfers == null) {
+            $this->transfers = new TransfersController($this->client);
+        }
+        return $this->transfers;
     }
 
     /**
@@ -306,12 +306,12 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     private function getGlobalErrors(): array
     {
         return [
-            400 => ErrorType::init('Invalid request', Exceptions\ErrorException::class),
-            401 => ErrorType::init('Invalid API key', Exceptions\ErrorException::class),
-            404 => ErrorType::init('An informed resource was not found', Exceptions\ErrorException::class),
-            412 => ErrorType::init('Business validation error', Exceptions\ErrorException::class),
-            422 => ErrorType::init('Contract validation error', Exceptions\ErrorException::class),
-            500 => ErrorType::init('Internal server error', Exceptions\ErrorException::class)
+            strval(400) => ErrorType::init('Invalid request', Exceptions\ErrorException::class),
+            strval(401) => ErrorType::init('Invalid API key', Exceptions\ErrorException::class),
+            strval(404) => ErrorType::init('An informed resource was not found', Exceptions\ErrorException::class),
+            strval(412) => ErrorType::init('Business validation error', Exceptions\ErrorException::class),
+            strval(422) => ErrorType::init('Contract validation error', Exceptions\ErrorException::class),
+            strval(500) => ErrorType::init('Internal server error', Exceptions\ErrorException::class)
         ];
     }
 

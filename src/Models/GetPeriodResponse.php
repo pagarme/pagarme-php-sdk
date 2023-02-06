@@ -19,61 +19,64 @@ use stdClass;
 class GetPeriodResponse implements \JsonSerializable
 {
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $startAt;
+    private $startAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $endAt;
+    private $endAt = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $billingAt;
+    private $billingAt = [];
 
     /**
-     * @var GetSubscriptionResponse|null
+     * @var array
      */
-    private $subscription;
+    private $subscription = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $duration;
+    private $duration = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $cycle;
+    private $cycle = [];
 
     /**
      * Returns Start At.
      */
     public function getStartAt(): ?\DateTime
     {
-        return $this->startAt;
+        if (count($this->startAt) == 0) {
+            return null;
+        }
+        return $this->startAt['value'];
     }
 
     /**
@@ -84,7 +87,15 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function setStartAt(?\DateTime $startAt): void
     {
-        $this->startAt = $startAt;
+        $this->startAt['value'] = $startAt;
+    }
+
+    /**
+     * Unsets Start At.
+     */
+    public function unsetStartAt(): void
+    {
+        $this->startAt = [];
     }
 
     /**
@@ -92,7 +103,10 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function getEndAt(): ?\DateTime
     {
-        return $this->endAt;
+        if (count($this->endAt) == 0) {
+            return null;
+        }
+        return $this->endAt['value'];
     }
 
     /**
@@ -103,7 +117,15 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function setEndAt(?\DateTime $endAt): void
     {
-        $this->endAt = $endAt;
+        $this->endAt['value'] = $endAt;
+    }
+
+    /**
+     * Unsets End At.
+     */
+    public function unsetEndAt(): void
+    {
+        $this->endAt = [];
     }
 
     /**
@@ -111,7 +133,10 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -121,7 +146,15 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -129,7 +162,10 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function getBillingAt(): ?\DateTime
     {
-        return $this->billingAt;
+        if (count($this->billingAt) == 0) {
+            return null;
+        }
+        return $this->billingAt['value'];
     }
 
     /**
@@ -140,7 +176,15 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function setBillingAt(?\DateTime $billingAt): void
     {
-        $this->billingAt = $billingAt;
+        $this->billingAt['value'] = $billingAt;
+    }
+
+    /**
+     * Unsets Billing At.
+     */
+    public function unsetBillingAt(): void
+    {
+        $this->billingAt = [];
     }
 
     /**
@@ -148,7 +192,10 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function getSubscription(): ?GetSubscriptionResponse
     {
-        return $this->subscription;
+        if (count($this->subscription) == 0) {
+            return null;
+        }
+        return $this->subscription['value'];
     }
 
     /**
@@ -158,7 +205,15 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function setSubscription(?GetSubscriptionResponse $subscription): void
     {
-        $this->subscription = $subscription;
+        $this->subscription['value'] = $subscription;
+    }
+
+    /**
+     * Unsets Subscription.
+     */
+    public function unsetSubscription(): void
+    {
+        $this->subscription = [];
     }
 
     /**
@@ -166,7 +221,10 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -176,7 +234,15 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -184,7 +250,10 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function getDuration(): ?int
     {
-        return $this->duration;
+        if (count($this->duration) == 0) {
+            return null;
+        }
+        return $this->duration['value'];
     }
 
     /**
@@ -194,7 +263,15 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function setDuration(?int $duration): void
     {
-        $this->duration = $duration;
+        $this->duration['value'] = $duration;
+    }
+
+    /**
+     * Unsets Duration.
+     */
+    public function unsetDuration(): void
+    {
+        $this->duration = [];
     }
 
     /**
@@ -202,7 +279,10 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?string
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -212,7 +292,15 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function setCreatedAt(?string $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -220,7 +308,10 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?string
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -230,7 +321,15 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?string $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
@@ -238,7 +337,10 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function getCycle(): ?int
     {
-        return $this->cycle;
+        if (count($this->cycle) == 0) {
+            return null;
+        }
+        return $this->cycle['value'];
     }
 
     /**
@@ -248,7 +350,15 @@ class GetPeriodResponse implements \JsonSerializable
      */
     public function setCycle(?int $cycle): void
     {
-        $this->cycle = $cycle;
+        $this->cycle['value'] = $cycle;
+    }
+
+    /**
+     * Unsets Cycle.
+     */
+    public function unsetCycle(): void
+    {
+        $this->cycle = [];
     }
 
     /**
@@ -263,16 +373,36 @@ class GetPeriodResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['start_at']     = DateTimeHelper::toRfc3339DateTime($this->startAt);
-        $json['end_at']       = DateTimeHelper::toRfc3339DateTime($this->endAt);
-        $json['id']           = $this->id;
-        $json['billing_at']   = DateTimeHelper::toRfc3339DateTime($this->billingAt);
-        $json['subscription'] = $this->subscription;
-        $json['status']       = $this->status;
-        $json['duration']     = $this->duration;
-        $json['created_at']   = $this->createdAt;
-        $json['updated_at']   = $this->updatedAt;
-        $json['cycle']        = $this->cycle;
+        if (!empty($this->startAt)) {
+            $json['start_at']     = DateTimeHelper::toRfc3339DateTime($this->startAt['value']);
+        }
+        if (!empty($this->endAt)) {
+            $json['end_at']       = DateTimeHelper::toRfc3339DateTime($this->endAt['value']);
+        }
+        if (!empty($this->id)) {
+            $json['id']           = $this->id['value'];
+        }
+        if (!empty($this->billingAt)) {
+            $json['billing_at']   = DateTimeHelper::toRfc3339DateTime($this->billingAt['value']);
+        }
+        if (!empty($this->subscription)) {
+            $json['subscription'] = $this->subscription['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']       = $this->status['value'];
+        }
+        if (!empty($this->duration)) {
+            $json['duration']     = $this->duration['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']   = $this->createdAt['value'];
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']   = $this->updatedAt['value'];
+        }
+        if (!empty($this->cycle)) {
+            $json['cycle']        = $this->cycle['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

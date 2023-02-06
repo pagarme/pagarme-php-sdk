@@ -18,14 +18,14 @@ use stdClass;
 class GetGatewayResponseResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $code;
+    private $code = [];
 
     /**
-     * @var GetGatewayErrorResponse[]|null
+     * @var array
      */
-    private $errors;
+    private $errors = [];
 
     /**
      * Returns Code.
@@ -33,7 +33,10 @@ class GetGatewayResponseResponse implements \JsonSerializable
      */
     public function getCode(): ?string
     {
-        return $this->code;
+        if (count($this->code) == 0) {
+            return null;
+        }
+        return $this->code['value'];
     }
 
     /**
@@ -44,7 +47,16 @@ class GetGatewayResponseResponse implements \JsonSerializable
      */
     public function setCode(?string $code): void
     {
-        $this->code = $code;
+        $this->code['value'] = $code;
+    }
+
+    /**
+     * Unsets Code.
+     * The error code
+     */
+    public function unsetCode(): void
+    {
+        $this->code = [];
     }
 
     /**
@@ -55,7 +67,10 @@ class GetGatewayResponseResponse implements \JsonSerializable
      */
     public function getErrors(): ?array
     {
-        return $this->errors;
+        if (count($this->errors) == 0) {
+            return null;
+        }
+        return $this->errors['value'];
     }
 
     /**
@@ -68,7 +83,16 @@ class GetGatewayResponseResponse implements \JsonSerializable
      */
     public function setErrors(?array $errors): void
     {
-        $this->errors = $errors;
+        $this->errors['value'] = $errors;
+    }
+
+    /**
+     * Unsets Errors.
+     * The gateway response errors list
+     */
+    public function unsetErrors(): void
+    {
+        $this->errors = [];
     }
 
     /**
@@ -83,8 +107,12 @@ class GetGatewayResponseResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['code']   = $this->code;
-        $json['errors'] = $this->errors;
+        if (!empty($this->code)) {
+            $json['code']   = $this->code['value'];
+        }
+        if (!empty($this->errors)) {
+            $json['errors'] = $this->errors['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

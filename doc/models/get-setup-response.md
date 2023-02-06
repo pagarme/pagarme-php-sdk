@@ -11,19 +11,19 @@ Response object for getting the setup from a subscription
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
-| `description` | `?string` | Required | - | getDescription(): ?string | setDescription(?string description): void |
-| `amount` | `?int` | Required | - | getAmount(): ?int | setAmount(?int amount): void |
-| `status` | `?string` | Required | - | getStatus(): ?string | setStatus(?string status): void |
+| `id` | `?string` | Optional | - | getId(): ?string | setId(?string id): void |
+| `description` | `?string` | Optional | - | getDescription(): ?string | setDescription(?string description): void |
+| `amount` | `?int` | Optional | - | getAmount(): ?int | setAmount(?int amount): void |
+| `status` | `?string` | Optional | - | getStatus(): ?string | setStatus(?string status): void |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "description": "description0",
-  "amount": 46,
-  "status": "status8"
+  "id": null,
+  "description": null,
+  "amount": null,
+  "status": null
 }
 ```
 

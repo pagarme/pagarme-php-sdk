@@ -18,14 +18,14 @@ use stdClass;
 class ListAddressesResponse implements \JsonSerializable
 {
     /**
-     * @var GetAddressResponse[]|null
+     * @var array
      */
-    private $data;
+    private $data = [];
 
     /**
-     * @var PagingResponse|null
+     * @var array
      */
-    private $paging;
+    private $paging = [];
 
     /**
      * Returns Data.
@@ -35,7 +35,10 @@ class ListAddressesResponse implements \JsonSerializable
      */
     public function getData(): ?array
     {
-        return $this->data;
+        if (count($this->data) == 0) {
+            return null;
+        }
+        return $this->data['value'];
     }
 
     /**
@@ -48,7 +51,16 @@ class ListAddressesResponse implements \JsonSerializable
      */
     public function setData(?array $data): void
     {
-        $this->data = $data;
+        $this->data['value'] = $data;
+    }
+
+    /**
+     * Unsets Data.
+     * The address objects
+     */
+    public function unsetData(): void
+    {
+        $this->data = [];
     }
 
     /**
@@ -57,7 +69,10 @@ class ListAddressesResponse implements \JsonSerializable
      */
     public function getPaging(): ?PagingResponse
     {
-        return $this->paging;
+        if (count($this->paging) == 0) {
+            return null;
+        }
+        return $this->paging['value'];
     }
 
     /**
@@ -68,7 +83,16 @@ class ListAddressesResponse implements \JsonSerializable
      */
     public function setPaging(?PagingResponse $paging): void
     {
-        $this->paging = $paging;
+        $this->paging['value'] = $paging;
+    }
+
+    /**
+     * Unsets Paging.
+     * Paging object
+     */
+    public function unsetPaging(): void
+    {
+        $this->paging = [];
     }
 
     /**
@@ -83,8 +107,12 @@ class ListAddressesResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['data']   = $this->data;
-        $json['paging'] = $this->paging;
+        if (!empty($this->data)) {
+            $json['data']   = $this->data['value'];
+        }
+        if (!empty($this->paging)) {
+            $json['paging'] = $this->paging['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

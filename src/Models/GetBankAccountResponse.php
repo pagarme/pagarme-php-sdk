@@ -16,69 +16,69 @@ use stdClass;
 class GetBankAccountResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $holderName;
+    private $holderName = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $holderType;
+    private $holderType = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $bank;
+    private $bank = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $branchNumber;
+    private $branchNumber = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $branchCheckDigit;
+    private $branchCheckDigit = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $accountNumber;
+    private $accountNumber = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $accountCheckDigit;
+    private $accountCheckDigit = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $deletedAt;
+    private $deletedAt = [];
 
     /**
      * @var array
@@ -86,14 +86,14 @@ class GetBankAccountResponse implements \JsonSerializable
     private $recipient = [];
 
     /**
-     * @var array<string,string>|null
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $pixKey;
+    private $pixKey = [];
 
     /**
      * Returns Id.
@@ -101,7 +101,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -112,7 +115,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     * Id
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -121,7 +133,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getHolderName(): ?string
     {
-        return $this->holderName;
+        if (count($this->holderName) == 0) {
+            return null;
+        }
+        return $this->holderName['value'];
     }
 
     /**
@@ -132,7 +147,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setHolderName(?string $holderName): void
     {
-        $this->holderName = $holderName;
+        $this->holderName['value'] = $holderName;
+    }
+
+    /**
+     * Unsets Holder Name.
+     * Holder name
+     */
+    public function unsetHolderName(): void
+    {
+        $this->holderName = [];
     }
 
     /**
@@ -141,7 +165,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getHolderType(): ?string
     {
-        return $this->holderType;
+        if (count($this->holderType) == 0) {
+            return null;
+        }
+        return $this->holderType['value'];
     }
 
     /**
@@ -152,7 +179,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setHolderType(?string $holderType): void
     {
-        $this->holderType = $holderType;
+        $this->holderType['value'] = $holderType;
+    }
+
+    /**
+     * Unsets Holder Type.
+     * Holder type
+     */
+    public function unsetHolderType(): void
+    {
+        $this->holderType = [];
     }
 
     /**
@@ -161,7 +197,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getBank(): ?string
     {
-        return $this->bank;
+        if (count($this->bank) == 0) {
+            return null;
+        }
+        return $this->bank['value'];
     }
 
     /**
@@ -172,7 +211,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setBank(?string $bank): void
     {
-        $this->bank = $bank;
+        $this->bank['value'] = $bank;
+    }
+
+    /**
+     * Unsets Bank.
+     * Bank
+     */
+    public function unsetBank(): void
+    {
+        $this->bank = [];
     }
 
     /**
@@ -181,7 +229,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getBranchNumber(): ?string
     {
-        return $this->branchNumber;
+        if (count($this->branchNumber) == 0) {
+            return null;
+        }
+        return $this->branchNumber['value'];
     }
 
     /**
@@ -192,7 +243,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setBranchNumber(?string $branchNumber): void
     {
-        $this->branchNumber = $branchNumber;
+        $this->branchNumber['value'] = $branchNumber;
+    }
+
+    /**
+     * Unsets Branch Number.
+     * Branch number
+     */
+    public function unsetBranchNumber(): void
+    {
+        $this->branchNumber = [];
     }
 
     /**
@@ -201,7 +261,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getBranchCheckDigit(): ?string
     {
-        return $this->branchCheckDigit;
+        if (count($this->branchCheckDigit) == 0) {
+            return null;
+        }
+        return $this->branchCheckDigit['value'];
     }
 
     /**
@@ -212,7 +275,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setBranchCheckDigit(?string $branchCheckDigit): void
     {
-        $this->branchCheckDigit = $branchCheckDigit;
+        $this->branchCheckDigit['value'] = $branchCheckDigit;
+    }
+
+    /**
+     * Unsets Branch Check Digit.
+     * Branch check digit
+     */
+    public function unsetBranchCheckDigit(): void
+    {
+        $this->branchCheckDigit = [];
     }
 
     /**
@@ -221,7 +293,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getAccountNumber(): ?string
     {
-        return $this->accountNumber;
+        if (count($this->accountNumber) == 0) {
+            return null;
+        }
+        return $this->accountNumber['value'];
     }
 
     /**
@@ -232,7 +307,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setAccountNumber(?string $accountNumber): void
     {
-        $this->accountNumber = $accountNumber;
+        $this->accountNumber['value'] = $accountNumber;
+    }
+
+    /**
+     * Unsets Account Number.
+     * Account number
+     */
+    public function unsetAccountNumber(): void
+    {
+        $this->accountNumber = [];
     }
 
     /**
@@ -241,7 +325,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getAccountCheckDigit(): ?string
     {
-        return $this->accountCheckDigit;
+        if (count($this->accountCheckDigit) == 0) {
+            return null;
+        }
+        return $this->accountCheckDigit['value'];
     }
 
     /**
@@ -252,7 +339,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setAccountCheckDigit(?string $accountCheckDigit): void
     {
-        $this->accountCheckDigit = $accountCheckDigit;
+        $this->accountCheckDigit['value'] = $accountCheckDigit;
+    }
+
+    /**
+     * Unsets Account Check Digit.
+     * Account check digit
+     */
+    public function unsetAccountCheckDigit(): void
+    {
+        $this->accountCheckDigit = [];
     }
 
     /**
@@ -261,7 +357,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -272,7 +371,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     * Bank account type
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -281,7 +389,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -292,7 +403,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     * Bank account status
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -301,7 +421,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -313,7 +436,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     * Creation date
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -322,7 +454,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -334,7 +469,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?\DateTime $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     * Last update date
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
@@ -343,7 +487,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getDeletedAt(): ?\DateTime
     {
-        return $this->deletedAt;
+        if (count($this->deletedAt) == 0) {
+            return null;
+        }
+        return $this->deletedAt['value'];
     }
 
     /**
@@ -355,7 +502,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setDeletedAt(?\DateTime $deletedAt): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deletedAt['value'] = $deletedAt;
+    }
+
+    /**
+     * Unsets Deleted At.
+     * Deletion date
+     */
+    public function unsetDeletedAt(): void
+    {
+        $this->deletedAt = [];
     }
 
     /**
@@ -398,7 +554,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
@@ -411,7 +570,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     * Metadata
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -420,7 +588,10 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function getPixKey(): ?string
     {
-        return $this->pixKey;
+        if (count($this->pixKey) == 0) {
+            return null;
+        }
+        return $this->pixKey['value'];
     }
 
     /**
@@ -431,7 +602,16 @@ class GetBankAccountResponse implements \JsonSerializable
      */
     public function setPixKey(?string $pixKey): void
     {
-        $this->pixKey = $pixKey;
+        $this->pixKey['value'] = $pixKey;
+    }
+
+    /**
+     * Unsets Pix Key.
+     * Pix Key
+     */
+    public function unsetPixKey(): void
+    {
+        $this->pixKey = [];
     }
 
     /**
@@ -446,24 +626,54 @@ class GetBankAccountResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']                  = $this->id;
-        $json['holder_name']         = $this->holderName;
-        $json['holder_type']         = $this->holderType;
-        $json['bank']                = $this->bank;
-        $json['branch_number']       = $this->branchNumber;
-        $json['branch_check_digit']  = $this->branchCheckDigit;
-        $json['account_number']      = $this->accountNumber;
-        $json['account_check_digit'] = $this->accountCheckDigit;
-        $json['type']                = $this->type;
-        $json['status']              = $this->status;
-        $json['created_at']          = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']          = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        $json['deleted_at']          = DateTimeHelper::toRfc3339DateTime($this->deletedAt);
-        if (!empty($this->recipient)) {
-            $json['recipient']       = $this->recipient['value'];
+        if (!empty($this->id)) {
+            $json['id']                  = $this->id['value'];
         }
-        $json['metadata']            = $this->metadata;
-        $json['pix_key']             = $this->pixKey;
+        if (!empty($this->holderName)) {
+            $json['holder_name']         = $this->holderName['value'];
+        }
+        if (!empty($this->holderType)) {
+            $json['holder_type']         = $this->holderType['value'];
+        }
+        if (!empty($this->bank)) {
+            $json['bank']                = $this->bank['value'];
+        }
+        if (!empty($this->branchNumber)) {
+            $json['branch_number']       = $this->branchNumber['value'];
+        }
+        if (!empty($this->branchCheckDigit)) {
+            $json['branch_check_digit']  = $this->branchCheckDigit['value'];
+        }
+        if (!empty($this->accountNumber)) {
+            $json['account_number']      = $this->accountNumber['value'];
+        }
+        if (!empty($this->accountCheckDigit)) {
+            $json['account_check_digit'] = $this->accountCheckDigit['value'];
+        }
+        if (!empty($this->type)) {
+            $json['type']                = $this->type['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']              = $this->status['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']          = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']          = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
+        }
+        if (!empty($this->deletedAt)) {
+            $json['deleted_at']          = DateTimeHelper::toRfc3339DateTime($this->deletedAt['value']);
+        }
+        if (!empty($this->recipient)) {
+            $json['recipient']           = $this->recipient['value'];
+        }
+        if (!empty($this->metadata)) {
+            $json['metadata']            = $this->metadata['value'];
+        }
+        if (!empty($this->pixKey)) {
+            $json['pix_key']             = $this->pixKey['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

@@ -19,19 +19,19 @@ use stdClass;
 class GetAnticipationResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $requestedAmount;
+    private $requestedAmount = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $approvedAmount;
+    private $approvedAmount = [];
 
     /**
      * @var array
@@ -39,34 +39,34 @@ class GetAnticipationResponse implements \JsonSerializable
     private $recipient = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $pgid;
+    private $pgid = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $paymentDate;
+    private $paymentDate = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $timeframe;
+    private $timeframe = [];
 
     /**
      * Returns Id.
@@ -74,7 +74,10 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -85,7 +88,16 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     * Id
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -94,7 +106,10 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function getRequestedAmount(): ?int
     {
-        return $this->requestedAmount;
+        if (count($this->requestedAmount) == 0) {
+            return null;
+        }
+        return $this->requestedAmount['value'];
     }
 
     /**
@@ -105,7 +120,16 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function setRequestedAmount(?int $requestedAmount): void
     {
-        $this->requestedAmount = $requestedAmount;
+        $this->requestedAmount['value'] = $requestedAmount;
+    }
+
+    /**
+     * Unsets Requested Amount.
+     * Requested amount
+     */
+    public function unsetRequestedAmount(): void
+    {
+        $this->requestedAmount = [];
     }
 
     /**
@@ -114,7 +138,10 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function getApprovedAmount(): ?int
     {
-        return $this->approvedAmount;
+        if (count($this->approvedAmount) == 0) {
+            return null;
+        }
+        return $this->approvedAmount['value'];
     }
 
     /**
@@ -125,7 +152,16 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function setApprovedAmount(?int $approvedAmount): void
     {
-        $this->approvedAmount = $approvedAmount;
+        $this->approvedAmount['value'] = $approvedAmount;
+    }
+
+    /**
+     * Unsets Approved Amount.
+     * Approved amount
+     */
+    public function unsetApprovedAmount(): void
+    {
+        $this->approvedAmount = [];
     }
 
     /**
@@ -166,7 +202,10 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function getPgid(): ?string
     {
-        return $this->pgid;
+        if (count($this->pgid) == 0) {
+            return null;
+        }
+        return $this->pgid['value'];
     }
 
     /**
@@ -177,7 +216,16 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function setPgid(?string $pgid): void
     {
-        $this->pgid = $pgid;
+        $this->pgid['value'] = $pgid;
+    }
+
+    /**
+     * Unsets Pgid.
+     * Anticipation id on the gateway
+     */
+    public function unsetPgid(): void
+    {
+        $this->pgid = [];
     }
 
     /**
@@ -186,7 +234,10 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -198,7 +249,16 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     * Creation date
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -207,7 +267,10 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -219,7 +282,16 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?\DateTime $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     * Last update date
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
@@ -228,7 +300,10 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function getPaymentDate(): ?\DateTime
     {
-        return $this->paymentDate;
+        if (count($this->paymentDate) == 0) {
+            return null;
+        }
+        return $this->paymentDate['value'];
     }
 
     /**
@@ -240,7 +315,16 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function setPaymentDate(?\DateTime $paymentDate): void
     {
-        $this->paymentDate = $paymentDate;
+        $this->paymentDate['value'] = $paymentDate;
+    }
+
+    /**
+     * Unsets Payment Date.
+     * Payment date
+     */
+    public function unsetPaymentDate(): void
+    {
+        $this->paymentDate = [];
     }
 
     /**
@@ -249,7 +333,10 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -260,7 +347,16 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     * Status
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -269,7 +365,10 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function getTimeframe(): ?string
     {
-        return $this->timeframe;
+        if (count($this->timeframe) == 0) {
+            return null;
+        }
+        return $this->timeframe['value'];
     }
 
     /**
@@ -280,7 +379,16 @@ class GetAnticipationResponse implements \JsonSerializable
      */
     public function setTimeframe(?string $timeframe): void
     {
-        $this->timeframe = $timeframe;
+        $this->timeframe['value'] = $timeframe;
+    }
+
+    /**
+     * Unsets Timeframe.
+     * Timeframe
+     */
+    public function unsetTimeframe(): void
+    {
+        $this->timeframe = [];
     }
 
     /**
@@ -295,18 +403,36 @@ class GetAnticipationResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']               = $this->id;
-        $json['requested_amount'] = $this->requestedAmount;
-        $json['approved_amount']  = $this->approvedAmount;
-        if (!empty($this->recipient)) {
-            $json['recipient']    = $this->recipient['value'];
+        if (!empty($this->id)) {
+            $json['id']               = $this->id['value'];
         }
-        $json['pgid']             = $this->pgid;
-        $json['created_at']       = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']       = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        $json['payment_date']     = DateTimeHelper::toRfc3339DateTime($this->paymentDate);
-        $json['status']           = $this->status;
-        $json['timeframe']        = $this->timeframe;
+        if (!empty($this->requestedAmount)) {
+            $json['requested_amount'] = $this->requestedAmount['value'];
+        }
+        if (!empty($this->approvedAmount)) {
+            $json['approved_amount']  = $this->approvedAmount['value'];
+        }
+        if (!empty($this->recipient)) {
+            $json['recipient']        = $this->recipient['value'];
+        }
+        if (!empty($this->pgid)) {
+            $json['pgid']             = $this->pgid['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']       = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']       = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
+        }
+        if (!empty($this->paymentDate)) {
+            $json['payment_date']     = DateTimeHelper::toRfc3339DateTime($this->paymentDate['value']);
+        }
+        if (!empty($this->status)) {
+            $json['status']           = $this->status['value'];
+        }
+        if (!empty($this->timeframe)) {
+            $json['timeframe']        = $this->timeframe['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

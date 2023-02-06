@@ -18,14 +18,14 @@ use stdClass;
 class GetBalanceResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $currency;
+    private $currency = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $availableAmount;
+    private $availableAmount = [];
 
     /**
      * @var array
@@ -33,14 +33,14 @@ class GetBalanceResponse implements \JsonSerializable
     private $recipient = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $transferredAmount;
+    private $transferredAmount = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $waitingFundsAmount;
+    private $waitingFundsAmount = [];
 
     /**
      * Returns Currency.
@@ -48,7 +48,10 @@ class GetBalanceResponse implements \JsonSerializable
      */
     public function getCurrency(): ?string
     {
-        return $this->currency;
+        if (count($this->currency) == 0) {
+            return null;
+        }
+        return $this->currency['value'];
     }
 
     /**
@@ -59,7 +62,16 @@ class GetBalanceResponse implements \JsonSerializable
      */
     public function setCurrency(?string $currency): void
     {
-        $this->currency = $currency;
+        $this->currency['value'] = $currency;
+    }
+
+    /**
+     * Unsets Currency.
+     * Currency
+     */
+    public function unsetCurrency(): void
+    {
+        $this->currency = [];
     }
 
     /**
@@ -68,7 +80,10 @@ class GetBalanceResponse implements \JsonSerializable
      */
     public function getAvailableAmount(): ?int
     {
-        return $this->availableAmount;
+        if (count($this->availableAmount) == 0) {
+            return null;
+        }
+        return $this->availableAmount['value'];
     }
 
     /**
@@ -79,7 +94,16 @@ class GetBalanceResponse implements \JsonSerializable
      */
     public function setAvailableAmount(?int $availableAmount): void
     {
-        $this->availableAmount = $availableAmount;
+        $this->availableAmount['value'] = $availableAmount;
+    }
+
+    /**
+     * Unsets Available Amount.
+     * Amount available for transferring
+     */
+    public function unsetAvailableAmount(): void
+    {
+        $this->availableAmount = [];
     }
 
     /**
@@ -119,7 +143,10 @@ class GetBalanceResponse implements \JsonSerializable
      */
     public function getTransferredAmount(): ?int
     {
-        return $this->transferredAmount;
+        if (count($this->transferredAmount) == 0) {
+            return null;
+        }
+        return $this->transferredAmount['value'];
     }
 
     /**
@@ -129,7 +156,15 @@ class GetBalanceResponse implements \JsonSerializable
      */
     public function setTransferredAmount(?int $transferredAmount): void
     {
-        $this->transferredAmount = $transferredAmount;
+        $this->transferredAmount['value'] = $transferredAmount;
+    }
+
+    /**
+     * Unsets Transferred Amount.
+     */
+    public function unsetTransferredAmount(): void
+    {
+        $this->transferredAmount = [];
     }
 
     /**
@@ -137,7 +172,10 @@ class GetBalanceResponse implements \JsonSerializable
      */
     public function getWaitingFundsAmount(): ?int
     {
-        return $this->waitingFundsAmount;
+        if (count($this->waitingFundsAmount) == 0) {
+            return null;
+        }
+        return $this->waitingFundsAmount['value'];
     }
 
     /**
@@ -147,7 +185,15 @@ class GetBalanceResponse implements \JsonSerializable
      */
     public function setWaitingFundsAmount(?int $waitingFundsAmount): void
     {
-        $this->waitingFundsAmount = $waitingFundsAmount;
+        $this->waitingFundsAmount['value'] = $waitingFundsAmount;
+    }
+
+    /**
+     * Unsets Waiting Funds Amount.
+     */
+    public function unsetWaitingFundsAmount(): void
+    {
+        $this->waitingFundsAmount = [];
     }
 
     /**
@@ -162,13 +208,21 @@ class GetBalanceResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['currency']             = $this->currency;
-        $json['available_amount']     = $this->availableAmount;
-        if (!empty($this->recipient)) {
-            $json['recipient']        = $this->recipient['value'];
+        if (!empty($this->currency)) {
+            $json['currency']             = $this->currency['value'];
         }
-        $json['transferred_amount']   = $this->transferredAmount;
-        $json['waiting_funds_amount'] = $this->waitingFundsAmount;
+        if (!empty($this->availableAmount)) {
+            $json['available_amount']     = $this->availableAmount['value'];
+        }
+        if (!empty($this->recipient)) {
+            $json['recipient']            = $this->recipient['value'];
+        }
+        if (!empty($this->transferredAmount)) {
+            $json['transferred_amount']   = $this->transferredAmount['value'];
+        }
+        if (!empty($this->waitingFundsAmount)) {
+            $json['waiting_funds_amount'] = $this->waitingFundsAmount['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

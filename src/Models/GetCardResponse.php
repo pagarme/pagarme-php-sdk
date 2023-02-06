@@ -19,54 +19,54 @@ use stdClass;
 class GetCardResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $lastFourDigits;
+    private $lastFourDigits = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $brand;
+    private $brand = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $holderName;
+    private $holderName = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $expMonth;
+    private $expMonth = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $expYear;
+    private $expYear = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
-     * @var GetBillingAddressResponse|null
+     * @var array
      */
-    private $billingAddress;
+    private $billingAddress = [];
 
     /**
      * @var array
@@ -74,19 +74,19 @@ class GetCardResponse implements \JsonSerializable
     private $customer = [];
 
     /**
-     * @var array<string,string>|null
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $holderDocument;
+    private $holderDocument = [];
 
     /**
      * @var array
@@ -94,21 +94,24 @@ class GetCardResponse implements \JsonSerializable
     private $deletedAt = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $firstSixDigits;
+    private $firstSixDigits = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $label;
+    private $label = [];
 
     /**
      * Returns Id.
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -118,7 +121,15 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -126,7 +137,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getLastFourDigits(): ?string
     {
-        return $this->lastFourDigits;
+        if (count($this->lastFourDigits) == 0) {
+            return null;
+        }
+        return $this->lastFourDigits['value'];
     }
 
     /**
@@ -136,7 +150,15 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setLastFourDigits(?string $lastFourDigits): void
     {
-        $this->lastFourDigits = $lastFourDigits;
+        $this->lastFourDigits['value'] = $lastFourDigits;
+    }
+
+    /**
+     * Unsets Last Four Digits.
+     */
+    public function unsetLastFourDigits(): void
+    {
+        $this->lastFourDigits = [];
     }
 
     /**
@@ -144,7 +166,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getBrand(): ?string
     {
-        return $this->brand;
+        if (count($this->brand) == 0) {
+            return null;
+        }
+        return $this->brand['value'];
     }
 
     /**
@@ -154,7 +179,15 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setBrand(?string $brand): void
     {
-        $this->brand = $brand;
+        $this->brand['value'] = $brand;
+    }
+
+    /**
+     * Unsets Brand.
+     */
+    public function unsetBrand(): void
+    {
+        $this->brand = [];
     }
 
     /**
@@ -162,7 +195,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getHolderName(): ?string
     {
-        return $this->holderName;
+        if (count($this->holderName) == 0) {
+            return null;
+        }
+        return $this->holderName['value'];
     }
 
     /**
@@ -172,7 +208,15 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setHolderName(?string $holderName): void
     {
-        $this->holderName = $holderName;
+        $this->holderName['value'] = $holderName;
+    }
+
+    /**
+     * Unsets Holder Name.
+     */
+    public function unsetHolderName(): void
+    {
+        $this->holderName = [];
     }
 
     /**
@@ -180,7 +224,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getExpMonth(): ?int
     {
-        return $this->expMonth;
+        if (count($this->expMonth) == 0) {
+            return null;
+        }
+        return $this->expMonth['value'];
     }
 
     /**
@@ -190,7 +237,15 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setExpMonth(?int $expMonth): void
     {
-        $this->expMonth = $expMonth;
+        $this->expMonth['value'] = $expMonth;
+    }
+
+    /**
+     * Unsets Exp Month.
+     */
+    public function unsetExpMonth(): void
+    {
+        $this->expMonth = [];
     }
 
     /**
@@ -198,7 +253,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getExpYear(): ?int
     {
-        return $this->expYear;
+        if (count($this->expYear) == 0) {
+            return null;
+        }
+        return $this->expYear['value'];
     }
 
     /**
@@ -208,7 +266,15 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setExpYear(?int $expYear): void
     {
-        $this->expYear = $expYear;
+        $this->expYear['value'] = $expYear;
+    }
+
+    /**
+     * Unsets Exp Year.
+     */
+    public function unsetExpYear(): void
+    {
+        $this->expYear = [];
     }
 
     /**
@@ -216,7 +282,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -226,7 +295,15 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -234,7 +311,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -245,7 +325,15 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -253,7 +341,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -264,7 +355,15 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?\DateTime $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
@@ -272,7 +371,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getBillingAddress(): ?GetBillingAddressResponse
     {
-        return $this->billingAddress;
+        if (count($this->billingAddress) == 0) {
+            return null;
+        }
+        return $this->billingAddress['value'];
     }
 
     /**
@@ -282,7 +384,15 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setBillingAddress(?GetBillingAddressResponse $billingAddress): void
     {
-        $this->billingAddress = $billingAddress;
+        $this->billingAddress['value'] = $billingAddress;
+    }
+
+    /**
+     * Unsets Billing Address.
+     */
+    public function unsetBillingAddress(): void
+    {
+        $this->billingAddress = [];
     }
 
     /**
@@ -321,7 +431,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
@@ -333,7 +446,15 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -342,7 +463,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -353,7 +477,16 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     * Card type
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -362,7 +495,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getHolderDocument(): ?string
     {
-        return $this->holderDocument;
+        if (count($this->holderDocument) == 0) {
+            return null;
+        }
+        return $this->holderDocument['value'];
     }
 
     /**
@@ -373,7 +509,16 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setHolderDocument(?string $holderDocument): void
     {
-        $this->holderDocument = $holderDocument;
+        $this->holderDocument['value'] = $holderDocument;
+    }
+
+    /**
+     * Unsets Holder Document.
+     * Document number for the card's holder
+     */
+    public function unsetHolderDocument(): void
+    {
+        $this->holderDocument = [];
     }
 
     /**
@@ -412,7 +557,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getFirstSixDigits(): ?string
     {
-        return $this->firstSixDigits;
+        if (count($this->firstSixDigits) == 0) {
+            return null;
+        }
+        return $this->firstSixDigits['value'];
     }
 
     /**
@@ -423,7 +571,16 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setFirstSixDigits(?string $firstSixDigits): void
     {
-        $this->firstSixDigits = $firstSixDigits;
+        $this->firstSixDigits['value'] = $firstSixDigits;
+    }
+
+    /**
+     * Unsets First Six Digits.
+     * First six digits
+     */
+    public function unsetFirstSixDigits(): void
+    {
+        $this->firstSixDigits = [];
     }
 
     /**
@@ -431,7 +588,10 @@ class GetCardResponse implements \JsonSerializable
      */
     public function getLabel(): ?string
     {
-        return $this->label;
+        if (count($this->label) == 0) {
+            return null;
+        }
+        return $this->label['value'];
     }
 
     /**
@@ -441,7 +601,15 @@ class GetCardResponse implements \JsonSerializable
      */
     public function setLabel(?string $label): void
     {
-        $this->label = $label;
+        $this->label['value'] = $label;
+    }
+
+    /**
+     * Unsets Label.
+     */
+    public function unsetLabel(): void
+    {
+        $this->label = [];
     }
 
     /**
@@ -456,27 +624,57 @@ class GetCardResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']               = $this->id;
-        $json['last_four_digits'] = $this->lastFourDigits;
-        $json['brand']            = $this->brand;
-        $json['holder_name']      = $this->holderName;
-        $json['exp_month']        = $this->expMonth;
-        $json['exp_year']         = $this->expYear;
-        $json['status']           = $this->status;
-        $json['created_at']       = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']       = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        $json['billing_address']  = $this->billingAddress;
+        if (!empty($this->id)) {
+            $json['id']               = $this->id['value'];
+        }
+        if (!empty($this->lastFourDigits)) {
+            $json['last_four_digits'] = $this->lastFourDigits['value'];
+        }
+        if (!empty($this->brand)) {
+            $json['brand']            = $this->brand['value'];
+        }
+        if (!empty($this->holderName)) {
+            $json['holder_name']      = $this->holderName['value'];
+        }
+        if (!empty($this->expMonth)) {
+            $json['exp_month']        = $this->expMonth['value'];
+        }
+        if (!empty($this->expYear)) {
+            $json['exp_year']         = $this->expYear['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']           = $this->status['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']       = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']       = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
+        }
+        if (!empty($this->billingAddress)) {
+            $json['billing_address']  = $this->billingAddress['value'];
+        }
         if (!empty($this->customer)) {
-            $json['customer']     = $this->customer['value'];
+            $json['customer']         = $this->customer['value'];
         }
-        $json['metadata']         = $this->metadata;
-        $json['type']             = $this->type;
-        $json['holder_document']  = $this->holderDocument;
+        if (!empty($this->metadata)) {
+            $json['metadata']         = $this->metadata['value'];
+        }
+        if (!empty($this->type)) {
+            $json['type']             = $this->type['value'];
+        }
+        if (!empty($this->holderDocument)) {
+            $json['holder_document']  = $this->holderDocument['value'];
+        }
         if (!empty($this->deletedAt)) {
-            $json['deleted_at']   = DateTimeHelper::toRfc3339DateTime($this->deletedAt['value']);
+            $json['deleted_at']       = DateTimeHelper::toRfc3339DateTime($this->deletedAt['value']);
         }
-        $json['first_six_digits'] = $this->firstSixDigits;
-        $json['label']            = $this->label;
+        if (!empty($this->firstSixDigits)) {
+            $json['first_six_digits'] = $this->firstSixDigits['value'];
+        }
+        if (!empty($this->label)) {
+            $json['label']            = $this->label['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

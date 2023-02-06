@@ -18,34 +18,34 @@ use stdClass;
 class GetOrderItemResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $amount;
+    private $amount = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $description;
+    private $description = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $quantity;
+    private $quantity = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $category;
+    private $category = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $code;
+    private $code = [];
 
     /**
      * Returns Id.
@@ -53,7 +53,10 @@ class GetOrderItemResponse implements \JsonSerializable
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -64,7 +67,16 @@ class GetOrderItemResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     * Id
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -72,7 +84,10 @@ class GetOrderItemResponse implements \JsonSerializable
      */
     public function getAmount(): ?int
     {
-        return $this->amount;
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
     }
 
     /**
@@ -82,7 +97,15 @@ class GetOrderItemResponse implements \JsonSerializable
      */
     public function setAmount(?int $amount): void
     {
-        $this->amount = $amount;
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
     }
 
     /**
@@ -90,7 +113,10 @@ class GetOrderItemResponse implements \JsonSerializable
      */
     public function getDescription(): ?string
     {
-        return $this->description;
+        if (count($this->description) == 0) {
+            return null;
+        }
+        return $this->description['value'];
     }
 
     /**
@@ -100,7 +126,15 @@ class GetOrderItemResponse implements \JsonSerializable
      */
     public function setDescription(?string $description): void
     {
-        $this->description = $description;
+        $this->description['value'] = $description;
+    }
+
+    /**
+     * Unsets Description.
+     */
+    public function unsetDescription(): void
+    {
+        $this->description = [];
     }
 
     /**
@@ -108,7 +142,10 @@ class GetOrderItemResponse implements \JsonSerializable
      */
     public function getQuantity(): ?int
     {
-        return $this->quantity;
+        if (count($this->quantity) == 0) {
+            return null;
+        }
+        return $this->quantity['value'];
     }
 
     /**
@@ -118,7 +155,15 @@ class GetOrderItemResponse implements \JsonSerializable
      */
     public function setQuantity(?int $quantity): void
     {
-        $this->quantity = $quantity;
+        $this->quantity['value'] = $quantity;
+    }
+
+    /**
+     * Unsets Quantity.
+     */
+    public function unsetQuantity(): void
+    {
+        $this->quantity = [];
     }
 
     /**
@@ -127,7 +172,10 @@ class GetOrderItemResponse implements \JsonSerializable
      */
     public function getCategory(): ?string
     {
-        return $this->category;
+        if (count($this->category) == 0) {
+            return null;
+        }
+        return $this->category['value'];
     }
 
     /**
@@ -138,7 +186,16 @@ class GetOrderItemResponse implements \JsonSerializable
      */
     public function setCategory(?string $category): void
     {
-        $this->category = $category;
+        $this->category['value'] = $category;
+    }
+
+    /**
+     * Unsets Category.
+     * Category
+     */
+    public function unsetCategory(): void
+    {
+        $this->category = [];
     }
 
     /**
@@ -147,7 +204,10 @@ class GetOrderItemResponse implements \JsonSerializable
      */
     public function getCode(): ?string
     {
-        return $this->code;
+        if (count($this->code) == 0) {
+            return null;
+        }
+        return $this->code['value'];
     }
 
     /**
@@ -158,7 +218,16 @@ class GetOrderItemResponse implements \JsonSerializable
      */
     public function setCode(?string $code): void
     {
-        $this->code = $code;
+        $this->code['value'] = $code;
+    }
+
+    /**
+     * Unsets Code.
+     * Code
+     */
+    public function unsetCode(): void
+    {
+        $this->code = [];
     }
 
     /**
@@ -173,12 +242,24 @@ class GetOrderItemResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']          = $this->id;
-        $json['amount']      = $this->amount;
-        $json['description'] = $this->description;
-        $json['quantity']    = $this->quantity;
-        $json['category']    = $this->category;
-        $json['code']        = $this->code;
+        if (!empty($this->id)) {
+            $json['id']          = $this->id['value'];
+        }
+        if (!empty($this->amount)) {
+            $json['amount']      = $this->amount['value'];
+        }
+        if (!empty($this->description)) {
+            $json['description'] = $this->description['value'];
+        }
+        if (!empty($this->quantity)) {
+            $json['quantity']    = $this->quantity['value'];
+        }
+        if (!empty($this->category)) {
+            $json['category']    = $this->category['value'];
+        }
+        if (!empty($this->code)) {
+            $json['code']        = $this->code['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

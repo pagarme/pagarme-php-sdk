@@ -11,21 +11,21 @@ Balance
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `currency` | `?string` | Required | Currency | getCurrency(): ?string | setCurrency(?string currency): void |
-| `availableAmount` | `?int` | Required | Amount available for transferring | getAvailableAmount(): ?int | setAvailableAmount(?int availableAmount): void |
+| `currency` | `?string` | Optional | Currency | getCurrency(): ?string | setCurrency(?string currency): void |
+| `availableAmount` | `?int` | Optional | Amount available for transferring | getAvailableAmount(): ?int | setAvailableAmount(?int availableAmount): void |
 | `recipient` | [`?GetRecipientResponse`](../../doc/models/get-recipient-response.md) | Optional | Recipient | getRecipient(): ?GetRecipientResponse | setRecipient(?GetRecipientResponse recipient): void |
-| `transferredAmount` | `?int` | Required | - | getTransferredAmount(): ?int | setTransferredAmount(?int transferredAmount): void |
-| `waitingFundsAmount` | `?int` | Required | - | getWaitingFundsAmount(): ?int | setWaitingFundsAmount(?int waitingFundsAmount): void |
+| `transferredAmount` | `?int` | Optional | - | getTransferredAmount(): ?int | setTransferredAmount(?int transferredAmount): void |
+| `waitingFundsAmount` | `?int` | Optional | - | getWaitingFundsAmount(): ?int | setWaitingFundsAmount(?int waitingFundsAmount): void |
 
 ## Example (as JSON)
 
 ```json
 {
-  "currency": "currency0",
-  "available_amount": 182,
+  "currency": null,
+  "available_amount": null,
   "recipient": null,
-  "transferred_amount": 228,
-  "waiting_funds_amount": 252
+  "transferred_amount": null,
+  "waiting_funds_amount": null
 }
 ```
 

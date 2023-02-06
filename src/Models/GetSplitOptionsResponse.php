@@ -15,26 +15,29 @@ use stdClass;
 class GetSplitOptionsResponse implements \JsonSerializable
 {
     /**
-     * @var bool|null
+     * @var array
      */
-    private $liable;
+    private $liable = [];
 
     /**
-     * @var bool|null
+     * @var array
      */
-    private $chargeProcessingFee;
+    private $chargeProcessingFee = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $chargeRemainderFee;
+    private $chargeRemainderFee = [];
 
     /**
      * Returns Liable.
      */
     public function getLiable(): ?bool
     {
-        return $this->liable;
+        if (count($this->liable) == 0) {
+            return null;
+        }
+        return $this->liable['value'];
     }
 
     /**
@@ -44,7 +47,15 @@ class GetSplitOptionsResponse implements \JsonSerializable
      */
     public function setLiable(?bool $liable): void
     {
-        $this->liable = $liable;
+        $this->liable['value'] = $liable;
+    }
+
+    /**
+     * Unsets Liable.
+     */
+    public function unsetLiable(): void
+    {
+        $this->liable = [];
     }
 
     /**
@@ -52,7 +63,10 @@ class GetSplitOptionsResponse implements \JsonSerializable
      */
     public function getChargeProcessingFee(): ?bool
     {
-        return $this->chargeProcessingFee;
+        if (count($this->chargeProcessingFee) == 0) {
+            return null;
+        }
+        return $this->chargeProcessingFee['value'];
     }
 
     /**
@@ -62,7 +76,15 @@ class GetSplitOptionsResponse implements \JsonSerializable
      */
     public function setChargeProcessingFee(?bool $chargeProcessingFee): void
     {
-        $this->chargeProcessingFee = $chargeProcessingFee;
+        $this->chargeProcessingFee['value'] = $chargeProcessingFee;
+    }
+
+    /**
+     * Unsets Charge Processing Fee.
+     */
+    public function unsetChargeProcessingFee(): void
+    {
+        $this->chargeProcessingFee = [];
     }
 
     /**
@@ -70,7 +92,10 @@ class GetSplitOptionsResponse implements \JsonSerializable
      */
     public function getChargeRemainderFee(): ?string
     {
-        return $this->chargeRemainderFee;
+        if (count($this->chargeRemainderFee) == 0) {
+            return null;
+        }
+        return $this->chargeRemainderFee['value'];
     }
 
     /**
@@ -80,7 +105,15 @@ class GetSplitOptionsResponse implements \JsonSerializable
      */
     public function setChargeRemainderFee(?string $chargeRemainderFee): void
     {
-        $this->chargeRemainderFee = $chargeRemainderFee;
+        $this->chargeRemainderFee['value'] = $chargeRemainderFee;
+    }
+
+    /**
+     * Unsets Charge Remainder Fee.
+     */
+    public function unsetChargeRemainderFee(): void
+    {
+        $this->chargeRemainderFee = [];
     }
 
     /**
@@ -95,9 +128,15 @@ class GetSplitOptionsResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['liable']                = $this->liable;
-        $json['charge_processing_fee'] = $this->chargeProcessingFee;
-        $json['charge_remainder_fee']  = $this->chargeRemainderFee;
+        if (!empty($this->liable)) {
+            $json['liable']                = $this->liable['value'];
+        }
+        if (!empty($this->chargeProcessingFee)) {
+            $json['charge_processing_fee'] = $this->chargeProcessingFee['value'];
+        }
+        if (!empty($this->chargeRemainderFee)) {
+            $json['charge_remainder_fee']  = $this->chargeRemainderFee['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

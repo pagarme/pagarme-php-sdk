@@ -34,14 +34,14 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 
 | Name | Description |
 |  --- | --- |
+| getOrdersController() | Gets OrdersController |
 | getPlansController() | Gets PlansController |
 | getSubscriptionsController() | Gets SubscriptionsController |
 | getInvoicesController() | Gets InvoicesController |
-| getOrdersController() | Gets OrdersController |
 | getCustomersController() | Gets CustomersController |
 | getRecipientsController() | Gets RecipientsController |
 | getChargesController() | Gets ChargesController |
-| getTransfersController() | Gets TransfersController |
 | getTokensController() | Gets TokensController |
+| getTransfersController() | Gets TransfersController |
 | getTransactionsController() | Gets TransactionsController |
 

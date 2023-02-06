@@ -22,14 +22,14 @@ use stdClass;
 class GetSafetyPayTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $url;
+    private $url = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $bankTid;
+    private $bankTid = [];
 
     /**
      * @var array
@@ -47,7 +47,10 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
      */
     public function getUrl(): ?string
     {
-        return $this->url;
+        if (count($this->url) == 0) {
+            return null;
+        }
+        return $this->url['value'];
     }
 
     /**
@@ -58,7 +61,16 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
      */
     public function setUrl(?string $url): void
     {
-        $this->url = $url;
+        $this->url['value'] = $url;
+    }
+
+    /**
+     * Unsets Url.
+     * Payment url
+     */
+    public function unsetUrl(): void
+    {
+        $this->url = [];
     }
 
     /**
@@ -67,7 +79,10 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
      */
     public function getBankTid(): ?string
     {
-        return $this->bankTid;
+        if (count($this->bankTid) == 0) {
+            return null;
+        }
+        return $this->bankTid['value'];
     }
 
     /**
@@ -78,7 +93,16 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
      */
     public function setBankTid(?string $bankTid): void
     {
-        $this->bankTid = $bankTid;
+        $this->bankTid['value'] = $bankTid;
+    }
+
+    /**
+     * Unsets Bank Tid.
+     * Transaction identifier on bank
+     */
+    public function unsetBankTid(): void
+    {
+        $this->bankTid = [];
     }
 
     /**
@@ -158,8 +182,12 @@ class GetSafetyPayTransactionResponse extends GetTransactionResponse implements 
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['url']             = $this->url;
-        $json['bank_tid']        = $this->bankTid;
+        if (!empty($this->url)) {
+            $json['url']         = $this->url['value'];
+        }
+        if (!empty($this->bankTid)) {
+            $json['bank_tid']    = $this->bankTid['value'];
+        }
         if (!empty($this->paidAt)) {
             $json['paid_at']     = DateTimeHelper::toRfc3339DateTime($this->paidAt['value']);
         }

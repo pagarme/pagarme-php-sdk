@@ -19,29 +19,29 @@ use stdClass;
 class GetShippingResponse implements \JsonSerializable
 {
     /**
-     * @var int|null
+     * @var array
      */
-    private $amount;
+    private $amount = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $description;
+    private $description = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $recipientName;
+    private $recipientName = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $recipientPhone;
+    private $recipientPhone = [];
 
     /**
-     * @var GetAddressResponse|null
+     * @var array
      */
-    private $address;
+    private $address = [];
 
     /**
      * @var array
@@ -54,16 +54,19 @@ class GetShippingResponse implements \JsonSerializable
     private $estimatedDeliveryDate = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
      * Returns Amount.
      */
     public function getAmount(): ?int
     {
-        return $this->amount;
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
     }
 
     /**
@@ -73,7 +76,15 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function setAmount(?int $amount): void
     {
-        $this->amount = $amount;
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
     }
 
     /**
@@ -81,7 +92,10 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function getDescription(): ?string
     {
-        return $this->description;
+        if (count($this->description) == 0) {
+            return null;
+        }
+        return $this->description['value'];
     }
 
     /**
@@ -91,7 +105,15 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function setDescription(?string $description): void
     {
-        $this->description = $description;
+        $this->description['value'] = $description;
+    }
+
+    /**
+     * Unsets Description.
+     */
+    public function unsetDescription(): void
+    {
+        $this->description = [];
     }
 
     /**
@@ -99,7 +121,10 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function getRecipientName(): ?string
     {
-        return $this->recipientName;
+        if (count($this->recipientName) == 0) {
+            return null;
+        }
+        return $this->recipientName['value'];
     }
 
     /**
@@ -109,7 +134,15 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function setRecipientName(?string $recipientName): void
     {
-        $this->recipientName = $recipientName;
+        $this->recipientName['value'] = $recipientName;
+    }
+
+    /**
+     * Unsets Recipient Name.
+     */
+    public function unsetRecipientName(): void
+    {
+        $this->recipientName = [];
     }
 
     /**
@@ -117,7 +150,10 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function getRecipientPhone(): ?string
     {
-        return $this->recipientPhone;
+        if (count($this->recipientPhone) == 0) {
+            return null;
+        }
+        return $this->recipientPhone['value'];
     }
 
     /**
@@ -127,7 +163,15 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function setRecipientPhone(?string $recipientPhone): void
     {
-        $this->recipientPhone = $recipientPhone;
+        $this->recipientPhone['value'] = $recipientPhone;
+    }
+
+    /**
+     * Unsets Recipient Phone.
+     */
+    public function unsetRecipientPhone(): void
+    {
+        $this->recipientPhone = [];
     }
 
     /**
@@ -135,7 +179,10 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function getAddress(): ?GetAddressResponse
     {
-        return $this->address;
+        if (count($this->address) == 0) {
+            return null;
+        }
+        return $this->address['value'];
     }
 
     /**
@@ -145,7 +192,15 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function setAddress(?GetAddressResponse $address): void
     {
-        $this->address = $address;
+        $this->address['value'] = $address;
+    }
+
+    /**
+     * Unsets Address.
+     */
+    public function unsetAddress(): void
+    {
+        $this->address = [];
     }
 
     /**
@@ -220,7 +275,10 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -231,7 +289,16 @@ class GetShippingResponse implements \JsonSerializable
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     * Shipping Type
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -246,18 +313,30 @@ class GetShippingResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['amount']                      = $this->amount;
-        $json['description']                 = $this->description;
-        $json['recipient_name']              = $this->recipientName;
-        $json['recipient_phone']             = $this->recipientPhone;
-        $json['address']                     = $this->address;
+        if (!empty($this->amount)) {
+            $json['amount']                  = $this->amount['value'];
+        }
+        if (!empty($this->description)) {
+            $json['description']             = $this->description['value'];
+        }
+        if (!empty($this->recipientName)) {
+            $json['recipient_name']          = $this->recipientName['value'];
+        }
+        if (!empty($this->recipientPhone)) {
+            $json['recipient_phone']         = $this->recipientPhone['value'];
+        }
+        if (!empty($this->address)) {
+            $json['address']                 = $this->address['value'];
+        }
         if (!empty($this->maxDeliveryDate)) {
             $json['max_delivery_date']       = DateTimeHelper::toRfc3339DateTime($this->maxDeliveryDate['value']);
         }
         if (!empty($this->estimatedDeliveryDate)) {
             $json['estimated_delivery_date'] = DateTimeHelper::toRfc3339DateTime($this->estimatedDeliveryDate['value']);
         }
-        $json['type']                        = $this->type;
+        if (!empty($this->type)) {
+            $json['type']                    = $this->type['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

@@ -9,17 +9,17 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `url` | `?string` | Required | - | getUrl(): ?string | setUrl(?string url): void |
-| `usageReportUrl` | `?string` | Required | - | getUsageReportUrl(): ?string | setUsageReportUrl(?string usageReportUrl): void |
-| `groupedReportUrl` | `?string` | Required | - | getGroupedReportUrl(): ?string | setGroupedReportUrl(?string groupedReportUrl): void |
+| `url` | `?string` | Optional | - | getUrl(): ?string | setUrl(?string url): void |
+| `usageReportUrl` | `?string` | Optional | - | getUsageReportUrl(): ?string | setUsageReportUrl(?string usageReportUrl): void |
+| `groupedReportUrl` | `?string` | Optional | - | getGroupedReportUrl(): ?string | setGroupedReportUrl(?string groupedReportUrl): void |
 
 ## Example (as JSON)
 
 ```json
 {
-  "url": "url4",
-  "usage_report_url": "usage_report_url2",
-  "grouped_report_url": "grouped_report_url2"
+  "url": null,
+  "usage_report_url": null,
+  "grouped_report_url": null
 }
 ```
 

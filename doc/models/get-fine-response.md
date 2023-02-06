@@ -11,16 +11,16 @@ Fine Response
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `days` | `?int` | Required | Days | getDays(): ?int | setDays(?int days): void |
-| `type` | `?string` | Required | Type | getType(): ?string | setType(?string type): void |
-| `amount` | `?int` | Required | Amount | getAmount(): ?int | setAmount(?int amount): void |
+| `days` | `?int` | Optional | Days | getDays(): ?int | setDays(?int days): void |
+| `type` | `?string` | Optional | Type | getType(): ?string | setType(?string type): void |
+| `amount` | `?int` | Optional | Amount | getAmount(): ?int | setAmount(?int amount): void |
 
 ## Example (as JSON)
 
 ```json
 {
   "days": null,
-  "type": "\"percentage\" or \"flat\"",
+  "type": null,
   "amount": null
 }
 ```

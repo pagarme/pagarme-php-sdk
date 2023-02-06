@@ -15,26 +15,29 @@ use stdClass;
 class GetTransferSettingsResponse implements \JsonSerializable
 {
     /**
-     * @var bool|null
+     * @var array
      */
-    private $transferEnabled;
+    private $transferEnabled = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $transferInterval;
+    private $transferInterval = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $transferDay;
+    private $transferDay = [];
 
     /**
      * Returns Transfer Enabled.
      */
     public function getTransferEnabled(): ?bool
     {
-        return $this->transferEnabled;
+        if (count($this->transferEnabled) == 0) {
+            return null;
+        }
+        return $this->transferEnabled['value'];
     }
 
     /**
@@ -44,7 +47,15 @@ class GetTransferSettingsResponse implements \JsonSerializable
      */
     public function setTransferEnabled(?bool $transferEnabled): void
     {
-        $this->transferEnabled = $transferEnabled;
+        $this->transferEnabled['value'] = $transferEnabled;
+    }
+
+    /**
+     * Unsets Transfer Enabled.
+     */
+    public function unsetTransferEnabled(): void
+    {
+        $this->transferEnabled = [];
     }
 
     /**
@@ -52,7 +63,10 @@ class GetTransferSettingsResponse implements \JsonSerializable
      */
     public function getTransferInterval(): ?string
     {
-        return $this->transferInterval;
+        if (count($this->transferInterval) == 0) {
+            return null;
+        }
+        return $this->transferInterval['value'];
     }
 
     /**
@@ -62,7 +76,15 @@ class GetTransferSettingsResponse implements \JsonSerializable
      */
     public function setTransferInterval(?string $transferInterval): void
     {
-        $this->transferInterval = $transferInterval;
+        $this->transferInterval['value'] = $transferInterval;
+    }
+
+    /**
+     * Unsets Transfer Interval.
+     */
+    public function unsetTransferInterval(): void
+    {
+        $this->transferInterval = [];
     }
 
     /**
@@ -70,7 +92,10 @@ class GetTransferSettingsResponse implements \JsonSerializable
      */
     public function getTransferDay(): ?int
     {
-        return $this->transferDay;
+        if (count($this->transferDay) == 0) {
+            return null;
+        }
+        return $this->transferDay['value'];
     }
 
     /**
@@ -80,7 +105,15 @@ class GetTransferSettingsResponse implements \JsonSerializable
      */
     public function setTransferDay(?int $transferDay): void
     {
-        $this->transferDay = $transferDay;
+        $this->transferDay['value'] = $transferDay;
+    }
+
+    /**
+     * Unsets Transfer Day.
+     */
+    public function unsetTransferDay(): void
+    {
+        $this->transferDay = [];
     }
 
     /**
@@ -95,9 +128,15 @@ class GetTransferSettingsResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['transfer_enabled']  = $this->transferEnabled;
-        $json['transfer_interval'] = $this->transferInterval;
-        $json['transfer_day']      = $this->transferDay;
+        if (!empty($this->transferEnabled)) {
+            $json['transfer_enabled']  = $this->transferEnabled['value'];
+        }
+        if (!empty($this->transferInterval)) {
+            $json['transfer_interval'] = $this->transferInterval['value'];
+        }
+        if (!empty($this->transferDay)) {
+            $json['transfer_day']      = $this->transferDay['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

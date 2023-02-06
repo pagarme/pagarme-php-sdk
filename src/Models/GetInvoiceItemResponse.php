@@ -18,24 +18,24 @@ use stdClass;
 class GetInvoiceItemResponse implements \JsonSerializable
 {
     /**
-     * @var int|null
+     * @var array
      */
-    private $amount;
+    private $amount = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $description;
+    private $description = [];
 
     /**
-     * @var GetPricingSchemeResponse|null
+     * @var array
      */
-    private $pricingScheme;
+    private $pricingScheme = [];
 
     /**
-     * @var GetPriceBracketResponse|null
+     * @var array
      */
-    private $priceBracket;
+    private $priceBracket = [];
 
     /**
      * @var array
@@ -48,16 +48,19 @@ class GetInvoiceItemResponse implements \JsonSerializable
     private $name = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $subscriptionItemId;
+    private $subscriptionItemId = [];
 
     /**
      * Returns Amount.
      */
     public function getAmount(): ?int
     {
-        return $this->amount;
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
     }
 
     /**
@@ -67,7 +70,15 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function setAmount(?int $amount): void
     {
-        $this->amount = $amount;
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
     }
 
     /**
@@ -75,7 +86,10 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function getDescription(): ?string
     {
-        return $this->description;
+        if (count($this->description) == 0) {
+            return null;
+        }
+        return $this->description['value'];
     }
 
     /**
@@ -85,7 +99,15 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function setDescription(?string $description): void
     {
-        $this->description = $description;
+        $this->description['value'] = $description;
+    }
+
+    /**
+     * Unsets Description.
+     */
+    public function unsetDescription(): void
+    {
+        $this->description = [];
     }
 
     /**
@@ -93,7 +115,10 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function getPricingScheme(): ?GetPricingSchemeResponse
     {
-        return $this->pricingScheme;
+        if (count($this->pricingScheme) == 0) {
+            return null;
+        }
+        return $this->pricingScheme['value'];
     }
 
     /**
@@ -103,7 +128,15 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function setPricingScheme(?GetPricingSchemeResponse $pricingScheme): void
     {
-        $this->pricingScheme = $pricingScheme;
+        $this->pricingScheme['value'] = $pricingScheme;
+    }
+
+    /**
+     * Unsets Pricing Scheme.
+     */
+    public function unsetPricingScheme(): void
+    {
+        $this->pricingScheme = [];
     }
 
     /**
@@ -111,7 +144,10 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function getPriceBracket(): ?GetPriceBracketResponse
     {
-        return $this->priceBracket;
+        if (count($this->priceBracket) == 0) {
+            return null;
+        }
+        return $this->priceBracket['value'];
     }
 
     /**
@@ -121,7 +157,15 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function setPriceBracket(?GetPriceBracketResponse $priceBracket): void
     {
-        $this->priceBracket = $priceBracket;
+        $this->priceBracket['value'] = $priceBracket;
+    }
+
+    /**
+     * Unsets Price Bracket.
+     */
+    public function unsetPriceBracket(): void
+    {
+        $this->priceBracket = [];
     }
 
     /**
@@ -188,7 +232,10 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function getSubscriptionItemId(): ?string
     {
-        return $this->subscriptionItemId;
+        if (count($this->subscriptionItemId) == 0) {
+            return null;
+        }
+        return $this->subscriptionItemId['value'];
     }
 
     /**
@@ -199,7 +246,16 @@ class GetInvoiceItemResponse implements \JsonSerializable
      */
     public function setSubscriptionItemId(?string $subscriptionItemId): void
     {
-        $this->subscriptionItemId = $subscriptionItemId;
+        $this->subscriptionItemId['value'] = $subscriptionItemId;
+    }
+
+    /**
+     * Unsets Subscription Item Id.
+     * Subscription Item Id
+     */
+    public function unsetSubscriptionItemId(): void
+    {
+        $this->subscriptionItemId = [];
     }
 
     /**
@@ -214,17 +270,27 @@ class GetInvoiceItemResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['amount']               = $this->amount;
-        $json['description']          = $this->description;
-        $json['pricing_scheme']       = $this->pricingScheme;
-        $json['price_bracket']        = $this->priceBracket;
+        if (!empty($this->amount)) {
+            $json['amount']               = $this->amount['value'];
+        }
+        if (!empty($this->description)) {
+            $json['description']          = $this->description['value'];
+        }
+        if (!empty($this->pricingScheme)) {
+            $json['pricing_scheme']       = $this->pricingScheme['value'];
+        }
+        if (!empty($this->priceBracket)) {
+            $json['price_bracket']        = $this->priceBracket['value'];
+        }
         if (!empty($this->quantity)) {
-            $json['quantity']         = $this->quantity['value'];
+            $json['quantity']             = $this->quantity['value'];
         }
         if (!empty($this->name)) {
-            $json['name']             = $this->name['value'];
+            $json['name']                 = $this->name['value'];
         }
-        $json['subscription_item_id'] = $this->subscriptionItemId;
+        if (!empty($this->subscriptionItemId)) {
+            $json['subscription_item_id'] = $this->subscriptionItemId['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

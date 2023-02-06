@@ -18,14 +18,14 @@ use stdClass;
 class GetPriceBracketResponse implements \JsonSerializable
 {
     /**
-     * @var int|null
+     * @var array
      */
-    private $startQuantity;
+    private $startQuantity = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $price;
+    private $price = [];
 
     /**
      * @var array
@@ -42,7 +42,10 @@ class GetPriceBracketResponse implements \JsonSerializable
      */
     public function getStartQuantity(): ?int
     {
-        return $this->startQuantity;
+        if (count($this->startQuantity) == 0) {
+            return null;
+        }
+        return $this->startQuantity['value'];
     }
 
     /**
@@ -52,7 +55,15 @@ class GetPriceBracketResponse implements \JsonSerializable
      */
     public function setStartQuantity(?int $startQuantity): void
     {
-        $this->startQuantity = $startQuantity;
+        $this->startQuantity['value'] = $startQuantity;
+    }
+
+    /**
+     * Unsets Start Quantity.
+     */
+    public function unsetStartQuantity(): void
+    {
+        $this->startQuantity = [];
     }
 
     /**
@@ -60,7 +71,10 @@ class GetPriceBracketResponse implements \JsonSerializable
      */
     public function getPrice(): ?int
     {
-        return $this->price;
+        if (count($this->price) == 0) {
+            return null;
+        }
+        return $this->price['value'];
     }
 
     /**
@@ -70,7 +84,15 @@ class GetPriceBracketResponse implements \JsonSerializable
      */
     public function setPrice(?int $price): void
     {
-        $this->price = $price;
+        $this->price['value'] = $price;
+    }
+
+    /**
+     * Unsets Price.
+     */
+    public function unsetPrice(): void
+    {
+        $this->price = [];
     }
 
     /**
@@ -143,13 +165,17 @@ class GetPriceBracketResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['start_quantity']    = $this->startQuantity;
-        $json['price']             = $this->price;
+        if (!empty($this->startQuantity)) {
+            $json['start_quantity'] = $this->startQuantity['value'];
+        }
+        if (!empty($this->price)) {
+            $json['price']          = $this->price['value'];
+        }
         if (!empty($this->endQuantity)) {
-            $json['end_quantity']  = $this->endQuantity['value'];
+            $json['end_quantity']   = $this->endQuantity['value'];
         }
         if (!empty($this->overagePrice)) {
-            $json['overage_price'] = $this->overagePrice['value'];
+            $json['overage_price']  = $this->overagePrice['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

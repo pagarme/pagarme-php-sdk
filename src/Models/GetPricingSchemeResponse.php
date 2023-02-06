@@ -18,19 +18,19 @@ use stdClass;
 class GetPricingSchemeResponse implements \JsonSerializable
 {
     /**
-     * @var int|null
+     * @var array
      */
-    private $price;
+    private $price = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $schemeType;
+    private $schemeType = [];
 
     /**
-     * @var GetPriceBracketResponse[]|null
+     * @var array
      */
-    private $priceBrackets;
+    private $priceBrackets = [];
 
     /**
      * @var array
@@ -47,7 +47,10 @@ class GetPricingSchemeResponse implements \JsonSerializable
      */
     public function getPrice(): ?int
     {
-        return $this->price;
+        if (count($this->price) == 0) {
+            return null;
+        }
+        return $this->price['value'];
     }
 
     /**
@@ -57,7 +60,15 @@ class GetPricingSchemeResponse implements \JsonSerializable
      */
     public function setPrice(?int $price): void
     {
-        $this->price = $price;
+        $this->price['value'] = $price;
+    }
+
+    /**
+     * Unsets Price.
+     */
+    public function unsetPrice(): void
+    {
+        $this->price = [];
     }
 
     /**
@@ -65,7 +76,10 @@ class GetPricingSchemeResponse implements \JsonSerializable
      */
     public function getSchemeType(): ?string
     {
-        return $this->schemeType;
+        if (count($this->schemeType) == 0) {
+            return null;
+        }
+        return $this->schemeType['value'];
     }
 
     /**
@@ -75,7 +89,15 @@ class GetPricingSchemeResponse implements \JsonSerializable
      */
     public function setSchemeType(?string $schemeType): void
     {
-        $this->schemeType = $schemeType;
+        $this->schemeType['value'] = $schemeType;
+    }
+
+    /**
+     * Unsets Scheme Type.
+     */
+    public function unsetSchemeType(): void
+    {
+        $this->schemeType = [];
     }
 
     /**
@@ -85,7 +107,10 @@ class GetPricingSchemeResponse implements \JsonSerializable
      */
     public function getPriceBrackets(): ?array
     {
-        return $this->priceBrackets;
+        if (count($this->priceBrackets) == 0) {
+            return null;
+        }
+        return $this->priceBrackets['value'];
     }
 
     /**
@@ -97,7 +122,15 @@ class GetPricingSchemeResponse implements \JsonSerializable
      */
     public function setPriceBrackets(?array $priceBrackets): void
     {
-        $this->priceBrackets = $priceBrackets;
+        $this->priceBrackets['value'] = $priceBrackets;
+    }
+
+    /**
+     * Unsets Price Brackets.
+     */
+    public function unsetPriceBrackets(): void
+    {
+        $this->priceBrackets = [];
     }
 
     /**
@@ -173,14 +206,20 @@ class GetPricingSchemeResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['price']             = $this->price;
-        $json['scheme_type']       = $this->schemeType;
-        $json['price_brackets']    = $this->priceBrackets;
+        if (!empty($this->price)) {
+            $json['price']          = $this->price['value'];
+        }
+        if (!empty($this->schemeType)) {
+            $json['scheme_type']    = $this->schemeType['value'];
+        }
+        if (!empty($this->priceBrackets)) {
+            $json['price_brackets'] = $this->priceBrackets['value'];
+        }
         if (!empty($this->minimumPrice)) {
-            $json['minimum_price'] = $this->minimumPrice['value'];
+            $json['minimum_price']  = $this->minimumPrice['value'];
         }
         if (!empty($this->percentage)) {
-            $json['percentage']    = $this->percentage['value'];
+            $json['percentage']     = $this->percentage['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

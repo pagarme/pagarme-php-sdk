@@ -18,14 +18,14 @@ use stdClass;
 class GetAnticipationLimitResponse implements \JsonSerializable
 {
     /**
-     * @var int|null
+     * @var array
      */
-    private $amount;
+    private $amount = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $anticipationFee;
+    private $anticipationFee = [];
 
     /**
      * Returns Amount.
@@ -33,7 +33,10 @@ class GetAnticipationLimitResponse implements \JsonSerializable
      */
     public function getAmount(): ?int
     {
-        return $this->amount;
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
     }
 
     /**
@@ -44,7 +47,16 @@ class GetAnticipationLimitResponse implements \JsonSerializable
      */
     public function setAmount(?int $amount): void
     {
-        $this->amount = $amount;
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     * Amount
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
     }
 
     /**
@@ -53,7 +65,10 @@ class GetAnticipationLimitResponse implements \JsonSerializable
      */
     public function getAnticipationFee(): ?int
     {
-        return $this->anticipationFee;
+        if (count($this->anticipationFee) == 0) {
+            return null;
+        }
+        return $this->anticipationFee['value'];
     }
 
     /**
@@ -64,7 +79,16 @@ class GetAnticipationLimitResponse implements \JsonSerializable
      */
     public function setAnticipationFee(?int $anticipationFee): void
     {
-        $this->anticipationFee = $anticipationFee;
+        $this->anticipationFee['value'] = $anticipationFee;
+    }
+
+    /**
+     * Unsets Anticipation Fee.
+     * Anticipation fee
+     */
+    public function unsetAnticipationFee(): void
+    {
+        $this->anticipationFee = [];
     }
 
     /**
@@ -79,8 +103,12 @@ class GetAnticipationLimitResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['amount']           = $this->amount;
-        $json['anticipation_fee'] = $this->anticipationFee;
+        if (!empty($this->amount)) {
+            $json['amount']           = $this->amount['value'];
+        }
+        if (!empty($this->anticipationFee)) {
+            $json['anticipation_fee'] = $this->anticipationFee['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

@@ -15,19 +15,19 @@ use stdClass;
 class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $statementDescriptor;
+    private $statementDescriptor = [];
 
     /**
-     * @var GetCheckoutCardInstallmentOptionsResponse[]|null
+     * @var array
      */
-    private $installments;
+    private $installments = [];
 
     /**
-     * @var GetPaymentAuthenticationResponse|null
+     * @var array
      */
-    private $authentication;
+    private $authentication = [];
 
     /**
      * Returns Statement Descriptor.
@@ -35,7 +35,10 @@ class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
      */
     public function getStatementDescriptor(): ?string
     {
-        return $this->statementDescriptor;
+        if (count($this->statementDescriptor) == 0) {
+            return null;
+        }
+        return $this->statementDescriptor['value'];
     }
 
     /**
@@ -46,7 +49,16 @@ class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
      */
     public function setStatementDescriptor(?string $statementDescriptor): void
     {
-        $this->statementDescriptor = $statementDescriptor;
+        $this->statementDescriptor['value'] = $statementDescriptor;
+    }
+
+    /**
+     * Unsets Statement Descriptor.
+     * Descrição na fatura
+     */
+    public function unsetStatementDescriptor(): void
+    {
+        $this->statementDescriptor = [];
     }
 
     /**
@@ -57,7 +69,10 @@ class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
      */
     public function getInstallments(): ?array
     {
-        return $this->installments;
+        if (count($this->installments) == 0) {
+            return null;
+        }
+        return $this->installments['value'];
     }
 
     /**
@@ -70,7 +85,16 @@ class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
      */
     public function setInstallments(?array $installments): void
     {
-        $this->installments = $installments;
+        $this->installments['value'] = $installments;
+    }
+
+    /**
+     * Unsets Installments.
+     * Parcelas
+     */
+    public function unsetInstallments(): void
+    {
+        $this->installments = [];
     }
 
     /**
@@ -79,7 +103,10 @@ class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
      */
     public function getAuthentication(): ?GetPaymentAuthenticationResponse
     {
-        return $this->authentication;
+        if (count($this->authentication) == 0) {
+            return null;
+        }
+        return $this->authentication['value'];
     }
 
     /**
@@ -90,7 +117,16 @@ class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
      */
     public function setAuthentication(?GetPaymentAuthenticationResponse $authentication): void
     {
-        $this->authentication = $authentication;
+        $this->authentication['value'] = $authentication;
+    }
+
+    /**
+     * Unsets Authentication.
+     * Payment Authentication response
+     */
+    public function unsetAuthentication(): void
+    {
+        $this->authentication = [];
     }
 
     /**
@@ -105,9 +141,15 @@ class GetCheckoutCreditCardPaymentResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['statementDescriptor'] = $this->statementDescriptor;
-        $json['installments']        = $this->installments;
-        $json['authentication']      = $this->authentication;
+        if (!empty($this->statementDescriptor)) {
+            $json['statementDescriptor'] = $this->statementDescriptor['value'];
+        }
+        if (!empty($this->installments)) {
+            $json['installments']        = $this->installments['value'];
+        }
+        if (!empty($this->authentication)) {
+            $json['authentication']      = $this->authentication['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

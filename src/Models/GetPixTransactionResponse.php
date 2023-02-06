@@ -22,41 +22,44 @@ use stdClass;
 class GetPixTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $qrCode;
+    private $qrCode = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $qrCodeUrl;
+    private $qrCodeUrl = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $expiresAt;
+    private $expiresAt = [];
 
     /**
-     * @var PixAdditionalInformation[]|null
+     * @var array
      */
-    private $additionalInformation;
+    private $additionalInformation = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $endToEndId;
+    private $endToEndId = [];
 
     /**
-     * @var GetPixPayerResponse|null
+     * @var array
      */
-    private $payer;
+    private $payer = [];
 
     /**
      * Returns Qr Code.
      */
     public function getQrCode(): ?string
     {
-        return $this->qrCode;
+        if (count($this->qrCode) == 0) {
+            return null;
+        }
+        return $this->qrCode['value'];
     }
 
     /**
@@ -66,7 +69,15 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
      */
     public function setQrCode(?string $qrCode): void
     {
-        $this->qrCode = $qrCode;
+        $this->qrCode['value'] = $qrCode;
+    }
+
+    /**
+     * Unsets Qr Code.
+     */
+    public function unsetQrCode(): void
+    {
+        $this->qrCode = [];
     }
 
     /**
@@ -74,7 +85,10 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
      */
     public function getQrCodeUrl(): ?string
     {
-        return $this->qrCodeUrl;
+        if (count($this->qrCodeUrl) == 0) {
+            return null;
+        }
+        return $this->qrCodeUrl['value'];
     }
 
     /**
@@ -84,7 +98,15 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
      */
     public function setQrCodeUrl(?string $qrCodeUrl): void
     {
-        $this->qrCodeUrl = $qrCodeUrl;
+        $this->qrCodeUrl['value'] = $qrCodeUrl;
+    }
+
+    /**
+     * Unsets Qr Code Url.
+     */
+    public function unsetQrCodeUrl(): void
+    {
+        $this->qrCodeUrl = [];
     }
 
     /**
@@ -92,7 +114,10 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
      */
     public function getExpiresAt(): ?\DateTime
     {
-        return $this->expiresAt;
+        if (count($this->expiresAt) == 0) {
+            return null;
+        }
+        return $this->expiresAt['value'];
     }
 
     /**
@@ -103,7 +128,15 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
      */
     public function setExpiresAt(?\DateTime $expiresAt): void
     {
-        $this->expiresAt = $expiresAt;
+        $this->expiresAt['value'] = $expiresAt;
+    }
+
+    /**
+     * Unsets Expires At.
+     */
+    public function unsetExpiresAt(): void
+    {
+        $this->expiresAt = [];
     }
 
     /**
@@ -113,7 +146,10 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
      */
     public function getAdditionalInformation(): ?array
     {
-        return $this->additionalInformation;
+        if (count($this->additionalInformation) == 0) {
+            return null;
+        }
+        return $this->additionalInformation['value'];
     }
 
     /**
@@ -125,7 +161,15 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
      */
     public function setAdditionalInformation(?array $additionalInformation): void
     {
-        $this->additionalInformation = $additionalInformation;
+        $this->additionalInformation['value'] = $additionalInformation;
+    }
+
+    /**
+     * Unsets Additional Information.
+     */
+    public function unsetAdditionalInformation(): void
+    {
+        $this->additionalInformation = [];
     }
 
     /**
@@ -133,7 +177,10 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
      */
     public function getEndToEndId(): ?string
     {
-        return $this->endToEndId;
+        if (count($this->endToEndId) == 0) {
+            return null;
+        }
+        return $this->endToEndId['value'];
     }
 
     /**
@@ -143,7 +190,15 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
      */
     public function setEndToEndId(?string $endToEndId): void
     {
-        $this->endToEndId = $endToEndId;
+        $this->endToEndId['value'] = $endToEndId;
+    }
+
+    /**
+     * Unsets End to End Id.
+     */
+    public function unsetEndToEndId(): void
+    {
+        $this->endToEndId = [];
     }
 
     /**
@@ -151,7 +206,10 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
      */
     public function getPayer(): ?GetPixPayerResponse
     {
-        return $this->payer;
+        if (count($this->payer) == 0) {
+            return null;
+        }
+        return $this->payer['value'];
     }
 
     /**
@@ -161,7 +219,15 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
      */
     public function setPayer(?GetPixPayerResponse $payer): void
     {
-        $this->payer = $payer;
+        $this->payer['value'] = $payer;
+    }
+
+    /**
+     * Unsets Payer.
+     */
+    public function unsetPayer(): void
+    {
+        $this->payer = [];
     }
 
     /**
@@ -176,12 +242,24 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['qr_code']                = $this->qrCode;
-        $json['qr_code_url']            = $this->qrCodeUrl;
-        $json['expires_at']             = DateTimeHelper::toRfc3339DateTime($this->expiresAt);
-        $json['additional_information'] = $this->additionalInformation;
-        $json['end_to_end_id']          = $this->endToEndId;
-        $json['payer']                  = $this->payer;
+        if (!empty($this->qrCode)) {
+            $json['qr_code']                = $this->qrCode['value'];
+        }
+        if (!empty($this->qrCodeUrl)) {
+            $json['qr_code_url']            = $this->qrCodeUrl['value'];
+        }
+        if (!empty($this->expiresAt)) {
+            $json['expires_at']             = DateTimeHelper::toRfc3339DateTime($this->expiresAt['value']);
+        }
+        if (!empty($this->additionalInformation)) {
+            $json['additional_information'] = $this->additionalInformation['value'];
+        }
+        if (!empty($this->endToEndId)) {
+            $json['end_to_end_id']          = $this->endToEndId['value'];
+        }
+        if (!empty($this->payer)) {
+            $json['payer']                  = $this->payer['value'];
+        }
         $json = array_merge($json, parent::jsonSerialize(true));
         $json['transaction_type'] = $this->getTransactionType() ?? 'pix';
 

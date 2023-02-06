@@ -18,9 +18,9 @@ use stdClass;
 class GetGatewayErrorResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $message;
+    private $message = [];
 
     /**
      * Returns Message.
@@ -28,7 +28,10 @@ class GetGatewayErrorResponse implements \JsonSerializable
      */
     public function getMessage(): ?string
     {
-        return $this->message;
+        if (count($this->message) == 0) {
+            return null;
+        }
+        return $this->message['value'];
     }
 
     /**
@@ -39,7 +42,16 @@ class GetGatewayErrorResponse implements \JsonSerializable
      */
     public function setMessage(?string $message): void
     {
-        $this->message = $message;
+        $this->message['value'] = $message;
+    }
+
+    /**
+     * Unsets Message.
+     * The message error
+     */
+    public function unsetMessage(): void
+    {
+        $this->message = [];
     }
 
     /**
@@ -54,7 +66,9 @@ class GetGatewayErrorResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['message'] = $this->message;
+        if (!empty($this->message)) {
+            $json['message'] = $this->message['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

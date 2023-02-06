@@ -11,10 +11,10 @@ Checkout Payment Settings Response
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `successUrl` | `?string` | Required | Success Url | getSuccessUrl(): ?string | setSuccessUrl(?string successUrl): void |
-| `paymentUrl` | `?string` | Required | Payment Url | getPaymentUrl(): ?string | setPaymentUrl(?string paymentUrl): void |
-| `acceptedPaymentMethods` | `?(string[])` | Required | Accepted Payment Methods | getAcceptedPaymentMethods(): ?array | setAcceptedPaymentMethods(?array acceptedPaymentMethods): void |
-| `status` | `?string` | Required | Status | getStatus(): ?string | setStatus(?string status): void |
+| `successUrl` | `?string` | Optional | Success Url | getSuccessUrl(): ?string | setSuccessUrl(?string successUrl): void |
+| `paymentUrl` | `?string` | Optional | Payment Url | getPaymentUrl(): ?string | setPaymentUrl(?string paymentUrl): void |
+| `acceptedPaymentMethods` | `?(string[])` | Optional | Accepted Payment Methods | getAcceptedPaymentMethods(): ?array | setAcceptedPaymentMethods(?array acceptedPaymentMethods): void |
+| `status` | `?string` | Optional | Status | getStatus(): ?string | setStatus(?string status): void |
 | `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | Customer | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
 | `amount` | `?int` | Optional | Payment amount | getAmount(): ?int | setAmount(?int amount): void |
 | `defaultPaymentMethod` | `?string` | Optional | Default Payment Method | getDefaultPaymentMethod(): ?string | setDefaultPaymentMethod(?string defaultPaymentMethod): void |
@@ -24,14 +24,10 @@ Checkout Payment Settings Response
 
 ```json
 {
-  "success_url": "success_url2",
-  "payment_url": "payment_url6",
-  "accepted_payment_methods": [
-    "accepted_payment_methods3",
-    "accepted_payment_methods4",
-    "accepted_payment_methods5"
-  ],
-  "status": "status8",
+  "success_url": null,
+  "payment_url": null,
+  "accepted_payment_methods": null,
+  "status": null,
   "customer": null,
   "amount": null,
   "default_payment_method": null,

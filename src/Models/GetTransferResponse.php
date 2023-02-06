@@ -19,39 +19,39 @@ use stdClass;
 class GetTransferResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $amount;
+    private $amount = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $status;
+    private $status = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
-     * @var GetBankAccountResponse|null
+     * @var array
      */
-    private $bankAccount;
+    private $bankAccount = [];
 
     /**
-     * @var array<string,string>|null
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
      * Returns Id.
@@ -59,7 +59,10 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -70,7 +73,16 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     * Id
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -79,7 +91,10 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function getAmount(): ?int
     {
-        return $this->amount;
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
     }
 
     /**
@@ -90,7 +105,16 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function setAmount(?int $amount): void
     {
-        $this->amount = $amount;
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     * Transfer amount
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
     }
 
     /**
@@ -99,7 +123,10 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function getStatus(): ?string
     {
-        return $this->status;
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
     }
 
     /**
@@ -110,7 +137,16 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function setStatus(?string $status): void
     {
-        $this->status = $status;
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     * Transfer status
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
     }
 
     /**
@@ -119,7 +155,10 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -131,7 +170,16 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     * Transfer creation date
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -140,7 +188,10 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -152,7 +203,16 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?\DateTime $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     * Transfer last update date
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
@@ -161,7 +221,10 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function getBankAccount(): ?GetBankAccountResponse
     {
-        return $this->bankAccount;
+        if (count($this->bankAccount) == 0) {
+            return null;
+        }
+        return $this->bankAccount['value'];
     }
 
     /**
@@ -172,7 +235,16 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function setBankAccount(?GetBankAccountResponse $bankAccount): void
     {
-        $this->bankAccount = $bankAccount;
+        $this->bankAccount['value'] = $bankAccount;
+    }
+
+    /**
+     * Unsets Bank Account.
+     * Bank account
+     */
+    public function unsetBankAccount(): void
+    {
+        $this->bankAccount = [];
     }
 
     /**
@@ -183,7 +255,10 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
@@ -196,7 +271,16 @@ class GetTransferResponse implements \JsonSerializable
      */
     public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     * Metadata
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -211,13 +295,27 @@ class GetTransferResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']           = $this->id;
-        $json['amount']       = $this->amount;
-        $json['status']       = $this->status;
-        $json['created_at']   = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']   = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        $json['bank_account'] = $this->bankAccount;
-        $json['metadata']     = $this->metadata;
+        if (!empty($this->id)) {
+            $json['id']           = $this->id['value'];
+        }
+        if (!empty($this->amount)) {
+            $json['amount']       = $this->amount['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']       = $this->status['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']   = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']   = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
+        }
+        if (!empty($this->bankAccount)) {
+            $json['bank_account'] = $this->bankAccount['value'];
+        }
+        if (!empty($this->metadata)) {
+            $json['metadata']     = $this->metadata['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

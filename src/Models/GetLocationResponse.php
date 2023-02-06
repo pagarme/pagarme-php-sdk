@@ -18,14 +18,14 @@ use stdClass;
 class GetLocationResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $latitude;
+    private $latitude = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $longitude;
+    private $longitude = [];
 
     /**
      * Returns Latitude.
@@ -33,7 +33,10 @@ class GetLocationResponse implements \JsonSerializable
      */
     public function getLatitude(): ?string
     {
-        return $this->latitude;
+        if (count($this->latitude) == 0) {
+            return null;
+        }
+        return $this->latitude['value'];
     }
 
     /**
@@ -44,7 +47,16 @@ class GetLocationResponse implements \JsonSerializable
      */
     public function setLatitude(?string $latitude): void
     {
-        $this->latitude = $latitude;
+        $this->latitude['value'] = $latitude;
+    }
+
+    /**
+     * Unsets Latitude.
+     * Latitude
+     */
+    public function unsetLatitude(): void
+    {
+        $this->latitude = [];
     }
 
     /**
@@ -53,7 +65,10 @@ class GetLocationResponse implements \JsonSerializable
      */
     public function getLongitude(): ?string
     {
-        return $this->longitude;
+        if (count($this->longitude) == 0) {
+            return null;
+        }
+        return $this->longitude['value'];
     }
 
     /**
@@ -64,7 +79,16 @@ class GetLocationResponse implements \JsonSerializable
      */
     public function setLongitude(?string $longitude): void
     {
-        $this->longitude = $longitude;
+        $this->longitude['value'] = $longitude;
+    }
+
+    /**
+     * Unsets Longitude.
+     * Longitude
+     */
+    public function unsetLongitude(): void
+    {
+        $this->longitude = [];
     }
 
     /**
@@ -79,8 +103,12 @@ class GetLocationResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['latitude']  = $this->latitude;
-        $json['longitude'] = $this->longitude;
+        if (!empty($this->latitude)) {
+            $json['latitude']  = $this->latitude['value'];
+        }
+        if (!empty($this->longitude)) {
+            $json['longitude'] = $this->longitude['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

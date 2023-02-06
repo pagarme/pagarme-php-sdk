@@ -18,51 +18,54 @@ use stdClass;
 class GetCardTokenResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $lastFourDigits;
+    private $lastFourDigits = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $holderName;
+    private $holderName = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $holderDocument;
+    private $holderDocument = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $expMonth;
+    private $expMonth = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $expYear;
+    private $expYear = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $brand;
+    private $brand = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $label;
+    private $label = [];
 
     /**
      * Returns Last Four Digits.
      */
     public function getLastFourDigits(): ?string
     {
-        return $this->lastFourDigits;
+        if (count($this->lastFourDigits) == 0) {
+            return null;
+        }
+        return $this->lastFourDigits['value'];
     }
 
     /**
@@ -72,7 +75,15 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function setLastFourDigits(?string $lastFourDigits): void
     {
-        $this->lastFourDigits = $lastFourDigits;
+        $this->lastFourDigits['value'] = $lastFourDigits;
+    }
+
+    /**
+     * Unsets Last Four Digits.
+     */
+    public function unsetLastFourDigits(): void
+    {
+        $this->lastFourDigits = [];
     }
 
     /**
@@ -80,7 +91,10 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function getHolderName(): ?string
     {
-        return $this->holderName;
+        if (count($this->holderName) == 0) {
+            return null;
+        }
+        return $this->holderName['value'];
     }
 
     /**
@@ -90,7 +104,15 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function setHolderName(?string $holderName): void
     {
-        $this->holderName = $holderName;
+        $this->holderName['value'] = $holderName;
+    }
+
+    /**
+     * Unsets Holder Name.
+     */
+    public function unsetHolderName(): void
+    {
+        $this->holderName = [];
     }
 
     /**
@@ -98,7 +120,10 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function getHolderDocument(): ?string
     {
-        return $this->holderDocument;
+        if (count($this->holderDocument) == 0) {
+            return null;
+        }
+        return $this->holderDocument['value'];
     }
 
     /**
@@ -108,7 +133,15 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function setHolderDocument(?string $holderDocument): void
     {
-        $this->holderDocument = $holderDocument;
+        $this->holderDocument['value'] = $holderDocument;
+    }
+
+    /**
+     * Unsets Holder Document.
+     */
+    public function unsetHolderDocument(): void
+    {
+        $this->holderDocument = [];
     }
 
     /**
@@ -116,7 +149,10 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function getExpMonth(): ?string
     {
-        return $this->expMonth;
+        if (count($this->expMonth) == 0) {
+            return null;
+        }
+        return $this->expMonth['value'];
     }
 
     /**
@@ -126,7 +162,15 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function setExpMonth(?string $expMonth): void
     {
-        $this->expMonth = $expMonth;
+        $this->expMonth['value'] = $expMonth;
+    }
+
+    /**
+     * Unsets Exp Month.
+     */
+    public function unsetExpMonth(): void
+    {
+        $this->expMonth = [];
     }
 
     /**
@@ -134,7 +178,10 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function getExpYear(): ?string
     {
-        return $this->expYear;
+        if (count($this->expYear) == 0) {
+            return null;
+        }
+        return $this->expYear['value'];
     }
 
     /**
@@ -144,7 +191,15 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function setExpYear(?string $expYear): void
     {
-        $this->expYear = $expYear;
+        $this->expYear['value'] = $expYear;
+    }
+
+    /**
+     * Unsets Exp Year.
+     */
+    public function unsetExpYear(): void
+    {
+        $this->expYear = [];
     }
 
     /**
@@ -152,7 +207,10 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function getBrand(): ?string
     {
-        return $this->brand;
+        if (count($this->brand) == 0) {
+            return null;
+        }
+        return $this->brand['value'];
     }
 
     /**
@@ -162,7 +220,15 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function setBrand(?string $brand): void
     {
-        $this->brand = $brand;
+        $this->brand['value'] = $brand;
+    }
+
+    /**
+     * Unsets Brand.
+     */
+    public function unsetBrand(): void
+    {
+        $this->brand = [];
     }
 
     /**
@@ -170,7 +236,10 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -180,7 +249,15 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -188,7 +265,10 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function getLabel(): ?string
     {
-        return $this->label;
+        if (count($this->label) == 0) {
+            return null;
+        }
+        return $this->label['value'];
     }
 
     /**
@@ -198,7 +278,15 @@ class GetCardTokenResponse implements \JsonSerializable
      */
     public function setLabel(?string $label): void
     {
-        $this->label = $label;
+        $this->label['value'] = $label;
+    }
+
+    /**
+     * Unsets Label.
+     */
+    public function unsetLabel(): void
+    {
+        $this->label = [];
     }
 
     /**
@@ -213,14 +301,30 @@ class GetCardTokenResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['last_four_digits'] = $this->lastFourDigits;
-        $json['holder_name']      = $this->holderName;
-        $json['holder_document']  = $this->holderDocument;
-        $json['exp_month']        = $this->expMonth;
-        $json['exp_year']         = $this->expYear;
-        $json['brand']            = $this->brand;
-        $json['type']             = $this->type;
-        $json['label']            = $this->label;
+        if (!empty($this->lastFourDigits)) {
+            $json['last_four_digits'] = $this->lastFourDigits['value'];
+        }
+        if (!empty($this->holderName)) {
+            $json['holder_name']      = $this->holderName['value'];
+        }
+        if (!empty($this->holderDocument)) {
+            $json['holder_document']  = $this->holderDocument['value'];
+        }
+        if (!empty($this->expMonth)) {
+            $json['exp_month']        = $this->expMonth['value'];
+        }
+        if (!empty($this->expYear)) {
+            $json['exp_year']         = $this->expYear['value'];
+        }
+        if (!empty($this->brand)) {
+            $json['brand']            = $this->brand['value'];
+        }
+        if (!empty($this->type)) {
+            $json['type']             = $this->type['value'];
+        }
+        if (!empty($this->label)) {
+            $json['label']            = $this->label['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

@@ -15,21 +15,24 @@ use stdClass;
 class GetTransferTargetResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $targetId;
+    private $targetId = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
      * Returns Target Id.
      */
     public function getTargetId(): ?string
     {
-        return $this->targetId;
+        if (count($this->targetId) == 0) {
+            return null;
+        }
+        return $this->targetId['value'];
     }
 
     /**
@@ -39,7 +42,15 @@ class GetTransferTargetResponse implements \JsonSerializable
      */
     public function setTargetId(?string $targetId): void
     {
-        $this->targetId = $targetId;
+        $this->targetId['value'] = $targetId;
+    }
+
+    /**
+     * Unsets Target Id.
+     */
+    public function unsetTargetId(): void
+    {
+        $this->targetId = [];
     }
 
     /**
@@ -47,7 +58,10 @@ class GetTransferTargetResponse implements \JsonSerializable
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -57,7 +71,15 @@ class GetTransferTargetResponse implements \JsonSerializable
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -72,8 +94,12 @@ class GetTransferTargetResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['target_id'] = $this->targetId;
-        $json['type']      = $this->type;
+        if (!empty($this->targetId)) {
+            $json['target_id'] = $this->targetId['value'];
+        }
+        if (!empty($this->type)) {
+            $json['type']      = $this->type['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

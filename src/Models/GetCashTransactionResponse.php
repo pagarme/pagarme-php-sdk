@@ -21,9 +21,9 @@ use stdClass;
 class GetCashTransactionResponse extends GetTransactionResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $description;
+    private $description = [];
 
     /**
      * Returns Description.
@@ -31,7 +31,10 @@ class GetCashTransactionResponse extends GetTransactionResponse implements \Json
      */
     public function getDescription(): ?string
     {
-        return $this->description;
+        if (count($this->description) == 0) {
+            return null;
+        }
+        return $this->description['value'];
     }
 
     /**
@@ -42,7 +45,16 @@ class GetCashTransactionResponse extends GetTransactionResponse implements \Json
      */
     public function setDescription(?string $description): void
     {
-        $this->description = $description;
+        $this->description['value'] = $description;
+    }
+
+    /**
+     * Unsets Description.
+     * Description
+     */
+    public function unsetDescription(): void
+    {
+        $this->description = [];
     }
 
     /**
@@ -57,7 +69,9 @@ class GetCashTransactionResponse extends GetTransactionResponse implements \Json
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['description'] = $this->description;
+        if (!empty($this->description)) {
+            $json['description'] = $this->description['value'];
+        }
         $json = array_merge($json, parent::jsonSerialize(true));
         $json['transaction_type'] = $this->getTransactionType() ?? 'cash';
 

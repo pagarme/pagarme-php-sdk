@@ -11,13 +11,13 @@ Gateway Response
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `message` | `?string` | Required | The message error | getMessage(): ?string | setMessage(?string message): void |
+| `message` | `?string` | Optional | The message error | getMessage(): ?string | setMessage(?string message): void |
 
 ## Example (as JSON)
 
 ```json
 {
-  "message": "message0"
+  "message": null
 }
 ```
 

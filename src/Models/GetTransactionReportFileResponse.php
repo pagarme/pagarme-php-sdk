@@ -16,21 +16,24 @@ use stdClass;
 class GetTransactionReportFileResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $name;
+    private $name = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $date;
+    private $date = [];
 
     /**
      * Returns Name.
      */
     public function getName(): ?string
     {
-        return $this->name;
+        if (count($this->name) == 0) {
+            return null;
+        }
+        return $this->name['value'];
     }
 
     /**
@@ -40,7 +43,15 @@ class GetTransactionReportFileResponse implements \JsonSerializable
      */
     public function setName(?string $name): void
     {
-        $this->name = $name;
+        $this->name['value'] = $name;
+    }
+
+    /**
+     * Unsets Name.
+     */
+    public function unsetName(): void
+    {
+        $this->name = [];
     }
 
     /**
@@ -48,7 +59,10 @@ class GetTransactionReportFileResponse implements \JsonSerializable
      */
     public function getDate(): ?\DateTime
     {
-        return $this->date;
+        if (count($this->date) == 0) {
+            return null;
+        }
+        return $this->date['value'];
     }
 
     /**
@@ -59,7 +73,15 @@ class GetTransactionReportFileResponse implements \JsonSerializable
      */
     public function setDate(?\DateTime $date): void
     {
-        $this->date = $date;
+        $this->date['value'] = $date;
+    }
+
+    /**
+     * Unsets Date.
+     */
+    public function unsetDate(): void
+    {
+        $this->date = [];
     }
 
     /**
@@ -74,8 +96,12 @@ class GetTransactionReportFileResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['name'] = $this->name;
-        $json['date'] = DateTimeHelper::toRfc3339DateTime($this->date);
+        if (!empty($this->name)) {
+            $json['name'] = $this->name['value'];
+        }
+        if (!empty($this->date)) {
+            $json['date'] = DateTimeHelper::toRfc3339DateTime($this->date['value']);
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

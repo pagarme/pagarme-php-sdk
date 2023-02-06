@@ -19,64 +19,64 @@ use stdClass;
 class GetCustomerResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $name;
+    private $name = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $email;
+    private $email = [];
 
     /**
-     * @var bool|null
+     * @var array
      */
-    private $delinquent;
+    private $delinquent = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $createdAt;
+    private $createdAt = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $updatedAt;
+    private $updatedAt = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $document;
+    private $document = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $fbAccessToken;
+    private $fbAccessToken = [];
 
     /**
-     * @var GetAddressResponse|null
+     * @var array
      */
-    private $address;
+    private $address = [];
 
     /**
-     * @var array<string,string>|null
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
-     * @var GetPhonesResponse|null
+     * @var array
      */
-    private $phones;
+    private $phones = [];
 
     /**
      * @var array
@@ -84,21 +84,24 @@ class GetCustomerResponse implements \JsonSerializable
     private $fbId = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $code;
+    private $code = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $documentType;
+    private $documentType = [];
 
     /**
      * Returns Id.
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -108,7 +111,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -116,7 +127,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getName(): ?string
     {
-        return $this->name;
+        if (count($this->name) == 0) {
+            return null;
+        }
+        return $this->name['value'];
     }
 
     /**
@@ -126,7 +140,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setName(?string $name): void
     {
-        $this->name = $name;
+        $this->name['value'] = $name;
+    }
+
+    /**
+     * Unsets Name.
+     */
+    public function unsetName(): void
+    {
+        $this->name = [];
     }
 
     /**
@@ -134,7 +156,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getEmail(): ?string
     {
-        return $this->email;
+        if (count($this->email) == 0) {
+            return null;
+        }
+        return $this->email['value'];
     }
 
     /**
@@ -144,7 +169,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setEmail(?string $email): void
     {
-        $this->email = $email;
+        $this->email['value'] = $email;
+    }
+
+    /**
+     * Unsets Email.
+     */
+    public function unsetEmail(): void
+    {
+        $this->email = [];
     }
 
     /**
@@ -152,7 +185,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getDelinquent(): ?bool
     {
-        return $this->delinquent;
+        if (count($this->delinquent) == 0) {
+            return null;
+        }
+        return $this->delinquent['value'];
     }
 
     /**
@@ -162,7 +198,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setDelinquent(?bool $delinquent): void
     {
-        $this->delinquent = $delinquent;
+        $this->delinquent['value'] = $delinquent;
+    }
+
+    /**
+     * Unsets Delinquent.
+     */
+    public function unsetDelinquent(): void
+    {
+        $this->delinquent = [];
     }
 
     /**
@@ -170,7 +214,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getCreatedAt(): ?\DateTime
     {
-        return $this->createdAt;
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
     }
 
     /**
@@ -181,7 +228,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setCreatedAt(?\DateTime $createdAt): void
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
     }
 
     /**
@@ -189,7 +244,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getUpdatedAt(): ?\DateTime
     {
-        return $this->updatedAt;
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
     }
 
     /**
@@ -200,7 +258,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setUpdatedAt(?\DateTime $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
     }
 
     /**
@@ -208,7 +274,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getDocument(): ?string
     {
-        return $this->document;
+        if (count($this->document) == 0) {
+            return null;
+        }
+        return $this->document['value'];
     }
 
     /**
@@ -218,7 +287,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setDocument(?string $document): void
     {
-        $this->document = $document;
+        $this->document['value'] = $document;
+    }
+
+    /**
+     * Unsets Document.
+     */
+    public function unsetDocument(): void
+    {
+        $this->document = [];
     }
 
     /**
@@ -226,7 +303,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
@@ -236,7 +316,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -244,7 +332,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getFbAccessToken(): ?string
     {
-        return $this->fbAccessToken;
+        if (count($this->fbAccessToken) == 0) {
+            return null;
+        }
+        return $this->fbAccessToken['value'];
     }
 
     /**
@@ -254,7 +345,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setFbAccessToken(?string $fbAccessToken): void
     {
-        $this->fbAccessToken = $fbAccessToken;
+        $this->fbAccessToken['value'] = $fbAccessToken;
+    }
+
+    /**
+     * Unsets Fb Access Token.
+     */
+    public function unsetFbAccessToken(): void
+    {
+        $this->fbAccessToken = [];
     }
 
     /**
@@ -262,7 +361,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getAddress(): ?GetAddressResponse
     {
-        return $this->address;
+        if (count($this->address) == 0) {
+            return null;
+        }
+        return $this->address['value'];
     }
 
     /**
@@ -272,7 +374,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setAddress(?GetAddressResponse $address): void
     {
-        $this->address = $address;
+        $this->address['value'] = $address;
+    }
+
+    /**
+     * Unsets Address.
+     */
+    public function unsetAddress(): void
+    {
+        $this->address = [];
     }
 
     /**
@@ -282,7 +392,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
@@ -294,7 +407,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -302,7 +423,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getPhones(): ?GetPhonesResponse
     {
-        return $this->phones;
+        if (count($this->phones) == 0) {
+            return null;
+        }
+        return $this->phones['value'];
     }
 
     /**
@@ -312,7 +436,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setPhones(?GetPhonesResponse $phones): void
     {
-        $this->phones = $phones;
+        $this->phones['value'] = $phones;
+    }
+
+    /**
+     * Unsets Phones.
+     */
+    public function unsetPhones(): void
+    {
+        $this->phones = [];
     }
 
     /**
@@ -350,7 +482,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getCode(): ?string
     {
-        return $this->code;
+        if (count($this->code) == 0) {
+            return null;
+        }
+        return $this->code['value'];
     }
 
     /**
@@ -361,7 +496,16 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setCode(?string $code): void
     {
-        $this->code = $code;
+        $this->code['value'] = $code;
+    }
+
+    /**
+     * Unsets Code.
+     * Código de referência do cliente no sistema da loja. Max: 52 caracteres
+     */
+    public function unsetCode(): void
+    {
+        $this->code = [];
     }
 
     /**
@@ -369,7 +513,10 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function getDocumentType(): ?string
     {
-        return $this->documentType;
+        if (count($this->documentType) == 0) {
+            return null;
+        }
+        return $this->documentType['value'];
     }
 
     /**
@@ -379,7 +526,15 @@ class GetCustomerResponse implements \JsonSerializable
      */
     public function setDocumentType(?string $documentType): void
     {
-        $this->documentType = $documentType;
+        $this->documentType['value'] = $documentType;
+    }
+
+    /**
+     * Unsets Document Type.
+     */
+    public function unsetDocumentType(): void
+    {
+        $this->documentType = [];
     }
 
     /**
@@ -394,23 +549,51 @@ class GetCustomerResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']              = $this->id;
-        $json['name']            = $this->name;
-        $json['email']           = $this->email;
-        $json['delinquent']      = $this->delinquent;
-        $json['created_at']      = DateTimeHelper::toRfc3339DateTime($this->createdAt);
-        $json['updated_at']      = DateTimeHelper::toRfc3339DateTime($this->updatedAt);
-        $json['document']        = $this->document;
-        $json['type']            = $this->type;
-        $json['fb_access_token'] = $this->fbAccessToken;
-        $json['address']         = $this->address;
-        $json['metadata']        = $this->metadata;
-        $json['phones']          = $this->phones;
-        if (!empty($this->fbId)) {
-            $json['fb_id']       = $this->fbId['value'];
+        if (!empty($this->id)) {
+            $json['id']              = $this->id['value'];
         }
-        $json['code']            = $this->code;
-        $json['document_type']   = $this->documentType;
+        if (!empty($this->name)) {
+            $json['name']            = $this->name['value'];
+        }
+        if (!empty($this->email)) {
+            $json['email']           = $this->email['value'];
+        }
+        if (!empty($this->delinquent)) {
+            $json['delinquent']      = $this->delinquent['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']      = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']      = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
+        }
+        if (!empty($this->document)) {
+            $json['document']        = $this->document['value'];
+        }
+        if (!empty($this->type)) {
+            $json['type']            = $this->type['value'];
+        }
+        if (!empty($this->fbAccessToken)) {
+            $json['fb_access_token'] = $this->fbAccessToken['value'];
+        }
+        if (!empty($this->address)) {
+            $json['address']         = $this->address['value'];
+        }
+        if (!empty($this->metadata)) {
+            $json['metadata']        = $this->metadata['value'];
+        }
+        if (!empty($this->phones)) {
+            $json['phones']          = $this->phones['value'];
+        }
+        if (!empty($this->fbId)) {
+            $json['fb_id']           = $this->fbId['value'];
+        }
+        if (!empty($this->code)) {
+            $json['code']            = $this->code['value'];
+        }
+        if (!empty($this->documentType)) {
+            $json['document_type']   = $this->documentType['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

@@ -18,31 +18,34 @@ use stdClass;
 class GetPixPayerResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $name;
+    private $name = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $document;
+    private $document = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $documentType;
+    private $documentType = [];
 
     /**
-     * @var GetPixBankAccountResponse|null
+     * @var array
      */
-    private $bankAccount;
+    private $bankAccount = [];
 
     /**
      * Returns Name.
      */
     public function getName(): ?string
     {
-        return $this->name;
+        if (count($this->name) == 0) {
+            return null;
+        }
+        return $this->name['value'];
     }
 
     /**
@@ -52,7 +55,15 @@ class GetPixPayerResponse implements \JsonSerializable
      */
     public function setName(?string $name): void
     {
-        $this->name = $name;
+        $this->name['value'] = $name;
+    }
+
+    /**
+     * Unsets Name.
+     */
+    public function unsetName(): void
+    {
+        $this->name = [];
     }
 
     /**
@@ -60,7 +71,10 @@ class GetPixPayerResponse implements \JsonSerializable
      */
     public function getDocument(): ?string
     {
-        return $this->document;
+        if (count($this->document) == 0) {
+            return null;
+        }
+        return $this->document['value'];
     }
 
     /**
@@ -70,7 +84,15 @@ class GetPixPayerResponse implements \JsonSerializable
      */
     public function setDocument(?string $document): void
     {
-        $this->document = $document;
+        $this->document['value'] = $document;
+    }
+
+    /**
+     * Unsets Document.
+     */
+    public function unsetDocument(): void
+    {
+        $this->document = [];
     }
 
     /**
@@ -78,7 +100,10 @@ class GetPixPayerResponse implements \JsonSerializable
      */
     public function getDocumentType(): ?string
     {
-        return $this->documentType;
+        if (count($this->documentType) == 0) {
+            return null;
+        }
+        return $this->documentType['value'];
     }
 
     /**
@@ -88,7 +113,15 @@ class GetPixPayerResponse implements \JsonSerializable
      */
     public function setDocumentType(?string $documentType): void
     {
-        $this->documentType = $documentType;
+        $this->documentType['value'] = $documentType;
+    }
+
+    /**
+     * Unsets Document Type.
+     */
+    public function unsetDocumentType(): void
+    {
+        $this->documentType = [];
     }
 
     /**
@@ -96,7 +129,10 @@ class GetPixPayerResponse implements \JsonSerializable
      */
     public function getBankAccount(): ?GetPixBankAccountResponse
     {
-        return $this->bankAccount;
+        if (count($this->bankAccount) == 0) {
+            return null;
+        }
+        return $this->bankAccount['value'];
     }
 
     /**
@@ -106,7 +142,15 @@ class GetPixPayerResponse implements \JsonSerializable
      */
     public function setBankAccount(?GetPixBankAccountResponse $bankAccount): void
     {
-        $this->bankAccount = $bankAccount;
+        $this->bankAccount['value'] = $bankAccount;
+    }
+
+    /**
+     * Unsets Bank Account.
+     */
+    public function unsetBankAccount(): void
+    {
+        $this->bankAccount = [];
     }
 
     /**
@@ -121,10 +165,18 @@ class GetPixPayerResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['name']          = $this->name;
-        $json['document']      = $this->document;
-        $json['document_type'] = $this->documentType;
-        $json['bank_account']  = $this->bankAccount;
+        if (!empty($this->name)) {
+            $json['name']          = $this->name['value'];
+        }
+        if (!empty($this->document)) {
+            $json['document']      = $this->document['value'];
+        }
+        if (!empty($this->documentType)) {
+            $json['document_type'] = $this->documentType['value'];
+        }
+        if (!empty($this->bankAccount)) {
+            $json['bank_account']  = $this->bankAccount['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }
