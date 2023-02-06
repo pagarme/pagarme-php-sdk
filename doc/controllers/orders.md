@@ -263,7 +263,6 @@ $body_payments[1] = new Models\CreatePaymentRequest(
 );
 
 $body_code = 'code4';
-$body_customerId = 'customer_id4';
 $body_metadata = ['key0' => 'metadata7', 'key1' => 'metadata8'];
 $body_closed = true;
 $body = new Models\CreateOrderRequest(
@@ -271,7 +270,6 @@ $body = new Models\CreateOrderRequest(
     $body_customer,
     $body_payments,
     $body_code,
-    $body_customerId,
     $body_metadata,
     $body_closed
 );

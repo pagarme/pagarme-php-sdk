@@ -38,9 +38,9 @@ class CreateOrderRequest implements \JsonSerializable
     private $code;
 
     /**
-     * @var string
+     * @var array
      */
-    private $customerId;
+    private $customerId = [];
 
     /**
      * @var CreateShippingRequest|null
@@ -102,7 +102,6 @@ class CreateOrderRequest implements \JsonSerializable
      * @param CreateCustomerRequest $customer
      * @param CreatePaymentRequest[] $payments
      * @param string $code
-     * @param string $customerId
      * @param array<string,string> $metadata
      * @param bool $closed
      */
@@ -111,7 +110,6 @@ class CreateOrderRequest implements \JsonSerializable
         CreateCustomerRequest $customer,
         array $payments,
         string $code,
-        string $customerId,
         array $metadata,
         bool $closed
     ) {
@@ -119,7 +117,6 @@ class CreateOrderRequest implements \JsonSerializable
         $this->customer = $customer;
         $this->payments = $payments;
         $this->code = $code;
-        $this->customerId = $customerId;
         $this->metadata = $metadata;
         $this->closed = $closed;
     }
@@ -220,21 +217,32 @@ class CreateOrderRequest implements \JsonSerializable
      * Returns Customer Id.
      * The customer id
      */
-    public function getCustomerId(): string
+    public function getCustomerId(): ?string
     {
-        return $this->customerId;
+        if (count($this->customerId) == 0) {
+            return null;
+        }
+        return $this->customerId['value'];
     }
 
     /**
      * Sets Customer Id.
      * The customer id
      *
-     * @required
      * @maps customer_id
      */
-    public function setCustomerId(string $customerId): void
+    public function setCustomerId(?string $customerId): void
     {
-        $this->customerId = $customerId;
+        $this->customerId['value'] = $customerId;
+    }
+
+    /**
+     * Unsets Customer Id.
+     * The customer id
+     */
+    public function unsetCustomerId(): void
+    {
+        $this->customerId = [];
     }
 
     /**
@@ -475,7 +483,9 @@ class CreateOrderRequest implements \JsonSerializable
         $json['customer']              = $this->customer;
         $json['payments']              = $this->payments;
         $json['code']                  = $this->code;
-        $json['customer_id']           = $this->customerId;
+        if (!empty($this->customerId)) {
+            $json['customer_id']       = $this->customerId['value'];
+        }
         if (isset($this->shipping)) {
             $json['shipping']          = $this->shipping;
         }
