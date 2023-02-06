@@ -15,7 +15,7 @@ Request for creating an order
 | `customer` | [`CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Required | Customer | getCustomer(): CreateCustomerRequest | setCustomer(CreateCustomerRequest customer): void |
 | `payments` | [`CreatePaymentRequest[]`](../../doc/models/create-payment-request.md) | Required | Payment data | getPayments(): array | setPayments(array payments): void |
 | `code` | `string` | Required | The order code | getCode(): string | setCode(string code): void |
-| `customerId` | `string` | Required | The customer id | getCustomerId(): string | setCustomerId(string customerId): void |
+| `customerId` | `?string` | Optional | The customer id | getCustomerId(): ?string | setCustomerId(?string customerId): void |
 | `shipping` | [`?CreateShippingRequest`](../../doc/models/create-shipping-request.md) | Optional | Shipping data | getShipping(): ?CreateShippingRequest | setShipping(?CreateShippingRequest shipping): void |
 | `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 | `antifraudEnabled` | `?bool` | Optional | Defines whether the order will go through anti-fraud | getAntifraudEnabled(): ?bool | setAntifraudEnabled(?bool antifraudEnabled): void |
@@ -45,7 +45,6 @@ Request for creating an order
   },
   "payments": null,
   "code": null,
-  "customer_id": null,
   "metadata": null,
   "closed": true
 }
