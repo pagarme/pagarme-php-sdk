@@ -11,15 +11,15 @@ Pix Additional Information
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `name` | `string` | Required | - | getName(): string | setName(string name): void |
-| `value` | `string` | Required | - | getValue(): string | setValue(string value): void |
+| `name` | `?string` | Optional | - | getName(): ?string | setName(?string name): void |
+| `value` | `?string` | Optional | - | getValue(): ?string | setValue(?string value): void |
 
 ## Example (as JSON)
 
 ```json
 {
-  "Name": "Name0",
-  "Value": "Value2"
+  "Name": null,
+  "Value": null
 }
 ```
 

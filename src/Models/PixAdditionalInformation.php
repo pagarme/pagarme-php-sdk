@@ -18,61 +18,71 @@ use stdClass;
 class PixAdditionalInformation implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var array
      */
-    private $name;
+    private $name = [];
 
     /**
-     * @var string
+     * @var array
      */
-    private $value;
-
-    /**
-     * @param string $name
-     * @param string $value
-     */
-    public function __construct(string $name, string $value)
-    {
-        $this->name = $name;
-        $this->value = $value;
-    }
+    private $value = [];
 
     /**
      * Returns Name.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
-        return $this->name;
+        if (count($this->name) == 0) {
+            return null;
+        }
+        return $this->name['value'];
     }
 
     /**
      * Sets Name.
      *
-     * @required
      * @maps Name
      */
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
-        $this->name = $name;
+        $this->name['value'] = $name;
+    }
+
+    /**
+     * Unsets Name.
+     */
+    public function unsetName(): void
+    {
+        $this->name = [];
     }
 
     /**
      * Returns Value.
      */
-    public function getValue(): string
+    public function getValue(): ?string
     {
-        return $this->value;
+        if (count($this->value) == 0) {
+            return null;
+        }
+        return $this->value['value'];
     }
 
     /**
      * Sets Value.
      *
-     * @required
      * @maps Value
      */
-    public function setValue(string $value): void
+    public function setValue(?string $value): void
     {
-        $this->value = $value;
+        $this->value['value'] = $value;
+    }
+
+    /**
+     * Unsets Value.
+     */
+    public function unsetValue(): void
+    {
+        $this->value = [];
     }
 
     /**
@@ -87,8 +97,12 @@ class PixAdditionalInformation implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['Name']  = $this->name;
-        $json['Value'] = $this->value;
+        if (!empty($this->name)) {
+            $json['Name']  = $this->name['value'];
+        }
+        if (!empty($this->value)) {
+            $json['Value'] = $this->value['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }
