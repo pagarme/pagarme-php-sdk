@@ -121,7 +121,6 @@ $request_boleto_billingAddress = new Models\CreateAddressRequest(
     $request_boleto_billingAddress_line1,
     $request_boleto_billingAddress_line2
 );
-$request_boleto_billingAddressId = 'billing_address_id2';
 $request_boleto_documentNumber = 'document_number0';
 $request_boleto_statementDescriptor = 'statement_descriptor6';
 $request_boleto = new Models\CreateBoletoPaymentRequest(
@@ -129,7 +128,6 @@ $request_boleto = new Models\CreateBoletoPaymentRequest(
     $request_boleto_bank,
     $request_boleto_instructions,
     $request_boleto_billingAddress,
-    $request_boleto_billingAddressId,
     $request_boleto_documentNumber,
     $request_boleto_statementDescriptor
 );

@@ -16,7 +16,7 @@ Contains the settings for creating a boleto payment
 | `instructions` | `string` | Required | The instructions field that will be printed on the boleto. | getInstructions(): string | setInstructions(string instructions): void |
 | `dueAt` | `?\DateTime` | Optional | Boleto due date | getDueAt(): ?\DateTime | setDueAt(?\DateTime dueAt): void |
 | `billingAddress` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Card's billing address | getBillingAddress(): CreateAddressRequest | setBillingAddress(CreateAddressRequest billingAddress): void |
-| `billingAddressId` | `string` | Required | The address id for the billing address | getBillingAddressId(): string | setBillingAddressId(string billingAddressId): void |
+| `billingAddressId` | `?string` | Optional | The address id for the billing address | getBillingAddressId(): ?string | setBillingAddressId(?string billingAddressId): void |
 | `nossoNumero` | `?string` | Optional | Customer identification number with the bank | getNossoNumero(): ?string | setNossoNumero(?string nossoNumero): void |
 | `documentNumber` | `string` | Required | Boleto identification | getDocumentNumber(): string | setDocumentNumber(string documentNumber): void |
 | `statementDescriptor` | `string` | Required | Soft Descriptor | getStatementDescriptor(): string | setStatementDescriptor(string statementDescriptor): void |
@@ -48,7 +48,7 @@ Contains the settings for creating a boleto payment
     "line_1": "line_18",
     "line_2": "line_26"
   },
-  "billing_address_id": "billing_address_id6",
+  "billing_address_id": null,
   "nosso_numero": null,
   "document_number": "document_number6",
   "statement_descriptor": "statement_descriptor0",

@@ -34,9 +34,9 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
     private $instructions;
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $dueAt;
+    private $dueAt = [];
 
     /**
      * @var CreateAddressRequest
@@ -44,14 +44,14 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
     private $billingAddress;
 
     /**
-     * @var string
+     * @var array
      */
-    private $billingAddressId;
+    private $billingAddressId = [];
 
     /**
-     * @var string|null
+     * @var array
      */
-    private $nossoNumero;
+    private $nossoNumero = [];
 
     /**
      * @var string
@@ -64,26 +64,25 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
     private $statementDescriptor;
 
     /**
-     * @var CreateInterestRequest|null
+     * @var array
      */
-    private $interest;
+    private $interest = [];
 
     /**
-     * @var CreateFineRequest|null
+     * @var array
      */
-    private $fine;
+    private $fine = [];
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $maxDaysToPayPastDue;
+    private $maxDaysToPayPastDue = [];
 
     /**
      * @param int $retries
      * @param string $bank
      * @param string $instructions
      * @param CreateAddressRequest $billingAddress
-     * @param string $billingAddressId
      * @param string $documentNumber
      * @param string $statementDescriptor
      */
@@ -92,7 +91,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
         string $bank,
         string $instructions,
         CreateAddressRequest $billingAddress,
-        string $billingAddressId,
         string $documentNumber,
         string $statementDescriptor
     ) {
@@ -100,7 +98,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
         $this->bank = $bank;
         $this->instructions = $instructions;
         $this->billingAddress = $billingAddress;
-        $this->billingAddressId = $billingAddressId;
         $this->documentNumber = $documentNumber;
         $this->statementDescriptor = $statementDescriptor;
     }
@@ -174,7 +171,10 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      */
     public function getDueAt(): ?\DateTime
     {
-        return $this->dueAt;
+        if (count($this->dueAt) == 0) {
+            return null;
+        }
+        return $this->dueAt['value'];
     }
 
     /**
@@ -186,7 +186,16 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      */
     public function setDueAt(?\DateTime $dueAt): void
     {
-        $this->dueAt = $dueAt;
+        $this->dueAt['value'] = $dueAt;
+    }
+
+    /**
+     * Unsets Due At.
+     * Boleto due date
+     */
+    public function unsetDueAt(): void
+    {
+        $this->dueAt = [];
     }
 
     /**
@@ -214,21 +223,32 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      * Returns Billing Address Id.
      * The address id for the billing address
      */
-    public function getBillingAddressId(): string
+    public function getBillingAddressId(): ?string
     {
-        return $this->billingAddressId;
+        if (count($this->billingAddressId) == 0) {
+            return null;
+        }
+        return $this->billingAddressId['value'];
     }
 
     /**
      * Sets Billing Address Id.
      * The address id for the billing address
      *
-     * @required
      * @maps billing_address_id
      */
-    public function setBillingAddressId(string $billingAddressId): void
+    public function setBillingAddressId(?string $billingAddressId): void
     {
-        $this->billingAddressId = $billingAddressId;
+        $this->billingAddressId['value'] = $billingAddressId;
+    }
+
+    /**
+     * Unsets Billing Address Id.
+     * The address id for the billing address
+     */
+    public function unsetBillingAddressId(): void
+    {
+        $this->billingAddressId = [];
     }
 
     /**
@@ -237,7 +257,10 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      */
     public function getNossoNumero(): ?string
     {
-        return $this->nossoNumero;
+        if (count($this->nossoNumero) == 0) {
+            return null;
+        }
+        return $this->nossoNumero['value'];
     }
 
     /**
@@ -248,7 +271,16 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      */
     public function setNossoNumero(?string $nossoNumero): void
     {
-        $this->nossoNumero = $nossoNumero;
+        $this->nossoNumero['value'] = $nossoNumero;
+    }
+
+    /**
+     * Unsets Nosso Numero.
+     * Customer identification number with the bank
+     */
+    public function unsetNossoNumero(): void
+    {
+        $this->nossoNumero = [];
     }
 
     /**
@@ -298,7 +330,10 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      */
     public function getInterest(): ?CreateInterestRequest
     {
-        return $this->interest;
+        if (count($this->interest) == 0) {
+            return null;
+        }
+        return $this->interest['value'];
     }
 
     /**
@@ -308,7 +343,15 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      */
     public function setInterest(?CreateInterestRequest $interest): void
     {
-        $this->interest = $interest;
+        $this->interest['value'] = $interest;
+    }
+
+    /**
+     * Unsets Interest.
+     */
+    public function unsetInterest(): void
+    {
+        $this->interest = [];
     }
 
     /**
@@ -316,7 +359,10 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      */
     public function getFine(): ?CreateFineRequest
     {
-        return $this->fine;
+        if (count($this->fine) == 0) {
+            return null;
+        }
+        return $this->fine['value'];
     }
 
     /**
@@ -326,7 +372,15 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      */
     public function setFine(?CreateFineRequest $fine): void
     {
-        $this->fine = $fine;
+        $this->fine['value'] = $fine;
+    }
+
+    /**
+     * Unsets Fine.
+     */
+    public function unsetFine(): void
+    {
+        $this->fine = [];
     }
 
     /**
@@ -334,7 +388,10 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      */
     public function getMaxDaysToPayPastDue(): ?int
     {
-        return $this->maxDaysToPayPastDue;
+        if (count($this->maxDaysToPayPastDue) == 0) {
+            return null;
+        }
+        return $this->maxDaysToPayPastDue['value'];
     }
 
     /**
@@ -344,7 +401,15 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      */
     public function setMaxDaysToPayPastDue(?int $maxDaysToPayPastDue): void
     {
-        $this->maxDaysToPayPastDue = $maxDaysToPayPastDue;
+        $this->maxDaysToPayPastDue['value'] = $maxDaysToPayPastDue;
+    }
+
+    /**
+     * Unsets Max Days to Pay Past Due.
+     */
+    public function unsetMaxDaysToPayPastDue(): void
+    {
+        $this->maxDaysToPayPastDue = [];
     }
 
     /**
@@ -362,24 +427,26 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
         $json['retries']                      = $this->retries;
         $json['bank']                         = $this->bank;
         $json['instructions']                 = $this->instructions;
-        if (isset($this->dueAt)) {
-            $json['due_at']                   = DateTimeHelper::toRfc3339DateTime($this->dueAt);
+        if (!empty($this->dueAt)) {
+            $json['due_at']                   = DateTimeHelper::toRfc3339DateTime($this->dueAt['value']);
         }
         $json['billing_address']              = $this->billingAddress;
-        $json['billing_address_id']           = $this->billingAddressId;
-        if (isset($this->nossoNumero)) {
-            $json['nosso_numero']             = $this->nossoNumero;
+        if (!empty($this->billingAddressId)) {
+            $json['billing_address_id']       = $this->billingAddressId['value'];
+        }
+        if (!empty($this->nossoNumero)) {
+            $json['nosso_numero']             = $this->nossoNumero['value'];
         }
         $json['document_number']              = $this->documentNumber;
         $json['statement_descriptor']         = $this->statementDescriptor;
-        if (isset($this->interest)) {
-            $json['interest']                 = $this->interest;
+        if (!empty($this->interest)) {
+            $json['interest']                 = $this->interest['value'];
         }
-        if (isset($this->fine)) {
-            $json['fine']                     = $this->fine;
+        if (!empty($this->fine)) {
+            $json['fine']                     = $this->fine['value'];
         }
-        if (isset($this->maxDaysToPayPastDue)) {
-            $json['max_days_to_pay_past_due'] = $this->maxDaysToPayPastDue;
+        if (!empty($this->maxDaysToPayPastDue)) {
+            $json['max_days_to_pay_past_due'] = $this->maxDaysToPayPastDue['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
