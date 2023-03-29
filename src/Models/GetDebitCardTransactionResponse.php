@@ -91,6 +91,11 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
     private $threedAuthenticationUrl = [];
 
     /**
+     * @var array
+     */
+    private $fundingSource = [];
+
+    /**
      * Returns Statement Descriptor.
      * Text that will appear on the debit card's statement
      */
@@ -539,6 +544,38 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
     }
 
     /**
+     * Returns Funding Source.
+     * Identify when a card is prepaid, credit or debit.
+     */
+    public function getFundingSource(): ?string
+    {
+        if (count($this->fundingSource) == 0) {
+            return null;
+        }
+        return $this->fundingSource['value'];
+    }
+
+    /**
+     * Sets Funding Source.
+     * Identify when a card is prepaid, credit or debit.
+     *
+     * @maps funding_source
+     */
+    public function setFundingSource(?string $fundingSource): void
+    {
+        $this->fundingSource['value'] = $fundingSource;
+    }
+
+    /**
+     * Unsets Funding Source.
+     * Identify when a card is prepaid, credit or debit.
+     */
+    public function unsetFundingSource(): void
+    {
+        $this->fundingSource = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -591,6 +628,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
         }
         if (!empty($this->threedAuthenticationUrl)) {
             $json['threed_authentication_url'] = $this->threedAuthenticationUrl['value'];
+        }
+        if (!empty($this->fundingSource)) {
+            $json['funding_source']            = $this->fundingSource['value'];
         }
         $json = array_merge($json, parent::jsonSerialize(true));
         $json['transaction_type'] = $this->getTransactionType() ?? 'debit_card';

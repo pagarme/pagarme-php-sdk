@@ -19,9 +19,9 @@ use stdClass;
 class GetOrderResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var array
      */
-    private $id;
+    private $id = [];
 
     /**
      * @var array
@@ -113,7 +113,10 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function getId(): ?string
     {
-        return $this->id;
+        if (count($this->id) == 0) {
+            return null;
+        }
+        return $this->id['value'];
     }
 
     /**
@@ -123,7 +126,15 @@ class GetOrderResponse implements \JsonSerializable
      */
     public function setId(?string $id): void
     {
-        $this->id = $id;
+        $this->id['value'] = $id;
+    }
+
+    /**
+     * Unsets Id.
+     */
+    public function unsetId(): void
+    {
+        $this->id = [];
     }
 
     /**
@@ -667,7 +678,9 @@ class GetOrderResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['id']              = $this->id;
+        if (!empty($this->id)) {
+            $json['id']          = $this->id['value'];
+        }
         if (!empty($this->code)) {
             $json['code']        = $this->code['value'];
         }

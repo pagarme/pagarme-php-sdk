@@ -147,7 +147,7 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Returns Exp Month.
      */
-    public function getExpMonth(): ?string
+    public function getExpMonth(): ?int
     {
         if (count($this->expMonth) == 0) {
             return null;
@@ -160,7 +160,7 @@ class GetCardTokenResponse implements \JsonSerializable
      *
      * @maps exp_month
      */
-    public function setExpMonth(?string $expMonth): void
+    public function setExpMonth(?int $expMonth): void
     {
         $this->expMonth['value'] = $expMonth;
     }
@@ -176,7 +176,7 @@ class GetCardTokenResponse implements \JsonSerializable
     /**
      * Returns Exp Year.
      */
-    public function getExpYear(): ?string
+    public function getExpYear(): ?int
     {
         if (count($this->expYear) == 0) {
             return null;
@@ -189,7 +189,7 @@ class GetCardTokenResponse implements \JsonSerializable
      *
      * @maps exp_year
      */
-    public function setExpYear(?string $expYear): void
+    public function setExpYear(?int $expYear): void
     {
         $this->expYear['value'] = $expYear;
     }
