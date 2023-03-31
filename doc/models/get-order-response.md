@@ -11,7 +11,7 @@ Response object for getting an Order
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `?string` | Required | - | getId(): ?string | setId(?string id): void |
+| `id` | `?string` | Optional | - | getId(): ?string | setId(?string id): void |
 | `code` | `?string` | Optional | - | getCode(): ?string | setCode(?string code): void |
 | `currency` | `?string` | Optional | - | getCurrency(): ?string | setCurrency(?string currency): void |
 | `items` | [`?(GetOrderItemResponse[])`](../../doc/models/get-order-item-response.md) | Optional | - | getItems(): ?array | setItems(?array items): void |
@@ -34,7 +34,7 @@ Response object for getting an Order
 
 ```json
 {
-  "id": "id0",
+  "id": null,
   "code": null,
   "currency": null,
   "items": null,

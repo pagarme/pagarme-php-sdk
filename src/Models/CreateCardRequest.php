@@ -18,57 +18,57 @@ use stdClass;
 class CreateCardRequest implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $number;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $holderName;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $expMonth;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $expYear;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $cvv;
 
     /**
-     * @var CreateAddressRequest
+     * @var CreateAddressRequest|null
      */
     private $billingAddress;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $brand;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $billingAddressId;
 
     /**
-     * @var array<string,string>
+     * @var array<string,string>|null
      */
     private $metadata;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $type;
+    private $type = 'credit';
 
     /**
-     * @var CreateCardOptionsRequest
+     * @var CreateCardOptionsRequest|null
      */
     private $options;
 
@@ -78,12 +78,12 @@ class CreateCardRequest implements \JsonSerializable
     private $holderDocument;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $privateLabel;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $label;
 
@@ -98,55 +98,10 @@ class CreateCardRequest implements \JsonSerializable
     private $token;
 
     /**
-     * @param string $number
-     * @param string $holderName
-     * @param int $expMonth
-     * @param int $expYear
-     * @param string $cvv
-     * @param CreateAddressRequest $billingAddress
-     * @param string $brand
-     * @param string $billingAddressId
-     * @param array<string,string> $metadata
-     * @param string $type
-     * @param CreateCardOptionsRequest $options
-     * @param bool $privateLabel
-     * @param string $label
-     */
-    public function __construct(
-        string $number,
-        string $holderName,
-        int $expMonth,
-        int $expYear,
-        string $cvv,
-        CreateAddressRequest $billingAddress,
-        string $brand,
-        string $billingAddressId,
-        array $metadata,
-        string $type,
-        CreateCardOptionsRequest $options,
-        bool $privateLabel,
-        string $label
-    ) {
-        $this->number = $number;
-        $this->holderName = $holderName;
-        $this->expMonth = $expMonth;
-        $this->expYear = $expYear;
-        $this->cvv = $cvv;
-        $this->billingAddress = $billingAddress;
-        $this->brand = $brand;
-        $this->billingAddressId = $billingAddressId;
-        $this->metadata = $metadata;
-        $this->type = $type;
-        $this->options = $options;
-        $this->privateLabel = $privateLabel;
-        $this->label = $label;
-    }
-
-    /**
      * Returns Number.
      * Credit card number
      */
-    public function getNumber(): string
+    public function getNumber(): ?string
     {
         return $this->number;
     }
@@ -155,10 +110,9 @@ class CreateCardRequest implements \JsonSerializable
      * Sets Number.
      * Credit card number
      *
-     * @required
      * @maps number
      */
-    public function setNumber(string $number): void
+    public function setNumber(?string $number): void
     {
         $this->number = $number;
     }
@@ -167,7 +121,7 @@ class CreateCardRequest implements \JsonSerializable
      * Returns Holder Name.
      * Holder name, as written on the card
      */
-    public function getHolderName(): string
+    public function getHolderName(): ?string
     {
         return $this->holderName;
     }
@@ -176,10 +130,9 @@ class CreateCardRequest implements \JsonSerializable
      * Sets Holder Name.
      * Holder name, as written on the card
      *
-     * @required
      * @maps holder_name
      */
-    public function setHolderName(string $holderName): void
+    public function setHolderName(?string $holderName): void
     {
         $this->holderName = $holderName;
     }
@@ -188,7 +141,7 @@ class CreateCardRequest implements \JsonSerializable
      * Returns Exp Month.
      * The expiration month
      */
-    public function getExpMonth(): int
+    public function getExpMonth(): ?int
     {
         return $this->expMonth;
     }
@@ -197,10 +150,9 @@ class CreateCardRequest implements \JsonSerializable
      * Sets Exp Month.
      * The expiration month
      *
-     * @required
      * @maps exp_month
      */
-    public function setExpMonth(int $expMonth): void
+    public function setExpMonth(?int $expMonth): void
     {
         $this->expMonth = $expMonth;
     }
@@ -209,7 +161,7 @@ class CreateCardRequest implements \JsonSerializable
      * Returns Exp Year.
      * The expiration year, that can be informed with 2 or 4 digits
      */
-    public function getExpYear(): int
+    public function getExpYear(): ?int
     {
         return $this->expYear;
     }
@@ -218,10 +170,9 @@ class CreateCardRequest implements \JsonSerializable
      * Sets Exp Year.
      * The expiration year, that can be informed with 2 or 4 digits
      *
-     * @required
      * @maps exp_year
      */
-    public function setExpYear(int $expYear): void
+    public function setExpYear(?int $expYear): void
     {
         $this->expYear = $expYear;
     }
@@ -230,7 +181,7 @@ class CreateCardRequest implements \JsonSerializable
      * Returns Cvv.
      * The card's security code
      */
-    public function getCvv(): string
+    public function getCvv(): ?string
     {
         return $this->cvv;
     }
@@ -239,10 +190,9 @@ class CreateCardRequest implements \JsonSerializable
      * Sets Cvv.
      * The card's security code
      *
-     * @required
      * @maps cvv
      */
-    public function setCvv(string $cvv): void
+    public function setCvv(?string $cvv): void
     {
         $this->cvv = $cvv;
     }
@@ -251,7 +201,7 @@ class CreateCardRequest implements \JsonSerializable
      * Returns Billing Address.
      * Card's billing address
      */
-    public function getBillingAddress(): CreateAddressRequest
+    public function getBillingAddress(): ?CreateAddressRequest
     {
         return $this->billingAddress;
     }
@@ -260,10 +210,9 @@ class CreateCardRequest implements \JsonSerializable
      * Sets Billing Address.
      * Card's billing address
      *
-     * @required
      * @maps billing_address
      */
-    public function setBillingAddress(CreateAddressRequest $billingAddress): void
+    public function setBillingAddress(?CreateAddressRequest $billingAddress): void
     {
         $this->billingAddress = $billingAddress;
     }
@@ -272,7 +221,7 @@ class CreateCardRequest implements \JsonSerializable
      * Returns Brand.
      * Card brand
      */
-    public function getBrand(): string
+    public function getBrand(): ?string
     {
         return $this->brand;
     }
@@ -281,10 +230,9 @@ class CreateCardRequest implements \JsonSerializable
      * Sets Brand.
      * Card brand
      *
-     * @required
      * @maps brand
      */
-    public function setBrand(string $brand): void
+    public function setBrand(?string $brand): void
     {
         $this->brand = $brand;
     }
@@ -293,7 +241,7 @@ class CreateCardRequest implements \JsonSerializable
      * Returns Billing Address Id.
      * The address id for the billing address
      */
-    public function getBillingAddressId(): string
+    public function getBillingAddressId(): ?string
     {
         return $this->billingAddressId;
     }
@@ -302,10 +250,9 @@ class CreateCardRequest implements \JsonSerializable
      * Sets Billing Address Id.
      * The address id for the billing address
      *
-     * @required
      * @maps billing_address_id
      */
-    public function setBillingAddressId(string $billingAddressId): void
+    public function setBillingAddressId(?string $billingAddressId): void
     {
         $this->billingAddressId = $billingAddressId;
     }
@@ -314,9 +261,9 @@ class CreateCardRequest implements \JsonSerializable
      * Returns Metadata.
      * Metadata
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
-    public function getMetadata(): array
+    public function getMetadata(): ?array
     {
         return $this->metadata;
     }
@@ -325,12 +272,11 @@ class CreateCardRequest implements \JsonSerializable
      * Sets Metadata.
      * Metadata
      *
-     * @required
      * @maps metadata
      *
-     * @param array<string,string> $metadata
+     * @param array<string,string>|null $metadata
      */
-    public function setMetadata(array $metadata): void
+    public function setMetadata(?array $metadata): void
     {
         $this->metadata = $metadata;
     }
@@ -339,7 +285,7 @@ class CreateCardRequest implements \JsonSerializable
      * Returns Type.
      * Card type
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -348,10 +294,9 @@ class CreateCardRequest implements \JsonSerializable
      * Sets Type.
      * Card type
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -360,7 +305,7 @@ class CreateCardRequest implements \JsonSerializable
      * Returns Options.
      * Options for creating the card
      */
-    public function getOptions(): CreateCardOptionsRequest
+    public function getOptions(): ?CreateCardOptionsRequest
     {
         return $this->options;
     }
@@ -369,10 +314,9 @@ class CreateCardRequest implements \JsonSerializable
      * Sets Options.
      * Options for creating the card
      *
-     * @required
      * @maps options
      */
-    public function setOptions(CreateCardOptionsRequest $options): void
+    public function setOptions(?CreateCardOptionsRequest $options): void
     {
         $this->options = $options;
     }
@@ -401,7 +345,7 @@ class CreateCardRequest implements \JsonSerializable
      * Returns Private Label.
      * Indicates whether it is a private label card
      */
-    public function getPrivateLabel(): bool
+    public function getPrivateLabel(): ?bool
     {
         return $this->privateLabel;
     }
@@ -410,10 +354,9 @@ class CreateCardRequest implements \JsonSerializable
      * Sets Private Label.
      * Indicates whether it is a private label card
      *
-     * @required
      * @maps private_label
      */
-    public function setPrivateLabel(bool $privateLabel): void
+    public function setPrivateLabel(?bool $privateLabel): void
     {
         $this->privateLabel = $privateLabel;
     }
@@ -421,7 +364,7 @@ class CreateCardRequest implements \JsonSerializable
     /**
      * Returns Label.
      */
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -429,10 +372,9 @@ class CreateCardRequest implements \JsonSerializable
     /**
      * Sets Label.
      *
-     * @required
      * @maps label
      */
-    public function setLabel(string $label): void
+    public function setLabel(?string $label): void
     {
         $this->label = $label;
     }
@@ -489,27 +431,53 @@ class CreateCardRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['number']              = $this->number;
-        $json['holder_name']         = $this->holderName;
-        $json['exp_month']           = $this->expMonth;
-        $json['exp_year']            = $this->expYear;
-        $json['cvv']                 = $this->cvv;
-        $json['billing_address']     = $this->billingAddress;
-        $json['brand']               = $this->brand;
-        $json['billing_address_id']  = $this->billingAddressId;
-        $json['metadata']            = $this->metadata;
-        $json['type']                = $this->type;
-        $json['options']             = $this->options;
-        if (isset($this->holderDocument)) {
-            $json['holder_document'] = $this->holderDocument;
+        if (isset($this->number)) {
+            $json['number']             = $this->number;
         }
-        $json['private_label']       = $this->privateLabel;
-        $json['label']               = $this->label;
+        if (isset($this->holderName)) {
+            $json['holder_name']        = $this->holderName;
+        }
+        if (isset($this->expMonth)) {
+            $json['exp_month']          = $this->expMonth;
+        }
+        if (isset($this->expYear)) {
+            $json['exp_year']           = $this->expYear;
+        }
+        if (isset($this->cvv)) {
+            $json['cvv']                = $this->cvv;
+        }
+        if (isset($this->billingAddress)) {
+            $json['billing_address']    = $this->billingAddress;
+        }
+        if (isset($this->brand)) {
+            $json['brand']              = $this->brand;
+        }
+        if (isset($this->billingAddressId)) {
+            $json['billing_address_id'] = $this->billingAddressId;
+        }
+        if (isset($this->metadata)) {
+            $json['metadata']           = $this->metadata;
+        }
+        if (isset($this->type)) {
+            $json['type']               = $this->type;
+        }
+        if (isset($this->options)) {
+            $json['options']            = $this->options;
+        }
+        if (isset($this->holderDocument)) {
+            $json['holder_document']    = $this->holderDocument;
+        }
+        if (isset($this->privateLabel)) {
+            $json['private_label']      = $this->privateLabel;
+        }
+        if (isset($this->label)) {
+            $json['label']              = $this->label;
+        }
         if (isset($this->id)) {
-            $json['id']              = $this->id;
+            $json['id']                 = $this->id;
         }
         if (isset($this->token)) {
-            $json['token']           = $this->token;
+            $json['token']              = $this->token;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

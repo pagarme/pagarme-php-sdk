@@ -14,8 +14,8 @@ Card token data
 | `lastFourDigits` | `?string` | Optional | - | getLastFourDigits(): ?string | setLastFourDigits(?string lastFourDigits): void |
 | `holderName` | `?string` | Optional | - | getHolderName(): ?string | setHolderName(?string holderName): void |
 | `holderDocument` | `?string` | Optional | - | getHolderDocument(): ?string | setHolderDocument(?string holderDocument): void |
-| `expMonth` | `?string` | Optional | - | getExpMonth(): ?string | setExpMonth(?string expMonth): void |
-| `expYear` | `?string` | Optional | - | getExpYear(): ?string | setExpYear(?string expYear): void |
+| `expMonth` | `?int` | Optional | - | getExpMonth(): ?int | setExpMonth(?int expMonth): void |
+| `expYear` | `?int` | Optional | - | getExpYear(): ?int | setExpYear(?int expYear): void |
 | `brand` | `?string` | Optional | - | getBrand(): ?string | setBrand(?string brand): void |
 | `type` | `?string` | Optional | - | getType(): ?string | setType(?string type): void |
 | `label` | `?string` | Optional | - | getLabel(): ?string | setLabel(?string label): void |

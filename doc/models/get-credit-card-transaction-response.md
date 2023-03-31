@@ -27,6 +27,7 @@ Response object for getting a credit card transaction
 | `acquirerReturnCode` | `?string` | Optional | Acquirer Return Code | getAcquirerReturnCode(): ?string | setAcquirerReturnCode(?string acquirerReturnCode): void |
 | `installments` | `?int` | Optional | Number of installments | getInstallments(): ?int | setInstallments(?int installments): void |
 | `threedAuthenticationUrl` | `?string` | Optional | 3D-S authentication Url | getThreedAuthenticationUrl(): ?string | setThreedAuthenticationUrl(?string threedAuthenticationUrl): void |
+| `fundingSource` | `?string` | Optional | Identify when a card is prepaid, credit or debit. | getFundingSource(): ?string | setFundingSource(?string fundingSource): void |
 
 ## Example (as JSON)
 
@@ -62,7 +63,8 @@ Response object for getting a credit card transaction
   "acquirer_message": null,
   "acquirer_return_code": null,
   "installments": null,
-  "threed_authentication_url": null
+  "threed_authentication_url": null,
+  "funding_source": null
 }
 ```
 

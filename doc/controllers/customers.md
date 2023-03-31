@@ -13,24 +13,24 @@ $customersController = $client->getCustomersController();
 * [Update Card](../../doc/controllers/customers.md#update-card)
 * [Update Address](../../doc/controllers/customers.md#update-address)
 * [Delete Access Token](../../doc/controllers/customers.md#delete-access-token)
-* [Create Address](../../doc/controllers/customers.md#create-address)
 * [Create Customer](../../doc/controllers/customers.md#create-customer)
-* [Create Card](../../doc/controllers/customers.md#create-card)
-* [Get Cards](../../doc/controllers/customers.md#get-cards)
-* [Renew Card](../../doc/controllers/customers.md#renew-card)
+* [Create Address](../../doc/controllers/customers.md#create-address)
+* [Delete Access Tokens](../../doc/controllers/customers.md#delete-access-tokens)
 * [Get Address](../../doc/controllers/customers.md#get-address)
 * [Delete Address](../../doc/controllers/customers.md#delete-address)
-* [Get Access Token](../../doc/controllers/customers.md#get-access-token)
-* [Update Customer Metadata](../../doc/controllers/customers.md#update-customer-metadata)
-* [Get Card](../../doc/controllers/customers.md#get-card)
-* [Delete Access Tokens](../../doc/controllers/customers.md#delete-access-tokens)
-* [Create Access Token](../../doc/controllers/customers.md#create-access-token)
-* [Get Access Tokens](../../doc/controllers/customers.md#get-access-tokens)
+* [Create Card](../../doc/controllers/customers.md#create-card)
 * [Get Customers](../../doc/controllers/customers.md#get-customers)
 * [Update Customer](../../doc/controllers/customers.md#update-customer)
+* [Create Access Token](../../doc/controllers/customers.md#create-access-token)
+* [Get Access Tokens](../../doc/controllers/customers.md#get-access-tokens)
+* [Get Cards](../../doc/controllers/customers.md#get-cards)
+* [Renew Card](../../doc/controllers/customers.md#renew-card)
+* [Get Access Token](../../doc/controllers/customers.md#get-access-token)
+* [Update Customer Metadata](../../doc/controllers/customers.md#update-customer-metadata)
 * [Delete Card](../../doc/controllers/customers.md#delete-card)
 * [Get Addresses](../../doc/controllers/customers.md#get-addresses)
 * [Get Customer](../../doc/controllers/customers.md#get-customer)
+* [Get Card](../../doc/controllers/customers.md#get-card)
 
 
 # Update Card
@@ -188,63 +188,6 @@ $result = $customersController->deleteAccessToken($customerId, $tokenId);
 ```
 
 
-# Create Address
-
-Creates a new address for a customer
-
-```php
-function createAddress(
-    string $customerId,
-    CreateAddressRequest $request,
-    ?string $idempotencyKey = null
-): GetAddressResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `request` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Body, Required | Request for creating an address |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetAddressResponse`](../../doc/models/get-address-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-$request_street = 'street6';
-$request_number = 'number4';
-$request_zipCode = 'zip_code0';
-$request_neighborhood = 'neighborhood2';
-$request_city = 'city6';
-$request_state = 'state2';
-$request_country = 'country0';
-$request_complement = 'complement2';
-$request_metadata = ['key0' => 'metadata3'];
-$request_line1 = 'line_10';
-$request_line2 = 'line_24';
-$request = new Models\CreateAddressRequest(
-    $request_street,
-    $request_number,
-    $request_zipCode,
-    $request_neighborhood,
-    $request_city,
-    $request_state,
-    $request_country,
-    $request_complement,
-    $request_metadata,
-    $request_line1,
-    $request_line2
-);
-
-$result = $customersController->createAddress($customerId, $request);
-```
-
-
 # Create Customer
 
 Creates a new customer
@@ -315,99 +258,16 @@ $result = $customersController->createCustomer($request);
 ```
 
 
-# Create Card
+# Create Address
 
-Creates a new card for a customer
+Creates a new address for a customer
 
 ```php
-function createCard(
+function createAddress(
     string $customerId,
-    CreateCardRequest $request,
+    CreateAddressRequest $request,
     ?string $idempotencyKey = null
-): GetCardResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `request` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Body, Required | Request for creating a card |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetCardResponse`](../../doc/models/get-card-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-$request_number = 'number4';
-$request_holderName = 'holder_name2';
-$request_expMonth = 10;
-$request_expYear = 30;
-$request_cvv = 'cvv4';
-$request_billingAddress_street = 'street8';
-$request_billingAddress_number = 'number4';
-$request_billingAddress_zipCode = 'zip_code2';
-$request_billingAddress_neighborhood = 'neighborhood4';
-$request_billingAddress_city = 'city8';
-$request_billingAddress_state = 'state4';
-$request_billingAddress_country = 'country2';
-$request_billingAddress_complement = 'complement6';
-$request_billingAddress_metadata = ['key0' => 'metadata5', 'key1' => 'metadata6'];
-$request_billingAddress_line1 = 'line_18';
-$request_billingAddress_line2 = 'line_26';
-$request_billingAddress = new Models\CreateAddressRequest(
-    $request_billingAddress_street,
-    $request_billingAddress_number,
-    $request_billingAddress_zipCode,
-    $request_billingAddress_neighborhood,
-    $request_billingAddress_city,
-    $request_billingAddress_state,
-    $request_billingAddress_country,
-    $request_billingAddress_complement,
-    $request_billingAddress_metadata,
-    $request_billingAddress_line1,
-    $request_billingAddress_line2
-);
-$request_brand = 'brand0';
-$request_billingAddressId = 'billing_address_id2';
-$request_metadata = ['key0' => 'metadata3'];
-$request_type = 'credit';
-$request_options_verifyCard = false;
-$request_options = new Models\CreateCardOptionsRequest(
-    $request_options_verifyCard
-);
-$request_privateLabel = false;
-$request_label = 'label6';
-$request = new Models\CreateCardRequest(
-    $request_number,
-    $request_holderName,
-    $request_expMonth,
-    $request_expYear,
-    $request_cvv,
-    $request_billingAddress,
-    $request_brand,
-    $request_billingAddressId,
-    $request_metadata,
-    $request_type,
-    $request_options,
-    $request_privateLabel,
-    $request_label
-);
-
-$result = $customersController->createCard($customerId, $request);
-```
-
-
-# Get Cards
-
-Get all cards from a customer
-
-```php
-function getCards(string $customerId, ?int $page = null, ?int $size = null): ListCardsResponse
+): GetAddressResponse
 ```
 
 ## Parameters
@@ -415,49 +275,70 @@ function getCards(string $customerId, ?int $page = null, ?int $size = null): Lis
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `customerId` | `string` | Template, Required | Customer Id |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
+| `request` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Body, Required | Request for creating an address |
+| `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`ListCardsResponse`](../../doc/models/list-cards-response.md)
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
 
 ## Example Usage
 
 ```php
 $customerId = 'customer_id8';
+$request_street = 'street6';
+$request_number = 'number4';
+$request_zipCode = 'zip_code0';
+$request_neighborhood = 'neighborhood2';
+$request_city = 'city6';
+$request_state = 'state2';
+$request_country = 'country0';
+$request_complement = 'complement2';
+$request_metadata = ['key0' => 'metadata3'];
+$request_line1 = 'line_10';
+$request_line2 = 'line_24';
+$request = new Models\CreateAddressRequest(
+    $request_street,
+    $request_number,
+    $request_zipCode,
+    $request_neighborhood,
+    $request_city,
+    $request_state,
+    $request_country,
+    $request_complement,
+    $request_metadata,
+    $request_line1,
+    $request_line2
+);
 
-$result = $customersController->getCards($customerId);
+$result = $customersController->createAddress($customerId, $request);
 ```
 
 
-# Renew Card
+# Delete Access Tokens
 
-Renew a card
+Delete a Customer's access tokens
 
 ```php
-function renewCard(string $customerId, string $cardId, ?string $idempotencyKey = null): GetCardResponse
+function deleteAccessTokens(string $customerId): ListAccessTokensResponse
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `cardId` | `string` | Template, Required | Card Id |
-| `idempotencyKey` | `?string` | Header, Optional | - |
+| `customerId` | `string` | Template, Required | Customer Id |
 
 ## Response Type
 
-[`GetCardResponse`](../../doc/models/get-card-response.md)
+[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
 
 ## Example Usage
 
 ```php
 $customerId = 'customer_id8';
-$cardId = 'card_id4';
 
-$result = $customersController->renewCard($customerId, $cardId);
+$result = $customersController->deleteAccessTokens($customerId);
 ```
 
 
@@ -524,78 +405,16 @@ $result = $customersController->deleteAddress($customerId, $addressId);
 ```
 
 
-# Get Access Token
+# Create Card
 
-Get a Customer's access token
-
-```php
-function getAccessToken(string $customerId, string $tokenId): GetAccessTokenResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `tokenId` | `string` | Template, Required | Token Id |
-
-## Response Type
-
-[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
-
-## Example Usage
+Creates a new card for a customer
 
 ```php
-$customerId = 'customer_id8';
-$tokenId = 'token_id6';
-
-$result = $customersController->getAccessToken($customerId, $tokenId);
-```
-
-
-# Update Customer Metadata
-
-Updates the metadata a customer
-
-```php
-function updateCustomerMetadata(
+function createCard(
     string $customerId,
-    UpdateMetadataRequest $request,
+    CreateCardRequest $request,
     ?string $idempotencyKey = null
-): GetCustomerResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | The customer id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the customer metadata |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-$request_metadata = ['key0' => 'metadata3'];
-$request = new Models\UpdateMetadataRequest(
-    $request_metadata
-);
-
-$result = $customersController->updateCustomerMetadata($customerId, $request);
-```
-
-
-# Get Card
-
-Get a customer's card
-
-```php
-function getCard(string $customerId, string $cardId): GetCardResponse
+): GetCardResponse
 ```
 
 ## Parameters
@@ -603,7 +422,8 @@ function getCard(string $customerId, string $cardId): GetCardResponse
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `customerId` | `string` | Template, Required | Customer id |
-| `cardId` | `string` | Template, Required | Card id |
+| `request` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Body, Required | Request for creating a card |
+| `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
@@ -613,99 +433,9 @@ function getCard(string $customerId, string $cardId): GetCardResponse
 
 ```php
 $customerId = 'customer_id8';
-$cardId = 'card_id4';
+$request = new Models\CreateCardRequest();
 
-$result = $customersController->getCard($customerId, $cardId);
-```
-
-
-# Delete Access Tokens
-
-Delete a Customer's access tokens
-
-```php
-function deleteAccessTokens(string $customerId): ListAccessTokensResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-
-## Response Type
-
-[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-
-$result = $customersController->deleteAccessTokens($customerId);
-```
-
-
-# Create Access Token
-
-Creates a access token for a customer
-
-```php
-function createAccessToken(
-    string $customerId,
-    CreateAccessTokenRequest $request,
-    ?string $idempotencyKey = null
-): GetAccessTokenResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `request` | [`CreateAccessTokenRequest`](../../doc/models/create-access-token-request.md) | Body, Required | Request for creating a access token |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-$request = new Models\CreateAccessTokenRequest();
-
-$result = $customersController->createAccessToken($customerId, $request);
-```
-
-
-# Get Access Tokens
-
-Get all access tokens from a customer
-
-```php
-function getAccessTokens(string $customerId, ?int $page = null, ?int $size = null): ListAccessTokensResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-
-## Response Type
-
-[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-
-$result = $customersController->getAccessTokens($customerId);
+$result = $customersController->createCard($customerId, $request);
 ```
 
 
@@ -780,6 +510,194 @@ $customerId = 'customer_id8';
 $request = new Models\UpdateCustomerRequest();
 
 $result = $customersController->updateCustomer($customerId, $request);
+```
+
+
+# Create Access Token
+
+Creates a access token for a customer
+
+```php
+function createAccessToken(
+    string $customerId,
+    CreateAccessTokenRequest $request,
+    ?string $idempotencyKey = null
+): GetAccessTokenResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `request` | [`CreateAccessTokenRequest`](../../doc/models/create-access-token-request.md) | Body, Required | Request for creating a access token |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+$request = new Models\CreateAccessTokenRequest();
+
+$result = $customersController->createAccessToken($customerId, $request);
+```
+
+
+# Get Access Tokens
+
+Get all access tokens from a customer
+
+```php
+function getAccessTokens(string $customerId, ?int $page = null, ?int $size = null): ListAccessTokensResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$result = $customersController->getAccessTokens($customerId);
+```
+
+
+# Get Cards
+
+Get all cards from a customer
+
+```php
+function getCards(string $customerId, ?int $page = null, ?int $size = null): ListCardsResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+[`ListCardsResponse`](../../doc/models/list-cards-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$result = $customersController->getCards($customerId);
+```
+
+
+# Renew Card
+
+Renew a card
+
+```php
+function renewCard(string $customerId, string $cardId, ?string $idempotencyKey = null): GetCardResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `cardId` | `string` | Template, Required | Card Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+$cardId = 'card_id4';
+
+$result = $customersController->renewCard($customerId, $cardId);
+```
+
+
+# Get Access Token
+
+Get a Customer's access token
+
+```php
+function getAccessToken(string $customerId, string $tokenId): GetAccessTokenResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `tokenId` | `string` | Template, Required | Token Id |
+
+## Response Type
+
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+$tokenId = 'token_id6';
+
+$result = $customersController->getAccessToken($customerId, $tokenId);
+```
+
+
+# Update Customer Metadata
+
+Updates the metadata a customer
+
+```php
+function updateCustomerMetadata(
+    string $customerId,
+    UpdateMetadataRequest $request,
+    ?string $idempotencyKey = null
+): GetCustomerResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | The customer id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the customer metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+$request_metadata = ['key0' => 'metadata3'];
+$request = new Models\UpdateMetadataRequest(
+    $request_metadata
+);
+
+$result = $customersController->updateCustomerMetadata($customerId, $request);
 ```
 
 
@@ -866,5 +784,34 @@ function getCustomer(string $customerId): GetCustomerResponse
 $customerId = 'customer_id8';
 
 $result = $customersController->getCustomer($customerId);
+```
+
+
+# Get Card
+
+Get a customer's card
+
+```php
+function getCard(string $customerId, string $cardId): GetCardResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `cardId` | `string` | Template, Required | Card id |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+$cardId = 'card_id4';
+
+$result = $customersController->getCard($customerId, $cardId);
 ```
 
