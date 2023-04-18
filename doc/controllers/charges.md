@@ -53,12 +53,17 @@ function updateChargeMetadata(
 
 ```php
 $chargeId = 'charge_id8';
-$request_metadata = ['key0' => 'metadata3'];
-$request = new Models\UpdateMetadataRequest(
-    $request_metadata
-);
 
-$result = $chargesController->updateChargeMetadata($chargeId, $request);
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $chargesController->updateChargeMetadata(
+    $chargeId,
+    $request
+);
 ```
 
 
@@ -90,74 +95,60 @@ function updateChargePaymentMethod(
 
 ```php
 $chargeId = 'charge_id8';
-$request_updateSubscription = false;
-$request_paymentMethod = 'payment_method4';
-$request_creditCard = new Models\CreateCreditCardPaymentRequest();
-$request_debitCard = new Models\CreateDebitCardPaymentRequest();
-$request_boleto_retries = 10;
-$request_boleto_bank = 'bank4';
-$request_boleto_instructions = 'instructions4';
-$request_boleto_billingAddress_street = 'street8';
-$request_boleto_billingAddress_number = 'number4';
-$request_boleto_billingAddress_zipCode = 'zip_code2';
-$request_boleto_billingAddress_neighborhood = 'neighborhood4';
-$request_boleto_billingAddress_city = 'city2';
-$request_boleto_billingAddress_state = 'state6';
-$request_boleto_billingAddress_country = 'country2';
-$request_boleto_billingAddress_complement = 'complement6';
-$request_boleto_billingAddress_metadata = ['key0' => 'metadata5'];
-$request_boleto_billingAddress_line1 = 'line_18';
-$request_boleto_billingAddress_line2 = 'line_26';
-$request_boleto_billingAddress = new Models\CreateAddressRequest(
-    $request_boleto_billingAddress_street,
-    $request_boleto_billingAddress_number,
-    $request_boleto_billingAddress_zipCode,
-    $request_boleto_billingAddress_neighborhood,
-    $request_boleto_billingAddress_city,
-    $request_boleto_billingAddress_state,
-    $request_boleto_billingAddress_country,
-    $request_boleto_billingAddress_complement,
-    $request_boleto_billingAddress_metadata,
-    $request_boleto_billingAddress_line1,
-    $request_boleto_billingAddress_line2
-);
-$request_boleto_documentNumber = 'document_number0';
-$request_boleto_statementDescriptor = 'statement_descriptor6';
-$request_boleto = new Models\CreateBoletoPaymentRequest(
-    $request_boleto_retries,
-    $request_boleto_bank,
-    $request_boleto_instructions,
-    $request_boleto_billingAddress,
-    $request_boleto_documentNumber,
-    $request_boleto_statementDescriptor
-);
-$request_voucher = new Models\CreateVoucherPaymentRequest();
-$request_cash_description = 'description6';
-$request_cash_confirm = false;
-$request_cash = new Models\CreateCashPaymentRequest(
-    $request_cash_description,
-    $request_cash_confirm
-);
-$request_bankTransfer_bank = 'bank4';
-$request_bankTransfer_retries = 204;
-$request_bankTransfer = new Models\CreateBankTransferPaymentRequest(
-    $request_bankTransfer_bank,
-    $request_bankTransfer_retries
-);
-$request_privateLabel = new Models\CreatePrivateLabelPaymentRequest();
-$request = new Models\UpdateChargePaymentMethodRequest(
-    $request_updateSubscription,
-    $request_paymentMethod,
-    $request_creditCard,
-    $request_debitCard,
-    $request_boleto,
-    $request_voucher,
-    $request_cash,
-    $request_bankTransfer,
-    $request_privateLabel
-);
 
-$result = $chargesController->updateChargePaymentMethod($chargeId, $request);
+$request = UpdateChargePaymentMethodRequestBuilder::init(
+    false,
+    'payment_method4',
+    CreateCreditCardPaymentRequestBuilder::init()
+        ->installments(1)
+        ->capture(true)
+        ->recurrencyCycle('"first" or "subsequent"')
+        ->build(),
+    CreateDebitCardPaymentRequestBuilder::init()->build(),
+    CreateBoletoPaymentRequestBuilder::init(
+        10,
+        'bank4',
+        'instructions4',
+        CreateAddressRequestBuilder::init(
+            'street8',
+            'number4',
+            'zip_code2',
+            'neighborhood4',
+            'city2',
+            'state6',
+            'country2',
+            'complement6',
+            [
+                'key0' => 'metadata5'
+            ],
+            'line_18',
+            'line_26'
+        )->build(),
+        'document_number0',
+        'statement_descriptor6'
+    )->build(),
+    CreateVoucherPaymentRequestBuilder::init()
+        ->recurrencyCycle('"first" or "subsequent"')
+        ->build(),
+    CreateCashPaymentRequestBuilder::init(
+        'description6',
+        false
+    )->build(),
+    CreateBankTransferPaymentRequestBuilder::init(
+        'bank4',
+        204
+    )->build(),
+    CreatePrivateLabelPaymentRequestBuilder::init()
+        ->installments(1)
+        ->capture(true)
+        ->recurrencyCycle('"first" or "subsequent"')
+        ->build()
+)->build();
+
+$result = $chargesController->updateChargePaymentMethod(
+    $chargeId,
+    $request
+);
 ```
 
 
@@ -220,9 +211,13 @@ function updateChargeDueDate(
 
 ```php
 $chargeId = 'charge_id8';
-$request = new Models\UpdateChargeDueDateRequest();
 
-$result = $chargesController->updateChargeDueDate($chargeId, $request);
+$request = UpdateChargeDueDateRequestBuilder::init()->build();
+
+$result = $chargesController->updateChargeDueDate(
+    $chargeId,
+    $request
+);
 ```
 
 
@@ -330,18 +325,20 @@ function updateChargeCard(
 
 ```php
 $chargeId = 'charge_id8';
-$request_updateSubscription = false;
-$request_cardId = 'card_id2';
-$request_card = new Models\CreateCardRequest();
-$request_recurrence = false;
-$request = new Models\UpdateChargeCardRequest(
-    $request_updateSubscription,
-    $request_cardId,
-    $request_card,
-    $request_recurrence
-);
 
-$result = $chargesController->updateChargeCard($chargeId, $request);
+$request = UpdateChargeCardRequestBuilder::init(
+    false,
+    'card_id2',
+    CreateCardRequestBuilder::init()
+        ->type('credit')
+        ->build(),
+    false
+)->build();
+
+$result = $chargesController->updateChargeCard(
+    $chargeId,
+    $request
+);
 ```
 
 
@@ -486,77 +483,55 @@ function createCharge(CreateChargeRequest $request, ?string $idempotencyKey = nu
 ## Example Usage
 
 ```php
-$request_code = 'code4';
-$request_amount = 242;
-$request_customerId = 'customer_id4';
-$request_customer_name = '{
+$request = CreateChargeRequestBuilder::init(
+    'code4',
+    242,
+    'customer_id4',
+    CreateCustomerRequestBuilder::init(
+        '{
     "name": "Tony Stark"
-}';
-$request_customer_email = 'email0';
-$request_customer_document = 'document0';
-$request_customer_type = 'type4';
-$request_customer_address_street = 'street2';
-$request_customer_address_number = 'number0';
-$request_customer_address_zipCode = 'zip_code6';
-$request_customer_address_neighborhood = 'neighborhood8';
-$request_customer_address_city = 'city2';
-$request_customer_address_state = 'state8';
-$request_customer_address_country = 'country6';
-$request_customer_address_complement = 'complement8';
-$request_customer_address_metadata = ['key0' => 'metadata7', 'key1' => 'metadata6'];
-$request_customer_address_line1 = 'line_16';
-$request_customer_address_line2 = 'line_20';
-$request_customer_address = new Models\CreateAddressRequest(
-    $request_customer_address_street,
-    $request_customer_address_number,
-    $request_customer_address_zipCode,
-    $request_customer_address_neighborhood,
-    $request_customer_address_city,
-    $request_customer_address_state,
-    $request_customer_address_country,
-    $request_customer_address_complement,
-    $request_customer_address_metadata,
-    $request_customer_address_line1,
-    $request_customer_address_line2
-);
-$request_customer_metadata = ['key0' => 'metadata3', 'key1' => 'metadata2', 'key2' => 'metadata1'];
-$request_customer_phones = new Models\CreatePhonesRequest();
-$request_customer_code = 'code4';
-$request_customer = new Models\CreateCustomerRequest(
-    $request_customer_name,
-    $request_customer_email,
-    $request_customer_document,
-    $request_customer_type,
-    $request_customer_address,
-    $request_customer_metadata,
-    $request_customer_phones,
-    $request_customer_code
-);
-$request_payment_paymentMethod = 'payment_method2';
-$request_payment = new Models\CreatePaymentRequest(
-    $request_payment_paymentMethod
-);
-$request_metadata = ['key0' => 'metadata3'];
-$request_antifraud_type = 'type0';
-$request_antifraud_clearsale_customSla = 52;
-$request_antifraud_clearsale = new Models\CreateClearSaleRequest(
-    $request_antifraud_clearsale_customSla
-);
-$request_antifraud = new Models\CreateAntifraudRequest(
-    $request_antifraud_type,
-    $request_antifraud_clearsale
-);
-$request_orderId = 'order_id0';
-$request = new Models\CreateChargeRequest(
-    $request_code,
-    $request_amount,
-    $request_customerId,
-    $request_customer,
-    $request_payment,
-    $request_metadata,
-    $request_antifraud,
-    $request_orderId
-);
+}',
+        'email0',
+        'document0',
+        'type4',
+        CreateAddressRequestBuilder::init(
+            'street2',
+            'number0',
+            'zip_code6',
+            'neighborhood8',
+            'city2',
+            'state8',
+            'country6',
+            'complement8',
+            [
+                'key0' => 'metadata7',
+                'key1' => 'metadata6'
+            ],
+            'line_16',
+            'line_20'
+        )->build(),
+        [
+            'key0' => 'metadata3',
+            'key1' => 'metadata2',
+            'key2' => 'metadata1'
+        ],
+        CreatePhonesRequestBuilder::init()->build(),
+        'code4'
+    )->build(),
+    CreatePaymentRequestBuilder::init(
+        'payment_method2'
+    )->build(),
+    [
+        'key0' => 'metadata3'
+    ],
+    CreateAntifraudRequestBuilder::init(
+        'type0',
+        CreateClearSaleRequestBuilder::init(
+            52
+        )->build()
+    )->build(),
+    'order_id0'
+)->build();
 
 $result = $chargesController->createCharge($request);
 ```

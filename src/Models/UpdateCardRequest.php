@@ -33,9 +33,9 @@ class UpdateCardRequest implements \JsonSerializable
     private $expYear;
 
     /**
-     * @var string
+     * @var array
      */
-    private $billingAddressId;
+    private $billingAddressId = [];
 
     /**
      * @var CreateAddressRequest
@@ -56,7 +56,6 @@ class UpdateCardRequest implements \JsonSerializable
      * @param string $holderName
      * @param int $expMonth
      * @param int $expYear
-     * @param string $billingAddressId
      * @param CreateAddressRequest $billingAddress
      * @param array<string,string> $metadata
      * @param string $label
@@ -65,7 +64,6 @@ class UpdateCardRequest implements \JsonSerializable
         string $holderName,
         int $expMonth,
         int $expYear,
-        string $billingAddressId,
         CreateAddressRequest $billingAddress,
         array $metadata,
         string $label
@@ -73,7 +71,6 @@ class UpdateCardRequest implements \JsonSerializable
         $this->holderName = $holderName;
         $this->expMonth = $expMonth;
         $this->expYear = $expYear;
-        $this->billingAddressId = $billingAddressId;
         $this->billingAddress = $billingAddress;
         $this->metadata = $metadata;
         $this->label = $label;
@@ -146,21 +143,32 @@ class UpdateCardRequest implements \JsonSerializable
      * Returns Billing Address Id.
      * Id of the address to be used as billing address
      */
-    public function getBillingAddressId(): string
+    public function getBillingAddressId(): ?string
     {
-        return $this->billingAddressId;
+        if (count($this->billingAddressId) == 0) {
+            return null;
+        }
+        return $this->billingAddressId['value'];
     }
 
     /**
      * Sets Billing Address Id.
      * Id of the address to be used as billing address
      *
-     * @required
      * @maps billing_address_id
      */
-    public function setBillingAddressId(string $billingAddressId): void
+    public function setBillingAddressId(?string $billingAddressId): void
     {
-        $this->billingAddressId = $billingAddressId;
+        $this->billingAddressId['value'] = $billingAddressId;
+    }
+
+    /**
+     * Unsets Billing Address Id.
+     * Id of the address to be used as billing address
+     */
+    public function unsetBillingAddressId(): void
+    {
+        $this->billingAddressId = [];
     }
 
     /**
@@ -240,13 +248,15 @@ class UpdateCardRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['holder_name']        = $this->holderName;
-        $json['exp_month']          = $this->expMonth;
-        $json['exp_year']           = $this->expYear;
-        $json['billing_address_id'] = $this->billingAddressId;
-        $json['billing_address']    = $this->billingAddress;
-        $json['metadata']           = $this->metadata;
-        $json['label']              = $this->label;
+        $json['holder_name']            = $this->holderName;
+        $json['exp_month']              = $this->expMonth;
+        $json['exp_year']               = $this->expYear;
+        if (!empty($this->billingAddressId)) {
+            $json['billing_address_id'] = $this->billingAddressId['value'];
+        }
+        $json['billing_address']        = $this->billingAddress;
+        $json['metadata']               = $this->metadata;
+        $json['label']                  = $this->label;
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

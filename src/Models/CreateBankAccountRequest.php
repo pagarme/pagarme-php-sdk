@@ -43,9 +43,9 @@ class CreateBankAccountRequest implements \JsonSerializable
     private $branchNumber;
 
     /**
-     * @var string
+     * @var array
      */
-    private $branchCheckDigit;
+    private $branchCheckDigit = [];
 
     /**
      * @var string
@@ -68,9 +68,9 @@ class CreateBankAccountRequest implements \JsonSerializable
     private $metadata;
 
     /**
-     * @var string
+     * @var array
      */
-    private $pixKey;
+    private $pixKey = [];
 
     /**
      * @param string $holderName
@@ -78,12 +78,10 @@ class CreateBankAccountRequest implements \JsonSerializable
      * @param string $holderDocument
      * @param string $bank
      * @param string $branchNumber
-     * @param string $branchCheckDigit
      * @param string $accountNumber
      * @param string $accountCheckDigit
      * @param string $type
      * @param array<string,string> $metadata
-     * @param string $pixKey
      */
     public function __construct(
         string $holderName,
@@ -91,24 +89,20 @@ class CreateBankAccountRequest implements \JsonSerializable
         string $holderDocument,
         string $bank,
         string $branchNumber,
-        string $branchCheckDigit,
         string $accountNumber,
         string $accountCheckDigit,
         string $type,
-        array $metadata,
-        string $pixKey
+        array $metadata
     ) {
         $this->holderName = $holderName;
         $this->holderType = $holderType;
         $this->holderDocument = $holderDocument;
         $this->bank = $bank;
         $this->branchNumber = $branchNumber;
-        $this->branchCheckDigit = $branchCheckDigit;
         $this->accountNumber = $accountNumber;
         $this->accountCheckDigit = $accountCheckDigit;
         $this->type = $type;
         $this->metadata = $metadata;
-        $this->pixKey = $pixKey;
     }
 
     /**
@@ -220,21 +214,32 @@ class CreateBankAccountRequest implements \JsonSerializable
      * Returns Branch Check Digit.
      * Branch check digit
      */
-    public function getBranchCheckDigit(): string
+    public function getBranchCheckDigit(): ?string
     {
-        return $this->branchCheckDigit;
+        if (count($this->branchCheckDigit) == 0) {
+            return null;
+        }
+        return $this->branchCheckDigit['value'];
     }
 
     /**
      * Sets Branch Check Digit.
      * Branch check digit
      *
-     * @required
      * @maps branch_check_digit
      */
-    public function setBranchCheckDigit(string $branchCheckDigit): void
+    public function setBranchCheckDigit(?string $branchCheckDigit): void
     {
-        $this->branchCheckDigit = $branchCheckDigit;
+        $this->branchCheckDigit['value'] = $branchCheckDigit;
+    }
+
+    /**
+     * Unsets Branch Check Digit.
+     * Branch check digit
+     */
+    public function unsetBranchCheckDigit(): void
+    {
+        $this->branchCheckDigit = [];
     }
 
     /**
@@ -329,21 +334,32 @@ class CreateBankAccountRequest implements \JsonSerializable
      * Returns Pix Key.
      * Pix key
      */
-    public function getPixKey(): string
+    public function getPixKey(): ?string
     {
-        return $this->pixKey;
+        if (count($this->pixKey) == 0) {
+            return null;
+        }
+        return $this->pixKey['value'];
     }
 
     /**
      * Sets Pix Key.
      * Pix key
      *
-     * @required
      * @maps pix_key
      */
-    public function setPixKey(string $pixKey): void
+    public function setPixKey(?string $pixKey): void
     {
-        $this->pixKey = $pixKey;
+        $this->pixKey['value'] = $pixKey;
+    }
+
+    /**
+     * Unsets Pix Key.
+     * Pix key
+     */
+    public function unsetPixKey(): void
+    {
+        $this->pixKey = [];
     }
 
     /**
@@ -358,17 +374,21 @@ class CreateBankAccountRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['holder_name']         = $this->holderName;
-        $json['holder_type']         = $this->holderType;
-        $json['holder_document']     = $this->holderDocument;
-        $json['bank']                = $this->bank;
-        $json['branch_number']       = $this->branchNumber;
-        $json['branch_check_digit']  = $this->branchCheckDigit;
-        $json['account_number']      = $this->accountNumber;
-        $json['account_check_digit'] = $this->accountCheckDigit;
-        $json['type']                = $this->type;
-        $json['metadata']            = $this->metadata;
-        $json['pix_key']             = $this->pixKey;
+        $json['holder_name']            = $this->holderName;
+        $json['holder_type']            = $this->holderType;
+        $json['holder_document']        = $this->holderDocument;
+        $json['bank']                   = $this->bank;
+        $json['branch_number']          = $this->branchNumber;
+        if (!empty($this->branchCheckDigit)) {
+            $json['branch_check_digit'] = $this->branchCheckDigit['value'];
+        }
+        $json['account_number']         = $this->accountNumber;
+        $json['account_check_digit']    = $this->accountCheckDigit;
+        $json['type']                   = $this->type;
+        $json['metadata']               = $this->metadata;
+        if (!empty($this->pixKey)) {
+            $json['pix_key']            = $this->pixKey['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

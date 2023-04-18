@@ -120,7 +120,7 @@ The following parameters are configurable for the API Client:
 The API client can be initialized as follows:
 
 ```php
-$client = PagarmeApiSDKLib\PagarmeApiSDKClientBuilder::init()
+$client = PagarmeApiSDKClientBuilder::init()
     ->basicAuthUserName('BasicAuthUserName')
     ->basicAuthPassword('BasicAuthPassword')
     ->build();

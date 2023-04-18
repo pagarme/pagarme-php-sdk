@@ -63,48 +63,40 @@ function updateCard(
 
 ```php
 $customerId = 'customer_id8';
-$cardId = 'card_id4';
-$request_holderName = 'holder_name2';
-$request_expMonth = 10;
-$request_expYear = 30;
-$request_billingAddressId = 'billing_address_id2';
-$request_billingAddress_street = 'street8';
-$request_billingAddress_number = 'number4';
-$request_billingAddress_zipCode = 'zip_code2';
-$request_billingAddress_neighborhood = 'neighborhood4';
-$request_billingAddress_city = 'city8';
-$request_billingAddress_state = 'state4';
-$request_billingAddress_country = 'country2';
-$request_billingAddress_complement = 'complement6';
-$request_billingAddress_metadata = ['key0' => 'metadata5', 'key1' => 'metadata6'];
-$request_billingAddress_line1 = 'line_18';
-$request_billingAddress_line2 = 'line_26';
-$request_billingAddress = new Models\CreateAddressRequest(
-    $request_billingAddress_street,
-    $request_billingAddress_number,
-    $request_billingAddress_zipCode,
-    $request_billingAddress_neighborhood,
-    $request_billingAddress_city,
-    $request_billingAddress_state,
-    $request_billingAddress_country,
-    $request_billingAddress_complement,
-    $request_billingAddress_metadata,
-    $request_billingAddress_line1,
-    $request_billingAddress_line2
-);
-$request_metadata = ['key0' => 'metadata3'];
-$request_label = 'label6';
-$request = new Models\UpdateCardRequest(
-    $request_holderName,
-    $request_expMonth,
-    $request_expYear,
-    $request_billingAddressId,
-    $request_billingAddress,
-    $request_metadata,
-    $request_label
-);
 
-$result = $customersController->updateCard($customerId, $cardId, $request);
+$cardId = 'card_id4';
+
+$request = UpdateCardRequestBuilder::init(
+    'holder_name2',
+    10,
+    30,
+    CreateAddressRequestBuilder::init(
+        'street8',
+        'number4',
+        'zip_code2',
+        'neighborhood4',
+        'city8',
+        'state4',
+        'country2',
+        'complement6',
+        [
+            'key0' => 'metadata5',
+            'key1' => 'metadata6'
+        ],
+        'line_18',
+        'line_26'
+    )->build(),
+    [
+        'key0' => 'metadata3'
+    ],
+    'label6'
+)->build();
+
+$result = $customersController->updateCard(
+    $customerId,
+    $cardId,
+    $request
+);
 ```
 
 
@@ -138,19 +130,23 @@ function updateAddress(
 
 ```php
 $customerId = 'customer_id8';
-$addressId = 'address_id0';
-$request_number = 'number4';
-$request_complement = 'complement2';
-$request_metadata = ['key0' => 'metadata3'];
-$request_line2 = 'line_24';
-$request = new Models\UpdateAddressRequest(
-    $request_number,
-    $request_complement,
-    $request_metadata,
-    $request_line2
-);
 
-$result = $customersController->updateAddress($customerId, $addressId, $request);
+$addressId = 'address_id0';
+
+$request = UpdateAddressRequestBuilder::init(
+    'number4',
+    'complement2',
+    [
+        'key0' => 'metadata3'
+    ],
+    'line_24'
+)->build();
+
+$result = $customersController->updateAddress(
+    $customerId,
+    $addressId,
+    $request
+);
 ```
 
 
@@ -182,9 +178,13 @@ function deleteAccessToken(
 
 ```php
 $customerId = 'customer_id8';
+
 $tokenId = 'token_id6';
 
-$result = $customersController->deleteAccessToken($customerId, $tokenId);
+$result = $customersController->deleteAccessToken(
+    $customerId,
+    $tokenId
+);
 ```
 
 
@@ -210,49 +210,34 @@ function createCustomer(CreateCustomerRequest $request, ?string $idempotencyKey 
 ## Example Usage
 
 ```php
-$request_name = '{
+$request = CreateCustomerRequestBuilder::init(
+    '{
     "name": "Tony Stark"
-}';
-$request_email = 'email0';
-$request_document = 'document0';
-$request_type = 'type4';
-$request_address_street = 'street2';
-$request_address_number = 'number0';
-$request_address_zipCode = 'zip_code6';
-$request_address_neighborhood = 'neighborhood8';
-$request_address_city = 'city2';
-$request_address_state = 'state8';
-$request_address_country = 'country6';
-$request_address_complement = 'complement8';
-$request_address_metadata = ['key0' => 'metadata7'];
-$request_address_line1 = 'line_16';
-$request_address_line2 = 'line_20';
-$request_address = new Models\CreateAddressRequest(
-    $request_address_street,
-    $request_address_number,
-    $request_address_zipCode,
-    $request_address_neighborhood,
-    $request_address_city,
-    $request_address_state,
-    $request_address_country,
-    $request_address_complement,
-    $request_address_metadata,
-    $request_address_line1,
-    $request_address_line2
-);
-$request_metadata = ['key0' => 'metadata3'];
-$request_phones = new Models\CreatePhonesRequest();
-$request_code = 'code4';
-$request = new Models\CreateCustomerRequest(
-    $request_name,
-    $request_email,
-    $request_document,
-    $request_type,
-    $request_address,
-    $request_metadata,
-    $request_phones,
-    $request_code
-);
+}',
+    'email0',
+    'document0',
+    'type4',
+    CreateAddressRequestBuilder::init(
+        'street2',
+        'number0',
+        'zip_code6',
+        'neighborhood8',
+        'city2',
+        'state8',
+        'country6',
+        'complement8',
+        [
+            'key0' => 'metadata7'
+        ],
+        'line_16',
+        'line_20'
+    )->build(),
+    [
+        'key0' => 'metadata3'
+    ],
+    CreatePhonesRequestBuilder::init()->build(),
+    'code4'
+)->build();
 
 $result = $customersController->createCustomer($request);
 ```
@@ -286,32 +271,27 @@ function createAddress(
 
 ```php
 $customerId = 'customer_id8';
-$request_street = 'street6';
-$request_number = 'number4';
-$request_zipCode = 'zip_code0';
-$request_neighborhood = 'neighborhood2';
-$request_city = 'city6';
-$request_state = 'state2';
-$request_country = 'country0';
-$request_complement = 'complement2';
-$request_metadata = ['key0' => 'metadata3'];
-$request_line1 = 'line_10';
-$request_line2 = 'line_24';
-$request = new Models\CreateAddressRequest(
-    $request_street,
-    $request_number,
-    $request_zipCode,
-    $request_neighborhood,
-    $request_city,
-    $request_state,
-    $request_country,
-    $request_complement,
-    $request_metadata,
-    $request_line1,
-    $request_line2
-);
 
-$result = $customersController->createAddress($customerId, $request);
+$request = CreateAddressRequestBuilder::init(
+    'street6',
+    'number4',
+    'zip_code0',
+    'neighborhood2',
+    'city6',
+    'state2',
+    'country0',
+    'complement2',
+    [
+        'key0' => 'metadata3'
+    ],
+    'line_10',
+    'line_24'
+)->build();
+
+$result = $customersController->createAddress(
+    $customerId,
+    $request
+);
 ```
 
 
@@ -365,9 +345,13 @@ function getAddress(string $customerId, string $addressId): GetAddressResponse
 
 ```php
 $customerId = 'customer_id8';
+
 $addressId = 'address_id0';
 
-$result = $customersController->getAddress($customerId, $addressId);
+$result = $customersController->getAddress(
+    $customerId,
+    $addressId
+);
 ```
 
 
@@ -399,9 +383,13 @@ function deleteAddress(
 
 ```php
 $customerId = 'customer_id8';
+
 $addressId = 'address_id0';
 
-$result = $customersController->deleteAddress($customerId, $addressId);
+$result = $customersController->deleteAddress(
+    $customerId,
+    $addressId
+);
 ```
 
 
@@ -433,9 +421,15 @@ function createCard(
 
 ```php
 $customerId = 'customer_id8';
-$request = new Models\CreateCardRequest();
 
-$result = $customersController->createCard($customerId, $request);
+$request = CreateCardRequestBuilder::init()
+    ->type('credit')
+    ->build();
+
+$result = $customersController->createCard(
+    $customerId,
+    $request
+);
 ```
 
 
@@ -473,9 +467,13 @@ function getCustomers(
 
 ```php
 $page = 1;
+
 $size = 10;
 
-$result = $customersController->getCustomers(null, null, $page, $size);
+$result = $customersController->getCustomers(
+    $page,
+    $size
+);
 ```
 
 
@@ -507,9 +505,13 @@ function updateCustomer(
 
 ```php
 $customerId = 'customer_id8';
-$request = new Models\UpdateCustomerRequest();
 
-$result = $customersController->updateCustomer($customerId, $request);
+$request = UpdateCustomerRequestBuilder::init()->build();
+
+$result = $customersController->updateCustomer(
+    $customerId,
+    $request
+);
 ```
 
 
@@ -541,9 +543,13 @@ function createAccessToken(
 
 ```php
 $customerId = 'customer_id8';
-$request = new Models\CreateAccessTokenRequest();
 
-$result = $customersController->createAccessToken($customerId, $request);
+$request = CreateAccessTokenRequestBuilder::init()->build();
+
+$result = $customersController->createAccessToken(
+    $customerId,
+    $request
+);
 ```
 
 
@@ -629,9 +635,13 @@ function renewCard(string $customerId, string $cardId, ?string $idempotencyKey =
 
 ```php
 $customerId = 'customer_id8';
+
 $cardId = 'card_id4';
 
-$result = $customersController->renewCard($customerId, $cardId);
+$result = $customersController->renewCard(
+    $customerId,
+    $cardId
+);
 ```
 
 
@@ -658,9 +668,13 @@ function getAccessToken(string $customerId, string $tokenId): GetAccessTokenResp
 
 ```php
 $customerId = 'customer_id8';
+
 $tokenId = 'token_id6';
 
-$result = $customersController->getAccessToken($customerId, $tokenId);
+$result = $customersController->getAccessToken(
+    $customerId,
+    $tokenId
+);
 ```
 
 
@@ -692,12 +706,17 @@ function updateCustomerMetadata(
 
 ```php
 $customerId = 'customer_id8';
-$request_metadata = ['key0' => 'metadata3'];
-$request = new Models\UpdateMetadataRequest(
-    $request_metadata
-);
 
-$result = $customersController->updateCustomerMetadata($customerId, $request);
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $customersController->updateCustomerMetadata(
+    $customerId,
+    $request
+);
 ```
 
 
@@ -725,9 +744,13 @@ function deleteCard(string $customerId, string $cardId, ?string $idempotencyKey 
 
 ```php
 $customerId = 'customer_id8';
+
 $cardId = 'card_id4';
 
-$result = $customersController->deleteCard($customerId, $cardId);
+$result = $customersController->deleteCard(
+    $customerId,
+    $cardId
+);
 ```
 
 
@@ -810,8 +833,12 @@ function getCard(string $customerId, string $cardId): GetCardResponse
 
 ```php
 $customerId = 'customer_id8';
+
 $cardId = 'card_id4';
 
-$result = $customersController->getCard($customerId, $cardId);
+$result = $customersController->getCard(
+    $customerId,
+    $cardId
+);
 ```
 

@@ -42,29 +42,24 @@ function createToken(
 
 ```php
 $publicKey = 'public_key6';
-$request_type = 'card';
-$request_card_number = 'number2';
-$request_card_holderName = 'holder_name6';
-$request_card_expMonth = 80;
-$request_card_expYear = 216;
-$request_card_cvv = 'cvv8';
-$request_card_brand = 'brand4';
-$request_card_label = 'label0';
-$request_card = new Models\CreateCardTokenRequest(
-    $request_card_number,
-    $request_card_holderName,
-    $request_card_expMonth,
-    $request_card_expYear,
-    $request_card_cvv,
-    $request_card_brand,
-    $request_card_label
-);
-$request = new Models\CreateTokenRequest(
-    $request_type,
-    $request_card
-);
 
-$result = $tokensController->createToken($publicKey, $request);
+$request = CreateTokenRequestBuilder::init(
+    'card',
+    CreateCardTokenRequestBuilder::init(
+        'number2',
+        'holder_name6',
+        80,
+        216,
+        'cvv8',
+        'brand4',
+        'label0'
+    )->build()
+)->build();
+
+$result = $tokensController->createToken(
+    $publicKey,
+    $request
+);
 ```
 
 
@@ -93,8 +88,12 @@ function getToken(string $id, string $publicKey): GetTokenResponse
 
 ```php
 $id = 'id0';
+
 $publicKey = 'public_key6';
 
-$result = $tokensController->getToken($id, $publicKey);
+$result = $tokensController->getToken(
+    $id,
+    $publicKey
+);
 ```
 

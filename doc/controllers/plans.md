@@ -105,12 +105,17 @@ function updatePlanMetadata(
 
 ```php
 $planId = 'plan_id8';
-$request_metadata = ['key0' => 'metadata3'];
-$request = new Models\UpdateMetadataRequest(
-    $request_metadata
-);
 
-$result = $plansController->updatePlanMetadata($planId, $request);
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $plansController->updatePlanMetadata(
+    $planId,
+    $request
+);
 ```
 
 
@@ -144,39 +149,33 @@ function updatePlanItem(
 
 ```php
 $planId = 'plan_id8';
+
 $planItemId = 'plan_item_id0';
-$body_name = 'name6';
-$body_description = 'description4';
-$body_status = 'status2';
-$body_pricingScheme_schemeType = 'scheme_type2';
-$body_pricingScheme_priceBrackets = [];
 
-$body_pricingScheme_priceBrackets_0_startQuantity = 31;
-$body_pricingScheme_priceBrackets_0_price = 225;
-$body_pricingScheme_priceBrackets[0] = new Models\UpdatePriceBracketRequest(
-    $body_pricingScheme_priceBrackets_0_startQuantity,
-    $body_pricingScheme_priceBrackets_0_price
-);
+$body = UpdatePlanItemRequestBuilder::init(
+    'name6',
+    'description4',
+    'status2',
+    UpdatePricingSchemeRequestBuilder::init(
+        'scheme_type2',
+        [
+            UpdatePriceBracketRequestBuilder::init(
+                31,
+                225
+            )->build(),
+            UpdatePriceBracketRequestBuilder::init(
+                32,
+                226
+            )->build()
+        ]
+    )->build()
+)->build();
 
-$body_pricingScheme_priceBrackets_1_startQuantity = 32;
-$body_pricingScheme_priceBrackets_1_price = 226;
-$body_pricingScheme_priceBrackets[1] = new Models\UpdatePriceBracketRequest(
-    $body_pricingScheme_priceBrackets_1_startQuantity,
-    $body_pricingScheme_priceBrackets_1_price
+$result = $plansController->updatePlanItem(
+    $planId,
+    $planItemId,
+    $body
 );
-
-$body_pricingScheme = new Models\UpdatePricingSchemeRequest(
-    $body_pricingScheme_schemeType,
-    $body_pricingScheme_priceBrackets
-);
-$body = new Models\UpdatePlanItemRequest(
-    $body_name,
-    $body_description,
-    $body_status,
-    $body_pricingScheme
-);
-
-$result = $plansController->updatePlanItem($planId, $planItemId, $body);
 ```
 
 
@@ -208,21 +207,20 @@ function createPlanItem(
 
 ```php
 $planId = 'plan_id8';
-$request_name = 'name6';
-$request_pricingScheme_schemeType = 'scheme_type2';
-$request_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $request_pricingScheme_schemeType
-);
-$request_id = 'id6';
-$request_description = 'description6';
-$request = new Models\CreatePlanItemRequest(
-    $request_name,
-    $request_pricingScheme,
-    $request_id,
-    $request_description
-);
 
-$result = $plansController->createPlanItem($planId, $request);
+$request = CreatePlanItemRequestBuilder::init(
+    'name6',
+    CreatePricingSchemeRequestBuilder::init(
+        'scheme_type2'
+    )->build(),
+    'id6',
+    'description6'
+)->build();
+
+$result = $plansController->createPlanItem(
+    $planId,
+    $request
+);
 ```
 
 
@@ -249,9 +247,13 @@ function getPlanItem(string $planId, string $planItemId): GetPlanItemResponse
 
 ```php
 $planId = 'plan_id8';
+
 $planItemId = 'plan_item_id0';
 
-$result = $plansController->getPlanItem($planId, $planItemId);
+$result = $plansController->getPlanItem(
+    $planId,
+    $planItemId
+);
 ```
 
 
@@ -277,82 +279,59 @@ function createPlan(CreatePlanRequest $body, ?string $idempotencyKey = null): Ge
 ## Example Usage
 
 ```php
-$body_name = 'name6';
-$body_description = 'description4';
-$body_statementDescriptor = 'statement_descriptor6';
-$body_items = [];
-
-$body_items_0_name = 'name3';
-$body_items_0_pricingScheme_schemeType = 'scheme_type5';
-$body_items_0_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $body_items_0_pricingScheme_schemeType
-);
-$body_items_0_id = 'id3';
-$body_items_0_description = 'description3';
-$body_items[0] = new Models\CreatePlanItemRequest(
-    $body_items_0_name,
-    $body_items_0_pricingScheme,
-    $body_items_0_id,
-    $body_items_0_description
-);
-
-$body_items_1_name = 'name4';
-$body_items_1_pricingScheme_schemeType = 'scheme_type4';
-$body_items_1_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $body_items_1_pricingScheme_schemeType
-);
-$body_items_1_id = 'id4';
-$body_items_1_description = 'description4';
-$body_items[1] = new Models\CreatePlanItemRequest(
-    $body_items_1_name,
-    $body_items_1_pricingScheme,
-    $body_items_1_id,
-    $body_items_1_description
-);
-
-$body_items_2_name = 'name5';
-$body_items_2_pricingScheme_schemeType = 'scheme_type3';
-$body_items_2_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $body_items_2_pricingScheme_schemeType
-);
-$body_items_2_id = 'id5';
-$body_items_2_description = 'description5';
-$body_items[2] = new Models\CreatePlanItemRequest(
-    $body_items_2_name,
-    $body_items_2_pricingScheme,
-    $body_items_2_id,
-    $body_items_2_description
-);
-
-$body_shippable = false;
-$body_paymentMethods = ['payment_methods9'];
-$body_installments = [207];
-$body_currency = 'currency6';
-$body_interval = 'interval6';
-$body_intervalCount = 170;
-$body_billingDays = [201, 200];
-$body_billingType = 'billing_type0';
-$body_pricingScheme_schemeType = 'scheme_type2';
-$body_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $body_pricingScheme_schemeType
-);
-$body_metadata = ['key0' => 'metadata7', 'key1' => 'metadata8'];
-$body = new Models\CreatePlanRequest(
-    $body_name,
-    $body_description,
-    $body_statementDescriptor,
-    $body_items,
-    $body_shippable,
-    $body_paymentMethods,
-    $body_installments,
-    $body_currency,
-    $body_interval,
-    $body_intervalCount,
-    $body_billingDays,
-    $body_billingType,
-    $body_pricingScheme,
-    $body_metadata
-);
+$body = CreatePlanRequestBuilder::init(
+    'name6',
+    'description4',
+    'statement_descriptor6',
+    [
+        CreatePlanItemRequestBuilder::init(
+            'name3',
+            CreatePricingSchemeRequestBuilder::init(
+                'scheme_type5'
+            )->build(),
+            'id3',
+            'description3'
+        )->build(),
+        CreatePlanItemRequestBuilder::init(
+            'name4',
+            CreatePricingSchemeRequestBuilder::init(
+                'scheme_type4'
+            )->build(),
+            'id4',
+            'description4'
+        )->build(),
+        CreatePlanItemRequestBuilder::init(
+            'name5',
+            CreatePricingSchemeRequestBuilder::init(
+                'scheme_type3'
+            )->build(),
+            'id5',
+            'description5'
+        )->build()
+    ],
+    false,
+    [
+        'payment_methods9'
+    ],
+    [
+        207
+    ],
+    'currency6',
+    'interval6',
+    170,
+    [
+        201,
+        200
+    ],
+    'billing_type0',
+    CreatePricingSchemeRequestBuilder::init(
+        'scheme_type2'
+    )->build(),
+    [
+        'key0' => 'metadata7',
+        'key1' => 'metadata8'
+    ]
+)->build();
 
 $result = $plansController->createPlan($body);
 ```
@@ -382,9 +361,13 @@ function deletePlanItem(string $planId, string $planItemId, ?string $idempotency
 
 ```php
 $planId = 'plan_id8';
+
 $planItemId = 'plan_item_id0';
 
-$result = $plansController->deletePlanItem($planId, $planItemId);
+$result = $plansController->deletePlanItem(
+    $planId,
+    $planItemId
+);
 ```
 
 
@@ -451,35 +434,37 @@ function updatePlan(string $planId, UpdatePlanRequest $request, ?string $idempot
 
 ```php
 $planId = 'plan_id8';
-$request_name = 'name6';
-$request_description = 'description6';
-$request_installments = [151, 152];
-$request_statementDescriptor = 'statement_descriptor6';
-$request_currency = 'currency6';
-$request_interval = 'interval4';
-$request_intervalCount = 114;
-$request_paymentMethods = ['payment_methods1', 'payment_methods0', 'payment_methods9'];
-$request_billingType = 'billing_type0';
-$request_status = 'status8';
-$request_shippable = false;
-$request_billingDays = [115];
-$request_metadata = ['key0' => 'metadata3'];
-$request = new Models\UpdatePlanRequest(
-    $request_name,
-    $request_description,
-    $request_installments,
-    $request_statementDescriptor,
-    $request_currency,
-    $request_interval,
-    $request_intervalCount,
-    $request_paymentMethods,
-    $request_billingType,
-    $request_status,
-    $request_shippable,
-    $request_billingDays,
-    $request_metadata
-);
 
-$result = $plansController->updatePlan($planId, $request);
+$request = UpdatePlanRequestBuilder::init(
+    'name6',
+    'description6',
+    [
+        151,
+        152
+    ],
+    'statement_descriptor6',
+    'currency6',
+    'interval4',
+    114,
+    [
+        'payment_methods1',
+        'payment_methods0',
+        'payment_methods9'
+    ],
+    'billing_type0',
+    'status8',
+    false,
+    [
+        115
+    ],
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $plansController->updatePlan(
+    $planId,
+    $request
+);
 ```
 
