@@ -68,6 +68,19 @@ class DateTimeHelper
     }
 
     /**
+     * Parse a datetime string in simple date format to a DateTime object
+     *
+     * @param string|null $date A datetime string in simple date format
+     *
+     * @return DateTime The parsed DateTime object
+     * @throws Exception
+     */
+    public static function fromSimpleDateRequired(?string $date): DateTime
+    {
+        return DateHelper::fromSimpleDateRequired($date);
+    }
+
+    /**
      * Parse an array of datetime strings in simple date format to an array of DateTime objects
      *
      * @param array|null $dates An array of datetime strings in simple date format
@@ -163,6 +176,19 @@ class DateTimeHelper
     public static function fromRfc1123DateTime(?string $datetime): ?DateTime
     {
         return DateHelper::fromRfc1123DateTime($datetime);
+    }
+
+    /**
+     * Parse a datetime string in Rfc1123 format to a DateTime object
+     *
+     * @param string|null $datetime A datetime string in Rfc1123 format
+     *
+     * @return DateTime The parsed DateTime object
+     * @throws Exception
+     */
+    public static function fromRfc1123DateTimeRequired(?string $datetime): DateTime
+    {
+        return DateHelper::fromRfc1123DateTimeRequired($datetime);
     }
 
     /**
@@ -264,6 +290,19 @@ class DateTimeHelper
     }
 
     /**
+     * Parse a datetime string in Rfc3339 format to a DateTime object
+     *
+     * @param string|null $datetime A datetime string in Rfc3339 format
+     *
+     * @return DateTime The parsed DateTime object
+     * @throws Exception
+     */
+    public static function fromRfc3339DateTimeRequired(?string $datetime): DateTime
+    {
+        return DateHelper::fromRfc3339DateTimeRequired($datetime);
+    }
+
+    /**
      * Parse an array of datetime strings in Rfc3339 format to an array of DateTime objects
      *
      * @param array|null $datetimes An array of datetime strings in Rfc3339 format
@@ -359,6 +398,19 @@ class DateTimeHelper
     public static function fromUnixTimestamp(?string $datetime): ?DateTime
     {
         return DateHelper::fromUnixTimestamp($datetime);
+    }
+
+    /**
+     * Parse a Unix Timestamp to a DateTime object
+     *
+     * @param string|null $datetime The Unix Timestamp
+     *
+     * @return DateTime The parsed DateTime object
+     * @throws Exception
+     */
+    public static function fromUnixTimestampRequired(?string $datetime): DateTime
+    {
+        return DateHelper::fromUnixTimestampRequired($datetime);
     }
 
     /**

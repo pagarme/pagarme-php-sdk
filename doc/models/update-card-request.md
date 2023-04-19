@@ -14,7 +14,7 @@ Request for updating a card
 | `holderName` | `string` | Required | Holder name | getHolderName(): string | setHolderName(string holderName): void |
 | `expMonth` | `int` | Required | Expiration month | getExpMonth(): int | setExpMonth(int expMonth): void |
 | `expYear` | `int` | Required | Expiration year | getExpYear(): int | setExpYear(int expYear): void |
-| `billingAddressId` | `string` | Required | Id of the address to be used as billing address | getBillingAddressId(): string | setBillingAddressId(string billingAddressId): void |
+| `billingAddressId` | `?string` | Optional | Id of the address to be used as billing address | getBillingAddressId(): ?string | setBillingAddressId(?string billingAddressId): void |
 | `billingAddress` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Billing address | getBillingAddress(): CreateAddressRequest | setBillingAddress(CreateAddressRequest billingAddress): void |
 | `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 | `label` | `string` | Required | - | getLabel(): string | setLabel(string label): void |

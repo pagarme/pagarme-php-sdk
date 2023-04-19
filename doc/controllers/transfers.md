@@ -59,14 +59,11 @@ function createTransfer(CreateTransfer $request): GetTransfer
 ## Example Usage
 
 ```php
-$request_amount = 242;
-$request_sourceId = 'source_id0';
-$request_targetId = 'target_id6';
-$request = new Models\CreateTransfer(
-    $request_amount,
-    $request_sourceId,
-    $request_targetId
-);
+$request = CreateTransferBuilder::init(
+    242,
+    'source_id0',
+    'target_id6'
+)->build();
 
 $result = $transfersController->createTransfer($request);
 ```

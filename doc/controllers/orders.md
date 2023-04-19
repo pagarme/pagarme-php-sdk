@@ -89,19 +89,21 @@ function updateOrderItem(
 
 ```php
 $orderId = 'orderId2';
-$itemId = 'itemId8';
-$request_amount = 242;
-$request_description = 'description6';
-$request_quantity = 100;
-$request_category = 'category4';
-$request = new Models\UpdateOrderItemRequest(
-    $request_amount,
-    $request_description,
-    $request_quantity,
-    $request_category
-);
 
-$result = $ordersController->updateOrderItem($orderId, $itemId, $request);
+$itemId = 'itemId8';
+
+$request = UpdateOrderItemRequestBuilder::init(
+    242,
+    'description6',
+    100,
+    'category4'
+)->build();
+
+$result = $ordersController->updateOrderItem(
+    $orderId,
+    $itemId,
+    $request
+);
 ```
 
 
@@ -153,9 +155,13 @@ function deleteOrderItem(string $orderId, string $itemId, ?string $idempotencyKe
 
 ```php
 $orderId = 'orderId2';
+
 $itemId = 'itemId8';
 
-$result = $ordersController->deleteOrderItem($orderId, $itemId);
+$result = $ordersController->deleteOrderItem(
+    $orderId,
+    $itemId
+);
 ```
 
 
@@ -185,12 +191,15 @@ function closeOrder(
 
 ```php
 $id = 'id0';
-$request_status = 'status8';
-$request = new Models\UpdateOrderStatusRequest(
-    $request_status
-);
 
-$result = $ordersController->closeOrder($id, $request);
+$request = UpdateOrderStatusRequestBuilder::init(
+    'status8'
+)->build();
+
+$result = $ordersController->closeOrder(
+    $id,
+    $request
+);
 ```
 
 
@@ -216,107 +225,72 @@ function createOrder(CreateOrderRequest $body, ?string $idempotencyKey = null): 
 ## Example Usage
 
 ```php
-$body_items = [];
-
-$body_items_0_amount = 101;
-$body_items_0_description = 'description3';
-$body_items_0_quantity = 215;
-$body_items_0_category = 'category1';
-$body_items[0] = new Models\CreateOrderItemRequest(
-    $body_items_0_amount,
-    $body_items_0_description,
-    $body_items_0_quantity,
-    $body_items_0_category
-);
-
-$body_items_1_amount = 102;
-$body_items_1_description = 'description4';
-$body_items_1_quantity = 216;
-$body_items_1_category = 'category2';
-$body_items[1] = new Models\CreateOrderItemRequest(
-    $body_items_1_amount,
-    $body_items_1_description,
-    $body_items_1_quantity,
-    $body_items_1_category
-);
-
-$body_items_2_amount = 103;
-$body_items_2_description = 'description5';
-$body_items_2_quantity = 217;
-$body_items_2_category = 'category3';
-$body_items[2] = new Models\CreateOrderItemRequest(
-    $body_items_2_amount,
-    $body_items_2_description,
-    $body_items_2_quantity,
-    $body_items_2_category
-);
-
-$body_customer_name = '{
+$body = CreateOrderRequestBuilder::init(
+    [
+        CreateOrderItemRequestBuilder::init(
+            101,
+            'description3',
+            215,
+            'category1'
+        )->build(),
+        CreateOrderItemRequestBuilder::init(
+            102,
+            'description4',
+            216,
+            'category2'
+        )->build(),
+        CreateOrderItemRequestBuilder::init(
+            103,
+            'description5',
+            217,
+            'category3'
+        )->build()
+    ],
+    CreateCustomerRequestBuilder::init(
+        '{
     "name": "Tony Stark"
-}';
-$body_customer_email = 'email2';
-$body_customer_document = 'document2';
-$body_customer_type = 'type6';
-$body_customer_address_street = 'street0';
-$body_customer_address_number = 'number8';
-$body_customer_address_zipCode = 'zip_code4';
-$body_customer_address_neighborhood = 'neighborhood6';
-$body_customer_address_city = 'city0';
-$body_customer_address_state = 'state6';
-$body_customer_address_country = 'country4';
-$body_customer_address_complement = 'complement6';
-$body_customer_address_metadata = ['key0' => 'metadata7', 'key1' => 'metadata6'];
-$body_customer_address_line1 = 'line_16';
-$body_customer_address_line2 = 'line_28';
-$body_customer_address = new Models\CreateAddressRequest(
-    $body_customer_address_street,
-    $body_customer_address_number,
-    $body_customer_address_zipCode,
-    $body_customer_address_neighborhood,
-    $body_customer_address_city,
-    $body_customer_address_state,
-    $body_customer_address_country,
-    $body_customer_address_complement,
-    $body_customer_address_metadata,
-    $body_customer_address_line1,
-    $body_customer_address_line2
-);
-$body_customer_metadata = ['key0' => 'metadata9', 'key1' => 'metadata0'];
-$body_customer_phones = new Models\CreatePhonesRequest();
-$body_customer_code = 'code2';
-$body_customer = new Models\CreateCustomerRequest(
-    $body_customer_name,
-    $body_customer_email,
-    $body_customer_document,
-    $body_customer_type,
-    $body_customer_address,
-    $body_customer_metadata,
-    $body_customer_phones,
-    $body_customer_code
-);
-$body_payments = [];
-
-$body_payments_0_paymentMethod = 'payment_method0';
-$body_payments[0] = new Models\CreatePaymentRequest(
-    $body_payments_0_paymentMethod
-);
-
-$body_payments_1_paymentMethod = 'payment_method9';
-$body_payments[1] = new Models\CreatePaymentRequest(
-    $body_payments_1_paymentMethod
-);
-
-$body_code = 'code4';
-$body_metadata = ['key0' => 'metadata7', 'key1' => 'metadata8'];
-$body_closed = true;
-$body = new Models\CreateOrderRequest(
-    $body_items,
-    $body_customer,
-    $body_payments,
-    $body_code,
-    $body_metadata,
-    $body_closed
-);
+}',
+        'email2',
+        'document2',
+        'type6',
+        CreateAddressRequestBuilder::init(
+            'street0',
+            'number8',
+            'zip_code4',
+            'neighborhood6',
+            'city0',
+            'state6',
+            'country4',
+            'complement6',
+            [
+                'key0' => 'metadata7',
+                'key1' => 'metadata6'
+            ],
+            'line_16',
+            'line_28'
+        )->build(),
+        [
+            'key0' => 'metadata9',
+            'key1' => 'metadata0'
+        ],
+        CreatePhonesRequestBuilder::init()->build(),
+        'code2'
+    )->build(),
+    [
+        CreatePaymentRequestBuilder::init(
+            'payment_method0'
+        )->build(),
+        CreatePaymentRequestBuilder::init(
+            'payment_method9'
+        )->build()
+    ],
+    'code4',
+    [
+        'key0' => 'metadata7',
+        'key1' => 'metadata8'
+    ],
+    true
+)->build();
 
 $result = $ordersController->createOrder($body);
 ```
@@ -348,18 +322,18 @@ function createOrderItem(
 
 ```php
 $orderId = 'orderId2';
-$request_amount = 242;
-$request_description = 'description6';
-$request_quantity = 100;
-$request_category = 'category4';
-$request = new Models\CreateOrderItemRequest(
-    $request_amount,
-    $request_description,
-    $request_quantity,
-    $request_category
-);
 
-$result = $ordersController->createOrderItem($orderId, $request);
+$request = CreateOrderItemRequestBuilder::init(
+    242,
+    'description6',
+    100,
+    'category4'
+)->build();
+
+$result = $ordersController->createOrderItem(
+    $orderId,
+    $request
+);
 ```
 
 
@@ -384,9 +358,13 @@ function getOrderItem(string $orderId, string $itemId): GetOrderItemResponse
 
 ```php
 $orderId = 'orderId2';
+
 $itemId = 'itemId8';
 
-$result = $ordersController->getOrderItem($orderId, $itemId);
+$result = $ordersController->getOrderItem(
+    $orderId,
+    $itemId
+);
 ```
 
 
@@ -418,12 +396,17 @@ function updateOrderMetadata(
 
 ```php
 $orderId = 'order_id6';
-$request_metadata = ['key0' => 'metadata3'];
-$request = new Models\UpdateMetadataRequest(
-    $request_metadata
-);
 
-$result = $ordersController->updateOrderMetadata($orderId, $request);
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $ordersController->updateOrderMetadata(
+    $orderId,
+    $request
+);
 ```
 
 

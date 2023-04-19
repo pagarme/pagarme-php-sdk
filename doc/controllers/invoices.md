@@ -47,12 +47,17 @@ function updateInvoiceMetadata(
 
 ```php
 $invoiceId = 'invoice_id0';
-$request_metadata = ['key0' => 'metadata3'];
-$request = new Models\UpdateMetadataRequest(
-    $request_metadata
-);
 
-$result = $invoicesController->updateInvoiceMetadata($invoiceId, $request);
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $invoicesController->updateInvoiceMetadata(
+    $invoiceId,
+    $request
+);
 ```
 
 
@@ -139,9 +144,13 @@ function createInvoice(
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $cycleId = 'cycle_id6';
 
-$result = $invoicesController->createInvoice($subscriptionId, $cycleId);
+$result = $invoicesController->createInvoice(
+    $subscriptionId,
+    $cycleId
+);
 ```
 
 
@@ -247,11 +256,14 @@ function updateInvoiceStatus(
 
 ```php
 $invoiceId = 'invoice_id0';
-$request_status = 'status8';
-$request = new Models\UpdateInvoiceStatusRequest(
-    $request_status
-);
 
-$result = $invoicesController->updateInvoiceStatus($invoiceId, $request);
+$request = UpdateInvoiceStatusRequestBuilder::init(
+    'status8'
+)->build();
+
+$result = $invoicesController->updateInvoiceStatus(
+    $invoiceId,
+    $request
+);
 ```
 

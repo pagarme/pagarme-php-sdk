@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "php": ">=7.2 <8.2",
+        "php": "^7.2 || ^8.0",
         "ext-json": "*",
         "apimatic/unirest-php": "^4.0.0",
         "apimatic/core-interfaces": "~0.1.0",
@@ -27,7 +27,7 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
-        "phan/phan": "5.3.1"
+        "phan/phan": "5.4.2"
     },
     "autoload": {
         "psr-4": {
@@ -42,12 +42,9 @@
     "scripts": {
         "lint-src": "phpcs --standard=phpcs-ruleset.xml src/",
         "lint-src-fix": "phpcbf --standard=phpcs-ruleset.xml src/",
-        "lint-tests": "phpcs --standard=phpcs-ruleset.xml tests/",
-        "lint-tests-fix": "phpcbf --standard=phpcs-ruleset.xml tests/",
         "analyze": "phan --allow-polyfill-parser",
         "lint": [
-            "@lint-src",
-            "@lint-tests"
+            "@lint-src"
         ]
     }
 }

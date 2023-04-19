@@ -16,12 +16,12 @@ Request for creating a bank account
 | `holderDocument` | `string` | Required | Bank account holder document | getHolderDocument(): string | setHolderDocument(string holderDocument): void |
 | `bank` | `string` | Required | Bank | getBank(): string | setBank(string bank): void |
 | `branchNumber` | `string` | Required | Branch number | getBranchNumber(): string | setBranchNumber(string branchNumber): void |
-| `branchCheckDigit` | `string` | Required | Branch check digit | getBranchCheckDigit(): string | setBranchCheckDigit(string branchCheckDigit): void |
+| `branchCheckDigit` | `?string` | Optional | Branch check digit | getBranchCheckDigit(): ?string | setBranchCheckDigit(?string branchCheckDigit): void |
 | `accountNumber` | `string` | Required | Account number | getAccountNumber(): string | setAccountNumber(string accountNumber): void |
 | `accountCheckDigit` | `string` | Required | Account check digit | getAccountCheckDigit(): string | setAccountCheckDigit(string accountCheckDigit): void |
 | `type` | `string` | Required | Bank account type | getType(): string | setType(string type): void |
 | `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
-| `pixKey` | `string` | Required | Pix key | getPixKey(): string | setPixKey(string pixKey): void |
+| `pixKey` | `?string` | Optional | Pix key | getPixKey(): ?string | setPixKey(?string pixKey): void |
 
 ## Example (as JSON)
 

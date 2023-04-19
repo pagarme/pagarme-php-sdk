@@ -102,14 +102,18 @@ function updateSubscriptionCard(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request_card = new Models\CreateCardRequest();
-$request_cardId = 'card_id2';
-$request = new Models\UpdateSubscriptionCardRequest(
-    $request_card,
-    $request_cardId
-);
 
-$result = $subscriptionsController->updateSubscriptionCard($subscriptionId, $request);
+$request = UpdateSubscriptionCardRequestBuilder::init(
+    CreateCardRequestBuilder::init()
+        ->type('credit')
+        ->build(),
+    'card_id2'
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionCard(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -143,10 +147,16 @@ function deleteUsage(
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $itemId = 'item_id0';
+
 $usageId = 'usage_id0';
 
-$result = $subscriptionsController->deleteUsage($subscriptionId, $itemId, $usageId);
+$result = $subscriptionsController->deleteUsage(
+    $subscriptionId,
+    $itemId,
+    $usageId
+);
 ```
 
 
@@ -178,16 +188,17 @@ function createDiscount(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request_value = 185.28;
-$request_discountType = 'discount_type4';
-$request_itemId = 'item_id6';
-$request = new Models\CreateDiscountRequest(
-    $request_value,
-    $request_discountType,
-    $request_itemId
-);
 
-$result = $subscriptionsController->createDiscount($subscriptionId, $request);
+$request = CreateDiscountRequestBuilder::init(
+    185.28,
+    'discount_type4',
+    'item_id6'
+)->build();
+
+$result = $subscriptionsController->createDiscount(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -215,9 +226,13 @@ function createAnUsage(string $subscriptionId, string $itemId, ?string $idempote
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $itemId = 'item_id0';
 
-$result = $subscriptionsController->createAnUsage($subscriptionId, $itemId);
+$result = $subscriptionsController->createAnUsage(
+    $subscriptionId,
+    $itemId
+);
 ```
 
 
@@ -247,12 +262,15 @@ function updateCurrentCycleStatus(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request_status = 'status8';
-$request = new Models\UpdateCurrentCycleStatusRequest(
-    $request_status
-);
 
-$subscriptionsController->updateCurrentCycleStatus($subscriptionId, $request);
+$request = UpdateCurrentCycleStatusRequestBuilder::init(
+    'status8'
+)->build();
+
+$subscriptionsController->updateCurrentCycleStatus(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -284,9 +302,13 @@ function deleteDiscount(
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $discountId = 'discount_id8';
 
-$result = $subscriptionsController->deleteDiscount($subscriptionId, $discountId);
+$result = $subscriptionsController->deleteDiscount(
+    $subscriptionId,
+    $discountId
+);
 ```
 
 
@@ -363,16 +385,19 @@ function updateSubscriptionPaymentMethod(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request_paymentMethod = 'payment_method4';
-$request_cardId = 'card_id2';
-$request_card = new Models\CreateCardRequest();
-$request = new Models\UpdateSubscriptionPaymentMethodRequest(
-    $request_paymentMethod,
-    $request_cardId,
-    $request_card
-);
 
-$result = $subscriptionsController->updateSubscriptionPaymentMethod($subscriptionId, $request);
+$request = UpdateSubscriptionPaymentMethodRequestBuilder::init(
+    'payment_method4',
+    'card_id2',
+    CreateCardRequestBuilder::init()
+        ->type('credit')
+        ->build()
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionPaymentMethod(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -399,9 +424,13 @@ function getSubscriptionItem(string $subscriptionId, string $itemId): GetSubscri
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $itemId = 'item_id0';
 
-$result = $subscriptionsController->getSubscriptionItem($subscriptionId, $itemId);
+$result = $subscriptionsController->getSubscriptionItem(
+    $subscriptionId,
+    $itemId
+);
 ```
 
 
@@ -482,12 +511,15 @@ function cancelSubscription(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request_cancelPendingInvoices = true;
-$request = new Models\CreateCancelSubscriptionRequest(
-    $request_cancelPendingInvoices
-);
 
-$result = $subscriptionsController->cancelSubscription($subscriptionId, $request);
+$request = CreateCancelSubscriptionRequestBuilder::init(
+    true
+)->build();
+
+$result = $subscriptionsController->cancelSubscription(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -519,16 +551,17 @@ function createIncrement(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request_value = 185.28;
-$request_incrementType = 'increment_type8';
-$request_itemId = 'item_id6';
-$request = new Models\CreateIncrementRequest(
-    $request_value,
-    $request_incrementType,
-    $request_itemId
-);
 
-$result = $subscriptionsController->createIncrement($subscriptionId, $request);
+$request = CreateIncrementRequestBuilder::init(
+    185.28,
+    'increment_type8',
+    'item_id6'
+)->build();
+
+$result = $subscriptionsController->createIncrement(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -562,17 +595,20 @@ function createUsage(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$itemId = 'item_id0';
-$body_quantity = 156;
-$body_description = 'description4';
-$body_usedAt = DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z');
-$body = new Models\CreateUsageRequest(
-    $body_quantity,
-    $body_description,
-    $body_usedAt
-);
 
-$result = $subscriptionsController->createUsage($subscriptionId, $itemId, $body);
+$itemId = 'item_id0';
+
+$body = CreateUsageRequestBuilder::init(
+    156,
+    'description4',
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
+
+$result = $subscriptionsController->createUsage(
+    $subscriptionId,
+    $itemId,
+    $body
+);
 ```
 
 
@@ -597,9 +633,13 @@ function getDiscountById(string $subscriptionId, string $discountId): GetDiscoun
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $discountId = 'discountId0';
 
-$result = $subscriptionsController->getDiscountById($subscriptionId, $discountId);
+$result = $subscriptionsController->getDiscountById(
+    $subscriptionId,
+    $discountId
+);
 ```
 
 
@@ -628,273 +668,169 @@ function createSubscription(
 ## Example Usage
 
 ```php
-$body_customer_name = '{
+$body = CreateSubscriptionRequestBuilder::init(
+    CreateCustomerRequestBuilder::init(
+        '{
     "name": "Tony Stark"
-}';
-$body_customer_email = 'email2';
-$body_customer_document = 'document2';
-$body_customer_type = 'type6';
-$body_customer_address_street = 'street0';
-$body_customer_address_number = 'number8';
-$body_customer_address_zipCode = 'zip_code4';
-$body_customer_address_neighborhood = 'neighborhood6';
-$body_customer_address_city = 'city0';
-$body_customer_address_state = 'state6';
-$body_customer_address_country = 'country4';
-$body_customer_address_complement = 'complement6';
-$body_customer_address_metadata = ['key0' => 'metadata7', 'key1' => 'metadata6'];
-$body_customer_address_line1 = 'line_16';
-$body_customer_address_line2 = 'line_28';
-$body_customer_address = new Models\CreateAddressRequest(
-    $body_customer_address_street,
-    $body_customer_address_number,
-    $body_customer_address_zipCode,
-    $body_customer_address_neighborhood,
-    $body_customer_address_city,
-    $body_customer_address_state,
-    $body_customer_address_country,
-    $body_customer_address_complement,
-    $body_customer_address_metadata,
-    $body_customer_address_line1,
-    $body_customer_address_line2
-);
-$body_customer_metadata = ['key0' => 'metadata9', 'key1' => 'metadata0'];
-$body_customer_phones = new Models\CreatePhonesRequest();
-$body_customer_code = 'code2';
-$body_customer = new Models\CreateCustomerRequest(
-    $body_customer_name,
-    $body_customer_email,
-    $body_customer_document,
-    $body_customer_type,
-    $body_customer_address,
-    $body_customer_metadata,
-    $body_customer_phones,
-    $body_customer_code
-);
-$body_card = new Models\CreateCardRequest();
-$body_code = 'code4';
-$body_paymentMethod = 'payment_method4';
-$body_billingType = 'billing_type0';
-$body_statementDescriptor = 'statement_descriptor6';
-$body_description = 'description4';
-$body_currency = 'currency6';
-$body_interval = 'interval6';
-$body_intervalCount = 170;
-$body_pricingScheme_schemeType = 'scheme_type2';
-$body_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $body_pricingScheme_schemeType
-);
-$body_items = [];
-
-$body_items_0_description = 'description3';
-$body_items_0_pricingScheme_schemeType = 'scheme_type5';
-$body_items_0_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $body_items_0_pricingScheme_schemeType
-);
-$body_items_0_id = 'id3';
-$body_items_0_planItemId = 'plan_item_id3';
-$body_items_0_discounts = [];
-
-$body_items_0_discounts_0_value = 65.46;
-$body_items_0_discounts_0_discountType = 'discount_type2';
-$body_items_0_discounts_0_itemId = 'item_id4';
-$body_items_0_discounts[0] = new Models\CreateDiscountRequest(
-    $body_items_0_discounts_0_value,
-    $body_items_0_discounts_0_discountType,
-    $body_items_0_discounts_0_itemId
-);
-
-$body_items_0_name = 'name3';
-$body_items[0] = new Models\CreateSubscriptionItemRequest(
-    $body_items_0_description,
-    $body_items_0_pricingScheme,
-    $body_items_0_id,
-    $body_items_0_planItemId,
-    $body_items_0_discounts,
-    $body_items_0_name
-);
-
-$body_items_1_description = 'description4';
-$body_items_1_pricingScheme_schemeType = 'scheme_type4';
-$body_items_1_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $body_items_1_pricingScheme_schemeType
-);
-$body_items_1_id = 'id4';
-$body_items_1_planItemId = 'plan_item_id4';
-$body_items_1_discounts = [];
-
-$body_items_1_discounts_0_value = 65.47;
-$body_items_1_discounts_0_discountType = 'discount_type3';
-$body_items_1_discounts_0_itemId = 'item_id5';
-$body_items_1_discounts[0] = new Models\CreateDiscountRequest(
-    $body_items_1_discounts_0_value,
-    $body_items_1_discounts_0_discountType,
-    $body_items_1_discounts_0_itemId
-);
-
-$body_items_1_discounts_1_value = 65.48;
-$body_items_1_discounts_1_discountType = 'discount_type4';
-$body_items_1_discounts_1_itemId = 'item_id6';
-$body_items_1_discounts[1] = new Models\CreateDiscountRequest(
-    $body_items_1_discounts_1_value,
-    $body_items_1_discounts_1_discountType,
-    $body_items_1_discounts_1_itemId
-);
-
-$body_items_1_name = 'name4';
-$body_items[1] = new Models\CreateSubscriptionItemRequest(
-    $body_items_1_description,
-    $body_items_1_pricingScheme,
-    $body_items_1_id,
-    $body_items_1_planItemId,
-    $body_items_1_discounts,
-    $body_items_1_name
-);
-
-$body_items_2_description = 'description5';
-$body_items_2_pricingScheme_schemeType = 'scheme_type3';
-$body_items_2_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $body_items_2_pricingScheme_schemeType
-);
-$body_items_2_id = 'id5';
-$body_items_2_planItemId = 'plan_item_id5';
-$body_items_2_discounts = [];
-
-$body_items_2_discounts_0_value = 65.48;
-$body_items_2_discounts_0_discountType = 'discount_type4';
-$body_items_2_discounts_0_itemId = 'item_id6';
-$body_items_2_discounts[0] = new Models\CreateDiscountRequest(
-    $body_items_2_discounts_0_value,
-    $body_items_2_discounts_0_discountType,
-    $body_items_2_discounts_0_itemId
-);
-
-$body_items_2_discounts_1_value = 65.49;
-$body_items_2_discounts_1_discountType = 'discount_type5';
-$body_items_2_discounts_1_itemId = 'item_id7';
-$body_items_2_discounts[1] = new Models\CreateDiscountRequest(
-    $body_items_2_discounts_1_value,
-    $body_items_2_discounts_1_discountType,
-    $body_items_2_discounts_1_itemId
-);
-
-$body_items_2_discounts_2_value = 65.5;
-$body_items_2_discounts_2_discountType = 'discount_type6';
-$body_items_2_discounts_2_itemId = 'item_id8';
-$body_items_2_discounts[2] = new Models\CreateDiscountRequest(
-    $body_items_2_discounts_2_value,
-    $body_items_2_discounts_2_discountType,
-    $body_items_2_discounts_2_itemId
-);
-
-$body_items_2_name = 'name5';
-$body_items[2] = new Models\CreateSubscriptionItemRequest(
-    $body_items_2_description,
-    $body_items_2_pricingScheme,
-    $body_items_2_id,
-    $body_items_2_planItemId,
-    $body_items_2_discounts,
-    $body_items_2_name
-);
-
-$body_shipping_amount = 140;
-$body_shipping_description = 'description0';
-$body_shipping_recipientName = 'recipient_name8';
-$body_shipping_recipientPhone = 'recipient_phone2';
-$body_shipping_addressId = 'address_id0';
-$body_shipping_address_street = 'street6';
-$body_shipping_address_number = 'number4';
-$body_shipping_address_zipCode = 'zip_code0';
-$body_shipping_address_neighborhood = 'neighborhood2';
-$body_shipping_address_city = 'city6';
-$body_shipping_address_state = 'state2';
-$body_shipping_address_country = 'country0';
-$body_shipping_address_complement = 'complement2';
-$body_shipping_address_metadata = ['key0' => 'metadata3', 'key1' => 'metadata2'];
-$body_shipping_address_line1 = 'line_10';
-$body_shipping_address_line2 = 'line_24';
-$body_shipping_address = new Models\CreateAddressRequest(
-    $body_shipping_address_street,
-    $body_shipping_address_number,
-    $body_shipping_address_zipCode,
-    $body_shipping_address_neighborhood,
-    $body_shipping_address_city,
-    $body_shipping_address_state,
-    $body_shipping_address_country,
-    $body_shipping_address_complement,
-    $body_shipping_address_metadata,
-    $body_shipping_address_line1,
-    $body_shipping_address_line2
-);
-$body_shipping_type = 'type0';
-$body_shipping = new Models\CreateShippingRequest(
-    $body_shipping_amount,
-    $body_shipping_description,
-    $body_shipping_recipientName,
-    $body_shipping_recipientPhone,
-    $body_shipping_addressId,
-    $body_shipping_address,
-    $body_shipping_type
-);
-$body_discounts = [];
-
-$body_discounts_0_value = 95.59;
-$body_discounts_0_discountType = 'discount_type5';
-$body_discounts_0_itemId = 'item_id7';
-$body_discounts[0] = new Models\CreateDiscountRequest(
-    $body_discounts_0_value,
-    $body_discounts_0_discountType,
-    $body_discounts_0_itemId
-);
-
-$body_metadata = ['key0' => 'metadata7', 'key1' => 'metadata8'];
-$body_increments = [];
-
-$body_increments_0_value = 38.83;
-$body_increments_0_incrementType = 'increment_type3';
-$body_increments_0_itemId = 'item_id9';
-$body_increments[0] = new Models\CreateIncrementRequest(
-    $body_increments_0_value,
-    $body_increments_0_incrementType,
-    $body_increments_0_itemId
-);
-
-$body_increments_1_value = 38.84;
-$body_increments_1_incrementType = 'increment_type4';
-$body_increments_1_itemId = 'item_id8';
-$body_increments[1] = new Models\CreateIncrementRequest(
-    $body_increments_1_value,
-    $body_increments_1_incrementType,
-    $body_increments_1_itemId
-);
-
-$body_increments_2_value = 38.85;
-$body_increments_2_incrementType = 'increment_type5';
-$body_increments_2_itemId = 'item_id7';
-$body_increments[2] = new Models\CreateIncrementRequest(
-    $body_increments_2_value,
-    $body_increments_2_incrementType,
-    $body_increments_2_itemId
-);
-
-$body = new Models\CreateSubscriptionRequest(
-    $body_customer,
-    $body_card,
-    $body_code,
-    $body_paymentMethod,
-    $body_billingType,
-    $body_statementDescriptor,
-    $body_description,
-    $body_currency,
-    $body_interval,
-    $body_intervalCount,
-    $body_pricingScheme,
-    $body_items,
-    $body_shipping,
-    $body_discounts,
-    $body_metadata,
-    $body_increments
-);
+}',
+        'email2',
+        'document2',
+        'type6',
+        CreateAddressRequestBuilder::init(
+            'street0',
+            'number8',
+            'zip_code4',
+            'neighborhood6',
+            'city0',
+            'state6',
+            'country4',
+            'complement6',
+            [
+                'key0' => 'metadata7',
+                'key1' => 'metadata6'
+            ],
+            'line_16',
+            'line_28'
+        )->build(),
+        [
+            'key0' => 'metadata9',
+            'key1' => 'metadata0'
+        ],
+        CreatePhonesRequestBuilder::init()->build(),
+        'code2'
+    )->build(),
+    CreateCardRequestBuilder::init()
+        ->type('credit')
+        ->build(),
+    'code4',
+    'payment_method4',
+    'billing_type0',
+    'statement_descriptor6',
+    'description4',
+    'currency6',
+    'interval6',
+    170,
+    CreatePricingSchemeRequestBuilder::init(
+        'scheme_type2'
+    )->build(),
+    [
+        CreateSubscriptionItemRequestBuilder::init(
+            'description3',
+            CreatePricingSchemeRequestBuilder::init(
+                'scheme_type5'
+            )->build(),
+            'id3',
+            'plan_item_id3',
+            [
+                CreateDiscountRequestBuilder::init(
+                    65.46,
+                    'discount_type2',
+                    'item_id4'
+                )->build()
+            ],
+            'name3'
+        )->build(),
+        CreateSubscriptionItemRequestBuilder::init(
+            'description4',
+            CreatePricingSchemeRequestBuilder::init(
+                'scheme_type4'
+            )->build(),
+            'id4',
+            'plan_item_id4',
+            [
+                CreateDiscountRequestBuilder::init(
+                    65.47,
+                    'discount_type3',
+                    'item_id5'
+                )->build(),
+                CreateDiscountRequestBuilder::init(
+                    65.48,
+                    'discount_type4',
+                    'item_id6'
+                )->build()
+            ],
+            'name4'
+        )->build(),
+        CreateSubscriptionItemRequestBuilder::init(
+            'description5',
+            CreatePricingSchemeRequestBuilder::init(
+                'scheme_type3'
+            )->build(),
+            'id5',
+            'plan_item_id5',
+            [
+                CreateDiscountRequestBuilder::init(
+                    65.48,
+                    'discount_type4',
+                    'item_id6'
+                )->build(),
+                CreateDiscountRequestBuilder::init(
+                    65.49,
+                    'discount_type5',
+                    'item_id7'
+                )->build(),
+                CreateDiscountRequestBuilder::init(
+                    65.5,
+                    'discount_type6',
+                    'item_id8'
+                )->build()
+            ],
+            'name5'
+        )->build()
+    ],
+    CreateShippingRequestBuilder::init(
+        140,
+        'description0',
+        'recipient_name8',
+        'recipient_phone2',
+        'address_id0',
+        CreateAddressRequestBuilder::init(
+            'street6',
+            'number4',
+            'zip_code0',
+            'neighborhood2',
+            'city6',
+            'state2',
+            'country0',
+            'complement2',
+            [
+                'key0' => 'metadata3',
+                'key1' => 'metadata2'
+            ],
+            'line_10',
+            'line_24'
+        )->build(),
+        'type0'
+    )->build(),
+    [
+        CreateDiscountRequestBuilder::init(
+            95.59,
+            'discount_type5',
+            'item_id7'
+        )->build()
+    ],
+    [
+        'key0' => 'metadata7',
+        'key1' => 'metadata8'
+    ],
+    [
+        CreateIncrementRequestBuilder::init(
+            38.83,
+            'increment_type3',
+            'item_id9'
+        )->build(),
+        CreateIncrementRequestBuilder::init(
+            38.84,
+            'increment_type4',
+            'item_id8'
+        )->build(),
+        CreateIncrementRequestBuilder::init(
+            38.85,
+            'increment_type5',
+            'item_id7'
+        )->build()
+    ]
+)->build();
 
 $result = $subscriptionsController->createSubscription($body);
 ```
@@ -921,9 +857,13 @@ function getIncrementById(string $subscriptionId, string $incrementId): GetIncre
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $incrementId = 'increment_id8';
 
-$result = $subscriptionsController->getIncrementById($subscriptionId, $incrementId);
+$result = $subscriptionsController->getIncrementById(
+    $subscriptionId,
+    $incrementId
+);
 ```
 
 
@@ -953,12 +893,15 @@ function updateSubscriptionAffiliationId(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request_gatewayAffiliationId = 'gateway_affiliation_id2';
-$request = new Models\UpdateSubscriptionAffiliationIdRequest(
-    $request_gatewayAffiliationId
-);
 
-$result = $subscriptionsController->updateSubscriptionAffiliationId($subscriptionId, $request);
+$request = UpdateSubscriptionAffiliationIdRequestBuilder::init(
+    'gateway_affiliation_id2'
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionAffiliationId(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -990,12 +933,17 @@ function updateSubscriptionMetadata(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request_metadata = ['key0' => 'metadata3'];
-$request = new Models\UpdateMetadataRequest(
-    $request_metadata
-);
 
-$result = $subscriptionsController->updateSubscriptionMetadata($subscriptionId, $request);
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionMetadata(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -1027,9 +975,13 @@ function deleteIncrement(
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $incrementId = 'increment_id8';
 
-$result = $subscriptionsController->deleteIncrement($subscriptionId, $incrementId);
+$result = $subscriptionsController->deleteIncrement(
+    $subscriptionId,
+    $incrementId
+);
 ```
 
 
@@ -1055,10 +1007,16 @@ function getSubscriptionCycles(string $subscriptionId, string $page, string $siz
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $page = 'page8';
+
 $size = 'size0';
 
-$result = $subscriptionsController->getSubscriptionCycles($subscriptionId, $page, $size);
+$result = $subscriptionsController->getSubscriptionCycles(
+    $subscriptionId,
+    $page,
+    $size
+);
 ```
 
 
@@ -1084,10 +1042,16 @@ function getDiscounts(string $subscriptionId, int $page, int $size): ListDiscoun
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $page = 30;
+
 $size = 18;
 
-$result = $subscriptionsController->getDiscounts($subscriptionId, $page, $size);
+$result = $subscriptionsController->getDiscounts(
+    $subscriptionId,
+    $page,
+    $size
+);
 ```
 
 
@@ -1119,12 +1083,15 @@ function updateSubscriptionBillingDate(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request_nextBillingAt = DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z');
-$request = new Models\UpdateSubscriptionBillingDateRequest(
-    $request_nextBillingAt
-);
 
-$result = $subscriptionsController->updateSubscriptionBillingDate($subscriptionId, $request);
+$request = UpdateSubscriptionBillingDateRequestBuilder::init(
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionBillingDate(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -1156,9 +1123,13 @@ function deleteSubscriptionItem(
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $subscriptionItemId = 'subscription_item_id4';
 
-$result = $subscriptionsController->deleteSubscriptionItem($subscriptionId, $subscriptionItemId);
+$result = $subscriptionsController->deleteSubscriptionItem(
+    $subscriptionId,
+    $subscriptionItemId
+);
 ```
 
 
@@ -1217,12 +1188,15 @@ function updateSubscriptionDueDays(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request_boletoDueDays = 226;
-$request = new Models\UpdateSubscriptionDueDaysRequest(
-    $request_boletoDueDays
-);
 
-$result = $subscriptionsController->updateSubscriptionDueDays($subscriptionId, $request);
+$request = UpdateSubscriptionDueDaysRequestBuilder::init(
+    226
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionDueDays(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -1254,12 +1228,15 @@ function updateSubscriptionStartAt(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request_startAt = DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z');
-$request = new Models\UpdateSubscriptionStartAtRequest(
-    $request_startAt
-);
 
-$result = $subscriptionsController->updateSubscriptionStartAt($subscriptionId, $request);
+$request = UpdateSubscriptionStartAtRequestBuilder::init(
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionStartAt(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -1293,39 +1270,33 @@ function updateSubscriptionItem(
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $itemId = 'item_id0';
-$body_description = 'description4';
-$body_status = 'status2';
-$body_pricingScheme_schemeType = 'scheme_type2';
-$body_pricingScheme_priceBrackets = [];
 
-$body_pricingScheme_priceBrackets_0_startQuantity = 31;
-$body_pricingScheme_priceBrackets_0_price = 225;
-$body_pricingScheme_priceBrackets[0] = new Models\UpdatePriceBracketRequest(
-    $body_pricingScheme_priceBrackets_0_startQuantity,
-    $body_pricingScheme_priceBrackets_0_price
-);
+$body = UpdateSubscriptionItemRequestBuilder::init(
+    'description4',
+    'status2',
+    UpdatePricingSchemeRequestBuilder::init(
+        'scheme_type2',
+        [
+            UpdatePriceBracketRequestBuilder::init(
+                31,
+                225
+            )->build(),
+            UpdatePriceBracketRequestBuilder::init(
+                32,
+                226
+            )->build()
+        ]
+    )->build(),
+    'name6'
+)->build();
 
-$body_pricingScheme_priceBrackets_1_startQuantity = 32;
-$body_pricingScheme_priceBrackets_1_price = 226;
-$body_pricingScheme_priceBrackets[1] = new Models\UpdatePriceBracketRequest(
-    $body_pricingScheme_priceBrackets_1_startQuantity,
-    $body_pricingScheme_priceBrackets_1_price
+$result = $subscriptionsController->updateSubscriptionItem(
+    $subscriptionId,
+    $itemId,
+    $body
 );
-
-$body_pricingScheme = new Models\UpdatePricingSchemeRequest(
-    $body_pricingScheme_schemeType,
-    $body_pricingScheme_priceBrackets
-);
-$body_name = 'name6';
-$body = new Models\UpdateSubscriptionItemRequest(
-    $body_description,
-    $body_status,
-    $body_pricingScheme,
-    $body_name
-);
-
-$result = $subscriptionsController->updateSubscriptionItem($subscriptionId, $itemId, $body);
 ```
 
 
@@ -1357,44 +1328,33 @@ function createSubscriptionItem(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request_description = 'description6';
-$request_pricingScheme_schemeType = 'scheme_type2';
-$request_pricingScheme = new Models\CreatePricingSchemeRequest(
-    $request_pricingScheme_schemeType
-);
-$request_id = 'id6';
-$request_planItemId = 'plan_item_id6';
-$request_discounts = [];
 
-$request_discounts_0_value = 199.99;
-$request_discounts_0_discountType = 'discount_type5';
-$request_discounts_0_itemId = 'item_id7';
-$request_discounts[0] = new Models\CreateDiscountRequest(
-    $request_discounts_0_value,
-    $request_discounts_0_discountType,
-    $request_discounts_0_itemId
-);
+$request = CreateSubscriptionItemRequestBuilder::init(
+    'description6',
+    CreatePricingSchemeRequestBuilder::init(
+        'scheme_type2'
+    )->build(),
+    'id6',
+    'plan_item_id6',
+    [
+        CreateDiscountRequestBuilder::init(
+            199.99,
+            'discount_type5',
+            'item_id7'
+        )->build(),
+        CreateDiscountRequestBuilder::init(
+            200,
+            'discount_type6',
+            'item_id8'
+        )->build()
+    ],
+    'name6'
+)->build();
 
-$request_discounts_1_value = 200;
-$request_discounts_1_discountType = 'discount_type6';
-$request_discounts_1_itemId = 'item_id8';
-$request_discounts[1] = new Models\CreateDiscountRequest(
-    $request_discounts_1_value,
-    $request_discounts_1_discountType,
-    $request_discounts_1_itemId
+$result = $subscriptionsController->createSubscriptionItem(
+    $subscriptionId,
+    $request
 );
-
-$request_name = 'name6';
-$request = new Models\CreateSubscriptionItemRequest(
-    $request_description,
-    $request_pricingScheme,
-    $request_id,
-    $request_planItemId,
-    $request_discounts,
-    $request_name
-);
-
-$result = $subscriptionsController->createSubscriptionItem($subscriptionId, $request);
 ```
 
 
@@ -1463,9 +1423,13 @@ function getUsages(
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $itemId = 'item_id0';
 
-$result = $subscriptionsController->getUsages($subscriptionId, $itemId);
+$result = $subscriptionsController->getUsages(
+    $subscriptionId,
+    $itemId
+);
 ```
 
 
@@ -1495,9 +1459,13 @@ function updateLatestPeriodEndAt(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request = new Models\UpdateCurrentCycleEndDateRequest();
 
-$result = $subscriptionsController->updateLatestPeriodEndAt($subscriptionId, $request);
+$request = UpdateCurrentCycleEndDateRequestBuilder::init()->build();
+
+$result = $subscriptionsController->updateLatestPeriodEndAt(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -1529,9 +1497,13 @@ function updateSubscriptionMiniumPrice(
 
 ```php
 $subscriptionId = 'subscription_id0';
-$request = new Models\UpdateSubscriptionMinimumPriceRequest();
 
-$result = $subscriptionsController->updateSubscriptionMiniumPrice($subscriptionId, $request);
+$request = UpdateSubscriptionMinimumPriceRequestBuilder::init()->build();
+
+$result = $subscriptionsController->updateSubscriptionMiniumPrice(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -1556,9 +1528,13 @@ function getSubscriptionCycleById(string $subscriptionId, string $cycleId): GetP
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $cycleId = 'cycleId0';
 
-$result = $subscriptionsController->getSubscriptionCycleById($subscriptionId, $cycleId);
+$result = $subscriptionsController->getSubscriptionCycleById(
+    $subscriptionId,
+    $cycleId
+);
 ```
 
 
@@ -1583,9 +1559,13 @@ function getUsageReport(string $subscriptionId, string $periodId): GetUsageRepor
 
 ```php
 $subscriptionId = 'subscription_id0';
+
 $periodId = 'period_id0';
 
-$result = $subscriptionsController->getUsageReport($subscriptionId, $periodId);
+$result = $subscriptionsController->getUsageReport(
+    $subscriptionId,
+    $periodId
+);
 ```
 
 
@@ -1610,41 +1590,31 @@ function updateSplitSubscription(string $id, UpdateSubscriptionSplitRequest $req
 
 ```php
 $id = 'id0';
-$request_enabled = false;
-$request_rules = [];
 
-$request_rules_0_type = 'type6';
-$request_rules_0_amount = 222;
-$request_rules_0_recipientId = 'recipient_id6';
-$request_rules[0] = new Models\CreateSplitRequest(
-    $request_rules_0_type,
-    $request_rules_0_amount,
-    $request_rules_0_recipientId
+$request = UpdateSubscriptionSplitRequestBuilder::init(
+    false,
+    [
+        CreateSplitRequestBuilder::init(
+            'type6',
+            222,
+            'recipient_id6'
+        )->build(),
+        CreateSplitRequestBuilder::init(
+            'type5',
+            223,
+            'recipient_id5'
+        )->build(),
+        CreateSplitRequestBuilder::init(
+            'type4',
+            224,
+            'recipient_id4'
+        )->build()
+    ]
+)->build();
+
+$result = $subscriptionsController->updateSplitSubscription(
+    $id,
+    $request
 );
-
-$request_rules_1_type = 'type5';
-$request_rules_1_amount = 223;
-$request_rules_1_recipientId = 'recipient_id5';
-$request_rules[1] = new Models\CreateSplitRequest(
-    $request_rules_1_type,
-    $request_rules_1_amount,
-    $request_rules_1_recipientId
-);
-
-$request_rules_2_type = 'type4';
-$request_rules_2_amount = 224;
-$request_rules_2_recipientId = 'recipient_id4';
-$request_rules[2] = new Models\CreateSplitRequest(
-    $request_rules_2_type,
-    $request_rules_2_amount,
-    $request_rules_2_recipientId
-);
-
-$request = new Models\UpdateSubscriptionSplitRequest(
-    $request_enabled,
-    $request_rules
-);
-
-$result = $subscriptionsController->updateSplitSubscription($id, $request);
 ```
 

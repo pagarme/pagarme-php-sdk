@@ -61,22 +61,22 @@ function updateRecipient(
 
 ```php
 $recipientId = 'recipient_id0';
-$request_name = 'name6';
-$request_email = 'email0';
-$request_description = 'description6';
-$request_type = 'type4';
-$request_status = 'status8';
-$request_metadata = ['key0' => 'metadata3'];
-$request = new Models\UpdateRecipientRequest(
-    $request_name,
-    $request_email,
-    $request_description,
-    $request_type,
-    $request_status,
-    $request_metadata
-);
 
-$result = $recipientsController->updateRecipient($recipientId, $request);
+$request = UpdateRecipientRequestBuilder::init(
+    'name6',
+    'email0',
+    'description6',
+    'type4',
+    'status8',
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $recipientsController->updateRecipient(
+    $recipientId,
+    $request
+);
 ```
 
 
@@ -108,16 +108,17 @@ function createAnticipation(
 
 ```php
 $recipientId = 'recipient_id0';
-$request_amount = 242;
-$request_timeframe = 'timeframe8';
-$request_paymentDate = DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z');
-$request = new Models\CreateAnticipationRequest(
-    $request_amount,
-    $request_timeframe,
-    $request_paymentDate
-);
 
-$result = $recipientsController->createAnticipation($recipientId, $request);
+$request = CreateAnticipationRequestBuilder::init(
+    242,
+    'timeframe8',
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
+
+$result = $recipientsController->createAnticipation(
+    $recipientId,
+    $request
+);
 ```
 
 
@@ -149,10 +150,16 @@ function getAnticipationLimits(
 
 ```php
 $recipientId = 'recipient_id0';
-$timeframe = 'timeframe2';
-$paymentDate = DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z');
 
-$result = $recipientsController->getAnticipationLimits($recipientId, $timeframe, $paymentDate);
+$timeframe = 'timeframe2';
+
+$paymentDate = DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z');
+
+$result = $recipientsController->getAnticipationLimits(
+    $recipientId,
+    $timeframe,
+    $paymentDate
+);
 ```
 
 
@@ -203,9 +210,13 @@ function getWithdrawById(string $recipientId, string $withdrawalId): GetWithdraw
 
 ```php
 $recipientId = 'recipient_id0';
+
 $withdrawalId = 'withdrawal_id2';
 
-$result = $recipientsController->getWithdrawById($recipientId, $withdrawalId);
+$result = $recipientsController->getWithdrawById(
+    $recipientId,
+    $withdrawalId
+);
 ```
 
 
@@ -237,37 +248,29 @@ function updateRecipientDefaultBankAccount(
 
 ```php
 $recipientId = 'recipient_id0';
-$request_bankAccount_holderName = 'holder_name6';
-$request_bankAccount_holderType = 'holder_type2';
-$request_bankAccount_holderDocument = 'holder_document4';
-$request_bankAccount_bank = 'bank8';
-$request_bankAccount_branchNumber = 'branch_number6';
-$request_bankAccount_branchCheckDigit = 'branch_check_digit6';
-$request_bankAccount_accountNumber = 'account_number0';
-$request_bankAccount_accountCheckDigit = 'account_check_digit6';
-$request_bankAccount_type = 'type0';
-$request_bankAccount_metadata = ['key0' => 'metadata9', 'key1' => 'metadata8'];
-$request_bankAccount_pixKey = 'pix_key4';
-$request_bankAccount = new Models\CreateBankAccountRequest(
-    $request_bankAccount_holderName,
-    $request_bankAccount_holderType,
-    $request_bankAccount_holderDocument,
-    $request_bankAccount_bank,
-    $request_bankAccount_branchNumber,
-    $request_bankAccount_branchCheckDigit,
-    $request_bankAccount_accountNumber,
-    $request_bankAccount_accountCheckDigit,
-    $request_bankAccount_type,
-    $request_bankAccount_metadata,
-    $request_bankAccount_pixKey
-);
-$request_paymentMode = 'bank_transfer';
-$request = new Models\UpdateRecipientBankAccountRequest(
-    $request_bankAccount,
-    $request_paymentMode
-);
 
-$result = $recipientsController->updateRecipientDefaultBankAccount($recipientId, $request);
+$request = UpdateRecipientBankAccountRequestBuilder::init(
+    CreateBankAccountRequestBuilder::init(
+        'holder_name6',
+        'holder_type2',
+        'holder_document4',
+        'bank8',
+        'branch_number6',
+        'account_number0',
+        'account_check_digit6',
+        'type0',
+        [
+            'key0' => 'metadata9',
+            'key1' => 'metadata8'
+        ]
+    )->build(),
+    'bank_transfer'
+)->build();
+
+$result = $recipientsController->updateRecipientDefaultBankAccount(
+    $recipientId,
+    $request
+);
 ```
 
 
@@ -299,12 +302,17 @@ function updateRecipientMetadata(
 
 ```php
 $recipientId = 'recipient_id0';
-$request_metadata = ['key0' => 'metadata3'];
-$request = new Models\UpdateMetadataRequest(
-    $request_metadata
-);
 
-$result = $recipientsController->updateRecipientMetadata($recipientId, $request);
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $recipientsController->updateRecipientMetadata(
+    $recipientId,
+    $request
+);
 ```
 
 
@@ -370,9 +378,13 @@ function getTransfer(string $recipientId, string $transferId): GetTransferRespon
 
 ```php
 $recipientId = 'recipient_id0';
+
 $transferId = 'transfer_id6';
 
-$result = $recipientsController->getTransfer($recipientId, $transferId);
+$result = $recipientsController->getTransfer(
+    $recipientId,
+    $transferId
+);
 ```
 
 
@@ -397,12 +409,15 @@ function createWithdraw(string $recipientId, CreateWithdrawRequest $request): Ge
 
 ```php
 $recipientId = 'recipient_id0';
-$request_amount = 242;
-$request = new Models\CreateWithdrawRequest(
-    $request_amount
-);
 
-$result = $recipientsController->createWithdraw($recipientId, $request);
+$request = CreateWithdrawRequestBuilder::init(
+    242
+)->build();
+
+$result = $recipientsController->createWithdraw(
+    $recipientId,
+    $request
+);
 ```
 
 
@@ -434,9 +449,13 @@ function updateAutomaticAnticipationSettings(
 
 ```php
 $recipientId = 'recipient_id0';
-$request = new Models\UpdateAutomaticAnticipationSettingsRequest();
 
-$result = $recipientsController->updateAutomaticAnticipationSettings($recipientId, $request);
+$request = UpdateAutomaticAnticipationSettingsRequestBuilder::init()->build();
+
+$result = $recipientsController->updateAutomaticAnticipationSettings(
+    $recipientId,
+    $request
+);
 ```
 
 
@@ -463,9 +482,13 @@ function getAnticipation(string $recipientId, string $anticipationId): GetAntici
 
 ```php
 $recipientId = 'recipient_id0';
+
 $anticipationId = 'anticipation_id0';
 
-$result = $recipientsController->getAnticipation($recipientId, $anticipationId);
+$result = $recipientsController->getAnticipation(
+    $recipientId,
+    $anticipationId
+);
 ```
 
 
@@ -495,16 +518,17 @@ function updateRecipientTransferSettings(
 
 ```php
 $recipientId = 'recipient_id0';
-$request_transferEnabled = 'transfer_enabled2';
-$request_transferInterval = 'transfer_interval6';
-$request_transferDay = 'transfer_day6';
-$request = new Models\UpdateTransferSettingsRequest(
-    $request_transferEnabled,
-    $request_transferInterval,
-    $request_transferDay
-);
 
-$result = $recipientsController->updateRecipientTransferSettings($recipientId, $request);
+$request = UpdateTransferSettingsRequestBuilder::init(
+    'transfer_enabled2',
+    'transfer_interval6',
+    'transfer_day6'
+)->build();
+
+$result = $recipientsController->updateRecipientTransferSettings(
+    $recipientId,
+    $request
+);
 ```
 
 
@@ -674,14 +698,18 @@ function createTransfer(
 
 ```php
 $recipientId = 'recipient_id0';
-$request_amount = 242;
-$request_metadata = ['key0' => 'metadata3'];
-$request = new Models\CreateTransferRequest(
-    $request_amount,
-    $request_metadata
-);
 
-$result = $recipientsController->createTransfer($recipientId, $request);
+$request = CreateTransferRequestBuilder::init(
+    242,
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $recipientsController->createTransfer(
+    $recipientId,
+    $request
+);
 ```
 
 
@@ -707,49 +735,31 @@ function createRecipient(CreateRecipientRequest $request, ?string $idempotencyKe
 ## Example Usage
 
 ```php
-$request_name = 'name6';
-$request_email = 'email0';
-$request_description = 'description6';
-$request_document = 'document0';
-$request_type = 'type4';
-$request_defaultBankAccount_holderName = 'holder_name0';
-$request_defaultBankAccount_holderType = 'holder_type6';
-$request_defaultBankAccount_holderDocument = 'holder_document8';
-$request_defaultBankAccount_bank = 'bank2';
-$request_defaultBankAccount_branchNumber = 'branch_number0';
-$request_defaultBankAccount_branchCheckDigit = 'branch_check_digit0';
-$request_defaultBankAccount_accountNumber = 'account_number4';
-$request_defaultBankAccount_accountCheckDigit = 'account_check_digit0';
-$request_defaultBankAccount_type = 'type4';
-$request_defaultBankAccount_metadata = ['key0' => 'metadata5'];
-$request_defaultBankAccount_pixKey = 'pix_key8';
-$request_defaultBankAccount = new Models\CreateBankAccountRequest(
-    $request_defaultBankAccount_holderName,
-    $request_defaultBankAccount_holderType,
-    $request_defaultBankAccount_holderDocument,
-    $request_defaultBankAccount_bank,
-    $request_defaultBankAccount_branchNumber,
-    $request_defaultBankAccount_branchCheckDigit,
-    $request_defaultBankAccount_accountNumber,
-    $request_defaultBankAccount_accountCheckDigit,
-    $request_defaultBankAccount_type,
-    $request_defaultBankAccount_metadata,
-    $request_defaultBankAccount_pixKey
-);
-$request_metadata = ['key0' => 'metadata3'];
-$request_code = 'code4';
-$request_paymentMode = 'bank_transfer';
-$request = new Models\CreateRecipientRequest(
-    $request_name,
-    $request_email,
-    $request_description,
-    $request_document,
-    $request_type,
-    $request_defaultBankAccount,
-    $request_metadata,
-    $request_code,
-    $request_paymentMode
-);
+$request = CreateRecipientRequestBuilder::init(
+    'name6',
+    'email0',
+    'description6',
+    'document0',
+    'type4',
+    CreateBankAccountRequestBuilder::init(
+        'holder_name0',
+        'holder_type6',
+        'holder_document8',
+        'bank2',
+        'branch_number0',
+        'account_number4',
+        'account_check_digit0',
+        'type4',
+        [
+            'key0' => 'metadata5'
+        ]
+    )->build(),
+    [
+        'key0' => 'metadata3'
+    ],
+    'code4',
+    'bank_transfer'
+)->build();
 
 $result = $recipientsController->createRecipient($request);
 ```
