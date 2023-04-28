@@ -231,9 +231,21 @@ Request for creating a Setup for a subscription. The setup is an order that will
               "ksn": "ksn8"
             },
             "tags": [
-              {},
-              {},
-              {}
+              {
+                "tag": "tag7",
+                "lenght": "lenght5",
+                "value": "value5"
+              },
+              {
+                "tag": "tag8",
+                "lenght": "lenght6",
+                "value": "value6"
+              },
+              {
+                "tag": "tag9",
+                "lenght": "lenght7",
+                "value": "value7"
+              }
             ]
           },
           "poi": {
@@ -251,7 +263,22 @@ Request for creating a Setup for a subscription. The setup is an order that will
       "bank": "bank4",
       "instructions": "instructions4",
       "due_at": "2016-03-13T12:52:32.123Z",
-      "billing_address": {},
+      "billing_address": {
+        "street": "street8",
+        "number": "number4",
+        "zip_code": "zip_code2",
+        "neighborhood": "neighborhood4",
+        "city": "city2",
+        "state": "state6",
+        "country": "country2",
+        "complement": "complement6",
+        "metadata": {
+          "key0": "metadata5",
+          "key1": "metadata6"
+        },
+        "line_1": "line_18",
+        "line_2": "line_26"
+      },
       "billing_address_id": "billing_address_id2",
       "nosso_numero": "nosso_numero6",
       "document_number": "document_number0",
@@ -273,7 +300,45 @@ Request for creating a Setup for a subscription. The setup is an order that will
       "statement_descriptor": "statement_descriptor6",
       "card_id": "card_id8",
       "card_token": "card_token4",
-      "Card": {},
+      "Card": {
+        "number": "number4",
+        "holder_name": "holder_name2",
+        "exp_month": 214,
+        "exp_year": 254,
+        "cvv": "cvv4",
+        "billing_address": {
+          "street": "street8",
+          "number": "number6",
+          "zip_code": "zip_code2",
+          "neighborhood": "neighborhood4",
+          "city": "city8",
+          "state": "state4",
+          "country": "country2",
+          "complement": "complement4",
+          "metadata": {
+            "key0": "metadata5",
+            "key1": "metadata4",
+            "key2": "metadata3"
+          },
+          "line_1": "line_18",
+          "line_2": "line_26"
+        },
+        "brand": "brand0",
+        "billing_address_id": "billing_address_id2",
+        "metadata": {
+          "key0": "metadata3",
+          "key1": "metadata2"
+        },
+        "type": "type6",
+        "options": {
+          "verify_card": false
+        },
+        "holder_document": "holder_document0",
+        "private_label": false,
+        "label": "label6",
+        "id": "id6",
+        "token": "token0"
+      },
       "recurrency_cycle": "recurrency_cycle0"
     },
     "split": [
@@ -342,12 +407,34 @@ Request for creating a Setup for a subscription. The setup is an order that will
             "total": 198
           }
         ],
-        "authentication": {},
+        "authentication": {
+          "type": "type8",
+          "threed_secure": {
+            "mpi": "mpi4",
+            "cavv": "cavv2",
+            "eci": "eci6",
+            "transaction_id": "transaction_id4",
+            "success_url": "success_url8",
+            "ds_transaction_id": "ds_transaction_id4",
+            "version": "version2"
+          }
+        },
         "capture": false
       },
       "debit_card": {
         "statement_descriptor": "statement_descriptor2",
-        "authentication": {}
+        "authentication": {
+          "type": "type4",
+          "threed_secure": {
+            "mpi": "mpi0",
+            "cavv": "cavv8",
+            "eci": "eci2",
+            "transaction_id": "transaction_id0",
+            "success_url": "success_url4",
+            "ds_transaction_id": "ds_transaction_id0",
+            "version": "version8"
+          }
+        }
       },
       "boleto": {
         "bank": "bank6",
@@ -358,7 +445,22 @@ Request for creating a Setup for a subscription. The setup is an order that will
       "expires_in": 60,
       "skip_checkout_success_page": false,
       "billing_address_editable": false,
-      "billing_address": {},
+      "billing_address": {
+        "street": "street0",
+        "number": "number8",
+        "zip_code": "zip_code4",
+        "neighborhood": "neighborhood6",
+        "city": "city0",
+        "state": "state6",
+        "country": "country4",
+        "complement": "complement6",
+        "metadata": {
+          "key0": "metadata9",
+          "key1": "metadata8"
+        },
+        "line_1": "line_14",
+        "line_2": "line_28"
+      },
       "bank_transfer": {
         "bank": [
           "bank3"
@@ -385,7 +487,21 @@ Request for creating a Setup for a subscription. The setup is an order that will
       "email": "email0",
       "document": "document0",
       "type": "type4",
-      "address": {},
+      "address": {
+        "street": "street2",
+        "number": "number0",
+        "zip_code": "zip_code6",
+        "neighborhood": "neighborhood8",
+        "city": "city2",
+        "state": "state8",
+        "country": "country6",
+        "complement": "complement8",
+        "metadata": {
+          "key0": "metadata9"
+        },
+        "line_1": "line_16",
+        "line_2": "line_20"
+      },
       "metadata": {
         "key0": "metadata7"
       },
@@ -416,7 +532,43 @@ Request for creating a Setup for a subscription. The setup is an order that will
     "private_label": {
       "installments": 230,
       "statement_descriptor": "statement_descriptor6",
-      "card": {},
+      "card": {
+        "number": "number8",
+        "holder_name": "holder_name6",
+        "exp_month": 124,
+        "exp_year": 164,
+        "cvv": "cvv8",
+        "billing_address": {
+          "street": "street2",
+          "number": "number0",
+          "zip_code": "zip_code6",
+          "neighborhood": "neighborhood8",
+          "city": "city2",
+          "state": "state8",
+          "country": "country6",
+          "complement": "complement8",
+          "metadata": {
+            "key0": "metadata9",
+            "key1": "metadata8"
+          },
+          "line_1": "line_16",
+          "line_2": "line_20"
+        },
+        "brand": "brand4",
+        "billing_address_id": "billing_address_id6",
+        "metadata": {
+          "key0": "metadata9"
+        },
+        "type": "type0",
+        "options": {
+          "verify_card": false
+        },
+        "holder_document": "holder_document4",
+        "private_label": false,
+        "label": "label0",
+        "id": "id0",
+        "token": "token4"
+      },
       "card_id": "card_id2",
       "card_token": "card_token6",
       "recurrence": false,
@@ -429,7 +581,10 @@ Request for creating a Setup for a subscription. The setup is an order that will
       "expires_at": "2016-03-13T12:52:32.123Z",
       "expires_in": 246,
       "additional_information": [
-        {}
+        {
+          "Name": "Name3",
+          "Value": "Value1"
+        }
       ]
     }
   }

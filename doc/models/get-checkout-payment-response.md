@@ -83,59 +83,7 @@ Resposta das configurações de pagamento do checkout
       "status": "status8",
       "created_at": "2016-03-13T12:52:32.123Z",
       "updated_at": "2016-03-13T12:52:32.123Z",
-      "customer": {
-        "id": "id6",
-        "name": "name6",
-        "email": "email0",
-        "delinquent": false,
-        "created_at": "2016-03-13T12:52:32.123Z",
-        "updated_at": "2016-03-13T12:52:32.123Z",
-        "document": "document0",
-        "type": "type4",
-        "fb_access_token": "fb_access_token0",
-        "address": {
-          "id": "id2",
-          "street": "street2",
-          "number": "number0",
-          "complement": "complement8",
-          "zip_code": "zip_code6",
-          "neighborhood": "neighborhood8",
-          "city": "city2",
-          "state": "state8",
-          "country": "country6",
-          "status": "status4",
-          "created_at": "2016-03-13T12:52:32.123Z",
-          "updated_at": "2016-03-13T12:52:32.123Z",
-          "customer": {},
-          "metadata": {
-            "key0": "metadata7",
-            "key1": "metadata6"
-          },
-          "line_1": "line_16",
-          "line_2": "line_20",
-          "deleted_at": "2016-03-13T12:52:32.123Z"
-        },
-        "metadata": {
-          "key0": "metadata3",
-          "key1": "metadata2",
-          "key2": "metadata1"
-        },
-        "phones": {
-          "home_phone": {
-            "country_code": "country_code8",
-            "number": "number6",
-            "area_code": "area_code8"
-          },
-          "mobile_phone": {
-            "country_code": "country_code2",
-            "number": "number4",
-            "area_code": "area_code8"
-          }
-        },
-        "fb_id": 224,
-        "code": "code4",
-        "document_type": "document_type4"
-      },
+      "customer": {},
       "metadata": {
         "key0": "metadata3"
       },
@@ -147,8 +95,16 @@ Resposta das configurações de pagamento do checkout
       "key0": "metadata3"
     },
     "phones": {
-      "home_phone": {},
-      "mobile_phone": {}
+      "home_phone": {
+        "country_code": "country_code2",
+        "number": "number0",
+        "area_code": "area_code2"
+      },
+      "mobile_phone": {
+        "country_code": "country_code8",
+        "number": "number4",
+        "area_code": "area_code8"
+      }
     },
     "fb_id": 174,
     "code": "code8",
@@ -177,67 +133,23 @@ Resposta das configurações de pagamento do checkout
       "document": "document8",
       "type": "type2",
       "fb_access_token": "fb_access_token2",
-      "address": {
-        "id": "id4",
-        "street": "street4",
-        "number": "number2",
-        "complement": "complement0",
-        "zip_code": "zip_code8",
-        "neighborhood": "neighborhood0",
-        "city": "city4",
-        "state": "state0",
-        "country": "country8",
-        "status": "status6",
-        "created_at": "2016-03-13T12:52:32.123Z",
-        "updated_at": "2016-03-13T12:52:32.123Z",
-        "customer": {
-          "id": "id4",
-          "name": "name4",
-          "email": "email2",
-          "delinquent": false,
-          "created_at": "2016-03-13T12:52:32.123Z",
-          "updated_at": "2016-03-13T12:52:32.123Z",
-          "document": "document8",
-          "type": "type4",
-          "fb_access_token": "fb_access_token8",
-          "address": {},
-          "metadata": {
-            "key0": "metadata1",
-            "key1": "metadata0"
-          },
-          "phones": {
-            "home_phone": {
-              "country_code": "country_code6",
-              "number": "number4",
-              "area_code": "area_code6"
-            },
-            "mobile_phone": {
-              "country_code": "country_code6",
-              "number": "number6",
-              "area_code": "area_code6"
-            }
-          },
-          "fb_id": 118,
-          "code": "code2",
-          "document_type": "document_type2"
-        },
-        "metadata": {
-          "key0": "metadata1",
-          "key1": "metadata0",
-          "key2": "metadata9"
-        },
-        "line_1": "line_18",
-        "line_2": "line_22",
-        "deleted_at": "2016-03-13T12:52:32.123Z"
-      },
+      "address": {},
       "metadata": {
         "key0": "metadata5",
         "key1": "metadata6",
         "key2": "metadata7"
       },
       "phones": {
-        "home_phone": {},
-        "mobile_phone": {}
+        "home_phone": {
+          "country_code": "country_code0",
+          "number": "number2",
+          "area_code": "area_code0"
+        },
+        "mobile_phone": {
+          "country_code": "country_code0",
+          "number": "number2",
+          "area_code": "area_code0"
+        }
       },
       "fb_id": 68,
       "code": "code6",
@@ -302,67 +214,23 @@ Resposta das configurações de pagamento do checkout
         "document": "document4",
         "type": "type0",
         "fb_access_token": "fb_access_token4",
-        "address": {
-          "id": "id6",
-          "street": "street6",
-          "number": "number4",
-          "complement": "complement2",
-          "zip_code": "zip_code0",
-          "neighborhood": "neighborhood2",
-          "city": "city6",
-          "state": "state2",
-          "country": "country0",
-          "status": "status8",
-          "created_at": "2016-03-13T12:52:32.123Z",
-          "updated_at": "2016-03-13T12:52:32.123Z",
-          "customer": {
-            "id": "id6",
-            "name": "name6",
-            "email": "email0",
-            "delinquent": false,
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "document": "document0",
-            "type": "type6",
-            "fb_access_token": "fb_access_token0",
-            "address": {},
-            "metadata": {
-              "key0": "metadata3",
-              "key1": "metadata2",
-              "key2": "metadata1"
-            },
-            "phones": {
-              "home_phone": {
-                "country_code": "country_code8",
-                "number": "number6",
-                "area_code": "area_code8"
-              },
-              "mobile_phone": {
-                "country_code": "country_code8",
-                "number": "number6",
-                "area_code": "area_code8"
-              }
-            },
-            "fb_id": 150,
-            "code": "code4",
-            "document_type": "document_type4"
-          },
-          "metadata": {
-            "key0": "metadata3",
-            "key1": "metadata2"
-          },
-          "line_1": "line_10",
-          "line_2": "line_24",
-          "deleted_at": "2016-03-13T12:52:32.123Z"
-        },
+        "address": {},
         "metadata": {
           "key0": "metadata7",
           "key1": "metadata6",
           "key2": "metadata5"
         },
         "phones": {
-          "home_phone": {},
-          "mobile_phone": {}
+          "home_phone": {
+            "country_code": "country_code2",
+            "number": "number0",
+            "area_code": "area_code2"
+          },
+          "mobile_phone": {
+            "country_code": "country_code2",
+            "number": "number0",
+            "area_code": "area_code2"
+          }
         },
         "fb_id": 100,
         "code": "code8",

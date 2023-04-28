@@ -36,28 +36,81 @@ class CreateChargeRequestBuilder
     /**
      * Initializes a new create charge request Builder object.
      */
-    public static function init(
-        string $code,
-        int $amount,
-        string $customerId,
-        CreateCustomerRequest $customer,
-        CreatePaymentRequest $payment,
-        array $metadata,
-        CreateAntifraudRequest $antifraud,
-        string $orderId
-    ): self {
-        return new self(
-            new CreateChargeRequest(
-                $code,
-                $amount,
-                $customerId,
-                $customer,
-                $payment,
-                $metadata,
-                $antifraud,
-                $orderId
-            )
-        );
+    public static function init(int $amount, CreatePaymentRequest $payment, string $orderId): self
+    {
+        return new self(new CreateChargeRequest($amount, $payment, $orderId));
+    }
+
+    /**
+     * Sets code field.
+     */
+    public function code(?string $value): self
+    {
+        $this->instance->setCode($value);
+        return $this;
+    }
+
+    /**
+     * Unsets code field.
+     */
+    public function unsetCode(): self
+    {
+        $this->instance->unsetCode();
+        return $this;
+    }
+
+    /**
+     * Sets customer id field.
+     */
+    public function customerId(?string $value): self
+    {
+        $this->instance->setCustomerId($value);
+        return $this;
+    }
+
+    /**
+     * Unsets customer id field.
+     */
+    public function unsetCustomerId(): self
+    {
+        $this->instance->unsetCustomerId();
+        return $this;
+    }
+
+    /**
+     * Sets customer field.
+     */
+    public function customer(?CreateCustomerRequest $value): self
+    {
+        $this->instance->setCustomer($value);
+        return $this;
+    }
+
+    /**
+     * Unsets customer field.
+     */
+    public function unsetCustomer(): self
+    {
+        $this->instance->unsetCustomer();
+        return $this;
+    }
+
+    /**
+     * Sets metadata field.
+     */
+    public function metadata(?array $value): self
+    {
+        $this->instance->setMetadata($value);
+        return $this;
+    }
+
+    /**
+     * Unsets metadata field.
+     */
+    public function unsetMetadata(): self
+    {
+        $this->instance->unsetMetadata();
+        return $this;
     }
 
     /**
@@ -66,6 +119,33 @@ class CreateChargeRequestBuilder
     public function dueAt(?\DateTime $value): self
     {
         $this->instance->setDueAt($value);
+        return $this;
+    }
+
+    /**
+     * Unsets due at field.
+     */
+    public function unsetDueAt(): self
+    {
+        $this->instance->unsetDueAt();
+        return $this;
+    }
+
+    /**
+     * Sets antifraud field.
+     */
+    public function antifraud(?CreateAntifraudRequest $value): self
+    {
+        $this->instance->setAntifraud($value);
+        return $this;
+    }
+
+    /**
+     * Unsets antifraud field.
+     */
+    public function unsetAntifraud(): self
+    {
+        $this->instance->unsetAntifraud();
         return $this;
     }
 

@@ -78,59 +78,7 @@ Response object for getting an Order
       "status": "status8",
       "created_at": "2016-03-13T12:52:32.123Z",
       "updated_at": "2016-03-13T12:52:32.123Z",
-      "customer": {
-        "id": "id6",
-        "name": "name6",
-        "email": "email0",
-        "delinquent": false,
-        "created_at": "2016-03-13T12:52:32.123Z",
-        "updated_at": "2016-03-13T12:52:32.123Z",
-        "document": "document0",
-        "type": "type4",
-        "fb_access_token": "fb_access_token0",
-        "address": {
-          "id": "id2",
-          "street": "street2",
-          "number": "number0",
-          "complement": "complement8",
-          "zip_code": "zip_code6",
-          "neighborhood": "neighborhood8",
-          "city": "city2",
-          "state": "state8",
-          "country": "country6",
-          "status": "status4",
-          "created_at": "2016-03-13T12:52:32.123Z",
-          "updated_at": "2016-03-13T12:52:32.123Z",
-          "customer": {},
-          "metadata": {
-            "key0": "metadata7",
-            "key1": "metadata6"
-          },
-          "line_1": "line_16",
-          "line_2": "line_20",
-          "deleted_at": "2016-03-13T12:52:32.123Z"
-        },
-        "metadata": {
-          "key0": "metadata3",
-          "key1": "metadata2",
-          "key2": "metadata1"
-        },
-        "phones": {
-          "home_phone": {
-            "country_code": "country_code8",
-            "number": "number6",
-            "area_code": "area_code8"
-          },
-          "mobile_phone": {
-            "country_code": "country_code2",
-            "number": "number4",
-            "area_code": "area_code8"
-          }
-        },
-        "fb_id": 224,
-        "code": "code4",
-        "document_type": "document_type4"
-      },
+      "customer": {},
       "metadata": {
         "key0": "metadata3"
       },
@@ -142,8 +90,16 @@ Response object for getting an Order
       "key0": "metadata3"
     },
     "phones": {
-      "home_phone": {},
-      "mobile_phone": {}
+      "home_phone": {
+        "country_code": "country_code2",
+        "number": "number0",
+        "area_code": "area_code2"
+      },
+      "mobile_phone": {
+        "country_code": "country_code8",
+        "number": "number4",
+        "area_code": "area_code8"
+      }
     },
     "fb_id": 174,
     "code": "code8",
@@ -202,83 +158,7 @@ Response object for getting an Order
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
                 "deleted_at": "2016-03-13T12:52:32.123Z",
-                "recipient": {
-                  "id": "id4",
-                  "name": "name4",
-                  "email": "email2",
-                  "document": "document2",
-                  "description": "description4",
-                  "type": "type6",
-                  "status": "status4",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "updated_at": "2016-03-13T12:52:32.123Z",
-                  "deleted_at": "2016-03-13T12:52:32.123Z",
-                  "default_bank_account": {
-                    "id": "id2",
-                    "holder_name": "holder_name8",
-                    "holder_type": "holder_type4",
-                    "bank": "bank0",
-                    "branch_number": "branch_number8",
-                    "branch_check_digit": "branch_check_digit8",
-                    "account_number": "account_number2",
-                    "account_check_digit": "account_check_digit8",
-                    "type": "type2",
-                    "status": "status4",
-                    "created_at": "2016-03-13T12:52:32.123Z",
-                    "updated_at": "2016-03-13T12:52:32.123Z",
-                    "deleted_at": "2016-03-13T12:52:32.123Z",
-                    "recipient": {},
-                    "metadata": {
-                      "key0": "metadata9",
-                      "key1": "metadata8"
-                    },
-                    "pix_key": "pix_key4"
-                  },
-                  "gateway_recipients": [
-                    {
-                      "gateway": "gateway8",
-                      "status": "status0",
-                      "pgid": "pgid4",
-                      "created_at": "created_at6",
-                      "updated_at": "updated_at4"
-                    },
-                    {
-                      "gateway": "gateway9",
-                      "status": "status1",
-                      "pgid": "pgid5",
-                      "created_at": "created_at7",
-                      "updated_at": "updated_at5"
-                    },
-                    {
-                      "gateway": "gateway0",
-                      "status": "status2",
-                      "pgid": "pgid6",
-                      "created_at": "created_at8",
-                      "updated_at": "updated_at6"
-                    }
-                  ],
-                  "metadata": {
-                    "key0": "metadata9",
-                    "key1": "metadata0"
-                  },
-                  "automatic_anticipation_settings": {
-                    "enabled": false,
-                    "type": "type2",
-                    "volume_percentage": 36,
-                    "delay": 254,
-                    "days": [
-                      230,
-                      231
-                    ]
-                  },
-                  "transfer_settings": {
-                    "transfer_enabled": false,
-                    "transfer_interval": "transfer_interval0",
-                    "transfer_day": 202
-                  },
-                  "code": "code2",
-                  "payment_mode": "payment_mode8"
-                },
+                "recipient": {},
                 "metadata": {
                   "key0": "metadata9",
                   "key1": "metadata8"
@@ -286,9 +166,27 @@ Response object for getting an Order
                 "pix_key": "pix_key4"
               },
               "gateway_recipients": [
-                {},
-                {},
-                {}
+                {
+                  "gateway": "gateway8",
+                  "status": "status0",
+                  "pgid": "pgid4",
+                  "created_at": "created_at6",
+                  "updated_at": "updated_at4"
+                },
+                {
+                  "gateway": "gateway9",
+                  "status": "status1",
+                  "pgid": "pgid5",
+                  "created_at": "created_at7",
+                  "updated_at": "updated_at5"
+                },
+                {
+                  "gateway": "gateway0",
+                  "status": "status2",
+                  "pgid": "pgid6",
+                  "created_at": "created_at8",
+                  "updated_at": "updated_at6"
+                }
               ],
               "metadata": {
                 "key0": "metadata9",
@@ -344,9 +242,249 @@ Response object for getting an Order
           "key1": "metadata6"
         },
         "split": [
-          {},
-          {},
-          {}
+          {
+            "type": "type8",
+            "amount": 46,
+            "recipient": {
+              "id": "id0",
+              "name": "name0",
+              "email": "email6",
+              "document": "document4",
+              "description": "description0",
+              "type": "type0",
+              "status": "status2",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "default_bank_account": {
+                "id": "id8",
+                "holder_name": "holder_name4",
+                "holder_type": "holder_type0",
+                "bank": "bank6",
+                "branch_number": "branch_number4",
+                "branch_check_digit": "branch_check_digit4",
+                "account_number": "account_number8",
+                "account_check_digit": "account_check_digit4",
+                "type": "type8",
+                "status": "status0",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "deleted_at": "2016-03-13T12:52:32.123Z",
+                "recipient": {},
+                "metadata": {
+                  "key0": "metadata1",
+                  "key1": "metadata0",
+                  "key2": "metadata9"
+                },
+                "pix_key": "pix_key2"
+              },
+              "gateway_recipients": [
+                {
+                  "gateway": "gateway4",
+                  "status": "status6",
+                  "pgid": "pgid0",
+                  "created_at": "created_at2",
+                  "updated_at": "updated_at0"
+                },
+                {
+                  "gateway": "gateway5",
+                  "status": "status7",
+                  "pgid": "pgid1",
+                  "created_at": "created_at3",
+                  "updated_at": "updated_at1"
+                },
+                {
+                  "gateway": "gateway6",
+                  "status": "status8",
+                  "pgid": "pgid2",
+                  "created_at": "created_at4",
+                  "updated_at": "updated_at2"
+                }
+              ],
+              "metadata": {
+                "key0": "metadata7",
+                "key1": "metadata6"
+              },
+              "automatic_anticipation_settings": {
+                "enabled": false,
+                "type": "type4",
+                "volume_percentage": 92,
+                "delay": 198,
+                "days": [
+                  174,
+                  175
+                ]
+              },
+              "transfer_settings": {
+                "transfer_enabled": false,
+                "transfer_interval": "transfer_interval4",
+                "transfer_day": 2
+              },
+              "code": "code8",
+              "payment_mode": "payment_mode4"
+            },
+            "gateway_id": "gateway_id8",
+            "options": {
+              "liable": false,
+              "charge_processing_fee": false,
+              "charge_remainder_fee": "charge_remainder_fee4"
+            },
+            "id": "id8"
+          },
+          {
+            "type": "type9",
+            "amount": 47,
+            "recipient": {
+              "id": "id1",
+              "name": "name1",
+              "email": "email5",
+              "document": "document5",
+              "description": "description1",
+              "type": "type9",
+              "status": "status3",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "default_bank_account": {
+                "id": "id9",
+                "holder_name": "holder_name5",
+                "holder_type": "holder_type1",
+                "bank": "bank7",
+                "branch_number": "branch_number5",
+                "branch_check_digit": "branch_check_digit5",
+                "account_number": "account_number9",
+                "account_check_digit": "account_check_digit5",
+                "type": "type9",
+                "status": "status1",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "deleted_at": "2016-03-13T12:52:32.123Z",
+                "recipient": {},
+                "metadata": {
+                  "key0": "metadata0"
+                },
+                "pix_key": "pix_key3"
+              },
+              "gateway_recipients": [
+                {
+                  "gateway": "gateway5",
+                  "status": "status7",
+                  "pgid": "pgid1",
+                  "created_at": "created_at3",
+                  "updated_at": "updated_at1"
+                }
+              ],
+              "metadata": {
+                "key0": "metadata8"
+              },
+              "automatic_anticipation_settings": {
+                "enabled": true,
+                "type": "type5",
+                "volume_percentage": 91,
+                "delay": 199,
+                "days": [
+                  175,
+                  176,
+                  177
+                ]
+              },
+              "transfer_settings": {
+                "transfer_enabled": true,
+                "transfer_interval": "transfer_interval3",
+                "transfer_day": 1
+              },
+              "code": "code9",
+              "payment_mode": "payment_mode5"
+            },
+            "gateway_id": "gateway_id9",
+            "options": {
+              "liable": true,
+              "charge_processing_fee": true,
+              "charge_remainder_fee": "charge_remainder_fee5"
+            },
+            "id": "id9"
+          },
+          {
+            "type": "type0",
+            "amount": 48,
+            "recipient": {
+              "id": "id2",
+              "name": "name2",
+              "email": "email4",
+              "document": "document6",
+              "description": "description2",
+              "type": "type8",
+              "status": "status4",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "default_bank_account": {
+                "id": "id0",
+                "holder_name": "holder_name6",
+                "holder_type": "holder_type2",
+                "bank": "bank8",
+                "branch_number": "branch_number6",
+                "branch_check_digit": "branch_check_digit6",
+                "account_number": "account_number0",
+                "account_check_digit": "account_check_digit6",
+                "type": "type0",
+                "status": "status2",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "deleted_at": "2016-03-13T12:52:32.123Z",
+                "recipient": {},
+                "metadata": {
+                  "key0": "metadata9",
+                  "key1": "metadata8"
+                },
+                "pix_key": "pix_key4"
+              },
+              "gateway_recipients": [
+                {
+                  "gateway": "gateway6",
+                  "status": "status8",
+                  "pgid": "pgid2",
+                  "created_at": "created_at4",
+                  "updated_at": "updated_at2"
+                },
+                {
+                  "gateway": "gateway7",
+                  "status": "status9",
+                  "pgid": "pgid3",
+                  "created_at": "created_at5",
+                  "updated_at": "updated_at3"
+                }
+              ],
+              "metadata": {
+                "key0": "metadata9",
+                "key1": "metadata8",
+                "key2": "metadata7"
+              },
+              "automatic_anticipation_settings": {
+                "enabled": false,
+                "type": "type6",
+                "volume_percentage": 90,
+                "delay": 200,
+                "days": [
+                  176
+                ]
+              },
+              "transfer_settings": {
+                "transfer_enabled": false,
+                "transfer_interval": "transfer_interval2",
+                "transfer_day": 0
+              },
+              "code": "code0",
+              "payment_mode": "payment_mode6"
+            },
+            "gateway_id": "gateway_id0",
+            "options": {
+              "liable": false,
+              "charge_processing_fee": false,
+              "charge_remainder_fee": "charge_remainder_fee6"
+            },
+            "id": "id0"
+          }
         ],
         "interest": {
           "days": 10,
@@ -386,7 +524,12 @@ Response object for getting an Order
               "minimum_price": 87,
               "percentage": 248.27
             },
-            "price_bracket": {},
+            "price_bracket": {
+              "start_quantity": 21,
+              "price": 41,
+              "end_quantity": 29,
+              "overage_price": 43
+            },
             "quantity": 161,
             "name": "name9",
             "subscription_item_id": "subscription_item_id3"
@@ -415,59 +558,7 @@ Response object for getting an Order
             "status": "status6",
             "created_at": "2016-03-13T12:52:32.123Z",
             "updated_at": "2016-03-13T12:52:32.123Z",
-            "customer": {
-              "id": "id4",
-              "name": "name4",
-              "email": "email2",
-              "delinquent": false,
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "document": "document8",
-              "type": "type6",
-              "fb_access_token": "fb_access_token8",
-              "address": {
-                "id": "id0",
-                "street": "street0",
-                "number": "number8",
-                "complement": "complement6",
-                "zip_code": "zip_code4",
-                "neighborhood": "neighborhood6",
-                "city": "city0",
-                "state": "state6",
-                "country": "country4",
-                "status": "status2",
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "updated_at": "2016-03-13T12:52:32.123Z",
-                "customer": {},
-                "metadata": {
-                  "key0": "metadata9",
-                  "key1": "metadata8",
-                  "key2": "metadata7"
-                },
-                "line_1": "line_14",
-                "line_2": "line_28",
-                "deleted_at": "2016-03-13T12:52:32.123Z"
-              },
-              "metadata": {
-                "key0": "metadata1",
-                "key1": "metadata0"
-              },
-              "phones": {
-                "home_phone": {
-                  "country_code": "country_code6",
-                  "number": "number4",
-                  "area_code": "area_code6"
-                },
-                "mobile_phone": {
-                  "country_code": "country_code4",
-                  "number": "number6",
-                  "area_code": "area_code6"
-                }
-              },
-              "fb_id": 190,
-              "code": "code2",
-              "document_type": "document_type2"
-            },
+            "customer": {},
             "metadata": {
               "key0": "metadata1",
               "key1": "metadata0",
@@ -483,994 +574,1828 @@ Response object for getting an Order
             "key2": "metadata7"
           },
           "phones": {
-            "home_phone": {},
-            "mobile_phone": {}
+            "home_phone": {
+              "country_code": "country_code0",
+              "number": "number2",
+              "area_code": "area_code0"
+            },
+            "mobile_phone": {
+              "country_code": "country_code0",
+              "number": "number2",
+              "area_code": "area_code0"
+            }
           },
           "fb_id": 140,
           "code": "code6",
           "document_type": "document_type6"
         },
-        "charge": {
-          "id": "id6",
-          "code": "code4",
-          "gateway_id": "gateway_id4",
-          "amount": 46,
-          "status": "status8",
-          "currency": "currency6",
-          "payment_method": "payment_method4",
-          "due_at": "2016-03-13T12:52:32.123Z",
+        "charge": {},
+        "installments": 28,
+        "billing_address": {
+          "street": "street6",
+          "number": "number6",
+          "zip_code": "zip_code0",
+          "neighborhood": "neighborhood2",
+          "city": "city4",
+          "state": "state8",
+          "country": "country0",
+          "complement": "complement8",
+          "line_1": "line_10",
+          "line_2": "line_24"
+        },
+        "subscription": {
+          "id": "id2",
+          "code": "code0",
+          "start_at": "2016-03-13T12:52:32.123Z",
+          "interval": "interval0",
+          "interval_count": 200,
+          "billing_type": "billing_type6",
+          "current_cycle": {
+            "start_at": "2016-03-13T12:52:32.123Z",
+            "end_at": "2016-03-13T12:52:32.123Z",
+            "id": "id0",
+            "billing_at": "2016-03-13T12:52:32.123Z",
+            "subscription": {},
+            "status": "status2",
+            "duration": 184,
+            "created_at": "created_at8",
+            "updated_at": "updated_at6",
+            "cycle": 124
+          },
+          "payment_method": "payment_method2",
+          "currency": "currency2",
+          "installments": 112,
+          "status": "status4",
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
-          "last_transaction": {
-            "gateway_id": "gateway_id8",
-            "amount": 104,
-            "status": "status0",
-            "success": false,
+          "customer": {
+            "id": "id2",
+            "name": "name2",
+            "email": "email4",
+            "delinquent": false,
             "created_at": "2016-03-13T12:52:32.123Z",
             "updated_at": "2016-03-13T12:52:32.123Z",
-            "attempt_count": 80,
-            "max_attempts": 68,
-            "splits": [
-              {}
-            ],
-            "next_attempt": "2016-03-13T12:52:32.123Z",
-            "transaction_type": "transaction",
-            "id": "id8",
-            "gateway_response": {
-              "code": "code8",
-              "errors": [
-                {}
-              ]
-            },
-            "antifraud_response": {
-              "status": "status8",
-              "return_code": "return_code6",
-              "return_message": "return_message4",
-              "provider_name": "provider_name4",
-              "score": "score6"
+            "document": "document6",
+            "type": "type8",
+            "fb_access_token": "fb_access_token6",
+            "address": {
+              "id": "id8",
+              "street": "street8",
+              "number": "number6",
+              "complement": "complement4",
+              "zip_code": "zip_code2",
+              "neighborhood": "neighborhood4",
+              "city": "city8",
+              "state": "state4",
+              "country": "country2",
+              "status": "status0",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "customer": {},
+              "metadata": {
+                "key0": "metadata1"
+              },
+              "line_1": "line_12",
+              "line_2": "line_26",
+              "deleted_at": "2016-03-13T12:52:32.123Z"
             },
             "metadata": {
-              "key0": "metadata1",
-              "key1": "metadata0",
-              "key2": "metadata9"
+              "key0": "metadata9"
             },
-            "split": [
-              {},
-              {},
-              {}
-            ],
-            "interest": {
-              "days": 10,
-              "type": "type2",
-              "amount": 84
+            "phones": {
+              "home_phone": {
+                "country_code": "country_code4",
+                "number": "number2",
+                "area_code": "area_code4"
+              },
+              "mobile_phone": {
+                "country_code": "country_code4",
+                "number": "number8",
+                "area_code": "area_code4"
+              }
             },
-            "fine": {
-              "days": 28,
-              "type": "type0",
-              "amount": 102
-            },
-            "max_days_to_pay_past_due": 16
+            "fb_id": 104,
+            "code": "code0",
+            "document_type": "document_type0"
           },
-          "invoice": {
-            "id": "id0",
-            "code": "code8",
-            "url": "url4",
-            "amount": 248,
-            "status": "status2",
-            "payment_method": "payment_method0",
+          "card": {
+            "id": "id6",
+            "last_four_digits": "last_four_digits2",
+            "brand": "brand0",
+            "holder_name": "holder_name2",
+            "exp_month": 250,
+            "exp_year": 46,
+            "status": "status8",
             "created_at": "2016-03-13T12:52:32.123Z",
-            "items": [
-              {}
-            ],
-            "customer": {},
-            "charge": {},
-            "installments": 32,
+            "updated_at": "2016-03-13T12:52:32.123Z",
             "billing_address": {
-              "street": "street2",
-              "number": "number0",
-              "zip_code": "zip_code6",
-              "neighborhood": "neighborhood8",
+              "street": "street8",
+              "number": "number4",
+              "zip_code": "zip_code2",
+              "neighborhood": "neighborhood4",
               "city": "city2",
-              "state": "state8",
-              "country": "country6",
-              "complement": "complement2",
-              "line_1": "line_14",
-              "line_2": "line_20"
+              "state": "state6",
+              "country": "country2",
+              "complement": "complement6",
+              "line_1": "line_18",
+              "line_2": "line_26"
             },
-            "subscription": {
-              "id": "id4",
-              "code": "code2",
-              "start_at": "2016-03-13T12:52:32.123Z",
-              "interval": "interval2",
-              "interval_count": 196,
-              "billing_type": "billing_type2",
-              "current_cycle": {
-                "start_at": "2016-03-13T12:52:32.123Z",
-                "end_at": "2016-03-13T12:52:32.123Z",
+            "customer": {
+              "id": "id6",
+              "name": "name6",
+              "email": "email0",
+              "delinquent": false,
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "document": "document0",
+              "type": "type4",
+              "fb_access_token": "fb_access_token0",
+              "address": {
                 "id": "id2",
-                "billing_at": "2016-03-13T12:52:32.123Z",
-                "subscription": {
-                  "id": "id2",
-                  "code": "code0",
-                  "start_at": "2016-03-13T12:52:32.123Z",
-                  "interval": "interval0",
-                  "interval_count": 166,
-                  "billing_type": "billing_type4",
-                  "current_cycle": {
-                    "start_at": "2016-03-13T12:52:32.123Z",
-                    "end_at": "2016-03-13T12:52:32.123Z",
-                    "id": "id0",
-                    "billing_at": "2016-03-13T12:52:32.123Z",
-                    "subscription": {},
-                    "status": "status2",
-                    "duration": 150,
-                    "created_at": "created_at8",
-                    "updated_at": "updated_at6",
-                    "cycle": 90
+                "street": "street2",
+                "number": "number0",
+                "complement": "complement8",
+                "zip_code": "zip_code6",
+                "neighborhood": "neighborhood8",
+                "city": "city2",
+                "state": "state8",
+                "country": "country6",
+                "status": "status4",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "customer": {},
+                "metadata": {
+                  "key0": "metadata9",
+                  "key1": "metadata8",
+                  "key2": "metadata7"
+                },
+                "line_1": "line_16",
+                "line_2": "line_20",
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              "metadata": {
+                "key0": "metadata7",
+                "key1": "metadata8",
+                "key2": "metadata9"
+              },
+              "phones": {
+                "home_phone": {
+                  "country_code": "country_code8",
+                  "number": "number4",
+                  "area_code": "area_code8"
+                },
+                "mobile_phone": {
+                  "country_code": "country_code8",
+                  "number": "number0",
+                  "area_code": "area_code2"
+                }
+              },
+              "fb_id": 34,
+              "code": "code4",
+              "document_type": "document_type4"
+            },
+            "metadata": {
+              "key0": "metadata3"
+            },
+            "type": "type4",
+            "holder_document": "holder_document0",
+            "deleted_at": "2016-03-13T12:52:32.123Z",
+            "first_six_digits": "first_six_digits6",
+            "label": "label6"
+          },
+          "items": [
+            {
+              "id": "id9",
+              "description": "description9",
+              "status": "status1",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 21,
+                "scheme_type": "scheme_type1",
+                "price_brackets": [
+                  {
+                    "start_quantity": 188,
+                    "price": 130,
+                    "end_quantity": 196,
+                    "overage_price": 210
+                  }
+                ],
+                "minimum_price": 181,
+                "percentage": 32.29
+              },
+              "discounts": [
+                {
+                  "id": "id0",
+                  "value": 29.92,
+                  "discount_type": "discount_type8",
+                  "status": "status2",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 200,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description0",
+                  "subscription": {},
+                  "subscription_item": {}
+                }
+              ],
+              "increments": [
+                {
+                  "id": "id8",
+                  "value": 141.2,
+                  "increment_type": "increment_type0",
+                  "status": "status0",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 192,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description8",
+                  "subscription": {},
+                  "subscription_item": {}
+                },
+                {
+                  "id": "id9",
+                  "value": 141.21,
+                  "increment_type": "increment_type1",
+                  "status": "status1",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 191,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description9",
+                  "subscription": {},
+                  "subscription_item": {}
+                }
+              ],
+              "subscription": {},
+              "name": "name9",
+              "quantity": 245,
+              "cycles": 9,
+              "deleted_at": "2016-03-13T12:52:32.123Z"
+            },
+            {
+              "id": "id0",
+              "description": "description0",
+              "status": "status2",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 20,
+                "scheme_type": "scheme_type2",
+                "price_brackets": [
+                  {
+                    "start_quantity": 189,
+                    "price": 129,
+                    "end_quantity": 197,
+                    "overage_price": 211
                   },
-                  "payment_method": "payment_method8",
-                  "currency": "currency2",
-                  "installments": 78,
+                  {
+                    "start_quantity": 190,
+                    "price": 128,
+                    "end_quantity": 198,
+                    "overage_price": 212
+                  }
+                ],
+                "minimum_price": 180,
+                "percentage": 32.3
+              },
+              "discounts": [
+                {
+                  "id": "id1",
+                  "value": 29.93,
+                  "discount_type": "discount_type9",
+                  "status": "status3",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 201,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description1",
+                  "subscription": {},
+                  "subscription_item": {}
+                },
+                {
+                  "id": "id2",
+                  "value": 29.94,
+                  "discount_type": "discount_type0",
+                  "status": "status4",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 202,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description2",
+                  "subscription": {},
+                  "subscription_item": {}
+                }
+              ],
+              "increments": [
+                {
+                  "id": "id9",
+                  "value": 141.21,
+                  "increment_type": "increment_type1",
+                  "status": "status1",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 191,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description9",
+                  "subscription": {},
+                  "subscription_item": {}
+                },
+                {
+                  "id": "id0",
+                  "value": 141.22,
+                  "increment_type": "increment_type2",
+                  "status": "status2",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 190,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description0",
+                  "subscription": {},
+                  "subscription_item": {}
+                },
+                {
+                  "id": "id1",
+                  "value": 141.23,
+                  "increment_type": "increment_type3",
+                  "status": "status3",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 189,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description1",
+                  "subscription": {},
+                  "subscription_item": {}
+                }
+              ],
+              "subscription": {},
+              "name": "name0",
+              "quantity": 246,
+              "cycles": 10,
+              "deleted_at": "2016-03-13T12:52:32.123Z"
+            },
+            {
+              "id": "id1",
+              "description": "description1",
+              "status": "status3",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 19,
+                "scheme_type": "scheme_type3",
+                "price_brackets": [
+                  {
+                    "start_quantity": 190,
+                    "price": 128,
+                    "end_quantity": 198,
+                    "overage_price": 212
+                  },
+                  {
+                    "start_quantity": 191,
+                    "price": 127,
+                    "end_quantity": 199,
+                    "overage_price": 213
+                  },
+                  {
+                    "start_quantity": 192,
+                    "price": 126,
+                    "end_quantity": 200,
+                    "overage_price": 214
+                  }
+                ],
+                "minimum_price": 179,
+                "percentage": 32.31
+              },
+              "discounts": [
+                {
+                  "id": "id2",
+                  "value": 29.94,
+                  "discount_type": "discount_type0",
+                  "status": "status4",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 202,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description2",
+                  "subscription": {},
+                  "subscription_item": {}
+                },
+                {
+                  "id": "id3",
+                  "value": 29.95,
+                  "discount_type": "discount_type1",
+                  "status": "status5",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 203,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description3",
+                  "subscription": {},
+                  "subscription_item": {}
+                },
+                {
+                  "id": "id4",
+                  "value": 29.96,
+                  "discount_type": "discount_type2",
+                  "status": "status6",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 204,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description4",
+                  "subscription": {},
+                  "subscription_item": {}
+                }
+              ],
+              "increments": [
+                {
+                  "id": "id0",
+                  "value": 141.22,
+                  "increment_type": "increment_type2",
+                  "status": "status2",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 190,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description0",
+                  "subscription": {},
+                  "subscription_item": {}
+                }
+              ],
+              "subscription": {},
+              "name": "name1",
+              "quantity": 247,
+              "cycles": 11,
+              "deleted_at": "2016-03-13T12:52:32.123Z"
+            }
+          ],
+          "statement_descriptor": "statement_descriptor2",
+          "metadata": {
+            "key0": "metadata9",
+            "key1": "metadata8"
+          },
+          "setup": {
+            "id": "id6",
+            "description": "description6",
+            "amount": 136,
+            "status": "status8"
+          },
+          "gateway_affiliation_id": "gateway_affiliation_id8",
+          "next_billing_at": "2016-03-13T12:52:32.123Z",
+          "billing_day": 84,
+          "minimum_price": 198,
+          "canceled_at": "2016-03-13T12:52:32.123Z",
+          "discounts": [
+            {
+              "id": "id3",
+              "value": 60.05,
+              "discount_type": "discount_type1",
+              "status": "status5",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "cycles": 141,
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "description": "description3",
+              "subscription": {},
+              "subscription_item": {
+                "id": "id9",
+                "description": "description9",
+                "status": "status1",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 99,
+                  "scheme_type": "scheme_type1",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 52,
+                      "price": 246,
+                      "end_quantity": 60,
+                      "overage_price": 74
+                    },
+                    {
+                      "start_quantity": 53,
+                      "price": 247,
+                      "end_quantity": 61,
+                      "overage_price": 75
+                    },
+                    {
+                      "start_quantity": 54,
+                      "price": 248,
+                      "end_quantity": 62,
+                      "overage_price": 76
+                    }
+                  ],
+                  "minimum_price": 195,
+                  "percentage": 97.49
+                },
+                "discounts": [
+                  {},
+                  {},
+                  {}
+                ],
+                "increments": [
+                  {
+                    "id": "id8",
+                    "value": 206.4,
+                    "increment_type": "increment_type0",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 184,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description8",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "subscription": {},
+                "name": "name9",
+                "quantity": 109,
+                "cycles": 129,
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              }
+            }
+          ],
+          "increments": [
+            {
+              "id": "id1",
+              "value": 171.33,
+              "increment_type": "increment_type3",
+              "status": "status7",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "cycles": 251,
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "description": "description9",
+              "subscription": {},
+              "subscription_item": {
+                "id": "id7",
+                "description": "description7",
+                "status": "status1",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 251,
+                  "scheme_type": "scheme_type1",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 214,
+                      "price": 104,
+                      "end_quantity": 222,
+                      "overage_price": 236
+                    },
+                    {
+                      "start_quantity": 215,
+                      "price": 103,
+                      "end_quantity": 223,
+                      "overage_price": 237
+                    },
+                    {
+                      "start_quantity": 216,
+                      "price": 102,
+                      "end_quantity": 224,
+                      "overage_price": 238
+                    }
+                  ],
+                  "minimum_price": 155,
+                  "percentage": 55.59
+                },
+                "discounts": [
+                  {
+                    "id": "id8",
+                    "value": 206.4,
+                    "discount_type": "discount_type6",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 184,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description8",
+                    "subscription": {},
+                    "subscription_item": {}
+                  },
+                  {
+                    "id": "id9",
+                    "value": 206.41,
+                    "discount_type": "discount_type7",
+                    "status": "status1",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 185,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description9",
+                    "subscription": {},
+                    "subscription_item": {}
+                  },
+                  {
+                    "id": "id0",
+                    "value": 206.42,
+                    "discount_type": "discount_type8",
+                    "status": "status2",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 186,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description0",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "increments": [
+                  {}
+                ],
+                "subscription": {},
+                "name": "name7",
+                "quantity": 229,
+                "cycles": 7,
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              }
+            },
+            {
+              "id": "id2",
+              "value": 171.34,
+              "increment_type": "increment_type4",
+              "status": "status6",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "cycles": 250,
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "description": "description8",
+              "subscription": {},
+              "subscription_item": {
+                "id": "id8",
+                "description": "description8",
+                "status": "status0",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 252,
+                  "scheme_type": "scheme_type0",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 213,
+                      "price": 105,
+                      "end_quantity": 221,
+                      "overage_price": 235
+                    },
+                    {
+                      "start_quantity": 214,
+                      "price": 104,
+                      "end_quantity": 222,
+                      "overage_price": 236
+                    }
+                  ],
+                  "minimum_price": 156,
+                  "percentage": 55.58
+                },
+                "discounts": [
+                  {
+                    "id": "id9",
+                    "value": 206.41,
+                    "discount_type": "discount_type7",
+                    "status": "status1",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 185,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description9",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "increments": [
+                  {},
+                  {},
+                  {}
+                ],
+                "subscription": {},
+                "name": "name8",
+                "quantity": 230,
+                "cycles": 6,
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              }
+            }
+          ],
+          "boleto_due_days": 56,
+          "split": {
+            "enabled": false,
+            "rules": [
+              {
+                "type": "type8",
+                "amount": 16,
+                "recipient": {
+                  "id": "id4",
+                  "name": "name4",
+                  "email": "email2",
+                  "document": "document8",
+                  "description": "description4",
+                  "type": "type6",
                   "status": "status6",
                   "created_at": "2016-03-13T12:52:32.123Z",
                   "updated_at": "2016-03-13T12:52:32.123Z",
-                  "customer": {},
-                  "card": {
-                    "id": "id4",
-                    "last_four_digits": "last_four_digits0",
-                    "brand": "brand8",
-                    "holder_name": "holder_name0",
-                    "exp_month": 56,
-                    "exp_year": 240,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "default_bank_account": {
+                    "id": "id2",
+                    "holder_name": "holder_name8",
+                    "holder_type": "holder_type4",
+                    "bank": "bank0",
+                    "branch_number": "branch_number8",
+                    "branch_check_digit": "branch_check_digit8",
+                    "account_number": "account_number2",
+                    "account_check_digit": "account_check_digit8",
+                    "type": "type2",
                     "status": "status4",
                     "created_at": "2016-03-13T12:52:32.123Z",
                     "updated_at": "2016-03-13T12:52:32.123Z",
-                    "billing_address": {
-                      "street": "street4",
-                      "number": "number8",
-                      "zip_code": "zip_code8",
-                      "neighborhood": "neighborhood0",
-                      "city": "city6",
-                      "state": "state0",
-                      "country": "country8",
-                      "complement": "complement0",
-                      "line_1": "line_12",
-                      "line_2": "line_22"
-                    },
-                    "customer": {},
-                    "metadata": {
-                      "key0": "metadata9",
-                      "key1": "metadata0"
-                    },
-                    "type": "type6",
-                    "holder_document": "holder_document2",
                     "deleted_at": "2016-03-13T12:52:32.123Z",
-                    "first_six_digits": "first_six_digits4",
-                    "label": "label4"
+                    "recipient": {},
+                    "metadata": {
+                      "key0": "metadata7"
+                    },
+                    "pix_key": "pix_key6"
                   },
-                  "items": [
+                  "gateway_recipients": [
+                    {
+                      "gateway": "gateway8",
+                      "status": "status0",
+                      "pgid": "pgid4",
+                      "created_at": "created_at6",
+                      "updated_at": "updated_at4"
+                    }
+                  ],
+                  "metadata": {
+                    "key0": "metadata1"
+                  },
+                  "automatic_anticipation_settings": {
+                    "enabled": false,
+                    "type": "type2",
+                    "volume_percentage": 122,
+                    "delay": 168,
+                    "days": [
+                      144,
+                      145,
+                      146
+                    ]
+                  },
+                  "transfer_settings": {
+                    "transfer_enabled": false,
+                    "transfer_interval": "transfer_interval0",
+                    "transfer_day": 32
+                  },
+                  "code": "code2",
+                  "payment_mode": "payment_mode8"
+                },
+                "gateway_id": "gateway_id8",
+                "options": {
+                  "liable": false,
+                  "charge_processing_fee": false,
+                  "charge_remainder_fee": "charge_remainder_fee8"
+                },
+                "id": "id2"
+              },
+              {
+                "type": "type7",
+                "amount": 17,
+                "recipient": {
+                  "id": "id5",
+                  "name": "name5",
+                  "email": "email1",
+                  "document": "document9",
+                  "description": "description5",
+                  "type": "type5",
+                  "status": "status7",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "default_bank_account": {
+                    "id": "id3",
+                    "holder_name": "holder_name9",
+                    "holder_type": "holder_type5",
+                    "bank": "bank1",
+                    "branch_number": "branch_number9",
+                    "branch_check_digit": "branch_check_digit9",
+                    "account_number": "account_number3",
+                    "account_check_digit": "account_check_digit9",
+                    "type": "type3",
+                    "status": "status5",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "recipient": {},
+                    "metadata": {
+                      "key0": "metadata6",
+                      "key1": "metadata5"
+                    },
+                    "pix_key": "pix_key7"
+                  },
+                  "gateway_recipients": [
+                    {
+                      "gateway": "gateway9",
+                      "status": "status1",
+                      "pgid": "pgid5",
+                      "created_at": "created_at7",
+                      "updated_at": "updated_at5"
+                    },
+                    {
+                      "gateway": "gateway0",
+                      "status": "status2",
+                      "pgid": "pgid6",
+                      "created_at": "created_at8",
+                      "updated_at": "updated_at6"
+                    }
+                  ],
+                  "metadata": {
+                    "key0": "metadata2",
+                    "key1": "metadata1",
+                    "key2": "metadata0"
+                  },
+                  "automatic_anticipation_settings": {
+                    "enabled": true,
+                    "type": "type1",
+                    "volume_percentage": 121,
+                    "delay": 169,
+                    "days": [
+                      145
+                    ]
+                  },
+                  "transfer_settings": {
+                    "transfer_enabled": true,
+                    "transfer_interval": "transfer_interval9",
+                    "transfer_day": 31
+                  },
+                  "code": "code3",
+                  "payment_mode": "payment_mode9"
+                },
+                "gateway_id": "gateway_id7",
+                "options": {
+                  "liable": true,
+                  "charge_processing_fee": true,
+                  "charge_remainder_fee": "charge_remainder_fee9"
+                },
+                "id": "id3"
+              },
+              {
+                "type": "type6",
+                "amount": 18,
+                "recipient": {
+                  "id": "id6",
+                  "name": "name6",
+                  "email": "email0",
+                  "document": "document0",
+                  "description": "description6",
+                  "type": "type4",
+                  "status": "status8",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "default_bank_account": {
+                    "id": "id4",
+                    "holder_name": "holder_name0",
+                    "holder_type": "holder_type6",
+                    "bank": "bank2",
+                    "branch_number": "branch_number0",
+                    "branch_check_digit": "branch_check_digit0",
+                    "account_number": "account_number4",
+                    "account_check_digit": "account_check_digit0",
+                    "type": "type4",
+                    "status": "status6",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "recipient": {},
+                    "metadata": {
+                      "key0": "metadata5",
+                      "key1": "metadata4",
+                      "key2": "metadata3"
+                    },
+                    "pix_key": "pix_key8"
+                  },
+                  "gateway_recipients": [
+                    {
+                      "gateway": "gateway0",
+                      "status": "status2",
+                      "pgid": "pgid6",
+                      "created_at": "created_at8",
+                      "updated_at": "updated_at6"
+                    },
+                    {
+                      "gateway": "gateway1",
+                      "status": "status3",
+                      "pgid": "pgid7",
+                      "created_at": "created_at9",
+                      "updated_at": "updated_at7"
+                    },
+                    {
+                      "gateway": "gateway2",
+                      "status": "status4",
+                      "pgid": "pgid8",
+                      "created_at": "created_at0",
+                      "updated_at": "updated_at8"
+                    }
+                  ],
+                  "metadata": {
+                    "key0": "metadata3",
+                    "key1": "metadata2"
+                  },
+                  "automatic_anticipation_settings": {
+                    "enabled": false,
+                    "type": "type0",
+                    "volume_percentage": 120,
+                    "delay": 170,
+                    "days": [
+                      146,
+                      147
+                    ]
+                  },
+                  "transfer_settings": {
+                    "transfer_enabled": false,
+                    "transfer_interval": "transfer_interval8",
+                    "transfer_day": 30
+                  },
+                  "code": "code4",
+                  "payment_mode": "payment_mode0"
+                },
+                "gateway_id": "gateway_id6",
+                "options": {
+                  "liable": false,
+                  "charge_processing_fee": false,
+                  "charge_remainder_fee": "charge_remainder_fee0"
+                },
+                "id": "id4"
+              }
+            ]
+          },
+          "boleto": {
+            "interest": {
+              "days": 34,
+              "type": "type2",
+              "amount": 108
+            },
+            "fine": {
+              "days": 0,
+              "type": "type6",
+              "amount": 74
+            },
+            "max_days_to_pay_past_due": 244
+          },
+          "manual_billing": false
+        },
+        "cycle": {
+          "start_at": "2016-03-13T12:52:32.123Z",
+          "end_at": "2016-03-13T12:52:32.123Z",
+          "id": "id2",
+          "billing_at": "2016-03-13T12:52:32.123Z",
+          "subscription": {
+            "id": "id2",
+            "code": "code0",
+            "start_at": "2016-03-13T12:52:32.123Z",
+            "interval": "interval0",
+            "interval_count": 148,
+            "billing_type": "billing_type4",
+            "current_cycle": {},
+            "payment_method": "payment_method8",
+            "currency": "currency2",
+            "installments": 60,
+            "status": "status6",
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "customer": {
+              "id": "id2",
+              "name": "name2",
+              "email": "email4",
+              "delinquent": false,
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "document": "document4",
+              "type": "type8",
+              "fb_access_token": "fb_access_token6",
+              "address": {
+                "id": "id8",
+                "street": "street8",
+                "number": "number6",
+                "complement": "complement4",
+                "zip_code": "zip_code2",
+                "neighborhood": "neighborhood4",
+                "city": "city8",
+                "state": "state4",
+                "country": "country2",
+                "status": "status0",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "customer": {},
+                "metadata": {
+                  "key0": "metadata5",
+                  "key1": "metadata4"
+                },
+                "line_1": "line_18",
+                "line_2": "line_26",
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              "metadata": {
+                "key0": "metadata1",
+                "key1": "metadata2"
+              },
+              "phones": {
+                "home_phone": {
+                  "country_code": "country_code4",
+                  "number": "number8",
+                  "area_code": "area_code4"
+                },
+                "mobile_phone": {
+                  "country_code": "country_code6",
+                  "number": "number6",
+                  "area_code": "area_code6"
+                }
+              },
+              "fb_id": 52,
+              "code": "code0",
+              "document_type": "document_type0"
+            },
+            "card": {
+              "id": "id4",
+              "last_four_digits": "last_four_digits0",
+              "brand": "brand8",
+              "holder_name": "holder_name0",
+              "exp_month": 38,
+              "exp_year": 2,
+              "status": "status4",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "billing_address": {
+                "street": "street4",
+                "number": "number8",
+                "zip_code": "zip_code8",
+                "neighborhood": "neighborhood0",
+                "city": "city6",
+                "state": "state0",
+                "country": "country8",
+                "complement": "complement0",
+                "line_1": "line_12",
+                "line_2": "line_22"
+              },
+              "customer": {
+                "id": "id6",
+                "name": "name6",
+                "email": "email0",
+                "delinquent": false,
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "document": "document0",
+                "type": "type4",
+                "fb_access_token": "fb_access_token0",
+                "address": {
+                  "id": "id2",
+                  "street": "street2",
+                  "number": "number0",
+                  "complement": "complement8",
+                  "zip_code": "zip_code6",
+                  "neighborhood": "neighborhood8",
+                  "city": "city2",
+                  "state": "state8",
+                  "country": "country6",
+                  "status": "status4",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": {},
+                  "metadata": {
+                    "key0": "metadata9",
+                    "key1": "metadata8",
+                    "key2": "metadata7"
+                  },
+                  "line_1": "line_14",
+                  "line_2": "line_20",
+                  "deleted_at": "2016-03-13T12:52:32.123Z"
+                },
+                "metadata": {
+                  "key0": "metadata7",
+                  "key1": "metadata8",
+                  "key2": "metadata9"
+                },
+                "phones": {
+                  "home_phone": {
+                    "country_code": "country_code2",
+                    "number": "number4",
+                    "area_code": "area_code8"
+                  },
+                  "mobile_phone": {
+                    "country_code": "country_code2",
+                    "number": "number0",
+                    "area_code": "area_code2"
+                  }
+                },
+                "fb_id": 170,
+                "code": "code4",
+                "document_type": "document_type4"
+              },
+              "metadata": {
+                "key0": "metadata9"
+              },
+              "type": "type6",
+              "holder_document": "holder_document2",
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "first_six_digits": "first_six_digits4",
+              "label": "label4"
+            },
+            "items": [
+              {
+                "id": "id9",
+                "description": "description9",
+                "status": "status1",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 215,
+                  "scheme_type": "scheme_type9",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 250,
+                      "price": 68,
+                      "end_quantity": 2,
+                      "overage_price": 16
+                    },
+                    {
+                      "start_quantity": 251,
+                      "price": 67,
+                      "end_quantity": 3,
+                      "overage_price": 17
+                    },
+                    {
+                      "start_quantity": 252,
+                      "price": 66,
+                      "end_quantity": 4,
+                      "overage_price": 18
+                    }
+                  ],
+                  "minimum_price": 119,
+                  "percentage": 112.27
+                },
+                "discounts": [
+                  {
+                    "id": "id0",
+                    "value": 149.72,
+                    "discount_type": "discount_type8",
+                    "status": "status2",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 148,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description0",
+                    "subscription": {},
+                    "subscription_item": {}
+                  },
+                  {
+                    "id": "id1",
+                    "value": 149.73,
+                    "discount_type": "discount_type9",
+                    "status": "status3",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 149,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description1",
+                    "subscription": {},
+                    "subscription_item": {}
+                  },
+                  {
+                    "id": "id2",
+                    "value": 149.74,
+                    "discount_type": "discount_type0",
+                    "status": "status4",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 150,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description2",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "increments": [
+                  {
+                    "id": "id8",
+                    "value": 5.0,
+                    "increment_type": "increment_type0",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 244,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description2",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "subscription": {},
+                "name": "name9",
+                "quantity": 193,
+                "cycles": 43,
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              {
+                "id": "id0",
+                "description": "description0",
+                "status": "status2",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 216,
+                  "scheme_type": "scheme_type8",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 249,
+                      "price": 69,
+                      "end_quantity": 1,
+                      "overage_price": 15
+                    },
+                    {
+                      "start_quantity": 250,
+                      "price": 68,
+                      "end_quantity": 2,
+                      "overage_price": 16
+                    }
+                  ],
+                  "minimum_price": 120,
+                  "percentage": 112.26
+                },
+                "discounts": [
+                  {
+                    "id": "id1",
+                    "value": 149.73,
+                    "discount_type": "discount_type9",
+                    "status": "status3",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 149,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description1",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "increments": [
+                  {
+                    "id": "id9",
+                    "value": 5.01,
+                    "increment_type": "increment_type9",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 243,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description1",
+                    "subscription": {},
+                    "subscription_item": {}
+                  },
+                  {
+                    "id": "id0",
+                    "value": 5.02,
+                    "increment_type": "increment_type8",
+                    "status": "status8",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 242,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description0",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "subscription": {},
+                "name": "name0",
+                "quantity": 194,
+                "cycles": 42,
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              }
+            ],
+            "statement_descriptor": "statement_descriptor2",
+            "metadata": {
+              "key0": "metadata1",
+              "key1": "metadata2",
+              "key2": "metadata3"
+            },
+            "setup": {
+              "id": "id6",
+              "description": "description4",
+              "amount": 84,
+              "status": "status2"
+            },
+            "gateway_affiliation_id": "gateway_affiliation_id8",
+            "next_billing_at": "2016-03-13T12:52:32.123Z",
+            "billing_day": 224,
+            "minimum_price": 110,
+            "canceled_at": "2016-03-13T12:52:32.123Z",
+            "discounts": [
+              {
+                "id": "id3",
+                "value": 179.85,
+                "discount_type": "discount_type1",
+                "status": "status5",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "cycles": 89,
+                "deleted_at": "2016-03-13T12:52:32.123Z",
+                "description": "description3",
+                "subscription": {},
+                "subscription_item": {
+                  "id": "id9",
+                  "description": "description9",
+                  "status": "status1",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "pricing_scheme": {
+                    "price": 209,
+                    "scheme_type": "scheme_type1",
+                    "price_brackets": [
+                      {
+                        "start_quantity": 0,
+                        "price": 62,
+                        "end_quantity": 8,
+                        "overage_price": 22
+                      },
+                      {
+                        "start_quantity": 1,
+                        "price": 61,
+                        "end_quantity": 9,
+                        "overage_price": 23
+                      }
+                    ],
+                    "minimum_price": 113,
+                    "percentage": 217.29
+                  },
+                  "discounts": [
+                    {},
+                    {}
+                  ],
+                  "increments": [
+                    {
+                      "id": "id8",
+                      "value": 70.2,
+                      "increment_type": "increment_type0",
+                      "status": "status0",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 124,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description8",
+                      "subscription": {},
+                      "subscription_item": {}
+                    },
                     {
                       "id": "id9",
-                      "description": "description9",
+                      "value": 70.21,
+                      "increment_type": "increment_type1",
                       "status": "status1",
                       "created_at": "2016-03-13T12:52:32.123Z",
-                      "updated_at": "2016-03-13T12:52:32.123Z",
-                      "pricing_scheme": {},
-                      "discounts": [
-                        {
-                          "id": "id0",
-                          "value": 206.22,
-                          "discount_type": "discount_type8",
-                          "status": "status2",
-                          "created_at": "2016-03-13T12:52:32.123Z",
-                          "cycles": 166,
-                          "deleted_at": "2016-03-13T12:52:32.123Z",
-                          "description": "description0",
-                          "subscription": {},
-                          "subscription_item": {
-                            "id": "id6",
-                            "description": "description6",
-                            "status": "status8",
-                            "created_at": "2016-03-13T12:52:32.123Z",
-                            "updated_at": "2016-03-13T12:52:32.123Z",
-                            "pricing_scheme": {},
-                            "discounts": [
-                              {
-                                "id": "id7",
-                                "value": 241.29,
-                                "discount_type": "discount_type5",
-                                "status": "status9",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 89,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description7",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id8",
-                                "value": 241.3,
-                                "discount_type": "discount_type6",
-                                "status": "status0",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 90,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description8",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id9",
-                                "value": 241.31,
-                                "discount_type": "discount_type7",
-                                "status": "status1",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 91,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description9",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "increments": [
-                              {
-                                "id": "id5",
-                                "value": 96.57,
-                                "increment_type": "increment_type7",
-                                "status": "status7",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 209,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description5",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "subscription": {},
-                            "name": "name6",
-                            "quantity": 134,
-                            "cycles": 154,
-                            "deleted_at": "2016-03-13T12:52:32.123Z"
-                          }
-                        }
-                      ],
-                      "increments": [
-                        {},
-                        {}
-                      ],
+                      "cycles": 123,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description9",
                       "subscription": {},
-                      "name": "name9",
-                      "quantity": 211,
-                      "cycles": 25,
-                      "deleted_at": "2016-03-13T12:52:32.123Z"
+                      "subscription_item": {}
                     },
                     {
                       "id": "id0",
-                      "description": "description0",
+                      "value": 70.22,
+                      "increment_type": "increment_type2",
                       "status": "status2",
                       "created_at": "2016-03-13T12:52:32.123Z",
-                      "updated_at": "2016-03-13T12:52:32.123Z",
-                      "pricing_scheme": {},
-                      "discounts": [
-                        {
-                          "id": "id1",
-                          "value": 206.23,
-                          "discount_type": "discount_type9",
-                          "status": "status3",
-                          "created_at": "2016-03-13T12:52:32.123Z",
-                          "cycles": 167,
-                          "deleted_at": "2016-03-13T12:52:32.123Z",
-                          "description": "description1",
-                          "subscription": {},
-                          "subscription_item": {
-                            "id": "id7",
-                            "description": "description7",
-                            "status": "status9",
-                            "created_at": "2016-03-13T12:52:32.123Z",
-                            "updated_at": "2016-03-13T12:52:32.123Z",
-                            "pricing_scheme": {},
-                            "discounts": [
-                              {
-                                "id": "id8",
-                                "value": 241.3,
-                                "discount_type": "discount_type6",
-                                "status": "status0",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 90,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description8",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "increments": [
-                              {
-                                "id": "id6",
-                                "value": 96.58,
-                                "increment_type": "increment_type8",
-                                "status": "status8",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 210,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description6",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id7",
-                                "value": 96.59,
-                                "increment_type": "increment_type9",
-                                "status": "status9",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 211,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description7",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "subscription": {},
-                            "name": "name7",
-                            "quantity": 135,
-                            "cycles": 155,
-                            "deleted_at": "2016-03-13T12:52:32.123Z"
-                          }
-                        },
-                        {
-                          "id": "id2",
-                          "value": 206.24,
-                          "discount_type": "discount_type0",
-                          "status": "status4",
-                          "created_at": "2016-03-13T12:52:32.123Z",
-                          "cycles": 168,
-                          "deleted_at": "2016-03-13T12:52:32.123Z",
-                          "description": "description2",
-                          "subscription": {},
-                          "subscription_item": {
-                            "id": "id8",
-                            "description": "description8",
-                            "status": "status0",
-                            "created_at": "2016-03-13T12:52:32.123Z",
-                            "updated_at": "2016-03-13T12:52:32.123Z",
-                            "pricing_scheme": {},
-                            "discounts": [
-                              {
-                                "id": "id9",
-                                "value": 241.31,
-                                "discount_type": "discount_type7",
-                                "status": "status1",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 91,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description9",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id0",
-                                "value": 241.32,
-                                "discount_type": "discount_type8",
-                                "status": "status2",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 92,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description0",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "increments": [
-                              {
-                                "id": "id7",
-                                "value": 96.59,
-                                "increment_type": "increment_type9",
-                                "status": "status9",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 211,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description7",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id8",
-                                "value": 96.6,
-                                "increment_type": "increment_type0",
-                                "status": "status0",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 212,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description8",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id9",
-                                "value": 96.61,
-                                "increment_type": "increment_type1",
-                                "status": "status1",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 213,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description9",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "subscription": {},
-                            "name": "name8",
-                            "quantity": 136,
-                            "cycles": 156,
-                            "deleted_at": "2016-03-13T12:52:32.123Z"
-                          }
-                        }
-                      ],
-                      "increments": [
-                        {},
-                        {},
-                        {}
-                      ],
+                      "cycles": 122,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description0",
                       "subscription": {},
-                      "name": "name0",
-                      "quantity": 212,
-                      "cycles": 24,
-                      "deleted_at": "2016-03-13T12:52:32.123Z"
-                    },
-                    {
-                      "id": "id1",
-                      "description": "description1",
-                      "status": "status3",
-                      "created_at": "2016-03-13T12:52:32.123Z",
-                      "updated_at": "2016-03-13T12:52:32.123Z",
-                      "pricing_scheme": {},
-                      "discounts": [
-                        {
-                          "id": "id2",
-                          "value": 206.24,
-                          "discount_type": "discount_type0",
-                          "status": "status4",
-                          "created_at": "2016-03-13T12:52:32.123Z",
-                          "cycles": 168,
-                          "deleted_at": "2016-03-13T12:52:32.123Z",
-                          "description": "description2",
-                          "subscription": {},
-                          "subscription_item": {
-                            "id": "id8",
-                            "description": "description8",
-                            "status": "status0",
-                            "created_at": "2016-03-13T12:52:32.123Z",
-                            "updated_at": "2016-03-13T12:52:32.123Z",
-                            "pricing_scheme": {},
-                            "discounts": [
-                              {
-                                "id": "id9",
-                                "value": 241.31,
-                                "discount_type": "discount_type7",
-                                "status": "status1",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 91,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description9",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id0",
-                                "value": 241.32,
-                                "discount_type": "discount_type8",
-                                "status": "status2",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 92,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description0",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "increments": [
-                              {
-                                "id": "id7",
-                                "value": 96.59,
-                                "increment_type": "increment_type9",
-                                "status": "status9",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 211,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description7",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id8",
-                                "value": 96.6,
-                                "increment_type": "increment_type0",
-                                "status": "status0",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 212,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description8",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id9",
-                                "value": 96.61,
-                                "increment_type": "increment_type1",
-                                "status": "status1",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 213,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description9",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "subscription": {},
-                            "name": "name8",
-                            "quantity": 136,
-                            "cycles": 156,
-                            "deleted_at": "2016-03-13T12:52:32.123Z"
-                          }
-                        },
-                        {
-                          "id": "id3",
-                          "value": 206.25,
-                          "discount_type": "discount_type1",
-                          "status": "status5",
-                          "created_at": "2016-03-13T12:52:32.123Z",
-                          "cycles": 169,
-                          "deleted_at": "2016-03-13T12:52:32.123Z",
-                          "description": "description3",
-                          "subscription": {},
-                          "subscription_item": {
-                            "id": "id9",
-                            "description": "description9",
-                            "status": "status1",
-                            "created_at": "2016-03-13T12:52:32.123Z",
-                            "updated_at": "2016-03-13T12:52:32.123Z",
-                            "pricing_scheme": {},
-                            "discounts": [
-                              {
-                                "id": "id0",
-                                "value": 241.32,
-                                "discount_type": "discount_type8",
-                                "status": "status2",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 92,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description0",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id1",
-                                "value": 241.33,
-                                "discount_type": "discount_type9",
-                                "status": "status3",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 93,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description1",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id2",
-                                "value": 241.34,
-                                "discount_type": "discount_type0",
-                                "status": "status4",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 94,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description2",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "increments": [
-                              {
-                                "id": "id8",
-                                "value": 96.6,
-                                "increment_type": "increment_type0",
-                                "status": "status0",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 212,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description8",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "subscription": {},
-                            "name": "name9",
-                            "quantity": 137,
-                            "cycles": 157,
-                            "deleted_at": "2016-03-13T12:52:32.123Z"
-                          }
-                        },
-                        {
-                          "id": "id4",
-                          "value": 206.26,
-                          "discount_type": "discount_type2",
-                          "status": "status6",
-                          "created_at": "2016-03-13T12:52:32.123Z",
-                          "cycles": 170,
-                          "deleted_at": "2016-03-13T12:52:32.123Z",
-                          "description": "description4",
-                          "subscription": {},
-                          "subscription_item": {
-                            "id": "id0",
-                            "description": "description0",
-                            "status": "status2",
-                            "created_at": "2016-03-13T12:52:32.123Z",
-                            "updated_at": "2016-03-13T12:52:32.123Z",
-                            "pricing_scheme": {},
-                            "discounts": [
-                              {
-                                "id": "id1",
-                                "value": 241.33,
-                                "discount_type": "discount_type9",
-                                "status": "status3",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 93,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description1",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "increments": [
-                              {
-                                "id": "id9",
-                                "value": 96.61,
-                                "increment_type": "increment_type1",
-                                "status": "status1",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 213,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description9",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id0",
-                                "value": 96.62,
-                                "increment_type": "increment_type2",
-                                "status": "status2",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 214,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description0",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "subscription": {},
-                            "name": "name0",
-                            "quantity": 138,
-                            "cycles": 158,
-                            "deleted_at": "2016-03-13T12:52:32.123Z"
-                          }
-                        }
-                      ],
-                      "increments": [
-                        {}
-                      ],
-                      "subscription": {},
-                      "name": "name1",
-                      "quantity": 213,
-                      "cycles": 23,
-                      "deleted_at": "2016-03-13T12:52:32.123Z"
+                      "subscription_item": {}
                     }
                   ],
-                  "statement_descriptor": "statement_descriptor2",
-                  "metadata": {
-                    "key0": "metadata1",
-                    "key1": "metadata2"
+                  "subscription": {},
+                  "name": "name9",
+                  "quantity": 57,
+                  "cycles": 77,
+                  "deleted_at": "2016-03-13T12:52:32.123Z"
+                }
+              },
+              {
+                "id": "id4",
+                "value": 179.86,
+                "discount_type": "discount_type2",
+                "status": "status6",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "cycles": 90,
+                "deleted_at": "2016-03-13T12:52:32.123Z",
+                "description": "description4",
+                "subscription": {},
+                "subscription_item": {
+                  "id": "id0",
+                  "description": "description0",
+                  "status": "status2",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "pricing_scheme": {
+                    "price": 208,
+                    "scheme_type": "scheme_type2",
+                    "price_brackets": [
+                      {
+                        "start_quantity": 1,
+                        "price": 61,
+                        "end_quantity": 9,
+                        "overage_price": 23
+                      },
+                      {
+                        "start_quantity": 2,
+                        "price": 60,
+                        "end_quantity": 10,
+                        "overage_price": 24
+                      },
+                      {
+                        "start_quantity": 3,
+                        "price": 59,
+                        "end_quantity": 11,
+                        "overage_price": 25
+                      }
+                    ],
+                    "minimum_price": 112,
+                    "percentage": 217.3
                   },
-                  "setup": {
-                    "id": "id6",
-                    "description": "description4",
-                    "amount": 102,
-                    "status": "status2"
+                  "discounts": [
+                    {},
+                    {},
+                    {}
+                  ],
+                  "increments": [
+                    {
+                      "id": "id9",
+                      "value": 70.21,
+                      "increment_type": "increment_type1",
+                      "status": "status1",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 123,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description9",
+                      "subscription": {},
+                      "subscription_item": {}
+                    }
+                  ],
+                  "subscription": {},
+                  "name": "name0",
+                  "quantity": 58,
+                  "cycles": 78,
+                  "deleted_at": "2016-03-13T12:52:32.123Z"
+                }
+              },
+              {
+                "id": "id5",
+                "value": 179.87,
+                "discount_type": "discount_type3",
+                "status": "status7",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "cycles": 91,
+                "deleted_at": "2016-03-13T12:52:32.123Z",
+                "description": "description5",
+                "subscription": {},
+                "subscription_item": {
+                  "id": "id1",
+                  "description": "description1",
+                  "status": "status3",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "pricing_scheme": {
+                    "price": 207,
+                    "scheme_type": "scheme_type3",
+                    "price_brackets": [
+                      {
+                        "start_quantity": 2,
+                        "price": 60,
+                        "end_quantity": 10,
+                        "overage_price": 24
+                      }
+                    ],
+                    "minimum_price": 111,
+                    "percentage": 217.31
                   },
-                  "gateway_affiliation_id": "gateway_affiliation_id8",
-                  "next_billing_at": "2016-03-13T12:52:32.123Z",
-                  "billing_day": 206,
-                  "minimum_price": 92,
-                  "canceled_at": "2016-03-13T12:52:32.123Z",
                   "discounts": [
                     {}
                   ],
                   "increments": [
-                    {},
-                    {},
-                    {}
-                  ],
-                  "boleto_due_days": 22,
-                  "split": {
-                    "enabled": false,
-                    "rules": [
-                      {},
-                      {},
-                      {}
-                    ]
-                  },
-                  "boleto": {
-                    "interest": {},
-                    "fine": {},
-                    "max_days_to_pay_past_due": 210
-                  },
-                  "manual_billing": false
-                },
-                "status": "status4",
-                "duration": 180,
-                "created_at": "created_at0",
-                "updated_at": "updated_at8",
-                "cycle": 120
-              },
-              "payment_method": "payment_method6",
-              "currency": "currency4",
-              "installments": 108,
-              "status": "status4",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "customer": {},
-              "card": {
-                "id": "id2",
-                "last_four_digits": "last_four_digits8",
-                "brand": "brand6",
-                "holder_name": "holder_name8",
-                "exp_month": 86,
-                "exp_year": 210,
-                "status": "status6",
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "updated_at": "2016-03-13T12:52:32.123Z",
-                "billing_address": {},
-                "customer": {},
-                "metadata": {
-                  "key0": "metadata1",
-                  "key1": "metadata2"
-                },
-                "type": "type8",
-                "holder_document": "holder_document4",
-                "deleted_at": "2016-03-13T12:52:32.123Z",
-                "first_six_digits": "first_six_digits2",
-                "label": "label2"
-              },
-              "items": [
-                {},
-                {},
-                {}
-              ],
-              "statement_descriptor": "statement_descriptor4",
-              "metadata": {
-                "key0": "metadata9",
-                "key1": "metadata0"
-              },
-              "setup": {
-                "id": "id8",
-                "description": "description2",
-                "amount": 132,
-                "status": "status0"
-              },
-              "gateway_affiliation_id": "gateway_affiliation_id0",
-              "next_billing_at": "2016-03-13T12:52:32.123Z",
-              "billing_day": 176,
-              "minimum_price": 62,
-              "canceled_at": "2016-03-13T12:52:32.123Z",
-              "discounts": [
-                {}
-              ],
-              "increments": [
-                {},
-                {},
-                {}
-              ],
-              "boleto_due_days": 52,
-              "split": {
-                "enabled": false,
-                "rules": [
-                  {},
-                  {},
-                  {}
-                ]
-              },
-              "boleto": {
-                "interest": {},
-                "fine": {},
-                "max_days_to_pay_past_due": 240
-              },
-              "manual_billing": false
-            },
-            "cycle": {},
-            "shipping": {
-              "amount": 90,
-              "description": "description4",
-              "recipient_name": "recipient_name2",
-              "recipient_phone": "recipient_phone6",
-              "address": {},
-              "max_delivery_date": "2016-03-13T12:52:32.123Z",
-              "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
-              "type": "type4"
-            },
-            "metadata": {
-              "key0": "metadata7"
-            },
-            "due_at": "2016-03-13T12:52:32.123Z",
-            "canceled_at": "2016-03-13T12:52:32.123Z",
-            "billing_at": "2016-03-13T12:52:32.123Z",
-            "seen_at": "2016-03-13T12:52:32.123Z",
-            "total_discount": 100,
-            "total_increment": 172,
-            "subscription_id": "subscription_id0"
-          },
-          "order": {
-            "id": "id0",
-            "code": "code8",
-            "currency": "currency0",
-            "items": [
-              {
-                "id": "id7",
-                "amount": 209,
-                "description": "description7",
-                "quantity": 67,
-                "category": "category5",
-                "code": "code5"
-              },
-              {
-                "id": "id8",
-                "amount": 210,
-                "description": "description8",
-                "quantity": 68,
-                "category": "category6",
-                "code": "code6"
-              }
-            ],
-            "customer": {},
-            "status": "status8",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "charges": [
-              {},
-              {}
-            ],
-            "invoice_url": "invoice_url2",
-            "shipping": {
-              "amount": 248,
-              "description": "description4",
-              "recipient_name": "recipient_name2",
-              "recipient_phone": "recipient_phone6",
-              "address": {},
-              "max_delivery_date": "2016-03-13T12:52:32.123Z",
-              "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
-              "type": "type6"
-            },
-            "metadata": {
-              "key0": "metadata3",
-              "key1": "metadata4",
-              "key2": "metadata5"
-            },
-            "checkouts": [
-              {
-                "id": "id7",
-                "amount": 159,
-                "default_payment_method": "default_payment_method7",
-                "success_url": "success_url9",
-                "payment_url": "payment_url1",
-                "gateway_affiliation_id": "gateway_affiliation_id3",
-                "accepted_payment_methods": [
-                  "accepted_payment_methods0",
-                  "accepted_payment_methods1",
-                  "accepted_payment_methods2"
-                ],
-                "status": "status9",
-                "skip_checkout_success_page": true,
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "updated_at": "2016-03-13T12:52:32.123Z",
-                "canceled_at": "2016-03-13T12:52:32.123Z",
-                "customer_editable": true,
-                "customer": {},
-                "billingaddress": {},
-                "credit_card": {
-                  "statementDescriptor": "statementDescriptor1",
-                  "installments": [
                     {
-                      "number": "number8",
-                      "total": 116
-                    }
-                  ],
-                  "authentication": {
-                    "type": "type3",
-                    "threed_secure": {
-                      "mpi": "mpi7",
-                      "eci": "eci5",
-                      "cavv": "cavv1",
-                      "transaction_Id": "transaction_Id9",
-                      "success_url": "success_url7"
-                    }
-                  }
-                },
-                "boleto": {
-                  "due_at": "2016-03-13T12:52:32.123Z",
-                  "instructions": "instructions5"
-                },
-                "billing_address_editable": true,
-                "shipping": {},
-                "shippable": true,
-                "closed_at": "2016-03-13T12:52:32.123Z",
-                "expires_at": "2016-03-13T12:52:32.123Z",
-                "currency": "currency7",
-                "debit_card": {
-                  "statement_descriptor": "statement_descriptor1",
-                  "authentication": {
-                    "type": "type7",
-                    "threed_secure": {
-                      "mpi": "mpi3",
-                      "eci": "eci9",
-                      "cavv": "cavv5",
-                      "transaction_Id": "transaction_Id5",
-                      "success_url": "success_url1"
-                    }
-                  }
-                },
-                "bank_transfer": {
-                  "bank": [
-                    "bank2",
-                    "bank3"
-                  ]
-                },
-                "accepted_brands": [
-                  "accepted_brands3",
-                  "accepted_brands4",
-                  "accepted_brands5"
-                ],
-                "pix": {
-                  "expires_at": "2016-03-13T12:52:32.123Z",
-                  "additional_information": [
-                    {
-                      "Name": "Name4",
-                      "Value": "Value2"
+                      "id": "id0",
+                      "value": 70.22,
+                      "increment_type": "increment_type2",
+                      "status": "status2",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 122,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description0",
+                      "subscription": {},
+                      "subscription_item": {}
                     },
                     {
-                      "Name": "Name5",
-                      "Value": "Value3"
-                    },
-                    {
-                      "Name": "Name6",
-                      "Value": "Value4"
+                      "id": "id1",
+                      "value": 70.23,
+                      "increment_type": "increment_type3",
+                      "status": "status3",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 121,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description1",
+                      "subscription": {},
+                      "subscription_item": {}
                     }
-                  ]
+                  ],
+                  "subscription": {},
+                  "name": "name1",
+                  "quantity": 59,
+                  "cycles": 79,
+                  "deleted_at": "2016-03-13T12:52:32.123Z"
                 }
               }
             ],
-            "ip": "ip4",
-            "session_id": "session_id8",
-            "location": {
-              "latitude": "latitude2",
-              "longitude": "longitude8"
+            "increments": [
+              {
+                "id": "id5",
+                "value": 36.47,
+                "increment_type": "increment_type7",
+                "status": "status3",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "cycles": 169,
+                "deleted_at": "2016-03-13T12:52:32.123Z",
+                "description": "description5",
+                "subscription": {},
+                "subscription_item": {
+                  "id": "id1",
+                  "description": "description9",
+                  "status": "status7",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "pricing_scheme": {
+                    "price": 77,
+                    "scheme_type": "scheme_type7",
+                    "price_brackets": [
+                      {
+                        "start_quantity": 132,
+                        "price": 70,
+                        "end_quantity": 140,
+                        "overage_price": 154
+                      }
+                    ],
+                    "minimum_price": 19,
+                    "percentage": 190.45
+                  },
+                  "discounts": [
+                    {
+                      "id": "id2",
+                      "value": 71.54,
+                      "discount_type": "discount_type0",
+                      "status": "status4",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 10,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description2",
+                      "subscription": {},
+                      "subscription_item": {}
+                    },
+                    {
+                      "id": "id3",
+                      "value": 71.55,
+                      "discount_type": "discount_type1",
+                      "status": "status5",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 11,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description3",
+                      "subscription": {},
+                      "subscription_item": {}
+                    }
+                  ],
+                  "increments": [
+                    {},
+                    {}
+                  ],
+                  "subscription": {},
+                  "name": "name1",
+                  "quantity": 55,
+                  "cycles": 181,
+                  "deleted_at": "2016-03-13T12:52:32.123Z"
+                }
+              }
+            ],
+            "boleto_due_days": 4,
+            "split": {
+              "enabled": false,
+              "rules": [
+                {
+                  "type": "type8",
+                  "amount": 220,
+                  "recipient": {
+                    "id": "id6",
+                    "name": "name6",
+                    "email": "email0",
+                    "document": "document0",
+                    "description": "description4",
+                    "type": "type4",
+                    "status": "status2",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "default_bank_account": {
+                      "id": "id4",
+                      "holder_name": "holder_name0",
+                      "holder_type": "holder_type6",
+                      "bank": "bank2",
+                      "branch_number": "branch_number0",
+                      "branch_check_digit": "branch_check_digit0",
+                      "account_number": "account_number4",
+                      "account_check_digit": "account_check_digit0",
+                      "type": "type6",
+                      "status": "status6",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "updated_at": "2016-03-13T12:52:32.123Z",
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "recipient": {},
+                      "metadata": {
+                        "key0": "metadata1"
+                      },
+                      "pix_key": "pix_key2"
+                    },
+                    "gateway_recipients": [
+                      {
+                        "gateway": "gateway0",
+                        "status": "status2",
+                        "pgid": "pgid6",
+                        "created_at": "created_at8",
+                        "updated_at": "updated_at6"
+                      }
+                    ],
+                    "metadata": {
+                      "key0": "metadata7"
+                    },
+                    "automatic_anticipation_settings": {
+                      "enabled": false,
+                      "type": "type0",
+                      "volume_percentage": 26,
+                      "delay": 8,
+                      "days": [
+                        240,
+                        241,
+                        242
+                      ]
+                    },
+                    "transfer_settings": {
+                      "transfer_enabled": false,
+                      "transfer_interval": "transfer_interval8",
+                      "transfer_day": 192
+                    },
+                    "code": "code4",
+                    "payment_mode": "payment_mode0"
+                  },
+                  "gateway_id": "gateway_id8",
+                  "options": {
+                    "liable": false,
+                    "charge_processing_fee": false,
+                    "charge_remainder_fee": "charge_remainder_fee8"
+                  },
+                  "id": "id2"
+                },
+                {
+                  "type": "type7",
+                  "amount": 221,
+                  "recipient": {
+                    "id": "id5",
+                    "name": "name5",
+                    "email": "email1",
+                    "document": "document1",
+                    "description": "description5",
+                    "type": "type5",
+                    "status": "status3",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "default_bank_account": {
+                      "id": "id3",
+                      "holder_name": "holder_name9",
+                      "holder_type": "holder_type5",
+                      "bank": "bank1",
+                      "branch_number": "branch_number9",
+                      "branch_check_digit": "branch_check_digit9",
+                      "account_number": "account_number3",
+                      "account_check_digit": "account_check_digit9",
+                      "type": "type7",
+                      "status": "status5",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "updated_at": "2016-03-13T12:52:32.123Z",
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "recipient": {},
+                      "metadata": {
+                        "key0": "metadata0",
+                        "key1": "metadata9"
+                      },
+                      "pix_key": "pix_key3"
+                    },
+                    "gateway_recipients": [
+                      {
+                        "gateway": "gateway9",
+                        "status": "status1",
+                        "pgid": "pgid5",
+                        "created_at": "created_at7",
+                        "updated_at": "updated_at5"
+                      },
+                      {
+                        "gateway": "gateway0",
+                        "status": "status2",
+                        "pgid": "pgid6",
+                        "created_at": "created_at8",
+                        "updated_at": "updated_at6"
+                      },
+                      {
+                        "gateway": "gateway1",
+                        "status": "status3",
+                        "pgid": "pgid7",
+                        "created_at": "created_at9",
+                        "updated_at": "updated_at7"
+                      }
+                    ],
+                    "metadata": {
+                      "key0": "metadata8",
+                      "key1": "metadata9"
+                    },
+                    "automatic_anticipation_settings": {
+                      "enabled": true,
+                      "type": "type1",
+                      "volume_percentage": 27,
+                      "delay": 7,
+                      "days": [
+                        239,
+                        240
+                      ]
+                    },
+                    "transfer_settings": {
+                      "transfer_enabled": true,
+                      "transfer_interval": "transfer_interval9",
+                      "transfer_day": 193
+                    },
+                    "code": "code3",
+                    "payment_mode": "payment_mode1"
+                  },
+                  "gateway_id": "gateway_id7",
+                  "options": {
+                    "liable": true,
+                    "charge_processing_fee": true,
+                    "charge_remainder_fee": "charge_remainder_fee7"
+                  },
+                  "id": "id3"
+                }
+              ]
             },
-            "device": {
-              "platform": "platform0"
+            "boleto": {
+              "interest": {
+                "days": 86,
+                "type": "type8",
+                "amount": 160
+              },
+              "fine": {
+                "days": 52,
+                "type": "type6",
+                "amount": 234
+              },
+              "max_days_to_pay_past_due": 192
             },
-            "closed": false
+            "manual_billing": false
           },
-          "customer": {},
-          "metadata": {
-            "key0": "metadata3"
-          },
-          "paid_at": "2016-03-13T12:52:32.123Z",
-          "canceled_at": "2016-03-13T12:52:32.123Z",
-          "canceled_amount": 156,
-          "paid_amount": 138,
-          "interest_and_fine_paid": 142,
-          "recurrency_cycle": "recurrency_cycle0"
+          "status": "status4",
+          "duration": 198,
+          "created_at": "created_at0",
+          "updated_at": "updated_at8",
+          "cycle": 138
         },
-        "installments": 28,
-        "billing_address": {},
-        "subscription": {},
-        "cycle": {},
-        "shipping": {},
+        "shipping": {
+          "amount": 86,
+          "description": "description6",
+          "recipient_name": "recipient_name4",
+          "recipient_phone": "recipient_phone8",
+          "address": {
+            "id": "id2",
+            "street": "street2",
+            "number": "number0",
+            "complement": "complement8",
+            "zip_code": "zip_code6",
+            "neighborhood": "neighborhood8",
+            "city": "city2",
+            "state": "state8",
+            "country": "country6",
+            "status": "status4",
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "customer": {
+              "id": "id2",
+              "name": "name2",
+              "email": "email4",
+              "delinquent": false,
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "document": "document6",
+              "type": "type8",
+              "fb_access_token": "fb_access_token6",
+              "address": {},
+              "metadata": {
+                "key0": "metadata9"
+              },
+              "phones": {
+                "home_phone": {
+                  "country_code": "country_code4",
+                  "number": "number2",
+                  "area_code": "area_code4"
+                },
+                "mobile_phone": {
+                  "country_code": "country_code4",
+                  "number": "number8",
+                  "area_code": "area_code4"
+                }
+              },
+              "fb_id": 134,
+              "code": "code0",
+              "document_type": "document_type0"
+            },
+            "metadata": {
+              "key0": "metadata9",
+              "key1": "metadata8"
+            },
+            "line_1": "line_16",
+            "line_2": "line_20",
+            "deleted_at": "2016-03-13T12:52:32.123Z"
+          },
+          "max_delivery_date": "2016-03-13T12:52:32.123Z",
+          "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
+          "type": "type4"
+        },
         "metadata": {
           "key0": "metadata1"
         },
@@ -1487,10 +2412,76 @@ Response object for getting an Order
         "code": "code6",
         "currency": "currency8",
         "items": [
-          {},
-          {}
+          {
+            "id": "id5",
+            "amount": 213,
+            "description": "description5",
+            "quantity": 71,
+            "category": "category3",
+            "code": "code3"
+          },
+          {
+            "id": "id6",
+            "amount": 214,
+            "description": "description6",
+            "quantity": 72,
+            "category": "category4",
+            "code": "code4"
+          }
         ],
-        "customer": {},
+        "customer": {
+          "id": "id8",
+          "name": "name8",
+          "email": "email8",
+          "delinquent": false,
+          "created_at": "2016-03-13T12:52:32.123Z",
+          "updated_at": "2016-03-13T12:52:32.123Z",
+          "document": "document2",
+          "type": "type2",
+          "fb_access_token": "fb_access_token2",
+          "address": {
+            "id": "id4",
+            "street": "street4",
+            "number": "number2",
+            "complement": "complement0",
+            "zip_code": "zip_code8",
+            "neighborhood": "neighborhood0",
+            "city": "city4",
+            "state": "state0",
+            "country": "country8",
+            "status": "status6",
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "customer": {},
+            "metadata": {
+              "key0": "metadata5",
+              "key1": "metadata4",
+              "key2": "metadata3"
+            },
+            "line_1": "line_18",
+            "line_2": "line_22",
+            "deleted_at": "2016-03-13T12:52:32.123Z"
+          },
+          "metadata": {
+            "key0": "metadata5",
+            "key1": "metadata6"
+          },
+          "phones": {
+            "home_phone": {
+              "country_code": "country_code0",
+              "number": "number8",
+              "area_code": "area_code0"
+            },
+            "mobile_phone": {
+              "country_code": "country_code0",
+              "number": "number2",
+              "area_code": "area_code0"
+            }
+          },
+          "fb_id": 186,
+          "code": "code6",
+          "document_type": "document_type6"
+        },
         "status": "status0",
         "created_at": "2016-03-13T12:52:32.123Z",
         "updated_at": "2016-03-13T12:52:32.123Z",
@@ -1500,14 +2491,326 @@ Response object for getting an Order
           {}
         ],
         "invoice_url": "invoice_url0",
-        "shipping": {},
+        "shipping": {
+          "amount": 252,
+          "description": "description2",
+          "recipient_name": "recipient_name0",
+          "recipient_phone": "recipient_phone4",
+          "address": {
+            "id": "id8",
+            "street": "street8",
+            "number": "number6",
+            "complement": "complement4",
+            "zip_code": "zip_code2",
+            "neighborhood": "neighborhood4",
+            "city": "city8",
+            "state": "state4",
+            "country": "country2",
+            "status": "status0",
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "customer": {
+              "id": "id8",
+              "name": "name8",
+              "email": "email2",
+              "delinquent": false,
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "document": "document2",
+              "type": "type8",
+              "fb_access_token": "fb_access_token2",
+              "address": {},
+              "metadata": {
+                "key0": "metadata1",
+                "key1": "metadata0"
+              },
+              "phones": {
+                "home_phone": {
+                  "country_code": "country_code0",
+                  "number": "number8",
+                  "area_code": "area_code0"
+                },
+                "mobile_phone": {
+                  "country_code": "country_code0",
+                  "number": "number8",
+                  "area_code": "area_code0"
+                }
+              },
+              "fb_id": 44,
+              "code": "code6",
+              "document_type": "document_type6"
+            },
+            "metadata": {
+              "key0": "metadata9"
+            },
+            "line_1": "line_12",
+            "line_2": "line_26",
+            "deleted_at": "2016-03-13T12:52:32.123Z"
+          },
+          "max_delivery_date": "2016-03-13T12:52:32.123Z",
+          "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
+          "type": "type2"
+        },
         "metadata": {
           "key0": "metadata5",
           "key1": "metadata4",
           "key2": "metadata3"
         },
         "checkouts": [
-          {}
+          {
+            "id": "id5",
+            "amount": 163,
+            "default_payment_method": "default_payment_method5",
+            "success_url": "success_url7",
+            "payment_url": "payment_url9",
+            "gateway_affiliation_id": "gateway_affiliation_id1",
+            "accepted_payment_methods": [
+              "accepted_payment_methods8",
+              "accepted_payment_methods9",
+              "accepted_payment_methods0"
+            ],
+            "status": "status7",
+            "skip_checkout_success_page": true,
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "canceled_at": "2016-03-13T12:52:32.123Z",
+            "customer_editable": true,
+            "customer": {
+              "id": "id5",
+              "name": "name5",
+              "email": "email9",
+              "delinquent": true,
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "document": "document9",
+              "type": "type5",
+              "fb_access_token": "fb_access_token9",
+              "address": {
+                "id": "id1",
+                "street": "street1",
+                "number": "number9",
+                "complement": "complement7",
+                "zip_code": "zip_code5",
+                "neighborhood": "neighborhood7",
+                "city": "city1",
+                "state": "state7",
+                "country": "country5",
+                "status": "status3",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "customer": {},
+                "metadata": {
+                  "key0": "metadata2",
+                  "key1": "metadata3",
+                  "key2": "metadata4"
+                },
+                "line_1": "line_15",
+                "line_2": "line_29",
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              "metadata": {
+                "key0": "metadata4",
+                "key1": "metadata3",
+                "key2": "metadata2"
+              },
+              "phones": {
+                "home_phone": {
+                  "country_code": "country_code7",
+                  "number": "number5",
+                  "area_code": "area_code7"
+                },
+                "mobile_phone": {
+                  "country_code": "country_code7",
+                  "number": "number5",
+                  "area_code": "area_code7"
+                }
+              },
+              "fb_id": 195,
+              "code": "code3",
+              "document_type": "document_type3"
+            },
+            "billingaddress": {
+              "id": "id3",
+              "street": "street3",
+              "number": "number1",
+              "complement": "complement9",
+              "zip_code": "zip_code7",
+              "neighborhood": "neighborhood9",
+              "city": "city3",
+              "state": "state9",
+              "country": "country7",
+              "status": "status5",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "customer": {
+                "id": "id3",
+                "name": "name3",
+                "email": "email7",
+                "delinquent": true,
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "document": "document7",
+                "type": "type3",
+                "fb_access_token": "fb_access_token7",
+                "address": {},
+                "metadata": {
+                  "key0": "metadata4",
+                  "key1": "metadata5"
+                },
+                "phones": {
+                  "home_phone": {
+                    "country_code": "country_code5",
+                    "number": "number3",
+                    "area_code": "area_code5"
+                  },
+                  "mobile_phone": {
+                    "country_code": "country_code5",
+                    "number": "number3",
+                    "area_code": "area_code5"
+                  }
+                },
+                "fb_id": 21,
+                "code": "code1",
+                "document_type": "document_type1"
+              },
+              "metadata": {
+                "key0": "metadata4"
+              },
+              "line_1": "line_17",
+              "line_2": "line_21",
+              "deleted_at": "2016-03-13T12:52:32.123Z"
+            },
+            "credit_card": {
+              "statementDescriptor": "statementDescriptor9",
+              "installments": [
+                {
+                  "number": "number6",
+                  "total": 120
+                }
+              ],
+              "authentication": {
+                "type": "type5",
+                "threed_secure": {
+                  "mpi": "mpi1",
+                  "eci": "eci3",
+                  "cavv": "cavv9",
+                  "transaction_Id": "transaction_Id9",
+                  "success_url": "success_url5"
+                }
+              }
+            },
+            "boleto": {
+              "due_at": "2016-03-13T12:52:32.123Z",
+              "instructions": "instructions3"
+            },
+            "billing_address_editable": true,
+            "shipping": {
+              "amount": 5,
+              "description": "description9",
+              "recipient_name": "recipient_name7",
+              "recipient_phone": "recipient_phone1",
+              "address": {
+                "id": "id5",
+                "street": "street5",
+                "number": "number3",
+                "complement": "complement1",
+                "zip_code": "zip_code9",
+                "neighborhood": "neighborhood1",
+                "city": "city5",
+                "state": "state1",
+                "country": "country9",
+                "status": "status7",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "customer": {
+                  "id": "id5",
+                  "name": "name5",
+                  "email": "email9",
+                  "delinquent": true,
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "document": "document9",
+                  "type": "type5",
+                  "fb_access_token": "fb_access_token9",
+                  "address": {},
+                  "metadata": {
+                    "key0": "metadata6",
+                    "key1": "metadata7"
+                  },
+                  "phones": {
+                    "home_phone": {
+                      "country_code": "country_code7",
+                      "number": "number5",
+                      "area_code": "area_code7"
+                    },
+                    "mobile_phone": {
+                      "country_code": "country_code7",
+                      "number": "number5",
+                      "area_code": "area_code7"
+                    }
+                  },
+                  "fb_id": 53,
+                  "code": "code3",
+                  "document_type": "document_type3"
+                },
+                "metadata": {
+                  "key0": "metadata6"
+                },
+                "line_1": "line_19",
+                "line_2": "line_23",
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              "max_delivery_date": "2016-03-13T12:52:32.123Z",
+              "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
+              "type": "type9"
+            },
+            "shippable": true,
+            "closed_at": "2016-03-13T12:52:32.123Z",
+            "expires_at": "2016-03-13T12:52:32.123Z",
+            "currency": "currency5",
+            "debit_card": {
+              "statement_descriptor": "statement_descriptor9",
+              "authentication": {
+                "type": "type1",
+                "threed_secure": {
+                  "mpi": "mpi7",
+                  "eci": "eci9",
+                  "cavv": "cavv5",
+                  "transaction_Id": "transaction_Id5",
+                  "success_url": "success_url1"
+                }
+              }
+            },
+            "bank_transfer": {
+              "bank": [
+                "bank0",
+                "bank1",
+                "bank2"
+              ]
+            },
+            "accepted_brands": [
+              "accepted_brands1",
+              "accepted_brands2",
+              "accepted_brands3"
+            ],
+            "pix": {
+              "expires_at": "2016-03-13T12:52:32.123Z",
+              "additional_information": [
+                {
+                  "Name": "Name2",
+                  "Value": "Value0"
+                },
+                {
+                  "Name": "Name3",
+                  "Value": "Value1"
+                },
+                {
+                  "Name": "Name4",
+                  "Value": "Value2"
+                }
+              ]
+            }
+          }
         ],
         "ip": "ip2",
         "session_id": "session_id0",
@@ -1520,7 +2823,60 @@ Response object for getting an Order
         },
         "closed": false
       },
-      "customer": {},
+      "customer": {
+        "id": "id2",
+        "name": "name2",
+        "email": "email4",
+        "delinquent": false,
+        "created_at": "2016-03-13T12:52:32.123Z",
+        "updated_at": "2016-03-13T12:52:32.123Z",
+        "document": "document4",
+        "type": "type8",
+        "fb_access_token": "fb_access_token6",
+        "address": {
+          "id": "id8",
+          "street": "street8",
+          "number": "number6",
+          "complement": "complement4",
+          "zip_code": "zip_code2",
+          "neighborhood": "neighborhood4",
+          "city": "city8",
+          "state": "state4",
+          "country": "country2",
+          "status": "status0",
+          "created_at": "2016-03-13T12:52:32.123Z",
+          "updated_at": "2016-03-13T12:52:32.123Z",
+          "customer": {},
+          "metadata": {
+            "key0": "metadata5",
+            "key1": "metadata4",
+            "key2": "metadata3"
+          },
+          "line_1": "line_18",
+          "line_2": "line_26",
+          "deleted_at": "2016-03-13T12:52:32.123Z"
+        },
+        "metadata": {
+          "key0": "metadata1",
+          "key1": "metadata2",
+          "key2": "metadata3"
+        },
+        "phones": {
+          "home_phone": {
+            "country_code": "country_code6",
+            "number": "number8",
+            "area_code": "area_code4"
+          },
+          "mobile_phone": {
+            "country_code": "country_code6",
+            "number": "number6",
+            "area_code": "area_code6"
+          }
+        },
+        "fb_id": 86,
+        "code": "code0",
+        "document_type": "document_type0"
+      },
       "metadata": {
         "key0": "metadata5"
       },
@@ -1580,75 +2936,20 @@ Response object for getting an Order
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
                 "deleted_at": "2016-03-13T12:52:32.123Z",
-                "recipient": {
-                  "id": "id5",
-                  "name": "name5",
-                  "email": "email1",
-                  "document": "document1",
-                  "description": "description5",
-                  "type": "type5",
-                  "status": "status3",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "updated_at": "2016-03-13T12:52:32.123Z",
-                  "deleted_at": "2016-03-13T12:52:32.123Z",
-                  "default_bank_account": {
-                    "id": "id3",
-                    "holder_name": "holder_name9",
-                    "holder_type": "holder_type5",
-                    "bank": "bank1",
-                    "branch_number": "branch_number9",
-                    "branch_check_digit": "branch_check_digit9",
-                    "account_number": "account_number3",
-                    "account_check_digit": "account_check_digit9",
-                    "type": "type3",
-                    "status": "status5",
-                    "created_at": "2016-03-13T12:52:32.123Z",
-                    "updated_at": "2016-03-13T12:52:32.123Z",
-                    "deleted_at": "2016-03-13T12:52:32.123Z",
-                    "recipient": {},
-                    "metadata": {
-                      "key0": "metadata0"
-                    },
-                    "pix_key": "pix_key3"
-                  },
-                  "gateway_recipients": [
-                    {
-                      "gateway": "gateway9",
-                      "status": "status1",
-                      "pgid": "pgid5",
-                      "created_at": "created_at7",
-                      "updated_at": "updated_at5"
-                    }
-                  ],
-                  "metadata": {
-                    "key0": "metadata8"
-                  },
-                  "automatic_anticipation_settings": {
-                    "enabled": true,
-                    "type": "type1",
-                    "volume_percentage": 35,
-                    "delay": 255,
-                    "days": [
-                      231,
-                      232,
-                      233
-                    ]
-                  },
-                  "transfer_settings": {
-                    "transfer_enabled": true,
-                    "transfer_interval": "transfer_interval9",
-                    "transfer_day": 201
-                  },
-                  "code": "code3",
-                  "payment_mode": "payment_mode9"
-                },
+                "recipient": {},
                 "metadata": {
                   "key0": "metadata0"
                 },
                 "pix_key": "pix_key3"
               },
               "gateway_recipients": [
-                {}
+                {
+                  "gateway": "gateway9",
+                  "status": "status1",
+                  "pgid": "pgid5",
+                  "created_at": "created_at7",
+                  "updated_at": "updated_at5"
+                }
               ],
               "metadata": {
                 "key0": "metadata8"
@@ -1708,77 +3009,7 @@ Response object for getting an Order
                 "created_at": "2016-03-13T12:52:32.123Z",
                 "updated_at": "2016-03-13T12:52:32.123Z",
                 "deleted_at": "2016-03-13T12:52:32.123Z",
-                "recipient": {
-                  "id": "id6",
-                  "name": "name6",
-                  "email": "email0",
-                  "document": "document0",
-                  "description": "description6",
-                  "type": "type4",
-                  "status": "status2",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "updated_at": "2016-03-13T12:52:32.123Z",
-                  "deleted_at": "2016-03-13T12:52:32.123Z",
-                  "default_bank_account": {
-                    "id": "id4",
-                    "holder_name": "holder_name0",
-                    "holder_type": "holder_type6",
-                    "bank": "bank2",
-                    "branch_number": "branch_number0",
-                    "branch_check_digit": "branch_check_digit0",
-                    "account_number": "account_number4",
-                    "account_check_digit": "account_check_digit0",
-                    "type": "type4",
-                    "status": "status6",
-                    "created_at": "2016-03-13T12:52:32.123Z",
-                    "updated_at": "2016-03-13T12:52:32.123Z",
-                    "deleted_at": "2016-03-13T12:52:32.123Z",
-                    "recipient": {},
-                    "metadata": {
-                      "key0": "metadata1",
-                      "key1": "metadata0",
-                      "key2": "metadata9"
-                    },
-                    "pix_key": "pix_key2"
-                  },
-                  "gateway_recipients": [
-                    {
-                      "gateway": "gateway0",
-                      "status": "status2",
-                      "pgid": "pgid6",
-                      "created_at": "created_at8",
-                      "updated_at": "updated_at6"
-                    },
-                    {
-                      "gateway": "gateway1",
-                      "status": "status3",
-                      "pgid": "pgid7",
-                      "created_at": "created_at9",
-                      "updated_at": "updated_at7"
-                    }
-                  ],
-                  "metadata": {
-                    "key0": "metadata7",
-                    "key1": "metadata8",
-                    "key2": "metadata9"
-                  },
-                  "automatic_anticipation_settings": {
-                    "enabled": false,
-                    "type": "type0",
-                    "volume_percentage": 34,
-                    "delay": 0,
-                    "days": [
-                      232
-                    ]
-                  },
-                  "transfer_settings": {
-                    "transfer_enabled": false,
-                    "transfer_interval": "transfer_interval8",
-                    "transfer_day": 200
-                  },
-                  "code": "code4",
-                  "payment_mode": "payment_mode0"
-                },
+                "recipient": {},
                 "metadata": {
                   "key0": "metadata1",
                   "key1": "metadata0",
@@ -1787,8 +3018,20 @@ Response object for getting an Order
                 "pix_key": "pix_key2"
               },
               "gateway_recipients": [
-                {},
-                {}
+                {
+                  "gateway": "gateway0",
+                  "status": "status2",
+                  "pgid": "pgid6",
+                  "created_at": "created_at8",
+                  "updated_at": "updated_at6"
+                },
+                {
+                  "gateway": "gateway1",
+                  "status": "status3",
+                  "pgid": "pgid7",
+                  "created_at": "created_at9",
+                  "updated_at": "updated_at7"
+                }
               ],
               "metadata": {
                 "key0": "metadata7",
@@ -1846,7 +3089,79 @@ Response object for getting an Order
           "key0": "metadata8"
         },
         "split": [
-          {}
+          {
+            "type": "type9",
+            "amount": 47,
+            "recipient": {
+              "id": "id1",
+              "name": "name1",
+              "email": "email5",
+              "document": "document5",
+              "description": "description1",
+              "type": "type9",
+              "status": "status3",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "default_bank_account": {
+                "id": "id9",
+                "holder_name": "holder_name5",
+                "holder_type": "holder_type1",
+                "bank": "bank7",
+                "branch_number": "branch_number5",
+                "branch_check_digit": "branch_check_digit5",
+                "account_number": "account_number9",
+                "account_check_digit": "account_check_digit5",
+                "type": "type9",
+                "status": "status1",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "deleted_at": "2016-03-13T12:52:32.123Z",
+                "recipient": {},
+                "metadata": {
+                  "key0": "metadata0"
+                },
+                "pix_key": "pix_key3"
+              },
+              "gateway_recipients": [
+                {
+                  "gateway": "gateway5",
+                  "status": "status7",
+                  "pgid": "pgid1",
+                  "created_at": "created_at3",
+                  "updated_at": "updated_at1"
+                }
+              ],
+              "metadata": {
+                "key0": "metadata8"
+              },
+              "automatic_anticipation_settings": {
+                "enabled": true,
+                "type": "type5",
+                "volume_percentage": 91,
+                "delay": 199,
+                "days": [
+                  175,
+                  176,
+                  177
+                ]
+              },
+              "transfer_settings": {
+                "transfer_enabled": true,
+                "transfer_interval": "transfer_interval3",
+                "transfer_day": 1
+              },
+              "code": "code9",
+              "payment_mode": "payment_mode5"
+            },
+            "gateway_id": "gateway_id9",
+            "options": {
+              "liable": true,
+              "charge_processing_fee": true,
+              "charge_remainder_fee": "charge_remainder_fee5"
+            },
+            "id": "id9"
+          }
         ],
         "interest": {
           "days": 9,
@@ -1898,7 +3213,12 @@ Response object for getting an Order
               "minimum_price": 88,
               "percentage": 248.26
             },
-            "price_bracket": {},
+            "price_bracket": {
+              "start_quantity": 22,
+              "price": 40,
+              "end_quantity": 30,
+              "overage_price": 44
+            },
             "quantity": 162,
             "name": "name0",
             "subscription_item_id": "subscription_item_id4"
@@ -1926,7 +3246,12 @@ Response object for getting an Order
               "minimum_price": 89,
               "percentage": 248.25
             },
-            "price_bracket": {},
+            "price_bracket": {
+              "start_quantity": 23,
+              "price": 39,
+              "end_quantity": 31,
+              "overage_price": 45
+            },
             "quantity": 163,
             "name": "name1",
             "subscription_item_id": "subscription_item_id5"
@@ -1955,6 +3280,1552 @@ Response object for getting an Order
             "status": "status5",
             "created_at": "2016-03-13T12:52:32.123Z",
             "updated_at": "2016-03-13T12:52:32.123Z",
+            "customer": {},
+            "metadata": {
+              "key0": "metadata0"
+            },
+            "line_1": "line_13",
+            "line_2": "line_21",
+            "deleted_at": "2016-03-13T12:52:32.123Z"
+          },
+          "metadata": {
+            "key0": "metadata6"
+          },
+          "phones": {
+            "home_phone": {
+              "country_code": "country_code9",
+              "number": "number3",
+              "area_code": "area_code9"
+            },
+            "mobile_phone": {
+              "country_code": "country_code1",
+              "number": "number1",
+              "area_code": "area_code1"
+            }
+          },
+          "fb_id": 139,
+          "code": "code5",
+          "document_type": "document_type5"
+        },
+        "charge": {},
+        "installments": 29,
+        "billing_address": {
+          "street": "street5",
+          "number": "number7",
+          "zip_code": "zip_code9",
+          "neighborhood": "neighborhood1",
+          "city": "city5",
+          "state": "state9",
+          "country": "country9",
+          "complement": "complement9",
+          "line_1": "line_11",
+          "line_2": "line_23"
+        },
+        "subscription": {
+          "id": "id1",
+          "code": "code9",
+          "start_at": "2016-03-13T12:52:32.123Z",
+          "interval": "interval9",
+          "interval_count": 199,
+          "billing_type": "billing_type5",
+          "current_cycle": {
+            "start_at": "2016-03-13T12:52:32.123Z",
+            "end_at": "2016-03-13T12:52:32.123Z",
+            "id": "id9",
+            "billing_at": "2016-03-13T12:52:32.123Z",
+            "subscription": {},
+            "status": "status1",
+            "duration": 183,
+            "created_at": "created_at7",
+            "updated_at": "updated_at5",
+            "cycle": 123
+          },
+          "payment_method": "payment_method1",
+          "currency": "currency1",
+          "installments": 111,
+          "status": "status3",
+          "created_at": "2016-03-13T12:52:32.123Z",
+          "updated_at": "2016-03-13T12:52:32.123Z",
+          "customer": {
+            "id": "id1",
+            "name": "name1",
+            "email": "email5",
+            "delinquent": true,
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "document": "document5",
+            "type": "type9",
+            "fb_access_token": "fb_access_token5",
+            "address": {
+              "id": "id7",
+              "street": "street7",
+              "number": "number5",
+              "complement": "complement3",
+              "zip_code": "zip_code1",
+              "neighborhood": "neighborhood3",
+              "city": "city7",
+              "state": "state3",
+              "country": "country1",
+              "status": "status9",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "customer": {},
+              "metadata": {
+                "key0": "metadata2",
+                "key1": "metadata1",
+                "key2": "metadata0"
+              },
+              "line_1": "line_11",
+              "line_2": "line_25",
+              "deleted_at": "2016-03-13T12:52:32.123Z"
+            },
+            "metadata": {
+              "key0": "metadata8",
+              "key1": "metadata7"
+            },
+            "phones": {
+              "home_phone": {
+                "country_code": "country_code3",
+                "number": "number1",
+                "area_code": "area_code3"
+              },
+              "mobile_phone": {
+                "country_code": "country_code3",
+                "number": "number9",
+                "area_code": "area_code3"
+              }
+            },
+            "fb_id": 103,
+            "code": "code9",
+            "document_type": "document_type9"
+          },
+          "card": {
+            "id": "id5",
+            "last_four_digits": "last_four_digits1",
+            "brand": "brand9",
+            "holder_name": "holder_name1",
+            "exp_month": 251,
+            "exp_year": 45,
+            "status": "status7",
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "billing_address": {
+              "street": "street7",
+              "number": "number5",
+              "zip_code": "zip_code1",
+              "neighborhood": "neighborhood3",
+              "city": "city3",
+              "state": "state7",
+              "country": "country1",
+              "complement": "complement7",
+              "line_1": "line_19",
+              "line_2": "line_25"
+            },
+            "customer": {
+              "id": "id5",
+              "name": "name5",
+              "email": "email1",
+              "delinquent": true,
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "document": "document1",
+              "type": "type5",
+              "fb_access_token": "fb_access_token9",
+              "address": {
+                "id": "id1",
+                "street": "street1",
+                "number": "number9",
+                "complement": "complement7",
+                "zip_code": "zip_code5",
+                "neighborhood": "neighborhood7",
+                "city": "city1",
+                "state": "state7",
+                "country": "country5",
+                "status": "status3",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "customer": {},
+                "metadata": {
+                  "key0": "metadata8"
+                },
+                "line_1": "line_15",
+                "line_2": "line_29",
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              "metadata": {
+                "key0": "metadata8"
+              },
+              "phones": {
+                "home_phone": {
+                  "country_code": "country_code7",
+                  "number": "number5",
+                  "area_code": "area_code7"
+                },
+                "mobile_phone": {
+                  "country_code": "country_code7",
+                  "number": "number9",
+                  "area_code": "area_code3"
+                }
+              },
+              "fb_id": 33,
+              "code": "code3",
+              "document_type": "document_type3"
+            },
+            "metadata": {
+              "key0": "metadata2",
+              "key1": "metadata1"
+            },
+            "type": "type5",
+            "holder_document": "holder_document1",
+            "deleted_at": "2016-03-13T12:52:32.123Z",
+            "first_six_digits": "first_six_digits5",
+            "label": "label5"
+          },
+          "items": [
+            {
+              "id": "id8",
+              "description": "description8",
+              "status": "status0",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 22,
+                "scheme_type": "scheme_type0",
+                "price_brackets": [
+                  {
+                    "start_quantity": 187,
+                    "price": 131,
+                    "end_quantity": 195,
+                    "overage_price": 209
+                  },
+                  {
+                    "start_quantity": 188,
+                    "price": 130,
+                    "end_quantity": 196,
+                    "overage_price": 210
+                  },
+                  {
+                    "start_quantity": 189,
+                    "price": 129,
+                    "end_quantity": 197,
+                    "overage_price": 211
+                  }
+                ],
+                "minimum_price": 182,
+                "percentage": 32.28
+              },
+              "discounts": [
+                {
+                  "id": "id9",
+                  "value": 29.91,
+                  "discount_type": "discount_type7",
+                  "status": "status1",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 199,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description9",
+                  "subscription": {},
+                  "subscription_item": {}
+                },
+                {
+                  "id": "id0",
+                  "value": 29.92,
+                  "discount_type": "discount_type8",
+                  "status": "status2",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 200,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description0",
+                  "subscription": {},
+                  "subscription_item": {}
+                },
+                {
+                  "id": "id1",
+                  "value": 29.93,
+                  "discount_type": "discount_type9",
+                  "status": "status3",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 201,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description1",
+                  "subscription": {},
+                  "subscription_item": {}
+                }
+              ],
+              "increments": [
+                {
+                  "id": "id7",
+                  "value": 141.19,
+                  "increment_type": "increment_type9",
+                  "status": "status9",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 193,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description7",
+                  "subscription": {},
+                  "subscription_item": {}
+                }
+              ],
+              "subscription": {},
+              "name": "name8",
+              "quantity": 244,
+              "cycles": 8,
+              "deleted_at": "2016-03-13T12:52:32.123Z"
+            },
+            {
+              "id": "id9",
+              "description": "description9",
+              "status": "status1",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "pricing_scheme": {
+                "price": 21,
+                "scheme_type": "scheme_type1",
+                "price_brackets": [
+                  {
+                    "start_quantity": 188,
+                    "price": 130,
+                    "end_quantity": 196,
+                    "overage_price": 210
+                  }
+                ],
+                "minimum_price": 181,
+                "percentage": 32.29
+              },
+              "discounts": [
+                {
+                  "id": "id0",
+                  "value": 29.92,
+                  "discount_type": "discount_type8",
+                  "status": "status2",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 200,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description0",
+                  "subscription": {},
+                  "subscription_item": {}
+                }
+              ],
+              "increments": [
+                {
+                  "id": "id8",
+                  "value": 141.2,
+                  "increment_type": "increment_type0",
+                  "status": "status0",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 192,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description8",
+                  "subscription": {},
+                  "subscription_item": {}
+                },
+                {
+                  "id": "id9",
+                  "value": 141.21,
+                  "increment_type": "increment_type1",
+                  "status": "status1",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "cycles": 191,
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "description": "description9",
+                  "subscription": {},
+                  "subscription_item": {}
+                }
+              ],
+              "subscription": {},
+              "name": "name9",
+              "quantity": 245,
+              "cycles": 9,
+              "deleted_at": "2016-03-13T12:52:32.123Z"
+            }
+          ],
+          "statement_descriptor": "statement_descriptor1",
+          "metadata": {
+            "key0": "metadata8",
+            "key1": "metadata7",
+            "key2": "metadata6"
+          },
+          "setup": {
+            "id": "id5",
+            "description": "description5",
+            "amount": 135,
+            "status": "status7"
+          },
+          "gateway_affiliation_id": "gateway_affiliation_id7",
+          "next_billing_at": "2016-03-13T12:52:32.123Z",
+          "billing_day": 83,
+          "minimum_price": 197,
+          "canceled_at": "2016-03-13T12:52:32.123Z",
+          "discounts": [
+            {
+              "id": "id2",
+              "value": 60.04,
+              "discount_type": "discount_type0",
+              "status": "status4",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "cycles": 140,
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "description": "description2",
+              "subscription": {},
+              "subscription_item": {
+                "id": "id8",
+                "description": "description8",
+                "status": "status0",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 98,
+                  "scheme_type": "scheme_type0",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 51,
+                      "price": 245,
+                      "end_quantity": 59,
+                      "overage_price": 73
+                    },
+                    {
+                      "start_quantity": 52,
+                      "price": 246,
+                      "end_quantity": 60,
+                      "overage_price": 74
+                    }
+                  ],
+                  "minimum_price": 194,
+                  "percentage": 97.48
+                },
+                "discounts": [
+                  {},
+                  {}
+                ],
+                "increments": [
+                  {
+                    "id": "id7",
+                    "value": 206.39,
+                    "increment_type": "increment_type9",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 183,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description7",
+                    "subscription": {},
+                    "subscription_item": {}
+                  },
+                  {
+                    "id": "id8",
+                    "value": 206.4,
+                    "increment_type": "increment_type0",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 184,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description8",
+                    "subscription": {},
+                    "subscription_item": {}
+                  },
+                  {
+                    "id": "id9",
+                    "value": 206.41,
+                    "increment_type": "increment_type1",
+                    "status": "status1",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 185,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description9",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "subscription": {},
+                "name": "name8",
+                "quantity": 108,
+                "cycles": 128,
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              }
+            },
+            {
+              "id": "id3",
+              "value": 60.05,
+              "discount_type": "discount_type1",
+              "status": "status5",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "cycles": 141,
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "description": "description3",
+              "subscription": {},
+              "subscription_item": {
+                "id": "id9",
+                "description": "description9",
+                "status": "status1",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 99,
+                  "scheme_type": "scheme_type1",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 52,
+                      "price": 246,
+                      "end_quantity": 60,
+                      "overage_price": 74
+                    },
+                    {
+                      "start_quantity": 53,
+                      "price": 247,
+                      "end_quantity": 61,
+                      "overage_price": 75
+                    },
+                    {
+                      "start_quantity": 54,
+                      "price": 248,
+                      "end_quantity": 62,
+                      "overage_price": 76
+                    }
+                  ],
+                  "minimum_price": 195,
+                  "percentage": 97.49
+                },
+                "discounts": [
+                  {},
+                  {},
+                  {}
+                ],
+                "increments": [
+                  {
+                    "id": "id8",
+                    "value": 206.4,
+                    "increment_type": "increment_type0",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 184,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description8",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "subscription": {},
+                "name": "name9",
+                "quantity": 109,
+                "cycles": 129,
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              }
+            },
+            {
+              "id": "id4",
+              "value": 60.06,
+              "discount_type": "discount_type2",
+              "status": "status6",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "cycles": 142,
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "description": "description4",
+              "subscription": {},
+              "subscription_item": {
+                "id": "id0",
+                "description": "description0",
+                "status": "status2",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 100,
+                  "scheme_type": "scheme_type2",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 53,
+                      "price": 247,
+                      "end_quantity": 61,
+                      "overage_price": 75
+                    }
+                  ],
+                  "minimum_price": 196,
+                  "percentage": 97.5
+                },
+                "discounts": [
+                  {}
+                ],
+                "increments": [
+                  {
+                    "id": "id9",
+                    "value": 206.41,
+                    "increment_type": "increment_type1",
+                    "status": "status1",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 185,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description9",
+                    "subscription": {},
+                    "subscription_item": {}
+                  },
+                  {
+                    "id": "id0",
+                    "value": 206.42,
+                    "increment_type": "increment_type2",
+                    "status": "status2",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 186,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description0",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "subscription": {},
+                "name": "name0",
+                "quantity": 110,
+                "cycles": 130,
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              }
+            }
+          ],
+          "increments": [
+            {
+              "id": "id0",
+              "value": 171.32,
+              "increment_type": "increment_type2",
+              "status": "status8",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "cycles": 252,
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "description": "description0",
+              "subscription": {},
+              "subscription_item": {
+                "id": "id6",
+                "description": "description6",
+                "status": "status2",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 250,
+                  "scheme_type": "scheme_type2",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 215,
+                      "price": 103,
+                      "end_quantity": 223,
+                      "overage_price": 237
+                    }
+                  ],
+                  "minimum_price": 154,
+                  "percentage": 55.6
+                },
+                "discounts": [
+                  {
+                    "id": "id7",
+                    "value": 206.39,
+                    "discount_type": "discount_type5",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 183,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description7",
+                    "subscription": {},
+                    "subscription_item": {}
+                  },
+                  {
+                    "id": "id8",
+                    "value": 206.4,
+                    "discount_type": "discount_type6",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 184,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description8",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "increments": [
+                  {},
+                  {}
+                ],
+                "subscription": {},
+                "name": "name6",
+                "quantity": 228,
+                "cycles": 8,
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              }
+            }
+          ],
+          "boleto_due_days": 55,
+          "split": {
+            "enabled": true,
+            "rules": [
+              {
+                "type": "type9",
+                "amount": 15,
+                "recipient": {
+                  "id": "id3",
+                  "name": "name3",
+                  "email": "email3",
+                  "document": "document7",
+                  "description": "description3",
+                  "type": "type7",
+                  "status": "status5",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "default_bank_account": {
+                    "id": "id1",
+                    "holder_name": "holder_name7",
+                    "holder_type": "holder_type3",
+                    "bank": "bank9",
+                    "branch_number": "branch_number7",
+                    "branch_check_digit": "branch_check_digit7",
+                    "account_number": "account_number1",
+                    "account_check_digit": "account_check_digit7",
+                    "type": "type1",
+                    "status": "status3",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "recipient": {},
+                    "metadata": {
+                      "key0": "metadata8",
+                      "key1": "metadata7",
+                      "key2": "metadata6"
+                    },
+                    "pix_key": "pix_key5"
+                  },
+                  "gateway_recipients": [
+                    {
+                      "gateway": "gateway7",
+                      "status": "status9",
+                      "pgid": "pgid3",
+                      "created_at": "created_at5",
+                      "updated_at": "updated_at3"
+                    },
+                    {
+                      "gateway": "gateway8",
+                      "status": "status0",
+                      "pgid": "pgid4",
+                      "created_at": "created_at6",
+                      "updated_at": "updated_at4"
+                    },
+                    {
+                      "gateway": "gateway9",
+                      "status": "status1",
+                      "pgid": "pgid5",
+                      "created_at": "created_at7",
+                      "updated_at": "updated_at5"
+                    }
+                  ],
+                  "metadata": {
+                    "key0": "metadata0",
+                    "key1": "metadata9"
+                  },
+                  "automatic_anticipation_settings": {
+                    "enabled": true,
+                    "type": "type3",
+                    "volume_percentage": 123,
+                    "delay": 167,
+                    "days": [
+                      143,
+                      144
+                    ]
+                  },
+                  "transfer_settings": {
+                    "transfer_enabled": true,
+                    "transfer_interval": "transfer_interval1",
+                    "transfer_day": 33
+                  },
+                  "code": "code1",
+                  "payment_mode": "payment_mode7"
+                },
+                "gateway_id": "gateway_id9",
+                "options": {
+                  "liable": true,
+                  "charge_processing_fee": true,
+                  "charge_remainder_fee": "charge_remainder_fee7"
+                },
+                "id": "id1"
+              },
+              {
+                "type": "type8",
+                "amount": 16,
+                "recipient": {
+                  "id": "id4",
+                  "name": "name4",
+                  "email": "email2",
+                  "document": "document8",
+                  "description": "description4",
+                  "type": "type6",
+                  "status": "status6",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "deleted_at": "2016-03-13T12:52:32.123Z",
+                  "default_bank_account": {
+                    "id": "id2",
+                    "holder_name": "holder_name8",
+                    "holder_type": "holder_type4",
+                    "bank": "bank0",
+                    "branch_number": "branch_number8",
+                    "branch_check_digit": "branch_check_digit8",
+                    "account_number": "account_number2",
+                    "account_check_digit": "account_check_digit8",
+                    "type": "type2",
+                    "status": "status4",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "recipient": {},
+                    "metadata": {
+                      "key0": "metadata7"
+                    },
+                    "pix_key": "pix_key6"
+                  },
+                  "gateway_recipients": [
+                    {
+                      "gateway": "gateway8",
+                      "status": "status0",
+                      "pgid": "pgid4",
+                      "created_at": "created_at6",
+                      "updated_at": "updated_at4"
+                    }
+                  ],
+                  "metadata": {
+                    "key0": "metadata1"
+                  },
+                  "automatic_anticipation_settings": {
+                    "enabled": false,
+                    "type": "type2",
+                    "volume_percentage": 122,
+                    "delay": 168,
+                    "days": [
+                      144,
+                      145,
+                      146
+                    ]
+                  },
+                  "transfer_settings": {
+                    "transfer_enabled": false,
+                    "transfer_interval": "transfer_interval0",
+                    "transfer_day": 32
+                  },
+                  "code": "code2",
+                  "payment_mode": "payment_mode8"
+                },
+                "gateway_id": "gateway_id8",
+                "options": {
+                  "liable": false,
+                  "charge_processing_fee": false,
+                  "charge_remainder_fee": "charge_remainder_fee8"
+                },
+                "id": "id2"
+              }
+            ]
+          },
+          "boleto": {
+            "interest": {
+              "days": 35,
+              "type": "type1",
+              "amount": 109
+            },
+            "fine": {
+              "days": 255,
+              "type": "type7",
+              "amount": 73
+            },
+            "max_days_to_pay_past_due": 243
+          },
+          "manual_billing": true
+        },
+        "cycle": {
+          "start_at": "2016-03-13T12:52:32.123Z",
+          "end_at": "2016-03-13T12:52:32.123Z",
+          "id": "id3",
+          "billing_at": "2016-03-13T12:52:32.123Z",
+          "subscription": {
+            "id": "id1",
+            "code": "code9",
+            "start_at": "2016-03-13T12:52:32.123Z",
+            "interval": "interval9",
+            "interval_count": 147,
+            "billing_type": "billing_type5",
+            "current_cycle": {},
+            "payment_method": "payment_method9",
+            "currency": "currency1",
+            "installments": 59,
+            "status": "status7",
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "customer": {
+              "id": "id1",
+              "name": "name1",
+              "email": "email5",
+              "delinquent": true,
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "document": "document5",
+              "type": "type9",
+              "fb_access_token": "fb_access_token5",
+              "address": {
+                "id": "id7",
+                "street": "street7",
+                "number": "number5",
+                "complement": "complement3",
+                "zip_code": "zip_code1",
+                "neighborhood": "neighborhood3",
+                "city": "city7",
+                "state": "state3",
+                "country": "country1",
+                "status": "status9",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "customer": {},
+                "metadata": {
+                  "key0": "metadata4",
+                  "key1": "metadata3",
+                  "key2": "metadata2"
+                },
+                "line_1": "line_19",
+                "line_2": "line_25",
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              "metadata": {
+                "key0": "metadata2",
+                "key1": "metadata3",
+                "key2": "metadata4"
+              },
+              "phones": {
+                "home_phone": {
+                  "country_code": "country_code3",
+                  "number": "number9",
+                  "area_code": "area_code3"
+                },
+                "mobile_phone": {
+                  "country_code": "country_code7",
+                  "number": "number5",
+                  "area_code": "area_code7"
+                }
+              },
+              "fb_id": 51,
+              "code": "code9",
+              "document_type": "document_type9"
+            },
+            "card": {
+              "id": "id5",
+              "last_four_digits": "last_four_digits1",
+              "brand": "brand9",
+              "holder_name": "holder_name1",
+              "exp_month": 37,
+              "exp_year": 3,
+              "status": "status3",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "billing_address": {
+                "street": "street3",
+                "number": "number9",
+                "zip_code": "zip_code7",
+                "neighborhood": "neighborhood9",
+                "city": "city7",
+                "state": "state1",
+                "country": "country7",
+                "complement": "complement1",
+                "line_1": "line_13",
+                "line_2": "line_21"
+              },
+              "customer": {
+                "id": "id5",
+                "name": "name5",
+                "email": "email1",
+                "delinquent": true,
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "document": "document1",
+                "type": "type5",
+                "fb_access_token": "fb_access_token9",
+                "address": {
+                  "id": "id1",
+                  "street": "street1",
+                  "number": "number9",
+                  "complement": "complement7",
+                  "zip_code": "zip_code5",
+                  "neighborhood": "neighborhood7",
+                  "city": "city1",
+                  "state": "state7",
+                  "country": "country5",
+                  "status": "status3",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "customer": {},
+                  "metadata": {
+                    "key0": "metadata8"
+                  },
+                  "line_1": "line_15",
+                  "line_2": "line_29",
+                  "deleted_at": "2016-03-13T12:52:32.123Z"
+                },
+                "metadata": {
+                  "key0": "metadata8"
+                },
+                "phones": {
+                  "home_phone": {
+                    "country_code": "country_code3",
+                    "number": "number5",
+                    "area_code": "area_code7"
+                  },
+                  "mobile_phone": {
+                    "country_code": "country_code3",
+                    "number": "number9",
+                    "area_code": "area_code3"
+                  }
+                },
+                "fb_id": 169,
+                "code": "code3",
+                "document_type": "document_type3"
+              },
+              "metadata": {
+                "key0": "metadata8",
+                "key1": "metadata9",
+                "key2": "metadata0"
+              },
+              "type": "type5",
+              "holder_document": "holder_document1",
+              "deleted_at": "2016-03-13T12:52:32.123Z",
+              "first_six_digits": "first_six_digits5",
+              "label": "label5"
+            },
+            "items": [
+              {
+                "id": "id8",
+                "description": "description8",
+                "status": "status0",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "pricing_scheme": {
+                  "price": 214,
+                  "scheme_type": "scheme_type0",
+                  "price_brackets": [
+                    {
+                      "start_quantity": 251,
+                      "price": 67,
+                      "end_quantity": 3,
+                      "overage_price": 17
+                    }
+                  ],
+                  "minimum_price": 118,
+                  "percentage": 112.28
+                },
+                "discounts": [
+                  {
+                    "id": "id9",
+                    "value": 149.71,
+                    "discount_type": "discount_type7",
+                    "status": "status1",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 147,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description9",
+                    "subscription": {},
+                    "subscription_item": {}
+                  },
+                  {
+                    "id": "id0",
+                    "value": 149.72,
+                    "discount_type": "discount_type8",
+                    "status": "status2",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 148,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description0",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "increments": [
+                  {
+                    "id": "id7",
+                    "value": 4.99,
+                    "increment_type": "increment_type1",
+                    "status": "status1",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 245,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description3",
+                    "subscription": {},
+                    "subscription_item": {}
+                  },
+                  {
+                    "id": "id8",
+                    "value": 5.0,
+                    "increment_type": "increment_type0",
+                    "status": "status0",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 244,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description2",
+                    "subscription": {},
+                    "subscription_item": {}
+                  },
+                  {
+                    "id": "id9",
+                    "value": 5.01,
+                    "increment_type": "increment_type9",
+                    "status": "status9",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "cycles": 243,
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "description": "description1",
+                    "subscription": {},
+                    "subscription_item": {}
+                  }
+                ],
+                "subscription": {},
+                "name": "name8",
+                "quantity": 192,
+                "cycles": 44,
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              }
+            ],
+            "statement_descriptor": "statement_descriptor1",
+            "metadata": {
+              "key0": "metadata2"
+            },
+            "setup": {
+              "id": "id5",
+              "description": "description5",
+              "amount": 83,
+              "status": "status3"
+            },
+            "gateway_affiliation_id": "gateway_affiliation_id7",
+            "next_billing_at": "2016-03-13T12:52:32.123Z",
+            "billing_day": 225,
+            "minimum_price": 111,
+            "canceled_at": "2016-03-13T12:52:32.123Z",
+            "discounts": [
+              {
+                "id": "id2",
+                "value": 179.84,
+                "discount_type": "discount_type0",
+                "status": "status4",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "cycles": 88,
+                "deleted_at": "2016-03-13T12:52:32.123Z",
+                "description": "description2",
+                "subscription": {},
+                "subscription_item": {
+                  "id": "id8",
+                  "description": "description8",
+                  "status": "status0",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "pricing_scheme": {
+                    "price": 210,
+                    "scheme_type": "scheme_type0",
+                    "price_brackets": [
+                      {
+                        "start_quantity": 255,
+                        "price": 63,
+                        "end_quantity": 7,
+                        "overage_price": 21
+                      }
+                    ],
+                    "minimum_price": 114,
+                    "percentage": 217.28
+                  },
+                  "discounts": [
+                    {}
+                  ],
+                  "increments": [
+                    {
+                      "id": "id7",
+                      "value": 70.19,
+                      "increment_type": "increment_type9",
+                      "status": "status9",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 125,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description7",
+                      "subscription": {},
+                      "subscription_item": {}
+                    },
+                    {
+                      "id": "id8",
+                      "value": 70.2,
+                      "increment_type": "increment_type0",
+                      "status": "status0",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 124,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description8",
+                      "subscription": {},
+                      "subscription_item": {}
+                    }
+                  ],
+                  "subscription": {},
+                  "name": "name8",
+                  "quantity": 56,
+                  "cycles": 76,
+                  "deleted_at": "2016-03-13T12:52:32.123Z"
+                }
+              },
+              {
+                "id": "id3",
+                "value": 179.85,
+                "discount_type": "discount_type1",
+                "status": "status5",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "cycles": 89,
+                "deleted_at": "2016-03-13T12:52:32.123Z",
+                "description": "description3",
+                "subscription": {},
+                "subscription_item": {
+                  "id": "id9",
+                  "description": "description9",
+                  "status": "status1",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "pricing_scheme": {
+                    "price": 209,
+                    "scheme_type": "scheme_type1",
+                    "price_brackets": [
+                      {
+                        "start_quantity": 0,
+                        "price": 62,
+                        "end_quantity": 8,
+                        "overage_price": 22
+                      },
+                      {
+                        "start_quantity": 1,
+                        "price": 61,
+                        "end_quantity": 9,
+                        "overage_price": 23
+                      }
+                    ],
+                    "minimum_price": 113,
+                    "percentage": 217.29
+                  },
+                  "discounts": [
+                    {},
+                    {}
+                  ],
+                  "increments": [
+                    {
+                      "id": "id8",
+                      "value": 70.2,
+                      "increment_type": "increment_type0",
+                      "status": "status0",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 124,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description8",
+                      "subscription": {},
+                      "subscription_item": {}
+                    },
+                    {
+                      "id": "id9",
+                      "value": 70.21,
+                      "increment_type": "increment_type1",
+                      "status": "status1",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 123,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description9",
+                      "subscription": {},
+                      "subscription_item": {}
+                    },
+                    {
+                      "id": "id0",
+                      "value": 70.22,
+                      "increment_type": "increment_type2",
+                      "status": "status2",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 122,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description0",
+                      "subscription": {},
+                      "subscription_item": {}
+                    }
+                  ],
+                  "subscription": {},
+                  "name": "name9",
+                  "quantity": 57,
+                  "cycles": 77,
+                  "deleted_at": "2016-03-13T12:52:32.123Z"
+                }
+              }
+            ],
+            "increments": [
+              {
+                "id": "id4",
+                "value": 36.46,
+                "increment_type": "increment_type6",
+                "status": "status4",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "cycles": 170,
+                "deleted_at": "2016-03-13T12:52:32.123Z",
+                "description": "description6",
+                "subscription": {},
+                "subscription_item": {
+                  "id": "id0",
+                  "description": "description0",
+                  "status": "status8",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "pricing_scheme": {
+                    "price": 76,
+                    "scheme_type": "scheme_type8",
+                    "price_brackets": [
+                      {
+                        "start_quantity": 133,
+                        "price": 71,
+                        "end_quantity": 141,
+                        "overage_price": 155
+                      },
+                      {
+                        "start_quantity": 134,
+                        "price": 72,
+                        "end_quantity": 142,
+                        "overage_price": 156
+                      }
+                    ],
+                    "minimum_price": 20,
+                    "percentage": 190.46
+                  },
+                  "discounts": [
+                    {
+                      "id": "id1",
+                      "value": 71.53,
+                      "discount_type": "discount_type9",
+                      "status": "status3",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 9,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description1",
+                      "subscription": {},
+                      "subscription_item": {}
+                    }
+                  ],
+                  "increments": [
+                    {},
+                    {},
+                    {}
+                  ],
+                  "subscription": {},
+                  "name": "name0",
+                  "quantity": 54,
+                  "cycles": 182,
+                  "deleted_at": "2016-03-13T12:52:32.123Z"
+                }
+              },
+              {
+                "id": "id3",
+                "value": 36.45,
+                "increment_type": "increment_type5",
+                "status": "status5",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "cycles": 171,
+                "deleted_at": "2016-03-13T12:52:32.123Z",
+                "description": "description7",
+                "subscription": {},
+                "subscription_item": {
+                  "id": "id9",
+                  "description": "description1",
+                  "status": "status9",
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "pricing_scheme": {
+                    "price": 75,
+                    "scheme_type": "scheme_type9",
+                    "price_brackets": [
+                      {
+                        "start_quantity": 134,
+                        "price": 72,
+                        "end_quantity": 142,
+                        "overage_price": 156
+                      },
+                      {
+                        "start_quantity": 135,
+                        "price": 73,
+                        "end_quantity": 143,
+                        "overage_price": 157
+                      },
+                      {
+                        "start_quantity": 136,
+                        "price": 74,
+                        "end_quantity": 144,
+                        "overage_price": 158
+                      }
+                    ],
+                    "minimum_price": 21,
+                    "percentage": 190.47
+                  },
+                  "discounts": [
+                    {
+                      "id": "id0",
+                      "value": 71.52,
+                      "discount_type": "discount_type8",
+                      "status": "status2",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 8,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description0",
+                      "subscription": {},
+                      "subscription_item": {}
+                    },
+                    {
+                      "id": "id1",
+                      "value": 71.53,
+                      "discount_type": "discount_type9",
+                      "status": "status3",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 9,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description1",
+                      "subscription": {},
+                      "subscription_item": {}
+                    },
+                    {
+                      "id": "id2",
+                      "value": 71.54,
+                      "discount_type": "discount_type0",
+                      "status": "status4",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "cycles": 10,
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "description": "description2",
+                      "subscription": {},
+                      "subscription_item": {}
+                    }
+                  ],
+                  "increments": [
+                    {}
+                  ],
+                  "subscription": {},
+                  "name": "name9",
+                  "quantity": 53,
+                  "cycles": 183,
+                  "deleted_at": "2016-03-13T12:52:32.123Z"
+                }
+              }
+            ],
+            "boleto_due_days": 3,
+            "split": {
+              "enabled": true,
+              "rules": [
+                {
+                  "type": "type9",
+                  "amount": 219,
+                  "recipient": {
+                    "id": "id7",
+                    "name": "name7",
+                    "email": "email9",
+                    "document": "document9",
+                    "description": "description3",
+                    "type": "type3",
+                    "status": "status1",
+                    "created_at": "2016-03-13T12:52:32.123Z",
+                    "updated_at": "2016-03-13T12:52:32.123Z",
+                    "deleted_at": "2016-03-13T12:52:32.123Z",
+                    "default_bank_account": {
+                      "id": "id5",
+                      "holder_name": "holder_name1",
+                      "holder_type": "holder_type7",
+                      "bank": "bank3",
+                      "branch_number": "branch_number1",
+                      "branch_check_digit": "branch_check_digit1",
+                      "account_number": "account_number5",
+                      "account_check_digit": "account_check_digit1",
+                      "type": "type5",
+                      "status": "status7",
+                      "created_at": "2016-03-13T12:52:32.123Z",
+                      "updated_at": "2016-03-13T12:52:32.123Z",
+                      "deleted_at": "2016-03-13T12:52:32.123Z",
+                      "recipient": {},
+                      "metadata": {
+                        "key0": "metadata2",
+                        "key1": "metadata1",
+                        "key2": "metadata0"
+                      },
+                      "pix_key": "pix_key1"
+                    },
+                    "gateway_recipients": [
+                      {
+                        "gateway": "gateway1",
+                        "status": "status3",
+                        "pgid": "pgid7",
+                        "created_at": "created_at9",
+                        "updated_at": "updated_at7"
+                      },
+                      {
+                        "gateway": "gateway2",
+                        "status": "status4",
+                        "pgid": "pgid8",
+                        "created_at": "created_at0",
+                        "updated_at": "updated_at8"
+                      }
+                    ],
+                    "metadata": {
+                      "key0": "metadata6",
+                      "key1": "metadata7",
+                      "key2": "metadata8"
+                    },
+                    "automatic_anticipation_settings": {
+                      "enabled": true,
+                      "type": "type9",
+                      "volume_percentage": 25,
+                      "delay": 9,
+                      "days": [
+                        241
+                      ]
+                    },
+                    "transfer_settings": {
+                      "transfer_enabled": true,
+                      "transfer_interval": "transfer_interval7",
+                      "transfer_day": 191
+                    },
+                    "code": "code5",
+                    "payment_mode": "payment_mode9"
+                  },
+                  "gateway_id": "gateway_id9",
+                  "options": {
+                    "liable": true,
+                    "charge_processing_fee": true,
+                    "charge_remainder_fee": "charge_remainder_fee9"
+                  },
+                  "id": "id1"
+                }
+              ]
+            },
+            "boleto": {
+              "interest": {
+                "days": 87,
+                "type": "type9",
+                "amount": 161
+              },
+              "fine": {
+                "days": 53,
+                "type": "type7",
+                "amount": 235
+              },
+              "max_days_to_pay_past_due": 191
+            },
+            "manual_billing": true
+          },
+          "status": "status5",
+          "duration": 199,
+          "created_at": "created_at1",
+          "updated_at": "updated_at9",
+          "cycle": 139
+        },
+        "shipping": {
+          "amount": 87,
+          "description": "description7",
+          "recipient_name": "recipient_name5",
+          "recipient_phone": "recipient_phone9",
+          "address": {
+            "id": "id3",
+            "street": "street3",
+            "number": "number1",
+            "complement": "complement9",
+            "zip_code": "zip_code7",
+            "neighborhood": "neighborhood9",
+            "city": "city3",
+            "state": "state9",
+            "country": "country7",
+            "status": "status5",
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
             "customer": {
               "id": "id3",
               "name": "name3",
@@ -1965,28 +4836,7 @@ Response object for getting an Order
               "document": "document7",
               "type": "type7",
               "fb_access_token": "fb_access_token7",
-              "address": {
-                "id": "id9",
-                "street": "street9",
-                "number": "number7",
-                "complement": "complement5",
-                "zip_code": "zip_code3",
-                "neighborhood": "neighborhood5",
-                "city": "city9",
-                "state": "state5",
-                "country": "country3",
-                "status": "status1",
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "updated_at": "2016-03-13T12:52:32.123Z",
-                "customer": {},
-                "metadata": {
-                  "key0": "metadata0",
-                  "key1": "metadata9"
-                },
-                "line_1": "line_13",
-                "line_2": "line_27",
-                "deleted_at": "2016-03-13T12:52:32.123Z"
-              },
+              "address": {},
               "metadata": {
                 "key0": "metadata0",
                 "key1": "metadata9",
@@ -2004,929 +4854,21 @@ Response object for getting an Order
                   "area_code": "area_code5"
                 }
               },
-              "fb_id": 189,
+              "fb_id": 135,
               "code": "code1",
               "document_type": "document_type1"
             },
             "metadata": {
               "key0": "metadata0"
             },
-            "line_1": "line_13",
+            "line_1": "line_17",
             "line_2": "line_21",
             "deleted_at": "2016-03-13T12:52:32.123Z"
           },
-          "metadata": {
-            "key0": "metadata6"
-          },
-          "phones": {
-            "home_phone": {},
-            "mobile_phone": {}
-          },
-          "fb_id": 139,
-          "code": "code5",
-          "document_type": "document_type5"
+          "max_delivery_date": "2016-03-13T12:52:32.123Z",
+          "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
+          "type": "type3"
         },
-        "charge": {
-          "id": "id5",
-          "code": "code3",
-          "gateway_id": "gateway_id5",
-          "amount": 45,
-          "status": "status7",
-          "currency": "currency5",
-          "payment_method": "payment_method5",
-          "due_at": "2016-03-13T12:52:32.123Z",
-          "created_at": "2016-03-13T12:52:32.123Z",
-          "updated_at": "2016-03-13T12:52:32.123Z",
-          "last_transaction": {
-            "gateway_id": "gateway_id7",
-            "amount": 103,
-            "status": "status9",
-            "success": true,
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "attempt_count": 79,
-            "max_attempts": 67,
-            "splits": [
-              {},
-              {},
-              {}
-            ],
-            "next_attempt": "2016-03-13T12:52:32.123Z",
-            "transaction_type": "transaction",
-            "id": "id7",
-            "gateway_response": {
-              "code": "code7",
-              "errors": [
-                {},
-                {},
-                {}
-              ]
-            },
-            "antifraud_response": {
-              "status": "status7",
-              "return_code": "return_code5",
-              "return_message": "return_message3",
-              "provider_name": "provider_name3",
-              "score": "score5"
-            },
-            "metadata": {
-              "key0": "metadata2",
-              "key1": "metadata1"
-            },
-            "split": [
-              {},
-              {}
-            ],
-            "interest": {
-              "days": 9,
-              "type": "type3",
-              "amount": 83
-            },
-            "fine": {
-              "days": 27,
-              "type": "type9",
-              "amount": 101
-            },
-            "max_days_to_pay_past_due": 15
-          },
-          "invoice": {
-            "id": "id9",
-            "code": "code7",
-            "url": "url3",
-            "amount": 247,
-            "status": "status1",
-            "payment_method": "payment_method1",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "items": [
-              {},
-              {},
-              {}
-            ],
-            "customer": {},
-            "charge": {},
-            "installments": 31,
-            "billing_address": {
-              "street": "street1",
-              "number": "number1",
-              "zip_code": "zip_code5",
-              "neighborhood": "neighborhood7",
-              "city": "city1",
-              "state": "state7",
-              "country": "country5",
-              "complement": "complement3",
-              "line_1": "line_15",
-              "line_2": "line_29"
-            },
-            "subscription": {
-              "id": "id5",
-              "code": "code3",
-              "start_at": "2016-03-13T12:52:32.123Z",
-              "interval": "interval3",
-              "interval_count": 197,
-              "billing_type": "billing_type1",
-              "current_cycle": {
-                "start_at": "2016-03-13T12:52:32.123Z",
-                "end_at": "2016-03-13T12:52:32.123Z",
-                "id": "id3",
-                "billing_at": "2016-03-13T12:52:32.123Z",
-                "subscription": {
-                  "id": "id1",
-                  "code": "code9",
-                  "start_at": "2016-03-13T12:52:32.123Z",
-                  "interval": "interval9",
-                  "interval_count": 165,
-                  "billing_type": "billing_type5",
-                  "current_cycle": {
-                    "start_at": "2016-03-13T12:52:32.123Z",
-                    "end_at": "2016-03-13T12:52:32.123Z",
-                    "id": "id9",
-                    "billing_at": "2016-03-13T12:52:32.123Z",
-                    "subscription": {},
-                    "status": "status1",
-                    "duration": 149,
-                    "created_at": "created_at7",
-                    "updated_at": "updated_at5",
-                    "cycle": 89
-                  },
-                  "payment_method": "payment_method9",
-                  "currency": "currency1",
-                  "installments": 77,
-                  "status": "status7",
-                  "created_at": "2016-03-13T12:52:32.123Z",
-                  "updated_at": "2016-03-13T12:52:32.123Z",
-                  "customer": {},
-                  "card": {
-                    "id": "id5",
-                    "last_four_digits": "last_four_digits1",
-                    "brand": "brand9",
-                    "holder_name": "holder_name9",
-                    "exp_month": 55,
-                    "exp_year": 241,
-                    "status": "status3",
-                    "created_at": "2016-03-13T12:52:32.123Z",
-                    "updated_at": "2016-03-13T12:52:32.123Z",
-                    "billing_address": {
-                      "street": "street3",
-                      "number": "number9",
-                      "zip_code": "zip_code7",
-                      "neighborhood": "neighborhood9",
-                      "city": "city7",
-                      "state": "state1",
-                      "country": "country7",
-                      "complement": "complement1",
-                      "line_1": "line_13",
-                      "line_2": "line_21"
-                    },
-                    "customer": {},
-                    "metadata": {
-                      "key0": "metadata8"
-                    },
-                    "type": "type5",
-                    "holder_document": "holder_document1",
-                    "deleted_at": "2016-03-13T12:52:32.123Z",
-                    "first_six_digits": "first_six_digits5",
-                    "label": "label5"
-                  },
-                  "items": [
-                    {
-                      "id": "id8",
-                      "description": "description8",
-                      "status": "status0",
-                      "created_at": "2016-03-13T12:52:32.123Z",
-                      "updated_at": "2016-03-13T12:52:32.123Z",
-                      "pricing_scheme": {},
-                      "discounts": [
-                        {
-                          "id": "id9",
-                          "value": 206.21,
-                          "discount_type": "discount_type7",
-                          "status": "status1",
-                          "created_at": "2016-03-13T12:52:32.123Z",
-                          "cycles": 165,
-                          "deleted_at": "2016-03-13T12:52:32.123Z",
-                          "description": "description9",
-                          "subscription": {},
-                          "subscription_item": {
-                            "id": "id5",
-                            "description": "description5",
-                            "status": "status7",
-                            "created_at": "2016-03-13T12:52:32.123Z",
-                            "updated_at": "2016-03-13T12:52:32.123Z",
-                            "pricing_scheme": {},
-                            "discounts": [
-                              {
-                                "id": "id6",
-                                "value": 241.28,
-                                "discount_type": "discount_type4",
-                                "status": "status8",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 88,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description6",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id7",
-                                "value": 241.29,
-                                "discount_type": "discount_type5",
-                                "status": "status9",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 89,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description7",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "increments": [
-                              {
-                                "id": "id4",
-                                "value": 96.56,
-                                "increment_type": "increment_type6",
-                                "status": "status6",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 208,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description4",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id5",
-                                "value": 96.57,
-                                "increment_type": "increment_type7",
-                                "status": "status7",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 209,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description5",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id6",
-                                "value": 96.58,
-                                "increment_type": "increment_type8",
-                                "status": "status8",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 210,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description6",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "subscription": {},
-                            "name": "name5",
-                            "quantity": 133,
-                            "cycles": 153,
-                            "deleted_at": "2016-03-13T12:52:32.123Z"
-                          }
-                        },
-                        {
-                          "id": "id0",
-                          "value": 206.22,
-                          "discount_type": "discount_type8",
-                          "status": "status2",
-                          "created_at": "2016-03-13T12:52:32.123Z",
-                          "cycles": 166,
-                          "deleted_at": "2016-03-13T12:52:32.123Z",
-                          "description": "description0",
-                          "subscription": {},
-                          "subscription_item": {
-                            "id": "id6",
-                            "description": "description6",
-                            "status": "status8",
-                            "created_at": "2016-03-13T12:52:32.123Z",
-                            "updated_at": "2016-03-13T12:52:32.123Z",
-                            "pricing_scheme": {},
-                            "discounts": [
-                              {
-                                "id": "id7",
-                                "value": 241.29,
-                                "discount_type": "discount_type5",
-                                "status": "status9",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 89,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description7",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id8",
-                                "value": 241.3,
-                                "discount_type": "discount_type6",
-                                "status": "status0",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 90,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description8",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id9",
-                                "value": 241.31,
-                                "discount_type": "discount_type7",
-                                "status": "status1",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 91,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description9",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "increments": [
-                              {
-                                "id": "id5",
-                                "value": 96.57,
-                                "increment_type": "increment_type7",
-                                "status": "status7",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 209,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description5",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "subscription": {},
-                            "name": "name6",
-                            "quantity": 134,
-                            "cycles": 154,
-                            "deleted_at": "2016-03-13T12:52:32.123Z"
-                          }
-                        },
-                        {
-                          "id": "id1",
-                          "value": 206.23,
-                          "discount_type": "discount_type9",
-                          "status": "status3",
-                          "created_at": "2016-03-13T12:52:32.123Z",
-                          "cycles": 167,
-                          "deleted_at": "2016-03-13T12:52:32.123Z",
-                          "description": "description1",
-                          "subscription": {},
-                          "subscription_item": {
-                            "id": "id7",
-                            "description": "description7",
-                            "status": "status9",
-                            "created_at": "2016-03-13T12:52:32.123Z",
-                            "updated_at": "2016-03-13T12:52:32.123Z",
-                            "pricing_scheme": {},
-                            "discounts": [
-                              {
-                                "id": "id8",
-                                "value": 241.3,
-                                "discount_type": "discount_type6",
-                                "status": "status0",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 90,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description8",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "increments": [
-                              {
-                                "id": "id6",
-                                "value": 96.58,
-                                "increment_type": "increment_type8",
-                                "status": "status8",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 210,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description6",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id7",
-                                "value": 96.59,
-                                "increment_type": "increment_type9",
-                                "status": "status9",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 211,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description7",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "subscription": {},
-                            "name": "name7",
-                            "quantity": 135,
-                            "cycles": 155,
-                            "deleted_at": "2016-03-13T12:52:32.123Z"
-                          }
-                        }
-                      ],
-                      "increments": [
-                        {}
-                      ],
-                      "subscription": {},
-                      "name": "name8",
-                      "quantity": 210,
-                      "cycles": 26,
-                      "deleted_at": "2016-03-13T12:52:32.123Z"
-                    },
-                    {
-                      "id": "id9",
-                      "description": "description9",
-                      "status": "status1",
-                      "created_at": "2016-03-13T12:52:32.123Z",
-                      "updated_at": "2016-03-13T12:52:32.123Z",
-                      "pricing_scheme": {},
-                      "discounts": [
-                        {
-                          "id": "id0",
-                          "value": 206.22,
-                          "discount_type": "discount_type8",
-                          "status": "status2",
-                          "created_at": "2016-03-13T12:52:32.123Z",
-                          "cycles": 166,
-                          "deleted_at": "2016-03-13T12:52:32.123Z",
-                          "description": "description0",
-                          "subscription": {},
-                          "subscription_item": {
-                            "id": "id6",
-                            "description": "description6",
-                            "status": "status8",
-                            "created_at": "2016-03-13T12:52:32.123Z",
-                            "updated_at": "2016-03-13T12:52:32.123Z",
-                            "pricing_scheme": {},
-                            "discounts": [
-                              {
-                                "id": "id7",
-                                "value": 241.29,
-                                "discount_type": "discount_type5",
-                                "status": "status9",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 89,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description7",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id8",
-                                "value": 241.3,
-                                "discount_type": "discount_type6",
-                                "status": "status0",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 90,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description8",
-                                "subscription": {},
-                                "subscription_item": {}
-                              },
-                              {
-                                "id": "id9",
-                                "value": 241.31,
-                                "discount_type": "discount_type7",
-                                "status": "status1",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 91,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description9",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "increments": [
-                              {
-                                "id": "id5",
-                                "value": 96.57,
-                                "increment_type": "increment_type7",
-                                "status": "status7",
-                                "created_at": "2016-03-13T12:52:32.123Z",
-                                "cycles": 209,
-                                "deleted_at": "2016-03-13T12:52:32.123Z",
-                                "description": "description5",
-                                "subscription": {},
-                                "subscription_item": {}
-                              }
-                            ],
-                            "subscription": {},
-                            "name": "name6",
-                            "quantity": 134,
-                            "cycles": 154,
-                            "deleted_at": "2016-03-13T12:52:32.123Z"
-                          }
-                        }
-                      ],
-                      "increments": [
-                        {},
-                        {}
-                      ],
-                      "subscription": {},
-                      "name": "name9",
-                      "quantity": 211,
-                      "cycles": 25,
-                      "deleted_at": "2016-03-13T12:52:32.123Z"
-                    }
-                  ],
-                  "statement_descriptor": "statement_descriptor1",
-                  "metadata": {
-                    "key0": "metadata2",
-                    "key1": "metadata3",
-                    "key2": "metadata4"
-                  },
-                  "setup": {
-                    "id": "id5",
-                    "description": "description5",
-                    "amount": 101,
-                    "status": "status3"
-                  },
-                  "gateway_affiliation_id": "gateway_affiliation_id7",
-                  "next_billing_at": "2016-03-13T12:52:32.123Z",
-                  "billing_day": 207,
-                  "minimum_price": 93,
-                  "canceled_at": "2016-03-13T12:52:32.123Z",
-                  "discounts": [
-                    {},
-                    {},
-                    {}
-                  ],
-                  "increments": [
-                    {}
-                  ],
-                  "boleto_due_days": 21,
-                  "split": {
-                    "enabled": true,
-                    "rules": [
-                      {},
-                      {}
-                    ]
-                  },
-                  "boleto": {
-                    "interest": {},
-                    "fine": {},
-                    "max_days_to_pay_past_due": 209
-                  },
-                  "manual_billing": true
-                },
-                "status": "status5",
-                "duration": 181,
-                "created_at": "created_at1",
-                "updated_at": "updated_at9",
-                "cycle": 121
-              },
-              "payment_method": "payment_method5",
-              "currency": "currency5",
-              "installments": 109,
-              "status": "status3",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "customer": {},
-              "card": {
-                "id": "id1",
-                "last_four_digits": "last_four_digits7",
-                "brand": "brand5",
-                "holder_name": "holder_name7",
-                "exp_month": 87,
-                "exp_year": 209,
-                "status": "status7",
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "updated_at": "2016-03-13T12:52:32.123Z",
-                "billing_address": {},
-                "customer": {},
-                "metadata": {
-                  "key0": "metadata2",
-                  "key1": "metadata3",
-                  "key2": "metadata4"
-                },
-                "type": "type9",
-                "holder_document": "holder_document5",
-                "deleted_at": "2016-03-13T12:52:32.123Z",
-                "first_six_digits": "first_six_digits1",
-                "label": "label1"
-              },
-              "items": [
-                {}
-              ],
-              "statement_descriptor": "statement_descriptor5",
-              "metadata": {
-                "key0": "metadata8"
-              },
-              "setup": {
-                "id": "id9",
-                "description": "description1",
-                "amount": 133,
-                "status": "status9"
-              },
-              "gateway_affiliation_id": "gateway_affiliation_id1",
-              "next_billing_at": "2016-03-13T12:52:32.123Z",
-              "billing_day": 175,
-              "minimum_price": 61,
-              "canceled_at": "2016-03-13T12:52:32.123Z",
-              "discounts": [
-                {},
-                {}
-              ],
-              "increments": [
-                {},
-                {}
-              ],
-              "boleto_due_days": 53,
-              "split": {
-                "enabled": true,
-                "rules": [
-                  {}
-                ]
-              },
-              "boleto": {
-                "interest": {},
-                "fine": {},
-                "max_days_to_pay_past_due": 241
-              },
-              "manual_billing": true
-            },
-            "cycle": {},
-            "shipping": {
-              "amount": 89,
-              "description": "description3",
-              "recipient_name": "recipient_name1",
-              "recipient_phone": "recipient_phone5",
-              "address": {},
-              "max_delivery_date": "2016-03-13T12:52:32.123Z",
-              "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
-              "type": "type3"
-            },
-            "metadata": {
-              "key0": "metadata6",
-              "key1": "metadata5"
-            },
-            "due_at": "2016-03-13T12:52:32.123Z",
-            "canceled_at": "2016-03-13T12:52:32.123Z",
-            "billing_at": "2016-03-13T12:52:32.123Z",
-            "seen_at": "2016-03-13T12:52:32.123Z",
-            "total_discount": 99,
-            "total_increment": 171,
-            "subscription_id": "subscription_id9"
-          },
-          "order": {
-            "id": "id1",
-            "code": "code9",
-            "currency": "currency9",
-            "items": [
-              {
-                "id": "id8",
-                "amount": 210,
-                "description": "description8",
-                "quantity": 68,
-                "category": "category6",
-                "code": "code6"
-              },
-              {
-                "id": "id9",
-                "amount": 211,
-                "description": "description9",
-                "quantity": 69,
-                "category": "category7",
-                "code": "code7"
-              },
-              {
-                "id": "id0",
-                "amount": 212,
-                "description": "description0",
-                "quantity": 70,
-                "category": "category8",
-                "code": "code8"
-              }
-            ],
-            "customer": {},
-            "status": "status7",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "charges": [
-              {}
-            ],
-            "invoice_url": "invoice_url3",
-            "shipping": {
-              "amount": 249,
-              "description": "description5",
-              "recipient_name": "recipient_name3",
-              "recipient_phone": "recipient_phone7",
-              "address": {},
-              "max_delivery_date": "2016-03-13T12:52:32.123Z",
-              "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
-              "type": "type5"
-            },
-            "metadata": {
-              "key0": "metadata2",
-              "key1": "metadata3"
-            },
-            "checkouts": [
-              {
-                "id": "id8",
-                "amount": 160,
-                "default_payment_method": "default_payment_method8",
-                "success_url": "success_url0",
-                "payment_url": "payment_url2",
-                "gateway_affiliation_id": "gateway_affiliation_id4",
-                "accepted_payment_methods": [
-                  "accepted_payment_methods1"
-                ],
-                "status": "status0",
-                "skip_checkout_success_page": false,
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "updated_at": "2016-03-13T12:52:32.123Z",
-                "canceled_at": "2016-03-13T12:52:32.123Z",
-                "customer_editable": false,
-                "customer": {},
-                "billingaddress": {},
-                "credit_card": {
-                  "statementDescriptor": "statementDescriptor2",
-                  "installments": [
-                    {
-                      "number": "number9",
-                      "total": 117
-                    },
-                    {
-                      "number": "number0",
-                      "total": 118
-                    }
-                  ],
-                  "authentication": {
-                    "type": "type2",
-                    "threed_secure": {
-                      "mpi": "mpi6",
-                      "eci": "eci6",
-                      "cavv": "cavv2",
-                      "transaction_Id": "transaction_Id8",
-                      "success_url": "success_url8"
-                    }
-                  }
-                },
-                "boleto": {
-                  "due_at": "2016-03-13T12:52:32.123Z",
-                  "instructions": "instructions6"
-                },
-                "billing_address_editable": false,
-                "shipping": {},
-                "shippable": false,
-                "closed_at": "2016-03-13T12:52:32.123Z",
-                "expires_at": "2016-03-13T12:52:32.123Z",
-                "currency": "currency8",
-                "debit_card": {
-                  "statement_descriptor": "statement_descriptor2",
-                  "authentication": {
-                    "type": "type6",
-                    "threed_secure": {
-                      "mpi": "mpi4",
-                      "eci": "eci8",
-                      "cavv": "cavv6",
-                      "transaction_Id": "transaction_Id6",
-                      "success_url": "success_url0"
-                    }
-                  }
-                },
-                "bank_transfer": {
-                  "bank": [
-                    "bank1"
-                  ]
-                },
-                "accepted_brands": [
-                  "accepted_brands4"
-                ],
-                "pix": {
-                  "expires_at": "2016-03-13T12:52:32.123Z",
-                  "additional_information": [
-                    {
-                      "Name": "Name5",
-                      "Value": "Value3"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "id9",
-                "amount": 161,
-                "default_payment_method": "default_payment_method9",
-                "success_url": "success_url1",
-                "payment_url": "payment_url3",
-                "gateway_affiliation_id": "gateway_affiliation_id5",
-                "accepted_payment_methods": [
-                  "accepted_payment_methods2",
-                  "accepted_payment_methods3"
-                ],
-                "status": "status1",
-                "skip_checkout_success_page": true,
-                "created_at": "2016-03-13T12:52:32.123Z",
-                "updated_at": "2016-03-13T12:52:32.123Z",
-                "canceled_at": "2016-03-13T12:52:32.123Z",
-                "customer_editable": true,
-                "customer": {},
-                "billingaddress": {},
-                "credit_card": {
-                  "statementDescriptor": "statementDescriptor3",
-                  "installments": [
-                    {
-                      "number": "number0",
-                      "total": 118
-                    },
-                    {
-                      "number": "number1",
-                      "total": 119
-                    },
-                    {
-                      "number": "number2",
-                      "total": 120
-                    }
-                  ],
-                  "authentication": {
-                    "type": "type1",
-                    "threed_secure": {
-                      "mpi": "mpi5",
-                      "eci": "eci7",
-                      "cavv": "cavv3",
-                      "transaction_Id": "transaction_Id7",
-                      "success_url": "success_url9"
-                    }
-                  }
-                },
-                "boleto": {
-                  "due_at": "2016-03-13T12:52:32.123Z",
-                  "instructions": "instructions7"
-                },
-                "billing_address_editable": true,
-                "shipping": {},
-                "shippable": true,
-                "closed_at": "2016-03-13T12:52:32.123Z",
-                "expires_at": "2016-03-13T12:52:32.123Z",
-                "currency": "currency9",
-                "debit_card": {
-                  "statement_descriptor": "statement_descriptor3",
-                  "authentication": {
-                    "type": "type5",
-                    "threed_secure": {
-                      "mpi": "mpi5",
-                      "eci": "eci7",
-                      "cavv": "cavv7",
-                      "transaction_Id": "transaction_Id7",
-                      "success_url": "success_url9"
-                    }
-                  }
-                },
-                "bank_transfer": {
-                  "bank": [
-                    "bank0",
-                    "bank1",
-                    "bank2"
-                  ]
-                },
-                "accepted_brands": [
-                  "accepted_brands5",
-                  "accepted_brands6"
-                ],
-                "pix": {
-                  "expires_at": "2016-03-13T12:52:32.123Z",
-                  "additional_information": [
-                    {
-                      "Name": "Name6",
-                      "Value": "Value4"
-                    },
-                    {
-                      "Name": "Name7",
-                      "Value": "Value5"
-                    }
-                  ]
-                }
-              }
-            ],
-            "ip": "ip5",
-            "session_id": "session_id7",
-            "location": {
-              "latitude": "latitude1",
-              "longitude": "longitude9"
-            },
-            "device": {
-              "platform": "platform9"
-            },
-            "closed": true
-          },
-          "customer": {},
-          "metadata": {
-            "key0": "metadata2",
-            "key1": "metadata1"
-          },
-          "paid_at": "2016-03-13T12:52:32.123Z",
-          "canceled_at": "2016-03-13T12:52:32.123Z",
-          "canceled_amount": 155,
-          "paid_amount": 137,
-          "interest_and_fine_paid": 141,
-          "recurrency_cycle": "recurrency_cycle9"
-        },
-        "installments": 29,
-        "billing_address": {},
-        "subscription": {},
-        "cycle": {},
-        "shipping": {},
         "metadata": {
           "key0": "metadata0",
           "key1": "metadata1",
@@ -2945,9 +4887,68 @@ Response object for getting an Order
         "code": "code5",
         "currency": "currency7",
         "items": [
-          {}
+          {
+            "id": "id4",
+            "amount": 212,
+            "description": "description4",
+            "quantity": 70,
+            "category": "category2",
+            "code": "code2"
+          }
         ],
-        "customer": {},
+        "customer": {
+          "id": "id7",
+          "name": "name7",
+          "email": "email9",
+          "delinquent": true,
+          "created_at": "2016-03-13T12:52:32.123Z",
+          "updated_at": "2016-03-13T12:52:32.123Z",
+          "document": "document1",
+          "type": "type3",
+          "fb_access_token": "fb_access_token1",
+          "address": {
+            "id": "id3",
+            "street": "street3",
+            "number": "number1",
+            "complement": "complement9",
+            "zip_code": "zip_code7",
+            "neighborhood": "neighborhood9",
+            "city": "city3",
+            "state": "state9",
+            "country": "country7",
+            "status": "status5",
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "customer": {},
+            "metadata": {
+              "key0": "metadata6",
+              "key1": "metadata5"
+            },
+            "line_1": "line_17",
+            "line_2": "line_21",
+            "deleted_at": "2016-03-13T12:52:32.123Z"
+          },
+          "metadata": {
+            "key0": "metadata6",
+            "key1": "metadata7",
+            "key2": "metadata8"
+          },
+          "phones": {
+            "home_phone": {
+              "country_code": "country_code9",
+              "number": "number7",
+              "area_code": "area_code9"
+            },
+            "mobile_phone": {
+              "country_code": "country_code1",
+              "number": "number3",
+              "area_code": "area_code9"
+            }
+          },
+          "fb_id": 185,
+          "code": "code5",
+          "document_type": "document_type5"
+        },
         "status": "status9",
         "created_at": "2016-03-13T12:52:32.123Z",
         "updated_at": "2016-03-13T12:52:32.123Z",
@@ -2956,14 +4957,824 @@ Response object for getting an Order
           {}
         ],
         "invoice_url": "invoice_url9",
-        "shipping": {},
+        "shipping": {
+          "amount": 251,
+          "description": "description1",
+          "recipient_name": "recipient_name9",
+          "recipient_phone": "recipient_phone3",
+          "address": {
+            "id": "id7",
+            "street": "street7",
+            "number": "number5",
+            "complement": "complement3",
+            "zip_code": "zip_code1",
+            "neighborhood": "neighborhood3",
+            "city": "city7",
+            "state": "state3",
+            "country": "country1",
+            "status": "status9",
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "customer": {
+              "id": "id7",
+              "name": "name7",
+              "email": "email1",
+              "delinquent": true,
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "document": "document1",
+              "type": "type7",
+              "fb_access_token": "fb_access_token1",
+              "address": {},
+              "metadata": {
+                "key0": "metadata2"
+              },
+              "phones": {
+                "home_phone": {
+                  "country_code": "country_code9",
+                  "number": "number7",
+                  "area_code": "area_code9"
+                },
+                "mobile_phone": {
+                  "country_code": "country_code9",
+                  "number": "number7",
+                  "area_code": "area_code9"
+                }
+              },
+              "fb_id": 43,
+              "code": "code5",
+              "document_type": "document_type5"
+            },
+            "metadata": {
+              "key0": "metadata8",
+              "key1": "metadata9",
+              "key2": "metadata0"
+            },
+            "line_1": "line_11",
+            "line_2": "line_25",
+            "deleted_at": "2016-03-13T12:52:32.123Z"
+          },
+          "max_delivery_date": "2016-03-13T12:52:32.123Z",
+          "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
+          "type": "type1"
+        },
         "metadata": {
           "key0": "metadata4"
         },
         "checkouts": [
-          {},
-          {},
-          {}
+          {
+            "id": "id4",
+            "amount": 162,
+            "default_payment_method": "default_payment_method4",
+            "success_url": "success_url6",
+            "payment_url": "payment_url8",
+            "gateway_affiliation_id": "gateway_affiliation_id0",
+            "accepted_payment_methods": [
+              "accepted_payment_methods7",
+              "accepted_payment_methods8"
+            ],
+            "status": "status6",
+            "skip_checkout_success_page": false,
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "canceled_at": "2016-03-13T12:52:32.123Z",
+            "customer_editable": false,
+            "customer": {
+              "id": "id4",
+              "name": "name4",
+              "email": "email8",
+              "delinquent": false,
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "document": "document8",
+              "type": "type4",
+              "fb_access_token": "fb_access_token8",
+              "address": {
+                "id": "id0",
+                "street": "street0",
+                "number": "number8",
+                "complement": "complement6",
+                "zip_code": "zip_code4",
+                "neighborhood": "neighborhood6",
+                "city": "city0",
+                "state": "state6",
+                "country": "country4",
+                "status": "status2",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "customer": {},
+                "metadata": {
+                  "key0": "metadata1",
+                  "key1": "metadata2"
+                },
+                "line_1": "line_14",
+                "line_2": "line_28",
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              "metadata": {
+                "key0": "metadata5",
+                "key1": "metadata4"
+              },
+              "phones": {
+                "home_phone": {
+                  "country_code": "country_code6",
+                  "number": "number4",
+                  "area_code": "area_code6"
+                },
+                "mobile_phone": {
+                  "country_code": "country_code6",
+                  "number": "number4",
+                  "area_code": "area_code6"
+                }
+              },
+              "fb_id": 194,
+              "code": "code2",
+              "document_type": "document_type2"
+            },
+            "billingaddress": {
+              "id": "id2",
+              "street": "street2",
+              "number": "number0",
+              "complement": "complement8",
+              "zip_code": "zip_code6",
+              "neighborhood": "neighborhood8",
+              "city": "city2",
+              "state": "state8",
+              "country": "country6",
+              "status": "status4",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "customer": {
+                "id": "id2",
+                "name": "name2",
+                "email": "email6",
+                "delinquent": false,
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "document": "document6",
+                "type": "type2",
+                "fb_access_token": "fb_access_token6",
+                "address": {},
+                "metadata": {
+                  "key0": "metadata3"
+                },
+                "phones": {
+                  "home_phone": {
+                    "country_code": "country_code4",
+                    "number": "number2",
+                    "area_code": "area_code4"
+                  },
+                  "mobile_phone": {
+                    "country_code": "country_code4",
+                    "number": "number2",
+                    "area_code": "area_code4"
+                  }
+                },
+                "fb_id": 20,
+                "code": "code0",
+                "document_type": "document_type0"
+              },
+              "metadata": {
+                "key0": "metadata3",
+                "key1": "metadata4",
+                "key2": "metadata5"
+              },
+              "line_1": "line_16",
+              "line_2": "line_20",
+              "deleted_at": "2016-03-13T12:52:32.123Z"
+            },
+            "credit_card": {
+              "statementDescriptor": "statementDescriptor8",
+              "installments": [
+                {
+                  "number": "number5",
+                  "total": 119
+                },
+                {
+                  "number": "number6",
+                  "total": 120
+                },
+                {
+                  "number": "number7",
+                  "total": 121
+                }
+              ],
+              "authentication": {
+                "type": "type4",
+                "threed_secure": {
+                  "mpi": "mpi0",
+                  "eci": "eci2",
+                  "cavv": "cavv8",
+                  "transaction_Id": "transaction_Id8",
+                  "success_url": "success_url4"
+                }
+              }
+            },
+            "boleto": {
+              "due_at": "2016-03-13T12:52:32.123Z",
+              "instructions": "instructions2"
+            },
+            "billing_address_editable": false,
+            "shipping": {
+              "amount": 4,
+              "description": "description8",
+              "recipient_name": "recipient_name6",
+              "recipient_phone": "recipient_phone0",
+              "address": {
+                "id": "id4",
+                "street": "street4",
+                "number": "number2",
+                "complement": "complement0",
+                "zip_code": "zip_code8",
+                "neighborhood": "neighborhood0",
+                "city": "city4",
+                "state": "state0",
+                "country": "country8",
+                "status": "status6",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "customer": {
+                  "id": "id4",
+                  "name": "name4",
+                  "email": "email8",
+                  "delinquent": false,
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "document": "document8",
+                  "type": "type4",
+                  "fb_access_token": "fb_access_token8",
+                  "address": {},
+                  "metadata": {
+                    "key0": "metadata5"
+                  },
+                  "phones": {
+                    "home_phone": {
+                      "country_code": "country_code6",
+                      "number": "number4",
+                      "area_code": "area_code6"
+                    },
+                    "mobile_phone": {
+                      "country_code": "country_code6",
+                      "number": "number4",
+                      "area_code": "area_code6"
+                    }
+                  },
+                  "fb_id": 52,
+                  "code": "code2",
+                  "document_type": "document_type2"
+                },
+                "metadata": {
+                  "key0": "metadata5",
+                  "key1": "metadata6",
+                  "key2": "metadata7"
+                },
+                "line_1": "line_18",
+                "line_2": "line_22",
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              "max_delivery_date": "2016-03-13T12:52:32.123Z",
+              "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
+              "type": "type8"
+            },
+            "shippable": false,
+            "closed_at": "2016-03-13T12:52:32.123Z",
+            "expires_at": "2016-03-13T12:52:32.123Z",
+            "currency": "currency4",
+            "debit_card": {
+              "statement_descriptor": "statement_descriptor8",
+              "authentication": {
+                "type": "type0",
+                "threed_secure": {
+                  "mpi": "mpi6",
+                  "eci": "eci8",
+                  "cavv": "cavv4",
+                  "transaction_Id": "transaction_Id4",
+                  "success_url": "success_url0"
+                }
+              }
+            },
+            "bank_transfer": {
+              "bank": [
+                "bank9",
+                "bank0"
+              ]
+            },
+            "accepted_brands": [
+              "accepted_brands0",
+              "accepted_brands1"
+            ],
+            "pix": {
+              "expires_at": "2016-03-13T12:52:32.123Z",
+              "additional_information": [
+                {
+                  "Name": "Name1",
+                  "Value": "Value9"
+                },
+                {
+                  "Name": "Name2",
+                  "Value": "Value0"
+                }
+              ]
+            }
+          },
+          {
+            "id": "id5",
+            "amount": 163,
+            "default_payment_method": "default_payment_method5",
+            "success_url": "success_url7",
+            "payment_url": "payment_url9",
+            "gateway_affiliation_id": "gateway_affiliation_id1",
+            "accepted_payment_methods": [
+              "accepted_payment_methods8",
+              "accepted_payment_methods9",
+              "accepted_payment_methods0"
+            ],
+            "status": "status7",
+            "skip_checkout_success_page": true,
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "canceled_at": "2016-03-13T12:52:32.123Z",
+            "customer_editable": true,
+            "customer": {
+              "id": "id5",
+              "name": "name5",
+              "email": "email9",
+              "delinquent": true,
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "document": "document9",
+              "type": "type5",
+              "fb_access_token": "fb_access_token9",
+              "address": {
+                "id": "id1",
+                "street": "street1",
+                "number": "number9",
+                "complement": "complement7",
+                "zip_code": "zip_code5",
+                "neighborhood": "neighborhood7",
+                "city": "city1",
+                "state": "state7",
+                "country": "country5",
+                "status": "status3",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "customer": {},
+                "metadata": {
+                  "key0": "metadata2",
+                  "key1": "metadata3",
+                  "key2": "metadata4"
+                },
+                "line_1": "line_15",
+                "line_2": "line_29",
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              "metadata": {
+                "key0": "metadata4",
+                "key1": "metadata3",
+                "key2": "metadata2"
+              },
+              "phones": {
+                "home_phone": {
+                  "country_code": "country_code7",
+                  "number": "number5",
+                  "area_code": "area_code7"
+                },
+                "mobile_phone": {
+                  "country_code": "country_code7",
+                  "number": "number5",
+                  "area_code": "area_code7"
+                }
+              },
+              "fb_id": 195,
+              "code": "code3",
+              "document_type": "document_type3"
+            },
+            "billingaddress": {
+              "id": "id3",
+              "street": "street3",
+              "number": "number1",
+              "complement": "complement9",
+              "zip_code": "zip_code7",
+              "neighborhood": "neighborhood9",
+              "city": "city3",
+              "state": "state9",
+              "country": "country7",
+              "status": "status5",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "customer": {
+                "id": "id3",
+                "name": "name3",
+                "email": "email7",
+                "delinquent": true,
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "document": "document7",
+                "type": "type3",
+                "fb_access_token": "fb_access_token7",
+                "address": {},
+                "metadata": {
+                  "key0": "metadata4",
+                  "key1": "metadata5"
+                },
+                "phones": {
+                  "home_phone": {
+                    "country_code": "country_code5",
+                    "number": "number3",
+                    "area_code": "area_code5"
+                  },
+                  "mobile_phone": {
+                    "country_code": "country_code5",
+                    "number": "number3",
+                    "area_code": "area_code5"
+                  }
+                },
+                "fb_id": 21,
+                "code": "code1",
+                "document_type": "document_type1"
+              },
+              "metadata": {
+                "key0": "metadata4"
+              },
+              "line_1": "line_17",
+              "line_2": "line_21",
+              "deleted_at": "2016-03-13T12:52:32.123Z"
+            },
+            "credit_card": {
+              "statementDescriptor": "statementDescriptor9",
+              "installments": [
+                {
+                  "number": "number6",
+                  "total": 120
+                }
+              ],
+              "authentication": {
+                "type": "type5",
+                "threed_secure": {
+                  "mpi": "mpi1",
+                  "eci": "eci3",
+                  "cavv": "cavv9",
+                  "transaction_Id": "transaction_Id9",
+                  "success_url": "success_url5"
+                }
+              }
+            },
+            "boleto": {
+              "due_at": "2016-03-13T12:52:32.123Z",
+              "instructions": "instructions3"
+            },
+            "billing_address_editable": true,
+            "shipping": {
+              "amount": 5,
+              "description": "description9",
+              "recipient_name": "recipient_name7",
+              "recipient_phone": "recipient_phone1",
+              "address": {
+                "id": "id5",
+                "street": "street5",
+                "number": "number3",
+                "complement": "complement1",
+                "zip_code": "zip_code9",
+                "neighborhood": "neighborhood1",
+                "city": "city5",
+                "state": "state1",
+                "country": "country9",
+                "status": "status7",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "customer": {
+                  "id": "id5",
+                  "name": "name5",
+                  "email": "email9",
+                  "delinquent": true,
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "document": "document9",
+                  "type": "type5",
+                  "fb_access_token": "fb_access_token9",
+                  "address": {},
+                  "metadata": {
+                    "key0": "metadata6",
+                    "key1": "metadata7"
+                  },
+                  "phones": {
+                    "home_phone": {
+                      "country_code": "country_code7",
+                      "number": "number5",
+                      "area_code": "area_code7"
+                    },
+                    "mobile_phone": {
+                      "country_code": "country_code7",
+                      "number": "number5",
+                      "area_code": "area_code7"
+                    }
+                  },
+                  "fb_id": 53,
+                  "code": "code3",
+                  "document_type": "document_type3"
+                },
+                "metadata": {
+                  "key0": "metadata6"
+                },
+                "line_1": "line_19",
+                "line_2": "line_23",
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              "max_delivery_date": "2016-03-13T12:52:32.123Z",
+              "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
+              "type": "type9"
+            },
+            "shippable": true,
+            "closed_at": "2016-03-13T12:52:32.123Z",
+            "expires_at": "2016-03-13T12:52:32.123Z",
+            "currency": "currency5",
+            "debit_card": {
+              "statement_descriptor": "statement_descriptor9",
+              "authentication": {
+                "type": "type1",
+                "threed_secure": {
+                  "mpi": "mpi7",
+                  "eci": "eci9",
+                  "cavv": "cavv5",
+                  "transaction_Id": "transaction_Id5",
+                  "success_url": "success_url1"
+                }
+              }
+            },
+            "bank_transfer": {
+              "bank": [
+                "bank0",
+                "bank1",
+                "bank2"
+              ]
+            },
+            "accepted_brands": [
+              "accepted_brands1",
+              "accepted_brands2",
+              "accepted_brands3"
+            ],
+            "pix": {
+              "expires_at": "2016-03-13T12:52:32.123Z",
+              "additional_information": [
+                {
+                  "Name": "Name2",
+                  "Value": "Value0"
+                },
+                {
+                  "Name": "Name3",
+                  "Value": "Value1"
+                },
+                {
+                  "Name": "Name4",
+                  "Value": "Value2"
+                }
+              ]
+            }
+          },
+          {
+            "id": "id6",
+            "amount": 164,
+            "default_payment_method": "default_payment_method6",
+            "success_url": "success_url8",
+            "payment_url": "payment_url0",
+            "gateway_affiliation_id": "gateway_affiliation_id2",
+            "accepted_payment_methods": [
+              "accepted_payment_methods9"
+            ],
+            "status": "status8",
+            "skip_checkout_success_page": false,
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "canceled_at": "2016-03-13T12:52:32.123Z",
+            "customer_editable": false,
+            "customer": {
+              "id": "id6",
+              "name": "name6",
+              "email": "email0",
+              "delinquent": false,
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "document": "document0",
+              "type": "type6",
+              "fb_access_token": "fb_access_token0",
+              "address": {
+                "id": "id2",
+                "street": "street2",
+                "number": "number0",
+                "complement": "complement8",
+                "zip_code": "zip_code6",
+                "neighborhood": "neighborhood8",
+                "city": "city2",
+                "state": "state8",
+                "country": "country6",
+                "status": "status4",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "customer": {},
+                "metadata": {
+                  "key0": "metadata3"
+                },
+                "line_1": "line_16",
+                "line_2": "line_20",
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              "metadata": {
+                "key0": "metadata3"
+              },
+              "phones": {
+                "home_phone": {
+                  "country_code": "country_code8",
+                  "number": "number6",
+                  "area_code": "area_code8"
+                },
+                "mobile_phone": {
+                  "country_code": "country_code8",
+                  "number": "number6",
+                  "area_code": "area_code8"
+                }
+              },
+              "fb_id": 196,
+              "code": "code4",
+              "document_type": "document_type4"
+            },
+            "billingaddress": {
+              "id": "id4",
+              "street": "street4",
+              "number": "number2",
+              "complement": "complement0",
+              "zip_code": "zip_code8",
+              "neighborhood": "neighborhood0",
+              "city": "city4",
+              "state": "state0",
+              "country": "country8",
+              "status": "status6",
+              "created_at": "2016-03-13T12:52:32.123Z",
+              "updated_at": "2016-03-13T12:52:32.123Z",
+              "customer": {
+                "id": "id4",
+                "name": "name4",
+                "email": "email8",
+                "delinquent": false,
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "document": "document8",
+                "type": "type4",
+                "fb_access_token": "fb_access_token8",
+                "address": {},
+                "metadata": {
+                  "key0": "metadata5",
+                  "key1": "metadata6",
+                  "key2": "metadata7"
+                },
+                "phones": {
+                  "home_phone": {
+                    "country_code": "country_code6",
+                    "number": "number4",
+                    "area_code": "area_code6"
+                  },
+                  "mobile_phone": {
+                    "country_code": "country_code6",
+                    "number": "number4",
+                    "area_code": "area_code6"
+                  }
+                },
+                "fb_id": 22,
+                "code": "code2",
+                "document_type": "document_type2"
+              },
+              "metadata": {
+                "key0": "metadata5",
+                "key1": "metadata6"
+              },
+              "line_1": "line_18",
+              "line_2": "line_22",
+              "deleted_at": "2016-03-13T12:52:32.123Z"
+            },
+            "credit_card": {
+              "statementDescriptor": "statementDescriptor0",
+              "installments": [
+                {
+                  "number": "number7",
+                  "total": 121
+                },
+                {
+                  "number": "number8",
+                  "total": 122
+                }
+              ],
+              "authentication": {
+                "type": "type6",
+                "threed_secure": {
+                  "mpi": "mpi2",
+                  "eci": "eci4",
+                  "cavv": "cavv0",
+                  "transaction_Id": "transaction_Id0",
+                  "success_url": "success_url6"
+                }
+              }
+            },
+            "boleto": {
+              "due_at": "2016-03-13T12:52:32.123Z",
+              "instructions": "instructions4"
+            },
+            "billing_address_editable": false,
+            "shipping": {
+              "amount": 6,
+              "description": "description0",
+              "recipient_name": "recipient_name8",
+              "recipient_phone": "recipient_phone2",
+              "address": {
+                "id": "id6",
+                "street": "street6",
+                "number": "number4",
+                "complement": "complement2",
+                "zip_code": "zip_code0",
+                "neighborhood": "neighborhood2",
+                "city": "city6",
+                "state": "state2",
+                "country": "country0",
+                "status": "status8",
+                "created_at": "2016-03-13T12:52:32.123Z",
+                "updated_at": "2016-03-13T12:52:32.123Z",
+                "customer": {
+                  "id": "id6",
+                  "name": "name6",
+                  "email": "email0",
+                  "delinquent": false,
+                  "created_at": "2016-03-13T12:52:32.123Z",
+                  "updated_at": "2016-03-13T12:52:32.123Z",
+                  "document": "document0",
+                  "type": "type6",
+                  "fb_access_token": "fb_access_token0",
+                  "address": {},
+                  "metadata": {
+                    "key0": "metadata7",
+                    "key1": "metadata8",
+                    "key2": "metadata9"
+                  },
+                  "phones": {
+                    "home_phone": {
+                      "country_code": "country_code8",
+                      "number": "number6",
+                      "area_code": "area_code8"
+                    },
+                    "mobile_phone": {
+                      "country_code": "country_code8",
+                      "number": "number6",
+                      "area_code": "area_code8"
+                    }
+                  },
+                  "fb_id": 54,
+                  "code": "code4",
+                  "document_type": "document_type4"
+                },
+                "metadata": {
+                  "key0": "metadata7",
+                  "key1": "metadata8"
+                },
+                "line_1": "line_10",
+                "line_2": "line_24",
+                "deleted_at": "2016-03-13T12:52:32.123Z"
+              },
+              "max_delivery_date": "2016-03-13T12:52:32.123Z",
+              "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
+              "type": "type0"
+            },
+            "shippable": false,
+            "closed_at": "2016-03-13T12:52:32.123Z",
+            "expires_at": "2016-03-13T12:52:32.123Z",
+            "currency": "currency6",
+            "debit_card": {
+              "statement_descriptor": "statement_descriptor0",
+              "authentication": {
+                "type": "type2",
+                "threed_secure": {
+                  "mpi": "mpi8",
+                  "eci": "eci0",
+                  "cavv": "cavv6",
+                  "transaction_Id": "transaction_Id6",
+                  "success_url": "success_url2"
+                }
+              }
+            },
+            "bank_transfer": {
+              "bank": [
+                "bank1"
+              ]
+            },
+            "accepted_brands": [
+              "accepted_brands2"
+            ],
+            "pix": {
+              "expires_at": "2016-03-13T12:52:32.123Z",
+              "additional_information": [
+                {
+                  "Name": "Name3",
+                  "Value": "Value1"
+                }
+              ]
+            }
+          }
         ],
         "ip": "ip1",
         "session_id": "session_id9",
@@ -2976,7 +5787,56 @@ Response object for getting an Order
         },
         "closed": true
       },
-      "customer": {},
+      "customer": {
+        "id": "id1",
+        "name": "name1",
+        "email": "email5",
+        "delinquent": true,
+        "created_at": "2016-03-13T12:52:32.123Z",
+        "updated_at": "2016-03-13T12:52:32.123Z",
+        "document": "document5",
+        "type": "type9",
+        "fb_access_token": "fb_access_token5",
+        "address": {
+          "id": "id7",
+          "street": "street7",
+          "number": "number5",
+          "complement": "complement3",
+          "zip_code": "zip_code1",
+          "neighborhood": "neighborhood3",
+          "city": "city7",
+          "state": "state3",
+          "country": "country1",
+          "status": "status9",
+          "created_at": "2016-03-13T12:52:32.123Z",
+          "updated_at": "2016-03-13T12:52:32.123Z",
+          "customer": {},
+          "metadata": {
+            "key0": "metadata4"
+          },
+          "line_1": "line_19",
+          "line_2": "line_25",
+          "deleted_at": "2016-03-13T12:52:32.123Z"
+        },
+        "metadata": {
+          "key0": "metadata2"
+        },
+        "phones": {
+          "home_phone": {
+            "country_code": "country_code7",
+            "number": "number9",
+            "area_code": "area_code3"
+          },
+          "mobile_phone": {
+            "country_code": "country_code7",
+            "number": "number5",
+            "area_code": "area_code7"
+          }
+        },
+        "fb_id": 85,
+        "code": "code9",
+        "document_type": "document_type9"
+      },
       "metadata": {
         "key0": "metadata4",
         "key1": "metadata5",
@@ -3019,67 +5879,23 @@ Response object for getting an Order
         "document": "document4",
         "type": "type0",
         "fb_access_token": "fb_access_token4",
-        "address": {
-          "id": "id6",
-          "street": "street6",
-          "number": "number4",
-          "complement": "complement2",
-          "zip_code": "zip_code0",
-          "neighborhood": "neighborhood2",
-          "city": "city6",
-          "state": "state2",
-          "country": "country0",
-          "status": "status8",
-          "created_at": "2016-03-13T12:52:32.123Z",
-          "updated_at": "2016-03-13T12:52:32.123Z",
-          "customer": {
-            "id": "id6",
-            "name": "name6",
-            "email": "email0",
-            "delinquent": false,
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "document": "document0",
-            "type": "type6",
-            "fb_access_token": "fb_access_token0",
-            "address": {},
-            "metadata": {
-              "key0": "metadata3",
-              "key1": "metadata2",
-              "key2": "metadata1"
-            },
-            "phones": {
-              "home_phone": {
-                "country_code": "country_code8",
-                "number": "number6",
-                "area_code": "area_code8"
-              },
-              "mobile_phone": {
-                "country_code": "country_code8",
-                "number": "number6",
-                "area_code": "area_code8"
-              }
-            },
-            "fb_id": 150,
-            "code": "code4",
-            "document_type": "document_type4"
-          },
-          "metadata": {
-            "key0": "metadata3",
-            "key1": "metadata2"
-          },
-          "line_1": "line_10",
-          "line_2": "line_24",
-          "deleted_at": "2016-03-13T12:52:32.123Z"
-        },
+        "address": {},
         "metadata": {
           "key0": "metadata7",
           "key1": "metadata6",
           "key2": "metadata5"
         },
         "phones": {
-          "home_phone": {},
-          "mobile_phone": {}
+          "home_phone": {
+            "country_code": "country_code2",
+            "number": "number0",
+            "area_code": "area_code2"
+          },
+          "mobile_phone": {
+            "country_code": "country_code2",
+            "number": "number0",
+            "area_code": "area_code2"
+          }
         },
         "fb_id": 100,
         "code": "code8",
@@ -3143,56 +5959,7 @@ Response object for getting an Order
           "status": "status5",
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
-          "customer": {
-            "id": "id3",
-            "name": "name3",
-            "email": "email7",
-            "delinquent": true,
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "document": "document7",
-            "type": "type3",
-            "fb_access_token": "fb_access_token7",
-            "address": {
-              "id": "id9",
-              "street": "street9",
-              "number": "number7",
-              "complement": "complement5",
-              "zip_code": "zip_code3",
-              "neighborhood": "neighborhood5",
-              "city": "city9",
-              "state": "state5",
-              "country": "country3",
-              "status": "status1",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "customer": {},
-              "metadata": {
-                "key0": "metadata0"
-              },
-              "line_1": "line_13",
-              "line_2": "line_27",
-              "deleted_at": "2016-03-13T12:52:32.123Z"
-            },
-            "metadata": {
-              "key0": "metadata6"
-            },
-            "phones": {
-              "home_phone": {
-                "country_code": "country_code5",
-                "number": "number3",
-                "area_code": "area_code5"
-              },
-              "mobile_phone": {
-                "country_code": "country_code5",
-                "number": "number3",
-                "area_code": "area_code5"
-              }
-            },
-            "fb_id": 45,
-            "code": "code1",
-            "document_type": "document_type1"
-          },
+          "customer": {},
           "metadata": {
             "key0": "metadata6",
             "key1": "metadata5",
@@ -3207,14 +5974,72 @@ Response object for getting an Order
           "key1": "metadata3"
         },
         "phones": {
-          "home_phone": {},
-          "mobile_phone": {}
+          "home_phone": {
+            "country_code": "country_code9",
+            "number": "number7",
+            "area_code": "area_code9"
+          },
+          "mobile_phone": {
+            "country_code": "country_code9",
+            "number": "number3",
+            "area_code": "area_code9"
+          }
         },
         "fb_id": 251,
         "code": "code5",
         "document_type": "document_type5"
       },
-      "billingaddress": {},
+      "billingaddress": {
+        "id": "id5",
+        "street": "street5",
+        "number": "number3",
+        "complement": "complement1",
+        "zip_code": "zip_code9",
+        "neighborhood": "neighborhood1",
+        "city": "city5",
+        "state": "state1",
+        "country": "country9",
+        "status": "status7",
+        "created_at": "2016-03-13T12:52:32.123Z",
+        "updated_at": "2016-03-13T12:52:32.123Z",
+        "customer": {
+          "id": "id5",
+          "name": "name5",
+          "email": "email9",
+          "delinquent": true,
+          "created_at": "2016-03-13T12:52:32.123Z",
+          "updated_at": "2016-03-13T12:52:32.123Z",
+          "document": "document9",
+          "type": "type5",
+          "fb_access_token": "fb_access_token9",
+          "address": {},
+          "metadata": {
+            "key0": "metadata4",
+            "key1": "metadata3"
+          },
+          "phones": {
+            "home_phone": {
+              "country_code": "country_code7",
+              "number": "number5",
+              "area_code": "area_code7"
+            },
+            "mobile_phone": {
+              "country_code": "country_code7",
+              "number": "number5",
+              "area_code": "area_code7"
+            }
+          },
+          "fb_id": 77,
+          "code": "code3",
+          "document_type": "document_type3"
+        },
+        "metadata": {
+          "key0": "metadata4"
+        },
+        "line_1": "line_19",
+        "line_2": "line_23",
+        "deleted_at": "2016-03-13T12:52:32.123Z"
+      },
       "credit_card": {
         "statementDescriptor": "statementDescriptor1",
         "installments": [
@@ -3244,7 +6069,57 @@ Response object for getting an Order
         "description": "description1",
         "recipient_name": "recipient_name9",
         "recipient_phone": "recipient_phone3",
-        "address": {},
+        "address": {
+          "id": "id7",
+          "street": "street7",
+          "number": "number5",
+          "complement": "complement3",
+          "zip_code": "zip_code1",
+          "neighborhood": "neighborhood3",
+          "city": "city7",
+          "state": "state3",
+          "country": "country1",
+          "status": "status9",
+          "created_at": "2016-03-13T12:52:32.123Z",
+          "updated_at": "2016-03-13T12:52:32.123Z",
+          "customer": {
+            "id": "id7",
+            "name": "name7",
+            "email": "email1",
+            "delinquent": true,
+            "created_at": "2016-03-13T12:52:32.123Z",
+            "updated_at": "2016-03-13T12:52:32.123Z",
+            "document": "document1",
+            "type": "type7",
+            "fb_access_token": "fb_access_token1",
+            "address": {},
+            "metadata": {
+              "key0": "metadata8",
+              "key1": "metadata9"
+            },
+            "phones": {
+              "home_phone": {
+                "country_code": "country_code9",
+                "number": "number7",
+                "area_code": "area_code9"
+              },
+              "mobile_phone": {
+                "country_code": "country_code9",
+                "number": "number7",
+                "area_code": "area_code9"
+              }
+            },
+            "fb_id": 109,
+            "code": "code5",
+            "document_type": "document_type5"
+          },
+          "metadata": {
+            "key0": "metadata8"
+          },
+          "line_1": "line_11",
+          "line_2": "line_25",
+          "deleted_at": "2016-03-13T12:52:32.123Z"
+        },
         "max_delivery_date": "2016-03-13T12:52:32.123Z",
         "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
         "type": "type1"

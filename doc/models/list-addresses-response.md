@@ -42,66 +42,23 @@ Response object for listing addresses
         "document": "document9",
         "type": "type5",
         "fb_access_token": "fb_access_token9",
-        "address": {
-          "id": "id1",
-          "street": "street1",
-          "number": "number9",
-          "complement": "complement7",
-          "zip_code": "zip_code5",
-          "neighborhood": "neighborhood7",
-          "city": "city1",
-          "state": "state7",
-          "country": "country5",
-          "status": "status3",
-          "created_at": "2016-03-13T12:52:32.123Z",
-          "updated_at": "2016-03-13T12:52:32.123Z",
-          "customer": {
-            "id": "id1",
-            "name": "name1",
-            "email": "email5",
-            "delinquent": true,
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "document": "document5",
-            "type": "type1",
-            "fb_access_token": "fb_access_token5",
-            "address": {},
-            "metadata": {
-              "key0": "metadata2"
-            },
-            "phones": {
-              "home_phone": {
-                "country_code": "country_code3",
-                "number": "number1",
-                "area_code": "area_code3"
-              },
-              "mobile_phone": {
-                "country_code": "country_code3",
-                "number": "number1",
-                "area_code": "area_code3"
-              }
-            },
-            "fb_id": 203,
-            "code": "code9",
-            "document_type": "document_type9"
-          },
-          "metadata": {
-            "key0": "metadata2",
-            "key1": "metadata3",
-            "key2": "metadata4"
-          },
-          "line_1": "line_15",
-          "line_2": "line_29",
-          "deleted_at": "2016-03-13T12:52:32.123Z"
-        },
+        "address": {},
         "metadata": {
           "key0": "metadata4",
           "key1": "metadata3",
           "key2": "metadata2"
         },
         "phones": {
-          "home_phone": {},
-          "mobile_phone": {}
+          "home_phone": {
+            "country_code": "country_code7",
+            "number": "number5",
+            "area_code": "area_code7"
+          },
+          "mobile_phone": {
+            "country_code": "country_code7",
+            "number": "number5",
+            "area_code": "area_code7"
+          }
         },
         "fb_id": 153,
         "code": "code3",
@@ -138,63 +95,21 @@ Response object for listing addresses
         "document": "document0",
         "type": "type6",
         "fb_access_token": "fb_access_token0",
-        "address": {
-          "id": "id2",
-          "street": "street2",
-          "number": "number0",
-          "complement": "complement8",
-          "zip_code": "zip_code6",
-          "neighborhood": "neighborhood8",
-          "city": "city2",
-          "state": "state8",
-          "country": "country6",
-          "status": "status4",
-          "created_at": "2016-03-13T12:52:32.123Z",
-          "updated_at": "2016-03-13T12:52:32.123Z",
-          "customer": {
-            "id": "id2",
-            "name": "name2",
-            "email": "email6",
-            "delinquent": false,
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "document": "document6",
-            "type": "type2",
-            "fb_access_token": "fb_access_token6",
-            "address": {},
-            "metadata": {
-              "key0": "metadata3",
-              "key1": "metadata4"
-            },
-            "phones": {
-              "home_phone": {
-                "country_code": "country_code4",
-                "number": "number2",
-                "area_code": "area_code4"
-              },
-              "mobile_phone": {
-                "country_code": "country_code4",
-                "number": "number2",
-                "area_code": "area_code4"
-              }
-            },
-            "fb_id": 204,
-            "code": "code0",
-            "document_type": "document_type0"
-          },
-          "metadata": {
-            "key0": "metadata3"
-          },
-          "line_1": "line_16",
-          "line_2": "line_20",
-          "deleted_at": "2016-03-13T12:52:32.123Z"
-        },
+        "address": {},
         "metadata": {
           "key0": "metadata3"
         },
         "phones": {
-          "home_phone": {},
-          "mobile_phone": {}
+          "home_phone": {
+            "country_code": "country_code8",
+            "number": "number6",
+            "area_code": "area_code8"
+          },
+          "mobile_phone": {
+            "country_code": "country_code8",
+            "number": "number6",
+            "area_code": "area_code8"
+          }
         },
         "fb_id": 154,
         "code": "code4",

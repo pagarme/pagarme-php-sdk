@@ -19,9 +19,9 @@ use stdClass;
 class CreateChargeRequest implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var array
      */
-    private $code;
+    private $code = [];
 
     /**
      * @var int
@@ -29,14 +29,14 @@ class CreateChargeRequest implements \JsonSerializable
     private $amount;
 
     /**
-     * @var string
+     * @var array
      */
-    private $customerId;
+    private $customerId = [];
 
     /**
-     * @var CreateCustomerRequest
+     * @var array
      */
-    private $customer;
+    private $customer = [];
 
     /**
      * @var CreatePaymentRequest
@@ -44,19 +44,19 @@ class CreateChargeRequest implements \JsonSerializable
     private $payment;
 
     /**
-     * @var array<string,string>
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
-     * @var \DateTime|null
+     * @var array
      */
-    private $dueAt;
+    private $dueAt = [];
 
     /**
-     * @var CreateAntifraudRequest
+     * @var array
      */
-    private $antifraud;
+    private $antifraud = [];
 
     /**
      * @var string
@@ -64,32 +64,14 @@ class CreateChargeRequest implements \JsonSerializable
     private $orderId;
 
     /**
-     * @param string $code
      * @param int $amount
-     * @param string $customerId
-     * @param CreateCustomerRequest $customer
      * @param CreatePaymentRequest $payment
-     * @param array<string,string> $metadata
-     * @param CreateAntifraudRequest $antifraud
      * @param string $orderId
      */
-    public function __construct(
-        string $code,
-        int $amount,
-        string $customerId,
-        CreateCustomerRequest $customer,
-        CreatePaymentRequest $payment,
-        array $metadata,
-        CreateAntifraudRequest $antifraud,
-        string $orderId
-    ) {
-        $this->code = $code;
+    public function __construct(int $amount, CreatePaymentRequest $payment, string $orderId)
+    {
         $this->amount = $amount;
-        $this->customerId = $customerId;
-        $this->customer = $customer;
         $this->payment = $payment;
-        $this->metadata = $metadata;
-        $this->antifraud = $antifraud;
         $this->orderId = $orderId;
     }
 
@@ -97,21 +79,32 @@ class CreateChargeRequest implements \JsonSerializable
      * Returns Code.
      * Code
      */
-    public function getCode(): string
+    public function getCode(): ?string
     {
-        return $this->code;
+        if (count($this->code) == 0) {
+            return null;
+        }
+        return $this->code['value'];
     }
 
     /**
      * Sets Code.
      * Code
      *
-     * @required
      * @maps code
      */
-    public function setCode(string $code): void
+    public function setCode(?string $code): void
     {
-        $this->code = $code;
+        $this->code['value'] = $code;
+    }
+
+    /**
+     * Unsets Code.
+     * Code
+     */
+    public function unsetCode(): void
+    {
+        $this->code = [];
     }
 
     /**
@@ -139,42 +132,64 @@ class CreateChargeRequest implements \JsonSerializable
      * Returns Customer Id.
      * The customer's id
      */
-    public function getCustomerId(): string
+    public function getCustomerId(): ?string
     {
-        return $this->customerId;
+        if (count($this->customerId) == 0) {
+            return null;
+        }
+        return $this->customerId['value'];
     }
 
     /**
      * Sets Customer Id.
      * The customer's id
      *
-     * @required
      * @maps customer_id
      */
-    public function setCustomerId(string $customerId): void
+    public function setCustomerId(?string $customerId): void
     {
-        $this->customerId = $customerId;
+        $this->customerId['value'] = $customerId;
+    }
+
+    /**
+     * Unsets Customer Id.
+     * The customer's id
+     */
+    public function unsetCustomerId(): void
+    {
+        $this->customerId = [];
     }
 
     /**
      * Returns Customer.
      * Customer data
      */
-    public function getCustomer(): CreateCustomerRequest
+    public function getCustomer(): ?CreateCustomerRequest
     {
-        return $this->customer;
+        if (count($this->customer) == 0) {
+            return null;
+        }
+        return $this->customer['value'];
     }
 
     /**
      * Sets Customer.
      * Customer data
      *
-     * @required
      * @maps customer
      */
-    public function setCustomer(CreateCustomerRequest $customer): void
+    public function setCustomer(?CreateCustomerRequest $customer): void
     {
-        $this->customer = $customer;
+        $this->customer['value'] = $customer;
+    }
+
+    /**
+     * Unsets Customer.
+     * Customer data
+     */
+    public function unsetCustomer(): void
+    {
+        $this->customer = [];
     }
 
     /**
@@ -202,25 +217,36 @@ class CreateChargeRequest implements \JsonSerializable
      * Returns Metadata.
      * Metadata
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
-    public function getMetadata(): array
+    public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
      * Sets Metadata.
      * Metadata
      *
-     * @required
      * @maps metadata
      *
-     * @param array<string,string> $metadata
+     * @param array<string,string>|null $metadata
      */
-    public function setMetadata(array $metadata): void
+    public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     * Metadata
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -229,7 +255,10 @@ class CreateChargeRequest implements \JsonSerializable
      */
     public function getDueAt(): ?\DateTime
     {
-        return $this->dueAt;
+        if (count($this->dueAt) == 0) {
+            return null;
+        }
+        return $this->dueAt['value'];
     }
 
     /**
@@ -241,26 +270,45 @@ class CreateChargeRequest implements \JsonSerializable
      */
     public function setDueAt(?\DateTime $dueAt): void
     {
-        $this->dueAt = $dueAt;
+        $this->dueAt['value'] = $dueAt;
+    }
+
+    /**
+     * Unsets Due At.
+     * The charge due date
+     */
+    public function unsetDueAt(): void
+    {
+        $this->dueAt = [];
     }
 
     /**
      * Returns Antifraud.
      */
-    public function getAntifraud(): CreateAntifraudRequest
+    public function getAntifraud(): ?CreateAntifraudRequest
     {
-        return $this->antifraud;
+        if (count($this->antifraud) == 0) {
+            return null;
+        }
+        return $this->antifraud['value'];
     }
 
     /**
      * Sets Antifraud.
      *
-     * @required
      * @maps antifraud
      */
-    public function setAntifraud(CreateAntifraudRequest $antifraud): void
+    public function setAntifraud(?CreateAntifraudRequest $antifraud): void
     {
-        $this->antifraud = $antifraud;
+        $this->antifraud['value'] = $antifraud;
+    }
+
+    /**
+     * Unsets Antifraud.
+     */
+    public function unsetAntifraud(): void
+    {
+        $this->antifraud = [];
     }
 
     /**
@@ -296,17 +344,27 @@ class CreateChargeRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['code']        = $this->code;
-        $json['amount']      = $this->amount;
-        $json['customer_id'] = $this->customerId;
-        $json['customer']    = $this->customer;
-        $json['payment']     = $this->payment;
-        $json['metadata']    = $this->metadata;
-        if (isset($this->dueAt)) {
-            $json['due_at']  = DateTimeHelper::toRfc3339DateTime($this->dueAt);
+        if (!empty($this->code)) {
+            $json['code']        = $this->code['value'];
         }
-        $json['antifraud']   = $this->antifraud;
-        $json['order_id']    = $this->orderId;
+        $json['amount']          = $this->amount;
+        if (!empty($this->customerId)) {
+            $json['customer_id'] = $this->customerId['value'];
+        }
+        if (!empty($this->customer)) {
+            $json['customer']    = $this->customer['value'];
+        }
+        $json['payment']         = $this->payment;
+        if (!empty($this->metadata)) {
+            $json['metadata']    = $this->metadata['value'];
+        }
+        if (!empty($this->dueAt)) {
+            $json['due_at']      = DateTimeHelper::toRfc3339DateTime($this->dueAt['value']);
+        }
+        if (!empty($this->antifraud)) {
+            $json['antifraud']   = $this->antifraud['value'];
+        }
+        $json['order_id']        = $this->orderId;
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

@@ -67,83 +67,7 @@ Response for voucher transactions
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id8",
-            "name": "name8",
-            "email": "email8",
-            "document": "document8",
-            "description": "description8",
-            "type": "type2",
-            "status": "status0",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id6",
-              "holder_name": "holder_name2",
-              "holder_type": "holder_type8",
-              "bank": "bank4",
-              "branch_number": "branch_number2",
-              "branch_check_digit": "branch_check_digit2",
-              "account_number": "account_number6",
-              "account_check_digit": "account_check_digit2",
-              "type": "type6",
-              "status": "status8",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata3",
-                "key1": "metadata2"
-              },
-              "pix_key": "pix_key0"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway2",
-                "status": "status4",
-                "pgid": "pgid8",
-                "created_at": "created_at0",
-                "updated_at": "updated_at8"
-              },
-              {
-                "gateway": "gateway3",
-                "status": "status5",
-                "pgid": "pgid9",
-                "created_at": "created_at1",
-                "updated_at": "updated_at9"
-              },
-              {
-                "gateway": "gateway4",
-                "status": "status6",
-                "pgid": "pgid0",
-                "created_at": "created_at2",
-                "updated_at": "updated_at0"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata5",
-              "key1": "metadata6"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": false,
-              "type": "type8",
-              "volume_percentage": 240,
-              "delay": 50,
-              "days": [
-                26,
-                27
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": false,
-              "transfer_interval": "transfer_interval6",
-              "transfer_day": 150
-            },
-            "code": "code6",
-            "payment_mode": "payment_mode2"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata3",
             "key1": "metadata2"
@@ -151,9 +75,27 @@ Response for voucher transactions
           "pix_key": "pix_key0"
         },
         "gateway_recipients": [
-          {},
-          {},
-          {}
+          {
+            "gateway": "gateway2",
+            "status": "status4",
+            "pgid": "pgid8",
+            "created_at": "created_at0",
+            "updated_at": "updated_at8"
+          },
+          {
+            "gateway": "gateway3",
+            "status": "status5",
+            "pgid": "pgid9",
+            "created_at": "created_at1",
+            "updated_at": "updated_at9"
+          },
+          {
+            "gateway": "gateway4",
+            "status": "status6",
+            "pgid": "pgid0",
+            "created_at": "created_at2",
+            "updated_at": "updated_at0"
+          }
         ],
         "metadata": {
           "key0": "metadata5",
@@ -213,77 +155,7 @@ Response for voucher transactions
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id7",
-            "name": "name7",
-            "email": "email9",
-            "document": "document9",
-            "description": "description7",
-            "type": "type3",
-            "status": "status9",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id5",
-              "holder_name": "holder_name1",
-              "holder_type": "holder_type7",
-              "bank": "bank3",
-              "branch_number": "branch_number1",
-              "branch_check_digit": "branch_check_digit1",
-              "account_number": "account_number5",
-              "account_check_digit": "account_check_digit1",
-              "type": "type5",
-              "status": "status7",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata2",
-                "key1": "metadata1",
-                "key2": "metadata0"
-              },
-              "pix_key": "pix_key9"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway1",
-                "status": "status3",
-                "pgid": "pgid7",
-                "created_at": "created_at9",
-                "updated_at": "updated_at7"
-              },
-              {
-                "gateway": "gateway2",
-                "status": "status4",
-                "pgid": "pgid8",
-                "created_at": "created_at0",
-                "updated_at": "updated_at8"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata6",
-              "key1": "metadata7",
-              "key2": "metadata8"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": true,
-              "type": "type9",
-              "volume_percentage": 241,
-              "delay": 49,
-              "days": [
-                25
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": true,
-              "transfer_interval": "transfer_interval7",
-              "transfer_day": 151
-            },
-            "code": "code5",
-            "payment_mode": "payment_mode1"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata2",
             "key1": "metadata1",
@@ -292,8 +164,20 @@ Response for voucher transactions
           "pix_key": "pix_key1"
         },
         "gateway_recipients": [
-          {},
-          {}
+          {
+            "gateway": "gateway1",
+            "status": "status3",
+            "pgid": "pgid7",
+            "created_at": "created_at9",
+            "updated_at": "updated_at7"
+          },
+          {
+            "gateway": "gateway2",
+            "status": "status4",
+            "pgid": "pgid8",
+            "created_at": "created_at0",
+            "updated_at": "updated_at8"
+          }
         ],
         "metadata": {
           "key0": "metadata6",
@@ -384,77 +268,7 @@ Response for voucher transactions
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id4",
-            "name": "name4",
-            "email": "email2",
-            "document": "document2",
-            "description": "description4",
-            "type": "type6",
-            "status": "status6",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id2",
-              "holder_name": "holder_name8",
-              "holder_type": "holder_type4",
-              "bank": "bank0",
-              "branch_number": "branch_number8",
-              "branch_check_digit": "branch_check_digit8",
-              "account_number": "account_number2",
-              "account_check_digit": "account_check_digit8",
-              "type": "type2",
-              "status": "status4",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata9",
-                "key1": "metadata8",
-                "key2": "metadata7"
-              },
-              "pix_key": "pix_key6"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway8",
-                "status": "status0",
-                "pgid": "pgid4",
-                "created_at": "created_at6",
-                "updated_at": "updated_at4"
-              },
-              {
-                "gateway": "gateway9",
-                "status": "status1",
-                "pgid": "pgid5",
-                "created_at": "created_at7",
-                "updated_at": "updated_at5"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata9",
-              "key1": "metadata0",
-              "key2": "metadata1"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": false,
-              "type": "type2",
-              "volume_percentage": 218,
-              "delay": 72,
-              "days": [
-                48
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": false,
-              "transfer_interval": "transfer_interval0",
-              "transfer_day": 128
-            },
-            "code": "code2",
-            "payment_mode": "payment_mode8"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata9",
             "key1": "metadata8",
@@ -463,8 +277,20 @@ Response for voucher transactions
           "pix_key": "pix_key4"
         },
         "gateway_recipients": [
-          {},
-          {}
+          {
+            "gateway": "gateway8",
+            "status": "status0",
+            "pgid": "pgid4",
+            "created_at": "created_at6",
+            "updated_at": "updated_at4"
+          },
+          {
+            "gateway": "gateway9",
+            "status": "status1",
+            "pgid": "pgid5",
+            "created_at": "created_at7",
+            "updated_at": "updated_at5"
+          }
         ],
         "metadata": {
           "key0": "metadata9",
@@ -524,75 +350,20 @@ Response for voucher transactions
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id3",
-            "name": "name3",
-            "email": "email3",
-            "document": "document3",
-            "description": "description3",
-            "type": "type7",
-            "status": "status5",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id1",
-              "holder_name": "holder_name7",
-              "holder_type": "holder_type3",
-              "bank": "bank9",
-              "branch_number": "branch_number7",
-              "branch_check_digit": "branch_check_digit7",
-              "account_number": "account_number1",
-              "account_check_digit": "account_check_digit7",
-              "type": "type1",
-              "status": "status3",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata8"
-              },
-              "pix_key": "pix_key5"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway7",
-                "status": "status9",
-                "pgid": "pgid3",
-                "created_at": "created_at5",
-                "updated_at": "updated_at3"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata0"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": true,
-              "type": "type3",
-              "volume_percentage": 219,
-              "delay": 71,
-              "days": [
-                47,
-                48,
-                49
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": true,
-              "transfer_interval": "transfer_interval1",
-              "transfer_day": 129
-            },
-            "code": "code1",
-            "payment_mode": "payment_mode7"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata8"
           },
           "pix_key": "pix_key5"
         },
         "gateway_recipients": [
-          {}
+          {
+            "gateway": "gateway7",
+            "status": "status9",
+            "pgid": "pgid3",
+            "created_at": "created_at5",
+            "updated_at": "updated_at3"
+          }
         ],
         "metadata": {
           "key0": "metadata0"
@@ -690,59 +461,7 @@ Response for voucher transactions
         "status": "status4",
         "created_at": "2016-03-13T12:52:32.123Z",
         "updated_at": "2016-03-13T12:52:32.123Z",
-        "customer": {
-          "id": "id2",
-          "name": "name2",
-          "email": "email4",
-          "delinquent": false,
-          "created_at": "2016-03-13T12:52:32.123Z",
-          "updated_at": "2016-03-13T12:52:32.123Z",
-          "document": "document6",
-          "type": "type8",
-          "fb_access_token": "fb_access_token6",
-          "address": {
-            "id": "id8",
-            "street": "street8",
-            "number": "number6",
-            "complement": "complement4",
-            "zip_code": "zip_code2",
-            "neighborhood": "neighborhood4",
-            "city": "city8",
-            "state": "state4",
-            "country": "country2",
-            "status": "status0",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "customer": {},
-            "metadata": {
-              "key0": "metadata1",
-              "key1": "metadata0",
-              "key2": "metadata9"
-            },
-            "line_1": "line_12",
-            "line_2": "line_26",
-            "deleted_at": "2016-03-13T12:52:32.123Z"
-          },
-          "metadata": {
-            "key0": "metadata9",
-            "key1": "metadata8"
-          },
-          "phones": {
-            "home_phone": {
-              "country_code": "country_code4",
-              "number": "number2",
-              "area_code": "area_code4"
-            },
-            "mobile_phone": {
-              "country_code": "country_code4",
-              "number": "number8",
-              "area_code": "area_code4"
-            }
-          },
-          "fb_id": 106,
-          "code": "code0",
-          "document_type": "document_type0"
-        },
+        "customer": {},
         "metadata": {
           "key0": "metadata9",
           "key1": "metadata8",
@@ -758,8 +477,16 @@ Response for voucher transactions
         "key2": "metadata9"
       },
       "phones": {
-        "home_phone": {},
-        "mobile_phone": {}
+        "home_phone": {
+          "country_code": "country_code8",
+          "number": "number4",
+          "area_code": "area_code8"
+        },
+        "mobile_phone": {
+          "country_code": "country_code2",
+          "number": "number0",
+          "area_code": "area_code2"
+        }
       },
       "fb_id": 56,
       "code": "code4",

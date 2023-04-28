@@ -70,75 +70,20 @@ Response object for getting a credit card transaction
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id4",
-            "name": "name4",
-            "email": "email2",
-            "document": "document2",
-            "description": "description4",
-            "type": "type6",
-            "status": "status4",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id2",
-              "holder_name": "holder_name8",
-              "holder_type": "holder_type4",
-              "bank": "bank0",
-              "branch_number": "branch_number8",
-              "branch_check_digit": "branch_check_digit8",
-              "account_number": "account_number2",
-              "account_check_digit": "account_check_digit8",
-              "type": "type2",
-              "status": "status4",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata9"
-              },
-              "pix_key": "pix_key4"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway8",
-                "status": "status0",
-                "pgid": "pgid4",
-                "created_at": "created_at6",
-                "updated_at": "updated_at4"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata9"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": false,
-              "type": "type2",
-              "volume_percentage": 8,
-              "delay": 26,
-              "days": [
-                2,
-                3,
-                4
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": false,
-              "transfer_interval": "transfer_interval0",
-              "transfer_day": 174
-            },
-            "code": "code2",
-            "payment_mode": "payment_mode8"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata9"
           },
           "pix_key": "pix_key4"
         },
         "gateway_recipients": [
-          {}
+          {
+            "gateway": "gateway8",
+            "status": "status0",
+            "pgid": "pgid4",
+            "created_at": "created_at6",
+            "updated_at": "updated_at4"
+          }
         ],
         "metadata": {
           "key0": "metadata9"
@@ -225,75 +170,20 @@ Response object for getting a credit card transaction
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id8",
-            "name": "name8",
-            "email": "email8",
-            "document": "document2",
-            "description": "description8",
-            "type": "type2",
-            "status": "status0",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id6",
-              "holder_name": "holder_name2",
-              "holder_type": "holder_type8",
-              "bank": "bank4",
-              "branch_number": "branch_number2",
-              "branch_check_digit": "branch_check_digit2",
-              "account_number": "account_number6",
-              "account_check_digit": "account_check_digit2",
-              "type": "type6",
-              "status": "status8",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata3"
-              },
-              "pix_key": "pix_key0"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway2",
-                "status": "status4",
-                "pgid": "pgid8",
-                "created_at": "created_at0",
-                "updated_at": "updated_at8"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata5"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": false,
-              "type": "type8",
-              "volume_percentage": 194,
-              "delay": 96,
-              "days": [
-                72,
-                73,
-                74
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": false,
-              "transfer_interval": "transfer_interval6",
-              "transfer_day": 104
-            },
-            "code": "code6",
-            "payment_mode": "payment_mode2"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata3"
           },
           "pix_key": "pix_key0"
         },
         "gateway_recipients": [
-          {}
+          {
+            "gateway": "gateway2",
+            "status": "status4",
+            "pgid": "pgid8",
+            "created_at": "created_at0",
+            "updated_at": "updated_at8"
+          }
         ],
         "metadata": {
           "key0": "metadata5"
@@ -353,84 +243,7 @@ Response object for getting a credit card transaction
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id7",
-            "name": "name7",
-            "email": "email9",
-            "document": "document1",
-            "description": "description7",
-            "type": "type3",
-            "status": "status9",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id5",
-              "holder_name": "holder_name1",
-              "holder_type": "holder_type7",
-              "bank": "bank3",
-              "branch_number": "branch_number1",
-              "branch_check_digit": "branch_check_digit1",
-              "account_number": "account_number5",
-              "account_check_digit": "account_check_digit1",
-              "type": "type5",
-              "status": "status7",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata4",
-                "key1": "metadata3",
-                "key2": "metadata2"
-              },
-              "pix_key": "pix_key9"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway1",
-                "status": "status3",
-                "pgid": "pgid7",
-                "created_at": "created_at9",
-                "updated_at": "updated_at7"
-              },
-              {
-                "gateway": "gateway2",
-                "status": "status4",
-                "pgid": "pgid8",
-                "created_at": "created_at0",
-                "updated_at": "updated_at8"
-              },
-              {
-                "gateway": "gateway3",
-                "status": "status5",
-                "pgid": "pgid9",
-                "created_at": "created_at1",
-                "updated_at": "updated_at9"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata4",
-              "key1": "metadata3"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": true,
-              "type": "type9",
-              "volume_percentage": 195,
-              "delay": 95,
-              "days": [
-                71,
-                72
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": true,
-              "transfer_interval": "transfer_interval7",
-              "transfer_day": 105
-            },
-            "code": "code5",
-            "payment_mode": "payment_mode1"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata2",
             "key1": "metadata1"
@@ -438,9 +251,27 @@ Response object for getting a credit card transaction
           "pix_key": "pix_key1"
         },
         "gateway_recipients": [
-          {},
-          {},
-          {}
+          {
+            "gateway": "gateway1",
+            "status": "status3",
+            "pgid": "pgid7",
+            "created_at": "created_at9",
+            "updated_at": "updated_at7"
+          },
+          {
+            "gateway": "gateway2",
+            "status": "status4",
+            "pgid": "pgid8",
+            "created_at": "created_at0",
+            "updated_at": "updated_at8"
+          },
+          {
+            "gateway": "gateway3",
+            "status": "status5",
+            "pgid": "pgid9",
+            "created_at": "created_at1",
+            "updated_at": "updated_at9"
+          }
         ],
         "metadata": {
           "key0": "metadata6",
@@ -500,76 +331,7 @@ Response object for getting a credit card transaction
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id6",
-            "name": "name6",
-            "email": "email0",
-            "document": "document0",
-            "description": "description6",
-            "type": "type4",
-            "status": "status8",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id4",
-              "holder_name": "holder_name0",
-              "holder_type": "holder_type6",
-              "bank": "bank2",
-              "branch_number": "branch_number0",
-              "branch_check_digit": "branch_check_digit0",
-              "account_number": "account_number4",
-              "account_check_digit": "account_check_digit0",
-              "type": "type4",
-              "status": "status6",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata5",
-                "key1": "metadata4"
-              },
-              "pix_key": "pix_key8"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway0",
-                "status": "status2",
-                "pgid": "pgid6",
-                "created_at": "created_at8",
-                "updated_at": "updated_at6"
-              },
-              {
-                "gateway": "gateway1",
-                "status": "status3",
-                "pgid": "pgid7",
-                "created_at": "created_at9",
-                "updated_at": "updated_at7"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata3",
-              "key1": "metadata2",
-              "key2": "metadata1"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": false,
-              "type": "type0",
-              "volume_percentage": 196,
-              "delay": 94,
-              "days": [
-                70
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": false,
-              "transfer_interval": "transfer_interval8",
-              "transfer_day": 106
-            },
-            "code": "code4",
-            "payment_mode": "payment_mode0"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata1",
             "key1": "metadata0",
@@ -578,8 +340,20 @@ Response object for getting a credit card transaction
           "pix_key": "pix_key2"
         },
         "gateway_recipients": [
-          {},
-          {}
+          {
+            "gateway": "gateway0",
+            "status": "status2",
+            "pgid": "pgid6",
+            "created_at": "created_at8",
+            "updated_at": "updated_at6"
+          },
+          {
+            "gateway": "gateway1",
+            "status": "status3",
+            "pgid": "pgid7",
+            "created_at": "created_at9",
+            "updated_at": "updated_at7"
+          }
         ],
         "metadata": {
           "key0": "metadata7",
@@ -675,59 +449,7 @@ Response object for getting a credit card transaction
         "status": "status4",
         "created_at": "2016-03-13T12:52:32.123Z",
         "updated_at": "2016-03-13T12:52:32.123Z",
-        "customer": {
-          "id": "id2",
-          "name": "name2",
-          "email": "email4",
-          "delinquent": false,
-          "created_at": "2016-03-13T12:52:32.123Z",
-          "updated_at": "2016-03-13T12:52:32.123Z",
-          "document": "document6",
-          "type": "type8",
-          "fb_access_token": "fb_access_token6",
-          "address": {
-            "id": "id8",
-            "street": "street8",
-            "number": "number6",
-            "complement": "complement4",
-            "zip_code": "zip_code2",
-            "neighborhood": "neighborhood4",
-            "city": "city8",
-            "state": "state4",
-            "country": "country2",
-            "status": "status0",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "customer": {},
-            "metadata": {
-              "key0": "metadata1",
-              "key1": "metadata0",
-              "key2": "metadata9"
-            },
-            "line_1": "line_12",
-            "line_2": "line_26",
-            "deleted_at": "2016-03-13T12:52:32.123Z"
-          },
-          "metadata": {
-            "key0": "metadata9",
-            "key1": "metadata8"
-          },
-          "phones": {
-            "home_phone": {
-              "country_code": "country_code4",
-              "number": "number2",
-              "area_code": "area_code4"
-            },
-            "mobile_phone": {
-              "country_code": "country_code4",
-              "number": "number8",
-              "area_code": "area_code4"
-            }
-          },
-          "fb_id": 106,
-          "code": "code0",
-          "document_type": "document_type0"
-        },
+        "customer": {},
         "metadata": {
           "key0": "metadata9",
           "key1": "metadata8",
@@ -743,8 +465,16 @@ Response object for getting a credit card transaction
         "key2": "metadata9"
       },
       "phones": {
-        "home_phone": {},
-        "mobile_phone": {}
+        "home_phone": {
+          "country_code": "country_code8",
+          "number": "number4",
+          "area_code": "area_code8"
+        },
+        "mobile_phone": {
+          "country_code": "country_code2",
+          "number": "number0",
+          "area_code": "area_code2"
+        }
       },
       "fb_id": 56,
       "code": "code4",
