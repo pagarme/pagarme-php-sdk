@@ -61,75 +61,20 @@ Response object for getting a safety pay transaction
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id4",
-            "name": "name4",
-            "email": "email2",
-            "document": "document8",
-            "description": "description4",
-            "type": "type6",
-            "status": "status6",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id2",
-              "holder_name": "holder_name8",
-              "holder_type": "holder_type4",
-              "bank": "bank0",
-              "branch_number": "branch_number8",
-              "branch_check_digit": "branch_check_digit8",
-              "account_number": "account_number2",
-              "account_check_digit": "account_check_digit8",
-              "type": "type2",
-              "status": "status4",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata7"
-              },
-              "pix_key": "pix_key6"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway8",
-                "status": "status0",
-                "pgid": "pgid4",
-                "created_at": "created_at6",
-                "updated_at": "updated_at4"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata9"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": false,
-              "type": "type2",
-              "volume_percentage": 162,
-              "delay": 128,
-              "days": [
-                104,
-                105,
-                106
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": false,
-              "transfer_interval": "transfer_interval0",
-              "transfer_day": 72
-            },
-            "code": "code2",
-            "payment_mode": "payment_mode8"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata9"
           },
           "pix_key": "pix_key4"
         },
         "gateway_recipients": [
-          {}
+          {
+            "gateway": "gateway8",
+            "status": "status0",
+            "pgid": "pgid4",
+            "created_at": "created_at6",
+            "updated_at": "updated_at4"
+          }
         ],
         "metadata": {
           "key0": "metadata9"
@@ -189,76 +134,7 @@ Response object for getting a safety pay transaction
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id5",
-            "name": "name5",
-            "email": "email1",
-            "document": "document9",
-            "description": "description5",
-            "type": "type5",
-            "status": "status7",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id3",
-              "holder_name": "holder_name9",
-              "holder_type": "holder_type5",
-              "bank": "bank1",
-              "branch_number": "branch_number9",
-              "branch_check_digit": "branch_check_digit9",
-              "account_number": "account_number3",
-              "account_check_digit": "account_check_digit9",
-              "type": "type3",
-              "status": "status5",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata6",
-                "key1": "metadata5"
-              },
-              "pix_key": "pix_key7"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway9",
-                "status": "status1",
-                "pgid": "pgid5",
-                "created_at": "created_at7",
-                "updated_at": "updated_at5"
-              },
-              {
-                "gateway": "gateway0",
-                "status": "status2",
-                "pgid": "pgid6",
-                "created_at": "created_at8",
-                "updated_at": "updated_at6"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata8",
-              "key1": "metadata9",
-              "key2": "metadata0"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": true,
-              "type": "type1",
-              "volume_percentage": 161,
-              "delay": 129,
-              "days": [
-                105
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": true,
-              "transfer_interval": "transfer_interval9",
-              "transfer_day": 71
-            },
-            "code": "code3",
-            "payment_mode": "payment_mode9"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata0",
             "key1": "metadata9",
@@ -267,8 +143,20 @@ Response object for getting a safety pay transaction
           "pix_key": "pix_key3"
         },
         "gateway_recipients": [
-          {},
-          {}
+          {
+            "gateway": "gateway9",
+            "status": "status1",
+            "pgid": "pgid5",
+            "created_at": "created_at7",
+            "updated_at": "updated_at5"
+          },
+          {
+            "gateway": "gateway0",
+            "status": "status2",
+            "pgid": "pgid6",
+            "created_at": "created_at8",
+            "updated_at": "updated_at6"
+          }
         ],
         "metadata": {
           "key0": "metadata8",
@@ -354,75 +242,20 @@ Response object for getting a safety pay transaction
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id4",
-            "name": "name4",
-            "email": "email2",
-            "document": "document8",
-            "description": "description4",
-            "type": "type6",
-            "status": "status6",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id2",
-              "holder_name": "holder_name8",
-              "holder_type": "holder_type4",
-              "bank": "bank0",
-              "branch_number": "branch_number8",
-              "branch_check_digit": "branch_check_digit8",
-              "account_number": "account_number2",
-              "account_check_digit": "account_check_digit8",
-              "type": "type2",
-              "status": "status4",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata7"
-              },
-              "pix_key": "pix_key6"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway8",
-                "status": "status0",
-                "pgid": "pgid4",
-                "created_at": "created_at6",
-                "updated_at": "updated_at4"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata1"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": false,
-              "type": "type8",
-              "volume_percentage": 60,
-              "delay": 230,
-              "days": [
-                206,
-                207,
-                208
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": false,
-              "transfer_interval": "transfer_interval0",
-              "transfer_day": 226
-            },
-            "code": "code2",
-            "payment_mode": "payment_mode8"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata9"
           },
           "pix_key": "pix_key4"
         },
         "gateway_recipients": [
-          {}
+          {
+            "gateway": "gateway8",
+            "status": "status0",
+            "pgid": "pgid4",
+            "created_at": "created_at6",
+            "updated_at": "updated_at4"
+          }
         ],
         "metadata": {
           "key0": "metadata9"

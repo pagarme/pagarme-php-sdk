@@ -72,77 +72,7 @@ Response object for getting a debit card transaction
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id2",
-            "name": "name2",
-            "email": "email4",
-            "document": "document4",
-            "description": "description2",
-            "type": "type8",
-            "status": "status6",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id0",
-              "holder_name": "holder_name6",
-              "holder_type": "holder_type2",
-              "bank": "bank8",
-              "branch_number": "branch_number6",
-              "branch_check_digit": "branch_check_digit6",
-              "account_number": "account_number0",
-              "account_check_digit": "account_check_digit6",
-              "type": "type0",
-              "status": "status2",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata7",
-                "key1": "metadata6",
-                "key2": "metadata5"
-              },
-              "pix_key": "pix_key6"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway6",
-                "status": "status8",
-                "pgid": "pgid2",
-                "created_at": "created_at4",
-                "updated_at": "updated_at2"
-              },
-              {
-                "gateway": "gateway7",
-                "status": "status9",
-                "pgid": "pgid3",
-                "created_at": "created_at5",
-                "updated_at": "updated_at3"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata1",
-              "key1": "metadata2",
-              "key2": "metadata3"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": false,
-              "type": "type4",
-              "volume_percentage": 94,
-              "delay": 196,
-              "days": [
-                172
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": false,
-              "transfer_interval": "transfer_interval2",
-              "transfer_day": 4
-            },
-            "code": "code0",
-            "payment_mode": "payment_mode6"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata7",
             "key1": "metadata6",
@@ -151,8 +81,20 @@ Response object for getting a debit card transaction
           "pix_key": "pix_key6"
         },
         "gateway_recipients": [
-          {},
-          {}
+          {
+            "gateway": "gateway6",
+            "status": "status8",
+            "pgid": "pgid2",
+            "created_at": "created_at4",
+            "updated_at": "updated_at2"
+          },
+          {
+            "gateway": "gateway7",
+            "status": "status9",
+            "pgid": "pgid3",
+            "created_at": "created_at5",
+            "updated_at": "updated_at3"
+          }
         ],
         "metadata": {
           "key0": "metadata1",
@@ -212,75 +154,20 @@ Response object for getting a debit card transaction
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id1",
-            "name": "name1",
-            "email": "email5",
-            "document": "document5",
-            "description": "description1",
-            "type": "type9",
-            "status": "status7",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id9",
-              "holder_name": "holder_name5",
-              "holder_type": "holder_type1",
-              "bank": "bank7",
-              "branch_number": "branch_number5",
-              "branch_check_digit": "branch_check_digit5",
-              "account_number": "account_number9",
-              "account_check_digit": "account_check_digit5",
-              "type": "type9",
-              "status": "status1",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata6"
-              },
-              "pix_key": "pix_key7"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway5",
-                "status": "status7",
-                "pgid": "pgid1",
-                "created_at": "created_at3",
-                "updated_at": "updated_at1"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata2"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": true,
-              "type": "type5",
-              "volume_percentage": 95,
-              "delay": 195,
-              "days": [
-                171,
-                172,
-                173
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": true,
-              "transfer_interval": "transfer_interval3",
-              "transfer_day": 5
-            },
-            "code": "code9",
-            "payment_mode": "payment_mode5"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata6"
           },
           "pix_key": "pix_key7"
         },
         "gateway_recipients": [
-          {}
+          {
+            "gateway": "gateway5",
+            "status": "status7",
+            "pgid": "pgid1",
+            "created_at": "created_at3",
+            "updated_at": "updated_at1"
+          }
         ],
         "metadata": {
           "key0": "metadata2"
@@ -340,83 +227,7 @@ Response object for getting a debit card transaction
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id0",
-            "name": "name0",
-            "email": "email6",
-            "document": "document6",
-            "description": "description0",
-            "type": "type0",
-            "status": "status8",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id8",
-              "holder_name": "holder_name4",
-              "holder_type": "holder_type0",
-              "bank": "bank6",
-              "branch_number": "branch_number4",
-              "branch_check_digit": "branch_check_digit4",
-              "account_number": "account_number8",
-              "account_check_digit": "account_check_digit4",
-              "type": "type8",
-              "status": "status0",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata5",
-                "key1": "metadata4"
-              },
-              "pix_key": "pix_key8"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway4",
-                "status": "status6",
-                "pgid": "pgid0",
-                "created_at": "created_at2",
-                "updated_at": "updated_at0"
-              },
-              {
-                "gateway": "gateway5",
-                "status": "status7",
-                "pgid": "pgid1",
-                "created_at": "created_at3",
-                "updated_at": "updated_at1"
-              },
-              {
-                "gateway": "gateway6",
-                "status": "status8",
-                "pgid": "pgid2",
-                "created_at": "created_at4",
-                "updated_at": "updated_at2"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata3",
-              "key1": "metadata4"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": false,
-              "type": "type6",
-              "volume_percentage": 96,
-              "delay": 194,
-              "days": [
-                170,
-                171
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": false,
-              "transfer_interval": "transfer_interval4",
-              "transfer_day": 6
-            },
-            "code": "code8",
-            "payment_mode": "payment_mode4"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata5",
             "key1": "metadata4"
@@ -424,9 +235,27 @@ Response object for getting a debit card transaction
           "pix_key": "pix_key8"
         },
         "gateway_recipients": [
-          {},
-          {},
-          {}
+          {
+            "gateway": "gateway4",
+            "status": "status6",
+            "pgid": "pgid0",
+            "created_at": "created_at2",
+            "updated_at": "updated_at0"
+          },
+          {
+            "gateway": "gateway5",
+            "status": "status7",
+            "pgid": "pgid1",
+            "created_at": "created_at3",
+            "updated_at": "updated_at1"
+          },
+          {
+            "gateway": "gateway6",
+            "status": "status8",
+            "pgid": "pgid2",
+            "created_at": "created_at4",
+            "updated_at": "updated_at2"
+          }
         ],
         "metadata": {
           "key0": "metadata3",
@@ -509,84 +338,7 @@ Response object for getting a debit card transaction
           "created_at": "2016-03-13T12:52:32.123Z",
           "updated_at": "2016-03-13T12:52:32.123Z",
           "deleted_at": "2016-03-13T12:52:32.123Z",
-          "recipient": {
-            "id": "id0",
-            "name": "name0",
-            "email": "email6",
-            "document": "document4",
-            "description": "description0",
-            "type": "type0",
-            "status": "status2",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "deleted_at": "2016-03-13T12:52:32.123Z",
-            "default_bank_account": {
-              "id": "id8",
-              "holder_name": "holder_name4",
-              "holder_type": "holder_type0",
-              "bank": "bank6",
-              "branch_number": "branch_number4",
-              "branch_check_digit": "branch_check_digit4",
-              "account_number": "account_number8",
-              "account_check_digit": "account_check_digit4",
-              "type": "type8",
-              "status": "status0",
-              "created_at": "2016-03-13T12:52:32.123Z",
-              "updated_at": "2016-03-13T12:52:32.123Z",
-              "deleted_at": "2016-03-13T12:52:32.123Z",
-              "recipient": {},
-              "metadata": {
-                "key0": "metadata1",
-                "key1": "metadata0",
-                "key2": "metadata9"
-              },
-              "pix_key": "pix_key2"
-            },
-            "gateway_recipients": [
-              {
-                "gateway": "gateway4",
-                "status": "status6",
-                "pgid": "pgid0",
-                "created_at": "created_at2",
-                "updated_at": "updated_at0"
-              },
-              {
-                "gateway": "gateway5",
-                "status": "status7",
-                "pgid": "pgid1",
-                "created_at": "created_at3",
-                "updated_at": "updated_at1"
-              },
-              {
-                "gateway": "gateway6",
-                "status": "status8",
-                "pgid": "pgid2",
-                "created_at": "created_at4",
-                "updated_at": "updated_at2"
-              }
-            ],
-            "metadata": {
-              "key0": "metadata3",
-              "key1": "metadata4"
-            },
-            "automatic_anticipation_settings": {
-              "enabled": false,
-              "type": "type6",
-              "volume_percentage": 108,
-              "delay": 182,
-              "days": [
-                158,
-                159
-              ]
-            },
-            "transfer_settings": {
-              "transfer_enabled": false,
-              "transfer_interval": "transfer_interval4",
-              "transfer_day": 18
-            },
-            "code": "code8",
-            "payment_mode": "payment_mode4"
-          },
+          "recipient": {},
           "metadata": {
             "key0": "metadata5",
             "key1": "metadata4"
@@ -594,9 +346,27 @@ Response object for getting a debit card transaction
           "pix_key": "pix_key8"
         },
         "gateway_recipients": [
-          {},
-          {},
-          {}
+          {
+            "gateway": "gateway4",
+            "status": "status6",
+            "pgid": "pgid0",
+            "created_at": "created_at2",
+            "updated_at": "updated_at0"
+          },
+          {
+            "gateway": "gateway5",
+            "status": "status7",
+            "pgid": "pgid1",
+            "created_at": "created_at3",
+            "updated_at": "updated_at1"
+          },
+          {
+            "gateway": "gateway6",
+            "status": "status8",
+            "pgid": "pgid2",
+            "created_at": "created_at4",
+            "updated_at": "updated_at2"
+          }
         ],
         "metadata": {
           "key0": "metadata3",
@@ -692,59 +462,7 @@ Response object for getting a debit card transaction
         "status": "status4",
         "created_at": "2016-03-13T12:52:32.123Z",
         "updated_at": "2016-03-13T12:52:32.123Z",
-        "customer": {
-          "id": "id2",
-          "name": "name2",
-          "email": "email4",
-          "delinquent": false,
-          "created_at": "2016-03-13T12:52:32.123Z",
-          "updated_at": "2016-03-13T12:52:32.123Z",
-          "document": "document6",
-          "type": "type8",
-          "fb_access_token": "fb_access_token6",
-          "address": {
-            "id": "id8",
-            "street": "street8",
-            "number": "number6",
-            "complement": "complement4",
-            "zip_code": "zip_code2",
-            "neighborhood": "neighborhood4",
-            "city": "city8",
-            "state": "state4",
-            "country": "country2",
-            "status": "status0",
-            "created_at": "2016-03-13T12:52:32.123Z",
-            "updated_at": "2016-03-13T12:52:32.123Z",
-            "customer": {},
-            "metadata": {
-              "key0": "metadata1",
-              "key1": "metadata0",
-              "key2": "metadata9"
-            },
-            "line_1": "line_12",
-            "line_2": "line_26",
-            "deleted_at": "2016-03-13T12:52:32.123Z"
-          },
-          "metadata": {
-            "key0": "metadata9",
-            "key1": "metadata8"
-          },
-          "phones": {
-            "home_phone": {
-              "country_code": "country_code4",
-              "number": "number2",
-              "area_code": "area_code4"
-            },
-            "mobile_phone": {
-              "country_code": "country_code4",
-              "number": "number8",
-              "area_code": "area_code4"
-            }
-          },
-          "fb_id": 106,
-          "code": "code0",
-          "document_type": "document_type0"
-        },
+        "customer": {},
         "metadata": {
           "key0": "metadata9",
           "key1": "metadata8",
@@ -760,8 +478,16 @@ Response object for getting a debit card transaction
         "key2": "metadata9"
       },
       "phones": {
-        "home_phone": {},
-        "mobile_phone": {}
+        "home_phone": {
+          "country_code": "country_code8",
+          "number": "number4",
+          "area_code": "area_code8"
+        },
+        "mobile_phone": {
+          "country_code": "country_code2",
+          "number": "number0",
+          "area_code": "area_code2"
+        }
       },
       "fb_id": 56,
       "code": "code4",
