@@ -13,7 +13,7 @@ Request for creating a usage
 |  --- | --- | --- | --- | --- | --- |
 | `quantity` | `int` | Required | - | getQuantity(): int | setQuantity(int quantity): void |
 | `description` | `string` | Required | - | getDescription(): string | setDescription(string description): void |
-| `usedAt` | `\DateTime` | Required | - | getUsedAt(): \DateTime | setUsedAt(\DateTime usedAt): void |
+| `usedAt` | `DateTime` | Required | - | getUsedAt(): \DateTime | setUsedAt(\DateTime usedAt): void |
 | `code` | `?string` | Optional | Identification code in the client system | getCode(): ?string | setCode(?string code): void |
 | `group` | `?string` | Optional | identification group in the client system | getGroup(): ?string | setGroup(?string group): void |
 | `amount` | `?int` | Optional | Field used in item scheme type 'Percent' | getAmount(): ?int | setAmount(?int amount): void |

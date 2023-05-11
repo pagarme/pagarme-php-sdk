@@ -10,7 +10,7 @@
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `name` | `?string` | Optional | - | getName(): ?string | setName(?string name): void |
-| `date` | `?\DateTime` | Optional | - | getDate(): ?\DateTime | setDate(?\DateTime date): void |
+| `date` | `?DateTime` | Optional | - | getDate(): ?\DateTime | setDate(?\DateTime date): void |
 
 ## Example (as JSON)
 

@@ -13,12 +13,12 @@
 | `gatewayId` | `?string` | Optional | - | getGatewayId(): ?string | setGatewayId(?string gatewayId): void |
 | `amount` | `?int` | Optional | - | getAmount(): ?int | setAmount(?int amount): void |
 | `status` | `?string` | Optional | - | getStatus(): ?string | setStatus(?string status): void |
-| `createdAt` | `?\DateTime` | Optional | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
-| `updatedAt` | `?\DateTime` | Optional | - | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
+| `createdAt` | `?DateTime` | Optional | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
+| `updatedAt` | `?DateTime` | Optional | - | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
 | `metadata` | `?(string[])` | Optional | - | getMetadata(): ?array | setMetadata(?array metadata): void |
 | `fee` | `?int` | Optional | - | getFee(): ?int | setFee(?int fee): void |
-| `fundingDate` | `?\DateTime` | Optional | - | getFundingDate(): ?\DateTime | setFundingDate(?\DateTime fundingDate): void |
-| `fundingEstimatedDate` | `?\DateTime` | Optional | - | getFundingEstimatedDate(): ?\DateTime | setFundingEstimatedDate(?\DateTime fundingEstimatedDate): void |
+| `fundingDate` | `?DateTime` | Optional | - | getFundingDate(): ?\DateTime | setFundingDate(?\DateTime fundingDate): void |
+| `fundingEstimatedDate` | `?DateTime` | Optional | - | getFundingEstimatedDate(): ?\DateTime | setFundingEstimatedDate(?\DateTime fundingEstimatedDate): void |
 | `type` | `?string` | Optional | - | getType(): ?string | setType(?string type): void |
 | `source` | [`?GetWithdrawSourceResponse`](../../doc/models/get-withdraw-source-response.md) | Optional | - | getSource(): ?GetWithdrawSourceResponse | setSource(?GetWithdrawSourceResponse source): void |
 | `target` | [`?GetWithdrawTargetResponse`](../../doc/models/get-withdraw-target-response.md) | Optional | - | getTarget(): ?GetWithdrawTargetResponse | setTarget(?GetWithdrawTargetResponse target): void |
@@ -31,25 +31,7 @@
   "gateway_id": "gateway_id0",
   "amount": 46,
   "status": "status8",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z",
-  "metadata": [
-    "metadata3",
-    "metadata4",
-    "metadata5"
-  ],
-  "fee": 168,
-  "funding_date": "2016-03-13T12:52:32.123Z",
-  "funding_estimated_date": "2016-03-13T12:52:32.123Z",
-  "type": "type0",
-  "source": {
-    "source_id": "source_id8",
-    "type": "type6"
-  },
-  "target": {
-    "target_id": "target_id2",
-    "type": "type8"
-  }
+  "created_at": "2016-03-13T12:52:32.123Z"
 }
 ```
 

@@ -22,24 +22,7 @@
       "gateway_id": "gateway_id5",
       "amount": 121,
       "status": "status7",
-      "created_at": "2016-03-13T12:52:32.123Z",
-      "updated_at": "2016-03-13T12:52:32.123Z",
-      "metadata": [
-        "metadata4",
-        "metadata3"
-      ],
-      "fee": 79,
-      "funding_date": "2016-03-13T12:52:32.123Z",
-      "funding_estimated_date": "2016-03-13T12:52:32.123Z",
-      "type": "type5",
-      "source": {
-        "source_id": "source_id5",
-        "type": "type1"
-      },
-      "target": {
-        "target_id": "target_id3",
-        "type": "type7"
-      }
+      "created_at": "2016-03-13T12:52:32.123Z"
     }
   ],
   "paging": {

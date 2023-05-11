@@ -11,7 +11,7 @@
 |  --- | --- | --- | --- | --- | --- |
 | `bank` | `string` | Required | Bank identifier | getBank(): string | setBank(string bank): void |
 | `instructions` | `string` | Required | Instructions | getInstructions(): string | setInstructions(string instructions): void |
-| `dueAt` | `\DateTime` | Required | Due date | getDueAt(): \DateTime | setDueAt(\DateTime dueAt): void |
+| `dueAt` | `DateTime` | Required | Due date | getDueAt(): \DateTime | setDueAt(\DateTime dueAt): void |
 
 ## Example (as JSON)
 

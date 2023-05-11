@@ -13,7 +13,7 @@ Token data
 |  --- | --- | --- | --- | --- | --- |
 | `id` | `?string` | Optional | - | getId(): ?string | setId(?string id): void |
 | `type` | `?string` | Optional | - | getType(): ?string | setType(?string type): void |
-| `createdAt` | `?\DateTime` | Optional | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
+| `createdAt` | `?DateTime` | Optional | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
 | `expiresAt` | `?string` | Optional | - | getExpiresAt(): ?string | setExpiresAt(?string expiresAt): void |
 | `card` | [`?GetCardTokenResponse`](../../doc/models/get-card-token-response.md) | Optional | - | getCard(): ?GetCardTokenResponse | setCard(?GetCardTokenResponse card): void |
 
@@ -30,10 +30,7 @@ Token data
     "holder_name": "holder_name2",
     "holder_document": "holder_document0",
     "exp_month": 228,
-    "exp_year": 68,
-    "brand": "brand0",
-    "type": "type4",
-    "label": "label6"
+    "exp_year": 68
   }
 }
 ```

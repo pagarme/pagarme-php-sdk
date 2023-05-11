@@ -43,6 +43,11 @@ class CreateVoucherPaymentRequest implements \JsonSerializable
     private $recurrencyCycle;
 
     /**
+     * @var array
+     */
+    private $merchantCategoryCode = [];
+
+    /**
      * Returns Statement Descriptor.
      * The text that will be shown on the voucher's statement
      */
@@ -143,6 +148,38 @@ class CreateVoucherPaymentRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Merchant Category Code.
+     * Customer business segment code
+     */
+    public function getMerchantCategoryCode(): ?int
+    {
+        if (count($this->merchantCategoryCode) == 0) {
+            return null;
+        }
+        return $this->merchantCategoryCode['value'];
+    }
+
+    /**
+     * Sets Merchant Category Code.
+     * Customer business segment code
+     *
+     * @maps merchant_category_code
+     */
+    public function setMerchantCategoryCode(?int $merchantCategoryCode): void
+    {
+        $this->merchantCategoryCode['value'] = $merchantCategoryCode;
+    }
+
+    /**
+     * Unsets Merchant Category Code.
+     * Customer business segment code
+     */
+    public function unsetMerchantCategoryCode(): void
+    {
+        $this->merchantCategoryCode = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -155,19 +192,22 @@ class CreateVoucherPaymentRequest implements \JsonSerializable
     {
         $json = [];
         if (isset($this->statementDescriptor)) {
-            $json['statement_descriptor'] = $this->statementDescriptor;
+            $json['statement_descriptor']   = $this->statementDescriptor;
         }
         if (isset($this->cardId)) {
-            $json['card_id']              = $this->cardId;
+            $json['card_id']                = $this->cardId;
         }
         if (isset($this->cardToken)) {
-            $json['card_token']           = $this->cardToken;
+            $json['card_token']             = $this->cardToken;
         }
         if (isset($this->card)) {
-            $json['Card']                 = $this->card;
+            $json['Card']                   = $this->card;
         }
         if (isset($this->recurrencyCycle)) {
-            $json['recurrency_cycle']     = $this->recurrencyCycle;
+            $json['recurrency_cycle']       = $this->recurrencyCycle;
+        }
+        if (!empty($this->merchantCategoryCode)) {
+            $json['merchant_category_code'] = $this->merchantCategoryCode['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

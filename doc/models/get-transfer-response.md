@@ -14,8 +14,8 @@ Transfer response
 | `id` | `?string` | Optional | Id | getId(): ?string | setId(?string id): void |
 | `amount` | `?int` | Optional | Transfer amount | getAmount(): ?int | setAmount(?int amount): void |
 | `status` | `?string` | Optional | Transfer status | getStatus(): ?string | setStatus(?string status): void |
-| `createdAt` | `?\DateTime` | Optional | Transfer creation date | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
-| `updatedAt` | `?\DateTime` | Optional | Transfer last update date | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
+| `createdAt` | `?DateTime` | Optional | Transfer creation date | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
+| `updatedAt` | `?DateTime` | Optional | Transfer last update date | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
 | `bankAccount` | [`?GetBankAccountResponse`](../../doc/models/get-bank-account-response.md) | Optional | Bank account | getBankAccount(): ?GetBankAccountResponse | setBankAccount(?GetBankAccountResponse bankAccount): void |
 | `metadata` | `?array<string,string>` | Optional | Metadata | getMetadata(): ?array | setMetadata(?array metadata): void |
 
@@ -27,89 +27,7 @@ Transfer response
   "amount": 46,
   "status": "status8",
   "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z",
-  "bank_account": {
-    "id": "id4",
-    "holder_name": "holder_name0",
-    "holder_type": "holder_type6",
-    "bank": "bank2",
-    "branch_number": "branch_number0",
-    "branch_check_digit": "branch_check_digit0",
-    "account_number": "account_number4",
-    "account_check_digit": "account_check_digit0",
-    "type": "type6",
-    "status": "status6",
-    "created_at": "2016-03-13T12:52:32.123Z",
-    "updated_at": "2016-03-13T12:52:32.123Z",
-    "deleted_at": "2016-03-13T12:52:32.123Z",
-    "recipient": {
-      "id": "id6",
-      "name": "name6",
-      "email": "email0",
-      "document": "document0",
-      "description": "description6",
-      "type": "type4",
-      "status": "status2",
-      "created_at": "2016-03-13T12:52:32.123Z",
-      "updated_at": "2016-03-13T12:52:32.123Z",
-      "deleted_at": "2016-03-13T12:52:32.123Z",
-      "default_bank_account": {},
-      "gateway_recipients": [
-        {
-          "gateway": "gateway0",
-          "status": "status2",
-          "pgid": "pgid6",
-          "created_at": "created_at8",
-          "updated_at": "updated_at6"
-        },
-        {
-          "gateway": "gateway1",
-          "status": "status3",
-          "pgid": "pgid7",
-          "created_at": "created_at9",
-          "updated_at": "updated_at7"
-        },
-        {
-          "gateway": "gateway2",
-          "status": "status4",
-          "pgid": "pgid8",
-          "created_at": "created_at0",
-          "updated_at": "updated_at8"
-        }
-      ],
-      "metadata": {
-        "key0": "metadata7",
-        "key1": "metadata8"
-      },
-      "automatic_anticipation_settings": {
-        "enabled": false,
-        "type": "type0",
-        "volume_percentage": 64,
-        "delay": 226,
-        "days": [
-          202,
-          203
-        ]
-      },
-      "transfer_settings": {
-        "transfer_enabled": false,
-        "transfer_interval": "transfer_interval8",
-        "transfer_day": 230
-      },
-      "code": "code4",
-      "payment_mode": "payment_mode0"
-    },
-    "metadata": {
-      "key0": "metadata1",
-      "key1": "metadata0"
-    },
-    "pix_key": "pix_key2"
-  },
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
-  }
+  "updated_at": "2016-03-13T12:52:32.123Z"
 }
 ```
 
