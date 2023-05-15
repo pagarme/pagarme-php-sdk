@@ -11,7 +11,7 @@ Request for updating the start date from a subscription
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `startAt` | `\DateTime` | Required | The date when the subscription periods will start | getStartAt(): \DateTime | setStartAt(\DateTime startAt): void |
+| `startAt` | `DateTime` | Required | The date when the subscription periods will start | getStartAt(): \DateTime | setStartAt(\DateTime startAt): void |
 
 ## Example (as JSON)
 

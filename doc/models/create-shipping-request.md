@@ -17,8 +17,8 @@ Shipping data
 | `recipientPhone` | `string` | Required | Recipient phone number | getRecipientPhone(): string | setRecipientPhone(string recipientPhone): void |
 | `addressId` | `string` | Required | The id of the address that will be used for shipping | getAddressId(): string | setAddressId(string addressId): void |
 | `address` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Address data | getAddress(): CreateAddressRequest | setAddress(CreateAddressRequest address): void |
-| `maxDeliveryDate` | `?\DateTime` | Optional | Data máxima de entrega | getMaxDeliveryDate(): ?\DateTime | setMaxDeliveryDate(?\DateTime maxDeliveryDate): void |
-| `estimatedDeliveryDate` | `?\DateTime` | Optional | Prazo estimado de entrega | getEstimatedDeliveryDate(): ?\DateTime | setEstimatedDeliveryDate(?\DateTime estimatedDeliveryDate): void |
+| `maxDeliveryDate` | `?DateTime` | Optional | Data máxima de entrega | getMaxDeliveryDate(): ?\DateTime | setMaxDeliveryDate(?\DateTime maxDeliveryDate): void |
+| `estimatedDeliveryDate` | `?DateTime` | Optional | Prazo estimado de entrega | getEstimatedDeliveryDate(): ?\DateTime | setEstimatedDeliveryDate(?\DateTime estimatedDeliveryDate): void |
 | `type` | `string` | Required | Shipping type | getType(): string | setType(string type): void |
 
 ## Example (as JSON)

@@ -11,7 +11,7 @@ Request for updating the due date from a subscription
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `nextBillingAt` | `\DateTime` | Required | The date when the next subscription billing must occur | getNextBillingAt(): \DateTime | setNextBillingAt(\DateTime nextBillingAt): void |
+| `nextBillingAt` | `DateTime` | Required | The date when the next subscription billing must occur | getNextBillingAt(): \DateTime | setNextBillingAt(\DateTime nextBillingAt): void |
 
 ## Example (as JSON)
 

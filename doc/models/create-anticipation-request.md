@@ -13,7 +13,7 @@ Request for creating an anticipation
 |  --- | --- | --- | --- | --- | --- |
 | `amount` | `int` | Required | Amount requested for the anticipation | getAmount(): int | setAmount(int amount): void |
 | `timeframe` | `string` | Required | Timeframe | getTimeframe(): string | setTimeframe(string timeframe): void |
-| `paymentDate` | `\DateTime` | Required | Payment date | getPaymentDate(): \DateTime | setPaymentDate(\DateTime paymentDate): void |
+| `paymentDate` | `DateTime` | Required | Payment date | getPaymentDate(): \DateTime | setPaymentDate(\DateTime paymentDate): void |
 
 ## Example (as JSON)
 

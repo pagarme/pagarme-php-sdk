@@ -10,7 +10,7 @@
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `name` | `string` | Required | - | getName(): string | setName(string name): void |
-| `startAt` | `?\DateTime` | Optional | - | getStartAt(): ?\DateTime | setStartAt(?\DateTime startAt): void |
+| `startAt` | `?DateTime` | Optional | - | getStartAt(): ?\DateTime | setStartAt(?\DateTime startAt): void |
 | `endAt` | `?string` | Optional | - | getEndAt(): ?string | setEndAt(?string endAt): void |
 
 ## Example (as JSON)

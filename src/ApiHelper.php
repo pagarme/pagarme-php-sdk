@@ -15,26 +15,27 @@ use Core\Utils\JsonHelper;
 use PagarmeApiSDKLib\Models;
 
 /**
- * API utility class
+ * API utility class.
  */
 class ApiHelper
 {
     /**
-     * A map of all inherited models
+     * A map of all inherited models. Here keys are parent models while
+     * values contain array of its child models.
      *
      * @var array
      */
     private const INHERITED_MODELS_MAP = [
         Models\GetTransactionResponse::class => [
-            Models\GetVoucherTransactionResponse::class,
             Models\GetBankTransferTransactionResponse::class,
             Models\GetSafetyPayTransactionResponse::class,
-            Models\GetDebitCardTransactionResponse::class,
+            Models\GetVoucherTransactionResponse::class,
             Models\GetBoletoTransactionResponse::class,
-            Models\GetCashTransactionResponse::class,
+            Models\GetDebitCardTransactionResponse::class,
             Models\GetPrivateLabelTransactionResponse::class,
-            Models\GetPixTransactionResponse::class,
-            Models\GetCreditCardTransactionResponse::class
+            Models\GetCashTransactionResponse::class,
+            Models\GetCreditCardTransactionResponse::class,
+            Models\GetPixTransactionResponse::class
         ]
     ];
 
@@ -46,7 +47,7 @@ class ApiHelper
     public static function getJsonHelper(): JsonHelper
     {
         if (self::$jsonHelper == null) {
-            self::$jsonHelper = new JsonHelper(self::INHERITED_MODELS_MAP, null, 'PagarmeApiSDKLib\\Models');
+            self::$jsonHelper = new JsonHelper(self::INHERITED_MODELS_MAP, [], null, 'PagarmeApiSDKLib\\Models');
         }
         return self::$jsonHelper;
     }
@@ -64,7 +65,7 @@ class ApiHelper
     }
 
     /**
-     * Deserialize a Json string
+     * Deserialize a Json string.
      *
      * @param string $json A valid Json string
      *
