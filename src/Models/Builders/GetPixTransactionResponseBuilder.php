@@ -485,6 +485,24 @@ class GetPixTransactionResponseBuilder
     }
 
     /**
+     * Sets provider transaction id field.
+     */
+    public function providerTransactionId(?string $value): self
+    {
+        $this->instance->setProviderTransactionId($value);
+        return $this;
+    }
+
+    /**
+     * Unsets provider transaction id field.
+     */
+    public function unsetProviderTransactionId(): self
+    {
+        $this->instance->unsetProviderTransactionId();
+        return $this;
+    }
+
+    /**
      * Initializes a new get pix transaction response object.
      */
     public function build(): GetPixTransactionResponse

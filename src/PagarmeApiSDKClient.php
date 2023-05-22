@@ -73,7 +73,7 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
             ->apiCallback($this->config['httpCallback'] ?? null)
-            ->userAgent('PagarmeApiSDK - PHP 6.7.11')
+            ->userAgent('PagarmeApiSDK - PHP 6.7.12')
             ->globalErrors($this->getGlobalErrors())
             ->serverUrls(self::ENVIRONMENT_MAP[$this->getEnvironment()], Server::DEFAULT_)
             ->authManagers(['global' => $this->basicAuthManager])

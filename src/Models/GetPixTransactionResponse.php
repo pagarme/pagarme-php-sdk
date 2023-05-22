@@ -52,6 +52,11 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
     private $payer = [];
 
     /**
+     * @var array
+     */
+    private $providerTransactionId = [];
+
+    /**
      * Returns Qr Code.
      */
     public function getQrCode(): ?string
@@ -231,6 +236,38 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
     }
 
     /**
+     * Returns Provider Transaction Id.
+     * Provider transaction id
+     */
+    public function getProviderTransactionId(): ?string
+    {
+        if (count($this->providerTransactionId) == 0) {
+            return null;
+        }
+        return $this->providerTransactionId['value'];
+    }
+
+    /**
+     * Sets Provider Transaction Id.
+     * Provider transaction id
+     *
+     * @maps provider_transaction_id
+     */
+    public function setProviderTransactionId(?string $providerTransactionId): void
+    {
+        $this->providerTransactionId['value'] = $providerTransactionId;
+    }
+
+    /**
+     * Unsets Provider Transaction Id.
+     * Provider transaction id
+     */
+    public function unsetProviderTransactionId(): void
+    {
+        $this->providerTransactionId = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -243,22 +280,25 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
     {
         $json = [];
         if (!empty($this->qrCode)) {
-            $json['qr_code']                = $this->qrCode['value'];
+            $json['qr_code']                 = $this->qrCode['value'];
         }
         if (!empty($this->qrCodeUrl)) {
-            $json['qr_code_url']            = $this->qrCodeUrl['value'];
+            $json['qr_code_url']             = $this->qrCodeUrl['value'];
         }
         if (!empty($this->expiresAt)) {
-            $json['expires_at']             = DateTimeHelper::toRfc3339DateTime($this->expiresAt['value']);
+            $json['expires_at']              = DateTimeHelper::toRfc3339DateTime($this->expiresAt['value']);
         }
         if (!empty($this->additionalInformation)) {
-            $json['additional_information'] = $this->additionalInformation['value'];
+            $json['additional_information']  = $this->additionalInformation['value'];
         }
         if (!empty($this->endToEndId)) {
-            $json['end_to_end_id']          = $this->endToEndId['value'];
+            $json['end_to_end_id']           = $this->endToEndId['value'];
         }
         if (!empty($this->payer)) {
-            $json['payer']                  = $this->payer['value'];
+            $json['payer']                   = $this->payer['value'];
+        }
+        if (!empty($this->providerTransactionId)) {
+            $json['provider_transaction_id'] = $this->providerTransactionId['value'];
         }
         $json = array_merge($json, parent::jsonSerialize(true));
         $json['transaction_type'] = $this->getTransactionType() ?? 'pix';
