@@ -74,27 +74,16 @@ class OrdersController extends BaseController
     /**
      * @param string $orderId Order Id
      * @param string $itemId Item Id
-     * @param UpdateOrderItemRequest $request Item Model
-     * @param string|null $idempotencyKey
      *
      * @return GetOrderItemResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function updateOrderItem(
-        string $orderId,
-        string $itemId,
-        UpdateOrderItemRequest $request,
-        ?string $idempotencyKey = null
-    ): GetOrderItemResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/orders/{orderId}/items/{itemId}')
+    public function getOrderItem(string $orderId, string $itemId): GetOrderItemResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/orders/{orderId}/items/{itemId}')
             ->auth('global')
-            ->parameters(
-                TemplateParam::init('orderId', $orderId),
-                TemplateParam::init('itemId', $itemId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
+            ->parameters(TemplateParam::init('orderId', $orderId), TemplateParam::init('itemId', $itemId));
 
         $_resHandler = $this->responseHandler()->type(GetOrderItemResponse::class);
 
@@ -102,50 +91,21 @@ class OrdersController extends BaseController
     }
 
     /**
-     * @param string $orderId Order Id
-     * @param string|null $idempotencyKey
+     * Gets an order
+     *
+     * @param string $orderId Order id
      *
      * @return GetOrderResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function deleteAllOrderItems(string $orderId, ?string $idempotencyKey = null): GetOrderResponse
+    public function getOrder(string $orderId): GetOrderResponse
     {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/orders/{orderId}/items')
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/orders/{order_id}')
             ->auth('global')
-            ->parameters(
-                TemplateParam::init('orderId', $orderId),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
+            ->parameters(TemplateParam::init('order_id', $orderId));
 
         $_resHandler = $this->responseHandler()->type(GetOrderResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param string $orderId Order Id
-     * @param string $itemId Item Id
-     * @param string|null $idempotencyKey
-     *
-     * @return GetOrderItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function deleteOrderItem(
-        string $orderId,
-        string $itemId,
-        ?string $idempotencyKey = null
-    ): GetOrderItemResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/orders/{orderId}/items/{itemId}')
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('orderId', $orderId),
-                TemplateParam::init('itemId', $itemId),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetOrderItemResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -200,22 +160,25 @@ class OrdersController extends BaseController
 
     /**
      * @param string $orderId Order Id
-     * @param CreateOrderItemRequest $request Order Item Model
+     * @param string $itemId Item Id
+     * @param UpdateOrderItemRequest $request Item Model
      * @param string|null $idempotencyKey
      *
      * @return GetOrderItemResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function createOrderItem(
+    public function updateOrderItem(
         string $orderId,
-        CreateOrderItemRequest $request,
+        string $itemId,
+        UpdateOrderItemRequest $request,
         ?string $idempotencyKey = null
     ): GetOrderItemResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/orders/{orderId}/items')
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/orders/{orderId}/items/{itemId}')
             ->auth('global')
             ->parameters(
                 TemplateParam::init('orderId', $orderId),
+                TemplateParam::init('itemId', $itemId),
                 BodyParam::init($request),
                 HeaderParam::init('idempotency-key', $idempotencyKey)
             );
@@ -227,19 +190,22 @@ class OrdersController extends BaseController
 
     /**
      * @param string $orderId Order Id
-     * @param string $itemId Item Id
+     * @param string|null $idempotencyKey
      *
-     * @return GetOrderItemResponse Response from the API call
+     * @return GetOrderResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getOrderItem(string $orderId, string $itemId): GetOrderItemResponse
+    public function deleteAllOrderItems(string $orderId, ?string $idempotencyKey = null): GetOrderResponse
     {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/orders/{orderId}/items/{itemId}')
+        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/orders/{orderId}/items')
             ->auth('global')
-            ->parameters(TemplateParam::init('orderId', $orderId), TemplateParam::init('itemId', $itemId));
+            ->parameters(
+                TemplateParam::init('orderId', $orderId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        $_resHandler = $this->responseHandler()->type(GetOrderItemResponse::class);
+        $_resHandler = $this->responseHandler()->type(GetOrderResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -274,21 +240,55 @@ class OrdersController extends BaseController
     }
 
     /**
-     * Gets an order
+     * @param string $orderId Order Id
+     * @param string $itemId Item Id
+     * @param string|null $idempotencyKey
      *
-     * @param string $orderId Order id
-     *
-     * @return GetOrderResponse Response from the API call
+     * @return GetOrderItemResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getOrder(string $orderId): GetOrderResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/orders/{order_id}')
+    public function deleteOrderItem(
+        string $orderId,
+        string $itemId,
+        ?string $idempotencyKey = null
+    ): GetOrderItemResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/orders/{orderId}/items/{itemId}')
             ->auth('global')
-            ->parameters(TemplateParam::init('order_id', $orderId));
+            ->parameters(
+                TemplateParam::init('orderId', $orderId),
+                TemplateParam::init('itemId', $itemId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
 
-        $_resHandler = $this->responseHandler()->type(GetOrderResponse::class);
+        $_resHandler = $this->responseHandler()->type(GetOrderItemResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $orderId Order Id
+     * @param CreateOrderItemRequest $request Order Item Model
+     * @param string|null $idempotencyKey
+     *
+     * @return GetOrderItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createOrderItem(
+        string $orderId,
+        CreateOrderItemRequest $request,
+        ?string $idempotencyKey = null
+    ): GetOrderItemResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/orders/{orderId}/items')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('orderId', $orderId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetOrderItemResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
