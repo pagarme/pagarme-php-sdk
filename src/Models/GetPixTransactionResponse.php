@@ -52,6 +52,11 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
     private $payer = [];
 
     /**
+     * @var array
+     */
+    private $pixProviderTid = [];
+
+    /**
      * Returns Qr Code.
      */
     public function getQrCode(): ?string
@@ -231,6 +236,38 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
     }
 
     /**
+     * Returns Pix Provider Tid.
+     * Pix provider TID
+     */
+    public function getPixProviderTid(): ?string
+    {
+        if (count($this->pixProviderTid) == 0) {
+            return null;
+        }
+        return $this->pixProviderTid['value'];
+    }
+
+    /**
+     * Sets Pix Provider Tid.
+     * Pix provider TID
+     *
+     * @maps pix_provider_tid
+     */
+    public function setPixProviderTid(?string $pixProviderTid): void
+    {
+        $this->pixProviderTid['value'] = $pixProviderTid;
+    }
+
+    /**
+     * Unsets Pix Provider Tid.
+     * Pix provider TID
+     */
+    public function unsetPixProviderTid(): void
+    {
+        $this->pixProviderTid = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -259,6 +296,9 @@ class GetPixTransactionResponse extends GetTransactionResponse implements \JsonS
         }
         if (!empty($this->payer)) {
             $json['payer']                  = $this->payer['value'];
+        }
+        if (!empty($this->pixProviderTid)) {
+            $json['pix_provider_tid']       = $this->pixProviderTid['value'];
         }
         $json = array_merge($json, parent::jsonSerialize(true));
         $json['transaction_type'] = $this->getTransactionType() ?? 'pix';
