@@ -132,6 +132,27 @@ class CustomersController extends BaseController
     }
 
     /**
+     * Creates a new customer
+     *
+     * @param CreateCustomerRequest $request Request for creating a customer
+     * @param string|null $idempotencyKey
+     *
+     * @return GetCustomerResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createCustomer(CreateCustomerRequest $request, ?string $idempotencyKey = null): GetCustomerResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/customers')
+            ->auth('global')
+            ->parameters(BodyParam::init($request), HeaderParam::init('idempotency-key', $idempotencyKey));
+
+        $_resHandler = $this->responseHandler()->type(GetCustomerResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
      * Creates a new address for a customer
      *
      * @param string $customerId Customer Id
@@ -161,103 +182,21 @@ class CustomersController extends BaseController
     }
 
     /**
-     * Creates a new customer
-     *
-     * @param CreateCustomerRequest $request Request for creating a customer
-     * @param string|null $idempotencyKey
-     *
-     * @return GetCustomerResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createCustomer(CreateCustomerRequest $request, ?string $idempotencyKey = null): GetCustomerResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/customers')
-            ->auth('global')
-            ->parameters(BodyParam::init($request), HeaderParam::init('idempotency-key', $idempotencyKey));
-
-        $_resHandler = $this->responseHandler()->type(GetCustomerResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Creates a new card for a customer
-     *
-     * @param string $customerId Customer id
-     * @param CreateCardRequest $request Request for creating a card
-     * @param string|null $idempotencyKey
-     *
-     * @return GetCardResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createCard(
-        string $customerId,
-        CreateCardRequest $request,
-        ?string $idempotencyKey = null
-    ): GetCardResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/customers/{customer_id}/cards')
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('customer_id', $customerId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetCardResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Get all cards from a customer
+     * Delete a Customer's access tokens
      *
      * @param string $customerId Customer Id
-     * @param int|null $page Page number
-     * @param int|null $size Page size
      *
-     * @return ListCardsResponse Response from the API call
+     * @return ListAccessTokensResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getCards(string $customerId, ?int $page = null, ?int $size = null): ListCardsResponse
+    public function deleteAccessTokens(string $customerId): ListAccessTokensResponse
     {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}/cards')
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}/access-tokens/')
             ->auth('global')
-            ->parameters(
-                TemplateParam::init('customer_id', $customerId),
-                QueryParam::init('page', $page),
-                QueryParam::init('size', $size)
-            );
+            ->parameters(TemplateParam::init('customer_id', $customerId));
 
-        $_resHandler = $this->responseHandler()->type(ListCardsResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Renew a card
-     *
-     * @param string $customerId Customer id
-     * @param string $cardId Card Id
-     * @param string|null $idempotencyKey
-     *
-     * @return GetCardResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function renewCard(string $customerId, string $cardId, ?string $idempotencyKey = null): GetCardResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/customers/{customer_id}/cards/{card_id}/renew')
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('customer_id', $customerId),
-                TemplateParam::init('card_id', $cardId),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetCardResponse::class);
+        $_resHandler = $this->responseHandler()->type(ListAccessTokensResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -319,49 +258,89 @@ class CustomersController extends BaseController
     }
 
     /**
-     * Get a Customer's access token
+     * Creates a new card for a customer
      *
-     * @param string $customerId Customer Id
-     * @param string $tokenId Token Id
+     * @param string $customerId Customer id
+     * @param CreateCardRequest $request Request for creating a card
+     * @param string|null $idempotencyKey
      *
-     * @return GetAccessTokenResponse Response from the API call
+     * @return GetCardResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getAccessToken(string $customerId, string $tokenId): GetAccessTokenResponse
-    {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::GET,
-            '/customers/{customer_id}/access-tokens/{token_id}'
-        )
+    public function createCard(
+        string $customerId,
+        CreateCardRequest $request,
+        ?string $idempotencyKey = null
+    ): GetCardResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/customers/{customer_id}/cards')
             ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
-                TemplateParam::init('token_id', $tokenId)
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
             );
 
-        $_resHandler = $this->responseHandler()->type(GetAccessTokenResponse::class);
+        $_resHandler = $this->responseHandler()->type(GetCardResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
-     * Updates the metadata a customer
+     * Get all Customers
      *
-     * @param string $customerId The customer id
-     * @param UpdateMetadataRequest $request Request for updating the customer metadata
+     * @param string|null $name Name of the Customer
+     * @param string|null $document Document of the Customer
+     * @param int|null $page Current page the the search
+     * @param int|null $size Quantity pages of the search
+     * @param string|null $email Customer's email
+     * @param string|null $code Customer's code
+     *
+     * @return ListCustomersResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getCustomers(
+        ?string $name = null,
+        ?string $document = null,
+        ?int $page = 1,
+        ?int $size = 10,
+        ?string $email = null,
+        ?string $code = null
+    ): ListCustomersResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers')
+            ->auth('global')
+            ->parameters(
+                QueryParam::init('name', $name),
+                QueryParam::init('document', $document),
+                QueryParam::init('page', $page),
+                QueryParam::init('size', $size),
+                QueryParam::init('email', $email),
+                QueryParam::init('Code', $code)
+            );
+
+        $_resHandler = $this->responseHandler()->type(ListCustomersResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Updates a customer
+     *
+     * @param string $customerId Customer id
+     * @param UpdateCustomerRequest $request Request for updating a customer
      * @param string|null $idempotencyKey
      *
      * @return GetCustomerResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function updateCustomerMetadata(
+    public function updateCustomer(
         string $customerId,
-        UpdateMetadataRequest $request,
+        UpdateCustomerRequest $request,
         ?string $idempotencyKey = null
     ): GetCustomerResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Customers/{customer_id}/metadata')
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/customers/{customer_id}')
             ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
@@ -370,47 +349,6 @@ class CustomersController extends BaseController
             );
 
         $_resHandler = $this->responseHandler()->type(GetCustomerResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Get a customer's card
-     *
-     * @param string $customerId Customer id
-     * @param string $cardId Card id
-     *
-     * @return GetCardResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getCard(string $customerId, string $cardId): GetCardResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}/cards/{card_id}')
-            ->auth('global')
-            ->parameters(TemplateParam::init('customer_id', $customerId), TemplateParam::init('card_id', $cardId));
-
-        $_resHandler = $this->responseHandler()->type(GetCardResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Delete a Customer's access tokens
-     *
-     * @param string $customerId Customer Id
-     *
-     * @return ListAccessTokensResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function deleteAccessTokens(string $customerId): ListAccessTokensResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}/access-tokens/')
-            ->auth('global')
-            ->parameters(TemplateParam::init('customer_id', $customerId));
-
-        $_resHandler = $this->responseHandler()->type(ListAccessTokensResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -471,60 +409,101 @@ class CustomersController extends BaseController
     }
 
     /**
-     * Get all Customers
+     * Get all cards from a customer
      *
-     * @param string|null $name Name of the Customer
-     * @param string|null $document Document of the Customer
-     * @param int|null $page Current page the the search
-     * @param int|null $size Quantity pages of the search
-     * @param string|null $email Customer's email
-     * @param string|null $code Customer's code
+     * @param string $customerId Customer Id
+     * @param int|null $page Page number
+     * @param int|null $size Page size
      *
-     * @return ListCustomersResponse Response from the API call
+     * @return ListCardsResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getCustomers(
-        ?string $name = null,
-        ?string $document = null,
-        ?int $page = 1,
-        ?int $size = 10,
-        ?string $email = null,
-        ?string $code = null
-    ): ListCustomersResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers')
+    public function getCards(string $customerId, ?int $page = null, ?int $size = null): ListCardsResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}/cards')
             ->auth('global')
             ->parameters(
-                QueryParam::init('name', $name),
-                QueryParam::init('document', $document),
+                TemplateParam::init('customer_id', $customerId),
                 QueryParam::init('page', $page),
-                QueryParam::init('size', $size),
-                QueryParam::init('email', $email),
-                QueryParam::init('Code', $code)
+                QueryParam::init('size', $size)
             );
 
-        $_resHandler = $this->responseHandler()->type(ListCustomersResponse::class);
+        $_resHandler = $this->responseHandler()->type(ListCardsResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
-     * Updates a customer
+     * Renew a card
      *
      * @param string $customerId Customer id
-     * @param UpdateCustomerRequest $request Request for updating a customer
+     * @param string $cardId Card Id
+     * @param string|null $idempotencyKey
+     *
+     * @return GetCardResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function renewCard(string $customerId, string $cardId, ?string $idempotencyKey = null): GetCardResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/customers/{customer_id}/cards/{card_id}/renew')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('customer_id', $customerId),
+                TemplateParam::init('card_id', $cardId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetCardResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Get a Customer's access token
+     *
+     * @param string $customerId Customer Id
+     * @param string $tokenId Token Id
+     *
+     * @return GetAccessTokenResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getAccessToken(string $customerId, string $tokenId): GetAccessTokenResponse
+    {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::GET,
+            '/customers/{customer_id}/access-tokens/{token_id}'
+        )
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('customer_id', $customerId),
+                TemplateParam::init('token_id', $tokenId)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetAccessTokenResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Updates the metadata a customer
+     *
+     * @param string $customerId The customer id
+     * @param UpdateMetadataRequest $request Request for updating the customer metadata
      * @param string|null $idempotencyKey
      *
      * @return GetCustomerResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function updateCustomer(
+    public function updateCustomerMetadata(
         string $customerId,
-        UpdateCustomerRequest $request,
+        UpdateMetadataRequest $request,
         ?string $idempotencyKey = null
     ): GetCustomerResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/customers/{customer_id}')
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Customers/{customer_id}/metadata')
             ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
@@ -605,6 +584,27 @@ class CustomersController extends BaseController
             ->parameters(TemplateParam::init('customer_id', $customerId));
 
         $_resHandler = $this->responseHandler()->type(GetCustomerResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Get a customer's card
+     *
+     * @param string $customerId Customer id
+     * @param string $cardId Card id
+     *
+     * @return GetCardResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getCard(string $customerId, string $cardId): GetCardResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}/cards/{card_id}')
+            ->auth('global')
+            ->parameters(TemplateParam::init('customer_id', $customerId), TemplateParam::init('card_id', $cardId));
+
+        $_resHandler = $this->responseHandler()->type(GetCardResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }

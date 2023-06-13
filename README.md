@@ -105,6 +105,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
+| `serviceRefererName` | `string` |  |
 | `timeout` | `int` | Timeout for API calls in seconds.<br>*Default*: `0` |
 | `enableRetries` | `bool` | Whether to enable retries and backoff feature.<br>*Default*: `false` |
 | `numberOfRetries` | `int` | The number of retries to make.<br>*Default*: `0` |
@@ -123,6 +124,7 @@ The API client can be initialized as follows:
 $client = PagarmeApiSDKClientBuilder::init()
     ->basicAuthUserName('BasicAuthUserName')
     ->basicAuthPassword('BasicAuthPassword')
+    ->serviceRefererName('ServiceRefererName')
     ->build();
 ```
 

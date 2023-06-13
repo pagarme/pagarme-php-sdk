@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PagarmeApiSDKLib;
 
 use Core\ClientBuilder;
+use Core\Request\Parameters\HeaderParam;
 use Core\Response\Types\ErrorType;
 use Core\Utils\CoreHelper;
 use PagarmeApiSDKLib\Controllers\ChargesController;
@@ -30,13 +31,13 @@ use Unirest\HttpClient;
 
 class PagarmeApiSDKClient implements ConfigurationInterface
 {
-    private $orders;
-
     private $plans;
 
     private $subscriptions;
 
     private $invoices;
+
+    private $orders;
 
     private $customers;
 
@@ -44,9 +45,9 @@ class PagarmeApiSDKClient implements ConfigurationInterface
 
     private $charges;
 
-    private $tokens;
-
     private $transfers;
+
+    private $tokens;
 
     private $transactions;
 
@@ -73,7 +74,8 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
             ->apiCallback($this->config['httpCallback'] ?? null)
-            ->userAgent('PagarmeApiSDK - PHP 6.7.12')
+            ->userAgent('PagarmeApiSDK - PHP 6.7.13')
+            ->globalConfig($this->getGlobalConfiguration())
             ->globalErrors($this->getGlobalErrors())
             ->serverUrls(self::ENVIRONMENT_MAP[$this->getEnvironment()], Server::DEFAULT_)
             ->authManagers(['global' => $this->basicAuthManager])
@@ -97,6 +99,7 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             ->retryOnTimeout($this->shouldRetryOnTimeout())
             ->httpStatusCodesToRetry($this->getHttpStatusCodesToRetry())
             ->httpMethodsToRetry($this->getHttpMethodsToRetry())
+            ->serviceRefererName($this->getServiceRefererName())
             ->environment($this->getEnvironment())
             ->basicAuthUserName($this->basicAuthManager->getBasicAuthUserName())
             ->basicAuthPassword($this->basicAuthManager->getBasicAuthPassword())
@@ -148,6 +151,11 @@ class PagarmeApiSDKClient implements ConfigurationInterface
         return $this->config['httpMethodsToRetry'] ?? ConfigurationDefaults::HTTP_METHODS_TO_RETRY;
     }
 
+    public function getServiceRefererName(): string
+    {
+        return $this->config['serviceRefererName'] ?? ConfigurationDefaults::SERVICE_REFERER_NAME;
+    }
+
     public function getEnvironment(): string
     {
         return $this->config['environment'] ?? ConfigurationDefaults::ENVIRONMENT;
@@ -191,17 +199,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
-     * Returns Orders Controller
-     */
-    public function getOrdersController(): OrdersController
-    {
-        if ($this->orders == null) {
-            $this->orders = new OrdersController($this->client);
-        }
-        return $this->orders;
-    }
-
-    /**
      * Returns Plans Controller
      */
     public function getPlansController(): PlansController
@@ -232,6 +229,17 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             $this->invoices = new InvoicesController($this->client);
         }
         return $this->invoices;
+    }
+
+    /**
+     * Returns Orders Controller
+     */
+    public function getOrdersController(): OrdersController
+    {
+        if ($this->orders == null) {
+            $this->orders = new OrdersController($this->client);
+        }
+        return $this->orders;
     }
 
     /**
@@ -268,17 +276,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
-     * Returns Tokens Controller
-     */
-    public function getTokensController(): TokensController
-    {
-        if ($this->tokens == null) {
-            $this->tokens = new TokensController($this->client);
-        }
-        return $this->tokens;
-    }
-
-    /**
      * Returns Transfers Controller
      */
     public function getTransfersController(): TransfersController
@@ -290,6 +287,17 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
+     * Returns Tokens Controller
+     */
+    public function getTokensController(): TokensController
+    {
+        if ($this->tokens == null) {
+            $this->tokens = new TokensController($this->client);
+        }
+        return $this->tokens;
+    }
+
+    /**
      * Returns Transactions Controller
      */
     public function getTransactionsController(): TransactionsController
@@ -298,6 +306,14 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             $this->transactions = new TransactionsController($this->client);
         }
         return $this->transactions;
+    }
+
+    /**
+     * Get the defined global configurations
+     */
+    private function getGlobalConfiguration(): array
+    {
+        return [HeaderParam::init('ServiceRefererName', $this->getServiceRefererName())];
     }
 
     /**
