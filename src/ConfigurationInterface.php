@@ -18,6 +18,11 @@ use CoreInterfaces\Http\HttpConfigurations;
 interface ConfigurationInterface extends HttpConfigurations
 {
     /**
+     * Get service Referer Name
+     */
+    public function getServiceRefererName(): string;
+
+    /**
      * Get current API environment
      */
     public function getEnvironment(): string;

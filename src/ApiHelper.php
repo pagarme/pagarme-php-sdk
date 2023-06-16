@@ -27,15 +27,15 @@ class ApiHelper
      */
     private const INHERITED_MODELS_MAP = [
         Models\GetTransactionResponse::class => [
-            Models\GetVoucherTransactionResponse::class,
             Models\GetBankTransferTransactionResponse::class,
             Models\GetSafetyPayTransactionResponse::class,
-            Models\GetDebitCardTransactionResponse::class,
+            Models\GetVoucherTransactionResponse::class,
             Models\GetBoletoTransactionResponse::class,
-            Models\GetCashTransactionResponse::class,
+            Models\GetDebitCardTransactionResponse::class,
             Models\GetPrivateLabelTransactionResponse::class,
-            Models\GetPixTransactionResponse::class,
-            Models\GetCreditCardTransactionResponse::class
+            Models\GetCashTransactionResponse::class,
+            Models\GetCreditCardTransactionResponse::class,
+            Models\GetPixTransactionResponse::class
         ]
     ];
 

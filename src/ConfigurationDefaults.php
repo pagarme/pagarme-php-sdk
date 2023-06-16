@@ -33,6 +33,8 @@ class ConfigurationDefaults
 
     public const HTTP_METHODS_TO_RETRY = ['GET', 'PUT'];
 
+    public const SERVICE_REFERER_NAME = '';
+
     public const ENVIRONMENT = Environment::PRODUCTION;
 
     public const BASIC_AUTH_USER_NAME = '';
@@ -52,6 +54,7 @@ class ConfigurationDefaults
         'retryOnTimeout' => self::RETRY_ON_TIMEOUT,
         'httpStatusCodesToRetry' => self::HTTP_STATUS_CODES_TO_RETRY,
         'httpMethodsToRetry' => self::HTTP_METHODS_TO_RETRY,
+        'serviceRefererName' => self::SERVICE_REFERER_NAME,
         'environment' => self::ENVIRONMENT,
         'basicAuthUserName' => self::BASIC_AUTH_USER_NAME,
         'basicAuthPassword' => self::BASIC_AUTH_PASSWORD

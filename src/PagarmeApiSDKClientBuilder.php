@@ -101,6 +101,12 @@ class PagarmeApiSDKClientBuilder
         return $this;
     }
 
+    public function serviceRefererName(string $serviceRefererName): self
+    {
+        $this->config['serviceRefererName'] = $serviceRefererName;
+        return $this;
+    }
+
     public function environment(string $environment): self
     {
         $this->config['environment'] = $environment;
