@@ -16,7 +16,6 @@ The settings for creating a voucher payment
 | `cardToken` | `?string` | Optional | Card token | getCardToken(): ?string | setCardToken(?string cardToken): void |
 | `card` | [`?CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Card info | getCard(): ?CreateCardRequest | setCard(?CreateCardRequest card): void |
 | `recurrencyCycle` | `?string` | Optional | Defines whether the card has been used one or more times. | getRecurrencyCycle(): ?string | setRecurrencyCycle(?string recurrencyCycle): void |
-| `merchantCategoryCode` | `?int` | Optional | Customer business segment code | getMerchantCategoryCode(): ?int | setMerchantCategoryCode(?int merchantCategoryCode): void |
 
 ## Example (as JSON)
 

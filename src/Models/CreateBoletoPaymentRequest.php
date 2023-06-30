@@ -24,9 +24,9 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
     private $retries;
 
     /**
-     * @var string
+     * @var array
      */
-    private $bank;
+    private $bank = [];
 
     /**
      * @var string
@@ -80,7 +80,6 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
 
     /**
      * @param int $retries
-     * @param string $bank
      * @param string $instructions
      * @param CreateAddressRequest $billingAddress
      * @param string $documentNumber
@@ -88,14 +87,12 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      */
     public function __construct(
         int $retries,
-        string $bank,
         string $instructions,
         CreateAddressRequest $billingAddress,
         string $documentNumber,
         string $statementDescriptor
     ) {
         $this->retries = $retries;
-        $this->bank = $bank;
         $this->instructions = $instructions;
         $this->billingAddress = $billingAddress;
         $this->documentNumber = $documentNumber;
@@ -127,21 +124,32 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
      * Returns Bank.
      * The bank code, containing three characters. The available codes are on the API specification
      */
-    public function getBank(): string
+    public function getBank(): ?string
     {
-        return $this->bank;
+        if (count($this->bank) == 0) {
+            return null;
+        }
+        return $this->bank['value'];
     }
 
     /**
      * Sets Bank.
      * The bank code, containing three characters. The available codes are on the API specification
      *
-     * @required
      * @maps bank
      */
-    public function setBank(string $bank): void
+    public function setBank(?string $bank): void
     {
-        $this->bank = $bank;
+        $this->bank['value'] = $bank;
+    }
+
+    /**
+     * Unsets Bank.
+     * The bank code, containing three characters. The available codes are on the API specification
+     */
+    public function unsetBank(): void
+    {
+        $this->bank = [];
     }
 
     /**
@@ -425,7 +433,9 @@ class CreateBoletoPaymentRequest implements \JsonSerializable
     {
         $json = [];
         $json['retries']                      = $this->retries;
-        $json['bank']                         = $this->bank;
+        if (!empty($this->bank)) {
+            $json['bank']                     = $this->bank['value'];
+        }
         $json['instructions']                 = $this->instructions;
         if (!empty($this->dueAt)) {
             $json['due_at']                   = DateTimeHelper::toRfc3339DateTime($this->dueAt['value']);

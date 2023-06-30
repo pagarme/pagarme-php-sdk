@@ -42,7 +42,6 @@ class CreateAddressRequestBuilder
         string $state,
         string $country,
         string $complement,
-        array $metadata,
         string $line1,
         string $line2
     ): self {
@@ -55,10 +54,27 @@ class CreateAddressRequestBuilder
             $state,
             $country,
             $complement,
-            $metadata,
             $line1,
             $line2
         ));
+    }
+
+    /**
+     * Sets metadata field.
+     */
+    public function metadata(?array $value): self
+    {
+        $this->instance->setMetadata($value);
+        return $this;
+    }
+
+    /**
+     * Unsets metadata field.
+     */
+    public function unsetMetadata(): self
+    {
+        $this->instance->unsetMetadata();
+        return $this;
     }
 
     /**

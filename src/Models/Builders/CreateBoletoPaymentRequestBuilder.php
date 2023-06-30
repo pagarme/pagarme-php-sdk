@@ -38,7 +38,6 @@ class CreateBoletoPaymentRequestBuilder
      */
     public static function init(
         int $retries,
-        string $bank,
         string $instructions,
         CreateAddressRequest $billingAddress,
         string $documentNumber,
@@ -46,12 +45,29 @@ class CreateBoletoPaymentRequestBuilder
     ): self {
         return new self(new CreateBoletoPaymentRequest(
             $retries,
-            $bank,
             $instructions,
             $billingAddress,
             $documentNumber,
             $statementDescriptor
         ));
+    }
+
+    /**
+     * Sets bank field.
+     */
+    public function bank(?string $value): self
+    {
+        $this->instance->setBank($value);
+        return $this;
+    }
+
+    /**
+     * Unsets bank field.
+     */
+    public function unsetBank(): self
+    {
+        $this->instance->unsetBank();
+        return $this;
     }
 
     /**

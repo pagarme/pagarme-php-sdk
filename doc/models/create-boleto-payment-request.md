@@ -12,7 +12,7 @@ Contains the settings for creating a boleto payment
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `retries` | `int` | Required | Number of retries | getRetries(): int | setRetries(int retries): void |
-| `bank` | `string` | Required | The bank code, containing three characters. The available codes are on the API specification | getBank(): string | setBank(string bank): void |
+| `bank` | `?string` | Optional | The bank code, containing three characters. The available codes are on the API specification | getBank(): ?string | setBank(?string bank): void |
 | `instructions` | `string` | Required | The instructions field that will be printed on the boleto. | getInstructions(): string | setInstructions(string instructions): void |
 | `dueAt` | `?DateTime` | Optional | Boleto due date | getDueAt(): ?\DateTime | setDueAt(?\DateTime dueAt): void |
 | `billingAddress` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Card's billing address | getBillingAddress(): CreateAddressRequest | setBillingAddress(CreateAddressRequest billingAddress): void |
@@ -56,11 +56,6 @@ Contains the settings for creating a boleto payment
     "days": 156,
     "type": "type0",
     "amount": 230
-  },
-  "fine": {
-    "days": 138,
-    "type": "type2",
-    "amount": 212
   }
 }
 ```

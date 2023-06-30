@@ -17,7 +17,7 @@ Request for creating an order
 | `code` | `string` | Required | The order code | getCode(): string | setCode(string code): void |
 | `customerId` | `?string` | Optional | The customer id | getCustomerId(): ?string | setCustomerId(?string customerId): void |
 | `shipping` | [`?CreateShippingRequest`](../../doc/models/create-shipping-request.md) | Optional | Shipping data | getShipping(): ?CreateShippingRequest | setShipping(?CreateShippingRequest shipping): void |
-| `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
+| `metadata` | `?array<string,string>` | Optional | Metadata | getMetadata(): ?array | setMetadata(?array metadata): void |
 | `antifraudEnabled` | `?bool` | Optional | Defines whether the order will go through anti-fraud | getAntifraudEnabled(): ?bool | setAntifraudEnabled(?bool antifraudEnabled): void |
 | `ip` | `?string` | Optional | Ip address | getIp(): ?string | setIp(?string ip): void |
 | `sessionId` | `?string` | Optional | Session id | getSessionId(): ?string | setSessionId(?string sessionId): void |
@@ -137,11 +137,6 @@ Request for creating an order
           "days": 28,
           "type": "type4",
           "amount": 102
-        },
-        "fine": {
-          "days": 10,
-          "type": "type8",
-          "amount": 84
         }
       },
       "currency": "currency6",
@@ -161,11 +156,6 @@ Request for creating an order
     }
   ],
   "code": "code8",
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
-  },
   "closed": true,
   "customer_id": "customer_id8",
   "shipping": {
@@ -193,9 +183,13 @@ Request for creating an order
     "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
     "type": "type6"
   },
+  "metadata": {
+    "key0": "metadata3",
+    "key1": "metadata4",
+    "key2": "metadata5"
+  },
   "antifraud_enabled": false,
-  "ip": "ip4",
-  "session_id": "session_id8"
+  "ip": "ip4"
 }
 ```
 

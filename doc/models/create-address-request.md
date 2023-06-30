@@ -19,7 +19,7 @@ Request for creating a new Address
 | `state` | `string` | Required | State | getState(): string | setState(string state): void |
 | `country` | `string` | Required | Country. Must be entered using ISO 3166-1 alpha-2 format. See https://pt.wikipedia.org/wiki/ISO_3166-1_alfa-2 | getCountry(): string | setCountry(string country): void |
 | `complement` | `string` | Required | Complement | getComplement(): string | setComplement(string complement): void |
-| `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
+| `metadata` | `?array<string,string>` | Optional | Metadata | getMetadata(): ?array | setMetadata(?array metadata): void |
 | `line1` | `string` | Required | Line 1 for address | getLine1(): string | setLine1(string line1): void |
 | `line2` | `string` | Required | Line 2 for address | getLine2(): string | setLine2(string line2): void |
 
