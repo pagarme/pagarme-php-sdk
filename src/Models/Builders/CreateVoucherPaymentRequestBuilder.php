@@ -85,24 +85,6 @@ class CreateVoucherPaymentRequestBuilder
     }
 
     /**
-     * Sets merchant category code field.
-     */
-    public function merchantCategoryCode(?int $value): self
-    {
-        $this->instance->setMerchantCategoryCode($value);
-        return $this;
-    }
-
-    /**
-     * Unsets merchant category code field.
-     */
-    public function unsetMerchantCategoryCode(): self
-    {
-        $this->instance->unsetMerchantCategoryCode();
-        return $this;
-    }
-
-    /**
      * Initializes a new create voucher payment request object.
      */
     public function build(): CreateVoucherPaymentRequest

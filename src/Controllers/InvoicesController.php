@@ -26,78 +26,6 @@ use PagarmeApiSDKLib\Utils\DateTimeHelper;
 class InvoicesController extends BaseController
 {
     /**
-     * Updates the metadata from an invoice
-     *
-     * @param string $invoiceId The invoice id
-     * @param UpdateMetadataRequest $request Request for updating the invoice metadata
-     * @param string|null $idempotencyKey
-     *
-     * @return GetInvoiceResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateInvoiceMetadata(
-        string $invoiceId,
-        UpdateMetadataRequest $request,
-        ?string $idempotencyKey = null
-    ): GetInvoiceResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/invoices/{invoice_id}/metadata')
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('invoice_id', $invoiceId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetInvoiceResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param string $subscriptionId Subscription Id
-     *
-     * @return GetInvoiceResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getPartialInvoice(string $subscriptionId): GetInvoiceResponse
-    {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::GET,
-            '/subscriptions/{subscription_id}/partial-invoice'
-        )->auth('global')->parameters(TemplateParam::init('subscription_id', $subscriptionId));
-
-        $_resHandler = $this->responseHandler()->type(GetInvoiceResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Cancels an invoice
-     *
-     * @param string $invoiceId Invoice id
-     * @param string|null $idempotencyKey
-     *
-     * @return GetInvoiceResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function cancelInvoice(string $invoiceId, ?string $idempotencyKey = null): GetInvoiceResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/invoices/{invoice_id}')
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('invoice_id', $invoiceId),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetInvoiceResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
      * Create an Invoice
      *
      * @param string $subscriptionId Subscription Id
@@ -188,19 +116,71 @@ class InvoicesController extends BaseController
     }
 
     /**
-     * Gets an invoice
+     * Cancels an invoice
      *
-     * @param string $invoiceId Invoice Id
+     * @param string $invoiceId Invoice id
+     * @param string|null $idempotencyKey
      *
      * @return GetInvoiceResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getInvoice(string $invoiceId): GetInvoiceResponse
+    public function cancelInvoice(string $invoiceId, ?string $idempotencyKey = null): GetInvoiceResponse
     {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/invoices/{invoice_id}')
+        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/invoices/{invoice_id}')
             ->auth('global')
-            ->parameters(TemplateParam::init('invoice_id', $invoiceId));
+            ->parameters(
+                TemplateParam::init('invoice_id', $invoiceId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetInvoiceResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Updates the metadata from an invoice
+     *
+     * @param string $invoiceId The invoice id
+     * @param UpdateMetadataRequest $request Request for updating the invoice metadata
+     * @param string|null $idempotencyKey
+     *
+     * @return GetInvoiceResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateInvoiceMetadata(
+        string $invoiceId,
+        UpdateMetadataRequest $request,
+        ?string $idempotencyKey = null
+    ): GetInvoiceResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/invoices/{invoice_id}/metadata')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('invoice_id', $invoiceId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetInvoiceResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $subscriptionId Subscription Id
+     *
+     * @return GetInvoiceResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getPartialInvoice(string $subscriptionId): GetInvoiceResponse
+    {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::GET,
+            '/subscriptions/{subscription_id}/partial-invoice'
+        )->auth('global')->parameters(TemplateParam::init('subscription_id', $subscriptionId));
 
         $_resHandler = $this->responseHandler()->type(GetInvoiceResponse::class);
 
@@ -230,6 +210,26 @@ class InvoicesController extends BaseController
                 BodyParam::init($request),
                 HeaderParam::init('idempotency-key', $idempotencyKey)
             );
+
+        $_resHandler = $this->responseHandler()->type(GetInvoiceResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Gets an invoice
+     *
+     * @param string $invoiceId Invoice Id
+     *
+     * @return GetInvoiceResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getInvoice(string $invoiceId): GetInvoiceResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/invoices/{invoice_id}')
+            ->auth('global')
+            ->parameters(TemplateParam::init('invoice_id', $invoiceId));
 
         $_resHandler = $this->responseHandler()->type(GetInvoiceResponse::class);
 

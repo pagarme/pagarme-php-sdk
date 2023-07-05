@@ -14,10 +14,12 @@ use Core\ClientBuilder;
 use Core\Request\Parameters\HeaderParam;
 use Core\Response\Types\ErrorType;
 use Core\Utils\CoreHelper;
+use PagarmeApiSDKLib\Controllers\BalanceOperationsController;
 use PagarmeApiSDKLib\Controllers\ChargesController;
 use PagarmeApiSDKLib\Controllers\CustomersController;
 use PagarmeApiSDKLib\Controllers\InvoicesController;
 use PagarmeApiSDKLib\Controllers\OrdersController;
+use PagarmeApiSDKLib\Controllers\PayablesController;
 use PagarmeApiSDKLib\Controllers\PlansController;
 use PagarmeApiSDKLib\Controllers\RecipientsController;
 use PagarmeApiSDKLib\Controllers\SubscriptionsController;
@@ -31,13 +33,13 @@ use Unirest\HttpClient;
 
 class PagarmeApiSDKClient implements ConfigurationInterface
 {
+    private $orders;
+
     private $plans;
 
     private $subscriptions;
 
     private $invoices;
-
-    private $orders;
 
     private $customers;
 
@@ -45,11 +47,15 @@ class PagarmeApiSDKClient implements ConfigurationInterface
 
     private $charges;
 
-    private $transfers;
-
     private $tokens;
 
+    private $transfers;
+
     private $transactions;
+
+    private $payables;
+
+    private $balanceOperations;
 
     private $basicAuthManager;
 
@@ -74,7 +80,7 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
             ->apiCallback($this->config['httpCallback'] ?? null)
-            ->userAgent('PagarmeApiSDK - PHP 6.7.13')
+            ->userAgent('PagarmeApiSDK - PHP 6.8.0')
             ->globalConfig($this->getGlobalConfiguration())
             ->globalErrors($this->getGlobalErrors())
             ->serverUrls(self::ENVIRONMENT_MAP[$this->getEnvironment()], Server::DEFAULT_)
@@ -199,6 +205,17 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
+     * Returns Orders Controller
+     */
+    public function getOrdersController(): OrdersController
+    {
+        if ($this->orders == null) {
+            $this->orders = new OrdersController($this->client);
+        }
+        return $this->orders;
+    }
+
+    /**
      * Returns Plans Controller
      */
     public function getPlansController(): PlansController
@@ -229,17 +246,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             $this->invoices = new InvoicesController($this->client);
         }
         return $this->invoices;
-    }
-
-    /**
-     * Returns Orders Controller
-     */
-    public function getOrdersController(): OrdersController
-    {
-        if ($this->orders == null) {
-            $this->orders = new OrdersController($this->client);
-        }
-        return $this->orders;
     }
 
     /**
@@ -276,17 +282,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
-     * Returns Transfers Controller
-     */
-    public function getTransfersController(): TransfersController
-    {
-        if ($this->transfers == null) {
-            $this->transfers = new TransfersController($this->client);
-        }
-        return $this->transfers;
-    }
-
-    /**
      * Returns Tokens Controller
      */
     public function getTokensController(): TokensController
@@ -298,6 +293,17 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
+     * Returns Transfers Controller
+     */
+    public function getTransfersController(): TransfersController
+    {
+        if ($this->transfers == null) {
+            $this->transfers = new TransfersController($this->client);
+        }
+        return $this->transfers;
+    }
+
+    /**
      * Returns Transactions Controller
      */
     public function getTransactionsController(): TransactionsController
@@ -306,6 +312,28 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             $this->transactions = new TransactionsController($this->client);
         }
         return $this->transactions;
+    }
+
+    /**
+     * Returns Payables Controller
+     */
+    public function getPayablesController(): PayablesController
+    {
+        if ($this->payables == null) {
+            $this->payables = new PayablesController($this->client);
+        }
+        return $this->payables;
+    }
+
+    /**
+     * Returns Balance Operations Controller
+     */
+    public function getBalanceOperationsController(): BalanceOperationsController
+    {
+        if ($this->balanceOperations == null) {
+            $this->balanceOperations = new BalanceOperationsController($this->client);
+        }
+        return $this->balanceOperations;
     }
 
     /**

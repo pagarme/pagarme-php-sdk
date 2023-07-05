@@ -58,9 +58,9 @@ class CreateAddressRequest implements \JsonSerializable
     private $complement;
 
     /**
-     * @var array<string,string>
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
      * @var string
@@ -81,7 +81,6 @@ class CreateAddressRequest implements \JsonSerializable
      * @param string $state
      * @param string $country
      * @param string $complement
-     * @param array<string,string> $metadata
      * @param string $line1
      * @param string $line2
      */
@@ -94,7 +93,6 @@ class CreateAddressRequest implements \JsonSerializable
         string $state,
         string $country,
         string $complement,
-        array $metadata,
         string $line1,
         string $line2
     ) {
@@ -106,7 +104,6 @@ class CreateAddressRequest implements \JsonSerializable
         $this->state = $state;
         $this->country = $country;
         $this->complement = $complement;
-        $this->metadata = $metadata;
         $this->line1 = $line1;
         $this->line2 = $line2;
     }
@@ -285,25 +282,36 @@ class CreateAddressRequest implements \JsonSerializable
      * Returns Metadata.
      * Metadata
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
-    public function getMetadata(): array
+    public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
      * Sets Metadata.
      * Metadata
      *
-     * @required
      * @maps metadata
      *
-     * @param array<string,string> $metadata
+     * @param array<string,string>|null $metadata
      */
-    public function setMetadata(array $metadata): void
+    public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     * Metadata
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -368,7 +376,9 @@ class CreateAddressRequest implements \JsonSerializable
         $json['state']        = $this->state;
         $json['country']      = $this->country;
         $json['complement']   = $this->complement;
-        $json['metadata']     = $this->metadata;
+        if (!empty($this->metadata)) {
+            $json['metadata'] = $this->metadata['value'];
+        }
         $json['line_1']       = $this->line1;
         $json['line_2']       = $this->line2;
 

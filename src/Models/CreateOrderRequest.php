@@ -48,9 +48,9 @@ class CreateOrderRequest implements \JsonSerializable
     private $shipping;
 
     /**
-     * @var array<string,string>
+     * @var array
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
      * @var bool|null
@@ -102,7 +102,6 @@ class CreateOrderRequest implements \JsonSerializable
      * @param CreateCustomerRequest $customer
      * @param CreatePaymentRequest[] $payments
      * @param string $code
-     * @param array<string,string> $metadata
      * @param bool $closed
      */
     public function __construct(
@@ -110,14 +109,12 @@ class CreateOrderRequest implements \JsonSerializable
         CreateCustomerRequest $customer,
         array $payments,
         string $code,
-        array $metadata,
         bool $closed
     ) {
         $this->items = $items;
         $this->customer = $customer;
         $this->payments = $payments;
         $this->code = $code;
-        $this->metadata = $metadata;
         $this->closed = $closed;
     }
 
@@ -269,25 +266,36 @@ class CreateOrderRequest implements \JsonSerializable
      * Returns Metadata.
      * Metadata
      *
-     * @return array<string,string>
+     * @return array<string,string>|null
      */
-    public function getMetadata(): array
+    public function getMetadata(): ?array
     {
-        return $this->metadata;
+        if (count($this->metadata) == 0) {
+            return null;
+        }
+        return $this->metadata['value'];
     }
 
     /**
      * Sets Metadata.
      * Metadata
      *
-     * @required
      * @maps metadata
      *
-     * @param array<string,string> $metadata
+     * @param array<string,string>|null $metadata
      */
-    public function setMetadata(array $metadata): void
+    public function setMetadata(?array $metadata): void
     {
-        $this->metadata = $metadata;
+        $this->metadata['value'] = $metadata;
+    }
+
+    /**
+     * Unsets Metadata.
+     * Metadata
+     */
+    public function unsetMetadata(): void
+    {
+        $this->metadata = [];
     }
 
     /**
@@ -489,7 +497,9 @@ class CreateOrderRequest implements \JsonSerializable
         if (isset($this->shipping)) {
             $json['shipping']          = $this->shipping;
         }
-        $json['metadata']              = $this->metadata;
+        if (!empty($this->metadata)) {
+            $json['metadata']          = $this->metadata['value'];
+        }
         if (isset($this->antifraudEnabled)) {
             $json['antifraud_enabled'] = $this->antifraudEnabled;
         }

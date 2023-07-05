@@ -44,10 +44,9 @@ class CreateOrderRequestBuilder
         CreateCustomerRequest $customer,
         array $payments,
         string $code,
-        array $metadata,
         bool $closed
     ): self {
-        return new self(new CreateOrderRequest($items, $customer, $payments, $code, $metadata, $closed));
+        return new self(new CreateOrderRequest($items, $customer, $payments, $code, $closed));
     }
 
     /**
@@ -74,6 +73,24 @@ class CreateOrderRequestBuilder
     public function shipping(?CreateShippingRequest $value): self
     {
         $this->instance->setShipping($value);
+        return $this;
+    }
+
+    /**
+     * Sets metadata field.
+     */
+    public function metadata(?array $value): self
+    {
+        $this->instance->setMetadata($value);
+        return $this;
+    }
+
+    /**
+     * Unsets metadata field.
+     */
+    public function unsetMetadata(): self
+    {
+        $this->instance->unsetMetadata();
         return $this;
     }
 

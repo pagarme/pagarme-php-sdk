@@ -38,6 +38,11 @@ class CreateCancelChargeRequest implements \JsonSerializable
     private $operationReference;
 
     /**
+     * @var CreateBankAccountRefundingDTO|null
+     */
+    private $bankAccount;
+
+    /**
      * @param string $operationReference
      */
     public function __construct(string $operationReference)
@@ -133,6 +138,24 @@ class CreateCancelChargeRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Bank Account.
+     */
+    public function getBankAccount(): ?CreateBankAccountRefundingDTO
+    {
+        return $this->bankAccount;
+    }
+
+    /**
+     * Sets Bank Account.
+     *
+     * @maps bank_account
+     */
+    public function setBankAccount(?CreateBankAccountRefundingDTO $bankAccount): void
+    {
+        $this->bankAccount = $bankAccount;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -154,6 +177,9 @@ class CreateCancelChargeRequest implements \JsonSerializable
             $json['split']           = $this->split;
         }
         $json['operation_reference'] = $this->operationReference;
+        if (isset($this->bankAccount)) {
+            $json['bank_account']    = $this->bankAccount;
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

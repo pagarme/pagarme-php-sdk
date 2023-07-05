@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PagarmeApiSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PagarmeApiSDKLib\Models\CreateBankAccountRefundingDTO;
 use PagarmeApiSDKLib\Models\CreateCancelChargeRequest;
 
 /**
@@ -62,6 +63,15 @@ class CreateCancelChargeRequestBuilder
     public function split(?array $value): self
     {
         $this->instance->setSplit($value);
+        return $this;
+    }
+
+    /**
+     * Sets bank account field.
+     */
+    public function bankAccount(?CreateBankAccountRefundingDTO $value): self
+    {
+        $this->instance->setBankAccount($value);
         return $this;
     }
 
