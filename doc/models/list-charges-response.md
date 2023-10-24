@@ -20,18 +20,25 @@ Response object for listing charges
 {
   "data": [
     {
-      "id": "id5",
-      "code": "code3",
-      "gateway_id": "gateway_id5",
-      "amount": 121,
-      "status": "status7"
+      "id": "id0",
+      "code": "code8",
+      "gateway_id": "gateway_id0",
+      "amount": 236,
+      "status": "status2"
     },
     {
-      "id": "id6",
-      "code": "code4",
-      "gateway_id": "gateway_id6",
-      "amount": 122,
-      "status": "status8"
+      "id": "id0",
+      "code": "code8",
+      "gateway_id": "gateway_id0",
+      "amount": 236,
+      "status": "status2"
+    },
+    {
+      "id": "id0",
+      "code": "code8",
+      "gateway_id": "gateway_id0",
+      "amount": 236,
+      "status": "status2"
     }
   ],
   "paging": {

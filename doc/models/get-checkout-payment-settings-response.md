@@ -24,14 +24,13 @@ Checkout Payment Settings Response
 
 ```json
 {
-  "success_url": "success_url2",
-  "payment_url": "payment_url6",
+  "success_url": "success_url0",
+  "payment_url": "payment_url8",
   "accepted_payment_methods": [
-    "accepted_payment_methods3",
-    "accepted_payment_methods4",
-    "accepted_payment_methods5"
+    "accepted_payment_methods1",
+    "accepted_payment_methods2"
   ],
-  "status": "status8",
+  "status": "status0",
   "customer": {
     "id": "id0",
     "name": "name0",

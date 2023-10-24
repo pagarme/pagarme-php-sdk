@@ -20,11 +20,15 @@ Response object for listing of transactions files
 {
   "data": [
     {
-      "name": "name5",
+      "name": "name0",
       "date": "2016-03-13T12:52:32.123Z"
     },
     {
-      "name": "name6",
+      "name": "name0",
+      "date": "2016-03-13T12:52:32.123Z"
+    },
+    {
+      "name": "name0",
       "date": "2016-03-13T12:52:32.123Z"
     }
   ],

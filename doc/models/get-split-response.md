@@ -23,7 +23,7 @@ Split response
 ```json
 {
   "type": "type0",
-  "amount": 46,
+  "amount": 252,
   "recipient": {
     "id": "id8",
     "name": "name8",

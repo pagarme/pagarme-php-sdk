@@ -18,17 +18,10 @@
 {
   "data": [
     {
-      "id": "id5",
-      "value": 145.67,
-      "increment_type": "increment_type7",
-      "status": "status7",
-      "created_at": "2016-03-13T12:52:32.123Z"
-    },
-    {
-      "id": "id6",
-      "value": 145.68,
-      "increment_type": "increment_type8",
-      "status": "status8",
+      "id": "id0",
+      "value": 95.62,
+      "increment_type": "increment_type2",
+      "status": "status2",
       "created_at": "2016-03-13T12:52:32.123Z"
     }
   ],

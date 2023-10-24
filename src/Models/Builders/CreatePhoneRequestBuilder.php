@@ -66,6 +66,24 @@ class CreatePhoneRequestBuilder
     }
 
     /**
+     * Sets type field.
+     */
+    public function type(?string $value): self
+    {
+        $this->instance->setType($value);
+        return $this;
+    }
+
+    /**
+     * Unsets type field.
+     */
+    public function unsetType(): self
+    {
+        $this->instance->unsetType();
+        return $this;
+    }
+
+    /**
      * Initializes a new create phone request object.
      */
     public function build(): CreatePhoneRequest

@@ -34,22 +34,29 @@ Response object for getting an Order
 
 ```json
 {
-  "id": "id0",
-  "code": "code8",
-  "currency": "currency0",
+  "id": "id6",
+  "code": "code4",
+  "currency": "currency6",
   "items": [
     {
-      "id": "id7",
-      "amount": 13,
-      "description": "description7",
-      "quantity": 127,
-      "category": "category5"
+      "id": "id8",
+      "amount": 164,
+      "description": "description2",
+      "quantity": 22,
+      "category": "category6"
     },
     {
       "id": "id8",
-      "amount": 14,
-      "description": "description8",
-      "quantity": 128,
+      "amount": 164,
+      "description": "description2",
+      "quantity": 22,
+      "category": "category6"
+    },
+    {
+      "id": "id8",
+      "amount": 164,
+      "description": "description2",
+      "quantity": 22,
       "category": "category6"
     }
   ],

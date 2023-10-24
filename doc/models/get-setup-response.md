@@ -20,10 +20,10 @@ Response object for getting the setup from a subscription
 
 ```json
 {
-  "id": "id0",
-  "description": "description0",
-  "amount": 46,
-  "status": "status8"
+  "id": "id6",
+  "description": "description4",
+  "amount": 152,
+  "status": "status2"
 }
 ```
 

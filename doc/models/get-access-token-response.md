@@ -23,7 +23,7 @@ Response object for getting a access token
 {
   "id": "id0",
   "code": "code8",
-  "status": "status8",
+  "status": "status2",
   "created_at": "2016-03-13T12:52:32.123Z",
   "customer": {
     "id": "id0",

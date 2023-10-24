@@ -43,11 +43,11 @@ Resposta das configurações de pagamento do checkout
 
 ```json
 {
-  "id": "id0",
-  "amount": 46,
-  "default_payment_method": "default_payment_method0",
-  "success_url": "success_url2",
-  "payment_url": "payment_url6"
+  "id": "id6",
+  "amount": 148,
+  "default_payment_method": "default_payment_method6",
+  "success_url": "success_url8",
+  "payment_url": "payment_url0"
 }
 ```
 

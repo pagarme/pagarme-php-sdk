@@ -27,9 +27,9 @@ Response object for getting a usage
 
 ```json
 {
-  "id": "id0",
-  "quantity": 68,
-  "description": "description0",
+  "id": "id2",
+  "quantity": 34,
+  "description": "description2",
   "used_at": "2016-03-13T12:52:32.123Z",
   "created_at": "2016-03-13T12:52:32.123Z"
 }

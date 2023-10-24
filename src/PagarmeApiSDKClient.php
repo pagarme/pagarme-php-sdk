@@ -33,13 +33,13 @@ use Unirest\HttpClient;
 
 class PagarmeApiSDKClient implements ConfigurationInterface
 {
-    private $orders;
-
     private $plans;
 
     private $subscriptions;
 
     private $invoices;
+
+    private $orders;
 
     private $customers;
 
@@ -47,9 +47,9 @@ class PagarmeApiSDKClient implements ConfigurationInterface
 
     private $charges;
 
-    private $tokens;
-
     private $transfers;
+
+    private $tokens;
 
     private $transactions;
 
@@ -80,7 +80,7 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
             ->apiCallback($this->config['httpCallback'] ?? null)
-            ->userAgent('PagarmeApiSDK - PHP 6.8.0')
+            ->userAgent('PagarmeApiSDK - PHP 6.8.1')
             ->globalConfig($this->getGlobalConfiguration())
             ->globalErrors($this->getGlobalErrors())
             ->serverUrls(self::ENVIRONMENT_MAP[$this->getEnvironment()], Server::DEFAULT_)
@@ -205,17 +205,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
-     * Returns Orders Controller
-     */
-    public function getOrdersController(): OrdersController
-    {
-        if ($this->orders == null) {
-            $this->orders = new OrdersController($this->client);
-        }
-        return $this->orders;
-    }
-
-    /**
      * Returns Plans Controller
      */
     public function getPlansController(): PlansController
@@ -246,6 +235,17 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             $this->invoices = new InvoicesController($this->client);
         }
         return $this->invoices;
+    }
+
+    /**
+     * Returns Orders Controller
+     */
+    public function getOrdersController(): OrdersController
+    {
+        if ($this->orders == null) {
+            $this->orders = new OrdersController($this->client);
+        }
+        return $this->orders;
     }
 
     /**
@@ -282,17 +282,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
-     * Returns Tokens Controller
-     */
-    public function getTokensController(): TokensController
-    {
-        if ($this->tokens == null) {
-            $this->tokens = new TokensController($this->client);
-        }
-        return $this->tokens;
-    }
-
-    /**
      * Returns Transfers Controller
      */
     public function getTransfersController(): TransfersController
@@ -301,6 +290,17 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             $this->transfers = new TransfersController($this->client);
         }
         return $this->transfers;
+    }
+
+    /**
+     * Returns Tokens Controller
+     */
+    public function getTokensController(): TokensController
+    {
+        if ($this->tokens == null) {
+            $this->tokens = new TokensController($this->client);
+        }
+        return $this->tokens;
     }
 
     /**

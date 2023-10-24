@@ -19,7 +19,7 @@
 {
   "liable": false,
   "charge_processing_fee": false,
-  "charge_remainder_fee": "charge_remainder_fee8"
+  "charge_remainder_fee": "charge_remainder_fee6"
 }
 ```
 

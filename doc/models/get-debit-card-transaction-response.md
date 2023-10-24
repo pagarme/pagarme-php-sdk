@@ -35,12 +35,11 @@ Response object for getting a debit card transaction
 
 ```json
 {
-  "gateway_id": "gateway_id0",
-  "amount": 86,
-  "status": "status8",
+  "gateway_id": "gateway_id8",
+  "amount": 40,
+  "status": "status6",
   "success": false,
   "created_at": "2016-03-13T12:52:32.123Z",
-  "transaction_type": "debit_card",
   "statement_descriptor": "statement_descriptor0",
   "acquirer_name": "acquirer_name4",
   "acquirer_affiliation_code": "acquirer_affiliation_code8",

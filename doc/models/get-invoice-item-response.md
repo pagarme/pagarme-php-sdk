@@ -23,29 +23,29 @@ Response object for getting an invoice item
 
 ```json
 {
-  "amount": 46,
-  "description": "description0",
+  "amount": 212,
+  "description": "description6",
   "pricing_scheme": {
     "price": 166,
     "scheme_type": "scheme_type8",
     "price_brackets": [
       {
-        "start_quantity": 119,
-        "price": 57,
-        "end_quantity": 127,
-        "overage_price": 141
+        "start_quantity": 144,
+        "price": 174,
+        "end_quantity": 152,
+        "overage_price": 166
       },
       {
-        "start_quantity": 120,
-        "price": 58,
-        "end_quantity": 128,
-        "overage_price": 142
+        "start_quantity": 144,
+        "price": 174,
+        "end_quantity": 152,
+        "overage_price": 166
       },
       {
-        "start_quantity": 121,
-        "price": 59,
-        "end_quantity": 129,
-        "overage_price": 143
+        "start_quantity": 144,
+        "price": 174,
+        "end_quantity": 152,
+        "overage_price": 166
       }
     ],
     "minimum_price": 6,
@@ -57,7 +57,7 @@ Response object for getting an invoice item
     "end_quantity": 172,
     "overage_price": 186
   },
-  "quantity": 68
+  "quantity": 70
 }
 ```
 

@@ -17,29 +17,21 @@
 
 ```json
 {
-  "statementDescriptor": "statementDescriptor6",
+  "statementDescriptor": "statementDescriptor8",
   "installments": [
     {
-      "number": "number3",
-      "total": 109
-    },
-    {
-      "number": "number4",
-      "total": 110
-    },
-    {
-      "number": "number5",
-      "total": 111
+      "number": "number2",
+      "total": 16
     }
   ],
   "authentication": {
     "type": "type2",
     "threed_secure": {
-      "mpi": "mpi6",
-      "eci": "eci6",
-      "cavv": "cavv2",
-      "transaction_Id": "transaction_Id8",
-      "success_url": "success_url8"
+      "mpi": "mpi0",
+      "eci": "eci2",
+      "cavv": "cavv8",
+      "transaction_Id": "transaction_Id2",
+      "success_url": "success_url4"
     }
   }
 }

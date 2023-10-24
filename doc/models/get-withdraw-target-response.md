@@ -16,8 +16,8 @@
 
 ```json
 {
-  "target_id": "target_id0",
-  "type": "type0"
+  "target_id": "target_id4",
+  "type": "type6"
 }
 ```
 
