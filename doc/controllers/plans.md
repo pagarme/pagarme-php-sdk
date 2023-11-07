@@ -11,15 +11,15 @@ $plansController = $client->getPlansController();
 ## Methods
 
 * [Get Plan](../../doc/controllers/plans.md#get-plan)
-* [Update Plan](../../doc/controllers/plans.md#update-plan)
-* [Update Plan Metadata](../../doc/controllers/plans.md#update-plan-metadata)
-* [Delete Plan Item](../../doc/controllers/plans.md#delete-plan-item)
-* [Get Plans](../../doc/controllers/plans.md#get-plans)
-* [Get Plan Item](../../doc/controllers/plans.md#get-plan-item)
 * [Delete Plan](../../doc/controllers/plans.md#delete-plan)
+* [Update Plan Metadata](../../doc/controllers/plans.md#update-plan-metadata)
 * [Update Plan Item](../../doc/controllers/plans.md#update-plan-item)
 * [Create Plan Item](../../doc/controllers/plans.md#create-plan-item)
+* [Get Plan Item](../../doc/controllers/plans.md#get-plan-item)
 * [Create Plan](../../doc/controllers/plans.md#create-plan)
+* [Delete Plan Item](../../doc/controllers/plans.md#delete-plan-item)
+* [Get Plans](../../doc/controllers/plans.md#get-plans)
+* [Update Plan](../../doc/controllers/plans.md#update-plan)
 
 
 # Get Plan
@@ -49,12 +49,12 @@ $result = $plansController->getPlan($planId);
 ```
 
 
-# Update Plan
+# Delete Plan
 
-Updates a plan
+Deletes a plan
 
 ```php
-function updatePlan(string $planId, UpdatePlanRequest $request, ?string $idempotencyKey = null): GetPlanResponse
+function deletePlan(string $planId, ?string $idempotencyKey = null): GetPlanResponse
 ```
 
 ## Parameters
@@ -62,7 +62,6 @@ function updatePlan(string $planId, UpdatePlanRequest $request, ?string $idempot
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `planId` | `string` | Template, Required | Plan id |
-| `request` | [`UpdatePlanRequest`](../../doc/models/update-plan-request.md) | Body, Required | Request for updating a plan |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
@@ -74,37 +73,7 @@ function updatePlan(string $planId, UpdatePlanRequest $request, ?string $idempot
 ```php
 $planId = 'plan_id8';
 
-$request = UpdatePlanRequestBuilder::init(
-    'name6',
-    'description6',
-    [
-        151,
-        152
-    ],
-    'statement_descriptor6',
-    'currency6',
-    'interval4',
-    114,
-    [
-        'payment_methods1',
-        'payment_methods0',
-        'payment_methods9'
-    ],
-    'billing_type0',
-    'status8',
-    false,
-    [
-        115
-    ],
-    [
-        'key0' => 'metadata3'
-    ]
-)->build();
-
-$result = $plansController->updatePlan(
-    $planId,
-    $request
-);
+$result = $plansController->deletePlan($planId);
 ```
 
 
@@ -147,6 +116,204 @@ $result = $plansController->updatePlanMetadata(
     $planId,
     $request
 );
+```
+
+
+# Update Plan Item
+
+Updates a plan item
+
+```php
+function updatePlanItem(
+    string $planId,
+    string $planItemId,
+    UpdatePlanItemRequest $body,
+    ?string $idempotencyKey = null
+): GetPlanItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | Plan id |
+| `planItemId` | `string` | Template, Required | Plan item id |
+| `body` | [`UpdatePlanItemRequest`](../../doc/models/update-plan-item-request.md) | Body, Required | Request for updating the plan item |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
+
+## Example Usage
+
+```php
+$planId = 'plan_id8';
+
+$planItemId = 'plan_item_id0';
+
+$body = UpdatePlanItemRequestBuilder::init(
+    'name6',
+    'description4',
+    'status2',
+    UpdatePricingSchemeRequestBuilder::init(
+        'scheme_type8',
+        [
+            UpdatePriceBracketRequestBuilder::init(
+                144,
+                174
+            )->build()
+        ]
+    )->build()
+)->build();
+
+$result = $plansController->updatePlanItem(
+    $planId,
+    $planItemId,
+    $body
+);
+```
+
+
+# Create Plan Item
+
+Adds a new item to a plan
+
+```php
+function createPlanItem(
+    string $planId,
+    CreatePlanItemRequest $request,
+    ?string $idempotencyKey = null
+): GetPlanItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | Plan id |
+| `request` | [`CreatePlanItemRequest`](../../doc/models/create-plan-item-request.md) | Body, Required | Request for creating a plan item |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
+
+## Example Usage
+
+```php
+$planId = 'plan_id8';
+
+$request = CreatePlanItemRequestBuilder::init(
+    'name6',
+    CreatePricingSchemeRequestBuilder::init(
+        'scheme_type8'
+    )->build(),
+    'id6',
+    'description6'
+)->build();
+
+$result = $plansController->createPlanItem(
+    $planId,
+    $request
+);
+```
+
+
+# Get Plan Item
+
+Gets a plan item
+
+```php
+function getPlanItem(string $planId, string $planItemId): GetPlanItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | Plan id |
+| `planItemId` | `string` | Template, Required | Plan item id |
+
+## Response Type
+
+[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
+
+## Example Usage
+
+```php
+$planId = 'plan_id8';
+
+$planItemId = 'plan_item_id0';
+
+$result = $plansController->getPlanItem(
+    $planId,
+    $planItemId
+);
+```
+
+
+# Create Plan
+
+Creates a new plan
+
+```php
+function createPlan(CreatePlanRequest $body, ?string $idempotencyKey = null): GetPlanResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreatePlanRequest`](../../doc/models/create-plan-request.md) | Body, Required | Request for creating a plan |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetPlanResponse`](../../doc/models/get-plan-response.md)
+
+## Example Usage
+
+```php
+$body = CreatePlanRequestBuilder::init(
+    'name6',
+    'description4',
+    'statement_descriptor6',
+    [
+        CreatePlanItemRequestBuilder::init(
+            'name8',
+            CreatePricingSchemeRequestBuilder::init(
+                'scheme_type8'
+            )->build(),
+            'id8',
+            'description2'
+        )->build()
+    ],
+    false,
+    [
+        'payment_methods9'
+    ],
+    [
+        207
+    ],
+    'currency6',
+    'interval6',
+    170,
+    [
+        201,
+        200
+    ],
+    'billing_type0',
+    CreatePricingSchemeRequestBuilder::init(
+        'scheme_type8'
+    )->build(),
+    [
+        'key0' => 'metadata7',
+        'key1' => 'metadata8'
+    ]
+)->build();
+
+$result = $plansController->createPlan($body);
 ```
 
 
@@ -223,12 +390,12 @@ $result = $plansController->getPlans();
 ```
 
 
-# Get Plan Item
+# Update Plan
 
-Gets a plan item
+Updates a plan
 
 ```php
-function getPlanItem(string $planId, string $planItemId): GetPlanItemResponse
+function updatePlan(string $planId, UpdatePlanRequest $request, ?string $idempotencyKey = null): GetPlanResponse
 ```
 
 ## Parameters
@@ -236,39 +403,7 @@ function getPlanItem(string $planId, string $planItemId): GetPlanItemResponse
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `planId` | `string` | Template, Required | Plan id |
-| `planItemId` | `string` | Template, Required | Plan item id |
-
-## Response Type
-
-[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
-
-## Example Usage
-
-```php
-$planId = 'plan_id8';
-
-$planItemId = 'plan_item_id0';
-
-$result = $plansController->getPlanItem(
-    $planId,
-    $planItemId
-);
-```
-
-
-# Delete Plan
-
-Deletes a plan
-
-```php
-function deletePlan(string $planId, ?string $idempotencyKey = null): GetPlanResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `planId` | `string` | Template, Required | Plan id |
+| `request` | [`UpdatePlanRequest`](../../doc/models/update-plan-request.md) | Body, Required | Request for updating a plan |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
@@ -280,171 +415,36 @@ function deletePlan(string $planId, ?string $idempotencyKey = null): GetPlanResp
 ```php
 $planId = 'plan_id8';
 
-$result = $plansController->deletePlan($planId);
-```
-
-
-# Update Plan Item
-
-Updates a plan item
-
-```php
-function updatePlanItem(
-    string $planId,
-    string $planItemId,
-    UpdatePlanItemRequest $body,
-    ?string $idempotencyKey = null
-): GetPlanItemResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `planId` | `string` | Template, Required | Plan id |
-| `planItemId` | `string` | Template, Required | Plan item id |
-| `body` | [`UpdatePlanItemRequest`](../../doc/models/update-plan-item-request.md) | Body, Required | Request for updating the plan item |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
-
-## Example Usage
-
-```php
-$planId = 'plan_id8';
-
-$planItemId = 'plan_item_id0';
-
-$body = UpdatePlanItemRequestBuilder::init(
+$request = UpdatePlanRequestBuilder::init(
     'name6',
-    'description4',
-    'status2',
-    UpdatePricingSchemeRequestBuilder::init(
-        'scheme_type2',
-        [
-            UpdatePriceBracketRequestBuilder::init(
-                31,
-                225
-            )->build()
-        ]
-    )->build()
-)->build();
-
-$result = $plansController->updatePlanItem(
-    $planId,
-    $planItemId,
-    $body
-);
-```
-
-
-# Create Plan Item
-
-Adds a new item to a plan
-
-```php
-function createPlanItem(
-    string $planId,
-    CreatePlanItemRequest $request,
-    ?string $idempotencyKey = null
-): GetPlanItemResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `planId` | `string` | Template, Required | Plan id |
-| `request` | [`CreatePlanItemRequest`](../../doc/models/create-plan-item-request.md) | Body, Required | Request for creating a plan item |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
-
-## Example Usage
-
-```php
-$planId = 'plan_id8';
-
-$request = CreatePlanItemRequestBuilder::init(
-    'name6',
-    CreatePricingSchemeRequestBuilder::init(
-        'scheme_type2'
-    )->build(),
-    'id6',
-    'description6'
-)->build();
-
-$result = $plansController->createPlanItem(
-    $planId,
-    $request
-);
-```
-
-
-# Create Plan
-
-Creates a new plan
-
-```php
-function createPlan(CreatePlanRequest $body, ?string $idempotencyKey = null): GetPlanResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `body` | [`CreatePlanRequest`](../../doc/models/create-plan-request.md) | Body, Required | Request for creating a plan |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetPlanResponse`](../../doc/models/get-plan-response.md)
-
-## Example Usage
-
-```php
-$body = CreatePlanRequestBuilder::init(
-    'name6',
-    'description4',
-    'statement_descriptor6',
+    'description6',
     [
-        CreatePlanItemRequestBuilder::init(
-            'name3',
-            CreatePricingSchemeRequestBuilder::init(
-                'scheme_type5'
-            )->build(),
-            'id3',
-            'description3'
-        )->build()
+        151,
+        152
     ],
-    false,
+    'statement_descriptor6',
+    'currency6',
+    'interval4',
+    114,
     [
+        'payment_methods1',
+        'payment_methods0',
         'payment_methods9'
     ],
-    [
-        207
-    ],
-    'currency6',
-    'interval6',
-    170,
-    [
-        201,
-        200
-    ],
     'billing_type0',
-    CreatePricingSchemeRequestBuilder::init(
-        'scheme_type2'
-    )->build(),
+    'status8',
+    false,
     [
-        'key0' => 'metadata7',
-        'key1' => 'metadata8'
+        115
+    ],
+    [
+        'key0' => 'metadata3'
     ]
 )->build();
 
-$result = $plansController->createPlan($body);
+$result = $plansController->updatePlan(
+    $planId,
+    $request
+);
 ```
 

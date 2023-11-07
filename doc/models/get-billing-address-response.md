@@ -26,11 +26,11 @@ Response object for getting a billing address
 
 ```json
 {
-  "street": "street0",
+  "street": "street4",
   "number": "number2",
-  "zip_code": "zip_code4",
-  "neighborhood": "neighborhood6",
-  "city": "city0"
+  "zip_code": "zip_code8",
+  "neighborhood": "neighborhood0",
+  "city": "city4"
 }
 ```
 

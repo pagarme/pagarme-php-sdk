@@ -17,9 +17,9 @@
 
 ```json
 {
-  "url": "url4",
-  "usage_report_url": "usage_report_url2",
-  "grouped_report_url": "grouped_report_url2"
+  "url": "url2",
+  "usage_report_url": "usage_report_url0",
+  "grouped_report_url": "grouped_report_url0"
 }
 ```
 

@@ -21,10 +21,10 @@ Token data
 
 ```json
 {
-  "id": "id0",
-  "type": "type0",
+  "id": "id8",
+  "type": "type2",
   "created_at": "2016-03-13T12:52:32.123Z",
-  "expires_at": "expires_at6",
+  "expires_at": "expires_at2",
   "card": {
     "last_four_digits": "last_four_digits2",
     "holder_name": "holder_name2",

@@ -57,20 +57,20 @@ class GetOrderItemResponseBuilder
     }
 
     /**
-     * Sets amount field.
+     * Sets type field.
      */
-    public function amount(?int $value): self
+    public function type(?string $value): self
     {
-        $this->instance->setAmount($value);
+        $this->instance->setType($value);
         return $this;
     }
 
     /**
-     * Unsets amount field.
+     * Unsets type field.
      */
-    public function unsetAmount(): self
+    public function unsetType(): self
     {
-        $this->instance->unsetAmount();
+        $this->instance->unsetType();
         return $this;
     }
 
@@ -89,6 +89,24 @@ class GetOrderItemResponseBuilder
     public function unsetDescription(): self
     {
         $this->instance->unsetDescription();
+        return $this;
+    }
+
+    /**
+     * Sets amount field.
+     */
+    public function amount(?int $value): self
+    {
+        $this->instance->setAmount($value);
+        return $this;
+    }
+
+    /**
+     * Unsets amount field.
+     */
+    public function unsetAmount(): self
+    {
+        $this->instance->unsetAmount();
         return $this;
     }
 
@@ -143,6 +161,60 @@ class GetOrderItemResponseBuilder
     public function unsetCode(): self
     {
         $this->instance->unsetCode();
+        return $this;
+    }
+
+    /**
+     * Sets status field.
+     */
+    public function status(?string $value): self
+    {
+        $this->instance->setStatus($value);
+        return $this;
+    }
+
+    /**
+     * Unsets status field.
+     */
+    public function unsetStatus(): self
+    {
+        $this->instance->unsetStatus();
+        return $this;
+    }
+
+    /**
+     * Sets created at field.
+     */
+    public function createdAt(?\DateTime $value): self
+    {
+        $this->instance->setCreatedAt($value);
+        return $this;
+    }
+
+    /**
+     * Unsets created at field.
+     */
+    public function unsetCreatedAt(): self
+    {
+        $this->instance->unsetCreatedAt();
+        return $this;
+    }
+
+    /**
+     * Sets updated at field.
+     */
+    public function updatedAt(?\DateTime $value): self
+    {
+        $this->instance->setUpdatedAt($value);
+        return $this;
+    }
+
+    /**
+     * Unsets updated at field.
+     */
+    public function unsetUpdatedAt(): self
+    {
+        $this->instance->unsetUpdatedAt();
         return $this;
     }
 

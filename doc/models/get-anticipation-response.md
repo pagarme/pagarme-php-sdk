@@ -26,9 +26,9 @@ Anticipation
 
 ```json
 {
-  "id": "id0",
-  "requested_amount": 246,
-  "approved_amount": 212,
+  "id": "id8",
+  "requested_amount": 130,
+  "approved_amount": 184,
   "recipient": {
     "id": "id8",
     "name": "name8",

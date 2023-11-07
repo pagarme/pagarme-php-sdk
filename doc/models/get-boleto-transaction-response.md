@@ -37,17 +37,16 @@ Response object for getting a boleto transaction
 
 ```json
 {
-  "gateway_id": "gateway_id4",
-  "amount": 250,
-  "status": "status2",
+  "gateway_id": "gateway_id8",
+  "amount": 40,
+  "status": "status6",
   "success": false,
   "created_at": "2016-03-13T12:52:32.123Z",
-  "transaction_type": "boleto",
-  "url": "url4",
-  "barcode": "barcode0",
-  "nosso_numero": "nosso_numero0",
-  "bank": "bank8",
-  "document_number": "document_number6"
+  "url": "url0",
+  "barcode": "barcode4",
+  "nosso_numero": "nosso_numero6",
+  "bank": "bank4",
+  "document_number": "document_number0"
 }
 ```
 

@@ -24,10 +24,10 @@ Response object for getting the shipping data
 
 ```json
 {
-  "amount": 46,
-  "description": "description0",
-  "recipient_name": "recipient_name8",
-  "recipient_phone": "recipient_phone2",
+  "amount": 214,
+  "description": "description8",
+  "recipient_name": "recipient_name6",
+  "recipient_phone": "recipient_phone0",
   "address": {
     "id": "id6",
     "street": "street6",

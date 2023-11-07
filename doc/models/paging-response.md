@@ -19,8 +19,8 @@ Object used for returning lists of objects with pagination
 
 ```json
 {
-  "total": 10,
-  "previous": "previous8",
+  "total": 80,
+  "previous": "previous2",
   "next": "next2"
 }
 ```

@@ -20,7 +20,8 @@ $balanceOperationsController = $client->getBalanceOperationsController();
 function getBalanceOperations(
     ?string $status = null,
     ?\DateTime $createdSince = null,
-    ?\DateTime $createdUntil = null
+    ?\DateTime $createdUntil = null,
+    ?string $recipientId = null
 ): ListBalanceOperationResponse
 ```
 
@@ -31,6 +32,7 @@ function getBalanceOperations(
 | `status` | `?string` | Query, Optional | - |
 | `createdSince` | `?DateTime` | Query, Optional | - |
 | `createdUntil` | `?DateTime` | Query, Optional | - |
+| `recipientId` | `?string` | Query, Optional | - |
 
 ## Response Type
 

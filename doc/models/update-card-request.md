@@ -23,9 +23,9 @@ Request for updating a card
 
 ```json
 {
-  "holder_name": "holder_name4",
-  "exp_month": 42,
-  "exp_year": 254,
+  "holder_name": "holder_name6",
+  "exp_month": 236,
+  "exp_year": 60,
   "billing_address_id": "billing_address_id6",
   "billing_address": {
     "street": "street8",

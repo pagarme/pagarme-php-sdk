@@ -92,85 +92,6 @@ class ChargesController extends BaseController
     }
 
     /**
-     * Updates the card from a charge
-     *
-     * @param string $chargeId Charge id
-     * @param UpdateChargeCardRequest $request Request for updating a charge's card
-     * @param string|null $idempotencyKey
-     *
-     * @return GetChargeResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateChargeCard(
-        string $chargeId,
-        UpdateChargeCardRequest $request,
-        ?string $idempotencyKey = null
-    ): GetChargeResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/charges/{charge_id}/card')
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('charge_id', $chargeId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetChargeResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param string $status
-     * @param \DateTime|null $createdSince
-     * @param \DateTime|null $createdUntil
-     *
-     * @return GetChargesSummaryResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getChargesSummary(
-        string $status,
-        ?\DateTime $createdSince = null,
-        ?\DateTime $createdUntil = null
-    ): GetChargesSummaryResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/charges/summary')
-            ->auth('global')
-            ->parameters(
-                QueryParam::init('status', $status),
-                QueryParam::init('created_since', $createdSince)
-                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
-                QueryParam::init('created_until', $createdUntil)
-                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime'])
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetChargesSummaryResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Creates a new charge
-     *
-     * @param CreateChargeRequest $request Request for creating a charge
-     * @param string|null $idempotencyKey
-     *
-     * @return GetChargeResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createCharge(CreateChargeRequest $request, ?string $idempotencyKey = null): GetChargeResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/Charges')
-            ->auth('global')
-            ->parameters(BodyParam::init($request), HeaderParam::init('idempotency-key', $idempotencyKey));
-
-        $_resHandler = $this->responseHandler()->type(GetChargeResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
      * @param string $chargeId Charge Id
      * @param int|null $page Page number
      * @param int|null $size Page size
@@ -198,71 +119,22 @@ class ChargesController extends BaseController
     }
 
     /**
-     * Captures a charge
+     * Updates the due date from a charge
      *
-     * @param string $chargeId Charge id
-     * @param CreateCaptureChargeRequest|null $request Request for capturing a charge
+     * @param string $chargeId Charge Id
+     * @param UpdateChargeDueDateRequest $request Request for updating the due date
      * @param string|null $idempotencyKey
      *
      * @return GetChargeResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function captureCharge(
+    public function updateChargeDueDate(
         string $chargeId,
-        ?CreateCaptureChargeRequest $request = null,
+        UpdateChargeDueDateRequest $request,
         ?string $idempotencyKey = null
     ): GetChargeResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/charges/{charge_id}/capture')
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('charge_id', $chargeId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetChargeResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Get a charge from its id
-     *
-     * @param string $chargeId Charge id
-     *
-     * @return GetChargeResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getCharge(string $chargeId): GetChargeResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/charges/{charge_id}')
-            ->auth('global')
-            ->parameters(TemplateParam::init('charge_id', $chargeId));
-
-        $_resHandler = $this->responseHandler()->type(GetChargeResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Cancel a charge
-     *
-     * @param string $chargeId Charge id
-     * @param CreateCancelChargeRequest|null $request Request for cancelling a charge
-     * @param string|null $idempotencyKey
-     *
-     * @return GetChargeResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function cancelCharge(
-        string $chargeId,
-        ?CreateCancelChargeRequest $request = null,
-        ?string $idempotencyKey = null
-    ): GetChargeResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/charges/{charge_id}')
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Charges/{charge_id}/due-date')
             ->auth('global')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
@@ -326,20 +198,22 @@ class ChargesController extends BaseController
     }
 
     /**
-     * @param string $chargeId
-     * @param CreateConfirmPaymentRequest|null $request Request for confirm payment
+     * Captures a charge
+     *
+     * @param string $chargeId Charge id
+     * @param CreateCaptureChargeRequest|null $request Request for capturing a charge
      * @param string|null $idempotencyKey
      *
      * @return GetChargeResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function confirmPayment(
+    public function captureCharge(
         string $chargeId,
-        ?CreateConfirmPaymentRequest $request = null,
+        ?CreateCaptureChargeRequest $request = null,
         ?string $idempotencyKey = null
     ): GetChargeResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/charges/{charge_id}/confirm-payment')
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/charges/{charge_id}/capture')
             ->auth('global')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
@@ -353,22 +227,22 @@ class ChargesController extends BaseController
     }
 
     /**
-     * Updates the due date from a charge
+     * Updates the card from a charge
      *
-     * @param string $chargeId Charge Id
-     * @param UpdateChargeDueDateRequest $request Request for updating the due date
+     * @param string $chargeId Charge id
+     * @param UpdateChargeCardRequest $request Request for updating a charge's card
      * @param string|null $idempotencyKey
      *
      * @return GetChargeResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function updateChargeDueDate(
+    public function updateChargeCard(
         string $chargeId,
-        UpdateChargeDueDateRequest $request,
+        UpdateChargeCardRequest $request,
         ?string $idempotencyKey = null
     ): GetChargeResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Charges/{charge_id}/due-date')
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/charges/{charge_id}/card')
             ->auth('global')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
@@ -377,6 +251,55 @@ class ChargesController extends BaseController
             );
 
         $_resHandler = $this->responseHandler()->type(GetChargeResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Get a charge from its id
+     *
+     * @param string $chargeId Charge id
+     *
+     * @return GetChargeResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getCharge(string $chargeId): GetChargeResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/charges/{charge_id}')
+            ->auth('global')
+            ->parameters(TemplateParam::init('charge_id', $chargeId));
+
+        $_resHandler = $this->responseHandler()->type(GetChargeResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $status
+     * @param \DateTime|null $createdSince
+     * @param \DateTime|null $createdUntil
+     *
+     * @return GetChargesSummaryResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getChargesSummary(
+        string $status,
+        ?\DateTime $createdSince = null,
+        ?\DateTime $createdUntil = null
+    ): GetChargesSummaryResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/charges/summary')
+            ->auth('global')
+            ->parameters(
+                QueryParam::init('status', $status),
+                QueryParam::init('created_since', $createdSince)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('created_until', $createdUntil)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime'])
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetChargesSummaryResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -397,6 +320,83 @@ class ChargesController extends BaseController
             ->auth('global')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetChargeResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Cancel a charge
+     *
+     * @param string $chargeId Charge id
+     * @param CreateCancelChargeRequest|null $request Request for cancelling a charge
+     * @param string|null $idempotencyKey
+     *
+     * @return GetChargeResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function cancelCharge(
+        string $chargeId,
+        ?CreateCancelChargeRequest $request = null,
+        ?string $idempotencyKey = null
+    ): GetChargeResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/charges/{charge_id}')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('charge_id', $chargeId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetChargeResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Creates a new charge
+     *
+     * @param CreateChargeRequest $request Request for creating a charge
+     * @param string|null $idempotencyKey
+     *
+     * @return GetChargeResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createCharge(CreateChargeRequest $request, ?string $idempotencyKey = null): GetChargeResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/Charges')
+            ->auth('global')
+            ->parameters(BodyParam::init($request), HeaderParam::init('idempotency-key', $idempotencyKey));
+
+        $_resHandler = $this->responseHandler()->type(GetChargeResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $chargeId
+     * @param CreateConfirmPaymentRequest|null $request Request for confirm payment
+     * @param string|null $idempotencyKey
+     *
+     * @return GetChargeResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function confirmPayment(
+        string $chargeId,
+        ?CreateConfirmPaymentRequest $request = null,
+        ?string $idempotencyKey = null
+    ): GetChargeResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/charges/{charge_id}/confirm-payment')
+            ->auth('global')
+            ->parameters(
+                TemplateParam::init('charge_id', $chargeId),
+                BodyParam::init($request),
                 HeaderParam::init('idempotency-key', $idempotencyKey)
             );
 

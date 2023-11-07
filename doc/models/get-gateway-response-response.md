@@ -18,16 +18,13 @@ The Transaction Gateway Response
 
 ```json
 {
-  "code": "code8",
+  "code": "code6",
   "errors": [
     {
-      "message": "message5"
+      "message": "message0"
     },
     {
-      "message": "message6"
-    },
-    {
-      "message": "message7"
+      "message": "message0"
     }
   ]
 }

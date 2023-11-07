@@ -33,11 +33,11 @@ Response object for getting an Address
 
 ```json
 {
-  "id": "id0",
-  "street": "street0",
-  "number": "number2",
-  "complement": "complement4",
-  "zip_code": "zip_code4"
+  "id": "id2",
+  "street": "street2",
+  "number": "number0",
+  "complement": "complement8",
+  "zip_code": "zip_code6"
 }
 ```
 

@@ -33,11 +33,11 @@ Response object for getting a credit card
 
 ```json
 {
-  "id": "id0",
-  "last_four_digits": "last_four_digits6",
-  "brand": "brand4",
-  "holder_name": "holder_name4",
-  "exp_month": 42
+  "id": "id4",
+  "last_four_digits": "last_four_digits0",
+  "brand": "brand8",
+  "holder_name": "holder_name0",
+  "exp_month": 52
 }
 ```
 

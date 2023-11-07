@@ -18,7 +18,7 @@ Payment Authentication response
 
 ```json
 {
-  "type": "type0",
+  "type": "type2",
   "threed_secure": {
     "mpi": "mpi0",
     "eci": "eci2",

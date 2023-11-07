@@ -21,11 +21,11 @@ Information about the recipient on the gateway
 
 ```json
 {
-  "gateway": "gateway0",
-  "status": "status8",
-  "pgid": "pgid4",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4"
+  "gateway": "gateway2",
+  "status": "status4",
+  "pgid": "pgid8",
+  "created_at": "created_at0",
+  "updated_at": "updated_at8"
 }
 ```
 

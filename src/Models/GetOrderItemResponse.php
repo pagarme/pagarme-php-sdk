@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PagarmeApiSDKLib\Models;
 
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
 use stdClass;
 
 /**
@@ -25,12 +26,17 @@ class GetOrderItemResponse implements \JsonSerializable
     /**
      * @var array
      */
-    private $amount = [];
+    private $type = [];
 
     /**
      * @var array
      */
     private $description = [];
+
+    /**
+     * @var array
+     */
+    private $amount = [];
 
     /**
      * @var array
@@ -46,6 +52,21 @@ class GetOrderItemResponse implements \JsonSerializable
      * @var array
      */
     private $code = [];
+
+    /**
+     * @var array
+     */
+    private $status = [];
+
+    /**
+     * @var array
+     */
+    private $createdAt = [];
+
+    /**
+     * @var array
+     */
+    private $updatedAt = [];
 
     /**
      * Returns Id.
@@ -80,32 +101,32 @@ class GetOrderItemResponse implements \JsonSerializable
     }
 
     /**
-     * Returns Amount.
+     * Returns Type.
      */
-    public function getAmount(): ?int
+    public function getType(): ?string
     {
-        if (count($this->amount) == 0) {
+        if (count($this->type) == 0) {
             return null;
         }
-        return $this->amount['value'];
+        return $this->type['value'];
     }
 
     /**
-     * Sets Amount.
+     * Sets Type.
      *
-     * @maps amount
+     * @maps type
      */
-    public function setAmount(?int $amount): void
+    public function setType(?string $type): void
     {
-        $this->amount['value'] = $amount;
+        $this->type['value'] = $type;
     }
 
     /**
-     * Unsets Amount.
+     * Unsets Type.
      */
-    public function unsetAmount(): void
+    public function unsetType(): void
     {
-        $this->amount = [];
+        $this->type = [];
     }
 
     /**
@@ -135,6 +156,35 @@ class GetOrderItemResponse implements \JsonSerializable
     public function unsetDescription(): void
     {
         $this->description = [];
+    }
+
+    /**
+     * Returns Amount.
+     */
+    public function getAmount(): ?int
+    {
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
+    }
+
+    /**
+     * Sets Amount.
+     *
+     * @maps amount
+     */
+    public function setAmount(?int $amount): void
+    {
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
     }
 
     /**
@@ -231,6 +281,95 @@ class GetOrderItemResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Status.
+     */
+    public function getStatus(): ?string
+    {
+        if (count($this->status) == 0) {
+            return null;
+        }
+        return $this->status['value'];
+    }
+
+    /**
+     * Sets Status.
+     *
+     * @maps status
+     */
+    public function setStatus(?string $status): void
+    {
+        $this->status['value'] = $status;
+    }
+
+    /**
+     * Unsets Status.
+     */
+    public function unsetStatus(): void
+    {
+        $this->status = [];
+    }
+
+    /**
+     * Returns Created At.
+     */
+    public function getCreatedAt(): ?\DateTime
+    {
+        if (count($this->createdAt) == 0) {
+            return null;
+        }
+        return $this->createdAt['value'];
+    }
+
+    /**
+     * Sets Created At.
+     *
+     * @maps created_at
+     * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
+     */
+    public function setCreatedAt(?\DateTime $createdAt): void
+    {
+        $this->createdAt['value'] = $createdAt;
+    }
+
+    /**
+     * Unsets Created At.
+     */
+    public function unsetCreatedAt(): void
+    {
+        $this->createdAt = [];
+    }
+
+    /**
+     * Returns Updated At.
+     */
+    public function getUpdatedAt(): ?\DateTime
+    {
+        if (count($this->updatedAt) == 0) {
+            return null;
+        }
+        return $this->updatedAt['value'];
+    }
+
+    /**
+     * Sets Updated At.
+     *
+     * @maps updated_at
+     * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
+     */
+    public function setUpdatedAt(?\DateTime $updatedAt): void
+    {
+        $this->updatedAt['value'] = $updatedAt;
+    }
+
+    /**
+     * Unsets Updated At.
+     */
+    public function unsetUpdatedAt(): void
+    {
+        $this->updatedAt = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -245,11 +384,14 @@ class GetOrderItemResponse implements \JsonSerializable
         if (!empty($this->id)) {
             $json['id']          = $this->id['value'];
         }
-        if (!empty($this->amount)) {
-            $json['amount']      = $this->amount['value'];
+        if (!empty($this->type)) {
+            $json['type']        = $this->type['value'];
         }
         if (!empty($this->description)) {
             $json['description'] = $this->description['value'];
+        }
+        if (!empty($this->amount)) {
+            $json['amount']      = $this->amount['value'];
         }
         if (!empty($this->quantity)) {
             $json['quantity']    = $this->quantity['value'];
@@ -259,6 +401,15 @@ class GetOrderItemResponse implements \JsonSerializable
         }
         if (!empty($this->code)) {
             $json['code']        = $this->code['value'];
+        }
+        if (!empty($this->status)) {
+            $json['status']      = $this->status['value'];
+        }
+        if (!empty($this->createdAt)) {
+            $json['created_at']  = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
+        }
+        if (!empty($this->updatedAt)) {
+            $json['updated_at']  = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

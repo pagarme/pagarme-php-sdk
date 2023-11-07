@@ -18,8 +18,8 @@ Pix Additional Information
 
 ```json
 {
-  "Name": "Name0",
-  "Value": "Value2"
+  "Name": "Name6",
+  "Value": "Value6"
 }
 ```
 

@@ -27,9 +27,9 @@ Response object for getting a plan item
 
 ```json
 {
-  "id": "id0",
-  "name": "name0",
-  "status": "status8",
+  "id": "id8",
+  "name": "name8",
+  "status": "status0",
   "created_at": "2016-03-13T12:52:32.123Z",
   "updated_at": "2016-03-13T12:52:32.123Z"
 }

@@ -30,6 +30,11 @@ class CreatePhoneRequest implements \JsonSerializable
     private $areaCode;
 
     /**
+     * @var array
+     */
+    private $type = [];
+
+    /**
      * Returns Country Code.
      */
     public function getCountryCode(): ?string
@@ -84,6 +89,35 @@ class CreatePhoneRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Type.
+     */
+    public function getType(): ?string
+    {
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
+    }
+
+    /**
+     * Sets Type.
+     *
+     * @maps Type
+     */
+    public function setType(?string $type): void
+    {
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -103,6 +137,9 @@ class CreatePhoneRequest implements \JsonSerializable
         }
         if (isset($this->areaCode)) {
             $json['area_code']    = $this->areaCode;
+        }
+        if (!empty($this->type)) {
+            $json['Type']         = $this->type['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

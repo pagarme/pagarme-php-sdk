@@ -28,9 +28,9 @@ class CreateGooglePayRequest implements \JsonSerializable
     private $data;
 
     /**
-     * @var CreateGooglePayHeaderRequest
+     * @var CreateGooglePayIntermediateSigningKeyRequest
      */
-    private $header;
+    private $intermediateSigningKey;
 
     /**
      * @var string
@@ -40,32 +40,32 @@ class CreateGooglePayRequest implements \JsonSerializable
     /**
      * @var string
      */
-    private $merchantIdentifier;
+    private $signedMessage;
 
     /**
      * @param string $version
      * @param string $data
-     * @param CreateGooglePayHeaderRequest $header
+     * @param CreateGooglePayIntermediateSigningKeyRequest $intermediateSigningKey
      * @param string $signature
-     * @param string $merchantIdentifier
+     * @param string $signedMessage
      */
     public function __construct(
         string $version,
         string $data,
-        CreateGooglePayHeaderRequest $header,
+        CreateGooglePayIntermediateSigningKeyRequest $intermediateSigningKey,
         string $signature,
-        string $merchantIdentifier
+        string $signedMessage
     ) {
         $this->version = $version;
         $this->data = $data;
-        $this->header = $header;
+        $this->intermediateSigningKey = $intermediateSigningKey;
         $this->signature = $signature;
-        $this->merchantIdentifier = $merchantIdentifier;
+        $this->signedMessage = $signedMessage;
     }
 
     /**
      * Returns Version.
-     * The token version
+     * Informação sobre a versão do token. Único valor aceito é EC_v2
      */
     public function getVersion(): string
     {
@@ -74,7 +74,7 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Sets Version.
-     * The token version
+     * Informação sobre a versão do token. Único valor aceito é EC_v2
      *
      * @required
      * @maps version
@@ -86,7 +86,7 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Returns Data.
-     * The cryptography data
+     * Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google.
      */
     public function getData(): string
     {
@@ -95,7 +95,7 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Sets Data.
-     * The cryptography data
+     * Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google.
      *
      * @required
      * @maps data
@@ -106,29 +106,31 @@ class CreateGooglePayRequest implements \JsonSerializable
     }
 
     /**
-     * Returns Header.
-     * The GooglePay header request
+     * Returns Intermediate Signing Key.
+     * The GooglePay intermediate signing key request
      */
-    public function getHeader(): CreateGooglePayHeaderRequest
+    public function getIntermediateSigningKey(): CreateGooglePayIntermediateSigningKeyRequest
     {
-        return $this->header;
+        return $this->intermediateSigningKey;
     }
 
     /**
-     * Sets Header.
-     * The GooglePay header request
+     * Sets Intermediate Signing Key.
+     * The GooglePay intermediate signing key request
      *
      * @required
-     * @maps header
+     * @maps intermediate_signing_key
      */
-    public function setHeader(CreateGooglePayHeaderRequest $header): void
-    {
-        $this->header = $header;
+    public function setIntermediateSigningKey(
+        CreateGooglePayIntermediateSigningKeyRequest $intermediateSigningKey
+    ): void {
+        $this->intermediateSigningKey = $intermediateSigningKey;
     }
 
     /**
      * Returns Signature.
-     * Detached PKCS #7 signature, Base64 encoded as string
+     * Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde ao
+     * signature do token Google.
      */
     public function getSignature(): string
     {
@@ -137,7 +139,8 @@ class CreateGooglePayRequest implements \JsonSerializable
 
     /**
      * Sets Signature.
-     * Detached PKCS #7 signature, Base64 encoded as string
+     * Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde ao
+     * signature do token Google.
      *
      * @required
      * @maps signature
@@ -148,24 +151,22 @@ class CreateGooglePayRequest implements \JsonSerializable
     }
 
     /**
-     * Returns Merchant Identifier.
-     * GooglePay Merchant identifier
+     * Returns Signed Message.
      */
-    public function getMerchantIdentifier(): string
+    public function getSignedMessage(): string
     {
-        return $this->merchantIdentifier;
+        return $this->signedMessage;
     }
 
     /**
-     * Sets Merchant Identifier.
-     * GooglePay Merchant identifier
+     * Sets Signed Message.
      *
      * @required
-     * @maps merchant_identifier
+     * @maps signed_message
      */
-    public function setMerchantIdentifier(string $merchantIdentifier): void
+    public function setSignedMessage(string $signedMessage): void
     {
-        $this->merchantIdentifier = $merchantIdentifier;
+        $this->signedMessage = $signedMessage;
     }
 
     /**
@@ -180,11 +181,11 @@ class CreateGooglePayRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['version']             = $this->version;
-        $json['data']                = $this->data;
-        $json['header']              = $this->header;
-        $json['signature']           = $this->signature;
-        $json['merchant_identifier'] = $this->merchantIdentifier;
+        $json['version']                  = $this->version;
+        $json['data']                     = $this->data;
+        $json['intermediate_signing_key'] = $this->intermediateSigningKey;
+        $json['signature']                = $this->signature;
+        $json['signed_message']           = $this->signedMessage;
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

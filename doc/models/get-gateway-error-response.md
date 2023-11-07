@@ -17,7 +17,7 @@ Gateway Response
 
 ```json
 {
-  "message": "message0"
+  "message": "message4"
 }
 ```
 

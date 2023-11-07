@@ -31,7 +31,17 @@ class GetOrderResponse implements \JsonSerializable
     /**
      * @var array
      */
+    private $amount = [];
+
+    /**
+     * @var array
+     */
     private $currency = [];
+
+    /**
+     * @var array
+     */
+    private $closed = [];
 
     /**
      * @var array
@@ -57,6 +67,11 @@ class GetOrderResponse implements \JsonSerializable
      * @var array
      */
     private $updatedAt = [];
+
+    /**
+     * @var array
+     */
+    private $closedAt = [];
 
     /**
      * @var array
@@ -102,11 +117,6 @@ class GetOrderResponse implements \JsonSerializable
      * @var array
      */
     private $device = [];
-
-    /**
-     * @var array
-     */
-    private $closed = [];
 
     /**
      * Returns Id.
@@ -167,6 +177,35 @@ class GetOrderResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Amount.
+     */
+    public function getAmount(): ?int
+    {
+        if (count($this->amount) == 0) {
+            return null;
+        }
+        return $this->amount['value'];
+    }
+
+    /**
+     * Sets Amount.
+     *
+     * @maps amount
+     */
+    public function setAmount(?int $amount): void
+    {
+        $this->amount['value'] = $amount;
+    }
+
+    /**
+     * Unsets Amount.
+     */
+    public function unsetAmount(): void
+    {
+        $this->amount = [];
+    }
+
+    /**
      * Returns Currency.
      */
     public function getCurrency(): ?string
@@ -193,6 +232,38 @@ class GetOrderResponse implements \JsonSerializable
     public function unsetCurrency(): void
     {
         $this->currency = [];
+    }
+
+    /**
+     * Returns Closed.
+     * Indicates whether the order is closed
+     */
+    public function getClosed(): ?bool
+    {
+        if (count($this->closed) == 0) {
+            return null;
+        }
+        return $this->closed['value'];
+    }
+
+    /**
+     * Sets Closed.
+     * Indicates whether the order is closed
+     *
+     * @maps closed
+     */
+    public function setClosed(?bool $closed): void
+    {
+        $this->closed['value'] = $closed;
+    }
+
+    /**
+     * Unsets Closed.
+     * Indicates whether the order is closed
+     */
+    public function unsetClosed(): void
+    {
+        $this->closed = [];
     }
 
     /**
@@ -344,6 +415,36 @@ class GetOrderResponse implements \JsonSerializable
     public function unsetUpdatedAt(): void
     {
         $this->updatedAt = [];
+    }
+
+    /**
+     * Returns Closed At.
+     */
+    public function getClosedAt(): ?\DateTime
+    {
+        if (count($this->closedAt) == 0) {
+            return null;
+        }
+        return $this->closedAt['value'];
+    }
+
+    /**
+     * Sets Closed At.
+     *
+     * @maps closed_at
+     * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
+     */
+    public function setClosedAt(?\DateTime $closedAt): void
+    {
+        $this->closedAt['value'] = $closedAt;
+    }
+
+    /**
+     * Unsets Closed At.
+     */
+    public function unsetClosedAt(): void
+    {
+        $this->closedAt = [];
     }
 
     /**
@@ -635,38 +736,6 @@ class GetOrderResponse implements \JsonSerializable
     }
 
     /**
-     * Returns Closed.
-     * Indicates whether the order is closed
-     */
-    public function getClosed(): ?bool
-    {
-        if (count($this->closed) == 0) {
-            return null;
-        }
-        return $this->closed['value'];
-    }
-
-    /**
-     * Sets Closed.
-     * Indicates whether the order is closed
-     *
-     * @maps closed
-     */
-    public function setClosed(?bool $closed): void
-    {
-        $this->closed['value'] = $closed;
-    }
-
-    /**
-     * Unsets Closed.
-     * Indicates whether the order is closed
-     */
-    public function unsetClosed(): void
-    {
-        $this->closed = [];
-    }
-
-    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -684,8 +753,14 @@ class GetOrderResponse implements \JsonSerializable
         if (!empty($this->code)) {
             $json['code']        = $this->code['value'];
         }
+        if (!empty($this->amount)) {
+            $json['amount']      = $this->amount['value'];
+        }
         if (!empty($this->currency)) {
             $json['currency']    = $this->currency['value'];
+        }
+        if (!empty($this->closed)) {
+            $json['closed']      = $this->closed['value'];
         }
         if (!empty($this->items)) {
             $json['items']       = $this->items['value'];
@@ -701,6 +776,9 @@ class GetOrderResponse implements \JsonSerializable
         }
         if (!empty($this->updatedAt)) {
             $json['updated_at']  = DateTimeHelper::toRfc3339DateTime($this->updatedAt['value']);
+        }
+        if (!empty($this->closedAt)) {
+            $json['closed_at']   = DateTimeHelper::toRfc3339DateTime($this->closedAt['value']);
         }
         if (!empty($this->charges)) {
             $json['charges']     = $this->charges['value'];
@@ -728,9 +806,6 @@ class GetOrderResponse implements \JsonSerializable
         }
         if (!empty($this->device)) {
             $json['device']      = $this->device['value'];
-        }
-        if (!empty($this->closed)) {
-            $json['closed']      = $this->closed['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

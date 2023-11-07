@@ -20,18 +20,25 @@ Response object for listing invoices
 {
   "data": [
     {
-      "id": "id5",
-      "code": "code3",
-      "url": "url9",
-      "amount": 121,
-      "status": "status7"
+      "id": "id0",
+      "code": "code8",
+      "url": "url4",
+      "amount": 236,
+      "status": "status2"
     },
     {
-      "id": "id6",
-      "code": "code4",
-      "url": "url0",
-      "amount": 122,
-      "status": "status8"
+      "id": "id0",
+      "code": "code8",
+      "url": "url4",
+      "amount": 236,
+      "status": "status2"
+    },
+    {
+      "id": "id0",
+      "code": "code8",
+      "url": "url4",
+      "amount": 236,
+      "status": "status2"
     }
   ],
   "paging": {

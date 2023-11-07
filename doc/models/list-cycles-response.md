@@ -22,27 +22,27 @@ Response object for listing subscription cycles
     {
       "start_at": "2016-03-13T12:52:32.123Z",
       "end_at": "2016-03-13T12:52:32.123Z",
-      "id": "id5",
+      "id": "id0",
       "billing_at": "2016-03-13T12:52:32.123Z",
       "subscription": {
-        "id": "id1",
-        "code": "code9",
+        "id": "id4",
+        "code": "code2",
         "start_at": "2016-03-13T12:52:32.123Z",
-        "interval": "interval9",
-        "interval_count": 97
+        "interval": "interval2",
+        "interval_count": 234
       }
     },
     {
       "start_at": "2016-03-13T12:52:32.123Z",
       "end_at": "2016-03-13T12:52:32.123Z",
-      "id": "id6",
+      "id": "id0",
       "billing_at": "2016-03-13T12:52:32.123Z",
       "subscription": {
-        "id": "id2",
-        "code": "code0",
+        "id": "id4",
+        "code": "code2",
         "start_at": "2016-03-13T12:52:32.123Z",
-        "interval": "interval0",
-        "interval_count": 98
+        "interval": "interval2",
+        "interval_count": 234
       }
     }
   ],

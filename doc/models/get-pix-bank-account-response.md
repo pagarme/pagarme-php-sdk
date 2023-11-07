@@ -20,10 +20,10 @@ Payer's bank details.
 
 ```json
 {
-  "bank_name": "bank_name4",
-  "ispb": "ispb4",
-  "branch_code": "branch_code8",
-  "account_number": "account_number0"
+  "bank_name": "bank_name0",
+  "ispb": "ispb8",
+  "branch_code": "branch_code2",
+  "account_number": "account_number4"
 }
 ```
 

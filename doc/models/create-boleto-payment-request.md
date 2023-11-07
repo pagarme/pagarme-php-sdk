@@ -28,9 +28,9 @@ Contains the settings for creating a boleto payment
 
 ```json
 {
-  "retries": 230,
+  "retries": 14,
   "bank": "bank8",
-  "instructions": "instructions2",
+  "instructions": "instructions8",
   "due_at": "2016-03-13T12:52:32.123Z",
   "billing_address": {
     "street": "street8",
@@ -50,7 +50,7 @@ Contains the settings for creating a boleto payment
   },
   "billing_address_id": "billing_address_id6",
   "nosso_numero": "nosso_numero0",
-  "document_number": "document_number6",
+  "document_number": "document_number4",
   "statement_descriptor": "statement_descriptor0",
   "interest": {
     "days": 156,

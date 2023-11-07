@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace PagarmeApiSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PagarmeApiSDKLib\Models\CreateGooglePayHeaderRequest;
+use PagarmeApiSDKLib\Models\CreateGooglePayIntermediateSigningKeyRequest;
 use PagarmeApiSDKLib\Models\CreateGooglePayRequest;
 
 /**
@@ -37,11 +37,13 @@ class CreateGooglePayRequestBuilder
     public static function init(
         string $version,
         string $data,
-        CreateGooglePayHeaderRequest $header,
+        CreateGooglePayIntermediateSigningKeyRequest $intermediateSigningKey,
         string $signature,
-        string $merchantIdentifier
+        string $signedMessage
     ): self {
-        return new self(new CreateGooglePayRequest($version, $data, $header, $signature, $merchantIdentifier));
+        return new self(
+            new CreateGooglePayRequest($version, $data, $intermediateSigningKey, $signature, $signedMessage)
+        );
     }
 
     /**

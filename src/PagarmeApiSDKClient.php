@@ -33,25 +33,25 @@ use Unirest\HttpClient;
 
 class PagarmeApiSDKClient implements ConfigurationInterface
 {
+    private $subscriptions;
+
     private $orders;
 
     private $plans;
-
-    private $subscriptions;
 
     private $invoices;
 
     private $customers;
 
-    private $recipients;
-
     private $charges;
+
+    private $recipients;
 
     private $tokens;
 
-    private $transfers;
-
     private $transactions;
+
+    private $transfers;
 
     private $payables;
 
@@ -80,7 +80,7 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
             ->apiCallback($this->config['httpCallback'] ?? null)
-            ->userAgent('PagarmeApiSDK - PHP 6.8.0')
+            ->userAgent('PagarmeApiSDK - PHP 6.8.1')
             ->globalConfig($this->getGlobalConfiguration())
             ->globalErrors($this->getGlobalErrors())
             ->serverUrls(self::ENVIRONMENT_MAP[$this->getEnvironment()], Server::DEFAULT_)
@@ -205,6 +205,17 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
+     * Returns Subscriptions Controller
+     */
+    public function getSubscriptionsController(): SubscriptionsController
+    {
+        if ($this->subscriptions == null) {
+            $this->subscriptions = new SubscriptionsController($this->client);
+        }
+        return $this->subscriptions;
+    }
+
+    /**
      * Returns Orders Controller
      */
     public function getOrdersController(): OrdersController
@@ -224,17 +235,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             $this->plans = new PlansController($this->client);
         }
         return $this->plans;
-    }
-
-    /**
-     * Returns Subscriptions Controller
-     */
-    public function getSubscriptionsController(): SubscriptionsController
-    {
-        if ($this->subscriptions == null) {
-            $this->subscriptions = new SubscriptionsController($this->client);
-        }
-        return $this->subscriptions;
     }
 
     /**
@@ -260,17 +260,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
-     * Returns Recipients Controller
-     */
-    public function getRecipientsController(): RecipientsController
-    {
-        if ($this->recipients == null) {
-            $this->recipients = new RecipientsController($this->client);
-        }
-        return $this->recipients;
-    }
-
-    /**
      * Returns Charges Controller
      */
     public function getChargesController(): ChargesController
@@ -279,6 +268,17 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             $this->charges = new ChargesController($this->client);
         }
         return $this->charges;
+    }
+
+    /**
+     * Returns Recipients Controller
+     */
+    public function getRecipientsController(): RecipientsController
+    {
+        if ($this->recipients == null) {
+            $this->recipients = new RecipientsController($this->client);
+        }
+        return $this->recipients;
     }
 
     /**
@@ -293,17 +293,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
-     * Returns Transfers Controller
-     */
-    public function getTransfersController(): TransfersController
-    {
-        if ($this->transfers == null) {
-            $this->transfers = new TransfersController($this->client);
-        }
-        return $this->transfers;
-    }
-
-    /**
      * Returns Transactions Controller
      */
     public function getTransactionsController(): TransactionsController
@@ -312,6 +301,17 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             $this->transactions = new TransactionsController($this->client);
         }
         return $this->transactions;
+    }
+
+    /**
+     * Returns Transfers Controller
+     */
+    public function getTransfersController(): TransfersController
+    {
+        if ($this->transfers == null) {
+            $this->transfers = new TransfersController($this->client);
+        }
+        return $this->transfers;
     }
 
     /**

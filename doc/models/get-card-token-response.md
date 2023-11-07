@@ -24,11 +24,11 @@ Card token data
 
 ```json
 {
-  "last_four_digits": "last_four_digits6",
-  "holder_name": "holder_name4",
+  "last_four_digits": "last_four_digits8",
+  "holder_name": "holder_name8",
   "holder_document": "holder_document6",
-  "exp_month": 42,
-  "exp_year": 254
+  "exp_month": 168,
+  "exp_year": 128
 }
 ```
 
