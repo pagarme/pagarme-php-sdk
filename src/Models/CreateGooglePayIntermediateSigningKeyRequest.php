@@ -18,44 +18,45 @@ use stdClass;
 class CreateGooglePayIntermediateSigningKeyRequest implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var array
      */
-    private $signedKey;
+    private $signedKey = [];
 
     /**
-     * @var string[]
+     * @var array
      */
-    private $signatures;
-
-    /**
-     * @param string $signedKey
-     * @param string[] $signatures
-     */
-    public function __construct(string $signedKey, array $signatures)
-    {
-        $this->signedKey = $signedKey;
-        $this->signatures = $signatures;
-    }
+    private $signatures = [];
 
     /**
      * Returns Signed Key.
      * Uma mensagem codificada em Base64 com a descrição de pagamento da chave.
      */
-    public function getSignedKey(): string
+    public function getSignedKey(): ?string
     {
-        return $this->signedKey;
+        if (count($this->signedKey) == 0) {
+            return null;
+        }
+        return $this->signedKey['value'];
     }
 
     /**
      * Sets Signed Key.
      * Uma mensagem codificada em Base64 com a descrição de pagamento da chave.
      *
-     * @required
      * @maps signed_key
      */
-    public function setSignedKey(string $signedKey): void
+    public function setSignedKey(?string $signedKey): void
     {
-        $this->signedKey = $signedKey;
+        $this->signedKey['value'] = $signedKey;
+    }
+
+    /**
+     * Unsets Signed Key.
+     * Uma mensagem codificada em Base64 com a descrição de pagamento da chave.
+     */
+    public function unsetSignedKey(): void
+    {
+        $this->signedKey = [];
     }
 
     /**
@@ -63,11 +64,14 @@ class CreateGooglePayIntermediateSigningKeyRequest implements \JsonSerializable
      * Verifica se a origem da chave de assinatura intermediária é o Google. É codificada em Base64 e
      * criada usando o ECDSA.
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getSignatures(): array
+    public function getSignatures(): ?array
     {
-        return $this->signatures;
+        if (count($this->signatures) == 0) {
+            return null;
+        }
+        return $this->signatures['value'];
     }
 
     /**
@@ -75,14 +79,23 @@ class CreateGooglePayIntermediateSigningKeyRequest implements \JsonSerializable
      * Verifica se a origem da chave de assinatura intermediária é o Google. É codificada em Base64 e
      * criada usando o ECDSA.
      *
-     * @required
      * @maps signatures
      *
-     * @param string[] $signatures
+     * @param string[]|null $signatures
      */
-    public function setSignatures(array $signatures): void
+    public function setSignatures(?array $signatures): void
     {
-        $this->signatures = $signatures;
+        $this->signatures['value'] = $signatures;
+    }
+
+    /**
+     * Unsets Signatures.
+     * Verifica se a origem da chave de assinatura intermediária é o Google. É codificada em Base64 e
+     * criada usando o ECDSA.
+     */
+    public function unsetSignatures(): void
+    {
+        $this->signatures = [];
     }
 
     /**
@@ -97,8 +110,12 @@ class CreateGooglePayIntermediateSigningKeyRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['signed_key'] = $this->signedKey;
-        $json['signatures'] = $this->signatures;
+        if (!empty($this->signedKey)) {
+            $json['signed_key'] = $this->signedKey['value'];
+        }
+        if (!empty($this->signatures)) {
+            $json['signatures'] = $this->signatures['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

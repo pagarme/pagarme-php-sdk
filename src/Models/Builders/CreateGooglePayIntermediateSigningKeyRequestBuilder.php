@@ -33,9 +33,45 @@ class CreateGooglePayIntermediateSigningKeyRequestBuilder
     /**
      * Initializes a new create google pay intermediate signing key request Builder object.
      */
-    public static function init(string $signedKey, array $signatures): self
+    public static function init(): self
     {
-        return new self(new CreateGooglePayIntermediateSigningKeyRequest($signedKey, $signatures));
+        return new self(new CreateGooglePayIntermediateSigningKeyRequest());
+    }
+
+    /**
+     * Sets signed key field.
+     */
+    public function signedKey(?string $value): self
+    {
+        $this->instance->setSignedKey($value);
+        return $this;
+    }
+
+    /**
+     * Unsets signed key field.
+     */
+    public function unsetSignedKey(): self
+    {
+        $this->instance->unsetSignedKey();
+        return $this;
+    }
+
+    /**
+     * Sets signatures field.
+     */
+    public function signatures(?array $value): self
+    {
+        $this->instance->setSignatures($value);
+        return $this;
+    }
+
+    /**
+     * Unsets signatures field.
+     */
+    public function unsetSignatures(): self
+    {
+        $this->instance->unsetSignatures();
+        return $this;
     }
 
     /**

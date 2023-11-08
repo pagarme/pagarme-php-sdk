@@ -18,113 +18,125 @@ use stdClass;
 class CreateGooglePayRequest implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var array
      */
-    private $version;
+    private $version = [];
 
     /**
-     * @var string
+     * @var array
      */
-    private $data;
+    private $data = [];
 
     /**
-     * @var CreateGooglePayIntermediateSigningKeyRequest
+     * @var array
      */
-    private $intermediateSigningKey;
+    private $intermediateSigningKey = [];
 
     /**
-     * @var string
+     * @var array
      */
-    private $signature;
+    private $signature = [];
 
     /**
-     * @var string
+     * @var array
      */
-    private $signedMessage;
-
-    /**
-     * @param string $version
-     * @param string $data
-     * @param CreateGooglePayIntermediateSigningKeyRequest $intermediateSigningKey
-     * @param string $signature
-     * @param string $signedMessage
-     */
-    public function __construct(
-        string $version,
-        string $data,
-        CreateGooglePayIntermediateSigningKeyRequest $intermediateSigningKey,
-        string $signature,
-        string $signedMessage
-    ) {
-        $this->version = $version;
-        $this->data = $data;
-        $this->intermediateSigningKey = $intermediateSigningKey;
-        $this->signature = $signature;
-        $this->signedMessage = $signedMessage;
-    }
+    private $signedMessage = [];
 
     /**
      * Returns Version.
      * Informação sobre a versão do token. Único valor aceito é EC_v2
      */
-    public function getVersion(): string
+    public function getVersion(): ?string
     {
-        return $this->version;
+        if (count($this->version) == 0) {
+            return null;
+        }
+        return $this->version['value'];
     }
 
     /**
      * Sets Version.
      * Informação sobre a versão do token. Único valor aceito é EC_v2
      *
-     * @required
      * @maps version
      */
-    public function setVersion(string $version): void
+    public function setVersion(?string $version): void
     {
-        $this->version = $version;
+        $this->version['value'] = $version;
+    }
+
+    /**
+     * Unsets Version.
+     * Informação sobre a versão do token. Único valor aceito é EC_v2
+     */
+    public function unsetVersion(): void
+    {
+        $this->version = [];
     }
 
     /**
      * Returns Data.
      * Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google.
      */
-    public function getData(): string
+    public function getData(): ?string
     {
-        return $this->data;
+        if (count($this->data) == 0) {
+            return null;
+        }
+        return $this->data['value'];
     }
 
     /**
      * Sets Data.
      * Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google.
      *
-     * @required
      * @maps data
      */
-    public function setData(string $data): void
+    public function setData(?string $data): void
     {
-        $this->data = $data;
+        $this->data['value'] = $data;
+    }
+
+    /**
+     * Unsets Data.
+     * Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google.
+     */
+    public function unsetData(): void
+    {
+        $this->data = [];
     }
 
     /**
      * Returns Intermediate Signing Key.
      * The GooglePay intermediate signing key request
      */
-    public function getIntermediateSigningKey(): CreateGooglePayIntermediateSigningKeyRequest
+    public function getIntermediateSigningKey(): ?CreateGooglePayIntermediateSigningKeyRequest
     {
-        return $this->intermediateSigningKey;
+        if (count($this->intermediateSigningKey) == 0) {
+            return null;
+        }
+        return $this->intermediateSigningKey['value'];
     }
 
     /**
      * Sets Intermediate Signing Key.
      * The GooglePay intermediate signing key request
      *
-     * @required
      * @maps intermediate_signing_key
      */
     public function setIntermediateSigningKey(
-        CreateGooglePayIntermediateSigningKeyRequest $intermediateSigningKey
+        ?CreateGooglePayIntermediateSigningKeyRequest $intermediateSigningKey
     ): void {
-        $this->intermediateSigningKey = $intermediateSigningKey;
+        $this->intermediateSigningKey['value'] = $intermediateSigningKey;
+    }
+
+    /**
+     * Unsets Intermediate Signing Key.
+     * The GooglePay intermediate signing key request
+     */
+    public function unsetIntermediateSigningKey(): void
+    {
+        $this->intermediateSigningKey = [];
     }
 
     /**
@@ -132,9 +144,12 @@ class CreateGooglePayRequest implements \JsonSerializable
      * Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde ao
      * signature do token Google.
      */
-    public function getSignature(): string
+    public function getSignature(): ?string
     {
-        return $this->signature;
+        if (count($this->signature) == 0) {
+            return null;
+        }
+        return $this->signature['value'];
     }
 
     /**
@@ -142,31 +157,50 @@ class CreateGooglePayRequest implements \JsonSerializable
      * Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde ao
      * signature do token Google.
      *
-     * @required
      * @maps signature
      */
-    public function setSignature(string $signature): void
+    public function setSignature(?string $signature): void
     {
-        $this->signature = $signature;
+        $this->signature['value'] = $signature;
+    }
+
+    /**
+     * Unsets Signature.
+     * Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde ao
+     * signature do token Google.
+     */
+    public function unsetSignature(): void
+    {
+        $this->signature = [];
     }
 
     /**
      * Returns Signed Message.
      */
-    public function getSignedMessage(): string
+    public function getSignedMessage(): ?string
     {
-        return $this->signedMessage;
+        if (count($this->signedMessage) == 0) {
+            return null;
+        }
+        return $this->signedMessage['value'];
     }
 
     /**
      * Sets Signed Message.
      *
-     * @required
      * @maps signed_message
      */
-    public function setSignedMessage(string $signedMessage): void
+    public function setSignedMessage(?string $signedMessage): void
     {
-        $this->signedMessage = $signedMessage;
+        $this->signedMessage['value'] = $signedMessage;
+    }
+
+    /**
+     * Unsets Signed Message.
+     */
+    public function unsetSignedMessage(): void
+    {
+        $this->signedMessage = [];
     }
 
     /**
@@ -181,11 +215,21 @@ class CreateGooglePayRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['version']                  = $this->version;
-        $json['data']                     = $this->data;
-        $json['intermediate_signing_key'] = $this->intermediateSigningKey;
-        $json['signature']                = $this->signature;
-        $json['signed_message']           = $this->signedMessage;
+        if (!empty($this->version)) {
+            $json['version']                  = $this->version['value'];
+        }
+        if (!empty($this->data)) {
+            $json['data']                     = $this->data['value'];
+        }
+        if (!empty($this->intermediateSigningKey)) {
+            $json['intermediate_signing_key'] = $this->intermediateSigningKey['value'];
+        }
+        if (!empty($this->signature)) {
+            $json['signature']                = $this->signature['value'];
+        }
+        if (!empty($this->signedMessage)) {
+            $json['signed_message']           = $this->signedMessage['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }
