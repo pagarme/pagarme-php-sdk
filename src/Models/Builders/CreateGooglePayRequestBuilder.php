@@ -130,6 +130,24 @@ class CreateGooglePayRequestBuilder
     }
 
     /**
+     * Sets merchant identifier field.
+     */
+    public function merchantIdentifier(?string $value): self
+    {
+        $this->instance->setMerchantIdentifier($value);
+        return $this;
+    }
+
+    /**
+     * Unsets merchant identifier field.
+     */
+    public function unsetMerchantIdentifier(): self
+    {
+        $this->instance->unsetMerchantIdentifier();
+        return $this;
+    }
+
+    /**
      * Initializes a new create google pay request object.
      */
     public function build(): CreateGooglePayRequest

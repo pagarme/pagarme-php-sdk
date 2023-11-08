@@ -43,6 +43,11 @@ class CreateGooglePayRequest implements \JsonSerializable
     private $signedMessage = [];
 
     /**
+     * @var array
+     */
+    private $merchantIdentifier = [];
+
+    /**
      * Returns Version.
      * Informação sobre a versão do token. Único valor aceito é EC_v2
      */
@@ -204,6 +209,35 @@ class CreateGooglePayRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Merchant Identifier.
+     */
+    public function getMerchantIdentifier(): ?string
+    {
+        if (count($this->merchantIdentifier) == 0) {
+            return null;
+        }
+        return $this->merchantIdentifier['value'];
+    }
+
+    /**
+     * Sets Merchant Identifier.
+     *
+     * @maps merchant_identifier
+     */
+    public function setMerchantIdentifier(?string $merchantIdentifier): void
+    {
+        $this->merchantIdentifier['value'] = $merchantIdentifier;
+    }
+
+    /**
+     * Unsets Merchant Identifier.
+     */
+    public function unsetMerchantIdentifier(): void
+    {
+        $this->merchantIdentifier = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -229,6 +263,9 @@ class CreateGooglePayRequest implements \JsonSerializable
         }
         if (!empty($this->signedMessage)) {
             $json['signed_message']           = $this->signedMessage['value'];
+        }
+        if (!empty($this->merchantIdentifier)) {
+            $json['merchant_identifier']      = $this->merchantIdentifier['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

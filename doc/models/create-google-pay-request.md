@@ -16,6 +16,7 @@ The GooglePay Token Payment Request
 | `intermediateSigningKey` | [`?CreateGooglePayIntermediateSigningKeyRequest`](../../doc/models/create-google-pay-intermediate-signing-key-request.md) | Optional | The GooglePay intermediate signing key request | getIntermediateSigningKey(): ?CreateGooglePayIntermediateSigningKeyRequest | setIntermediateSigningKey(?CreateGooglePayIntermediateSigningKeyRequest intermediateSigningKey): void |
 | `signature` | `?string` | Optional | Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde ao signature do token Google. | getSignature(): ?string | setSignature(?string signature): void |
 | `signedMessage` | `?string` | Optional | - | getSignedMessage(): ?string | setSignedMessage(?string signedMessage): void |
+| `merchantIdentifier` | `?string` | Optional | - | getMerchantIdentifier(): ?string | setMerchantIdentifier(?string merchantIdentifier): void |
 
 ## Example (as JSON)
 
