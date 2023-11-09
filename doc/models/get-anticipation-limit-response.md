@@ -18,8 +18,8 @@ Anticipation limit
 
 ```json
 {
-  "amount": 46,
-  "anticipation_fee": 140
+  "amount": 6,
+  "anticipation_fee": 88
 }
 ```
 

@@ -11,23 +11,29 @@ The GooglePay Token Payment Request
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `version` | `string` | Required | The token version | getVersion(): string | setVersion(string version): void |
-| `data` | `string` | Required | The cryptography data | getData(): string | setData(string data): void |
-| `header` | [`CreateGooglePayHeaderRequest`](../../doc/models/create-google-pay-header-request.md) | Required | The GooglePay header request | getHeader(): CreateGooglePayHeaderRequest | setHeader(CreateGooglePayHeaderRequest header): void |
-| `signature` | `string` | Required | Detached PKCS #7 signature, Base64 encoded as string | getSignature(): string | setSignature(string signature): void |
-| `merchantIdentifier` | `string` | Required | GooglePay Merchant identifier | getMerchantIdentifier(): string | setMerchantIdentifier(string merchantIdentifier): void |
+| `version` | `?string` | Optional | Informação sobre a versão do token. Único valor aceito é EC_v2 | getVersion(): ?string | setVersion(?string version): void |
+| `data` | `?string` | Optional | Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google. | getData(): ?string | setData(?string data): void |
+| `intermediateSigningKey` | [`?CreateGooglePayIntermediateSigningKeyRequest`](../../doc/models/create-google-pay-intermediate-signing-key-request.md) | Optional | The GooglePay intermediate signing key request | getIntermediateSigningKey(): ?CreateGooglePayIntermediateSigningKeyRequest | setIntermediateSigningKey(?CreateGooglePayIntermediateSigningKeyRequest intermediateSigningKey): void |
+| `signature` | `?string` | Optional | Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde ao signature do token Google. | getSignature(): ?string | setSignature(?string signature): void |
+| `signedMessage` | `?string` | Optional | - | getSignedMessage(): ?string | setSignedMessage(?string signedMessage): void |
+| `merchantIdentifier` | `?string` | Optional | - | getMerchantIdentifier(): ?string | setMerchantIdentifier(?string merchantIdentifier): void |
 
 ## Example (as JSON)
 
 ```json
 {
-  "version": "version4",
+  "version": "version6",
   "data": "data0",
-  "header": {
-    "ephemeral_public_key": "ephemeral_public_key6"
+  "intermediate_signing_key": {
+    "signed_key": "signed_key0",
+    "signatures": [
+      "signatures2",
+      "signatures3",
+      "signatures4"
+    ]
   },
   "signature": "signature8",
-  "merchant_identifier": "merchant_identifier4"
+  "signed_message": "signed_message6"
 }
 ```
 

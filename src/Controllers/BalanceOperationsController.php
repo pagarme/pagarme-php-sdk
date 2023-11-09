@@ -24,6 +24,7 @@ class BalanceOperationsController extends BaseController
      * @param string|null $status
      * @param \DateTime|null $createdSince
      * @param \DateTime|null $createdUntil
+     * @param string|null $recipientId
      *
      * @return ListBalanceOperationResponse Response from the API call
      *
@@ -32,7 +33,8 @@ class BalanceOperationsController extends BaseController
     public function getBalanceOperations(
         ?string $status = null,
         ?\DateTime $createdSince = null,
-        ?\DateTime $createdUntil = null
+        ?\DateTime $createdUntil = null,
+        ?string $recipientId = null
     ): ListBalanceOperationResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/balance/operations')
             ->auth('global')
@@ -41,7 +43,8 @@ class BalanceOperationsController extends BaseController
                 QueryParam::init('created_since', $createdSince)
                     ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
                 QueryParam::init('created_until', $createdUntil)
-                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime'])
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('recipient_id', $recipientId)
             );
 
         $_resHandler = $this->responseHandler()->type(ListBalanceOperationResponse::class);

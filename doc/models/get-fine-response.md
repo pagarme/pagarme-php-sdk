@@ -20,8 +20,8 @@ Fine Response
 ```json
 {
   "type": "\"percentage\" or \"flat\"",
-  "days": 120,
-  "amount": 46
+  "days": 112,
+  "amount": 186
 }
 ```
 

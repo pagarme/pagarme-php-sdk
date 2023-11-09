@@ -93,6 +93,11 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
     private $recurrencyCycle;
 
     /**
+     * @var CreateCardPayloadRequest|null
+     */
+    private $payload;
+
+    /**
      * Returns Installments.
      * Number of installments
      */
@@ -391,6 +396,24 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Payload.
+     */
+    public function getPayload(): ?CreateCardPayloadRequest
+    {
+        return $this->payload;
+    }
+
+    /**
+     * Sets Payload.
+     *
+     * @maps payload
+     */
+    public function setPayload(?CreateCardPayloadRequest $payload): void
+    {
+        $this->payload = $payload;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -446,6 +469,9 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
         }
         if (isset($this->recurrencyCycle)) {
             $json['recurrency_cycle']       = $this->recurrencyCycle;
+        }
+        if (isset($this->payload)) {
+            $json['payload']                = $this->payload;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

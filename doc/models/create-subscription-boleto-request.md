@@ -29,7 +29,7 @@ Information about fines and interest on the "boleto" used from payment
     "type": "type2",
     "amount": 212
   },
-  "max_days_to_pay_past_due": 122
+  "max_days_to_pay_past_due": 22
 }
 ```
 

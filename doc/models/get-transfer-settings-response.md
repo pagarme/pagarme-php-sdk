@@ -19,7 +19,7 @@
 {
   "transfer_enabled": false,
   "transfer_interval": "transfer_interval0",
-  "transfer_day": 18
+  "transfer_day": 52
 }
 ```
 

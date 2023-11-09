@@ -20,8 +20,8 @@ Interest Response
 ```json
 {
   "type": "\"percentage\" or \"flat\"",
-  "days": 120,
-  "amount": 46
+  "days": 114,
+  "amount": 188
 }
 ```
 

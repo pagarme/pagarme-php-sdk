@@ -42,7 +42,7 @@ Response object for getting an invoice
   "id": "id0",
   "code": "code8",
   "url": "url4",
-  "amount": 46,
+  "amount": 168,
   "status": "status8"
 }
 ```

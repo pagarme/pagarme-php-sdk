@@ -23,9 +23,9 @@ Transfer response
 
 ```json
 {
-  "id": "id0",
-  "amount": 46,
-  "status": "status8",
+  "id": "id2",
+  "amount": 146,
+  "status": "status4",
   "created_at": "2016-03-13T12:52:32.123Z",
   "updated_at": "2016-03-13T12:52:32.123Z"
 }

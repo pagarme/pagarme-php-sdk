@@ -38,11 +38,11 @@ Response object for getting an payable
 
 ```json
 {
-  "id": 112,
+  "id": 134,
   "status": "status8",
-  "amount": 46,
-  "fee": 168,
-  "anticipation_fee": 140
+  "amount": 24,
+  "fee": 190,
+  "anticipation_fee": 118
 }
 ```
 

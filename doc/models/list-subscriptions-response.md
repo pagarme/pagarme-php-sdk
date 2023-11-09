@@ -20,18 +20,25 @@ Response object for listing subscriptions
 {
   "data": [
     {
-      "id": "id5",
-      "code": "code3",
+      "id": "id0",
+      "code": "code8",
       "start_at": "2016-03-13T12:52:32.123Z",
-      "interval": "interval3",
-      "interval_count": 249
+      "interval": "interval8",
+      "interval_count": 108
     },
     {
-      "id": "id6",
-      "code": "code4",
+      "id": "id0",
+      "code": "code8",
       "start_at": "2016-03-13T12:52:32.123Z",
-      "interval": "interval4",
-      "interval_count": 250
+      "interval": "interval8",
+      "interval_count": 108
+    },
+    {
+      "id": "id0",
+      "code": "code8",
+      "start_at": "2016-03-13T12:52:32.123Z",
+      "interval": "interval8",
+      "interval_count": 108
     }
   ],
   "paging": {

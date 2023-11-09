@@ -79,6 +79,24 @@ class GetOrderResponseBuilder
     }
 
     /**
+     * Sets amount field.
+     */
+    public function amount(?int $value): self
+    {
+        $this->instance->setAmount($value);
+        return $this;
+    }
+
+    /**
+     * Unsets amount field.
+     */
+    public function unsetAmount(): self
+    {
+        $this->instance->unsetAmount();
+        return $this;
+    }
+
+    /**
      * Sets currency field.
      */
     public function currency(?string $value): self
@@ -93,6 +111,24 @@ class GetOrderResponseBuilder
     public function unsetCurrency(): self
     {
         $this->instance->unsetCurrency();
+        return $this;
+    }
+
+    /**
+     * Sets closed field.
+     */
+    public function closed(?bool $value): self
+    {
+        $this->instance->setClosed($value);
+        return $this;
+    }
+
+    /**
+     * Unsets closed field.
+     */
+    public function unsetClosed(): self
+    {
+        $this->instance->unsetClosed();
         return $this;
     }
 
@@ -183,6 +219,24 @@ class GetOrderResponseBuilder
     public function unsetUpdatedAt(): self
     {
         $this->instance->unsetUpdatedAt();
+        return $this;
+    }
+
+    /**
+     * Sets closed at field.
+     */
+    public function closedAt(?\DateTime $value): self
+    {
+        $this->instance->setClosedAt($value);
+        return $this;
+    }
+
+    /**
+     * Unsets closed at field.
+     */
+    public function unsetClosedAt(): self
+    {
+        $this->instance->unsetClosedAt();
         return $this;
     }
 
@@ -345,24 +399,6 @@ class GetOrderResponseBuilder
     public function unsetDevice(): self
     {
         $this->instance->unsetDevice();
-        return $this;
-    }
-
-    /**
-     * Sets closed field.
-     */
-    public function closed(?bool $value): self
-    {
-        $this->instance->setClosed($value);
-        return $this;
-    }
-
-    /**
-     * Unsets closed field.
-     */
-    public function unsetClosed(): self
-    {
-        $this->instance->unsetClosed();
         return $this;
     }
 

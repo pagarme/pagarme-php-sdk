@@ -27,9 +27,9 @@
 
 ```json
 {
-  "id": "id0",
-  "gateway_id": "gateway_id0",
-  "amount": 46,
+  "id": "id6",
+  "gateway_id": "gateway_id4",
+  "amount": 78,
   "status": "status8",
   "created_at": "2016-03-13T12:52:32.123Z"
 }

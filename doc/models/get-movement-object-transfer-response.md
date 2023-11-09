@@ -26,16 +26,15 @@
 
 ```json
 {
-  "object": "transfer",
-  "id": "id6",
-  "status": "status2",
-  "amount": "amount8",
-  "created_at": "created_at4",
-  "source_type": "source_type0",
-  "source_id": "source_id6",
-  "target_type": "target_type2",
-  "target_id": "target_id0",
-  "fee": "fee2"
+  "id": "id2",
+  "status": "status4",
+  "amount": "amount4",
+  "created_at": "created_at0",
+  "source_type": "source_type6",
+  "source_id": "source_id0",
+  "target_type": "target_type8",
+  "target_id": "target_id4",
+  "fee": "fee8"
 }
 ```
 

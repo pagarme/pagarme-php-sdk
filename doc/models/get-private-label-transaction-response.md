@@ -31,17 +31,16 @@ Response object for getting a private label transaction
 
 ```json
 {
-  "gateway_id": "gateway_id6",
-  "amount": 20,
+  "gateway_id": "gateway_id8",
+  "amount": 40,
   "status": "status6",
   "success": false,
   "created_at": "2016-03-13T12:52:32.123Z",
-  "transaction_type": "private_label",
-  "statement_descriptor": "statement_descriptor0",
-  "acquirer_name": "acquirer_name4",
-  "acquirer_affiliation_code": "acquirer_affiliation_code8",
-  "acquirer_tid": "acquirer_tid0",
-  "acquirer_nsu": "acquirer_nsu0"
+  "statement_descriptor": "statement_descriptor4",
+  "acquirer_name": "acquirer_name8",
+  "acquirer_affiliation_code": "acquirer_affiliation_code6",
+  "acquirer_tid": "acquirer_tid6",
+  "acquirer_nsu": "acquirer_nsu6"
 }
 ```
 

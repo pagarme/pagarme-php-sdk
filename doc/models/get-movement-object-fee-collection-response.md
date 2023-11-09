@@ -23,14 +23,13 @@ Generic response object for getting a MovementObjectFeeCollection.
 
 ```json
 {
-  "object": "feeCollection",
-  "id": "id4",
+  "id": "id2",
   "status": "status4",
-  "amount": "amount6",
-  "created_at": "created_at2",
-  "description": "description0",
-  "payment_date": "payment_date8",
-  "recipient_id": "recipient_id0"
+  "amount": "amount4",
+  "created_at": "created_at0",
+  "description": "description4",
+  "payment_date": "payment_date4",
+  "recipient_id": "recipient_id6"
 }
 ```
 

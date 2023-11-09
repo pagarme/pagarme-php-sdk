@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PagarmeApiSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PagarmeApiSDKLib\Models\CreateCardPayloadRequest;
 use PagarmeApiSDKLib\Models\CreateCardPaymentContactlessRequest;
 use PagarmeApiSDKLib\Models\CreateCardRequest;
 use PagarmeApiSDKLib\Models\CreateCreditCardPaymentRequest;
@@ -173,6 +174,15 @@ class CreateCreditCardPaymentRequestBuilder
     public function recurrencyCycle(?string $value): self
     {
         $this->instance->setRecurrencyCycle($value);
+        return $this;
+    }
+
+    /**
+     * Sets payload field.
+     */
+    public function payload(?CreateCardPayloadRequest $value): self
+    {
+        $this->instance->setPayload($value);
         return $this;
     }
 

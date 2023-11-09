@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace PagarmeApiSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PagarmeApiSDKLib\Models\CreateGooglePayHeaderRequest;
+use PagarmeApiSDKLib\Models\CreateGooglePayIntermediateSigningKeyRequest;
 use PagarmeApiSDKLib\Models\CreateGooglePayRequest;
 
 /**
@@ -34,14 +34,117 @@ class CreateGooglePayRequestBuilder
     /**
      * Initializes a new create google pay request Builder object.
      */
-    public static function init(
-        string $version,
-        string $data,
-        CreateGooglePayHeaderRequest $header,
-        string $signature,
-        string $merchantIdentifier
-    ): self {
-        return new self(new CreateGooglePayRequest($version, $data, $header, $signature, $merchantIdentifier));
+    public static function init(): self
+    {
+        return new self(new CreateGooglePayRequest());
+    }
+
+    /**
+     * Sets version field.
+     */
+    public function version(?string $value): self
+    {
+        $this->instance->setVersion($value);
+        return $this;
+    }
+
+    /**
+     * Unsets version field.
+     */
+    public function unsetVersion(): self
+    {
+        $this->instance->unsetVersion();
+        return $this;
+    }
+
+    /**
+     * Sets data field.
+     */
+    public function data(?string $value): self
+    {
+        $this->instance->setData($value);
+        return $this;
+    }
+
+    /**
+     * Unsets data field.
+     */
+    public function unsetData(): self
+    {
+        $this->instance->unsetData();
+        return $this;
+    }
+
+    /**
+     * Sets intermediate signing key field.
+     */
+    public function intermediateSigningKey(?CreateGooglePayIntermediateSigningKeyRequest $value): self
+    {
+        $this->instance->setIntermediateSigningKey($value);
+        return $this;
+    }
+
+    /**
+     * Unsets intermediate signing key field.
+     */
+    public function unsetIntermediateSigningKey(): self
+    {
+        $this->instance->unsetIntermediateSigningKey();
+        return $this;
+    }
+
+    /**
+     * Sets signature field.
+     */
+    public function signature(?string $value): self
+    {
+        $this->instance->setSignature($value);
+        return $this;
+    }
+
+    /**
+     * Unsets signature field.
+     */
+    public function unsetSignature(): self
+    {
+        $this->instance->unsetSignature();
+        return $this;
+    }
+
+    /**
+     * Sets signed message field.
+     */
+    public function signedMessage(?string $value): self
+    {
+        $this->instance->setSignedMessage($value);
+        return $this;
+    }
+
+    /**
+     * Unsets signed message field.
+     */
+    public function unsetSignedMessage(): self
+    {
+        $this->instance->unsetSignedMessage();
+        return $this;
+    }
+
+    /**
+     * Sets merchant identifier field.
+     */
+    public function merchantIdentifier(?string $value): self
+    {
+        $this->instance->setMerchantIdentifier($value);
+        return $this;
+    }
+
+    /**
+     * Unsets merchant identifier field.
+     */
+    public function unsetMerchantIdentifier(): self
+    {
+        $this->instance->unsetMerchantIdentifier();
+        return $this;
     }
 
     /**

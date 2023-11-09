@@ -17,7 +17,7 @@ Response object for geetting an order device
 
 ```json
 {
-  "platform": "platform6"
+  "platform": "platform8"
 }
 ```
 

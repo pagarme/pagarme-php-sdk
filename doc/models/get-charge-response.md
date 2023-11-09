@@ -41,8 +41,8 @@ Response object for getting a charge
   "id": "id0",
   "code": "code8",
   "gateway_id": "gateway_id0",
-  "amount": 46,
-  "status": "status8"
+  "amount": 164,
+  "status": "status2"
 }
 ```
 
