@@ -17,6 +17,7 @@ use PagarmeApiSDKLib\Models\GetCreditCardTransactionResponse;
 use PagarmeApiSDKLib\Models\GetFineResponse;
 use PagarmeApiSDKLib\Models\GetGatewayResponseResponse;
 use PagarmeApiSDKLib\Models\GetInterestResponse;
+use PagarmeApiSDKLib\Models\GetRetryTransactionInformationResponse;
 
 /**
  * Builder for model GetCreditCardTransactionResponse
@@ -580,6 +581,24 @@ class GetCreditCardTransactionResponseBuilder
     public function unsetFundingSource(): self
     {
         $this->instance->unsetFundingSource();
+        return $this;
+    }
+
+    /**
+     * Sets retry info field.
+     */
+    public function retryInfo(?GetRetryTransactionInformationResponse $value): self
+    {
+        $this->instance->setRetryInfo($value);
+        return $this;
+    }
+
+    /**
+     * Unsets retry info field.
+     */
+    public function unsetRetryInfo(): self
+    {
+        $this->instance->unsetRetryInfo();
         return $this;
     }
 
