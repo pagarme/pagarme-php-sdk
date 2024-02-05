@@ -104,6 +104,11 @@ class GetRecipientResponse implements \JsonSerializable
     private $paymentMode = ['value' => 'bank_transfer'];
 
     /**
+     * @var array
+     */
+    private $registerInformation = [];
+
+    /**
      * Returns Id.
      * Id
      */
@@ -654,6 +659,35 @@ class GetRecipientResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Register Information.
+     */
+    public function getRegisterInformation(): ?GetRegisterInformationResponse
+    {
+        if (count($this->registerInformation) == 0) {
+            return null;
+        }
+        return $this->registerInformation['value'];
+    }
+
+    /**
+     * Sets Register Information.
+     *
+     * @maps register_information
+     */
+    public function setRegisterInformation(?GetRegisterInformationResponse $registerInformation): void
+    {
+        $this->registerInformation['value'] = $registerInformation;
+    }
+
+    /**
+     * Unsets Register Information.
+     */
+    public function unsetRegisterInformation(): void
+    {
+        $this->registerInformation = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -715,6 +749,9 @@ class GetRecipientResponse implements \JsonSerializable
         }
         if (!empty($this->paymentMode)) {
             $json['payment_mode']                    = $this->paymentMode['value'];
+        }
+        if (!empty($this->registerInformation)) {
+            $json['register_information']            = $this->registerInformation['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

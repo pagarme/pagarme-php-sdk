@@ -13,6 +13,7 @@ namespace PagarmeApiSDKLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PagarmeApiSDKLib\Models\CreateBankAccountRequest;
 use PagarmeApiSDKLib\Models\CreateRecipientRequest;
+use PagarmeApiSDKLib\Models\CreateRegisterInformationBaseRequest;
 use PagarmeApiSDKLib\Models\CreateTransferSettingsRequest;
 
 /**
@@ -36,27 +37,102 @@ class CreateRecipientRequestBuilder
      * Initializes a new create recipient request Builder object.
      */
     public static function init(
-        string $name,
-        string $email,
-        string $description,
-        string $document,
-        string $type,
         CreateBankAccountRequest $defaultBankAccount,
         array $metadata,
         string $code,
         string $paymentMode
     ): self {
-        return new self(new CreateRecipientRequest(
-            $name,
-            $email,
-            $description,
-            $document,
-            $type,
-            $defaultBankAccount,
-            $metadata,
-            $code,
-            $paymentMode
-        ));
+        return new self(new CreateRecipientRequest($defaultBankAccount, $metadata, $code, $paymentMode));
+    }
+
+    /**
+     * Sets name field.
+     */
+    public function name(?string $value): self
+    {
+        $this->instance->setName($value);
+        return $this;
+    }
+
+    /**
+     * Unsets name field.
+     */
+    public function unsetName(): self
+    {
+        $this->instance->unsetName();
+        return $this;
+    }
+
+    /**
+     * Sets email field.
+     */
+    public function email(?string $value): self
+    {
+        $this->instance->setEmail($value);
+        return $this;
+    }
+
+    /**
+     * Unsets email field.
+     */
+    public function unsetEmail(): self
+    {
+        $this->instance->unsetEmail();
+        return $this;
+    }
+
+    /**
+     * Sets description field.
+     */
+    public function description(?string $value): self
+    {
+        $this->instance->setDescription($value);
+        return $this;
+    }
+
+    /**
+     * Unsets description field.
+     */
+    public function unsetDescription(): self
+    {
+        $this->instance->unsetDescription();
+        return $this;
+    }
+
+    /**
+     * Sets document field.
+     */
+    public function document(?string $value): self
+    {
+        $this->instance->setDocument($value);
+        return $this;
+    }
+
+    /**
+     * Unsets document field.
+     */
+    public function unsetDocument(): self
+    {
+        $this->instance->unsetDocument();
+        return $this;
+    }
+
+    /**
+     * Sets type field.
+     */
+    public function type(?string $value): self
+    {
+        $this->instance->setType($value);
+        return $this;
+    }
+
+    /**
+     * Unsets type field.
+     */
+    public function unsetType(): self
+    {
+        $this->instance->unsetType();
+        return $this;
     }
 
     /**
@@ -65,6 +141,24 @@ class CreateRecipientRequestBuilder
     public function transferSettings(?CreateTransferSettingsRequest $value): self
     {
         $this->instance->setTransferSettings($value);
+        return $this;
+    }
+
+    /**
+     * Sets register information field.
+     */
+    public function registerInformation(?CreateRegisterInformationBaseRequest $value): self
+    {
+        $this->instance->setRegisterInformation($value);
+        return $this;
+    }
+
+    /**
+     * Unsets register information field.
+     */
+    public function unsetRegisterInformation(): self
+    {
+        $this->instance->unsetRegisterInformation();
         return $this;
     }
 

@@ -210,7 +210,7 @@ class GetBalanceOperationResponse implements \JsonSerializable
     /**
      * Returns Amount.
      */
-    public function getAmount(): ?string
+    public function getAmount(): ?int
     {
         if (count($this->amount) == 0) {
             return null;
@@ -223,7 +223,7 @@ class GetBalanceOperationResponse implements \JsonSerializable
      *
      * @maps amount
      */
-    public function setAmount(?string $amount): void
+    public function setAmount(?int $amount): void
     {
         $this->amount['value'] = $amount;
     }
