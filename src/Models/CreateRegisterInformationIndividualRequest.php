@@ -30,7 +30,7 @@ class CreateRegisterInformationIndividualRequest extends CreateRegisterInformati
     private $birthdate;
 
     /**
-     * @var string
+     * @var int
      */
     private $monthlyIncome;
 
@@ -51,7 +51,7 @@ class CreateRegisterInformationIndividualRequest extends CreateRegisterInformati
      * @param CreateRegisterInformationPhoneRequest[] $phoneNumbers
      * @param string $name
      * @param string $birthdate
-     * @param string $monthlyIncome
+     * @param int $monthlyIncome
      * @param string $professionalOccupation
      * @param CreateRegisterInformationAddressRequest $address
      */
@@ -62,7 +62,7 @@ class CreateRegisterInformationIndividualRequest extends CreateRegisterInformati
         array $phoneNumbers,
         string $name,
         string $birthdate,
-        string $monthlyIncome,
+        int $monthlyIncome,
         string $professionalOccupation,
         CreateRegisterInformationAddressRequest $address
     ) {
@@ -144,7 +144,7 @@ class CreateRegisterInformationIndividualRequest extends CreateRegisterInformati
     /**
      * Returns Monthly Income.
      */
-    public function getMonthlyIncome(): string
+    public function getMonthlyIncome(): int
     {
         return $this->monthlyIncome;
     }
@@ -155,7 +155,7 @@ class CreateRegisterInformationIndividualRequest extends CreateRegisterInformati
      * @required
      * @maps monthly_income
      */
-    public function setMonthlyIncome(string $monthlyIncome): void
+    public function setMonthlyIncome(int $monthlyIncome): void
     {
         $this->monthlyIncome = $monthlyIncome;
     }

@@ -37,10 +37,6 @@ class ConfigurationDefaults
 
     public const ENVIRONMENT = Environment::PRODUCTION;
 
-    public const BASIC_AUTH_USER_NAME = '';
-
-    public const BASIC_AUTH_PASSWORD = '';
-
     /**
      * @var array Associative list of all default configurations
      */
@@ -55,8 +51,6 @@ class ConfigurationDefaults
         'httpStatusCodesToRetry' => self::HTTP_STATUS_CODES_TO_RETRY,
         'httpMethodsToRetry' => self::HTTP_METHODS_TO_RETRY,
         'serviceRefererName' => self::SERVICE_REFERER_NAME,
-        'environment' => self::ENVIRONMENT,
-        'basicAuthUserName' => self::BASIC_AUTH_USER_NAME,
-        'basicAuthPassword' => self::BASIC_AUTH_PASSWORD
+        'environment' => self::ENVIRONMENT
     ];
 }

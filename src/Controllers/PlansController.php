@@ -40,7 +40,6 @@ class PlansController extends BaseController
     public function getPlan(string $planId): GetPlanResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/plans/{plan_id}')
-            ->auth('global')
             ->parameters(TemplateParam::init('plan_id', $planId));
 
         $_resHandler = $this->responseHandler()->type(GetPlanResponse::class);
@@ -49,26 +48,20 @@ class PlansController extends BaseController
     }
 
     /**
-     * Updates a plan
+     * Deletes a plan
      *
      * @param string $planId Plan id
-     * @param UpdatePlanRequest $request Request for updating a plan
      * @param string|null $idempotencyKey
      *
      * @return GetPlanResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function updatePlan(
-        string $planId,
-        UpdatePlanRequest $request,
-        ?string $idempotencyKey = null
-    ): GetPlanResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/plans/{plan_id}')
-            ->auth('global')
+    public function deletePlan(string $planId, ?string $idempotencyKey = null): GetPlanResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/plans/{plan_id}')
             ->parameters(
                 TemplateParam::init('plan_id', $planId),
-                BodyParam::init($request),
                 HeaderParam::init('idempotency-key', $idempotencyKey)
             );
 
@@ -94,12 +87,110 @@ class PlansController extends BaseController
         ?string $idempotencyKey = null
     ): GetPlanResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Plans/{plan_id}/metadata')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('plan_id', $planId),
                 BodyParam::init($request),
                 HeaderParam::init('idempotency-key', $idempotencyKey)
             );
+
+        $_resHandler = $this->responseHandler()->type(GetPlanResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Updates a plan item
+     *
+     * @param string $planId Plan id
+     * @param string $planItemId Plan item id
+     * @param UpdatePlanItemRequest $body Request for updating the plan item
+     * @param string|null $idempotencyKey
+     *
+     * @return GetPlanItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updatePlanItem(
+        string $planId,
+        string $planItemId,
+        UpdatePlanItemRequest $body,
+        ?string $idempotencyKey = null
+    ): GetPlanItemResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/plans/{plan_id}/items/{plan_item_id}')
+            ->parameters(
+                TemplateParam::init('plan_id', $planId),
+                TemplateParam::init('plan_item_id', $planItemId),
+                BodyParam::init($body),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetPlanItemResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Adds a new item to a plan
+     *
+     * @param string $planId Plan id
+     * @param CreatePlanItemRequest $request Request for creating a plan item
+     * @param string|null $idempotencyKey
+     *
+     * @return GetPlanItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createPlanItem(
+        string $planId,
+        CreatePlanItemRequest $request,
+        ?string $idempotencyKey = null
+    ): GetPlanItemResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/plans/{plan_id}/items')
+            ->parameters(
+                TemplateParam::init('plan_id', $planId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetPlanItemResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Gets a plan item
+     *
+     * @param string $planId Plan id
+     * @param string $planItemId Plan item id
+     *
+     * @return GetPlanItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getPlanItem(string $planId, string $planItemId): GetPlanItemResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/plans/{plan_id}/items/{plan_item_id}')
+            ->parameters(TemplateParam::init('plan_id', $planId), TemplateParam::init('plan_item_id', $planItemId));
+
+        $_resHandler = $this->responseHandler()->type(GetPlanItemResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Creates a new plan
+     *
+     * @param CreatePlanRequest $body Request for creating a plan
+     * @param string|null $idempotencyKey
+     *
+     * @return GetPlanResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createPlan(CreatePlanRequest $body, ?string $idempotencyKey = null): GetPlanResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/plans')
+            ->parameters(BodyParam::init($body), HeaderParam::init('idempotency-key', $idempotencyKey));
 
         $_resHandler = $this->responseHandler()->type(GetPlanResponse::class);
 
@@ -123,7 +214,6 @@ class PlansController extends BaseController
         ?string $idempotencyKey = null
     ): GetPlanItemResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/plans/{plan_id}/items/{plan_item_id}')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('plan_id', $planId),
                 TemplateParam::init('plan_item_id', $planItemId),
@@ -160,7 +250,6 @@ class PlansController extends BaseController
         ?\DateTime $createdUntil = null
     ): ListPlansResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/plans')
-            ->auth('global')
             ->parameters(
                 QueryParam::init('page', $page),
                 QueryParam::init('size', $size),
@@ -179,126 +268,27 @@ class PlansController extends BaseController
     }
 
     /**
-     * Gets a plan item
+     * Updates a plan
      *
      * @param string $planId Plan id
-     * @param string $planItemId Plan item id
-     *
-     * @return GetPlanItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getPlanItem(string $planId, string $planItemId): GetPlanItemResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/plans/{plan_id}/items/{plan_item_id}')
-            ->auth('global')
-            ->parameters(TemplateParam::init('plan_id', $planId), TemplateParam::init('plan_item_id', $planItemId));
-
-        $_resHandler = $this->responseHandler()->type(GetPlanItemResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Deletes a plan
-     *
-     * @param string $planId Plan id
+     * @param UpdatePlanRequest $request Request for updating a plan
      * @param string|null $idempotencyKey
      *
      * @return GetPlanResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function deletePlan(string $planId, ?string $idempotencyKey = null): GetPlanResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/plans/{plan_id}')
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('plan_id', $planId),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetPlanResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Updates a plan item
-     *
-     * @param string $planId Plan id
-     * @param string $planItemId Plan item id
-     * @param UpdatePlanItemRequest $body Request for updating the plan item
-     * @param string|null $idempotencyKey
-     *
-     * @return GetPlanItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updatePlanItem(
+    public function updatePlan(
         string $planId,
-        string $planItemId,
-        UpdatePlanItemRequest $body,
+        UpdatePlanRequest $request,
         ?string $idempotencyKey = null
-    ): GetPlanItemResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/plans/{plan_id}/items/{plan_item_id}')
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('plan_id', $planId),
-                TemplateParam::init('plan_item_id', $planItemId),
-                BodyParam::init($body),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetPlanItemResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Adds a new item to a plan
-     *
-     * @param string $planId Plan id
-     * @param CreatePlanItemRequest $request Request for creating a plan item
-     * @param string|null $idempotencyKey
-     *
-     * @return GetPlanItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createPlanItem(
-        string $planId,
-        CreatePlanItemRequest $request,
-        ?string $idempotencyKey = null
-    ): GetPlanItemResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/plans/{plan_id}/items')
-            ->auth('global')
+    ): GetPlanResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/plans/{plan_id}')
             ->parameters(
                 TemplateParam::init('plan_id', $planId),
                 BodyParam::init($request),
                 HeaderParam::init('idempotency-key', $idempotencyKey)
             );
-
-        $_resHandler = $this->responseHandler()->type(GetPlanItemResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Creates a new plan
-     *
-     * @param CreatePlanRequest $body Request for creating a plan
-     * @param string|null $idempotencyKey
-     *
-     * @return GetPlanResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createPlan(CreatePlanRequest $body, ?string $idempotencyKey = null): GetPlanResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/plans')
-            ->auth('global')
-            ->parameters(BodyParam::init($body), HeaderParam::init('idempotency-key', $idempotencyKey));
 
         $_resHandler = $this->responseHandler()->type(GetPlanResponse::class);
 

@@ -15,7 +15,7 @@
 |  --- | --- | --- | --- | --- | --- |
 | `companyName` | `string` | Required | - | getCompanyName(): string | setCompanyName(string companyName): void |
 | `tradingName` | `string` | Required | - | getTradingName(): string | setTradingName(string tradingName): void |
-| `annualRevenue` | `string` | Required | - | getAnnualRevenue(): string | setAnnualRevenue(string annualRevenue): void |
+| `annualRevenue` | `int` | Required | - | getAnnualRevenue(): int | setAnnualRevenue(int annualRevenue): void |
 | `corporationType` | `?string` | Optional | - | getCorporationType(): ?string | setCorporationType(?string corporationType): void |
 | `foundingDate` | `?string` | Optional | - | getFoundingDate(): ?string | setFoundingDate(?string foundingDate): void |
 | `cnae` | `?string` | Optional | - | getCnae(): ?string | setCnae(?string cnae): void |
@@ -38,7 +38,7 @@
   ],
   "company_name": "company_name8",
   "trading_name": "trading_name0",
-  "annual_revenue": "annual_revenue0",
+  "annual_revenue": 156,
   "managing_partners": [
     {
       "name": "name4",
@@ -46,7 +46,7 @@
       "document": "document8",
       "mother_name": "mother_name0",
       "birthdate": "birthdate8",
-      "monthly_income": "monthly_income0",
+      "monthly_income": 202,
       "professional_occupation": "professional_occupation8",
       "self_declared_legal_representative": false,
       "address": {

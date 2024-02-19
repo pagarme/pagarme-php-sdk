@@ -16,7 +16,7 @@ Managing Partner Request
 | `document` | `string` | Required | - | getDocument(): string | setDocument(string document): void |
 | `motherName` | `string` | Required | - | getMotherName(): string | setMotherName(string motherName): void |
 | `birthdate` | `string` | Required | - | getBirthdate(): string | setBirthdate(string birthdate): void |
-| `monthlyIncome` | `string` | Required | - | getMonthlyIncome(): string | setMonthlyIncome(string monthlyIncome): void |
+| `monthlyIncome` | `int` | Required | - | getMonthlyIncome(): int | setMonthlyIncome(int monthlyIncome): void |
 | `professionalOccupation` | `string` | Required | - | getProfessionalOccupation(): string | setProfessionalOccupation(string professionalOccupation): void |
 | `selfDeclaredLegalRepresentative` | `bool` | Required | - | getSelfDeclaredLegalRepresentative(): bool | setSelfDeclaredLegalRepresentative(bool selfDeclaredLegalRepresentative): void |
 | `address` | [`CreateRegisterInformationAddressRequest`](../../doc/models/create-register-information-address-request.md) | Required | - | getAddress(): CreateRegisterInformationAddressRequest | setAddress(CreateRegisterInformationAddressRequest address): void |
@@ -31,7 +31,7 @@ Managing Partner Request
   "document": "document2",
   "mother_name": "mother_name0",
   "birthdate": "birthdate8",
-  "monthly_income": "monthly_income0",
+  "monthly_income": 70,
   "professional_occupation": "professional_occupation8",
   "self_declared_legal_representative": false,
   "address": {

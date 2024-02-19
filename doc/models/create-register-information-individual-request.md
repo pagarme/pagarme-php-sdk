@@ -16,7 +16,7 @@
 | `name` | `string` | Required | - | getName(): string | setName(string name): void |
 | `motherName` | `?string` | Optional | - | getMotherName(): ?string | setMotherName(?string motherName): void |
 | `birthdate` | `string` | Required | - | getBirthdate(): string | setBirthdate(string birthdate): void |
-| `monthlyIncome` | `string` | Required | - | getMonthlyIncome(): string | setMonthlyIncome(string monthlyIncome): void |
+| `monthlyIncome` | `int` | Required | - | getMonthlyIncome(): int | setMonthlyIncome(int monthlyIncome): void |
 | `professionalOccupation` | `string` | Required | - | getProfessionalOccupation(): string | setProfessionalOccupation(string professionalOccupation): void |
 | `address` | [`CreateRegisterInformationAddressRequest`](../../doc/models/create-register-information-address-request.md) | Required | - | getAddress(): CreateRegisterInformationAddressRequest | setAddress(CreateRegisterInformationAddressRequest address): void |
 
@@ -43,7 +43,7 @@
   "name": "name6",
   "mother_name": "mother_name2",
   "birthdate": "birthdate0",
-  "monthly_income": "monthly_income2",
+  "monthly_income": 206,
   "professional_occupation": "professional_occupation0",
   "address": {
     "street": "street6",

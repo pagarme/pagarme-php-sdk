@@ -65,7 +65,6 @@ class PayablesController extends BaseController
         ?int $gatewayId = null
     ): ListPayablesResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/payables')
-            ->auth('global')
             ->parameters(
                 QueryParam::init('type', $type),
                 QueryParam::init('split_id', $splitId),
@@ -107,7 +106,6 @@ class PayablesController extends BaseController
     public function getPayableById(int $id): GetPayableResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/payables/{id}')
-            ->auth('global')
             ->parameters(TemplateParam::init('id', $id));
 
         $_resHandler = $this->responseHandler()->type(GetPayableResponse::class);

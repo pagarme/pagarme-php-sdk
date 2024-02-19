@@ -21,22 +21,6 @@ use PagarmeApiSDKLib\Models\ListTransfers;
 class TransfersController extends BaseController
 {
     /**
-     * Gets all transfers
-     *
-     * @return ListTransfers Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getTransfers(): ListTransfers
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/transfers')->auth('global');
-
-        $_resHandler = $this->responseHandler()->type(ListTransfers::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
      * @param string $transferId
      *
      * @return GetTransfer Response from the API call
@@ -46,7 +30,6 @@ class TransfersController extends BaseController
     public function getTransferById(string $transferId): GetTransfer
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/transfers/{transfer_id}')
-            ->auth('global')
             ->parameters(TemplateParam::init('transfer_id', $transferId));
 
         $_resHandler = $this->responseHandler()->type(GetTransfer::class);
@@ -64,10 +47,25 @@ class TransfersController extends BaseController
     public function createTransfer(CreateTransfer $request): GetTransfer
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/transfers/recipients')
-            ->auth('global')
             ->parameters(BodyParam::init($request));
 
         $_resHandler = $this->responseHandler()->type(GetTransfer::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Gets all transfers
+     *
+     * @return ListTransfers Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getTransfers(): ListTransfers
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/transfers');
+
+        $_resHandler = $this->responseHandler()->type(ListTransfers::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }

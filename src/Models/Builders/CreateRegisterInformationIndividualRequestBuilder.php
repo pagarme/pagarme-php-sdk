@@ -41,7 +41,7 @@ class CreateRegisterInformationIndividualRequestBuilder
         array $phoneNumbers,
         string $name,
         string $birthdate,
-        string $monthlyIncome,
+        int $monthlyIncome,
         string $professionalOccupation,
         CreateRegisterInformationAddressRequest $address
     ): self {

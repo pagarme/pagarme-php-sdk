@@ -25,7 +25,7 @@ class CreateRegisterInformationCorporationRequest extends CreateRegisterInformat
     private $tradingName;
 
     /**
-     * @var string
+     * @var int
      */
     private $annualRevenue;
 
@@ -61,7 +61,7 @@ class CreateRegisterInformationCorporationRequest extends CreateRegisterInformat
      * @param CreateRegisterInformationPhoneRequest[] $phoneNumbers
      * @param string $companyName
      * @param string $tradingName
-     * @param string $annualRevenue
+     * @param int $annualRevenue
      * @param CreateManagingPartnerRequest[] $managingPartners
      * @param CreateRegisterInformationAddressRequest $mainAddress
      */
@@ -72,7 +72,7 @@ class CreateRegisterInformationCorporationRequest extends CreateRegisterInformat
         array $phoneNumbers,
         string $companyName,
         string $tradingName,
-        string $annualRevenue,
+        int $annualRevenue,
         array $managingPartners,
         CreateRegisterInformationAddressRequest $mainAddress
     ) {
@@ -125,7 +125,7 @@ class CreateRegisterInformationCorporationRequest extends CreateRegisterInformat
     /**
      * Returns Annual Revenue.
      */
-    public function getAnnualRevenue(): string
+    public function getAnnualRevenue(): int
     {
         return $this->annualRevenue;
     }
@@ -136,7 +136,7 @@ class CreateRegisterInformationCorporationRequest extends CreateRegisterInformat
      * @required
      * @maps annual_revenue
      */
-    public function setAnnualRevenue(string $annualRevenue): void
+    public function setAnnualRevenue(int $annualRevenue): void
     {
         $this->annualRevenue = $annualRevenue;
     }

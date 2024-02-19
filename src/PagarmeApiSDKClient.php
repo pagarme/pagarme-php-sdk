@@ -57,8 +57,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
 
     private $balanceOperations;
 
-    private $basicAuthManager;
-
     private $config;
 
     private $client;
@@ -72,19 +70,14 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     public function __construct(array $config = [])
     {
         $this->config = array_merge(ConfigurationDefaults::_ALL, CoreHelper::clone($config));
-        $this->basicAuthManager = new BasicAuthManager(
-            $this->config['basicAuthUserName'] ?? ConfigurationDefaults::BASIC_AUTH_USER_NAME,
-            $this->config['basicAuthPassword'] ?? ConfigurationDefaults::BASIC_AUTH_PASSWORD
-        );
         $this->client = ClientBuilder::init(new HttpClient(Configuration::init($this)))
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
             ->apiCallback($this->config['httpCallback'] ?? null)
-            ->userAgent('PagarmeApiSDK - PHP 6.8.4')
+            ->userAgent('PagarmeApiSDK - PHP 6.8.5')
             ->globalConfig($this->getGlobalConfiguration())
             ->globalErrors($this->getGlobalErrors())
             ->serverUrls(self::ENVIRONMENT_MAP[$this->getEnvironment()], Server::DEFAULT_)
-            ->authManagers(['global' => $this->basicAuthManager])
             ->build();
     }
 
@@ -107,8 +100,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             ->httpMethodsToRetry($this->getHttpMethodsToRetry())
             ->serviceRefererName($this->getServiceRefererName())
             ->environment($this->getEnvironment())
-            ->basicAuthUserName($this->basicAuthManager->getBasicAuthUserName())
-            ->basicAuthPassword($this->basicAuthManager->getBasicAuthPassword())
             ->httpCallback($this->config['httpCallback'] ?? null);
     }
 
@@ -165,11 +156,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     public function getEnvironment(): string
     {
         return $this->config['environment'] ?? ConfigurationDefaults::ENVIRONMENT;
-    }
-
-    public function getBasicAuthCredentials(): ?BasicAuthCredentials
-    {
-        return $this->basicAuthManager;
     }
 
     /**

@@ -40,7 +40,7 @@ class CreateManagingPartnerRequestBuilder
         string $document,
         string $motherName,
         string $birthdate,
-        string $monthlyIncome,
+        int $monthlyIncome,
         string $professionalOccupation,
         bool $selfDeclaredLegalRepresentative,
         CreateRegisterInformationAddressRequest $address,

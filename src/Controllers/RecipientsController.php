@@ -56,7 +56,6 @@ class RecipientsController extends BaseController
         ?string $idempotencyKey = null
     ): GetRecipientResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/recipients/{recipient_id}')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 BodyParam::init($request),
@@ -85,7 +84,6 @@ class RecipientsController extends BaseController
         ?string $idempotencyKey = null
     ): GetAnticipationResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients/{recipient_id}/anticipations')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 BodyParam::init($request),
@@ -114,7 +112,6 @@ class RecipientsController extends BaseController
         \DateTime $paymentDate
     ): GetAnticipationLimitResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/anticipation_limits')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 QueryParam::init('timeframe', $timeframe),
@@ -140,10 +137,64 @@ class RecipientsController extends BaseController
     public function getRecipients(?int $page = null, ?int $size = null): ListRecipientResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients')
-            ->auth('global')
             ->parameters(QueryParam::init('page', $page), QueryParam::init('size', $size));
 
         $_resHandler = $this->responseHandler()->type(ListRecipientResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $recipientId
+     * @param string $withdrawalId
+     *
+     * @return GetWithdrawResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getWithdrawById(string $recipientId, string $withdrawalId): GetWithdrawResponse
+    {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::GET,
+            '/recipients/{recipient_id}/withdrawals/{withdrawal_id}'
+        )
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                TemplateParam::init('withdrawal_id', $withdrawalId)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetWithdrawResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Updates the default bank account from a recipient
+     *
+     * @param string $recipientId Recipient id
+     * @param UpdateRecipientBankAccountRequest $request Bank account data
+     * @param string|null $idempotencyKey
+     *
+     * @return GetRecipientResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateRecipientDefaultBankAccount(
+        string $recipientId,
+        UpdateRecipientBankAccountRequest $request,
+        ?string $idempotencyKey = null
+    ): GetRecipientResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::PATCH,
+            '/recipients/{recipient_id}/default-bank-account'
+        )
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -165,7 +216,6 @@ class RecipientsController extends BaseController
         ?string $idempotencyKey = null
     ): GetRecipientResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/recipients/{recipient_id}/metadata')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 BodyParam::init($request),
@@ -173,6 +223,45 @@ class RecipientsController extends BaseController
             );
 
         $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Gets a paginated list of transfers for the recipient
+     *
+     * @param string $recipientId Recipient id
+     * @param int|null $page Page number
+     * @param int|null $size Page size
+     * @param string|null $status Filter for transfer status
+     * @param \DateTime|null $createdSince Filter for start range of transfer creation date
+     * @param \DateTime|null $createdUntil Filter for end range of transfer creation date
+     *
+     * @return ListTransferResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getTransfers(
+        string $recipientId,
+        ?int $page = null,
+        ?int $size = null,
+        ?string $status = null,
+        ?\DateTime $createdSince = null,
+        ?\DateTime $createdUntil = null
+    ): ListTransferResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/transfers')
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                QueryParam::init('page', $page),
+                QueryParam::init('size', $size),
+                QueryParam::init('status', $status),
+                QueryParam::init('created_since', $createdSince)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('created_until', $createdUntil)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime'])
+            );
+
+        $_resHandler = $this->responseHandler()->type(ListTransferResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -193,13 +282,61 @@ class RecipientsController extends BaseController
             RequestMethod::GET,
             '/recipients/{recipient_id}/transfers/{transfer_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 TemplateParam::init('transfer_id', $transferId)
             );
 
         $_resHandler = $this->responseHandler()->type(GetTransferResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $recipientId
+     * @param CreateWithdrawRequest $request
+     *
+     * @return GetWithdrawResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createWithdraw(string $recipientId, CreateWithdrawRequest $request): GetWithdrawResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients/{recipient_id}/withdrawals')
+            ->parameters(TemplateParam::init('recipient_id', $recipientId), BodyParam::init($request));
+
+        $_resHandler = $this->responseHandler()->type(GetWithdrawResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Updates recipient metadata
+     *
+     * @param string $recipientId Recipient id
+     * @param UpdateAutomaticAnticipationSettingsRequest $request Metadata
+     * @param string|null $idempotencyKey
+     *
+     * @return GetRecipientResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateAutomaticAnticipationSettings(
+        string $recipientId,
+        UpdateAutomaticAnticipationSettingsRequest $request,
+        ?string $idempotencyKey = null
+    ): GetRecipientResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::PATCH,
+            '/recipients/{recipient_id}/automatic-anticipation-settings'
+        )
+            ->parameters(
+                TemplateParam::init('recipient_id', $recipientId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -220,7 +357,6 @@ class RecipientsController extends BaseController
             RequestMethod::GET,
             '/recipients/{recipient_id}/anticipations/{anticipation_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 TemplateParam::init('anticipation_id', $anticipationId)
@@ -246,7 +382,6 @@ class RecipientsController extends BaseController
         ?string $idempotencyKey = null
     ): GetRecipientResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/recipients/{recipient_id}/transfer-settings')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 BodyParam::init($request),
@@ -287,7 +422,6 @@ class RecipientsController extends BaseController
         ?\DateTime $createdUntil = null
     ): ListAnticipationResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/anticipations')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 QueryParam::init('page', $page),
@@ -310,52 +444,20 @@ class RecipientsController extends BaseController
     }
 
     /**
-     * Updates the default bank account from a recipient
+     * Retrieves recipient information
      *
-     * @param string $recipientId Recipient id
-     * @param UpdateRecipientBankAccountRequest $request Bank account data
-     * @param string|null $idempotencyKey
+     * @param string $recipientId Recipiend id
      *
      * @return GetRecipientResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function updateRecipientDefaultBankAccount(
-        string $recipientId,
-        UpdateRecipientBankAccountRequest $request,
-        ?string $idempotencyKey = null
-    ): GetRecipientResponse {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::PATCH,
-            '/recipients/{recipient_id}/default-bank-account'
-        )
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('recipient_id', $recipientId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
+    public function getRecipient(string $recipientId): GetRecipientResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}')
+            ->parameters(TemplateParam::init('recipient_id', $recipientId));
 
         $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param string $recipientId
-     * @param CreateWithdrawRequest $request
-     *
-     * @return GetWithdrawResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createWithdraw(string $recipientId, CreateWithdrawRequest $request): GetWithdrawResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients/{recipient_id}/withdrawals')
-            ->auth('global')
-            ->parameters(TemplateParam::init('recipient_id', $recipientId), BodyParam::init($request));
-
-        $_resHandler = $this->responseHandler()->type(GetWithdrawResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -372,114 +474,9 @@ class RecipientsController extends BaseController
     public function getBalance(string $recipientId): GetBalanceResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/balance')
-            ->auth('global')
             ->parameters(TemplateParam::init('recipient_id', $recipientId));
 
         $_resHandler = $this->responseHandler()->type(GetBalanceResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Creates a transfer for a recipient
-     *
-     * @param string $recipientId Recipient Id
-     * @param CreateTransferRequest $request Transfer data
-     * @param string|null $idempotencyKey
-     *
-     * @return GetTransferResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createTransfer(
-        string $recipientId,
-        CreateTransferRequest $request,
-        ?string $idempotencyKey = null
-    ): GetTransferResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients/{recipient_id}/transfers')
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('recipient_id', $recipientId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetTransferResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Creates a new recipient
-     *
-     * @param CreateRecipientRequest $request Recipient data
-     * @param string|null $idempotencyKey
-     *
-     * @return GetRecipientResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createRecipient(
-        CreateRecipientRequest $request,
-        ?string $idempotencyKey = null
-    ): GetRecipientResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients')
-            ->auth('global')
-            ->parameters(BodyParam::init($request), HeaderParam::init('idempotency-key', $idempotencyKey));
-
-        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Updates recipient metadata
-     *
-     * @param string $recipientId Recipient id
-     * @param UpdateAutomaticAnticipationSettingsRequest $request Metadata
-     * @param string|null $idempotencyKey
-     *
-     * @return GetRecipientResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateAutomaticAnticipationSettings(
-        string $recipientId,
-        UpdateAutomaticAnticipationSettingsRequest $request,
-        ?string $idempotencyKey = null
-    ): GetRecipientResponse {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::PATCH,
-            '/recipients/{recipient_id}/automatic-anticipation-settings'
-        )
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('recipient_id', $recipientId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Retrieves recipient information
-     *
-     * @param string $recipientId Recipiend id
-     *
-     * @return GetRecipientResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getRecipient(string $recipientId): GetRecipientResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}')
-            ->auth('global')
-            ->parameters(TemplateParam::init('recipient_id', $recipientId));
-
-        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -507,7 +504,6 @@ class RecipientsController extends BaseController
         ?\DateTime $createdUntil = null
     ): ListWithdrawals {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/withdrawals')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 QueryParam::init('page', $page),
@@ -525,66 +521,51 @@ class RecipientsController extends BaseController
     }
 
     /**
-     * @param string $recipientId
-     * @param string $withdrawalId
+     * Creates a transfer for a recipient
      *
-     * @return GetWithdrawResponse Response from the API call
+     * @param string $recipientId Recipient Id
+     * @param CreateTransferRequest $request Transfer data
+     * @param string|null $idempotencyKey
+     *
+     * @return GetTransferResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getWithdrawById(string $recipientId, string $withdrawalId): GetWithdrawResponse
-    {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::GET,
-            '/recipients/{recipient_id}/withdrawals/{withdrawal_id}'
-        )
-            ->auth('global')
+    public function createTransfer(
+        string $recipientId,
+        CreateTransferRequest $request,
+        ?string $idempotencyKey = null
+    ): GetTransferResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients/{recipient_id}/transfers')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
-                TemplateParam::init('withdrawal_id', $withdrawalId)
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
             );
 
-        $_resHandler = $this->responseHandler()->type(GetWithdrawResponse::class);
+        $_resHandler = $this->responseHandler()->type(GetTransferResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
 
     /**
-     * Gets a paginated list of transfers for the recipient
+     * Creates a new recipient
      *
-     * @param string $recipientId Recipient id
-     * @param int|null $page Page number
-     * @param int|null $size Page size
-     * @param string|null $status Filter for transfer status
-     * @param \DateTime|null $createdSince Filter for start range of transfer creation date
-     * @param \DateTime|null $createdUntil Filter for end range of transfer creation date
+     * @param CreateRecipientRequest $request Recipient data
+     * @param string|null $idempotencyKey
      *
-     * @return ListTransferResponse Response from the API call
+     * @return GetRecipientResponse Response from the API call
      *
      * @throws ApiException Thrown if API call fails
      */
-    public function getTransfers(
-        string $recipientId,
-        ?int $page = null,
-        ?int $size = null,
-        ?string $status = null,
-        ?\DateTime $createdSince = null,
-        ?\DateTime $createdUntil = null
-    ): ListTransferResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/transfers')
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('recipient_id', $recipientId),
-                QueryParam::init('page', $page),
-                QueryParam::init('size', $size),
-                QueryParam::init('status', $status),
-                QueryParam::init('created_since', $createdSince)
-                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
-                QueryParam::init('created_until', $createdUntil)
-                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime'])
-            );
+    public function createRecipient(
+        CreateRecipientRequest $request,
+        ?string $idempotencyKey = null
+    ): GetRecipientResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients')
+            ->parameters(BodyParam::init($request), HeaderParam::init('idempotency-key', $idempotencyKey));
 
-        $_resHandler = $this->responseHandler()->type(ListTransferResponse::class);
+        $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -601,7 +582,6 @@ class RecipientsController extends BaseController
     public function getRecipientByCode(string $code): GetRecipientResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{code}')
-            ->auth('global')
             ->parameters(TemplateParam::init('code', $code));
 
         $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
@@ -616,7 +596,7 @@ class RecipientsController extends BaseController
      */
     public function getDefaultRecipient(): GetRecipientResponse
     {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/default')->auth('global');
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/default');
 
         $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 

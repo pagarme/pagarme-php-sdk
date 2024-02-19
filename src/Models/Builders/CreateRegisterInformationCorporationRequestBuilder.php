@@ -41,7 +41,7 @@ class CreateRegisterInformationCorporationRequestBuilder
         array $phoneNumbers,
         string $companyName,
         string $tradingName,
-        string $annualRevenue,
+        int $annualRevenue,
         array $managingPartners,
         CreateRegisterInformationAddressRequest $mainAddress
     ): self {

@@ -43,7 +43,7 @@ class CreateManagingPartnerRequest implements \JsonSerializable
     private $birthdate;
 
     /**
-     * @var string
+     * @var int
      */
     private $monthlyIncome;
 
@@ -73,7 +73,7 @@ class CreateManagingPartnerRequest implements \JsonSerializable
      * @param string $document
      * @param string $motherName
      * @param string $birthdate
-     * @param string $monthlyIncome
+     * @param int $monthlyIncome
      * @param string $professionalOccupation
      * @param bool $selfDeclaredLegalRepresentative
      * @param CreateRegisterInformationAddressRequest $address
@@ -85,7 +85,7 @@ class CreateManagingPartnerRequest implements \JsonSerializable
         string $document,
         string $motherName,
         string $birthdate,
-        string $monthlyIncome,
+        int $monthlyIncome,
         string $professionalOccupation,
         bool $selfDeclaredLegalRepresentative,
         CreateRegisterInformationAddressRequest $address,
@@ -201,7 +201,7 @@ class CreateManagingPartnerRequest implements \JsonSerializable
     /**
      * Returns Monthly Income.
      */
-    public function getMonthlyIncome(): string
+    public function getMonthlyIncome(): int
     {
         return $this->monthlyIncome;
     }
@@ -212,7 +212,7 @@ class CreateManagingPartnerRequest implements \JsonSerializable
      * @required
      * @maps monthly_income
      */
-    public function setMonthlyIncome(string $monthlyIncome): void
+    public function setMonthlyIncome(int $monthlyIncome): void
     {
         $this->monthlyIncome = $monthlyIncome;
     }
