@@ -15,7 +15,7 @@ use stdClass;
 class GetCheckoutCardInstallmentOptionsResponse implements \JsonSerializable
 {
     /**
-     * @var string|null
+     * @var int|null
      */
     private $number;
 
@@ -28,7 +28,7 @@ class GetCheckoutCardInstallmentOptionsResponse implements \JsonSerializable
      * Returns Number.
      * Número de parcelas
      */
-    public function getNumber(): ?string
+    public function getNumber(): ?int
     {
         return $this->number;
     }
@@ -39,7 +39,7 @@ class GetCheckoutCardInstallmentOptionsResponse implements \JsonSerializable
      *
      * @maps number
      */
-    public function setNumber(?string $number): void
+    public function setNumber(?int $number): void
     {
         $this->number = $number;
     }

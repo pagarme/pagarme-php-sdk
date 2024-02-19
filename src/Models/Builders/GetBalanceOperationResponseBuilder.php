@@ -132,7 +132,7 @@ class GetBalanceOperationResponseBuilder
     /**
      * Sets amount field.
      */
-    public function amount(?string $value): self
+    public function amount(?int $value): self
     {
         $this->instance->setAmount($value);
         return $this;

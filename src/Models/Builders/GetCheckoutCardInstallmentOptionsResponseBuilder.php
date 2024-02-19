@@ -41,7 +41,7 @@ class GetCheckoutCardInstallmentOptionsResponseBuilder
     /**
      * Sets number field.
      */
-    public function number(?string $value): self
+    public function number(?int $value): self
     {
         $this->instance->setNumber($value);
         return $this;

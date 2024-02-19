@@ -53,7 +53,6 @@ class OrdersController extends BaseController
         ?string $customerId = null
     ): ListOrderResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/orders')
-            ->auth('global')
             ->parameters(
                 QueryParam::init('page', $page),
                 QueryParam::init('size', $size),
@@ -88,7 +87,6 @@ class OrdersController extends BaseController
         ?string $idempotencyKey = null
     ): GetOrderItemResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/orders/{orderId}/items/{itemId}')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('orderId', $orderId),
                 TemplateParam::init('itemId', $itemId),
@@ -112,7 +110,6 @@ class OrdersController extends BaseController
     public function deleteAllOrderItems(string $orderId, ?string $idempotencyKey = null): GetOrderResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/orders/{orderId}/items')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('orderId', $orderId),
                 HeaderParam::init('idempotency-key', $idempotencyKey)
@@ -138,7 +135,6 @@ class OrdersController extends BaseController
         ?string $idempotencyKey = null
     ): GetOrderItemResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/orders/{orderId}/items/{itemId}')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('orderId', $orderId),
                 TemplateParam::init('itemId', $itemId),
@@ -165,7 +161,6 @@ class OrdersController extends BaseController
         ?string $idempotencyKey = null
     ): GetOrderResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/orders/{id}/closed')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('id', $id),
                 BodyParam::init($request),
@@ -190,7 +185,6 @@ class OrdersController extends BaseController
     public function createOrder(CreateOrderRequest $body, ?string $idempotencyKey = null): GetOrderResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/orders')
-            ->auth('global')
             ->parameters(BodyParam::init($body), HeaderParam::init('idempotency-key', $idempotencyKey));
 
         $_resHandler = $this->responseHandler()->type(GetOrderResponse::class);
@@ -213,7 +207,6 @@ class OrdersController extends BaseController
         ?string $idempotencyKey = null
     ): GetOrderItemResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/orders/{orderId}/items')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('orderId', $orderId),
                 BodyParam::init($request),
@@ -236,7 +229,6 @@ class OrdersController extends BaseController
     public function getOrderItem(string $orderId, string $itemId): GetOrderItemResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/orders/{orderId}/items/{itemId}')
-            ->auth('global')
             ->parameters(TemplateParam::init('orderId', $orderId), TemplateParam::init('itemId', $itemId));
 
         $_resHandler = $this->responseHandler()->type(GetOrderItemResponse::class);
@@ -261,7 +253,6 @@ class OrdersController extends BaseController
         ?string $idempotencyKey = null
     ): GetOrderResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Orders/{order_id}/metadata')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('order_id', $orderId),
                 BodyParam::init($request),
@@ -285,7 +276,6 @@ class OrdersController extends BaseController
     public function getOrder(string $orderId): GetOrderResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/orders/{order_id}')
-            ->auth('global')
             ->parameters(TemplateParam::init('order_id', $orderId));
 
         $_resHandler = $this->responseHandler()->type(GetOrderResponse::class);

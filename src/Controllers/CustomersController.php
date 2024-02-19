@@ -54,7 +54,6 @@ class CustomersController extends BaseController
         ?string $idempotencyKey = null
     ): GetCardResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/customers/{customer_id}/cards/{card_id}')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 TemplateParam::init('card_id', $cardId),
@@ -86,7 +85,6 @@ class CustomersController extends BaseController
         ?string $idempotencyKey = null
     ): GetAddressResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/customers/{customer_id}/addresses/{address_id}')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 TemplateParam::init('address_id', $addressId),
@@ -119,7 +117,6 @@ class CustomersController extends BaseController
             RequestMethod::DELETE,
             '/customers/{customer_id}/access-tokens/{token_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 TemplateParam::init('token_id', $tokenId),
@@ -144,7 +141,6 @@ class CustomersController extends BaseController
     public function createCustomer(CreateCustomerRequest $request, ?string $idempotencyKey = null): GetCustomerResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/customers')
-            ->auth('global')
             ->parameters(BodyParam::init($request), HeaderParam::init('idempotency-key', $idempotencyKey));
 
         $_resHandler = $this->responseHandler()->type(GetCustomerResponse::class);
@@ -169,7 +165,6 @@ class CustomersController extends BaseController
         ?string $idempotencyKey = null
     ): GetAddressResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/customers/{customer_id}/addresses')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 BodyParam::init($request),
@@ -193,7 +188,6 @@ class CustomersController extends BaseController
     public function deleteAccessTokens(string $customerId): ListAccessTokensResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}/access-tokens/')
-            ->auth('global')
             ->parameters(TemplateParam::init('customer_id', $customerId));
 
         $_resHandler = $this->responseHandler()->type(ListAccessTokensResponse::class);
@@ -214,7 +208,6 @@ class CustomersController extends BaseController
     public function getAddress(string $customerId, string $addressId): GetAddressResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}/addresses/{address_id}')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 TemplateParam::init('address_id', $addressId)
@@ -245,7 +238,6 @@ class CustomersController extends BaseController
             RequestMethod::DELETE,
             '/customers/{customer_id}/addresses/{address_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 TemplateParam::init('address_id', $addressId),
@@ -274,7 +266,6 @@ class CustomersController extends BaseController
         ?string $idempotencyKey = null
     ): GetCardResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/customers/{customer_id}/cards')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 BodyParam::init($request),
@@ -309,7 +300,6 @@ class CustomersController extends BaseController
         ?string $code = null
     ): ListCustomersResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers')
-            ->auth('global')
             ->parameters(
                 QueryParam::init('name', $name),
                 QueryParam::init('document', $document),
@@ -341,7 +331,6 @@ class CustomersController extends BaseController
         ?string $idempotencyKey = null
     ): GetCustomerResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/customers/{customer_id}')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 BodyParam::init($request),
@@ -370,7 +359,6 @@ class CustomersController extends BaseController
         ?string $idempotencyKey = null
     ): GetAccessTokenResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/customers/{customer_id}/access-tokens')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 BodyParam::init($request),
@@ -396,7 +384,6 @@ class CustomersController extends BaseController
     public function getAccessTokens(string $customerId, ?int $page = null, ?int $size = null): ListAccessTokensResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}/access-tokens')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 QueryParam::init('page', $page),
@@ -422,7 +409,6 @@ class CustomersController extends BaseController
     public function getCards(string $customerId, ?int $page = null, ?int $size = null): ListCardsResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}/cards')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 QueryParam::init('page', $page),
@@ -448,7 +434,6 @@ class CustomersController extends BaseController
     public function renewCard(string $customerId, string $cardId, ?string $idempotencyKey = null): GetCardResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/customers/{customer_id}/cards/{card_id}/renew')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 TemplateParam::init('card_id', $cardId),
@@ -475,12 +460,7 @@ class CustomersController extends BaseController
         $_reqBuilder = $this->requestBuilder(
             RequestMethod::GET,
             '/customers/{customer_id}/access-tokens/{token_id}'
-        )
-            ->auth('global')
-            ->parameters(
-                TemplateParam::init('customer_id', $customerId),
-                TemplateParam::init('token_id', $tokenId)
-            );
+        )->parameters(TemplateParam::init('customer_id', $customerId), TemplateParam::init('token_id', $tokenId));
 
         $_resHandler = $this->responseHandler()->type(GetAccessTokenResponse::class);
 
@@ -504,7 +484,6 @@ class CustomersController extends BaseController
         ?string $idempotencyKey = null
     ): GetCustomerResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Customers/{customer_id}/metadata')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 BodyParam::init($request),
@@ -530,7 +509,6 @@ class CustomersController extends BaseController
     public function deleteCard(string $customerId, string $cardId, ?string $idempotencyKey = null): GetCardResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/customers/{customer_id}/cards/{card_id}')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 TemplateParam::init('card_id', $cardId),
@@ -556,7 +534,6 @@ class CustomersController extends BaseController
     public function getAddresses(string $customerId, ?int $page = null, ?int $size = null): ListAddressesResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}/addresses')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('customer_id', $customerId),
                 QueryParam::init('page', $page),
@@ -580,7 +557,6 @@ class CustomersController extends BaseController
     public function getCustomer(string $customerId): GetCustomerResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}')
-            ->auth('global')
             ->parameters(TemplateParam::init('customer_id', $customerId));
 
         $_resHandler = $this->responseHandler()->type(GetCustomerResponse::class);
@@ -601,7 +577,6 @@ class CustomersController extends BaseController
     public function getCard(string $customerId, string $cardId): GetCardResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/customers/{customer_id}/cards/{card_id}')
-            ->auth('global')
             ->parameters(TemplateParam::init('customer_id', $customerId), TemplateParam::init('card_id', $cardId));
 
         $_resHandler = $this->responseHandler()->type(GetCardResponse::class);

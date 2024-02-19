@@ -86,6 +86,11 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
     private $fundingSource = [];
 
     /**
+     * @var array
+     */
+    private $retryInfo = [];
+
+    /**
      * Returns Statement Descriptor.
      * Text that will appear on the credit card's statement
      */
@@ -466,6 +471,38 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
     }
 
     /**
+     * Returns Retry Info.
+     * Retry transaction information
+     */
+    public function getRetryInfo(): ?GetRetryTransactionInformationResponse
+    {
+        if (count($this->retryInfo) == 0) {
+            return null;
+        }
+        return $this->retryInfo['value'];
+    }
+
+    /**
+     * Sets Retry Info.
+     * Retry transaction information
+     *
+     * @maps retry_info
+     */
+    public function setRetryInfo(?GetRetryTransactionInformationResponse $retryInfo): void
+    {
+        $this->retryInfo['value'] = $retryInfo;
+    }
+
+    /**
+     * Unsets Retry Info.
+     * Retry transaction information
+     */
+    public function unsetRetryInfo(): void
+    {
+        $this->retryInfo = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -515,6 +552,9 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
         }
         if (!empty($this->fundingSource)) {
             $json['funding_source']            = $this->fundingSource['value'];
+        }
+        if (!empty($this->retryInfo)) {
+            $json['retry_info']                = $this->retryInfo['value'];
         }
         $json = array_merge($json, parent::jsonSerialize(true));
         $json['transaction_type'] = $this->getTransactionType() ?? 'credit_card';

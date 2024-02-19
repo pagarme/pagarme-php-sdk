@@ -42,6 +42,10 @@ class ApiHelper
             Models\GetMovementObjectFeeCollectionResponse::class,
             Models\GetMovementObjectPayableResponse::class,
             Models\GetMovementObjectTransferResponse::class
+        ],
+        Models\CreateRegisterInformationBaseRequest::class => [
+            Models\CreateRegisterInformationIndividualRequest::class,
+            Models\CreateRegisterInformationCorporationRequest::class
         ]
     ];
 

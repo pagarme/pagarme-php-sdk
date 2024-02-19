@@ -736,11 +736,6 @@ function createRecipient(CreateRecipientRequest $request, ?string $idempotencyKe
 
 ```php
 $request = CreateRecipientRequestBuilder::init(
-    'name6',
-    'email0',
-    'description6',
-    'document0',
-    'type4',
     CreateBankAccountRequestBuilder::init(
         'holder_name4',
         'holder_type0',

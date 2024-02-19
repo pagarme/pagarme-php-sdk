@@ -16,7 +16,7 @@ Generic response object for getting a BalanceOperation.
 | `balanceAmount` | `?string` | Optional | - | getBalanceAmount(): ?string | setBalanceAmount(?string balanceAmount): void |
 | `balanceOldAmount` | `?string` | Optional | - | getBalanceOldAmount(): ?string | setBalanceOldAmount(?string balanceOldAmount): void |
 | `type` | `?string` | Optional | - | getType(): ?string | setType(?string type): void |
-| `amount` | `?string` | Optional | - | getAmount(): ?string | setAmount(?string amount): void |
+| `amount` | `?int` | Optional | - | getAmount(): ?int | setAmount(?int amount): void |
 | `fee` | `?string` | Optional | - | getFee(): ?string | setFee(?string fee): void |
 | `createdAt` | `?string` | Optional | - | getCreatedAt(): ?string | setCreatedAt(?string createdAt): void |
 | `movementObject` | [`?GetMovementObjectBaseResponse`](../../doc/models/get-movement-object-base-response.md) | Optional | - | getMovementObject(): ?GetMovementObjectBaseResponse | setMovementObject(?GetMovementObjectBaseResponse movementObject): void |

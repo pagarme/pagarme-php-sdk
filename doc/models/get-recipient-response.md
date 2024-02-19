@@ -28,6 +28,7 @@ Recipient response
 | `transferSettings` | [`?GetTransferSettingsResponse`](../../doc/models/get-transfer-settings-response.md) | Optional | - | getTransferSettings(): ?GetTransferSettingsResponse | setTransferSettings(?GetTransferSettingsResponse transferSettings): void |
 | `code` | `?string` | Optional | Recipient code | getCode(): ?string | setCode(?string code): void |
 | `paymentMode` | `?string` | Optional | Payment mode<br>**Default**: `'bank_transfer'` | getPaymentMode(): ?string | setPaymentMode(?string paymentMode): void |
+| `registerInformation` | [`?GetRegisterInformationResponse`](../../doc/models/get-register-information-response.md) | Optional | - | getRegisterInformation(): ?GetRegisterInformationResponse | setRegisterInformation(?GetRegisterInformationResponse registerInformation): void |
 
 ## Example (as JSON)
 

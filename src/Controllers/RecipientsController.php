@@ -56,7 +56,6 @@ class RecipientsController extends BaseController
         ?string $idempotencyKey = null
     ): GetRecipientResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/recipients/{recipient_id}')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 BodyParam::init($request),
@@ -85,7 +84,6 @@ class RecipientsController extends BaseController
         ?string $idempotencyKey = null
     ): GetAnticipationResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients/{recipient_id}/anticipations')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 BodyParam::init($request),
@@ -114,7 +112,6 @@ class RecipientsController extends BaseController
         \DateTime $paymentDate
     ): GetAnticipationLimitResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/anticipation_limits')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 QueryParam::init('timeframe', $timeframe),
@@ -140,7 +137,6 @@ class RecipientsController extends BaseController
     public function getRecipients(?int $page = null, ?int $size = null): ListRecipientResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients')
-            ->auth('global')
             ->parameters(QueryParam::init('page', $page), QueryParam::init('size', $size));
 
         $_resHandler = $this->responseHandler()->type(ListRecipientResponse::class);
@@ -162,7 +158,6 @@ class RecipientsController extends BaseController
             RequestMethod::GET,
             '/recipients/{recipient_id}/withdrawals/{withdrawal_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 TemplateParam::init('withdrawal_id', $withdrawalId)
@@ -193,7 +188,6 @@ class RecipientsController extends BaseController
             RequestMethod::PATCH,
             '/recipients/{recipient_id}/default-bank-account'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 BodyParam::init($request),
@@ -222,7 +216,6 @@ class RecipientsController extends BaseController
         ?string $idempotencyKey = null
     ): GetRecipientResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/recipients/{recipient_id}/metadata')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 BodyParam::init($request),
@@ -257,7 +250,6 @@ class RecipientsController extends BaseController
         ?\DateTime $createdUntil = null
     ): ListTransferResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/transfers')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 QueryParam::init('page', $page),
@@ -290,7 +282,6 @@ class RecipientsController extends BaseController
             RequestMethod::GET,
             '/recipients/{recipient_id}/transfers/{transfer_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 TemplateParam::init('transfer_id', $transferId)
@@ -312,7 +303,6 @@ class RecipientsController extends BaseController
     public function createWithdraw(string $recipientId, CreateWithdrawRequest $request): GetWithdrawResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients/{recipient_id}/withdrawals')
-            ->auth('global')
             ->parameters(TemplateParam::init('recipient_id', $recipientId), BodyParam::init($request));
 
         $_resHandler = $this->responseHandler()->type(GetWithdrawResponse::class);
@@ -340,7 +330,6 @@ class RecipientsController extends BaseController
             RequestMethod::PATCH,
             '/recipients/{recipient_id}/automatic-anticipation-settings'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 BodyParam::init($request),
@@ -368,7 +357,6 @@ class RecipientsController extends BaseController
             RequestMethod::GET,
             '/recipients/{recipient_id}/anticipations/{anticipation_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 TemplateParam::init('anticipation_id', $anticipationId)
@@ -394,7 +382,6 @@ class RecipientsController extends BaseController
         ?string $idempotencyKey = null
     ): GetRecipientResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/recipients/{recipient_id}/transfer-settings')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 BodyParam::init($request),
@@ -435,7 +422,6 @@ class RecipientsController extends BaseController
         ?\DateTime $createdUntil = null
     ): ListAnticipationResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/anticipations')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 QueryParam::init('page', $page),
@@ -469,7 +455,6 @@ class RecipientsController extends BaseController
     public function getRecipient(string $recipientId): GetRecipientResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}')
-            ->auth('global')
             ->parameters(TemplateParam::init('recipient_id', $recipientId));
 
         $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
@@ -489,7 +474,6 @@ class RecipientsController extends BaseController
     public function getBalance(string $recipientId): GetBalanceResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/balance')
-            ->auth('global')
             ->parameters(TemplateParam::init('recipient_id', $recipientId));
 
         $_resHandler = $this->responseHandler()->type(GetBalanceResponse::class);
@@ -520,7 +504,6 @@ class RecipientsController extends BaseController
         ?\DateTime $createdUntil = null
     ): ListWithdrawals {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{recipient_id}/withdrawals')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 QueryParam::init('page', $page),
@@ -554,7 +537,6 @@ class RecipientsController extends BaseController
         ?string $idempotencyKey = null
     ): GetTransferResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients/{recipient_id}/transfers')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('recipient_id', $recipientId),
                 BodyParam::init($request),
@@ -581,7 +563,6 @@ class RecipientsController extends BaseController
         ?string $idempotencyKey = null
     ): GetRecipientResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/recipients')
-            ->auth('global')
             ->parameters(BodyParam::init($request), HeaderParam::init('idempotency-key', $idempotencyKey));
 
         $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
@@ -601,7 +582,6 @@ class RecipientsController extends BaseController
     public function getRecipientByCode(string $code): GetRecipientResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/{code}')
-            ->auth('global')
             ->parameters(TemplateParam::init('code', $code));
 
         $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
@@ -616,7 +596,7 @@ class RecipientsController extends BaseController
      */
     public function getDefaultRecipient(): GetRecipientResponse
     {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/default')->auth('global');
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/recipients/default');
 
         $_resHandler = $this->responseHandler()->type(GetRecipientResponse::class);
 

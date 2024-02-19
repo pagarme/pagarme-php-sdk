@@ -14,6 +14,7 @@ use Core\Utils\CoreHelper;
 use PagarmeApiSDKLib\Models\GetAutomaticAnticipationResponse;
 use PagarmeApiSDKLib\Models\GetBankAccountResponse;
 use PagarmeApiSDKLib\Models\GetRecipientResponse;
+use PagarmeApiSDKLib\Models\GetRegisterInformationResponse;
 use PagarmeApiSDKLib\Models\GetTransferSettingsResponse;
 
 /**
@@ -344,6 +345,24 @@ class GetRecipientResponseBuilder
     public function unsetPaymentMode(): self
     {
         $this->instance->unsetPaymentMode();
+        return $this;
+    }
+
+    /**
+     * Sets register information field.
+     */
+    public function registerInformation(?GetRegisterInformationResponse $value): self
+    {
+        $this->instance->setRegisterInformation($value);
+        return $this;
+    }
+
+    /**
+     * Unsets register information field.
+     */
+    public function unsetRegisterInformation(): self
+    {
+        $this->instance->unsetRegisterInformation();
         return $this;
     }
 

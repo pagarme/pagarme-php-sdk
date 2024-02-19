@@ -18,29 +18,29 @@ use stdClass;
 class CreateRecipientRequest implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var array
      */
-    private $name;
+    private $name = [];
 
     /**
-     * @var string
+     * @var array
      */
-    private $email;
+    private $email = [];
 
     /**
-     * @var string
+     * @var array
      */
-    private $description;
+    private $description = [];
 
     /**
-     * @var string
+     * @var array
      */
-    private $document;
+    private $document = [];
 
     /**
-     * @var string
+     * @var array
      */
-    private $type;
+    private $type = [];
 
     /**
      * @var CreateBankAccountRequest
@@ -68,32 +68,22 @@ class CreateRecipientRequest implements \JsonSerializable
     private $paymentMode;
 
     /**
-     * @param string $name
-     * @param string $email
-     * @param string $description
-     * @param string $document
-     * @param string $type
+     * @var array
+     */
+    private $registerInformation = [];
+
+    /**
      * @param CreateBankAccountRequest $defaultBankAccount
      * @param array<string,string> $metadata
      * @param string $code
      * @param string $paymentMode
      */
     public function __construct(
-        string $name,
-        string $email,
-        string $description,
-        string $document,
-        string $type,
         CreateBankAccountRequest $defaultBankAccount,
         array $metadata,
         string $code,
         string $paymentMode
     ) {
-        $this->name = $name;
-        $this->email = $email;
-        $this->description = $description;
-        $this->document = $document;
-        $this->type = $type;
         $this->defaultBankAccount = $defaultBankAccount;
         $this->metadata = $metadata;
         $this->code = $code;
@@ -102,107 +92,162 @@ class CreateRecipientRequest implements \JsonSerializable
 
     /**
      * Returns Name.
-     * Recipient name
+     * Recipient name. Required if the register_information field isn't populated.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
-        return $this->name;
+        if (count($this->name) == 0) {
+            return null;
+        }
+        return $this->name['value'];
     }
 
     /**
      * Sets Name.
-     * Recipient name
+     * Recipient name. Required if the register_information field isn't populated.
      *
-     * @required
      * @maps name
      */
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
-        $this->name = $name;
+        $this->name['value'] = $name;
+    }
+
+    /**
+     * Unsets Name.
+     * Recipient name. Required if the register_information field isn't populated.
+     */
+    public function unsetName(): void
+    {
+        $this->name = [];
     }
 
     /**
      * Returns Email.
-     * Recipient email
+     * Recipient email. Required if the register_information field isn't populated.
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
-        return $this->email;
+        if (count($this->email) == 0) {
+            return null;
+        }
+        return $this->email['value'];
     }
 
     /**
      * Sets Email.
-     * Recipient email
+     * Recipient email. Required if the register_information field isn't populated.
      *
-     * @required
      * @maps email
      */
-    public function setEmail(string $email): void
+    public function setEmail(?string $email): void
     {
-        $this->email = $email;
+        $this->email['value'] = $email;
+    }
+
+    /**
+     * Unsets Email.
+     * Recipient email. Required if the register_information field isn't populated.
+     */
+    public function unsetEmail(): void
+    {
+        $this->email = [];
     }
 
     /**
      * Returns Description.
      * Recipient description
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
-        return $this->description;
+        if (count($this->description) == 0) {
+            return null;
+        }
+        return $this->description['value'];
     }
 
     /**
      * Sets Description.
      * Recipient description
      *
-     * @required
      * @maps description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
-        $this->description = $description;
+        $this->description['value'] = $description;
+    }
+
+    /**
+     * Unsets Description.
+     * Recipient description
+     */
+    public function unsetDescription(): void
+    {
+        $this->description = [];
     }
 
     /**
      * Returns Document.
-     * Recipient document number
+     * Recipient document number. Required if the register_information field isn't populated.
      */
-    public function getDocument(): string
+    public function getDocument(): ?string
     {
-        return $this->document;
+        if (count($this->document) == 0) {
+            return null;
+        }
+        return $this->document['value'];
     }
 
     /**
      * Sets Document.
-     * Recipient document number
+     * Recipient document number. Required if the register_information field isn't populated.
      *
-     * @required
      * @maps document
      */
-    public function setDocument(string $document): void
+    public function setDocument(?string $document): void
     {
-        $this->document = $document;
+        $this->document['value'] = $document;
+    }
+
+    /**
+     * Unsets Document.
+     * Recipient document number. Required if the register_information field isn't populated.
+     */
+    public function unsetDocument(): void
+    {
+        $this->document = [];
     }
 
     /**
      * Returns Type.
-     * Recipient type
+     * Recipient type. Required if the register_information field isn't populated.
      */
-    public function getType(): string
+    public function getType(): ?string
     {
-        return $this->type;
+        if (count($this->type) == 0) {
+            return null;
+        }
+        return $this->type['value'];
     }
 
     /**
      * Sets Type.
-     * Recipient type
+     * Recipient type. Required if the register_information field isn't populated.
      *
-     * @required
      * @maps type
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
-        $this->type = $type;
+        $this->type['value'] = $type;
+    }
+
+    /**
+     * Unsets Type.
+     * Recipient type. Required if the register_information field isn't populated.
+     */
+    public function unsetType(): void
+    {
+        $this->type = [];
     }
 
     /**
@@ -314,6 +359,38 @@ class CreateRecipientRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Register Information.
+     * Register Information
+     */
+    public function getRegisterInformation(): ?CreateRegisterInformationBaseRequest
+    {
+        if (count($this->registerInformation) == 0) {
+            return null;
+        }
+        return $this->registerInformation['value'];
+    }
+
+    /**
+     * Sets Register Information.
+     * Register Information
+     *
+     * @maps register_information
+     */
+    public function setRegisterInformation(?CreateRegisterInformationBaseRequest $registerInformation): void
+    {
+        $this->registerInformation['value'] = $registerInformation;
+    }
+
+    /**
+     * Unsets Register Information.
+     * Register Information
+     */
+    public function unsetRegisterInformation(): void
+    {
+        $this->registerInformation = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -325,18 +402,31 @@ class CreateRecipientRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['name']                  = $this->name;
-        $json['email']                 = $this->email;
-        $json['description']           = $this->description;
-        $json['document']              = $this->document;
-        $json['type']                  = $this->type;
-        $json['default_bank_account']  = $this->defaultBankAccount;
-        $json['metadata']              = $this->metadata;
-        if (isset($this->transferSettings)) {
-            $json['transfer_settings'] = $this->transferSettings;
+        if (!empty($this->name)) {
+            $json['name']                 = $this->name['value'];
         }
-        $json['code']                  = $this->code;
-        $json['payment_mode']          = $this->paymentMode;
+        if (!empty($this->email)) {
+            $json['email']                = $this->email['value'];
+        }
+        if (!empty($this->description)) {
+            $json['description']          = $this->description['value'];
+        }
+        if (!empty($this->document)) {
+            $json['document']             = $this->document['value'];
+        }
+        if (!empty($this->type)) {
+            $json['type']                 = $this->type['value'];
+        }
+        $json['default_bank_account']     = $this->defaultBankAccount;
+        $json['metadata']                 = $this->metadata;
+        if (isset($this->transferSettings)) {
+            $json['transfer_settings']    = $this->transferSettings;
+        }
+        $json['code']                     = $this->code;
+        $json['payment_mode']             = $this->paymentMode;
+        if (!empty($this->registerInformation)) {
+            $json['register_information'] = $this->registerInformation['value'];
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

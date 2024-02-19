@@ -444,8 +444,8 @@ function getCustomers(
 |  --- | --- | --- | --- |
 | `name` | `?string` | Query, Optional | Name of the Customer |
 | `document` | `?string` | Query, Optional | Document of the Customer |
-| `page` | `?int` | Query, Optional | Current page the the search<br>**Default**: `1` |
-| `size` | `?int` | Query, Optional | Quantity pages of the search<br>**Default**: `10` |
+| `page` | `?int` | Query, Optional | Current page the the search |
+| `size` | `?int` | Query, Optional | Quantity pages of the search |
 | `email` | `?string` | Query, Optional | Customer's email |
 | `code` | `?string` | Query, Optional | Customer's code |
 

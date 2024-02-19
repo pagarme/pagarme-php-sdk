@@ -62,7 +62,6 @@ class SubscriptionsController extends BaseController
     public function renewSubscription(string $subscriptionId, ?string $idempotencyKey = null): GetPeriodResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions/{subscription_id}/cycles')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 HeaderParam::init('idempotency-key', $idempotencyKey)
@@ -90,7 +89,6 @@ class SubscriptionsController extends BaseController
         ?string $idempotencyKey = null
     ): GetSubscriptionResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/subscriptions/{subscription_id}/card')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -124,7 +122,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::DELETE,
             '/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('item_id', $itemId),
@@ -154,7 +151,6 @@ class SubscriptionsController extends BaseController
         ?string $idempotencyKey = null
     ): GetDiscountResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions/{subscription_id}/discounts')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -186,7 +182,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::POST,
             '/subscriptions/{subscription_id}/items/{item_id}/usages'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('item_id', $itemId),
@@ -214,7 +209,6 @@ class SubscriptionsController extends BaseController
         ?string $idempotencyKey = null
     ): void {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/subscriptions/{subscription_id}/cycle-status')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -244,7 +238,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::DELETE,
             '/subscriptions/{subscription_id}/discounts/{discount_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('discount_id', $discountId),
@@ -285,7 +278,6 @@ class SubscriptionsController extends BaseController
         ?string $createdUntil = null
     ): ListSubscriptionItemsResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}/items')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 QueryParam::init('page', $page),
@@ -324,7 +316,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::PATCH,
             '/subscriptions/{subscription_id}/payment-method'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -352,7 +343,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::GET,
             '/subscriptions/{subscription_id}/items/{item_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('item_id', $itemId)
@@ -399,7 +389,6 @@ class SubscriptionsController extends BaseController
         ?\DateTime $createdUntil = null
     ): ListSubscriptionsResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions')
-            ->auth('global')
             ->parameters(
                 QueryParam::init('page', $page),
                 QueryParam::init('size', $size),
@@ -441,7 +430,6 @@ class SubscriptionsController extends BaseController
         ?string $idempotencyKey = null
     ): GetSubscriptionResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/subscriptions/{subscription_id}')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -470,7 +458,6 @@ class SubscriptionsController extends BaseController
         ?string $idempotencyKey = null
     ): GetIncrementResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions/{subscription_id}/increments')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -504,7 +491,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::POST,
             '/subscriptions/{subscription_id}/items/{item_id}/usages'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('item_id', $itemId),
@@ -531,7 +517,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::GET,
             '/subscriptions/{subscription_id}/discounts/{discountId}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('discountId', $discountId)
@@ -557,7 +542,6 @@ class SubscriptionsController extends BaseController
         ?string $idempotencyKey = null
     ): GetSubscriptionResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions')
-            ->auth('global')
             ->parameters(BodyParam::init($body), HeaderParam::init('idempotency-key', $idempotencyKey));
 
         $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
@@ -579,7 +563,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::GET,
             '/subscriptions/{subscription_id}/increments/{increment_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('increment_id', $incrementId)
@@ -609,7 +592,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::PATCH,
             '/subscriptions/{subscription_id}/gateway-affiliation-id'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -638,7 +620,6 @@ class SubscriptionsController extends BaseController
         ?string $idempotencyKey = null
     ): GetSubscriptionResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Subscriptions/{subscription_id}/metadata')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -670,7 +651,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::DELETE,
             '/subscriptions/{subscription_id}/increments/{increment_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('increment_id', $incrementId),
@@ -694,7 +674,6 @@ class SubscriptionsController extends BaseController
     public function getSubscriptionCycles(string $subscriptionId, string $page, string $size): ListCyclesResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}/cycles')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 QueryParam::init('page', $page),
@@ -718,7 +697,6 @@ class SubscriptionsController extends BaseController
     public function getDiscounts(string $subscriptionId, int $page, int $size): ListDiscountsResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}/discounts/')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 QueryParam::init('page', $page),
@@ -748,7 +726,6 @@ class SubscriptionsController extends BaseController
         ?string $idempotencyKey = null
     ): GetSubscriptionResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/subscriptions/{subscription_id}/billing-date')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -780,7 +757,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::DELETE,
             '/subscriptions/{subscription_id}/items/{subscription_item_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('subscription_item_id', $subscriptionItemId),
@@ -804,7 +780,6 @@ class SubscriptionsController extends BaseController
     public function getIncrements(string $subscriptionId, ?int $page = null, ?int $size = null): ListIncrementsResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}/increments/')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 QueryParam::init('page', $page),
@@ -836,7 +811,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::PATCH,
             '/subscriptions/{subscription_id}/boleto-due-days'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -866,7 +840,6 @@ class SubscriptionsController extends BaseController
         ?string $idempotencyKey = null
     ): GetSubscriptionResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/subscriptions/{subscription_id}/start-at')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -900,7 +873,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::PUT,
             '/subscriptions/{subscription_id}/items/{item_id}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('item_id', $itemId),
@@ -930,7 +902,6 @@ class SubscriptionsController extends BaseController
         ?string $idempotencyKey = null
     ): GetSubscriptionItemResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions/{subscription_id}/items')
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -954,7 +925,6 @@ class SubscriptionsController extends BaseController
     public function getSubscription(string $subscriptionId): GetSubscriptionResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}')
-            ->auth('global')
             ->parameters(TemplateParam::init('subscription_id', $subscriptionId));
 
         $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
@@ -992,7 +962,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::GET,
             '/subscriptions/{subscription_id}/items/{item_id}/usages'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('item_id', $itemId),
@@ -1028,7 +997,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::PATCH,
             '/subscriptions/{subscription_id}/periods/latest/end-at'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -1061,7 +1029,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::PATCH,
             '/subscriptions/{subscription_id}/minimum_price'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 BodyParam::init($request),
@@ -1087,7 +1054,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::GET,
             '/subscriptions/{subscription_id}/cycles/{cycleId}'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('cycleId', $cycleId)
@@ -1112,7 +1078,6 @@ class SubscriptionsController extends BaseController
             RequestMethod::GET,
             '/subscriptions/{subscription_id}/periods/{period_id}/usages/report'
         )
-            ->auth('global')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('period_id', $periodId)
@@ -1136,7 +1101,6 @@ class SubscriptionsController extends BaseController
         UpdateSubscriptionSplitRequest $request
     ): GetSubscriptionResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/subscriptions/{id}/split')
-            ->auth('global')
             ->parameters(TemplateParam::init('id', $id), BodyParam::init($request));
 
         $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);

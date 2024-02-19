@@ -28,11 +28,6 @@ interface ConfigurationInterface extends HttpConfigurations
     public function getEnvironment(): string;
 
     /**
-     * Get the credentials to use with BasicAuth
-     */
-    public function getBasicAuthCredentials(): ?BasicAuthCredentials;
-
-    /**
      * Get the base uri for a given server in the current environment.
      *
      * @param string $server Server name

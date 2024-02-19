@@ -113,18 +113,6 @@ class PagarmeApiSDKClientBuilder
         return $this;
     }
 
-    public function basicAuthUserName(string $basicAuthUserName): self
-    {
-        $this->config['basicAuthUserName'] = $basicAuthUserName;
-        return $this;
-    }
-
-    public function basicAuthPassword(string $basicAuthPassword): self
-    {
-        $this->config['basicAuthPassword'] = $basicAuthPassword;
-        return $this;
-    }
-
     public function httpCallback($httpCallback): self
     {
         if (!$httpCallback instanceof CoreCallback) {
