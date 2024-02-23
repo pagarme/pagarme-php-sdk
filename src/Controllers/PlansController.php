@@ -40,6 +40,7 @@ class PlansController extends BaseController
     public function getPlan(string $planId): GetPlanResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/plans/{plan_id}')
+            ->auth('httpBasic')
             ->parameters(TemplateParam::init('plan_id', $planId));
 
         $_resHandler = $this->responseHandler()->type(GetPlanResponse::class);
@@ -60,6 +61,7 @@ class PlansController extends BaseController
     public function deletePlan(string $planId, ?string $idempotencyKey = null): GetPlanResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/plans/{plan_id}')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('plan_id', $planId),
                 HeaderParam::init('idempotency-key', $idempotencyKey)
@@ -87,6 +89,7 @@ class PlansController extends BaseController
         ?string $idempotencyKey = null
     ): GetPlanResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Plans/{plan_id}/metadata')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('plan_id', $planId),
                 BodyParam::init($request),
@@ -117,6 +120,7 @@ class PlansController extends BaseController
         ?string $idempotencyKey = null
     ): GetPlanItemResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/plans/{plan_id}/items/{plan_item_id}')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('plan_id', $planId),
                 TemplateParam::init('plan_item_id', $planItemId),
@@ -146,6 +150,7 @@ class PlansController extends BaseController
         ?string $idempotencyKey = null
     ): GetPlanItemResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/plans/{plan_id}/items')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('plan_id', $planId),
                 BodyParam::init($request),
@@ -170,6 +175,7 @@ class PlansController extends BaseController
     public function getPlanItem(string $planId, string $planItemId): GetPlanItemResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/plans/{plan_id}/items/{plan_item_id}')
+            ->auth('httpBasic')
             ->parameters(TemplateParam::init('plan_id', $planId), TemplateParam::init('plan_item_id', $planItemId));
 
         $_resHandler = $this->responseHandler()->type(GetPlanItemResponse::class);
@@ -190,6 +196,7 @@ class PlansController extends BaseController
     public function createPlan(CreatePlanRequest $body, ?string $idempotencyKey = null): GetPlanResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/plans')
+            ->auth('httpBasic')
             ->parameters(BodyParam::init($body), HeaderParam::init('idempotency-key', $idempotencyKey));
 
         $_resHandler = $this->responseHandler()->type(GetPlanResponse::class);
@@ -214,6 +221,7 @@ class PlansController extends BaseController
         ?string $idempotencyKey = null
     ): GetPlanItemResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/plans/{plan_id}/items/{plan_item_id}')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('plan_id', $planId),
                 TemplateParam::init('plan_item_id', $planItemId),
@@ -250,6 +258,7 @@ class PlansController extends BaseController
         ?\DateTime $createdUntil = null
     ): ListPlansResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/plans')
+            ->auth('httpBasic')
             ->parameters(
                 QueryParam::init('page', $page),
                 QueryParam::init('size', $size),
@@ -284,6 +293,7 @@ class PlansController extends BaseController
         ?string $idempotencyKey = null
     ): GetPlanResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PUT, '/plans/{plan_id}')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('plan_id', $planId),
                 BodyParam::init($request),

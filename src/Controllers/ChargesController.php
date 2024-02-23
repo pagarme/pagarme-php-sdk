@@ -49,6 +49,7 @@ class ChargesController extends BaseController
         ?string $idempotencyKey = null
     ): GetChargeResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Charges/{charge_id}/metadata')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
                 BodyParam::init($request),
@@ -78,6 +79,7 @@ class ChargesController extends BaseController
         ?string $idempotencyKey = null
     ): GetChargeResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/charges/{charge_id}/payment-method')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
                 BodyParam::init($request),
@@ -104,6 +106,7 @@ class ChargesController extends BaseController
         ?int $size = null
     ): ListChargeTransactionsResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/charges/{charge_id}/transactions')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
                 QueryParam::init('page', $page),
@@ -132,6 +135,7 @@ class ChargesController extends BaseController
         ?string $idempotencyKey = null
     ): GetChargeResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Charges/{charge_id}/due-date')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
                 BodyParam::init($request),
@@ -173,6 +177,7 @@ class ChargesController extends BaseController
         ?\DateTime $createdUntil = null
     ): ListChargesResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/charges')
+            ->auth('httpBasic')
             ->parameters(
                 QueryParam::init('page', $page),
                 QueryParam::init('size', $size),
@@ -209,6 +214,7 @@ class ChargesController extends BaseController
         ?string $idempotencyKey = null
     ): GetChargeResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/charges/{charge_id}/capture')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
                 BodyParam::init($request),
@@ -237,6 +243,7 @@ class ChargesController extends BaseController
         ?string $idempotencyKey = null
     ): GetChargeResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/charges/{charge_id}/card')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
                 BodyParam::init($request),
@@ -260,6 +267,7 @@ class ChargesController extends BaseController
     public function getCharge(string $chargeId): GetChargeResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/charges/{charge_id}')
+            ->auth('httpBasic')
             ->parameters(TemplateParam::init('charge_id', $chargeId));
 
         $_resHandler = $this->responseHandler()->type(GetChargeResponse::class);
@@ -282,6 +290,7 @@ class ChargesController extends BaseController
         ?\DateTime $createdUntil = null
     ): GetChargesSummaryResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/charges/summary')
+            ->auth('httpBasic')
             ->parameters(
                 QueryParam::init('status', $status),
                 QueryParam::init('created_since', $createdSince)
@@ -308,6 +317,7 @@ class ChargesController extends BaseController
     public function retryCharge(string $chargeId, ?string $idempotencyKey = null): GetChargeResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/charges/{charge_id}/retry')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
                 HeaderParam::init('idempotency-key', $idempotencyKey)
@@ -335,6 +345,7 @@ class ChargesController extends BaseController
         ?string $idempotencyKey = null
     ): GetChargeResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/charges/{charge_id}')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
                 BodyParam::init($request),
@@ -359,6 +370,7 @@ class ChargesController extends BaseController
     public function createCharge(CreateChargeRequest $request, ?string $idempotencyKey = null): GetChargeResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/Charges')
+            ->auth('httpBasic')
             ->parameters(BodyParam::init($request), HeaderParam::init('idempotency-key', $idempotencyKey));
 
         $_resHandler = $this->responseHandler()->type(GetChargeResponse::class);
@@ -381,6 +393,7 @@ class ChargesController extends BaseController
         ?string $idempotencyKey = null
     ): GetChargeResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/charges/{charge_id}/confirm-payment')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('charge_id', $chargeId),
                 BodyParam::init($request),

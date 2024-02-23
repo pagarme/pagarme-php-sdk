@@ -42,6 +42,7 @@ class InvoicesController extends BaseController
         ?string $idempotencyKey = null
     ): GetInvoiceResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/invoices/{invoice_id}/metadata')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('invoice_id', $invoiceId),
                 BodyParam::init($request),
@@ -65,7 +66,7 @@ class InvoicesController extends BaseController
         $_reqBuilder = $this->requestBuilder(
             RequestMethod::GET,
             '/subscriptions/{subscription_id}/partial-invoice'
-        )->parameters(TemplateParam::init('subscription_id', $subscriptionId));
+        )->auth('httpBasic')->parameters(TemplateParam::init('subscription_id', $subscriptionId));
 
         $_resHandler = $this->responseHandler()->type(GetInvoiceResponse::class);
 
@@ -85,6 +86,7 @@ class InvoicesController extends BaseController
     public function cancelInvoice(string $invoiceId, ?string $idempotencyKey = null): GetInvoiceResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/invoices/{invoice_id}')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('invoice_id', $invoiceId),
                 HeaderParam::init('idempotency-key', $idempotencyKey)
@@ -117,6 +119,7 @@ class InvoicesController extends BaseController
             RequestMethod::POST,
             '/subscriptions/{subscription_id}/cycles/{cycle_id}/pay'
         )
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
                 TemplateParam::init('cycle_id', $cycleId),
@@ -162,6 +165,7 @@ class InvoicesController extends BaseController
         ?string $customerDocument = null
     ): ListInvoicesResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/invoices')
+            ->auth('httpBasic')
             ->parameters(
                 QueryParam::init('page', $page),
                 QueryParam::init('size', $size),
@@ -195,6 +199,7 @@ class InvoicesController extends BaseController
     public function getInvoice(string $invoiceId): GetInvoiceResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/invoices/{invoice_id}')
+            ->auth('httpBasic')
             ->parameters(TemplateParam::init('invoice_id', $invoiceId));
 
         $_resHandler = $this->responseHandler()->type(GetInvoiceResponse::class);
@@ -219,6 +224,7 @@ class InvoicesController extends BaseController
         ?string $idempotencyKey = null
     ): GetInvoiceResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/invoices/{invoice_id}/status')
+            ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('invoice_id', $invoiceId),
                 BodyParam::init($request),
