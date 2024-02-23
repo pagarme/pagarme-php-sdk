@@ -12,6 +12,7 @@ namespace PagarmeApiSDKLib;
 
 use Core\Types\Sdk\CoreCallback;
 use Core\Utils\CoreHelper;
+use PagarmeApiSDKLib\Authentication\BasicAuthCredentialsBuilder;
 
 class PagarmeApiSDKClientBuilder
 {
@@ -110,6 +111,44 @@ class PagarmeApiSDKClientBuilder
     public function environment(string $environment): self
     {
         $this->config['environment'] = $environment;
+        return $this;
+    }
+
+    /**
+     * @see PagarmeApiSDKClientBuilder::basicAuthCredentials
+     *
+     * @deprecated This builder setter is deprecated. Checkout the see also section for its
+     *             alternate.
+     *
+     * @param string $basicAuthUserName
+     *
+     * @return $this
+     */
+    public function basicAuthUserName(string $basicAuthUserName): self
+    {
+        $this->config['basicAuthUserName'] = $basicAuthUserName;
+        return $this;
+    }
+
+    /**
+     * @see PagarmeApiSDKClientBuilder::basicAuthCredentials
+     *
+     * @deprecated This builder setter is deprecated. Checkout the see also section for its
+     *             alternate.
+     *
+     * @param string $basicAuthPassword
+     *
+     * @return $this
+     */
+    public function basicAuthPassword(string $basicAuthPassword): self
+    {
+        $this->config['basicAuthPassword'] = $basicAuthPassword;
+        return $this;
+    }
+
+    public function basicAuthCredentials(BasicAuthCredentialsBuilder $basicAuth): self
+    {
+        $this->config = array_merge($this->config, $basicAuth->getConfiguration());
         return $this;
     }
 

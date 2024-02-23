@@ -37,6 +37,7 @@ class BalanceOperationsController extends BaseController
         ?string $recipientId = null
     ): ListBalanceOperationResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/balance/operations')
+            ->auth('httpBasic')
             ->parameters(
                 QueryParam::init('status', $status),
                 QueryParam::init('created_since', $createdSince)
@@ -61,6 +62,7 @@ class BalanceOperationsController extends BaseController
     public function getBalanceOperationById(int $id): GetBalanceOperationResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/balance/operations/{id}')
+            ->auth('httpBasic')
             ->parameters(TemplateParam::init('id', $id));
 
         $_resHandler = $this->responseHandler()->type(GetBalanceOperationResponse::class);

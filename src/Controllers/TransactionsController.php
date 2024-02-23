@@ -27,6 +27,7 @@ class TransactionsController extends BaseController
     public function getTransaction(string $transactionId): GetTransactionResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/transactions/{transaction_id}')
+            ->auth('httpBasic')
             ->parameters(TemplateParam::init('transaction_id', $transactionId));
 
         $_resHandler = $this->responseHandler()->type(GetTransactionResponse::class);

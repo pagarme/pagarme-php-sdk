@@ -14,6 +14,8 @@ use Core\ClientBuilder;
 use Core\Request\Parameters\HeaderParam;
 use Core\Response\Types\ErrorType;
 use Core\Utils\CoreHelper;
+use PagarmeApiSDKLib\Authentication\BasicAuthCredentialsBuilder;
+use PagarmeApiSDKLib\Authentication\BasicAuthManager;
 use PagarmeApiSDKLib\Controllers\BalanceOperationsController;
 use PagarmeApiSDKLib\Controllers\ChargesController;
 use PagarmeApiSDKLib\Controllers\CustomersController;
@@ -57,6 +59,8 @@ class PagarmeApiSDKClient implements ConfigurationInterface
 
     private $balanceOperations;
 
+    private $basicAuthManager;
+
     private $config;
 
     private $client;
@@ -70,14 +74,19 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     public function __construct(array $config = [])
     {
         $this->config = array_merge(ConfigurationDefaults::_ALL, CoreHelper::clone($config));
+        $this->basicAuthManager = new BasicAuthManager(
+            $this->config['basicAuthUserName'] ?? ConfigurationDefaults::BASIC_AUTH_USER_NAME,
+            $this->config['basicAuthPassword'] ?? ConfigurationDefaults::BASIC_AUTH_PASSWORD
+        );
         $this->client = ClientBuilder::init(new HttpClient(Configuration::init($this)))
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
             ->apiCallback($this->config['httpCallback'] ?? null)
-            ->userAgent('PagarmeApiSDK - PHP 6.8.5')
+            ->userAgent('PagarmeApiSDK - PHP 6.8.6')
             ->globalConfig($this->getGlobalConfiguration())
             ->globalErrors($this->getGlobalErrors())
             ->serverUrls(self::ENVIRONMENT_MAP[$this->getEnvironment()], Server::DEFAULT_)
+            ->authManagers(['httpBasic' => $this->basicAuthManager])
             ->build();
     }
 
@@ -88,7 +97,7 @@ class PagarmeApiSDKClient implements ConfigurationInterface
      */
     public function toBuilder(): PagarmeApiSDKClientBuilder
     {
-        return PagarmeApiSDKClientBuilder::init()
+        $builder = PagarmeApiSDKClientBuilder::init()
             ->timeout($this->getTimeout())
             ->enableRetries($this->shouldEnableRetries())
             ->numberOfRetries($this->getNumberOfRetries())
@@ -101,6 +110,12 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             ->serviceRefererName($this->getServiceRefererName())
             ->environment($this->getEnvironment())
             ->httpCallback($this->config['httpCallback'] ?? null);
+
+        $basicAuth = $this->getBasicAuthCredentialsBuilder();
+        if ($basicAuth != null) {
+            $builder->basicAuthCredentials($basicAuth);
+        }
+        return $builder;
     }
 
     public function getTimeout(): int
@@ -156,6 +171,25 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     public function getEnvironment(): string
     {
         return $this->config['environment'] ?? ConfigurationDefaults::ENVIRONMENT;
+    }
+
+    public function getBasicAuthCredentials(): BasicAuthCredentials
+    {
+        return $this->basicAuthManager;
+    }
+
+    public function getBasicAuthCredentialsBuilder(): ?BasicAuthCredentialsBuilder
+    {
+        if (
+            empty($this->basicAuthManager->getBasicAuthUserName()) &&
+            empty($this->basicAuthManager->getBasicAuthPassword())
+        ) {
+            return null;
+        }
+        return BasicAuthCredentialsBuilder::init(
+            $this->basicAuthManager->getBasicAuthUserName(),
+            $this->basicAuthManager->getBasicAuthPassword()
+        );
     }
 
     /**

@@ -16,6 +16,8 @@ $tokensController = $client->getTokensController();
 
 # Create Token
 
+:information_source: **Note** This endpoint does not require authentication.
+
 ```php
 function createToken(
     string $publicKey,
@@ -64,6 +66,8 @@ $result = $tokensController->createToken(
 # Get Token
 
 Gets a token from its id
+
+:information_source: **Note** This endpoint does not require authentication.
 
 ```php
 function getToken(string $id, string $publicKey): GetTokenResponse

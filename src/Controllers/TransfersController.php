@@ -30,6 +30,7 @@ class TransfersController extends BaseController
     public function getTransferById(string $transferId): GetTransfer
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/transfers/{transfer_id}')
+            ->auth('httpBasic')
             ->parameters(TemplateParam::init('transfer_id', $transferId));
 
         $_resHandler = $this->responseHandler()->type(GetTransfer::class);
@@ -47,6 +48,7 @@ class TransfersController extends BaseController
     public function createTransfer(CreateTransfer $request): GetTransfer
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/transfers/recipients')
+            ->auth('httpBasic')
             ->parameters(BodyParam::init($request));
 
         $_resHandler = $this->responseHandler()->type(GetTransfer::class);
@@ -63,7 +65,7 @@ class TransfersController extends BaseController
      */
     public function getTransfers(): ListTransfers
     {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/transfers');
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/transfers')->auth('httpBasic');
 
         $_resHandler = $this->responseHandler()->type(ListTransfers::class);
 
