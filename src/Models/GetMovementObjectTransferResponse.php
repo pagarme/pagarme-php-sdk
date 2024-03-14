@@ -277,7 +277,7 @@ class GetMovementObjectTransferResponse extends GetMovementObjectBaseResponse im
      *
      * @maps bank_account
      */
-    public function setBankAccount(?string $bankAccount): void
+    public function setBankAccount(?GetBankAccountResponse $bankAccount): void
     {
         $this->bankAccount['value'] = $bankAccount;
     }
