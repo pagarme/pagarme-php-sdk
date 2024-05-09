@@ -10,42 +10,68 @@ $subscriptionsController = $client->getSubscriptionsController();
 
 ## Methods
 
-* [Update Subscription Card](../../doc/controllers/subscriptions.md#update-subscription-card)
-* [Create Discount](../../doc/controllers/subscriptions.md#create-discount)
-* [Update Subscription Billing Date](../../doc/controllers/subscriptions.md#update-subscription-billing-date)
-* [Update Subscription Start At](../../doc/controllers/subscriptions.md#update-subscription-start-at)
-* [Get Subscription](../../doc/controllers/subscriptions.md#get-subscription)
-* [Get Usages](../../doc/controllers/subscriptions.md#get-usages)
-* [Update Latest Period End At](../../doc/controllers/subscriptions.md#update-latest-period-end-at)
-* [Delete Discount](../../doc/controllers/subscriptions.md#delete-discount)
-* [Update Subscription Payment Method](../../doc/controllers/subscriptions.md#update-subscription-payment-method)
-* [Cancel Subscription](../../doc/controllers/subscriptions.md#cancel-subscription)
-* [Create Subscription](../../doc/controllers/subscriptions.md#create-subscription)
-* [Update Subscription Affiliation Id](../../doc/controllers/subscriptions.md#update-subscription-affiliation-id)
-* [Update Subscription Minium Price](../../doc/controllers/subscriptions.md#update-subscription-minium-price)
-* [Get Subscription Cycle by Id](../../doc/controllers/subscriptions.md#get-subscription-cycle-by-id)
-* [Get Usage Report](../../doc/controllers/subscriptions.md#get-usage-report)
 * [Renew Subscription](../../doc/controllers/subscriptions.md#renew-subscription)
+* [Update Subscription Card](../../doc/controllers/subscriptions.md#update-subscription-card)
 * [Delete Usage](../../doc/controllers/subscriptions.md#delete-usage)
+* [Create Discount](../../doc/controllers/subscriptions.md#create-discount)
 * [Create an Usage](../../doc/controllers/subscriptions.md#create-an-usage)
 * [Update Current Cycle Status](../../doc/controllers/subscriptions.md#update-current-cycle-status)
-* [Get Subscription Item](../../doc/controllers/subscriptions.md#get-subscription-item)
-* [Get Increment by Id](../../doc/controllers/subscriptions.md#get-increment-by-id)
-* [Delete Increment](../../doc/controllers/subscriptions.md#delete-increment)
-* [Get Discounts](../../doc/controllers/subscriptions.md#get-discounts)
-* [Update Subscription Due Days](../../doc/controllers/subscriptions.md#update-subscription-due-days)
-* [Create Subscription Item](../../doc/controllers/subscriptions.md#create-subscription-item)
-* [Update Split Subscription](../../doc/controllers/subscriptions.md#update-split-subscription)
+* [Delete Discount](../../doc/controllers/subscriptions.md#delete-discount)
 * [Get Subscription Items](../../doc/controllers/subscriptions.md#get-subscription-items)
+* [Update Subscription Payment Method](../../doc/controllers/subscriptions.md#update-subscription-payment-method)
+* [Get Subscription Item](../../doc/controllers/subscriptions.md#get-subscription-item)
 * [Get Subscriptions](../../doc/controllers/subscriptions.md#get-subscriptions)
+* [Cancel Subscription](../../doc/controllers/subscriptions.md#cancel-subscription)
 * [Create Increment](../../doc/controllers/subscriptions.md#create-increment)
 * [Create Usage](../../doc/controllers/subscriptions.md#create-usage)
 * [Get Discount by Id](../../doc/controllers/subscriptions.md#get-discount-by-id)
+* [Create Subscription](../../doc/controllers/subscriptions.md#create-subscription)
+* [Get Increment by Id](../../doc/controllers/subscriptions.md#get-increment-by-id)
+* [Update Subscription Affiliation Id](../../doc/controllers/subscriptions.md#update-subscription-affiliation-id)
 * [Update Subscription Metadata](../../doc/controllers/subscriptions.md#update-subscription-metadata)
+* [Delete Increment](../../doc/controllers/subscriptions.md#delete-increment)
 * [Get Subscription Cycles](../../doc/controllers/subscriptions.md#get-subscription-cycles)
+* [Get Discounts](../../doc/controllers/subscriptions.md#get-discounts)
+* [Update Subscription Billing Date](../../doc/controllers/subscriptions.md#update-subscription-billing-date)
 * [Delete Subscription Item](../../doc/controllers/subscriptions.md#delete-subscription-item)
 * [Get Increments](../../doc/controllers/subscriptions.md#get-increments)
+* [Update Subscription Due Days](../../doc/controllers/subscriptions.md#update-subscription-due-days)
+* [Update Subscription Start At](../../doc/controllers/subscriptions.md#update-subscription-start-at)
 * [Update Subscription Item](../../doc/controllers/subscriptions.md#update-subscription-item)
+* [Create Subscription Item](../../doc/controllers/subscriptions.md#create-subscription-item)
+* [Get Subscription](../../doc/controllers/subscriptions.md#get-subscription)
+* [Get Usages](../../doc/controllers/subscriptions.md#get-usages)
+* [Update Latest Period End At](../../doc/controllers/subscriptions.md#update-latest-period-end-at)
+* [Update Subscription Minium Price](../../doc/controllers/subscriptions.md#update-subscription-minium-price)
+* [Get Subscription Cycle by Id](../../doc/controllers/subscriptions.md#get-subscription-cycle-by-id)
+* [Get Usage Report](../../doc/controllers/subscriptions.md#get-usage-report)
+* [Update Split Subscription](../../doc/controllers/subscriptions.md#update-split-subscription)
+
+
+# Renew Subscription
+
+```php
+function renewSubscription(string $subscriptionId, ?string $idempotencyKey = null): GetPeriodResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | - |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetPeriodResponse`](../../doc/models/get-period-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$result = $subscriptionsController->renewSubscription($subscriptionId);
+```
 
 
 # Update Subscription Card
@@ -91,652 +117,6 @@ $result = $subscriptionsController->updateSubscriptionCard(
 ```
 
 
-# Create Discount
-
-Creates a discount
-
-```php
-function createDiscount(
-    string $subscriptionId,
-    CreateDiscountRequest $request,
-    ?string $idempotencyKey = null
-): GetDiscountResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-| `request` | [`CreateDiscountRequest`](../../doc/models/create-discount-request.md) | Body, Required | Request for creating a discount |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$request = CreateDiscountRequestBuilder::init(
-    185.28,
-    'discount_type4',
-    'item_id6'
-)->build();
-
-$result = $subscriptionsController->createDiscount(
-    $subscriptionId,
-    $request
-);
-```
-
-
-# Update Subscription Billing Date
-
-Updates the billing date from a subscription
-
-```php
-function updateSubscriptionBillingDate(
-    string $subscriptionId,
-    UpdateSubscriptionBillingDateRequest $request,
-    ?string $idempotencyKey = null
-): GetSubscriptionResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription id |
-| `request` | [`UpdateSubscriptionBillingDateRequest`](../../doc/models/update-subscription-billing-date-request.md) | Body, Required | Request for updating the subscription billing date |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$request = UpdateSubscriptionBillingDateRequestBuilder::init(
-    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
-)->build();
-
-$result = $subscriptionsController->updateSubscriptionBillingDate(
-    $subscriptionId,
-    $request
-);
-```
-
-
-# Update Subscription Start At
-
-Updates the start at date from a subscription
-
-```php
-function updateSubscriptionStartAt(
-    string $subscriptionId,
-    UpdateSubscriptionStartAtRequest $request,
-    ?string $idempotencyKey = null
-): GetSubscriptionResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription id |
-| `request` | [`UpdateSubscriptionStartAtRequest`](../../doc/models/update-subscription-start-at-request.md) | Body, Required | Request for updating the subscription start date |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$request = UpdateSubscriptionStartAtRequestBuilder::init(
-    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
-)->build();
-
-$result = $subscriptionsController->updateSubscriptionStartAt(
-    $subscriptionId,
-    $request
-);
-```
-
-
-# Get Subscription
-
-Gets a subscription
-
-```php
-function getSubscription(string $subscriptionId): GetSubscriptionResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$result = $subscriptionsController->getSubscription($subscriptionId);
-```
-
-
-# Get Usages
-
-Lists all usages from a subscription item
-
-```php
-function getUsages(
-    string $subscriptionId,
-    string $itemId,
-    ?int $page = null,
-    ?int $size = null,
-    ?string $code = null,
-    ?string $group = null,
-    ?\DateTime $usedSince = null,
-    ?\DateTime $usedUntil = null
-): ListUsagesResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription id |
-| `itemId` | `string` | Template, Required | The subscription item id |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-| `code` | `?string` | Query, Optional | Identification code in the client system |
-| `group` | `?string` | Query, Optional | Identification group in the client system |
-| `usedSince` | `?DateTime` | Query, Optional | - |
-| `usedUntil` | `?DateTime` | Query, Optional | - |
-
-## Response Type
-
-[`ListUsagesResponse`](../../doc/models/list-usages-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$itemId = 'item_id0';
-
-$result = $subscriptionsController->getUsages(
-    $subscriptionId,
-    $itemId
-);
-```
-
-
-# Update Latest Period End At
-
-```php
-function updateLatestPeriodEndAt(
-    string $subscriptionId,
-    UpdateCurrentCycleEndDateRequest $request,
-    ?string $idempotencyKey = null
-): GetSubscriptionResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | - |
-| `request` | [`UpdateCurrentCycleEndDateRequest`](../../doc/models/update-current-cycle-end-date-request.md) | Body, Required | Request for updating the end date of the current signature cycle |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$request = UpdateCurrentCycleEndDateRequestBuilder::init()->build();
-
-$result = $subscriptionsController->updateLatestPeriodEndAt(
-    $subscriptionId,
-    $request
-);
-```
-
-
-# Delete Discount
-
-Deletes a discount
-
-```php
-function deleteDiscount(
-    string $subscriptionId,
-    string $discountId,
-    ?string $idempotencyKey = null
-): GetDiscountResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-| `discountId` | `string` | Template, Required | Discount Id |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$discountId = 'discount_id8';
-
-$result = $subscriptionsController->deleteDiscount(
-    $subscriptionId,
-    $discountId
-);
-```
-
-
-# Update Subscription Payment Method
-
-Updates the payment method from a subscription
-
-```php
-function updateSubscriptionPaymentMethod(
-    string $subscriptionId,
-    UpdateSubscriptionPaymentMethodRequest $request,
-    ?string $idempotencyKey = null
-): GetSubscriptionResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-| `request` | [`UpdateSubscriptionPaymentMethodRequest`](../../doc/models/update-subscription-payment-method-request.md) | Body, Required | Request for updating the paymentmethod from a subscription |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$request = UpdateSubscriptionPaymentMethodRequestBuilder::init(
-    'payment_method4',
-    'card_id2',
-    CreateCardRequestBuilder::init()
-        ->type('credit')
-        ->build()
-)->build();
-
-$result = $subscriptionsController->updateSubscriptionPaymentMethod(
-    $subscriptionId,
-    $request
-);
-```
-
-
-# Cancel Subscription
-
-Cancels a subscription
-
-```php
-function cancelSubscription(
-    string $subscriptionId,
-    ?CreateCancelSubscriptionRequest $request = null,
-    ?string $idempotencyKey = null
-): GetSubscriptionResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-| `request` | [`?CreateCancelSubscriptionRequest`](../../doc/models/create-cancel-subscription-request.md) | Body, Optional | Request for cancelling a subscription |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$request = CreateCancelSubscriptionRequestBuilder::init(
-    true
-)->build();
-
-$result = $subscriptionsController->cancelSubscription(
-    $subscriptionId,
-    $request
-);
-```
-
-
-# Create Subscription
-
-Creates a new subscription
-
-```php
-function createSubscription(
-    CreateSubscriptionRequest $body,
-    ?string $idempotencyKey = null
-): GetSubscriptionResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `body` | [`CreateSubscriptionRequest`](../../doc/models/create-subscription-request.md) | Body, Required | Request for creating a subscription |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```php
-$body = CreateSubscriptionRequestBuilder::init(
-    CreateCustomerRequestBuilder::init(
-        '{
-    "name": "Tony Stark"
-}',
-        'email6',
-        'document6',
-        'type0',
-        CreateAddressRequestBuilder::init(
-            'street6',
-            'number4',
-            'zip_code0',
-            'neighborhood2',
-            'city6',
-            'state2',
-            'country0',
-            'complement2',
-            'line_10',
-            'line_24'
-        )->build(),
-        [
-            'key0' => 'metadata3'
-        ],
-        CreatePhonesRequestBuilder::init()->build(),
-        'code8'
-    )->build(),
-    CreateCardRequestBuilder::init()
-        ->type('credit')
-        ->build(),
-    'code4',
-    'payment_method4',
-    'billing_type0',
-    'statement_descriptor6',
-    'description4',
-    'currency6',
-    'interval6',
-    170,
-    CreatePricingSchemeRequestBuilder::init(
-        'scheme_type8'
-    )->build(),
-    [
-        CreateSubscriptionItemRequestBuilder::init(
-            'description2',
-            CreatePricingSchemeRequestBuilder::init(
-                'scheme_type8'
-            )->build(),
-            'id8',
-            'plan_item_id8',
-            [
-                CreateDiscountRequestBuilder::init(
-                    90.66,
-                    'discount_type2',
-                    'item_id4'
-                )->build()
-            ],
-            'name8'
-        )->build()
-    ],
-    CreateShippingRequestBuilder::init(
-        52,
-        'description6',
-        'recipient_name2',
-        'recipient_phone6',
-        'address_id6',
-        CreateAddressRequestBuilder::init(
-            'street6',
-            'number4',
-            'zip_code0',
-            'neighborhood2',
-            'city6',
-            'state2',
-            'country0',
-            'complement2',
-            'line_10',
-            'line_24'
-        )->build(),
-        'type6'
-    )->build(),
-    [
-        CreateDiscountRequestBuilder::init(
-            90.66,
-            'discount_type2',
-            'item_id4'
-        )->build()
-    ],
-    [
-        'key0' => 'metadata7',
-        'key1' => 'metadata8'
-    ],
-    [
-        CreateIncrementRequestBuilder::init(
-            252.86,
-            'increment_type6',
-            'item_id6'
-        )->build()
-    ]
-)->build();
-
-$result = $subscriptionsController->createSubscription($body);
-```
-
-
-# Update Subscription Affiliation Id
-
-```php
-function updateSubscriptionAffiliationId(
-    string $subscriptionId,
-    UpdateSubscriptionAffiliationIdRequest $request,
-    ?string $idempotencyKey = null
-): GetSubscriptionResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | - |
-| `request` | [`UpdateSubscriptionAffiliationIdRequest`](../../doc/models/update-subscription-affiliation-id-request.md) | Body, Required | Request for updating a subscription affiliation id |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$request = UpdateSubscriptionAffiliationIdRequestBuilder::init(
-    'gateway_affiliation_id2'
-)->build();
-
-$result = $subscriptionsController->updateSubscriptionAffiliationId(
-    $subscriptionId,
-    $request
-);
-```
-
-
-# Update Subscription Minium Price
-
-Atualização do valor mínimo da assinatura
-
-```php
-function updateSubscriptionMiniumPrice(
-    string $subscriptionId,
-    UpdateSubscriptionMinimumPriceRequest $request,
-    ?string $idempotencyKey = null
-): GetSubscriptionResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription Id |
-| `request` | [`UpdateSubscriptionMinimumPriceRequest`](../../doc/models/update-subscription-minimum-price-request.md) | Body, Required | Request da requisição com o valor mínimo que será configurado |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$request = UpdateSubscriptionMinimumPriceRequestBuilder::init()->build();
-
-$result = $subscriptionsController->updateSubscriptionMiniumPrice(
-    $subscriptionId,
-    $request
-);
-```
-
-
-# Get Subscription Cycle by Id
-
-```php
-function getSubscriptionCycleById(string $subscriptionId, string $cycleId): GetPeriodResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription id |
-| `cycleId` | `string` | Template, Required | - |
-
-## Response Type
-
-[`GetPeriodResponse`](../../doc/models/get-period-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$cycleId = 'cycleId0';
-
-$result = $subscriptionsController->getSubscriptionCycleById(
-    $subscriptionId,
-    $cycleId
-);
-```
-
-
-# Get Usage Report
-
-```php
-function getUsageReport(string $subscriptionId, string $periodId): GetUsageReportResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription Id |
-| `periodId` | `string` | Template, Required | The period Id |
-
-## Response Type
-
-[`GetUsageReportResponse`](../../doc/models/get-usage-report-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$periodId = 'period_id0';
-
-$result = $subscriptionsController->getUsageReport(
-    $subscriptionId,
-    $periodId
-);
-```
-
-
-# Renew Subscription
-
-```php
-function renewSubscription(string $subscriptionId, ?string $idempotencyKey = null): GetPeriodResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | - |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetPeriodResponse`](../../doc/models/get-period-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$result = $subscriptionsController->renewSubscription($subscriptionId);
-```
-
-
 # Delete Usage
 
 Deletes a usage
@@ -776,6 +156,48 @@ $result = $subscriptionsController->deleteUsage(
     $subscriptionId,
     $itemId,
     $usageId
+);
+```
+
+
+# Create Discount
+
+Creates a discount
+
+```php
+function createDiscount(
+    string $subscriptionId,
+    CreateDiscountRequest $request,
+    ?string $idempotencyKey = null
+): GetDiscountResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `request` | [`CreateDiscountRequest`](../../doc/models/create-discount-request.md) | Body, Required | Request for creating a discount |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = CreateDiscountRequestBuilder::init(
+    185.28,
+    'discount_type4',
+    'item_id6'
+)->build();
+
+$result = $subscriptionsController->createDiscount(
+    $subscriptionId,
+    $request
 );
 ```
 
@@ -852,80 +274,16 @@ $subscriptionsController->updateCurrentCycleStatus(
 ```
 
 
-# Get Subscription Item
+# Delete Discount
 
-Get Subscription Item
-
-```php
-function getSubscriptionItem(string $subscriptionId, string $itemId): GetSubscriptionItemResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription Id |
-| `itemId` | `string` | Template, Required | Item id |
-
-## Response Type
-
-[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
-
-## Example Usage
+Deletes a discount
 
 ```php
-$subscriptionId = 'subscription_id0';
-
-$itemId = 'item_id0';
-
-$result = $subscriptionsController->getSubscriptionItem(
-    $subscriptionId,
-    $itemId
-);
-```
-
-
-# Get Increment by Id
-
-```php
-function getIncrementById(string $subscriptionId, string $incrementId): GetIncrementResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription Id |
-| `incrementId` | `string` | Template, Required | The increment Id |
-
-## Response Type
-
-[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$incrementId = 'increment_id8';
-
-$result = $subscriptionsController->getIncrementById(
-    $subscriptionId,
-    $incrementId
-);
-```
-
-
-# Delete Increment
-
-Deletes a increment
-
-```php
-function deleteIncrement(
+function deleteDiscount(
     string $subscriptionId,
-    string $incrementId,
+    string $discountId,
     ?string $idempotencyKey = null
-): GetIncrementResponse
+): GetDiscountResponse
 ```
 
 ## Parameters
@@ -933,191 +291,23 @@ function deleteIncrement(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscriptionId` | `string` | Template, Required | Subscription id |
-| `incrementId` | `string` | Template, Required | Increment id |
+| `discountId` | `string` | Template, Required | Discount Id |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
+[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
 
 ## Example Usage
 
 ```php
 $subscriptionId = 'subscription_id0';
 
-$incrementId = 'increment_id8';
+$discountId = 'discount_id8';
 
-$result = $subscriptionsController->deleteIncrement(
+$result = $subscriptionsController->deleteDiscount(
     $subscriptionId,
-    $incrementId
-);
-```
-
-
-# Get Discounts
-
-```php
-function getDiscounts(string $subscriptionId, int $page, int $size): ListDiscountsResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The subscription id |
-| `page` | `int` | Query, Required | Page number |
-| `size` | `int` | Query, Required | Page size |
-
-## Response Type
-
-[`ListDiscountsResponse`](../../doc/models/list-discounts-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$page = 30;
-
-$size = 18;
-
-$result = $subscriptionsController->getDiscounts(
-    $subscriptionId,
-    $page,
-    $size
-);
-```
-
-
-# Update Subscription Due Days
-
-Updates the boleto due days from a subscription
-
-```php
-function updateSubscriptionDueDays(
-    string $subscriptionId,
-    UpdateSubscriptionDueDaysRequest $request,
-    ?string $idempotencyKey = null
-): GetSubscriptionResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription Id |
-| `request` | [`UpdateSubscriptionDueDaysRequest`](../../doc/models/update-subscription-due-days-request.md) | Body, Required | - |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$request = UpdateSubscriptionDueDaysRequestBuilder::init(
-    226
-)->build();
-
-$result = $subscriptionsController->updateSubscriptionDueDays(
-    $subscriptionId,
-    $request
-);
-```
-
-
-# Create Subscription Item
-
-Creates a new Subscription item
-
-```php
-function createSubscriptionItem(
-    string $subscriptionId,
-    CreateSubscriptionItemRequest $request,
-    ?string $idempotencyKey = null
-): GetSubscriptionItemResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription id |
-| `request` | [`CreateSubscriptionItemRequest`](../../doc/models/create-subscription-item-request.md) | Body, Required | Request for creating a subscription item |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$request = CreateSubscriptionItemRequestBuilder::init(
-    'description6',
-    CreatePricingSchemeRequestBuilder::init(
-        'scheme_type8'
-    )->build(),
-    'id6',
-    'plan_item_id6',
-    [
-        CreateDiscountRequestBuilder::init(
-            90.66,
-            'discount_type2',
-            'item_id4'
-        )->build()
-    ],
-    'name6'
-)->build();
-
-$result = $subscriptionsController->createSubscriptionItem(
-    $subscriptionId,
-    $request
-);
-```
-
-
-# Update Split Subscription
-
-```php
-function updateSplitSubscription(string $id, UpdateSubscriptionSplitRequest $request): GetSubscriptionResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | Subscription's id |
-| `request` | [`UpdateSubscriptionSplitRequest`](../../doc/models/update-subscription-split-request.md) | Body, Required | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```php
-$id = 'id0';
-
-$request = UpdateSubscriptionSplitRequestBuilder::init(
-    false,
-    [
-        CreateSplitRequestBuilder::init(
-            'type2',
-            118,
-            'recipient_id2'
-        )->build()
-    ]
-)->build();
-
-$result = $subscriptionsController->updateSplitSubscription(
-    $id,
-    $request
+    $discountId
 );
 ```
 
@@ -1167,6 +357,83 @@ $result = $subscriptionsController->getSubscriptionItems($subscriptionId);
 ```
 
 
+# Update Subscription Payment Method
+
+Updates the payment method from a subscription
+
+```php
+function updateSubscriptionPaymentMethod(
+    string $subscriptionId,
+    UpdateSubscriptionPaymentMethodRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `request` | [`UpdateSubscriptionPaymentMethodRequest`](../../doc/models/update-subscription-payment-method-request.md) | Body, Required | Request for updating the paymentmethod from a subscription |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionPaymentMethodRequestBuilder::init(
+    'payment_method4',
+    'card_id2',
+    CreateCardRequestBuilder::init()
+        ->type('credit')
+        ->build()
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionPaymentMethod(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Get Subscription Item
+
+Get Subscription Item
+
+```php
+function getSubscriptionItem(string $subscriptionId, string $itemId): GetSubscriptionItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `itemId` | `string` | Template, Required | Item id |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$itemId = 'item_id0';
+
+$result = $subscriptionsController->getSubscriptionItem(
+    $subscriptionId,
+    $itemId
+);
+```
+
+
 # Get Subscriptions
 
 Gets all subscriptions
@@ -1213,6 +480,46 @@ function getSubscriptions(
 
 ```php
 $result = $subscriptionsController->getSubscriptions();
+```
+
+
+# Cancel Subscription
+
+Cancels a subscription
+
+```php
+function cancelSubscription(
+    string $subscriptionId,
+    ?CreateCancelSubscriptionRequest $request = null,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `request` | [`?CreateCancelSubscriptionRequest`](../../doc/models/create-cancel-subscription-request.md) | Body, Optional | Request for cancelling a subscription |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = CreateCancelSubscriptionRequestBuilder::init(
+    true
+)->build();
+
+$result = $subscriptionsController->cancelSubscription(
+    $subscriptionId,
+    $request
+);
 ```
 
 
@@ -1336,6 +643,200 @@ $result = $subscriptionsController->getDiscountById(
 ```
 
 
+# Create Subscription
+
+Creates a new subscription
+
+```php
+function createSubscription(
+    CreateSubscriptionRequest $body,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreateSubscriptionRequest`](../../doc/models/create-subscription-request.md) | Body, Required | Request for creating a subscription |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$body = CreateSubscriptionRequestBuilder::init(
+    CreateCustomerRequestBuilder::init(
+        'Tony Stark',
+        'email6',
+        'document6',
+        'type0',
+        CreateAddressRequestBuilder::init(
+            'street6',
+            'number4',
+            'zip_code0',
+            'neighborhood2',
+            'city6',
+            'state2',
+            'country0',
+            'complement2',
+            'line_10',
+            'line_24'
+        )->build(),
+        [
+            'key0' => 'metadata3'
+        ],
+        CreatePhonesRequestBuilder::init()->build(),
+        'code8'
+    )->build(),
+    CreateCardRequestBuilder::init()
+        ->type('credit')
+        ->build(),
+    'code4',
+    'payment_method4',
+    'billing_type0',
+    'statement_descriptor6',
+    'description4',
+    'currency6',
+    'interval6',
+    170,
+    CreatePricingSchemeRequestBuilder::init(
+        'scheme_type8'
+    )->build(),
+    [
+        CreateSubscriptionItemRequestBuilder::init(
+            'description2',
+            CreatePricingSchemeRequestBuilder::init(
+                'scheme_type8'
+            )->build(),
+            'id8',
+            'plan_item_id8',
+            [
+                CreateDiscountRequestBuilder::init(
+                    90.66,
+                    'discount_type2',
+                    'item_id4'
+                )->build()
+            ],
+            'name8'
+        )->build()
+    ],
+    CreateShippingRequestBuilder::init(
+        52,
+        'description6',
+        'recipient_name2',
+        'recipient_phone6',
+        'address_id6',
+        CreateAddressRequestBuilder::init(
+            'street6',
+            'number4',
+            'zip_code0',
+            'neighborhood2',
+            'city6',
+            'state2',
+            'country0',
+            'complement2',
+            'line_10',
+            'line_24'
+        )->build(),
+        'type6'
+    )->build(),
+    [
+        CreateDiscountRequestBuilder::init(
+            90.66,
+            'discount_type2',
+            'item_id4'
+        )->build()
+    ],
+    [
+        'key0' => 'metadata7',
+        'key1' => 'metadata8'
+    ],
+    [
+        CreateIncrementRequestBuilder::init(
+            252.86,
+            'increment_type6',
+            'item_id6'
+        )->build()
+    ]
+)->build();
+
+$result = $subscriptionsController->createSubscription($body);
+```
+
+
+# Get Increment by Id
+
+```php
+function getIncrementById(string $subscriptionId, string $incrementId): GetIncrementResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription Id |
+| `incrementId` | `string` | Template, Required | The increment Id |
+
+## Response Type
+
+[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$incrementId = 'increment_id8';
+
+$result = $subscriptionsController->getIncrementById(
+    $subscriptionId,
+    $incrementId
+);
+```
+
+
+# Update Subscription Affiliation Id
+
+```php
+function updateSubscriptionAffiliationId(
+    string $subscriptionId,
+    UpdateSubscriptionAffiliationIdRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | - |
+| `request` | [`UpdateSubscriptionAffiliationIdRequest`](../../doc/models/update-subscription-affiliation-id-request.md) | Body, Required | Request for updating a subscription affiliation id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionAffiliationIdRequestBuilder::init(
+    'gateway_affiliation_id2'
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionAffiliationId(
+    $subscriptionId,
+    $request
+);
+```
+
+
 # Update Subscription Metadata
 
 Updates the metadata from a subscription
@@ -1378,6 +879,44 @@ $result = $subscriptionsController->updateSubscriptionMetadata(
 ```
 
 
+# Delete Increment
+
+Deletes a increment
+
+```php
+function deleteIncrement(
+    string $subscriptionId,
+    string $incrementId,
+    ?string $idempotencyKey = null
+): GetIncrementResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `incrementId` | `string` | Template, Required | Increment id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$incrementId = 'increment_id8';
+
+$result = $subscriptionsController->deleteIncrement(
+    $subscriptionId,
+    $incrementId
+);
+```
+
+
 # Get Subscription Cycles
 
 ```php
@@ -1409,6 +948,81 @@ $result = $subscriptionsController->getSubscriptionCycles(
     $subscriptionId,
     $page,
     $size
+);
+```
+
+
+# Get Discounts
+
+```php
+function getDiscounts(string $subscriptionId, int $page, int $size): ListDiscountsResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `page` | `int` | Query, Required | Page number |
+| `size` | `int` | Query, Required | Page size |
+
+## Response Type
+
+[`ListDiscountsResponse`](../../doc/models/list-discounts-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$page = 30;
+
+$size = 18;
+
+$result = $subscriptionsController->getDiscounts(
+    $subscriptionId,
+    $page,
+    $size
+);
+```
+
+
+# Update Subscription Billing Date
+
+Updates the billing date from a subscription
+
+```php
+function updateSubscriptionBillingDate(
+    string $subscriptionId,
+    UpdateSubscriptionBillingDateRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `request` | [`UpdateSubscriptionBillingDateRequest`](../../doc/models/update-subscription-billing-date-request.md) | Body, Required | Request for updating the subscription billing date |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionBillingDateRequestBuilder::init(
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionBillingDate(
+    $subscriptionId,
+    $request
 );
 ```
 
@@ -1478,6 +1092,86 @@ $result = $subscriptionsController->getIncrements($subscriptionId);
 ```
 
 
+# Update Subscription Due Days
+
+Updates the boleto due days from a subscription
+
+```php
+function updateSubscriptionDueDays(
+    string $subscriptionId,
+    UpdateSubscriptionDueDaysRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `request` | [`UpdateSubscriptionDueDaysRequest`](../../doc/models/update-subscription-due-days-request.md) | Body, Required | - |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionDueDaysRequestBuilder::init(
+    226
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionDueDays(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Update Subscription Start At
+
+Updates the start at date from a subscription
+
+```php
+function updateSubscriptionStartAt(
+    string $subscriptionId,
+    UpdateSubscriptionStartAtRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `request` | [`UpdateSubscriptionStartAtRequest`](../../doc/models/update-subscription-start-at-request.md) | Body, Required | Request for updating the subscription start date |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionStartAtRequestBuilder::init(
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionStartAt(
+    $subscriptionId,
+    $request
+);
+```
+
+
 # Update Subscription Item
 
 Updates a subscription item
@@ -1530,6 +1224,310 @@ $result = $subscriptionsController->updateSubscriptionItem(
     $subscriptionId,
     $itemId,
     $body
+);
+```
+
+
+# Create Subscription Item
+
+Creates a new Subscription item
+
+```php
+function createSubscriptionItem(
+    string $subscriptionId,
+    CreateSubscriptionItemRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `request` | [`CreateSubscriptionItemRequest`](../../doc/models/create-subscription-item-request.md) | Body, Required | Request for creating a subscription item |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = CreateSubscriptionItemRequestBuilder::init(
+    'description6',
+    CreatePricingSchemeRequestBuilder::init(
+        'scheme_type8'
+    )->build(),
+    'id6',
+    'plan_item_id6',
+    [
+        CreateDiscountRequestBuilder::init(
+            90.66,
+            'discount_type2',
+            'item_id4'
+        )->build()
+    ],
+    'name6'
+)->build();
+
+$result = $subscriptionsController->createSubscriptionItem(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Get Subscription
+
+Gets a subscription
+
+```php
+function getSubscription(string $subscriptionId): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$result = $subscriptionsController->getSubscription($subscriptionId);
+```
+
+
+# Get Usages
+
+Lists all usages from a subscription item
+
+```php
+function getUsages(
+    string $subscriptionId,
+    string $itemId,
+    ?int $page = null,
+    ?int $size = null,
+    ?string $code = null,
+    ?string $group = null,
+    ?\DateTime $usedSince = null,
+    ?\DateTime $usedUntil = null
+): ListUsagesResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `itemId` | `string` | Template, Required | The subscription item id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `code` | `?string` | Query, Optional | Identification code in the client system |
+| `group` | `?string` | Query, Optional | Identification group in the client system |
+| `usedSince` | `?DateTime` | Query, Optional | - |
+| `usedUntil` | `?DateTime` | Query, Optional | - |
+
+## Response Type
+
+[`ListUsagesResponse`](../../doc/models/list-usages-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$itemId = 'item_id0';
+
+$result = $subscriptionsController->getUsages(
+    $subscriptionId,
+    $itemId
+);
+```
+
+
+# Update Latest Period End At
+
+```php
+function updateLatestPeriodEndAt(
+    string $subscriptionId,
+    UpdateCurrentCycleEndDateRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | - |
+| `request` | [`UpdateCurrentCycleEndDateRequest`](../../doc/models/update-current-cycle-end-date-request.md) | Body, Required | Request for updating the end date of the current signature cycle |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateCurrentCycleEndDateRequestBuilder::init()->build();
+
+$result = $subscriptionsController->updateLatestPeriodEndAt(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Update Subscription Minium Price
+
+Atualização do valor mínimo da assinatura
+
+```php
+function updateSubscriptionMiniumPrice(
+    string $subscriptionId,
+    UpdateSubscriptionMinimumPriceRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `request` | [`UpdateSubscriptionMinimumPriceRequest`](../../doc/models/update-subscription-minimum-price-request.md) | Body, Required | Request da requisição com o valor mínimo que será configurado |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionMinimumPriceRequestBuilder::init()->build();
+
+$result = $subscriptionsController->updateSubscriptionMiniumPrice(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Get Subscription Cycle by Id
+
+```php
+function getSubscriptionCycleById(string $subscriptionId, string $cycleId): GetPeriodResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `cycleId` | `string` | Template, Required | - |
+
+## Response Type
+
+[`GetPeriodResponse`](../../doc/models/get-period-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$cycleId = 'cycleId0';
+
+$result = $subscriptionsController->getSubscriptionCycleById(
+    $subscriptionId,
+    $cycleId
+);
+```
+
+
+# Get Usage Report
+
+```php
+function getUsageReport(string $subscriptionId, string $periodId): GetUsageReportResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription Id |
+| `periodId` | `string` | Template, Required | The period Id |
+
+## Response Type
+
+[`GetUsageReportResponse`](../../doc/models/get-usage-report-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$periodId = 'period_id0';
+
+$result = $subscriptionsController->getUsageReport(
+    $subscriptionId,
+    $periodId
+);
+```
+
+
+# Update Split Subscription
+
+```php
+function updateSplitSubscription(string $id, UpdateSubscriptionSplitRequest $request): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `string` | Template, Required | Subscription's id |
+| `request` | [`UpdateSubscriptionSplitRequest`](../../doc/models/update-subscription-split-request.md) | Body, Required | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$id = 'id0';
+
+$request = UpdateSubscriptionSplitRequestBuilder::init(
+    false,
+    [
+        CreateSplitRequestBuilder::init(
+            'type2',
+            118,
+            'recipient_id2'
+        )->build()
+    ]
+)->build();
+
+$result = $subscriptionsController->updateSplitSubscription(
+    $id,
+    $request
 );
 ```
 

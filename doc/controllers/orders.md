@@ -10,174 +10,16 @@ $ordersController = $client->getOrdersController();
 
 ## Methods
 
-* [Delete All Order Items](../../doc/controllers/orders.md#delete-all-order-items)
-* [Get Order Item](../../doc/controllers/orders.md#get-order-item)
-* [Update Order Metadata](../../doc/controllers/orders.md#update-order-metadata)
-* [Delete Order Item](../../doc/controllers/orders.md#delete-order-item)
-* [Get Order](../../doc/controllers/orders.md#get-order)
 * [Get Orders](../../doc/controllers/orders.md#get-orders)
 * [Update Order Item](../../doc/controllers/orders.md#update-order-item)
+* [Delete All Order Items](../../doc/controllers/orders.md#delete-all-order-items)
+* [Delete Order Item](../../doc/controllers/orders.md#delete-order-item)
 * [Close Order](../../doc/controllers/orders.md#close-order)
 * [Create Order](../../doc/controllers/orders.md#create-order)
 * [Create Order Item](../../doc/controllers/orders.md#create-order-item)
-
-
-# Delete All Order Items
-
-```php
-function deleteAllOrderItems(string $orderId, ?string $idempotencyKey = null): GetOrderResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | Order Id |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetOrderResponse`](../../doc/models/get-order-response.md)
-
-## Example Usage
-
-```php
-$orderId = 'orderId2';
-
-$result = $ordersController->deleteAllOrderItems($orderId);
-```
-
-
-# Get Order Item
-
-```php
-function getOrderItem(string $orderId, string $itemId): GetOrderItemResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | Order Id |
-| `itemId` | `string` | Template, Required | Item Id |
-
-## Response Type
-
-[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
-
-## Example Usage
-
-```php
-$orderId = 'orderId2';
-
-$itemId = 'itemId8';
-
-$result = $ordersController->getOrderItem(
-    $orderId,
-    $itemId
-);
-```
-
-
-# Update Order Metadata
-
-Updates the metadata from an order
-
-```php
-function updateOrderMetadata(
-    string $orderId,
-    UpdateMetadataRequest $request,
-    ?string $idempotencyKey = null
-): GetOrderResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | The order id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the order metadata |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetOrderResponse`](../../doc/models/get-order-response.md)
-
-## Example Usage
-
-```php
-$orderId = 'order_id6';
-
-$request = UpdateMetadataRequestBuilder::init(
-    [
-        'key0' => 'metadata3'
-    ]
-)->build();
-
-$result = $ordersController->updateOrderMetadata(
-    $orderId,
-    $request
-);
-```
-
-
-# Delete Order Item
-
-```php
-function deleteOrderItem(string $orderId, string $itemId, ?string $idempotencyKey = null): GetOrderItemResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | Order Id |
-| `itemId` | `string` | Template, Required | Item Id |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
-
-## Example Usage
-
-```php
-$orderId = 'orderId2';
-
-$itemId = 'itemId8';
-
-$result = $ordersController->deleteOrderItem(
-    $orderId,
-    $itemId
-);
-```
-
-
-# Get Order
-
-Gets an order
-
-```php
-function getOrder(string $orderId): GetOrderResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | Order id |
-
-## Response Type
-
-[`GetOrderResponse`](../../doc/models/get-order-response.md)
-
-## Example Usage
-
-```php
-$orderId = 'order_id6';
-
-$result = $ordersController->getOrder($orderId);
-```
+* [Get Order Item](../../doc/controllers/orders.md#get-order-item)
+* [Update Order Metadata](../../doc/controllers/orders.md#update-order-metadata)
+* [Get Order](../../doc/controllers/orders.md#get-order)
 
 
 # Get Orders
@@ -265,6 +107,64 @@ $result = $ordersController->updateOrderItem(
 ```
 
 
+# Delete All Order Items
+
+```php
+function deleteAllOrderItems(string $orderId, ?string $idempotencyKey = null): GetOrderResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'orderId2';
+
+$result = $ordersController->deleteAllOrderItems($orderId);
+```
+
+
+# Delete Order Item
+
+```php
+function deleteOrderItem(string $orderId, string $itemId, ?string $idempotencyKey = null): GetOrderItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `itemId` | `string` | Template, Required | Item Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'orderId2';
+
+$itemId = 'itemId8';
+
+$result = $ordersController->deleteOrderItem(
+    $orderId,
+    $itemId
+);
+```
+
+
 # Close Order
 
 ```php
@@ -335,9 +235,7 @@ $body = CreateOrderRequestBuilder::init(
         )->build()
     ],
     CreateCustomerRequestBuilder::init(
-        '{
-    "name": "Tony Stark"
-}',
+        'Tony Stark',
         'email6',
         'document6',
         'type0',
@@ -410,5 +308,105 @@ $result = $ordersController->createOrderItem(
     $orderId,
     $request
 );
+```
+
+
+# Get Order Item
+
+```php
+function getOrderItem(string $orderId, string $itemId): GetOrderItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `itemId` | `string` | Template, Required | Item Id |
+
+## Response Type
+
+[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'orderId2';
+
+$itemId = 'itemId8';
+
+$result = $ordersController->getOrderItem(
+    $orderId,
+    $itemId
+);
+```
+
+
+# Update Order Metadata
+
+Updates the metadata from an order
+
+```php
+function updateOrderMetadata(
+    string $orderId,
+    UpdateMetadataRequest $request,
+    ?string $idempotencyKey = null
+): GetOrderResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | The order id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the order metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'order_id6';
+
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $ordersController->updateOrderMetadata(
+    $orderId,
+    $request
+);
+```
+
+
+# Get Order
+
+Gets an order
+
+```php
+function getOrder(string $orderId): GetOrderResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order id |
+
+## Response Type
+
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'order_id6';
+
+$result = $ordersController->getOrder($orderId);
 ```
 

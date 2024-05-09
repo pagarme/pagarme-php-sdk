@@ -12,6 +12,7 @@ namespace PagarmeApiSDKLib\Authentication;
 
 use Core\Authentication\CoreAuth;
 use Core\Request\Parameters\HeaderParam;
+use Core\Utils\CoreHelper;
 use PagarmeApiSDKLib\BasicAuthCredentials;
 
 /**
@@ -31,10 +32,10 @@ class BasicAuthManager extends CoreAuth implements BasicAuthCredentials
      */
     public function __construct(string $basicAuthUserName, string $basicAuthPassword)
     {
-        parent::__construct(
-            HeaderParam::init('Authorization', 'Basic ' . base64_encode("$basicAuthUserName:$basicAuthPassword"))
-                ->required()
-        );
+        parent::__construct(HeaderParam::init(
+            'Authorization',
+            CoreHelper::getBasicAuthEncodedString($basicAuthUserName, $basicAuthPassword)
+        )->requiredNonEmpty());
         $this->basicAuthUserName = $basicAuthUserName;
         $this->basicAuthPassword = $basicAuthPassword;
     }

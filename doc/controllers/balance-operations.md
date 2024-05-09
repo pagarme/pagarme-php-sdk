@@ -10,33 +10,8 @@ $balanceOperationsController = $client->getBalanceOperationsController();
 
 ## Methods
 
-* [Get Balance Operation by Id](../../doc/controllers/balance-operations.md#get-balance-operation-by-id)
 * [Get Balance Operations](../../doc/controllers/balance-operations.md#get-balance-operations)
-
-
-# Get Balance Operation by Id
-
-```php
-function getBalanceOperationById(int $id): GetBalanceOperationResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `int` | Template, Required | - |
-
-## Response Type
-
-[`GetBalanceOperationResponse`](../../doc/models/get-balance-operation-response.md)
-
-## Example Usage
-
-```php
-$id = 112;
-
-$result = $balanceOperationsController->getBalanceOperationById($id);
-```
+* [Get Balance Operation by Id](../../doc/controllers/balance-operations.md#get-balance-operation-by-id)
 
 
 # Get Balance Operations
@@ -67,5 +42,30 @@ function getBalanceOperations(
 
 ```php
 $result = $balanceOperationsController->getBalanceOperations();
+```
+
+
+# Get Balance Operation by Id
+
+```php
+function getBalanceOperationById(int $id): GetBalanceOperationResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `int` | Template, Required | - |
+
+## Response Type
+
+[`GetBalanceOperationResponse`](../../doc/models/get-balance-operation-response.md)
+
+## Example Usage
+
+```php
+$id = 112;
+
+$result = $balanceOperationsController->getBalanceOperationById($id);
 ```
 
