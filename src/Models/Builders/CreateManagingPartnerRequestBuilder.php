@@ -38,7 +38,6 @@ class CreateManagingPartnerRequestBuilder
         string $name,
         string $email,
         string $document,
-        string $motherName,
         string $birthdate,
         int $monthlyIncome,
         string $professionalOccupation,
@@ -50,7 +49,6 @@ class CreateManagingPartnerRequestBuilder
             $name,
             $email,
             $document,
-            $motherName,
             $birthdate,
             $monthlyIncome,
             $professionalOccupation,
@@ -58,6 +56,24 @@ class CreateManagingPartnerRequestBuilder
             $address,
             $phoneNumbers
         ));
+    }
+
+    /**
+     * Sets mother name field.
+     */
+    public function motherName(?string $value): self
+    {
+        $this->instance->setMotherName($value);
+        return $this;
+    }
+
+    /**
+     * Unsets mother name field.
+     */
+    public function unsetMotherName(): self
+    {
+        $this->instance->unsetMotherName();
+        return $this;
     }
 
     /**
