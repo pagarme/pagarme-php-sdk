@@ -14,7 +14,7 @@ Managing Partner Request
 | `name` | `string` | Required | - | getName(): string | setName(string name): void |
 | `email` | `string` | Required | - | getEmail(): string | setEmail(string email): void |
 | `document` | `string` | Required | - | getDocument(): string | setDocument(string document): void |
-| `motherName` | `string` | Required | - | getMotherName(): string | setMotherName(string motherName): void |
+| `motherName` | `?string` | Optional | - | getMotherName(): ?string | setMotherName(?string motherName): void |
 | `birthdate` | `string` | Required | - | getBirthdate(): string | setBirthdate(string birthdate): void |
 | `monthlyIncome` | `int` | Required | - | getMonthlyIncome(): int | setMonthlyIncome(int monthlyIncome): void |
 | `professionalOccupation` | `string` | Required | - | getProfessionalOccupation(): string | setProfessionalOccupation(string professionalOccupation): void |
@@ -29,7 +29,6 @@ Managing Partner Request
   "name": "name4",
   "email": "email2",
   "document": "document2",
-  "mother_name": "mother_name0",
   "birthdate": "birthdate8",
   "monthly_income": 70,
   "professional_occupation": "professional_occupation8",
@@ -50,7 +49,8 @@ Managing Partner Request
       "number": "number2",
       "type": "type0"
     }
-  ]
+  ],
+  "mother_name": "mother_name0"
 }
 ```
 

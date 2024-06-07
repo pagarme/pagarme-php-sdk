@@ -33,9 +33,9 @@ class CreateManagingPartnerRequest implements \JsonSerializable
     private $document;
 
     /**
-     * @var string
+     * @var array
      */
-    private $motherName;
+    private $motherName = [];
 
     /**
      * @var string
@@ -71,7 +71,6 @@ class CreateManagingPartnerRequest implements \JsonSerializable
      * @param string $name
      * @param string $email
      * @param string $document
-     * @param string $motherName
      * @param string $birthdate
      * @param int $monthlyIncome
      * @param string $professionalOccupation
@@ -83,7 +82,6 @@ class CreateManagingPartnerRequest implements \JsonSerializable
         string $name,
         string $email,
         string $document,
-        string $motherName,
         string $birthdate,
         int $monthlyIncome,
         string $professionalOccupation,
@@ -94,7 +92,6 @@ class CreateManagingPartnerRequest implements \JsonSerializable
         $this->name = $name;
         $this->email = $email;
         $this->document = $document;
-        $this->motherName = $motherName;
         $this->birthdate = $birthdate;
         $this->monthlyIncome = $monthlyIncome;
         $this->professionalOccupation = $professionalOccupation;
@@ -163,20 +160,30 @@ class CreateManagingPartnerRequest implements \JsonSerializable
     /**
      * Returns Mother Name.
      */
-    public function getMotherName(): string
+    public function getMotherName(): ?string
     {
-        return $this->motherName;
+        if (count($this->motherName) == 0) {
+            return null;
+        }
+        return $this->motherName['value'];
     }
 
     /**
      * Sets Mother Name.
      *
-     * @required
      * @maps mother_name
      */
-    public function setMotherName(string $motherName): void
+    public function setMotherName(?string $motherName): void
     {
-        $this->motherName = $motherName;
+        $this->motherName['value'] = $motherName;
+    }
+
+    /**
+     * Unsets Mother Name.
+     */
+    public function unsetMotherName(): void
+    {
+        $this->motherName = [];
     }
 
     /**
@@ -312,7 +319,9 @@ class CreateManagingPartnerRequest implements \JsonSerializable
         $json['name']                               = $this->name;
         $json['email']                              = $this->email;
         $json['document']                           = $this->document;
-        $json['mother_name']                        = $this->motherName;
+        if (!empty($this->motherName)) {
+            $json['mother_name']                    = $this->motherName['value'];
+        }
         $json['birthdate']                          = $this->birthdate;
         $json['monthly_income']                     = $this->monthlyIncome;
         $json['professional_occupation']            = $this->professionalOccupation;
