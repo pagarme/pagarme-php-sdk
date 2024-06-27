@@ -10,8 +10,43 @@ $tokensController = $client->getTokensController();
 
 ## Methods
 
-* [Create Token](../../doc/controllers/tokens.md#create-token)
 * [Get Token](../../doc/controllers/tokens.md#get-token)
+* [Create Token](../../doc/controllers/tokens.md#create-token)
+
+
+# Get Token
+
+Gets a token from its id
+
+:information_source: **Note** This endpoint does not require authentication.
+
+```php
+function getToken(string $id, string $publicKey): GetTokenResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `string` | Template, Required | Token id |
+| `publicKey` | `string` | Template, Required | Public key |
+
+## Response Type
+
+[`GetTokenResponse`](../../doc/models/get-token-response.md)
+
+## Example Usage
+
+```php
+$id = 'id0';
+
+$publicKey = 'public_key6';
+
+$result = $tokensController->getToken(
+    $id,
+    $publicKey
+);
+```
 
 
 # Create Token
@@ -59,41 +94,6 @@ $request = CreateTokenRequestBuilder::init(
 $result = $tokensController->createToken(
     $publicKey,
     $request
-);
-```
-
-
-# Get Token
-
-Gets a token from its id
-
-:information_source: **Note** This endpoint does not require authentication.
-
-```php
-function getToken(string $id, string $publicKey): GetTokenResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | Token id |
-| `publicKey` | `string` | Template, Required | Public key |
-
-## Response Type
-
-[`GetTokenResponse`](../../doc/models/get-token-response.md)
-
-## Example Usage
-
-```php
-$id = 'id0';
-
-$publicKey = 'public_key6';
-
-$result = $tokensController->getToken(
-    $id,
-    $publicKey
 );
 ```
 
