@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PagarmeApiSDKLib\\": "src/"
+            "PagarmeHubApiSDKLib\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PagarmeApiSDKLib\\Tests\\": "tests/"
+            "PagarmeHubApiSDKLib\\Tests\\": "tests/"
         }
     },
     "scripts": {
