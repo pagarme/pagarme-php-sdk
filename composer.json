@@ -1,13 +1,13 @@
 {
-    "name": "pagarme/pagarme-php-sdk",
-    "description": "Pagarme API",
+    "name": "doocacommerce/pagarmehub-php-sdk",
+    "description": "Fork do Projeto para utilizarmos o Hub da Pagar.me",
     "type": "library",
     "keywords": [
         "PagarmeApiSDK",
         "API",
         "SDK"
     ],
-    "homepage": "https://github.com/pagarme/",
+    "homepage": "https://github.com/DoocaCommerce/",
     "license": [
         "MIT"
     ],
