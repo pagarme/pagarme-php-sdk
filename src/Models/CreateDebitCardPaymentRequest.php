@@ -53,6 +53,16 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
     private $token;
 
     /**
+     * @var string|null
+     */
+    private $initiatedType;
+
+    /**
+     * @var string|null
+     */
+    private $recurrenceModel;
+
+    /**
      * Returns Statement Descriptor.
      * The text that will be shown on the debit card's statement
      */
@@ -193,6 +203,42 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Initiated Type.
+     */
+    public function getInitiatedType(): ?string
+    {
+        return $this->initiatedType;
+    }
+
+    /**
+     * Sets Initiated Type.
+     *
+     * @maps initiated_type
+     */
+    public function setInitiatedType(?string $initiatedType): void
+    {
+        $this->initiatedType = $initiatedType;
+    }
+
+    /**
+     * Returns Recurrence Model.
+     */
+    public function getRecurrenceModel(): ?string
+    {
+        return $this->recurrenceModel;
+    }
+
+    /**
+     * Sets Recurrence Model.
+     *
+     * @maps recurrence_model
+     */
+    public function setRecurrenceModel(?string $recurrenceModel): void
+    {
+        $this->recurrenceModel = $recurrenceModel;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -224,6 +270,12 @@ class CreateDebitCardPaymentRequest implements \JsonSerializable
         }
         if (isset($this->token)) {
             $json['token']                = $this->token;
+        }
+        if (isset($this->initiatedType)) {
+            $json['initiated_type']       = $this->initiatedType;
+        }
+        if (isset($this->recurrenceModel)) {
+            $json['recurrence_model']     = $this->recurrenceModel;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

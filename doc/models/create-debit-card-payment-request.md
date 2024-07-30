@@ -18,6 +18,8 @@ The settings for creating a debit card payment
 | `recurrence` | `?bool` | Optional | Indicates a recurrence | getRecurrence(): ?bool | setRecurrence(?bool recurrence): void |
 | `authentication` | [`?CreatePaymentAuthenticationRequest`](../../doc/models/create-payment-authentication-request.md) | Optional | The payment authentication request | getAuthentication(): ?CreatePaymentAuthenticationRequest | setAuthentication(?CreatePaymentAuthenticationRequest authentication): void |
 | `token` | [`?CreateCardPaymentContactlessRequest`](../../doc/models/create-card-payment-contactless-request.md) | Optional | The Debit card payment token request | getToken(): ?CreateCardPaymentContactlessRequest | setToken(?CreateCardPaymentContactlessRequest token): void |
+| `initiatedType` | `?string` | Optional | - | getInitiatedType(): ?string | setInitiatedType(?string initiatedType): void |
+| `recurrenceModel` | `?string` | Optional | - | getRecurrenceModel(): ?string | setRecurrenceModel(?string recurrenceModel): void |
 
 ## Example (as JSON)
 

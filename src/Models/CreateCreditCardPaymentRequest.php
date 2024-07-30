@@ -98,6 +98,16 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
     private $payload;
 
     /**
+     * @var string|null
+     */
+    private $initiatedType;
+
+    /**
+     * @var string|null
+     */
+    private $recurrenceModel;
+
+    /**
      * Returns Installments.
      * Number of installments
      */
@@ -414,6 +424,42 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Initiated Type.
+     */
+    public function getInitiatedType(): ?string
+    {
+        return $this->initiatedType;
+    }
+
+    /**
+     * Sets Initiated Type.
+     *
+     * @maps initiated_type
+     */
+    public function setInitiatedType(?string $initiatedType): void
+    {
+        $this->initiatedType = $initiatedType;
+    }
+
+    /**
+     * Returns Recurrence Model.
+     */
+    public function getRecurrenceModel(): ?string
+    {
+        return $this->recurrenceModel;
+    }
+
+    /**
+     * Sets Recurrence Model.
+     *
+     * @maps recurrence_model
+     */
+    public function setRecurrenceModel(?string $recurrenceModel): void
+    {
+        $this->recurrenceModel = $recurrenceModel;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -472,6 +518,12 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
         }
         if (isset($this->payload)) {
             $json['payload']                = $this->payload;
+        }
+        if (isset($this->initiatedType)) {
+            $json['initiated_type']         = $this->initiatedType;
+        }
+        if (isset($this->recurrenceModel)) {
+            $json['recurrence_model']       = $this->recurrenceModel;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

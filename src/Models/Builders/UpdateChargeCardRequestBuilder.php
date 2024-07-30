@@ -44,6 +44,24 @@ class UpdateChargeCardRequestBuilder
     }
 
     /**
+     * Sets initiated type field.
+     */
+    public function initiatedType(?string $value): self
+    {
+        $this->instance->setInitiatedType($value);
+        return $this;
+    }
+
+    /**
+     * Sets recurrence model field.
+     */
+    public function recurrenceModel(?string $value): self
+    {
+        $this->instance->setRecurrenceModel($value);
+        return $this;
+    }
+
+    /**
      * Initializes a new update charge card request object.
      */
     public function build(): UpdateChargeCardRequest
