@@ -15,6 +15,8 @@ Request for updating card data
 | `cardId` | `string` | Required | Card id | getCardId(): string | setCardId(string cardId): void |
 | `card` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Required | Card data | getCard(): CreateCardRequest | setCard(CreateCardRequest card): void |
 | `recurrence` | `bool` | Required | Indicates a recurrence | getRecurrence(): bool | setRecurrence(bool recurrence): void |
+| `initiatedType` | `?string` | Optional | - | getInitiatedType(): ?string | setInitiatedType(?string initiatedType): void |
+| `recurrenceModel` | `?string` | Optional | - | getRecurrenceModel(): ?string | setRecurrenceModel(?string recurrenceModel): void |
 
 ## Example (as JSON)
 
@@ -30,7 +32,9 @@ Request for updating card data
     "exp_year": 68,
     "cvv": "cvv4"
   },
-  "recurrence": false
+  "recurrence": false,
+  "initiated_type": "initiated_type8",
+  "recurrence_model": "recurrence_model6"
 }
 ```
 

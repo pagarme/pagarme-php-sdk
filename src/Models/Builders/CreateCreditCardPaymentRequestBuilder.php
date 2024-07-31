@@ -187,6 +187,24 @@ class CreateCreditCardPaymentRequestBuilder
     }
 
     /**
+     * Sets initiated type field.
+     */
+    public function initiatedType(?string $value): self
+    {
+        $this->instance->setInitiatedType($value);
+        return $this;
+    }
+
+    /**
+     * Sets recurrence model field.
+     */
+    public function recurrenceModel(?string $value): self
+    {
+        $this->instance->setRecurrenceModel($value);
+        return $this;
+    }
+
+    /**
      * Initializes a new create credit card payment request object.
      */
     public function build(): CreateCreditCardPaymentRequest

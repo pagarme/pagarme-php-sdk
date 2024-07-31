@@ -38,6 +38,16 @@ class UpdateChargeCardRequest implements \JsonSerializable
     private $recurrence;
 
     /**
+     * @var string|null
+     */
+    private $initiatedType;
+
+    /**
+     * @var string|null
+     */
+    private $recurrenceModel;
+
+    /**
      * @param bool $updateSubscription
      * @param string $cardId
      * @param CreateCardRequest $card
@@ -136,6 +146,42 @@ class UpdateChargeCardRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Initiated Type.
+     */
+    public function getInitiatedType(): ?string
+    {
+        return $this->initiatedType;
+    }
+
+    /**
+     * Sets Initiated Type.
+     *
+     * @maps initiated_type
+     */
+    public function setInitiatedType(?string $initiatedType): void
+    {
+        $this->initiatedType = $initiatedType;
+    }
+
+    /**
+     * Returns Recurrence Model.
+     */
+    public function getRecurrenceModel(): ?string
+    {
+        return $this->recurrenceModel;
+    }
+
+    /**
+     * Sets Recurrence Model.
+     *
+     * @maps recurrence_model
+     */
+    public function setRecurrenceModel(?string $recurrenceModel): void
+    {
+        $this->recurrenceModel = $recurrenceModel;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -147,10 +193,16 @@ class UpdateChargeCardRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['update_subscription'] = $this->updateSubscription;
-        $json['card_id']             = $this->cardId;
-        $json['card']                = $this->card;
-        $json['recurrence']          = $this->recurrence;
+        $json['update_subscription']  = $this->updateSubscription;
+        $json['card_id']              = $this->cardId;
+        $json['card']                 = $this->card;
+        $json['recurrence']           = $this->recurrence;
+        if (isset($this->initiatedType)) {
+            $json['initiated_type']   = $this->initiatedType;
+        }
+        if (isset($this->recurrenceModel)) {
+            $json['recurrence_model'] = $this->recurrenceModel;
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }
