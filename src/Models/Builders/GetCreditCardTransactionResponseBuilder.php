@@ -603,6 +603,24 @@ class GetCreditCardTransactionResponseBuilder
     }
 
     /**
+     * Sets brand id field.
+     */
+    public function brandId(?string $value): self
+    {
+        $this->instance->setBrandId($value);
+        return $this;
+    }
+
+    /**
+     * Unsets brand id field.
+     */
+    public function unsetBrandId(): self
+    {
+        $this->instance->unsetBrandId();
+        return $this;
+    }
+
+    /**
      * Initializes a new get credit card transaction response object.
      */
     public function build(): GetCreditCardTransactionResponse

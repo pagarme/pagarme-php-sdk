@@ -31,6 +31,7 @@ Response object for getting a debit card transaction
 | `threedAuthenticationUrl` | `?string` | Optional | 3D-S Authentication Url | getThreedAuthenticationUrl(): ?string | setThreedAuthenticationUrl(?string threedAuthenticationUrl): void |
 | `fundingSource` | `?string` | Optional | Identify when a card is prepaid, credit or debit. | getFundingSource(): ?string | setFundingSource(?string fundingSource): void |
 | `retryInfo` | [`?GetRetryTransactionInformationResponse`](../../doc/models/get-retry-transaction-information-response.md) | Optional | Retry transaction information | getRetryInfo(): ?GetRetryTransactionInformationResponse | setRetryInfo(?GetRetryTransactionInformationResponse retryInfo): void |
+| `brandId` | `?string` | Optional | - | getBrandId(): ?string | setBrandId(?string brandId): void |
 
 ## Example (as JSON)
 

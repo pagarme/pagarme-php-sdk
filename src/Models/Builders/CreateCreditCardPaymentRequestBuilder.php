@@ -16,6 +16,7 @@ use PagarmeApiSDKLib\Models\CreateCardPaymentContactlessRequest;
 use PagarmeApiSDKLib\Models\CreateCardRequest;
 use PagarmeApiSDKLib\Models\CreateCreditCardPaymentRequest;
 use PagarmeApiSDKLib\Models\CreatePaymentAuthenticationRequest;
+use PagarmeApiSDKLib\Models\CreatePaymentOriginRequest;
 
 /**
  * Builder for model CreateCreditCardPaymentRequest
@@ -201,6 +202,15 @@ class CreateCreditCardPaymentRequestBuilder
     public function recurrenceModel(?string $value): self
     {
         $this->instance->setRecurrenceModel($value);
+        return $this;
+    }
+
+    /**
+     * Sets payment origin field.
+     */
+    public function paymentOrigin(?CreatePaymentOriginRequest $value): self
+    {
+        $this->instance->setPaymentOrigin($value);
         return $this;
     }
 

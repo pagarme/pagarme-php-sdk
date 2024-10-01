@@ -28,7 +28,7 @@ class ErrorException extends ApiException
     /**
      * @var array|null
      */
-    private $request;
+    private $requestProperty;
 
     /**
      * Returns Message Property.
@@ -67,20 +67,20 @@ class ErrorException extends ApiException
     }
 
     /**
-     * Returns Request.
+     * Returns Request Property.
      */
-    public function getRequest(): ?array
+    public function getRequestProperty(): ?array
     {
-        return $this->request;
+        return $this->requestProperty;
     }
 
     /**
-     * Sets Request.
+     * Sets Request Property.
      *
      * @maps request
      */
-    public function setRequest(?array $request): void
+    public function setRequestProperty(?array $requestProperty): void
     {
-        $this->request = $request;
+        $this->requestProperty = $requestProperty;
     }
 }

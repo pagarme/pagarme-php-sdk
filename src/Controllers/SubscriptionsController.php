@@ -52,6 +52,28 @@ use PagarmeApiSDKLib\Utils\DateTimeHelper;
 class SubscriptionsController extends BaseController
 {
     /**
+     * @param string $subscriptionId
+     * @param string|null $idempotencyKey
+     *
+     * @return GetPeriodResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function renewSubscription(string $subscriptionId, ?string $idempotencyKey = null): GetPeriodResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions/{subscription_id}/cycles')
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetPeriodResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
      * Updates the credit card from a subscription
      *
      * @param string $subscriptionId Subscription id
@@ -76,6 +98,41 @@ class SubscriptionsController extends BaseController
             );
 
         $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Deletes a usage
+     *
+     * @param string $subscriptionId The subscription id
+     * @param string $itemId The subscription item id
+     * @param string $usageId The usage id
+     * @param string|null $idempotencyKey
+     *
+     * @return GetUsageResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function deleteUsage(
+        string $subscriptionId,
+        string $itemId,
+        string $usageId,
+        ?string $idempotencyKey = null
+    ): GetUsageResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::DELETE,
+            '/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}'
+        )
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                TemplateParam::init('item_id', $itemId),
+                TemplateParam::init('usage_id', $usageId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetUsageResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -110,6 +167,570 @@ class SubscriptionsController extends BaseController
     }
 
     /**
+     * Create Usage
+     *
+     * @param string $subscriptionId Subscription id
+     * @param string $itemId Item id
+     * @param string|null $idempotencyKey
+     *
+     * @return GetUsageResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createAnUsage(
+        string $subscriptionId,
+        string $itemId,
+        ?string $idempotencyKey = null
+    ): GetUsageResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::POST,
+            '/subscriptions/{subscription_id}/items/{item_id}/usages'
+        )
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                TemplateParam::init('item_id', $itemId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetUsageResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $subscriptionId Subscription Id
+     * @param UpdateCurrentCycleStatusRequest $request Request for updating the end date of the
+     *        subscription current status
+     * @param string|null $idempotencyKey
+     *
+     * @return void Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateCurrentCycleStatus(
+        string $subscriptionId,
+        UpdateCurrentCycleStatusRequest $request,
+        ?string $idempotencyKey = null
+    ): void {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/subscriptions/{subscription_id}/cycle-status')
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $this->execute($_reqBuilder);
+    }
+
+    /**
+     * Deletes a discount
+     *
+     * @param string $subscriptionId Subscription id
+     * @param string $discountId Discount Id
+     * @param string|null $idempotencyKey
+     *
+     * @return GetDiscountResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function deleteDiscount(
+        string $subscriptionId,
+        string $discountId,
+        ?string $idempotencyKey = null
+    ): GetDiscountResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::DELETE,
+            '/subscriptions/{subscription_id}/discounts/{discount_id}'
+        )
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                TemplateParam::init('discount_id', $discountId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetDiscountResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Get Subscription Items
+     *
+     * @param string $subscriptionId The subscription id
+     * @param int|null $page Page number
+     * @param int|null $size Page size
+     * @param string|null $name The item name
+     * @param string|null $code Identification code in the client system
+     * @param string|null $status The item statis
+     * @param string|null $description The item description
+     * @param string|null $createdSince Filter for item's creation date start range
+     * @param string|null $createdUntil Filter for item's creation date end range
+     *
+     * @return ListSubscriptionItemsResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getSubscriptionItems(
+        string $subscriptionId,
+        ?int $page = null,
+        ?int $size = null,
+        ?string $name = null,
+        ?string $code = null,
+        ?string $status = null,
+        ?string $description = null,
+        ?string $createdSince = null,
+        ?string $createdUntil = null
+    ): ListSubscriptionItemsResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}/items')
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                QueryParam::init('page', $page),
+                QueryParam::init('size', $size),
+                QueryParam::init('name', $name),
+                QueryParam::init('code', $code),
+                QueryParam::init('status', $status),
+                QueryParam::init('description', $description),
+                QueryParam::init('created_since', $createdSince),
+                QueryParam::init('created_until', $createdUntil)
+            );
+
+        $_resHandler = $this->responseHandler()->type(ListSubscriptionItemsResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Updates the payment method from a subscription
+     *
+     * @param string $subscriptionId Subscription id
+     * @param UpdateSubscriptionPaymentMethodRequest $request Request for updating the paymentmethod
+     *        from a subscription
+     * @param string|null $idempotencyKey
+     *
+     * @return GetSubscriptionResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateSubscriptionPaymentMethod(
+        string $subscriptionId,
+        UpdateSubscriptionPaymentMethodRequest $request,
+        ?string $idempotencyKey = null
+    ): GetSubscriptionResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::PATCH,
+            '/subscriptions/{subscription_id}/payment-method'
+        )
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Get Subscription Item
+     *
+     * @param string $subscriptionId Subscription Id
+     * @param string $itemId Item id
+     *
+     * @return GetSubscriptionItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getSubscriptionItem(string $subscriptionId, string $itemId): GetSubscriptionItemResponse
+    {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::GET,
+            '/subscriptions/{subscription_id}/items/{item_id}'
+        )
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                TemplateParam::init('item_id', $itemId)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetSubscriptionItemResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Gets all subscriptions
+     *
+     * @param int|null $page Page number
+     * @param int|null $size Page size
+     * @param string|null $code Filter for subscription's code
+     * @param string|null $billingType Filter for subscription's billing type
+     * @param string|null $customerId Filter for subscription's customer id
+     * @param string|null $planId Filter for subscription's plan id
+     * @param string|null $cardId Filter for subscription's card id
+     * @param string|null $status Filter for subscription's status
+     * @param \DateTime|null $nextBillingSince Filter for subscription's next billing date start
+     *        range
+     * @param \DateTime|null $nextBillingUntil Filter for subscription's next billing date end range
+     * @param \DateTime|null $createdSince Filter for subscription's creation date start range
+     * @param \DateTime|null $createdUntil Filter for subscriptions creation date end range
+     *
+     * @return ListSubscriptionsResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getSubscriptions(
+        ?int $page = null,
+        ?int $size = null,
+        ?string $code = null,
+        ?string $billingType = null,
+        ?string $customerId = null,
+        ?string $planId = null,
+        ?string $cardId = null,
+        ?string $status = null,
+        ?\DateTime $nextBillingSince = null,
+        ?\DateTime $nextBillingUntil = null,
+        ?\DateTime $createdSince = null,
+        ?\DateTime $createdUntil = null
+    ): ListSubscriptionsResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions')
+            ->auth('httpBasic')
+            ->parameters(
+                QueryParam::init('page', $page),
+                QueryParam::init('size', $size),
+                QueryParam::init('code', $code),
+                QueryParam::init('billing_type', $billingType),
+                QueryParam::init('customer_id', $customerId),
+                QueryParam::init('plan_id', $planId),
+                QueryParam::init('card_id', $cardId),
+                QueryParam::init('status', $status),
+                QueryParam::init('next_billing_since', $nextBillingSince)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('next_billing_until', $nextBillingUntil)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('created_since', $createdSince)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('created_until', $createdUntil)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime'])
+            );
+
+        $_resHandler = $this->responseHandler()->type(ListSubscriptionsResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Cancels a subscription
+     *
+     * @param string $subscriptionId Subscription id
+     * @param CreateCancelSubscriptionRequest|null $request Request for cancelling a subscription
+     * @param string|null $idempotencyKey
+     *
+     * @return GetSubscriptionResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function cancelSubscription(
+        string $subscriptionId,
+        ?CreateCancelSubscriptionRequest $request = null,
+        ?string $idempotencyKey = null
+    ): GetSubscriptionResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/subscriptions/{subscription_id}')
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Creates a increment
+     *
+     * @param string $subscriptionId Subscription id
+     * @param CreateIncrementRequest $request Request for creating a increment
+     * @param string|null $idempotencyKey
+     *
+     * @return GetIncrementResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createIncrement(
+        string $subscriptionId,
+        CreateIncrementRequest $request,
+        ?string $idempotencyKey = null
+    ): GetIncrementResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions/{subscription_id}/increments')
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetIncrementResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Creates a usage
+     *
+     * @param string $subscriptionId Subscription Id
+     * @param string $itemId Item id
+     * @param CreateUsageRequest $body Request for creating a usage
+     * @param string|null $idempotencyKey
+     *
+     * @return GetUsageResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createUsage(
+        string $subscriptionId,
+        string $itemId,
+        CreateUsageRequest $body,
+        ?string $idempotencyKey = null
+    ): GetUsageResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::POST,
+            '/subscriptions/{subscription_id}/items/{item_id}/usages'
+        )
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                TemplateParam::init('item_id', $itemId),
+                BodyParam::init($body),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetUsageResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $subscriptionId The subscription id
+     * @param string $discountId
+     *
+     * @return GetDiscountResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getDiscountById(string $subscriptionId, string $discountId): GetDiscountResponse
+    {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::GET,
+            '/subscriptions/{subscription_id}/discounts/{discountId}'
+        )
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                TemplateParam::init('discountId', $discountId)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetDiscountResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Creates a new subscription
+     *
+     * @param CreateSubscriptionRequest $body Request for creating a subscription
+     * @param string|null $idempotencyKey
+     *
+     * @return GetSubscriptionResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createSubscription(
+        CreateSubscriptionRequest $body,
+        ?string $idempotencyKey = null
+    ): GetSubscriptionResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions')
+            ->auth('httpBasic')
+            ->parameters(BodyParam::init($body), HeaderParam::init('idempotency-key', $idempotencyKey));
+
+        $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $subscriptionId The subscription Id
+     * @param string $incrementId The increment Id
+     *
+     * @return GetIncrementResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getIncrementById(string $subscriptionId, string $incrementId): GetIncrementResponse
+    {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::GET,
+            '/subscriptions/{subscription_id}/increments/{increment_id}'
+        )
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                TemplateParam::init('increment_id', $incrementId)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetIncrementResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $subscriptionId
+     * @param UpdateSubscriptionAffiliationIdRequest $request Request for updating a subscription
+     *        affiliation id
+     * @param string|null $idempotencyKey
+     *
+     * @return GetSubscriptionResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateSubscriptionAffiliationId(
+        string $subscriptionId,
+        UpdateSubscriptionAffiliationIdRequest $request,
+        ?string $idempotencyKey = null
+    ): GetSubscriptionResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::PATCH,
+            '/subscriptions/{subscription_id}/gateway-affiliation-id'
+        )
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Updates the metadata from a subscription
+     *
+     * @param string $subscriptionId The subscription id
+     * @param UpdateMetadataRequest $request Request for updating the subscrption metadata
+     * @param string|null $idempotencyKey
+     *
+     * @return GetSubscriptionResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateSubscriptionMetadata(
+        string $subscriptionId,
+        UpdateMetadataRequest $request,
+        ?string $idempotencyKey = null
+    ): GetSubscriptionResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Subscriptions/{subscription_id}/metadata')
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Deletes a increment
+     *
+     * @param string $subscriptionId Subscription id
+     * @param string $incrementId Increment id
+     * @param string|null $idempotencyKey
+     *
+     * @return GetIncrementResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function deleteIncrement(
+        string $subscriptionId,
+        string $incrementId,
+        ?string $idempotencyKey = null
+    ): GetIncrementResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::DELETE,
+            '/subscriptions/{subscription_id}/increments/{increment_id}'
+        )
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                TemplateParam::init('increment_id', $incrementId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetIncrementResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $subscriptionId Subscription Id
+     * @param string $page Page number
+     * @param string $size Page size
+     *
+     * @return ListCyclesResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getSubscriptionCycles(string $subscriptionId, string $page, string $size): ListCyclesResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}/cycles')
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                QueryParam::init('page', $page),
+                QueryParam::init('size', $size)
+            );
+
+        $_resHandler = $this->responseHandler()->type(ListCyclesResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $subscriptionId The subscription id
+     * @param int $page Page number
+     * @param int $size Page size
+     *
+     * @return ListDiscountsResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getDiscounts(string $subscriptionId, int $page, int $size): ListDiscountsResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}/discounts/')
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                QueryParam::init('page', $page),
+                QueryParam::init('size', $size)
+            );
+
+        $_resHandler = $this->responseHandler()->type(ListDiscountsResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
      * Updates the billing date from a subscription
      *
      * @param string $subscriptionId The subscription id
@@ -127,6 +748,94 @@ class SubscriptionsController extends BaseController
         ?string $idempotencyKey = null
     ): GetSubscriptionResponse {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/subscriptions/{subscription_id}/billing-date')
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Deletes a subscription item
+     *
+     * @param string $subscriptionId Subscription id
+     * @param string $subscriptionItemId Subscription item id
+     * @param string|null $idempotencyKey
+     *
+     * @return GetSubscriptionItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function deleteSubscriptionItem(
+        string $subscriptionId,
+        string $subscriptionItemId,
+        ?string $idempotencyKey = null
+    ): GetSubscriptionItemResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::DELETE,
+            '/subscriptions/{subscription_id}/items/{subscription_item_id}'
+        )
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                TemplateParam::init('subscription_item_id', $subscriptionItemId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetSubscriptionItemResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * @param string $subscriptionId The subscription id
+     * @param int|null $page Page number
+     * @param int|null $size Page size
+     *
+     * @return ListIncrementsResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getIncrements(string $subscriptionId, ?int $page = null, ?int $size = null): ListIncrementsResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}/increments/')
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                QueryParam::init('page', $page),
+                QueryParam::init('size', $size)
+            );
+
+        $_resHandler = $this->responseHandler()->type(ListIncrementsResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Updates the boleto due days from a subscription
+     *
+     * @param string $subscriptionId Subscription Id
+     * @param UpdateSubscriptionDueDaysRequest $request
+     * @param string|null $idempotencyKey
+     *
+     * @return GetSubscriptionResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateSubscriptionDueDays(
+        string $subscriptionId,
+        UpdateSubscriptionDueDaysRequest $request,
+        ?string $idempotencyKey = null
+    ): GetSubscriptionResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::PATCH,
+            '/subscriptions/{subscription_id}/boleto-due-days'
+        )
             ->auth('httpBasic')
             ->parameters(
                 TemplateParam::init('subscription_id', $subscriptionId),
@@ -165,6 +874,70 @@ class SubscriptionsController extends BaseController
             );
 
         $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Updates a subscription item
+     *
+     * @param string $subscriptionId Subscription Id
+     * @param string $itemId Item id
+     * @param UpdateSubscriptionItemRequest $body Request for updating a subscription item
+     * @param string|null $idempotencyKey
+     *
+     * @return GetSubscriptionItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function updateSubscriptionItem(
+        string $subscriptionId,
+        string $itemId,
+        UpdateSubscriptionItemRequest $body,
+        ?string $idempotencyKey = null
+    ): GetSubscriptionItemResponse {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::PUT,
+            '/subscriptions/{subscription_id}/items/{item_id}'
+        )
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                TemplateParam::init('item_id', $itemId),
+                BodyParam::init($body),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetSubscriptionItemResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Creates a new Subscription item
+     *
+     * @param string $subscriptionId Subscription id
+     * @param CreateSubscriptionItemRequest $request Request for creating a subscription item
+     * @param string|null $idempotencyKey
+     *
+     * @return GetSubscriptionItemResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function createSubscriptionItem(
+        string $subscriptionId,
+        CreateSubscriptionItemRequest $request,
+        ?string $idempotencyKey = null
+    ): GetSubscriptionItemResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions/{subscription_id}/items')
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('subscription_id', $subscriptionId),
+                BodyParam::init($request),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $_resHandler = $this->responseHandler()->type(GetSubscriptionItemResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }
@@ -268,154 +1041,6 @@ class SubscriptionsController extends BaseController
     }
 
     /**
-     * Deletes a discount
-     *
-     * @param string $subscriptionId Subscription id
-     * @param string $discountId Discount Id
-     * @param string|null $idempotencyKey
-     *
-     * @return GetDiscountResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function deleteDiscount(
-        string $subscriptionId,
-        string $discountId,
-        ?string $idempotencyKey = null
-    ): GetDiscountResponse {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::DELETE,
-            '/subscriptions/{subscription_id}/discounts/{discount_id}'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                TemplateParam::init('discount_id', $discountId),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetDiscountResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Updates the payment method from a subscription
-     *
-     * @param string $subscriptionId Subscription id
-     * @param UpdateSubscriptionPaymentMethodRequest $request Request for updating the paymentmethod
-     *        from a subscription
-     * @param string|null $idempotencyKey
-     *
-     * @return GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateSubscriptionPaymentMethod(
-        string $subscriptionId,
-        UpdateSubscriptionPaymentMethodRequest $request,
-        ?string $idempotencyKey = null
-    ): GetSubscriptionResponse {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::PATCH,
-            '/subscriptions/{subscription_id}/payment-method'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Cancels a subscription
-     *
-     * @param string $subscriptionId Subscription id
-     * @param CreateCancelSubscriptionRequest|null $request Request for cancelling a subscription
-     * @param string|null $idempotencyKey
-     *
-     * @return GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function cancelSubscription(
-        string $subscriptionId,
-        ?CreateCancelSubscriptionRequest $request = null,
-        ?string $idempotencyKey = null
-    ): GetSubscriptionResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/subscriptions/{subscription_id}')
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Creates a new subscription
-     *
-     * @param CreateSubscriptionRequest $body Request for creating a subscription
-     * @param string|null $idempotencyKey
-     *
-     * @return GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createSubscription(
-        CreateSubscriptionRequest $body,
-        ?string $idempotencyKey = null
-    ): GetSubscriptionResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions')
-            ->auth('httpBasic')
-            ->parameters(BodyParam::init($body), HeaderParam::init('idempotency-key', $idempotencyKey));
-
-        $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param string $subscriptionId
-     * @param UpdateSubscriptionAffiliationIdRequest $request Request for updating a subscription
-     *        affiliation id
-     * @param string|null $idempotencyKey
-     *
-     * @return GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateSubscriptionAffiliationId(
-        string $subscriptionId,
-        UpdateSubscriptionAffiliationIdRequest $request,
-        ?string $idempotencyKey = null
-    ): GetSubscriptionResponse {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::PATCH,
-            '/subscriptions/{subscription_id}/gateway-affiliation-id'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
      * Atualização do valor mínimo da assinatura
      *
      * @param string $subscriptionId Subscription Id
@@ -499,290 +1124,6 @@ class SubscriptionsController extends BaseController
     }
 
     /**
-     * @param string $subscriptionId
-     * @param string|null $idempotencyKey
-     *
-     * @return GetPeriodResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function renewSubscription(string $subscriptionId, ?string $idempotencyKey = null): GetPeriodResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions/{subscription_id}/cycles')
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetPeriodResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Deletes a usage
-     *
-     * @param string $subscriptionId The subscription id
-     * @param string $itemId The subscription item id
-     * @param string $usageId The usage id
-     * @param string|null $idempotencyKey
-     *
-     * @return GetUsageResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function deleteUsage(
-        string $subscriptionId,
-        string $itemId,
-        string $usageId,
-        ?string $idempotencyKey = null
-    ): GetUsageResponse {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::DELETE,
-            '/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                TemplateParam::init('item_id', $itemId),
-                TemplateParam::init('usage_id', $usageId),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetUsageResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Create Usage
-     *
-     * @param string $subscriptionId Subscription id
-     * @param string $itemId Item id
-     * @param string|null $idempotencyKey
-     *
-     * @return GetUsageResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createAnUsage(
-        string $subscriptionId,
-        string $itemId,
-        ?string $idempotencyKey = null
-    ): GetUsageResponse {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::POST,
-            '/subscriptions/{subscription_id}/items/{item_id}/usages'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                TemplateParam::init('item_id', $itemId),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetUsageResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param string $subscriptionId Subscription Id
-     * @param UpdateCurrentCycleStatusRequest $request Request for updating the end date of the
-     *        subscription current status
-     * @param string|null $idempotencyKey
-     *
-     * @return void Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateCurrentCycleStatus(
-        string $subscriptionId,
-        UpdateCurrentCycleStatusRequest $request,
-        ?string $idempotencyKey = null
-    ): void {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/subscriptions/{subscription_id}/cycle-status')
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $this->execute($_reqBuilder);
-    }
-
-    /**
-     * Get Subscription Item
-     *
-     * @param string $subscriptionId Subscription Id
-     * @param string $itemId Item id
-     *
-     * @return GetSubscriptionItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getSubscriptionItem(string $subscriptionId, string $itemId): GetSubscriptionItemResponse
-    {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::GET,
-            '/subscriptions/{subscription_id}/items/{item_id}'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                TemplateParam::init('item_id', $itemId)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetSubscriptionItemResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param string $subscriptionId The subscription Id
-     * @param string $incrementId The increment Id
-     *
-     * @return GetIncrementResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getIncrementById(string $subscriptionId, string $incrementId): GetIncrementResponse
-    {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::GET,
-            '/subscriptions/{subscription_id}/increments/{increment_id}'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                TemplateParam::init('increment_id', $incrementId)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetIncrementResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Deletes a increment
-     *
-     * @param string $subscriptionId Subscription id
-     * @param string $incrementId Increment id
-     * @param string|null $idempotencyKey
-     *
-     * @return GetIncrementResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function deleteIncrement(
-        string $subscriptionId,
-        string $incrementId,
-        ?string $idempotencyKey = null
-    ): GetIncrementResponse {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::DELETE,
-            '/subscriptions/{subscription_id}/increments/{increment_id}'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                TemplateParam::init('increment_id', $incrementId),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetIncrementResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param string $subscriptionId The subscription id
-     * @param int $page Page number
-     * @param int $size Page size
-     *
-     * @return ListDiscountsResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getDiscounts(string $subscriptionId, int $page, int $size): ListDiscountsResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}/discounts/')
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                QueryParam::init('page', $page),
-                QueryParam::init('size', $size)
-            );
-
-        $_resHandler = $this->responseHandler()->type(ListDiscountsResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Updates the boleto due days from a subscription
-     *
-     * @param string $subscriptionId Subscription Id
-     * @param UpdateSubscriptionDueDaysRequest $request
-     * @param string|null $idempotencyKey
-     *
-     * @return GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateSubscriptionDueDays(
-        string $subscriptionId,
-        UpdateSubscriptionDueDaysRequest $request,
-        ?string $idempotencyKey = null
-    ): GetSubscriptionResponse {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::PATCH,
-            '/subscriptions/{subscription_id}/boleto-due-days'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Creates a new Subscription item
-     *
-     * @param string $subscriptionId Subscription id
-     * @param CreateSubscriptionItemRequest $request Request for creating a subscription item
-     * @param string|null $idempotencyKey
-     *
-     * @return GetSubscriptionItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createSubscriptionItem(
-        string $subscriptionId,
-        CreateSubscriptionItemRequest $request,
-        ?string $idempotencyKey = null
-    ): GetSubscriptionItemResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions/{subscription_id}/items')
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetSubscriptionItemResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
      * @param string $id Subscription's id
      * @param UpdateSubscriptionSplitRequest $request
      *
@@ -799,347 +1140,6 @@ class SubscriptionsController extends BaseController
             ->parameters(TemplateParam::init('id', $id), BodyParam::init($request));
 
         $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Get Subscription Items
-     *
-     * @param string $subscriptionId The subscription id
-     * @param int|null $page Page number
-     * @param int|null $size Page size
-     * @param string|null $name The item name
-     * @param string|null $code Identification code in the client system
-     * @param string|null $status The item statis
-     * @param string|null $description The item description
-     * @param string|null $createdSince Filter for item's creation date start range
-     * @param string|null $createdUntil Filter for item's creation date end range
-     *
-     * @return ListSubscriptionItemsResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getSubscriptionItems(
-        string $subscriptionId,
-        ?int $page = null,
-        ?int $size = null,
-        ?string $name = null,
-        ?string $code = null,
-        ?string $status = null,
-        ?string $description = null,
-        ?string $createdSince = null,
-        ?string $createdUntil = null
-    ): ListSubscriptionItemsResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}/items')
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                QueryParam::init('page', $page),
-                QueryParam::init('size', $size),
-                QueryParam::init('name', $name),
-                QueryParam::init('code', $code),
-                QueryParam::init('status', $status),
-                QueryParam::init('description', $description),
-                QueryParam::init('created_since', $createdSince),
-                QueryParam::init('created_until', $createdUntil)
-            );
-
-        $_resHandler = $this->responseHandler()->type(ListSubscriptionItemsResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Gets all subscriptions
-     *
-     * @param int|null $page Page number
-     * @param int|null $size Page size
-     * @param string|null $code Filter for subscription's code
-     * @param string|null $billingType Filter for subscription's billing type
-     * @param string|null $customerId Filter for subscription's customer id
-     * @param string|null $planId Filter for subscription's plan id
-     * @param string|null $cardId Filter for subscription's card id
-     * @param string|null $status Filter for subscription's status
-     * @param \DateTime|null $nextBillingSince Filter for subscription's next billing date start
-     *        range
-     * @param \DateTime|null $nextBillingUntil Filter for subscription's next billing date end range
-     * @param \DateTime|null $createdSince Filter for subscription's creation date start range
-     * @param \DateTime|null $createdUntil Filter for subscriptions creation date end range
-     *
-     * @return ListSubscriptionsResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getSubscriptions(
-        ?int $page = null,
-        ?int $size = null,
-        ?string $code = null,
-        ?string $billingType = null,
-        ?string $customerId = null,
-        ?string $planId = null,
-        ?string $cardId = null,
-        ?string $status = null,
-        ?\DateTime $nextBillingSince = null,
-        ?\DateTime $nextBillingUntil = null,
-        ?\DateTime $createdSince = null,
-        ?\DateTime $createdUntil = null
-    ): ListSubscriptionsResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions')
-            ->auth('httpBasic')
-            ->parameters(
-                QueryParam::init('page', $page),
-                QueryParam::init('size', $size),
-                QueryParam::init('code', $code),
-                QueryParam::init('billing_type', $billingType),
-                QueryParam::init('customer_id', $customerId),
-                QueryParam::init('plan_id', $planId),
-                QueryParam::init('card_id', $cardId),
-                QueryParam::init('status', $status),
-                QueryParam::init('next_billing_since', $nextBillingSince)
-                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
-                QueryParam::init('next_billing_until', $nextBillingUntil)
-                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
-                QueryParam::init('created_since', $createdSince)
-                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
-                QueryParam::init('created_until', $createdUntil)
-                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime'])
-            );
-
-        $_resHandler = $this->responseHandler()->type(ListSubscriptionsResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Creates a increment
-     *
-     * @param string $subscriptionId Subscription id
-     * @param CreateIncrementRequest $request Request for creating a increment
-     * @param string|null $idempotencyKey
-     *
-     * @return GetIncrementResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createIncrement(
-        string $subscriptionId,
-        CreateIncrementRequest $request,
-        ?string $idempotencyKey = null
-    ): GetIncrementResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/subscriptions/{subscription_id}/increments')
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetIncrementResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Creates a usage
-     *
-     * @param string $subscriptionId Subscription Id
-     * @param string $itemId Item id
-     * @param CreateUsageRequest $body Request for creating a usage
-     * @param string|null $idempotencyKey
-     *
-     * @return GetUsageResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function createUsage(
-        string $subscriptionId,
-        string $itemId,
-        CreateUsageRequest $body,
-        ?string $idempotencyKey = null
-    ): GetUsageResponse {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::POST,
-            '/subscriptions/{subscription_id}/items/{item_id}/usages'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                TemplateParam::init('item_id', $itemId),
-                BodyParam::init($body),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetUsageResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param string $subscriptionId The subscription id
-     * @param string $discountId
-     *
-     * @return GetDiscountResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getDiscountById(string $subscriptionId, string $discountId): GetDiscountResponse
-    {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::GET,
-            '/subscriptions/{subscription_id}/discounts/{discountId}'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                TemplateParam::init('discountId', $discountId)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetDiscountResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Updates the metadata from a subscription
-     *
-     * @param string $subscriptionId The subscription id
-     * @param UpdateMetadataRequest $request Request for updating the subscrption metadata
-     * @param string|null $idempotencyKey
-     *
-     * @return GetSubscriptionResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateSubscriptionMetadata(
-        string $subscriptionId,
-        UpdateMetadataRequest $request,
-        ?string $idempotencyKey = null
-    ): GetSubscriptionResponse {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/Subscriptions/{subscription_id}/metadata')
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                BodyParam::init($request),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetSubscriptionResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param string $subscriptionId Subscription Id
-     * @param string $page Page number
-     * @param string $size Page size
-     *
-     * @return ListCyclesResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getSubscriptionCycles(string $subscriptionId, string $page, string $size): ListCyclesResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}/cycles')
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                QueryParam::init('page', $page),
-                QueryParam::init('size', $size)
-            );
-
-        $_resHandler = $this->responseHandler()->type(ListCyclesResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Deletes a subscription item
-     *
-     * @param string $subscriptionId Subscription id
-     * @param string $subscriptionItemId Subscription item id
-     * @param string|null $idempotencyKey
-     *
-     * @return GetSubscriptionItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function deleteSubscriptionItem(
-        string $subscriptionId,
-        string $subscriptionItemId,
-        ?string $idempotencyKey = null
-    ): GetSubscriptionItemResponse {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::DELETE,
-            '/subscriptions/{subscription_id}/items/{subscription_item_id}'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                TemplateParam::init('subscription_item_id', $subscriptionItemId),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetSubscriptionItemResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param string $subscriptionId The subscription id
-     * @param int|null $page Page number
-     * @param int|null $size Page size
-     *
-     * @return ListIncrementsResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getIncrements(string $subscriptionId, ?int $page = null, ?int $size = null): ListIncrementsResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/subscriptions/{subscription_id}/increments/')
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                QueryParam::init('page', $page),
-                QueryParam::init('size', $size)
-            );
-
-        $_resHandler = $this->responseHandler()->type(ListIncrementsResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Updates a subscription item
-     *
-     * @param string $subscriptionId Subscription Id
-     * @param string $itemId Item id
-     * @param UpdateSubscriptionItemRequest $body Request for updating a subscription item
-     * @param string|null $idempotencyKey
-     *
-     * @return GetSubscriptionItemResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function updateSubscriptionItem(
-        string $subscriptionId,
-        string $itemId,
-        UpdateSubscriptionItemRequest $body,
-        ?string $idempotencyKey = null
-    ): GetSubscriptionItemResponse {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::PUT,
-            '/subscriptions/{subscription_id}/items/{item_id}'
-        )
-            ->auth('httpBasic')
-            ->parameters(
-                TemplateParam::init('subscription_id', $subscriptionId),
-                TemplateParam::init('item_id', $itemId),
-                BodyParam::init($body),
-                HeaderParam::init('idempotency-key', $idempotencyKey)
-            );
-
-        $_resHandler = $this->responseHandler()->type(GetSubscriptionItemResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }

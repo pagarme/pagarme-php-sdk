@@ -124,6 +124,11 @@ class GetChargeResponse implements \JsonSerializable
     private $recurrencyCycle = [];
 
     /**
+     * @var array
+     */
+    private $paymentOrigin = [];
+
+    /**
      * Returns Id.
      */
     public function getId(): ?string
@@ -754,6 +759,35 @@ class GetChargeResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Payment Origin.
+     */
+    public function getPaymentOrigin(): ?GetPaymentOriginResponse
+    {
+        if (count($this->paymentOrigin) == 0) {
+            return null;
+        }
+        return $this->paymentOrigin['value'];
+    }
+
+    /**
+     * Sets Payment Origin.
+     *
+     * @maps payment_origin
+     */
+    public function setPaymentOrigin(?GetPaymentOriginResponse $paymentOrigin): void
+    {
+        $this->paymentOrigin['value'] = $paymentOrigin;
+    }
+
+    /**
+     * Unsets Payment Origin.
+     */
+    public function unsetPaymentOrigin(): void
+    {
+        $this->paymentOrigin = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -827,6 +861,9 @@ class GetChargeResponse implements \JsonSerializable
         }
         if (!empty($this->recurrencyCycle)) {
             $json['recurrency_cycle']       = $this->recurrencyCycle['value'];
+        }
+        if (!empty($this->paymentOrigin)) {
+            $json['payment_origin']         = $this->paymentOrigin['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -48,6 +48,11 @@ class UpdateChargeCardRequest implements \JsonSerializable
     private $recurrenceModel;
 
     /**
+     * @var CreatePaymentOriginRequest|null
+     */
+    private $paymentOrigin;
+
+    /**
      * @param bool $updateSubscription
      * @param string $cardId
      * @param CreateCardRequest $card
@@ -182,6 +187,24 @@ class UpdateChargeCardRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Payment Origin.
+     */
+    public function getPaymentOrigin(): ?CreatePaymentOriginRequest
+    {
+        return $this->paymentOrigin;
+    }
+
+    /**
+     * Sets Payment Origin.
+     *
+     * @maps payment_origin
+     */
+    public function setPaymentOrigin(?CreatePaymentOriginRequest $paymentOrigin): void
+    {
+        $this->paymentOrigin = $paymentOrigin;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -202,6 +225,9 @@ class UpdateChargeCardRequest implements \JsonSerializable
         }
         if (isset($this->recurrenceModel)) {
             $json['recurrence_model'] = $this->recurrenceModel;
+        }
+        if (isset($this->paymentOrigin)) {
+            $json['payment_origin']   = $this->paymentOrigin;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

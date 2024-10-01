@@ -10,128 +10,13 @@ $invoicesController = $client->getInvoicesController();
 
 ## Methods
 
-* [Get Invoices](../../doc/controllers/invoices.md#get-invoices)
-* [Cancel Invoice](../../doc/controllers/invoices.md#cancel-invoice)
-* [Update Invoice Status](../../doc/controllers/invoices.md#update-invoice-status)
 * [Update Invoice Metadata](../../doc/controllers/invoices.md#update-invoice-metadata)
 * [Get Partial Invoice](../../doc/controllers/invoices.md#get-partial-invoice)
+* [Cancel Invoice](../../doc/controllers/invoices.md#cancel-invoice)
 * [Create Invoice](../../doc/controllers/invoices.md#create-invoice)
+* [Get Invoices](../../doc/controllers/invoices.md#get-invoices)
 * [Get Invoice](../../doc/controllers/invoices.md#get-invoice)
-
-
-# Get Invoices
-
-Gets all invoices
-
-```php
-function getInvoices(
-    ?int $page = null,
-    ?int $size = null,
-    ?string $code = null,
-    ?string $customerId = null,
-    ?string $subscriptionId = null,
-    ?\DateTime $createdSince = null,
-    ?\DateTime $createdUntil = null,
-    ?string $status = null,
-    ?\DateTime $dueSince = null,
-    ?\DateTime $dueUntil = null,
-    ?string $customerDocument = null
-): ListInvoicesResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-| `code` | `?string` | Query, Optional | Filter for Invoice's code |
-| `customerId` | `?string` | Query, Optional | Filter for Invoice's customer id |
-| `subscriptionId` | `?string` | Query, Optional | Filter for Invoice's subscription id |
-| `createdSince` | `?DateTime` | Query, Optional | Filter for Invoice's creation date start range |
-| `createdUntil` | `?DateTime` | Query, Optional | Filter for Invoices creation date end range |
-| `status` | `?string` | Query, Optional | Filter for Invoice's status |
-| `dueSince` | `?DateTime` | Query, Optional | Filter for Invoice's due date start range |
-| `dueUntil` | `?DateTime` | Query, Optional | Filter for Invoice's due date end range |
-| `customerDocument` | `?string` | Query, Optional | - |
-
-## Response Type
-
-[`ListInvoicesResponse`](../../doc/models/list-invoices-response.md)
-
-## Example Usage
-
-```php
-$result = $invoicesController->getInvoices();
-```
-
-
-# Cancel Invoice
-
-Cancels an invoice
-
-```php
-function cancelInvoice(string $invoiceId, ?string $idempotencyKey = null): GetInvoiceResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `invoiceId` | `string` | Template, Required | Invoice id |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```php
-$invoiceId = 'invoice_id0';
-
-$result = $invoicesController->cancelInvoice($invoiceId);
-```
-
-
-# Update Invoice Status
-
-Updates the status from an invoice
-
-```php
-function updateInvoiceStatus(
-    string $invoiceId,
-    UpdateInvoiceStatusRequest $request,
-    ?string $idempotencyKey = null
-): GetInvoiceResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `invoiceId` | `string` | Template, Required | Invoice Id |
-| `request` | [`UpdateInvoiceStatusRequest`](../../doc/models/update-invoice-status-request.md) | Body, Required | Request for updating an invoice's status |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```php
-$invoiceId = 'invoice_id0';
-
-$request = UpdateInvoiceStatusRequestBuilder::init(
-    'status8'
-)->build();
-
-$result = $invoicesController->updateInvoiceStatus(
-    $invoiceId,
-    $request
-);
-```
+* [Update Invoice Status](../../doc/controllers/invoices.md#update-invoice-status)
 
 
 # Update Invoice Metadata
@@ -201,6 +86,34 @@ $result = $invoicesController->getPartialInvoice($subscriptionId);
 ```
 
 
+# Cancel Invoice
+
+Cancels an invoice
+
+```php
+function cancelInvoice(string $invoiceId, ?string $idempotencyKey = null): GetInvoiceResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoiceId` | `string` | Template, Required | Invoice id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```php
+$invoiceId = 'invoice_id0';
+
+$result = $invoicesController->cancelInvoice($invoiceId);
+```
+
+
 # Create Invoice
 
 Create an Invoice
@@ -241,6 +154,53 @@ $result = $invoicesController->createInvoice(
 ```
 
 
+# Get Invoices
+
+Gets all invoices
+
+```php
+function getInvoices(
+    ?int $page = null,
+    ?int $size = null,
+    ?string $code = null,
+    ?string $customerId = null,
+    ?string $subscriptionId = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null,
+    ?string $status = null,
+    ?\DateTime $dueSince = null,
+    ?\DateTime $dueUntil = null,
+    ?string $customerDocument = null
+): ListInvoicesResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `code` | `?string` | Query, Optional | Filter for Invoice's code |
+| `customerId` | `?string` | Query, Optional | Filter for Invoice's customer id |
+| `subscriptionId` | `?string` | Query, Optional | Filter for Invoice's subscription id |
+| `createdSince` | `?DateTime` | Query, Optional | Filter for Invoice's creation date start range |
+| `createdUntil` | `?DateTime` | Query, Optional | Filter for Invoices creation date end range |
+| `status` | `?string` | Query, Optional | Filter for Invoice's status |
+| `dueSince` | `?DateTime` | Query, Optional | Filter for Invoice's due date start range |
+| `dueUntil` | `?DateTime` | Query, Optional | Filter for Invoice's due date end range |
+| `customerDocument` | `?string` | Query, Optional | - |
+
+## Response Type
+
+[`ListInvoicesResponse`](../../doc/models/list-invoices-response.md)
+
+## Example Usage
+
+```php
+$result = $invoicesController->getInvoices();
+```
+
+
 # Get Invoice
 
 Gets an invoice
@@ -265,5 +225,45 @@ function getInvoice(string $invoiceId): GetInvoiceResponse
 $invoiceId = 'invoice_id0';
 
 $result = $invoicesController->getInvoice($invoiceId);
+```
+
+
+# Update Invoice Status
+
+Updates the status from an invoice
+
+```php
+function updateInvoiceStatus(
+    string $invoiceId,
+    UpdateInvoiceStatusRequest $request,
+    ?string $idempotencyKey = null
+): GetInvoiceResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoiceId` | `string` | Template, Required | Invoice Id |
+| `request` | [`UpdateInvoiceStatusRequest`](../../doc/models/update-invoice-status-request.md) | Body, Required | Request for updating an invoice's status |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```php
+$invoiceId = 'invoice_id0';
+
+$request = UpdateInvoiceStatusRequestBuilder::init(
+    'status8'
+)->build();
+
+$result = $invoicesController->updateInvoiceStatus(
+    $invoiceId,
+    $request
+);
 ```
 

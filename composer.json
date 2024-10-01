@@ -42,7 +42,7 @@
     "scripts": {
         "lint-src": "phpcs --standard=phpcs-ruleset.xml src/",
         "lint-src-fix": "phpcbf --standard=phpcs-ruleset.xml src/",
-        "analyze": "phan --allow-polyfill-parser",
+        "analyze": "phan --allow-polyfill-parser -p",
         "lint": [
             "@lint-src"
         ]
