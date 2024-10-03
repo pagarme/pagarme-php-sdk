@@ -101,6 +101,11 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
     private $retryInfo = [];
 
     /**
+     * @var array
+     */
+    private $brandId = [];
+
+    /**
      * Returns Statement Descriptor.
      * Text that will appear on the debit card's statement
      */
@@ -613,6 +618,35 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
     }
 
     /**
+     * Returns Brand Id.
+     */
+    public function getBrandId(): ?string
+    {
+        if (count($this->brandId) == 0) {
+            return null;
+        }
+        return $this->brandId['value'];
+    }
+
+    /**
+     * Sets Brand Id.
+     *
+     * @maps brand_id
+     */
+    public function setBrandId(?string $brandId): void
+    {
+        $this->brandId['value'] = $brandId;
+    }
+
+    /**
+     * Unsets Brand Id.
+     */
+    public function unsetBrandId(): void
+    {
+        $this->brandId = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -671,6 +705,9 @@ class GetDebitCardTransactionResponse extends GetTransactionResponse implements 
         }
         if (!empty($this->retryInfo)) {
             $json['retry_info']                = $this->retryInfo['value'];
+        }
+        if (!empty($this->brandId)) {
+            $json['brand_id']                  = $this->brandId['value'];
         }
         $json = array_merge($json, parent::jsonSerialize(true));
         $json['transaction_type'] = $this->getTransactionType() ?? 'debit_card';

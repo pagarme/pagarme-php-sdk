@@ -15,6 +15,7 @@ use PagarmeApiSDKLib\Models\GetChargeResponse;
 use PagarmeApiSDKLib\Models\GetCustomerResponse;
 use PagarmeApiSDKLib\Models\GetInvoiceResponse;
 use PagarmeApiSDKLib\Models\GetOrderResponse;
+use PagarmeApiSDKLib\Models\GetPaymentOriginResponse;
 use PagarmeApiSDKLib\Models\GetTransactionResponse;
 
 /**
@@ -417,6 +418,24 @@ class GetChargeResponseBuilder
     public function unsetRecurrencyCycle(): self
     {
         $this->instance->unsetRecurrencyCycle();
+        return $this;
+    }
+
+    /**
+     * Sets payment origin field.
+     */
+    public function paymentOrigin(?GetPaymentOriginResponse $value): self
+    {
+        $this->instance->setPaymentOrigin($value);
+        return $this;
+    }
+
+    /**
+     * Unsets payment origin field.
+     */
+    public function unsetPaymentOrigin(): self
+    {
+        $this->instance->unsetPaymentOrigin();
         return $this;
     }
 

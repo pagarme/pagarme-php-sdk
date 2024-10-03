@@ -12,6 +12,7 @@ namespace PagarmeApiSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PagarmeApiSDKLib\Models\CreateCardRequest;
+use PagarmeApiSDKLib\Models\CreatePaymentOriginRequest;
 use PagarmeApiSDKLib\Models\UpdateChargeCardRequest;
 
 /**
@@ -58,6 +59,15 @@ class UpdateChargeCardRequestBuilder
     public function recurrenceModel(?string $value): self
     {
         $this->instance->setRecurrenceModel($value);
+        return $this;
+    }
+
+    /**
+     * Sets payment origin field.
+     */
+    public function paymentOrigin(?CreatePaymentOriginRequest $value): self
+    {
+        $this->instance->setPaymentOrigin($value);
         return $this;
     }
 
