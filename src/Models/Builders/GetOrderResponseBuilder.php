@@ -13,6 +13,7 @@ namespace PagarmeApiSDKLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PagarmeApiSDKLib\Models\GetCustomerResponse;
 use PagarmeApiSDKLib\Models\GetDeviceResponse;
+use PagarmeApiSDKLib\Models\GetIntegrationResponse;
 use PagarmeApiSDKLib\Models\GetLocationResponse;
 use PagarmeApiSDKLib\Models\GetOrderResponse;
 use PagarmeApiSDKLib\Models\GetShippingResponse;
@@ -399,6 +400,24 @@ class GetOrderResponseBuilder
     public function unsetDevice(): self
     {
         $this->instance->unsetDevice();
+        return $this;
+    }
+
+    /**
+     * Sets integration field.
+     */
+    public function integration(?GetIntegrationResponse $value): self
+    {
+        $this->instance->setIntegration($value);
+        return $this;
+    }
+
+    /**
+     * Unsets integration field.
+     */
+    public function unsetIntegration(): self
+    {
+        $this->instance->unsetIntegration();
         return $this;
     }
 
