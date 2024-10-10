@@ -119,6 +119,11 @@ class GetOrderResponse implements \JsonSerializable
     private $device = [];
 
     /**
+     * @var array
+     */
+    private $integration = [];
+
+    /**
      * Returns Id.
      */
     public function getId(): ?string
@@ -736,6 +741,35 @@ class GetOrderResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Integration.
+     */
+    public function getIntegration(): ?GetIntegrationResponse
+    {
+        if (count($this->integration) == 0) {
+            return null;
+        }
+        return $this->integration['value'];
+    }
+
+    /**
+     * Sets Integration.
+     *
+     * @maps integration
+     */
+    public function setIntegration(?GetIntegrationResponse $integration): void
+    {
+        $this->integration['value'] = $integration;
+    }
+
+    /**
+     * Unsets Integration.
+     */
+    public function unsetIntegration(): void
+    {
+        $this->integration = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -806,6 +840,9 @@ class GetOrderResponse implements \JsonSerializable
         }
         if (!empty($this->device)) {
             $json['device']      = $this->device['value'];
+        }
+        if (!empty($this->integration)) {
+            $json['integration'] = $this->integration['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
