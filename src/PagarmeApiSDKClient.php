@@ -381,5 +381,5 @@ class PagarmeApiSDKClient implements ConfigurationInterface
      *
      * @var array
      */
-    private const ENVIRONMENT_MAP = [Environment::PRODUCTION => [Server::DEFAULT_ => 'https://api.pagar.me/core/v5']];
+    private const ENVIRONMENT_MAP = [Environment::PRODUCTION => [Server::DEFAULT_ => 'https://hubapi.pagar.me/core/v5']];
 }
