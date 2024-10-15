@@ -27,26 +27,26 @@ class ApiHelper
      */
     private const INHERITED_MODELS_MAP = [
         Models\GetTransactionResponse::class => [
-            Models\GetBankTransferTransactionResponse::class,
             Models\GetSafetyPayTransactionResponse::class,
             Models\GetVoucherTransactionResponse::class,
+            Models\GetBankTransferTransactionResponse::class,
             Models\GetBoletoTransactionResponse::class,
             Models\GetDebitCardTransactionResponse::class,
-            Models\GetPrivateLabelTransactionResponse::class,
             Models\GetCashTransactionResponse::class,
+            Models\GetPrivateLabelTransactionResponse::class,
             Models\GetCreditCardTransactionResponse::class,
             Models\GetPixTransactionResponse::class
-        ],
-        Models\GetMovementObjectBaseResponse::class => [
-            Models\GetMovementObjectRefundResponse::class,
-            Models\GetMovementObjectFeeCollectionResponse::class,
-            Models\GetMovementObjectPayableResponse::class,
-            Models\GetMovementObjectTransferResponse::class,
-            Models\GetMovementObjectSettlementResponse::class
         ],
         Models\CreateRegisterInformationBaseRequest::class => [
             Models\CreateRegisterInformationIndividualRequest::class,
             Models\CreateRegisterInformationCorporationRequest::class
+        ],
+        Models\GetMovementObjectBaseResponse::class => [
+            Models\GetMovementObjectFeeCollectionResponse::class,
+            Models\GetMovementObjectPayableResponse::class,
+            Models\GetMovementObjectRefundResponse::class,
+            Models\GetMovementObjectTransferResponse::class,
+            Models\GetMovementObjectSettlementResponse::class
         ]
     ];
 
