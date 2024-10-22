@@ -96,6 +96,11 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
     private $brandId = [];
 
     /**
+     * @var array
+     */
+    private $indirectAcceptor = [];
+
+    /**
      * Returns Statement Descriptor.
      * Text that will appear on the credit card's statement
      */
@@ -537,6 +542,38 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
     }
 
     /**
+     * Returns Indirect Acceptor.
+     * Business model identifier
+     */
+    public function getIndirectAcceptor(): ?string
+    {
+        if (count($this->indirectAcceptor) == 0) {
+            return null;
+        }
+        return $this->indirectAcceptor['value'];
+    }
+
+    /**
+     * Sets Indirect Acceptor.
+     * Business model identifier
+     *
+     * @maps indirect_acceptor
+     */
+    public function setIndirectAcceptor(?string $indirectAcceptor): void
+    {
+        $this->indirectAcceptor['value'] = $indirectAcceptor;
+    }
+
+    /**
+     * Unsets Indirect Acceptor.
+     * Business model identifier
+     */
+    public function unsetIndirectAcceptor(): void
+    {
+        $this->indirectAcceptor = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -592,6 +629,9 @@ class GetCreditCardTransactionResponse extends GetTransactionResponse implements
         }
         if (!empty($this->brandId)) {
             $json['brand_id']                  = $this->brandId['value'];
+        }
+        if (!empty($this->indirectAcceptor)) {
+            $json['indirect_acceptor']         = $this->indirectAcceptor['value'];
         }
         $json = array_merge($json, parent::jsonSerialize(true));
         $json['transaction_type'] = $this->getTransactionType() ?? 'credit_card';

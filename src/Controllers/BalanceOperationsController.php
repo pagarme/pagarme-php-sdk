@@ -21,6 +21,24 @@ use PagarmeApiSDKLib\Utils\DateTimeHelper;
 class BalanceOperationsController extends BaseController
 {
     /**
+     * @param int $id
+     *
+     * @return GetBalanceOperationResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getBalanceOperationById(int $id): GetBalanceOperationResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/balance/operations/{id}')
+            ->auth('httpBasic')
+            ->parameters(TemplateParam::init('id', $id));
+
+        $_resHandler = $this->responseHandler()->type(GetBalanceOperationResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
      * @param string|null $status
      * @param \DateTime|null $createdSince
      * @param \DateTime|null $createdUntil
@@ -48,24 +66,6 @@ class BalanceOperationsController extends BaseController
             );
 
         $_resHandler = $this->responseHandler()->type(ListBalanceOperationResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return GetBalanceOperationResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getBalanceOperationById(int $id): GetBalanceOperationResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/balance/operations/{id}')
-            ->auth('httpBasic')
-            ->parameters(TemplateParam::init('id', $id));
-
-        $_resHandler = $this->responseHandler()->type(GetBalanceOperationResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }

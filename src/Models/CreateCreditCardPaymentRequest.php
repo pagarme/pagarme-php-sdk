@@ -113,6 +113,11 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
     private $paymentOrigin;
 
     /**
+     * @var string|null
+     */
+    private $indirectAcceptor;
+
+    /**
      * Returns Installments.
      * Number of installments
      */
@@ -483,6 +488,26 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Indirect Acceptor.
+     * Business model identifier
+     */
+    public function getIndirectAcceptor(): ?string
+    {
+        return $this->indirectAcceptor;
+    }
+
+    /**
+     * Sets Indirect Acceptor.
+     * Business model identifier
+     *
+     * @maps indirect_acceptor
+     */
+    public function setIndirectAcceptor(?string $indirectAcceptor): void
+    {
+        $this->indirectAcceptor = $indirectAcceptor;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -550,6 +575,9 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
         }
         if (isset($this->paymentOrigin)) {
             $json['payment_origin']         = $this->paymentOrigin;
+        }
+        if (isset($this->indirectAcceptor)) {
+            $json['indirect_acceptor']      = $this->indirectAcceptor;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

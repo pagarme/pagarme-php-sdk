@@ -18,6 +18,7 @@ Request for updating card data
 | `initiatedType` | `?string` | Optional | - | getInitiatedType(): ?string | setInitiatedType(?string initiatedType): void |
 | `recurrenceModel` | `?string` | Optional | - | getRecurrenceModel(): ?string | setRecurrenceModel(?string recurrenceModel): void |
 | `paymentOrigin` | [`?CreatePaymentOriginRequest`](../../doc/models/create-payment-origin-request.md) | Optional | - | getPaymentOrigin(): ?CreatePaymentOriginRequest | setPaymentOrigin(?CreatePaymentOriginRequest paymentOrigin): void |
+| `indirectAcceptor` | `?string` | Optional | Business model identifier | getIndirectAcceptor(): ?string | setIndirectAcceptor(?string indirectAcceptor): void |
 
 ## Example (as JSON)
 
@@ -39,7 +40,8 @@ Request for updating card data
   "payment_origin": {
     "brand_id": "brand_id8",
     "charge_id": "charge_id2"
-  }
+  },
+  "indirect_acceptor": "indirect_acceptor2"
 }
 ```
 

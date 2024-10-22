@@ -21,6 +21,26 @@ use PagarmeApiSDKLib\Models\GetTokenResponse;
 class TokensController extends BaseController
 {
     /**
+     * Gets a token from its id
+     *
+     * @param string $id Token id
+     * @param string $publicKey Public key
+     *
+     * @return GetTokenResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getToken(string $id, string $publicKey): GetTokenResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/tokens/{id}?appId={public_key}')
+            ->parameters(TemplateParam::init('id', $id), TemplateParam::init('public_key', $publicKey));
+
+        $_resHandler = $this->responseHandler()->type(GetTokenResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
      * @param string $publicKey Public key
      * @param CreateTokenRequest $request Request for creating a token
      * @param string|null $idempotencyKey
@@ -40,26 +60,6 @@ class TokensController extends BaseController
                 BodyParam::init($request),
                 HeaderParam::init('idempotency-key', $idempotencyKey)
             );
-
-        $_resHandler = $this->responseHandler()->type(GetTokenResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Gets a token from its id
-     *
-     * @param string $id Token id
-     * @param string $publicKey Public key
-     *
-     * @return GetTokenResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getToken(string $id, string $publicKey): GetTokenResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/tokens/{id}?appId={public_key}')
-            ->parameters(TemplateParam::init('id', $id), TemplateParam::init('public_key', $publicKey));
 
         $_resHandler = $this->responseHandler()->type(GetTokenResponse::class);
 

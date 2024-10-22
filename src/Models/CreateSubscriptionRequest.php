@@ -184,6 +184,11 @@ class CreateSubscriptionRequest implements \JsonSerializable
     private $boleto;
 
     /**
+     * @var string|null
+     */
+    private $indirectAcceptor;
+
+    /**
      * @param CreateCustomerRequest $customer
      * @param CreateCardRequest $card
      * @param string $code
@@ -929,6 +934,26 @@ class CreateSubscriptionRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Indirect Acceptor.
+     * Business model identifier
+     */
+    public function getIndirectAcceptor(): ?string
+    {
+        return $this->indirectAcceptor;
+    }
+
+    /**
+     * Sets Indirect Acceptor.
+     * Business model identifier
+     *
+     * @maps indirect_acceptor
+     */
+    public function setIndirectAcceptor(?string $indirectAcceptor): void
+    {
+        $this->indirectAcceptor = $indirectAcceptor;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -1006,6 +1031,9 @@ class CreateSubscriptionRequest implements \JsonSerializable
         }
         if (isset($this->boleto)) {
             $json['boleto']                 = $this->boleto;
+        }
+        if (isset($this->indirectAcceptor)) {
+            $json['indirect_acceptor']      = $this->indirectAcceptor;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

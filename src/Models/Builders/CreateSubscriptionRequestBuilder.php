@@ -234,6 +234,15 @@ class CreateSubscriptionRequestBuilder
     }
 
     /**
+     * Sets indirect acceptor field.
+     */
+    public function indirectAcceptor(?string $value): self
+    {
+        $this->instance->setIndirectAcceptor($value);
+        return $this;
+    }
+
+    /**
      * Initializes a new create subscription request object.
      */
     public function build(): CreateSubscriptionRequest
