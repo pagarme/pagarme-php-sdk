@@ -166,6 +166,11 @@ class GetSubscriptionResponse implements \JsonSerializable
     private $manualBilling = [];
 
     /**
+     * @var array
+     */
+    private $indirectAcceptor = [];
+
+    /**
      * Returns Id.
      */
     public function getId(): ?string
@@ -1072,6 +1077,38 @@ class GetSubscriptionResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Indirect Acceptor.
+     * Business model identifier
+     */
+    public function getIndirectAcceptor(): ?string
+    {
+        if (count($this->indirectAcceptor) == 0) {
+            return null;
+        }
+        return $this->indirectAcceptor['value'];
+    }
+
+    /**
+     * Sets Indirect Acceptor.
+     * Business model identifier
+     *
+     * @maps indirect_acceptor
+     */
+    public function setIndirectAcceptor(?string $indirectAcceptor): void
+    {
+        $this->indirectAcceptor['value'] = $indirectAcceptor;
+    }
+
+    /**
+     * Unsets Indirect Acceptor.
+     * Business model identifier
+     */
+    public function unsetIndirectAcceptor(): void
+    {
+        $this->indirectAcceptor = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -1172,6 +1209,9 @@ class GetSubscriptionResponse implements \JsonSerializable
         }
         if (!empty($this->manualBilling)) {
             $json['manual_billing']         = $this->manualBilling['value'];
+        }
+        if (!empty($this->indirectAcceptor)) {
+            $json['indirect_acceptor']      = $this->indirectAcceptor['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

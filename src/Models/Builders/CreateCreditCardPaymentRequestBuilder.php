@@ -215,6 +215,15 @@ class CreateCreditCardPaymentRequestBuilder
     }
 
     /**
+     * Sets indirect acceptor field.
+     */
+    public function indirectAcceptor(?string $value): self
+    {
+        $this->instance->setIndirectAcceptor($value);
+        return $this;
+    }
+
+    /**
      * Initializes a new create credit card payment request object.
      */
     public function build(): CreateCreditCardPaymentRequest

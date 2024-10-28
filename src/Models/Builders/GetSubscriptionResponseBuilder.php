@@ -585,6 +585,24 @@ class GetSubscriptionResponseBuilder
     }
 
     /**
+     * Sets indirect acceptor field.
+     */
+    public function indirectAcceptor(?string $value): self
+    {
+        $this->instance->setIndirectAcceptor($value);
+        return $this;
+    }
+
+    /**
+     * Unsets indirect acceptor field.
+     */
+    public function unsetIndirectAcceptor(): self
+    {
+        $this->instance->unsetIndirectAcceptor();
+        return $this;
+    }
+
+    /**
      * Initializes a new get subscription response object.
      */
     public function build(): GetSubscriptionResponse

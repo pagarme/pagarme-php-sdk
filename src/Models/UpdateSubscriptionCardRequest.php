@@ -28,6 +28,11 @@ class UpdateSubscriptionCardRequest implements \JsonSerializable
     private $cardId;
 
     /**
+     * @var string|null
+     */
+    private $indirectAcceptor;
+
+    /**
      * @param CreateCardRequest $card
      * @param string $cardId
      */
@@ -80,6 +85,26 @@ class UpdateSubscriptionCardRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Indirect Acceptor.
+     * Business model identifier
+     */
+    public function getIndirectAcceptor(): ?string
+    {
+        return $this->indirectAcceptor;
+    }
+
+    /**
+     * Sets Indirect Acceptor.
+     * Business model identifier
+     *
+     * @maps indirect_acceptor
+     */
+    public function setIndirectAcceptor(?string $indirectAcceptor): void
+    {
+        $this->indirectAcceptor = $indirectAcceptor;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -91,8 +116,11 @@ class UpdateSubscriptionCardRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['card']    = $this->card;
-        $json['card_id'] = $this->cardId;
+        $json['card']                  = $this->card;
+        $json['card_id']               = $this->cardId;
+        if (isset($this->indirectAcceptor)) {
+            $json['indirect_acceptor'] = $this->indirectAcceptor;
+        }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

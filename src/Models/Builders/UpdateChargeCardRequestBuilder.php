@@ -72,6 +72,15 @@ class UpdateChargeCardRequestBuilder
     }
 
     /**
+     * Sets indirect acceptor field.
+     */
+    public function indirectAcceptor(?string $value): self
+    {
+        $this->instance->setIndirectAcceptor($value);
+        return $this;
+    }
+
+    /**
      * Initializes a new update charge card request object.
      */
     public function build(): UpdateChargeCardRequest

@@ -53,6 +53,11 @@ class UpdateChargeCardRequest implements \JsonSerializable
     private $paymentOrigin;
 
     /**
+     * @var string|null
+     */
+    private $indirectAcceptor;
+
+    /**
      * @param bool $updateSubscription
      * @param string $cardId
      * @param CreateCardRequest $card
@@ -205,6 +210,26 @@ class UpdateChargeCardRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Indirect Acceptor.
+     * Business model identifier
+     */
+    public function getIndirectAcceptor(): ?string
+    {
+        return $this->indirectAcceptor;
+    }
+
+    /**
+     * Sets Indirect Acceptor.
+     * Business model identifier
+     *
+     * @maps indirect_acceptor
+     */
+    public function setIndirectAcceptor(?string $indirectAcceptor): void
+    {
+        $this->indirectAcceptor = $indirectAcceptor;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -216,18 +241,21 @@ class UpdateChargeCardRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['update_subscription']  = $this->updateSubscription;
-        $json['card_id']              = $this->cardId;
-        $json['card']                 = $this->card;
-        $json['recurrence']           = $this->recurrence;
+        $json['update_subscription']   = $this->updateSubscription;
+        $json['card_id']               = $this->cardId;
+        $json['card']                  = $this->card;
+        $json['recurrence']            = $this->recurrence;
         if (isset($this->initiatedType)) {
-            $json['initiated_type']   = $this->initiatedType;
+            $json['initiated_type']    = $this->initiatedType;
         }
         if (isset($this->recurrenceModel)) {
-            $json['recurrence_model'] = $this->recurrenceModel;
+            $json['recurrence_model']  = $this->recurrenceModel;
         }
         if (isset($this->paymentOrigin)) {
-            $json['payment_origin']   = $this->paymentOrigin;
+            $json['payment_origin']    = $this->paymentOrigin;
+        }
+        if (isset($this->indirectAcceptor)) {
+            $json['indirect_acceptor'] = $this->indirectAcceptor;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
