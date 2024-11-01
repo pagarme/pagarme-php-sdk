@@ -43,6 +43,11 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
     private $boleto;
 
     /**
+     * @var array
+     */
+    private $indirectAcceptor = [];
+
+    /**
      * @param string $paymentMethod
      * @param string $cardId
      * @param CreateCardRequest $card
@@ -158,6 +163,38 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Indirect Acceptor.
+     * Business model identifier
+     */
+    public function getIndirectAcceptor(): ?string
+    {
+        if (count($this->indirectAcceptor) == 0) {
+            return null;
+        }
+        return $this->indirectAcceptor['value'];
+    }
+
+    /**
+     * Sets Indirect Acceptor.
+     * Business model identifier
+     *
+     * @maps indirect_acceptor
+     */
+    public function setIndirectAcceptor(?string $indirectAcceptor): void
+    {
+        $this->indirectAcceptor['value'] = $indirectAcceptor;
+    }
+
+    /**
+     * Unsets Indirect Acceptor.
+     * Business model identifier
+     */
+    public function unsetIndirectAcceptor(): void
+    {
+        $this->indirectAcceptor = [];
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -169,14 +206,17 @@ class UpdateSubscriptionPaymentMethodRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['payment_method'] = $this->paymentMethod;
-        $json['card_id']        = $this->cardId;
-        $json['card']           = $this->card;
+        $json['payment_method']        = $this->paymentMethod;
+        $json['card_id']               = $this->cardId;
+        $json['card']                  = $this->card;
         if (isset($this->cardToken)) {
-            $json['card_token'] = $this->cardToken;
+            $json['card_token']        = $this->cardToken;
         }
         if (isset($this->boleto)) {
-            $json['boleto']     = $this->boleto;
+            $json['boleto']            = $this->boleto;
+        }
+        if (!empty($this->indirectAcceptor)) {
+            $json['indirect_acceptor'] = $this->indirectAcceptor['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
