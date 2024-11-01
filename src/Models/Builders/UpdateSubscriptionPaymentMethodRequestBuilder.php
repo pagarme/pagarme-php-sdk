@@ -59,6 +59,24 @@ class UpdateSubscriptionPaymentMethodRequestBuilder
     }
 
     /**
+     * Sets indirect acceptor field.
+     */
+    public function indirectAcceptor(?string $value): self
+    {
+        $this->instance->setIndirectAcceptor($value);
+        return $this;
+    }
+
+    /**
+     * Unsets indirect acceptor field.
+     */
+    public function unsetIndirectAcceptor(): self
+    {
+        $this->instance->unsetIndirectAcceptor();
+        return $this;
+    }
+
+    /**
      * Initializes a new update subscription payment method request object.
      */
     public function build(): UpdateSubscriptionPaymentMethodRequest
