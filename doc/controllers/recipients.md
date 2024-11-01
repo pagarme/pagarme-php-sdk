@@ -11,26 +11,26 @@ $recipientsController = $client->getRecipientsController();
 ## Methods
 
 * [Update Recipient](../../doc/controllers/recipients.md#update-recipient)
-* [Create Anticipation](../../doc/controllers/recipients.md#create-anticipation)
-* [Get Anticipation Limits](../../doc/controllers/recipients.md#get-anticipation-limits)
-* [Get Recipients](../../doc/controllers/recipients.md#get-recipients)
 * [Get Withdraw by Id](../../doc/controllers/recipients.md#get-withdraw-by-id)
+* [Get Recipient](../../doc/controllers/recipients.md#get-recipient)
+* [Get Balance](../../doc/controllers/recipients.md#get-balance)
+* [Get Recipients](../../doc/controllers/recipients.md#get-recipients)
 * [Update Recipient Default Bank Account](../../doc/controllers/recipients.md#update-recipient-default-bank-account)
-* [Update Recipient Metadata](../../doc/controllers/recipients.md#update-recipient-metadata)
 * [Get Transfers](../../doc/controllers/recipients.md#get-transfers)
 * [Get Transfer](../../doc/controllers/recipients.md#get-transfer)
 * [Create Withdraw](../../doc/controllers/recipients.md#create-withdraw)
-* [Update Automatic Anticipation Settings](../../doc/controllers/recipients.md#update-automatic-anticipation-settings)
 * [Get Anticipation](../../doc/controllers/recipients.md#get-anticipation)
 * [Update Recipient Transfer Settings](../../doc/controllers/recipients.md#update-recipient-transfer-settings)
-* [Get Anticipations](../../doc/controllers/recipients.md#get-anticipations)
-* [Get Recipient](../../doc/controllers/recipients.md#get-recipient)
-* [Get Balance](../../doc/controllers/recipients.md#get-balance)
-* [Get Withdrawals](../../doc/controllers/recipients.md#get-withdrawals)
+* [Get Recipient by Code](../../doc/controllers/recipients.md#get-recipient-by-code)
+* [Update Automatic Anticipation Settings](../../doc/controllers/recipients.md#update-automatic-anticipation-settings)
 * [Create Transfer](../../doc/controllers/recipients.md#create-transfer)
 * [Create Recipient](../../doc/controllers/recipients.md#create-recipient)
-* [Get Recipient by Code](../../doc/controllers/recipients.md#get-recipient-by-code)
 * [Get Default Recipient](../../doc/controllers/recipients.md#get-default-recipient)
+* [Create Anticipation](../../doc/controllers/recipients.md#create-anticipation)
+* [Get Anticipation Limits](../../doc/controllers/recipients.md#get-anticipation-limits)
+* [Update Recipient Metadata](../../doc/controllers/recipients.md#update-recipient-metadata)
+* [Get Anticipations](../../doc/controllers/recipients.md#get-anticipations)
+* [Get Withdrawals](../../doc/controllers/recipients.md#get-withdrawals)
 * [Create KYC Link](../../doc/controllers/recipients.md#create-kyc-link)
 * [Update Recipient Code](../../doc/controllers/recipients.md#update-recipient-code)
 
@@ -82,115 +82,6 @@ $result = $recipientsController->updateRecipient(
 ```
 
 
-# Create Anticipation
-
-Creates an anticipation
-
-```php
-function createAnticipation(
-    string $recipientId,
-    CreateAnticipationRequest $request,
-    ?string $idempotencyKey = null
-): GetAnticipationResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`CreateAnticipationRequest`](../../doc/models/create-anticipation-request.md) | Body, Required | Anticipation data |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetAnticipationResponse`](../../doc/models/get-anticipation-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$request = CreateAnticipationRequestBuilder::init(
-    242,
-    'timeframe8',
-    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
-)->build();
-
-$result = $recipientsController->createAnticipation(
-    $recipientId,
-    $request
-);
-```
-
-
-# Get Anticipation Limits
-
-Gets the anticipation limits for a recipient
-
-```php
-function getAnticipationLimits(
-    string $recipientId,
-    string $timeframe,
-    \DateTime $paymentDate
-): GetAnticipationLimitResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `timeframe` | `string` | Query, Required | Timeframe |
-| `paymentDate` | `DateTime` | Query, Required | Anticipation payment date |
-
-## Response Type
-
-[`GetAnticipationLimitResponse`](../../doc/models/get-anticipation-limit-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$timeframe = 'timeframe2';
-
-$paymentDate = DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z');
-
-$result = $recipientsController->getAnticipationLimits(
-    $recipientId,
-    $timeframe,
-    $paymentDate
-);
-```
-
-
-# Get Recipients
-
-Retrieves paginated recipients information
-
-```php
-function getRecipients(?int $page = null, ?int $size = null): ListRecipientResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-
-## Response Type
-
-[`ListRecipientResponse`](../../doc/models/list-recipient-response.md)
-
-## Example Usage
-
-```php
-$result = $recipientsController->getRecipients();
-```
-
-
 # Get Withdraw by Id
 
 ```php
@@ -219,6 +110,86 @@ $result = $recipientsController->getWithdrawById(
     $recipientId,
     $withdrawalId
 );
+```
+
+
+# Get Recipient
+
+Retrieves recipient information
+
+```php
+function getRecipient(string $recipientId): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipiend id |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->getRecipient($recipientId);
+```
+
+
+# Get Balance
+
+Get balance information for a recipient
+
+```php
+function getBalance(string $recipientId): GetBalanceResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+
+## Response Type
+
+[`GetBalanceResponse`](../../doc/models/get-balance-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->getBalance($recipientId);
+```
+
+
+# Get Recipients
+
+Retrieves paginated recipients information
+
+```php
+function getRecipients(?int $page = null, ?int $size = null): ListRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+[`ListRecipientResponse`](../../doc/models/list-recipient-response.md)
+
+## Example Usage
+
+```php
+$result = $recipientsController->getRecipients();
 ```
 
 
@@ -270,48 +241,6 @@ $request = UpdateRecipientBankAccountRequestBuilder::init(
 )->build();
 
 $result = $recipientsController->updateRecipientDefaultBankAccount(
-    $recipientId,
-    $request
-);
-```
-
-
-# Update Recipient Metadata
-
-Updates recipient metadata
-
-```php
-function updateRecipientMetadata(
-    string $recipientId,
-    UpdateMetadataRequest $request,
-    ?string $idempotencyKey = null
-): GetRecipientResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Metadata |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$request = UpdateMetadataRequestBuilder::init(
-    [
-        'key0' => 'metadata3'
-    ]
-)->build();
-
-$result = $recipientsController->updateRecipientMetadata(
     $recipientId,
     $request
 );
@@ -423,44 +352,6 @@ $result = $recipientsController->createWithdraw(
 ```
 
 
-# Update Automatic Anticipation Settings
-
-Updates recipient metadata
-
-```php
-function updateAutomaticAnticipationSettings(
-    string $recipientId,
-    UpdateAutomaticAnticipationSettingsRequest $request,
-    ?string $idempotencyKey = null
-): GetRecipientResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateAutomaticAnticipationSettingsRequest`](../../doc/models/update-automatic-anticipation-settings-request.md) | Body, Required | Metadata |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$request = UpdateAutomaticAnticipationSettingsRequestBuilder::init()->build();
-
-$result = $recipientsController->updateAutomaticAnticipationSettings(
-    $recipientId,
-    $request
-);
-```
-
-
 # Get Anticipation
 
 Gets an anticipation
@@ -534,22 +425,43 @@ $result = $recipientsController->updateRecipientTransferSettings(
 ```
 
 
-# Get Anticipations
+# Get Recipient by Code
 
-Retrieves a paginated list of anticipations from a recipient
+Retrieves recipient information
 
 ```php
-function getAnticipations(
+function getRecipientByCode(string $code): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `code` | `string` | Template, Required | Recipient code |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$code = 'code8';
+
+$result = $recipientsController->getRecipientByCode($code);
+```
+
+
+# Update Automatic Anticipation Settings
+
+Updates recipient metadata
+
+```php
+function updateAutomaticAnticipationSettings(
     string $recipientId,
-    ?int $page = null,
-    ?int $size = null,
-    ?string $status = null,
-    ?string $timeframe = null,
-    ?\DateTime $paymentDateSince = null,
-    ?\DateTime $paymentDateUntil = null,
-    ?\DateTime $createdSince = null,
-    ?\DateTime $createdUntil = null
-): ListAnticipationResponse
+    UpdateAutomaticAnticipationSettingsRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
 ```
 
 ## Parameters
@@ -557,41 +469,8 @@ function getAnticipations(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipientId` | `string` | Template, Required | Recipient id |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-| `status` | `?string` | Query, Optional | Filter for anticipation status |
-| `timeframe` | `?string` | Query, Optional | Filter for anticipation timeframe |
-| `paymentDateSince` | `?DateTime` | Query, Optional | Filter for start range for anticipation payment date |
-| `paymentDateUntil` | `?DateTime` | Query, Optional | Filter for end range for anticipation payment date |
-| `createdSince` | `?DateTime` | Query, Optional | Filter for start range for anticipation creation date |
-| `createdUntil` | `?DateTime` | Query, Optional | Filter for end range for anticipation creation date |
-
-## Response Type
-
-[`ListAnticipationResponse`](../../doc/models/list-anticipation-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$result = $recipientsController->getAnticipations($recipientId);
-```
-
-
-# Get Recipient
-
-Retrieves recipient information
-
-```php
-function getRecipient(string $recipientId): GetRecipientResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipiend id |
+| `request` | [`UpdateAutomaticAnticipationSettingsRequest`](../../doc/models/update-automatic-anticipation-settings-request.md) | Body, Required | Metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
@@ -602,73 +481,12 @@ function getRecipient(string $recipientId): GetRecipientResponse
 ```php
 $recipientId = 'recipient_id0';
 
-$result = $recipientsController->getRecipient($recipientId);
-```
+$request = UpdateAutomaticAnticipationSettingsRequestBuilder::init()->build();
 
-
-# Get Balance
-
-Get balance information for a recipient
-
-```php
-function getBalance(string $recipientId): GetBalanceResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-
-## Response Type
-
-[`GetBalanceResponse`](../../doc/models/get-balance-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$result = $recipientsController->getBalance($recipientId);
-```
-
-
-# Get Withdrawals
-
-Gets a paginated list of transfers for the recipient
-
-```php
-function getWithdrawals(
-    string $recipientId,
-    ?int $page = null,
-    ?int $size = null,
-    ?string $status = null,
-    ?\DateTime $createdSince = null,
-    ?\DateTime $createdUntil = null
-): ListWithdrawals
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | - |
-| `page` | `?int` | Query, Optional | - |
-| `size` | `?int` | Query, Optional | - |
-| `status` | `?string` | Query, Optional | - |
-| `createdSince` | `?DateTime` | Query, Optional | - |
-| `createdUntil` | `?DateTime` | Query, Optional | - |
-
-## Response Type
-
-[`ListWithdrawals`](../../doc/models/list-withdrawals.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$result = $recipientsController->getWithdrawals($recipientId);
+$result = $recipientsController->updateAutomaticAnticipationSettings(
+    $recipientId,
+    $request
+);
 ```
 
 
@@ -764,33 +582,6 @@ $result = $recipientsController->createRecipient($request);
 ```
 
 
-# Get Recipient by Code
-
-Retrieves recipient information
-
-```php
-function getRecipientByCode(string $code): GetRecipientResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `code` | `string` | Template, Required | Recipient code |
-
-## Response Type
-
-[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```php
-$code = 'code8';
-
-$result = $recipientsController->getRecipientByCode($code);
-```
-
-
 # Get Default Recipient
 
 ```php
@@ -805,6 +596,215 @@ function getDefaultRecipient(): GetRecipientResponse
 
 ```php
 $result = $recipientsController->getDefaultRecipient();
+```
+
+
+# Create Anticipation
+
+Creates an anticipation
+
+```php
+function createAnticipation(
+    string $recipientId,
+    CreateAnticipationRequest $request,
+    ?string $idempotencyKey = null
+): GetAnticipationResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`CreateAnticipationRequest`](../../doc/models/create-anticipation-request.md) | Body, Required | Anticipation data |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetAnticipationResponse`](../../doc/models/get-anticipation-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = CreateAnticipationRequestBuilder::init(
+    242,
+    'timeframe8',
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
+
+$result = $recipientsController->createAnticipation(
+    $recipientId,
+    $request
+);
+```
+
+
+# Get Anticipation Limits
+
+Gets the anticipation limits for a recipient
+
+```php
+function getAnticipationLimits(
+    string $recipientId,
+    string $timeframe,
+    \DateTime $paymentDate
+): GetAnticipationLimitResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `timeframe` | `string` | Query, Required | Timeframe |
+| `paymentDate` | `DateTime` | Query, Required | Anticipation payment date |
+
+## Response Type
+
+[`GetAnticipationLimitResponse`](../../doc/models/get-anticipation-limit-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$timeframe = 'timeframe2';
+
+$paymentDate = DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z');
+
+$result = $recipientsController->getAnticipationLimits(
+    $recipientId,
+    $timeframe,
+    $paymentDate
+);
+```
+
+
+# Update Recipient Metadata
+
+Updates recipient metadata
+
+```php
+function updateRecipientMetadata(
+    string $recipientId,
+    UpdateMetadataRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $recipientsController->updateRecipientMetadata(
+    $recipientId,
+    $request
+);
+```
+
+
+# Get Anticipations
+
+Retrieves a paginated list of anticipations from a recipient
+
+```php
+function getAnticipations(
+    string $recipientId,
+    ?int $page = null,
+    ?int $size = null,
+    ?string $status = null,
+    ?string $timeframe = null,
+    ?\DateTime $paymentDateSince = null,
+    ?\DateTime $paymentDateUntil = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListAnticipationResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `status` | `?string` | Query, Optional | Filter for anticipation status |
+| `timeframe` | `?string` | Query, Optional | Filter for anticipation timeframe |
+| `paymentDateSince` | `?DateTime` | Query, Optional | Filter for start range for anticipation payment date |
+| `paymentDateUntil` | `?DateTime` | Query, Optional | Filter for end range for anticipation payment date |
+| `createdSince` | `?DateTime` | Query, Optional | Filter for start range for anticipation creation date |
+| `createdUntil` | `?DateTime` | Query, Optional | Filter for end range for anticipation creation date |
+
+## Response Type
+
+[`ListAnticipationResponse`](../../doc/models/list-anticipation-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->getAnticipations($recipientId);
+```
+
+
+# Get Withdrawals
+
+Gets a paginated list of transfers for the recipient
+
+```php
+function getWithdrawals(
+    string $recipientId,
+    ?int $page = null,
+    ?int $size = null,
+    ?string $status = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListWithdrawals
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | - |
+| `page` | `?int` | Query, Optional | - |
+| `size` | `?int` | Query, Optional | - |
+| `status` | `?string` | Query, Optional | - |
+| `createdSince` | `?DateTime` | Query, Optional | - |
+| `createdUntil` | `?DateTime` | Query, Optional | - |
+
+## Response Type
+
+[`ListWithdrawals`](../../doc/models/list-withdrawals.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->getWithdrawals($recipientId);
 ```
 
 
