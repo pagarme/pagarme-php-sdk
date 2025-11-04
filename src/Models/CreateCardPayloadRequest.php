@@ -26,6 +26,11 @@ class CreateCardPayloadRequest implements \JsonSerializable
     private $googlePay = [];
 
     /**
+     * @var array
+     */
+    private $applePay = [];
+
+    /**
      * Returns Type.
      */
     public function getType(): ?string
@@ -84,6 +89,35 @@ class CreateCardPayloadRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Apple Pay.
+     */
+    public function getApplePay(): ?CreateApplePayRequest
+    {
+        if (count($this->applePay) == 0) {
+            return null;
+        }
+        return $this->applePay['value'];
+    }
+
+    /**
+     * Sets Apple Pay.
+     *
+     * @maps apple_pay
+     */
+    public function setApplePay(?CreateApplePayRequest $applePay): void
+    {
+        $this->applePay['value'] = $applePay;
+    }
+
+    /**
+     * Unsets Apple Pay.
+     */
+    public function unsetApplePay(): void
+    {
+        $this->applePay = [];
+    }
+
+    /**
      * Converts the CreateCardPayloadRequest object to a human-readable string representation.
      *
      * @return string The string representation of the CreateCardPayloadRequest object.
@@ -92,7 +126,7 @@ class CreateCardPayloadRequest implements \JsonSerializable
     {
         return ApiHelper::stringify(
             'CreateCardPayloadRequest',
-            ['type' => $this->getType(), 'googlePay' => $this->getGooglePay()]
+            ['type' => $this->getType(), 'googlePay' => $this->getGooglePay(), 'applePay' => $this->getApplePay()]
         );
     }
 
@@ -113,6 +147,9 @@ class CreateCardPayloadRequest implements \JsonSerializable
         }
         if (!empty($this->googlePay)) {
             $json['google_pay'] = $this->googlePay['value'];
+        }
+        if (!empty($this->applePay)) {
+            $json['apple_pay'] = $this->applePay['value'];
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
