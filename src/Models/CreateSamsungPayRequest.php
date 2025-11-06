@@ -24,7 +24,7 @@ class CreateSamsungPayRequest implements \JsonSerializable
     private $playload = [];
 
     /**
-     * Returns Version.
+     * Returns Playload.
      * Encrypted token information containing card details.
      */
     public function getPlayload(): ?string
@@ -36,10 +36,10 @@ class CreateSamsungPayRequest implements \JsonSerializable
     }
 
     /**
-     * Sets Version.
+     * Sets Playload.
      * Encrypted token information containing card details.
      *
-     * @maps version
+     * @maps playload
      */
     public function setPlayload(?string $playload): void
     {
