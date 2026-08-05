@@ -17,16 +17,19 @@ Response object for getting a cash transaction
 |  --- | --- | --- | --- | --- | --- |
 | `description` | `?string` | Optional | Description | getDescription(): ?string | setDescription(?string description): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "description": "description0"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetCashTransactionResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getCashTransactionResponse = GetCashTransactionResponseBuilder::init()
+    ->gatewayId('gateway_id8')
+    ->amount(40)
+    ->status('status6')
+    ->success(false)
+    ->createdAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->description('description6')
+    ->build();
 ```
 

@@ -12,12 +12,14 @@
 | `sourceId` | `?string` | Optional | - | getSourceId(): ?string | setSourceId(?string sourceId): void |
 | `type` | `?string` | Optional | - | getType(): ?string | setType(?string type): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "source_id": "source_id0",
-  "type": "type4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetTransferSourceResponseBuilder;
+
+$getTransferSourceResponse = GetTransferSourceResponseBuilder::init()
+    ->sourceId('source_id8')
+    ->type('type4')
+    ->build();
 ```
 

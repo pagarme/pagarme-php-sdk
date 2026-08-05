@@ -20,18 +20,20 @@ Register Information Address
 | `zipCode` | `string` | Required | - | getZipCode(): string | setZipCode(string zipCode): void |
 | `referencePoint` | `string` | Required | - | getReferencePoint(): string | setReferencePoint(string referencePoint): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "street": "street8",
-  "complementary": "complementary0",
-  "street_number": "street_number8",
-  "neighborhood": "neighborhood4",
-  "city": "city8",
-  "state": "state4",
-  "zip_code": "zip_code2",
-  "reference_point": "reference_point2"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateRegisterInformationAddressRequestBuilder;
+
+$createRegisterInformationAddressRequest = CreateRegisterInformationAddressRequestBuilder::init(
+    'street8',
+    'complementary0',
+    'street_number8',
+    'neighborhood4',
+    'city8',
+    'state4',
+    'zip_code2',
+    'reference_point2'
+)->build();
 ```
 

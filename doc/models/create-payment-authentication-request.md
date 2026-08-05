@@ -14,19 +14,14 @@ The payment authentication request
 | `type` | `string` | Required | The Authentication type | getType(): string | setType(string type): void |
 | `threedSecure` | [`CreateThreeDSecureRequest`](../../doc/models/create-three-d-secure-request.md) | Required | The 3D-S authentication object | getThreedSecure(): CreateThreeDSecureRequest | setThreedSecure(CreateThreeDSecureRequest threedSecure): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "type8",
-  "threed_secure": {
-    "mpi": "mpi0",
-    "cavv": "cavv8",
-    "eci": "eci2",
-    "transaction_id": "transaction_id0",
-    "success_url": "success_url4",
-    "ds_transaction_id": "ds_transaction_id0"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreatePaymentAuthenticationRequestBuilder;
+
+$createPaymentAuthenticationRequest = CreatePaymentAuthenticationRequestBuilder::init(
+    'type6',
+    null
+)->build();
 ```
 

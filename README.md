@@ -99,7 +99,7 @@ To run your project, right click on your PHP file inside your Test project and c
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -115,12 +115,15 @@ The following parameters are configurable for the API Client:
 | retryOnTimeout | `bool` | Whether to retry on request timeout.<br>*Default*: `true` |
 | httpStatusCodesToRetry | `array` | Http status codes to retry against.<br>*Default*: `408, 413, 429, 500, 502, 503, 504, 521, 522, 524` |
 | httpMethodsToRetry | `array` | Http methods to retry against.<br>*Default*: `'GET', 'PUT'` |
-| proxyConfiguration | [`ProxyConfigurationBuilder`](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/proxy-configuration-builder.md) | Represents the proxy configurations for API calls |
-| basicAuthCredentials | [`BasicAuthCredentials`](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/auth/basic-authentication.md) | The Credentials Setter for Basic Authentication |
+| proxyConfiguration | [`ProxyConfigurationBuilder`](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/proxy-configuration-builder.md) | Represents the proxy configurations for API calls |
+| basicAuthCredentials | [`BasicAuthCredentials`](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/auth/basic-authentication.md) | The Credentials Setter for Basic Authentication |
 
 The API client can be initialized as follows:
 
 ```php
+use PagarmeApiSDKLib\Authentication\BasicAuthCredentialsBuilder;
+use PagarmeApiSDKLib\PagarmeApiSDKClientBuilder;
+
 $client = PagarmeApiSDKClientBuilder::init()
     ->basicAuthCredentials(
         BasicAuthCredentialsBuilder::init(
@@ -136,7 +139,7 @@ $client = PagarmeApiSDKClientBuilder::init()
 
 This API uses the following authentication schemes.
 
-* [`httpBasic (Basic Authentication)`](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/auth/basic-authentication.md)
+* [`httpBasic (Basic Authentication)`](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/auth/basic-authentication.md)
 
 ## API Errors
 
@@ -144,40 +147,39 @@ Here is the list of errors that the API might throw.
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | Invalid request | [`ErrorException`](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/models/error-exception.md) |
-| 401 | Invalid API key | [`ErrorException`](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/models/error-exception.md) |
-| 404 | An informed resource was not found | [`ErrorException`](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/models/error-exception.md) |
-| 412 | Business validation error | [`ErrorException`](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/models/error-exception.md) |
-| 422 | Contract validation error | [`ErrorException`](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/models/error-exception.md) |
-| 500 | Internal server error | [`ErrorException`](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/models/error-exception.md) |
+| 400 | Invalid request | [`ErrorException`](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/models/error-exception.md) |
+| 401 | Invalid API key | [`ErrorException`](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/models/error-exception.md) |
+| 404 | An informed resource was not found | [`ErrorException`](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/models/error-exception.md) |
+| 412 | Business validation error | [`ErrorException`](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/models/error-exception.md) |
+| 422 | Contract validation error | [`ErrorException`](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/models/error-exception.md) |
+| 500 | Internal server error | [`ErrorException`](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/models/error-exception.md) |
 
 ## List of APIs
 
-* [Subscriptions](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/controllers/subscriptions.md)
-* [Orders](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/controllers/orders.md)
-* [Plans](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/controllers/plans.md)
-* [Invoices](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/controllers/invoices.md)
-* [Customers](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/controllers/customers.md)
-* [Charges](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/controllers/charges.md)
-* [Recipients](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/controllers/recipients.md)
-* [Tokens](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/controllers/tokens.md)
-* [Transactions](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/controllers/transactions.md)
-* [Transfers](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/controllers/transfers.md)
-* [Payables](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/controllers/payables.md)
-* [Balance Operations](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/controllers/balance-operations.md)
+* [Charges](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/controllers/charges.md)
+* [Customers](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/controllers/customers.md)
+* [Invoices](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/controllers/invoices.md)
+* [Orders](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/controllers/orders.md)
+* [Payables](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/controllers/payables.md)
+* [Plans](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/controllers/plans.md)
+* [Recipients](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/controllers/recipients.md)
+* [Subscriptions](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/controllers/subscriptions.md)
+* [Tokens](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/controllers/tokens.md)
+* [Transactions](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/controllers/transactions.md)
+* [Transfers](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/controllers/transfers.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [ProxyConfigurationBuilder](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/proxy-configuration-builder.md)
+* [ProxyConfigurationBuilder](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/proxy-configuration-builder.md)
 
 ### HTTP
 
-* [HttpRequest](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/http-request.md)
-* [HttpResponse](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/http-response.md)
+* [HttpRequest](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/http-request.md)
+* [HttpResponse](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/http-response.md)
 
 ### Utilities
 
-* [ApiException](https://www.github.com/pagarme/pagarme-php-sdk/tree/6.8.17/doc/api-exception.md)
+* [ApiException](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.0/doc/api-exception.md)
 

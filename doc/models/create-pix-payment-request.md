@@ -15,22 +15,22 @@ Contains information to create a pix payment
 | `expiresIn` | `?int` | Optional | Seconds until pix payment expires | getExpiresIn(): ?int | setExpiresIn(?int expiresIn): void |
 | `additionalInformation` | [`?(PixAdditionalInformation[])`](../../doc/models/pix-additional-information.md) | Optional | Pix additional information | getAdditionalInformation(): ?array | setAdditionalInformation(?array additionalInformation): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "expires_at": "2016-03-13T12:52:32.123Z",
-  "expires_in": 216,
-  "additional_information": [
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    },
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    }
-  ]
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreatePixPaymentRequestBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+use PagarmeApiSDKLib\Models\Builders\PixAdditionalInformationBuilder;
+
+$createPixPaymentRequest = CreatePixPaymentRequestBuilder::init()
+    ->expiresAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->expiresIn(54)
+    ->additionalInformation(
+        [
+            null,
+            PixAdditionalInformationBuilder::init()->build(),
+            PixAdditionalInformationBuilder::init()->build()
+        ]
+    )->build();
 ```
 

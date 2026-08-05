@@ -14,18 +14,18 @@ Anticipation limits
 | `max` | [`?GetAnticipationLimitResponse`](../../doc/models/get-anticipation-limit-response.md) | Optional | Max limit | getMax(): ?GetAnticipationLimitResponse | setMax(?GetAnticipationLimitResponse max): void |
 | `min` | [`?GetAnticipationLimitResponse`](../../doc/models/get-anticipation-limit-response.md) | Optional | Min limit | getMin(): ?GetAnticipationLimitResponse | setMin(?GetAnticipationLimitResponse min): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "max": {
-    "amount": 140,
-    "anticipation_fee": 234
-  },
-  "min": {
-    "amount": 34,
-    "anticipation_fee": 60
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetAnticipationLimitsResponseBuilder;
+
+$getAnticipationLimitsResponse = GetAnticipationLimitsResponseBuilder::init()
+    ->max(
+        null
+    )
+    ->min(
+        null
+    )
+    ->build();
 ```
 

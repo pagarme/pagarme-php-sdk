@@ -13,11 +13,13 @@ The GooglePay header request
 |  --- | --- | --- | --- | --- | --- |
 | `ephemeralPublicKey` | `string` | Required | X.509 encoded key bytes, Base64 encoded as a string | getEphemeralPublicKey(): string | setEphemeralPublicKey(string ephemeralPublicKey): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "ephemeral_public_key": "ephemeral_public_key2"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateGooglePayHeaderRequestBuilder;
+
+$createGooglePayHeaderRequest = CreateGooglePayHeaderRequestBuilder::init(
+    'ephemeral_public_key2'
+)->build();
 ```
 

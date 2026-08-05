@@ -13,13 +13,17 @@ Request for creating a new Invoice
 |  --- | --- | --- | --- | --- | --- |
 | `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "metadata": {
-    "key0": "metadata9"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateInvoiceRequestBuilder;
+
+$createInvoiceRequest = CreateInvoiceRequestBuilder::init(
+    [
+        'key0' => 'metadata9',
+        'key1' => 'metadata8',
+        'key2' => 'metadata7'
+    ]
+)->build();
 ```
 

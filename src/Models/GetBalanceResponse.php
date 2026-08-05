@@ -44,8 +44,13 @@ class GetBalanceResponse implements \JsonSerializable
     private $waitingFundsAmount = [];
 
     /**
+     * @var string|null
+     */
+    private $paymentProfileId;
+
+    /**
      * Returns Currency.
-     * Currency
+     * Currency (official ISO 4217 currency names)
      */
     public function getCurrency(): ?string
     {
@@ -57,7 +62,7 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Sets Currency.
-     * Currency
+     * Currency (official ISO 4217 currency names)
      *
      * @maps currency
      */
@@ -68,7 +73,7 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Unsets Currency.
-     * Currency
+     * Currency (official ISO 4217 currency names)
      */
     public function unsetCurrency(): void
     {
@@ -77,7 +82,7 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Returns Available Amount.
-     * Amount available for transferring
+     * Amount available for transferring in cents
      */
     public function getAvailableAmount(): ?int
     {
@@ -89,7 +94,7 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Sets Available Amount.
-     * Amount available for transferring
+     * Amount available for transferring in cents
      *
      * @maps available_amount
      */
@@ -100,7 +105,7 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Unsets Available Amount.
-     * Amount available for transferring
+     * Amount available for transferring in cents
      */
     public function unsetAvailableAmount(): void
     {
@@ -141,6 +146,7 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Returns Transferred Amount.
+     * Amount transfered in cents
      */
     public function getTransferredAmount(): ?int
     {
@@ -152,6 +158,7 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Sets Transferred Amount.
+     * Amount transfered in cents
      *
      * @maps transferred_amount
      */
@@ -162,6 +169,7 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Unsets Transferred Amount.
+     * Amount transfered in cents
      */
     public function unsetTransferredAmount(): void
     {
@@ -170,6 +178,7 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Returns Waiting Funds Amount.
+     * Amount waiting in cents
      */
     public function getWaitingFundsAmount(): ?int
     {
@@ -181,6 +190,7 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Sets Waiting Funds Amount.
+     * Amount waiting in cents
      *
      * @maps waiting_funds_amount
      */
@@ -191,10 +201,31 @@ class GetBalanceResponse implements \JsonSerializable
 
     /**
      * Unsets Waiting Funds Amount.
+     * Amount waiting in cents
      */
     public function unsetWaitingFundsAmount(): void
     {
         $this->waitingFundsAmount = [];
+    }
+
+    /**
+     * Returns Payment Profile Id.
+     * Operational id of merchant in payments operations (new)
+     */
+    public function getPaymentProfileId(): ?string
+    {
+        return $this->paymentProfileId;
+    }
+
+    /**
+     * Sets Payment Profile Id.
+     * Operational id of merchant in payments operations (new)
+     *
+     * @maps payment_profile_id
+     */
+    public function setPaymentProfileId(?string $paymentProfileId): void
+    {
+        $this->paymentProfileId = $paymentProfileId;
     }
 
     /**
@@ -211,7 +242,8 @@ class GetBalanceResponse implements \JsonSerializable
                 'availableAmount' => $this->getAvailableAmount(),
                 'recipient' => $this->getRecipient(),
                 'transferredAmount' => $this->getTransferredAmount(),
-                'waitingFundsAmount' => $this->getWaitingFundsAmount()
+                'waitingFundsAmount' => $this->getWaitingFundsAmount(),
+                'paymentProfileId' => $this->paymentProfileId
             ]
         );
     }
@@ -243,6 +275,7 @@ class GetBalanceResponse implements \JsonSerializable
         if (!empty($this->waitingFundsAmount)) {
             $json['waiting_funds_amount'] = $this->waitingFundsAmount['value'];
         }
+        $json['payment_profile_id']       = $this->paymentProfileId;
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

@@ -24,9 +24,17 @@ class ListPayablesResponse implements \JsonSerializable
     private $data = [];
 
     /**
-     * @var array
+     * @var CursorPagingResponse
      */
-    private $paging = [];
+    private $paging;
+
+    /**
+     * @param CursorPagingResponse $paging
+     */
+    public function __construct(CursorPagingResponse $paging)
+    {
+        $this->paging = $paging;
+    }
 
     /**
      * Returns Data.
@@ -66,34 +74,23 @@ class ListPayablesResponse implements \JsonSerializable
 
     /**
      * Returns Paging.
-     * Paging object
+     * Cursor paging response
      */
-    public function getPaging(): ?PagingResponse
+    public function getPaging(): CursorPagingResponse
     {
-        if (count($this->paging) == 0) {
-            return null;
-        }
-        return $this->paging['value'];
+        return $this->paging;
     }
 
     /**
      * Sets Paging.
-     * Paging object
+     * Cursor paging response
      *
+     * @required
      * @maps paging
      */
-    public function setPaging(?PagingResponse $paging): void
+    public function setPaging(CursorPagingResponse $paging): void
     {
-        $this->paging['value'] = $paging;
-    }
-
-    /**
-     * Unsets Paging.
-     * Paging object
-     */
-    public function unsetPaging(): void
-    {
-        $this->paging = [];
+        $this->paging = $paging;
     }
 
     /**
@@ -105,7 +102,7 @@ class ListPayablesResponse implements \JsonSerializable
     {
         return ApiHelper::stringify(
             'ListPayablesResponse',
-            ['data' => $this->getData(), 'paging' => $this->getPaging()]
+            ['data' => $this->getData(), 'paging' => $this->paging]
         );
     }
 
@@ -122,11 +119,9 @@ class ListPayablesResponse implements \JsonSerializable
     {
         $json = [];
         if (!empty($this->data)) {
-            $json['data']   = $this->data['value'];
+            $json['data'] = $this->data['value'];
         }
-        if (!empty($this->paging)) {
-            $json['paging'] = $this->paging['value'];
-        }
+        $json['paging']   = $this->paging;
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

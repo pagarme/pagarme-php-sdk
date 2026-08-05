@@ -11,10 +11,8 @@ declare(strict_types=1);
 namespace PagarmeApiSDKLib\Controllers;
 
 use Core\Request\Parameters\QueryParam;
-use Core\Request\Parameters\TemplateParam;
 use CoreInterfaces\Core\Request\RequestMethod;
 use PagarmeApiSDKLib\Exceptions\ApiException;
-use PagarmeApiSDKLib\Models\GetPayableResponse;
 use PagarmeApiSDKLib\Models\ListPayablesResponse;
 use PagarmeApiSDKLib\Utils\DateTimeHelper;
 
@@ -93,24 +91,6 @@ class PayablesController extends BaseController
             );
 
         $_resHandler = $this->responseHandler()->type(ListPayablesResponse::class);
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return GetPayableResponse Response from the API call
-     *
-     * @throws ApiException Thrown if API call fails
-     */
-    public function getPayableById(int $id): GetPayableResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/payables/{id}')
-            ->auth('httpBasic')
-            ->parameters(TemplateParam::init('id', $id));
-
-        $_resHandler = $this->responseHandler()->type(GetPayableResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
     }

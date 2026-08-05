@@ -12,24 +12,22 @@
 | `data` | [`?(GetIncrementResponse[])`](../../doc/models/get-increment-response.md) | Optional | The Increments response | getData(): ?array | setData(?array data): void |
 | `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging object | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "value": 95.62,
-      "increment_type": "increment_type2",
-      "status": "status2",
-      "created_at": "2016-03-13T12:52:32.123Z"
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\ListIncrementsResponseBuilder;
+use PagarmeApiSDKLib\Models\Builders\GetIncrementResponseBuilder;
+
+$listIncrementsResponse = ListIncrementsResponseBuilder::init()
+    ->data(
+        [
+            null,
+            GetIncrementResponseBuilder::init()->build()
+        ]
+    )
+    ->paging(
+        null
+    )
+    ->build();
 ```
 

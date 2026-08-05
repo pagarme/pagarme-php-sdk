@@ -13,11 +13,14 @@ Request for updating a charge due date
 |  --- | --- | --- | --- | --- | --- |
 | `dueAt` | `?DateTime` | Optional | The charge's new due date | getDueAt(): ?\DateTime | setDueAt(?\DateTime dueAt): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "due_at": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateChargeDueDateRequestBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$updateChargeDueDateRequest = UpdateChargeDueDateRequestBuilder::init()
+    ->dueAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->build();
 ```
 

@@ -29,15 +29,17 @@ Response object for getting an Address
 | `line2` | `?string` | Optional | Line 2 for address | getLine2(): ?string | setLine2(?string line2): void |
 | `deletedAt` | `?DateTime` | Optional | - | getDeletedAt(): ?\DateTime | setDeletedAt(?\DateTime deletedAt): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "street": "street2",
-  "number": "number0",
-  "complement": "complement8",
-  "zip_code": "zip_code6"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetAddressResponseBuilder;
+
+$getAddressResponse = GetAddressResponseBuilder::init()
+    ->id('id8')
+    ->street('street8')
+    ->number('number4')
+    ->complement('complement6')
+    ->zipCode('zip_code2')
+    ->build();
 ```
 

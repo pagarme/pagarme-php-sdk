@@ -14,29 +14,20 @@ Response object for listing of transactions files
 | `data` | [`?(GetTransactionReportFileResponse[])`](../../doc/models/get-transaction-report-file-response.md) | Optional | - | getData(): ?array | setData(?array data): void |
 | `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging object | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "name": "name0",
-      "date": "2016-03-13T12:52:32.123Z"
-    },
-    {
-      "name": "name0",
-      "date": "2016-03-13T12:52:32.123Z"
-    },
-    {
-      "name": "name0",
-      "date": "2016-03-13T12:52:32.123Z"
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\ListTransactionsFilesResponseBuilder;
+
+$listTransactionsFilesResponse = ListTransactionsFilesResponseBuilder::init()
+    ->data(
+        [
+            null
+        ]
+    )
+    ->paging(
+        null
+    )
+    ->build();
 ```
 

@@ -15,13 +15,15 @@ Object used for returning lists of objects with pagination
 | `previous` | `?string` | Optional | Previous page | getPrevious(): ?string | setPrevious(?string previous): void |
 | `next` | `?string` | Optional | Next page | getNext(): ?string | setNext(?string next): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "total": 80,
-  "previous": "previous2",
-  "next": "next2"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\PagingResponseBuilder;
+
+$pagingResponse = PagingResponseBuilder::init()
+    ->total(66)
+    ->previous('previous0')
+    ->next('next0')
+    ->build();
 ```
 

@@ -19,15 +19,18 @@ Transfer response
 | `bankAccount` | [`?GetBankAccountResponse`](../../doc/models/get-bank-account-response.md) | Optional | Bank account | getBankAccount(): ?GetBankAccountResponse | setBankAccount(?GetBankAccountResponse bankAccount): void |
 | `metadata` | `?array<string,string>` | Optional | Metadata | getMetadata(): ?array | setMetadata(?array metadata): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "amount": 146,
-  "status": "status4",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetTransferResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getTransferResponse = GetTransferResponseBuilder::init()
+    ->id('id8')
+    ->amount(244)
+    ->status('status0')
+    ->createdAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->updatedAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->build();
 ```
 

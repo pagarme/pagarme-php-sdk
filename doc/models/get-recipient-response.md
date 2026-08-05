@@ -30,16 +30,18 @@ Recipient response
 | `paymentMode` | `?string` | Optional | Payment mode<br><br>**Default**: `'bank_transfer'` | getPaymentMode(): ?string | setPaymentMode(?string paymentMode): void |
 | `registerInformation` | [`?GetRegisterInformationResponse`](../../doc/models/get-register-information-response.md) | Optional | - | getRegisterInformation(): ?GetRegisterInformationResponse | setRegisterInformation(?GetRegisterInformationResponse registerInformation): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "payment_mode": "bank_transfer",
-  "id": "id4",
-  "name": "name4",
-  "email": "email2",
-  "document": "document2",
-  "description": "description6"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetRecipientResponseBuilder;
+
+$getRecipientResponse = GetRecipientResponseBuilder::init()
+    ->id('id0')
+    ->name('name0')
+    ->email('email6')
+    ->document('document6')
+    ->description('description0')
+    ->paymentMode('bank_transfer')
+    ->build();
 ```
 

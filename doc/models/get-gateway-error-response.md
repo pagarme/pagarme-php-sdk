@@ -13,11 +13,13 @@ Gateway Response
 |  --- | --- | --- | --- | --- | --- |
 | `message` | `?string` | Optional | The message error | getMessage(): ?string | setMessage(?string message): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "message": "message4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetGatewayErrorResponseBuilder;
+
+$getGatewayErrorResponse = GetGatewayErrorResponseBuilder::init()
+    ->message('message2')
+    ->build();
 ```
 

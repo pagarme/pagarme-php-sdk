@@ -10,13 +10,156 @@ $invoicesController = $client->getInvoicesController();
 
 ## Methods
 
-* [Get Invoices](../../doc/controllers/invoices.md#get-invoices)
 * [Cancel Invoice](../../doc/controllers/invoices.md#cancel-invoice)
-* [Update Invoice Status](../../doc/controllers/invoices.md#update-invoice-status)
-* [Update Invoice Metadata](../../doc/controllers/invoices.md#update-invoice-metadata)
-* [Get Partial Invoice](../../doc/controllers/invoices.md#get-partial-invoice)
 * [Create Invoice](../../doc/controllers/invoices.md#create-invoice)
 * [Get Invoice](../../doc/controllers/invoices.md#get-invoice)
+* [Get Invoices](../../doc/controllers/invoices.md#get-invoices)
+* [Get Partial Invoice](../../doc/controllers/invoices.md#get-partial-invoice)
+* [Update Invoice Metadata](../../doc/controllers/invoices.md#update-invoice-metadata)
+* [Update Invoice Status](../../doc/controllers/invoices.md#update-invoice-status)
+
+
+# Cancel Invoice
+
+Cancels an invoice
+
+```php
+function cancelInvoice(string $invoiceId, ?string $idempotencyKey = null): GetInvoiceResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoiceId` | `string` | Template, Required | Invoice id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```php
+$invoiceId = 'invoice_id0';
+
+$invoicesController = $client->getInvoicesController();
+
+try {
+    $result = $invoicesController->cancelInvoice($invoiceId);
+    echo 'GetInvoiceResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Create Invoice
+
+Create an Invoice
+
+```php
+function createInvoice(
+    string $subscriptionId,
+    string $cycleId,
+    ?CreateInvoiceRequest $request = null,
+    ?string $idempotencyKey = null
+): GetInvoiceResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `cycleId` | `string` | Template, Required | Cycle Id |
+| `request` | [`?CreateInvoiceRequest`](../../doc/models/create-invoice-request.md) | Body, Optional | - |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$cycleId = 'cycle_id6';
+
+$invoicesController = $client->getInvoicesController();
+
+try {
+    $result = $invoicesController->createInvoice(
+        $subscriptionId,
+        $cycleId
+    );
+    echo 'GetInvoiceResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Invoice
+
+Gets an invoice
+
+```php
+function getInvoice(string $invoiceId): GetInvoiceResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoiceId` | `string` | Template, Required | Invoice Id |
+
+## Response Type
+
+**200**
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```php
+$invoiceId = 'invoice_id0';
+
+$invoicesController = $client->getInvoicesController();
+
+try {
+    $result = $invoicesController->getInvoice($invoiceId);
+    echo 'GetInvoiceResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
 
 
 # Get Invoices
@@ -39,6 +182,10 @@ function getInvoices(
 ): ListInvoicesResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -57,80 +204,65 @@ function getInvoices(
 
 ## Response Type
 
+**200**
+
 [`ListInvoicesResponse`](../../doc/models/list-invoices-response.md)
 
 ## Example Usage
 
 ```php
-$result = $invoicesController->getInvoices();
+$invoicesController = $client->getInvoicesController();
+
+try {
+    $result = $invoicesController->getInvoices();
+    echo 'ListInvoicesResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Cancel Invoice
-
-Cancels an invoice
+# Get Partial Invoice
 
 ```php
-function cancelInvoice(string $invoiceId, ?string $idempotencyKey = null): GetInvoiceResponse
+function getPartialInvoice(string $subscriptionId): GetInvoiceResponse
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `invoiceId` | `string` | Template, Required | Invoice id |
-| `idempotencyKey` | `?string` | Header, Optional | - |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
 
 ## Response Type
+
+**200**
 
 [`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
 
 ## Example Usage
 
 ```php
-$invoiceId = 'invoice_id0';
+$subscriptionId = 'subscription_id0';
 
-$result = $invoicesController->cancelInvoice($invoiceId);
-```
+$invoicesController = $client->getInvoicesController();
 
-
-# Update Invoice Status
-
-Updates the status from an invoice
-
-```php
-function updateInvoiceStatus(
-    string $invoiceId,
-    UpdateInvoiceStatusRequest $request,
-    ?string $idempotencyKey = null
-): GetInvoiceResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `invoiceId` | `string` | Template, Required | Invoice Id |
-| `request` | [`UpdateInvoiceStatusRequest`](../../doc/models/update-invoice-status-request.md) | Body, Required | Request for updating an invoice's status |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```php
-$invoiceId = 'invoice_id0';
-
-$request = UpdateInvoiceStatusRequestBuilder::init(
-    'status8'
-)->build();
-
-$result = $invoicesController->updateInvoiceStatus(
-    $invoiceId,
-    $request
-);
+try {
+    $result = $invoicesController->getPartialInvoice($subscriptionId);
+    echo 'GetInvoiceResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -146,6 +278,10 @@ function updateInvoiceMetadata(
 ): GetInvoiceResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -155,6 +291,8 @@ function updateInvoiceMetadata(
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
 
@@ -169,93 +307,50 @@ $request = UpdateMetadataRequestBuilder::init(
     ]
 )->build();
 
-$result = $invoicesController->updateInvoiceMetadata(
-    $invoiceId,
-    $request
-);
+$invoicesController = $client->getInvoicesController();
+
+try {
+    $result = $invoicesController->updateInvoiceMetadata(
+        $invoiceId,
+        $request
+    );
+    echo 'GetInvoiceResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Get Partial Invoice
+# Update Invoice Status
+
+Updates the status from an invoice
 
 ```php
-function getPartialInvoice(string $subscriptionId): GetInvoiceResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription Id |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$result = $invoicesController->getPartialInvoice($subscriptionId);
-```
-
-
-# Create Invoice
-
-Create an Invoice
-
-```php
-function createInvoice(
-    string $subscriptionId,
-    string $cycleId,
-    ?CreateInvoiceRequest $request = null,
+function updateInvoiceStatus(
+    string $invoiceId,
+    UpdateInvoiceStatusRequest $request,
     ?string $idempotencyKey = null
 ): GetInvoiceResponse
 ```
 
-## Parameters
+## Authentication
 
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | Subscription Id |
-| `cycleId` | `string` | Template, Required | Cycle Id |
-| `request` | [`?CreateInvoiceRequest`](../../doc/models/create-invoice-request.md) | Body, Optional | - |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
-
-## Example Usage
-
-```php
-$subscriptionId = 'subscription_id0';
-
-$cycleId = 'cycle_id6';
-
-$result = $invoicesController->createInvoice(
-    $subscriptionId,
-    $cycleId
-);
-```
-
-
-# Get Invoice
-
-Gets an invoice
-
-```php
-function getInvoice(string $invoiceId): GetInvoiceResponse
-```
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `invoiceId` | `string` | Template, Required | Invoice Id |
+| `request` | [`UpdateInvoiceStatusRequest`](../../doc/models/update-invoice-status-request.md) | Body, Required | Request for updating an invoice's status |
+| `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
 
@@ -264,6 +359,23 @@ function getInvoice(string $invoiceId): GetInvoiceResponse
 ```php
 $invoiceId = 'invoice_id0';
 
-$result = $invoicesController->getInvoice($invoiceId);
+$request = UpdateInvoiceStatusRequestBuilder::init(
+    'status8'
+)->build();
+
+$invoicesController = $client->getInvoicesController();
+
+try {
+    $result = $invoicesController->updateInvoiceStatus(
+        $invoiceId,
+        $request
+    );
+    echo 'GetInvoiceResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 

@@ -18,16 +18,20 @@ Request for creating a usage
 | `group` | `?string` | Optional | identification group in the client system | getGroup(): ?string | setGroup(?string group): void |
 | `amount` | `?int` | Optional | Field used in item scheme type 'Percent' | getAmount(): ?int | setAmount(?int amount): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "quantity": 224,
-  "description": "description8",
-  "used_at": "2016-03-13T12:52:32.123Z",
-  "code": "code0",
-  "group": "group0",
-  "amount": 110
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateUsageRequestBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$createUsageRequest = CreateUsageRequestBuilder::init(
+    254,
+    'description6',
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)
+    ->code('code4')
+    ->group('group4')
+    ->amount(140)
+    ->build();
 ```
 

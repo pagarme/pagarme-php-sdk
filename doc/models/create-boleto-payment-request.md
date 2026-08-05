@@ -24,39 +24,26 @@ Contains the settings for creating a boleto payment
 | `fine` | [`?CreateFineRequest`](../../doc/models/create-fine-request.md) | Optional | - | getFine(): ?CreateFineRequest | setFine(?CreateFineRequest fine): void |
 | `maxDaysToPayPastDue` | `?int` | Optional | - | getMaxDaysToPayPastDue(): ?int | setMaxDaysToPayPastDue(?int maxDaysToPayPastDue): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "retries": 14,
-  "bank": "bank8",
-  "instructions": "instructions8",
-  "due_at": "2016-03-13T12:52:32.123Z",
-  "billing_address": {
-    "street": "street8",
-    "number": "number4",
-    "zip_code": "zip_code2",
-    "neighborhood": "neighborhood4",
-    "city": "city2",
-    "state": "state6",
-    "country": "country2",
-    "complement": "complement6",
-    "metadata": {
-      "key0": "metadata5",
-      "key1": "metadata6"
-    },
-    "line_1": "line_18",
-    "line_2": "line_26"
-  },
-  "billing_address_id": "billing_address_id6",
-  "nosso_numero": "nosso_numero0",
-  "document_number": "document_number4",
-  "statement_descriptor": "statement_descriptor0",
-  "interest": {
-    "days": 156,
-    "type": "type0",
-    "amount": 230
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateBoletoPaymentRequestBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$createBoletoPaymentRequest = CreateBoletoPaymentRequestBuilder::init(
+    192,
+    'instructions6',
+    null,
+    'document_number2',
+    'statement_descriptor8'
+)
+    ->bank('bank6')
+    ->dueAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->billingAddressId('billing_address_id4')
+    ->nossoNumero('nosso_numero8')
+    ->interest(
+        null
+    )
+    ->build();
 ```
 

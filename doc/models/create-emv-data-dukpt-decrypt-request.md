@@ -11,11 +11,13 @@
 |  --- | --- | --- | --- | --- | --- |
 | `ksn` | `string` | Required | Key serial number | getKsn(): string | setKsn(string ksn): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "ksn": "ksn8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateEmvDataDukptDecryptRequestBuilder;
+
+$createEmvDataDukptDecryptRequest = CreateEmvDataDukptDecryptRequestBuilder::init(
+    'ksn2'
+)->build();
 ```
 

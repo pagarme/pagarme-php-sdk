@@ -13,11 +13,13 @@ Request for updating a Subscription Affiliation Id
 |  --- | --- | --- | --- | --- | --- |
 | `gatewayAffiliationId` | `string` | Required | - | getGatewayAffiliationId(): string | setGatewayAffiliationId(string gatewayAffiliationId): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_affiliation_id": "gateway_affiliation_id8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateSubscriptionAffiliationIdRequestBuilder;
+
+$updateSubscriptionAffiliationIdRequest = UpdateSubscriptionAffiliationIdRequestBuilder::init(
+    'gateway_affiliation_id6'
+)->build();
 ```
 

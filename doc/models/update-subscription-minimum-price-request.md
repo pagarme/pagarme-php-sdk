@@ -13,11 +13,13 @@ Atualização do valor mínimo da assinatura
 |  --- | --- | --- | --- | --- | --- |
 | `minimumPrice` | `?int` | Optional | Valor mínimo da assinatura | getMinimumPrice(): ?int | setMinimumPrice(?int minimumPrice): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "minimum_price": 212
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateSubscriptionMinimumPriceRequestBuilder;
+
+$updateSubscriptionMinimumPriceRequest = UpdateSubscriptionMinimumPriceRequestBuilder::init()
+    ->minimumPrice(134)
+    ->build();
 ```
 

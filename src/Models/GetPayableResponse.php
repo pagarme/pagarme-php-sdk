@@ -20,19 +20,19 @@ use stdClass;
 class GetPayableResponse implements \JsonSerializable
 {
     /**
-     * @var array
+     * @var string
      */
-    private $id = [];
+    private $id;
 
     /**
-     * @var array
+     * @var string
      */
-    private $status = [];
+    private $status;
 
     /**
-     * @var array
+     * @var int
      */
-    private $amount = [];
+    private $amount;
 
     /**
      * @var array
@@ -55,24 +55,24 @@ class GetPayableResponse implements \JsonSerializable
     private $installment = [];
 
     /**
-     * @var array
+     * @var string|null
      */
-    private $gatewayId = [];
+    private $gatewayId = 'null';
 
     /**
-     * @var array
+     * @var string|null
      */
-    private $chargeId = [];
+    private $chargeId = 'null';
 
     /**
-     * @var array
+     * @var string|null
      */
-    private $splitId = [];
+    private $splitId = 'null';
 
     /**
-     * @var array
+     * @var string|null
      */
-    private $bulkAnticipationId = [];
+    private $bulkAnticipationId = 'null';
 
     /**
      * @var array
@@ -80,19 +80,19 @@ class GetPayableResponse implements \JsonSerializable
     private $anticipationId = [];
 
     /**
-     * @var array
+     * @var string|null
      */
-    private $recipientId = [];
+    private $recipientId;
 
     /**
-     * @var array
+     * @var string|null
      */
-    private $originatorModel = [];
+    private $originatorModel = 'null';
 
     /**
-     * @var array
+     * @var string|null
      */
-    private $originatorModelId = [];
+    private $originatorModelId = 'null';
 
     /**
      * @var array
@@ -100,9 +100,9 @@ class GetPayableResponse implements \JsonSerializable
     private $paymentDate = [];
 
     /**
-     * @var array
+     * @var \DateTime|null
      */
-    private $originalPaymentDate = [];
+    private $originalPaymentDate;
 
     /**
      * @var array
@@ -110,9 +110,9 @@ class GetPayableResponse implements \JsonSerializable
     private $type = [];
 
     /**
-     * @var array
+     * @var string|null
      */
-    private $paymentMethod = [];
+    private $paymentMethod = 'null';
 
     /**
      * @var array
@@ -120,104 +120,105 @@ class GetPayableResponse implements \JsonSerializable
     private $accrualAt = [];
 
     /**
-     * @var array
+     * @var \DateTime
      */
-    private $createdAt = [];
+    private $createdAt;
 
     /**
      * @var array
      */
-    private $liquidationArrangementId = [];
+    private $liquidationArrangementId = ['value' => 'null'];
+
+    /**
+     * @var string|null
+     */
+    private $settlementId = 'null';
+
+    /**
+     * @var string|null
+     */
+    private $paymentProfileId = 'null';
+
+    /**
+     * @param string $id
+     * @param string $status
+     * @param int $amount
+     * @param \DateTime $createdAt
+     */
+    public function __construct(string $id, string $status, int $amount, \DateTime $createdAt)
+    {
+        $this->id = $id;
+        $this->status = $status;
+        $this->amount = $amount;
+        $this->createdAt = $createdAt;
+    }
 
     /**
      * Returns Id.
+     * Payable Identifier
      */
-    public function getId(): ?int
+    public function getId(): string
     {
-        if (count($this->id) == 0) {
-            return null;
-        }
-        return $this->id['value'];
+        return $this->id;
     }
 
     /**
      * Sets Id.
+     * Payable Identifier
      *
+     * @required
      * @maps id
      */
-    public function setId(?int $id): void
+    public function setId(string $id): void
     {
-        $this->id['value'] = $id;
-    }
-
-    /**
-     * Unsets Id.
-     */
-    public function unsetId(): void
-    {
-        $this->id = [];
+        $this->id = $id;
     }
 
     /**
      * Returns Status.
+     * Payable status
      */
-    public function getStatus(): ?string
+    public function getStatus(): string
     {
-        if (count($this->status) == 0) {
-            return null;
-        }
-        return $this->status['value'];
+        return $this->status;
     }
 
     /**
      * Sets Status.
+     * Payable status
      *
+     * @required
      * @maps status
      */
-    public function setStatus(?string $status): void
+    public function setStatus(string $status): void
     {
-        $this->status['value'] = $status;
-    }
-
-    /**
-     * Unsets Status.
-     */
-    public function unsetStatus(): void
-    {
-        $this->status = [];
+        $this->status = $status;
     }
 
     /**
      * Returns Amount.
+     * Payable amount in cents
      */
-    public function getAmount(): ?int
+    public function getAmount(): int
     {
-        if (count($this->amount) == 0) {
-            return null;
-        }
-        return $this->amount['value'];
+        return $this->amount;
     }
 
     /**
      * Sets Amount.
+     * Payable amount in cents
      *
+     * @required
      * @maps amount
      */
-    public function setAmount(?int $amount): void
+    public function setAmount(int $amount): void
     {
-        $this->amount['value'] = $amount;
-    }
-
-    /**
-     * Unsets Amount.
-     */
-    public function unsetAmount(): void
-    {
-        $this->amount = [];
+        $this->amount = $amount;
     }
 
     /**
      * Returns Fee.
+     * Payable fee amount in cents
      */
     public function getFee(): ?int
     {
@@ -229,6 +230,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Sets Fee.
+     * Payable fee amount in cents
      *
      * @maps fee
      */
@@ -239,6 +241,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Unsets Fee.
+     * Payable fee amount in cents
      */
     public function unsetFee(): void
     {
@@ -247,6 +250,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Returns Anticipation Fee.
+     * Antecipation fee amount in cents
      */
     public function getAnticipationFee(): ?int
     {
@@ -258,6 +262,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Sets Anticipation Fee.
+     * Antecipation fee amount in cents
      *
      * @maps anticipation_fee
      */
@@ -268,6 +273,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Unsets Anticipation Fee.
+     * Antecipation fee amount in cents
      */
     public function unsetAnticipationFee(): void
     {
@@ -276,6 +282,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Returns Fraud Coverage Fee.
+     * Fraud coverage fee amount in cents
      */
     public function getFraudCoverageFee(): ?int
     {
@@ -287,6 +294,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Sets Fraud Coverage Fee.
+     * Fraud coverage fee amount in cents
      *
      * @maps fraud_coverage_fee
      */
@@ -297,6 +305,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Unsets Fraud Coverage Fee.
+     * Fraud coverage fee amount in cents
      */
     public function unsetFraudCoverageFee(): void
     {
@@ -305,6 +314,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Returns Installment.
+     * Number of installment
      */
     public function getInstallment(): ?int
     {
@@ -316,6 +326,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Sets Installment.
+     * Number of installment
      *
      * @maps installment
      */
@@ -326,6 +337,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Unsets Installment.
+     * Number of installment
      */
     public function unsetInstallment(): void
     {
@@ -334,60 +346,42 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Returns Gateway Id.
+     * Payment gateway identifier
      */
-    public function getGatewayId(): ?int
+    public function getGatewayId(): ?string
     {
-        if (count($this->gatewayId) == 0) {
-            return null;
-        }
-        return $this->gatewayId['value'];
+        return $this->gatewayId;
     }
 
     /**
      * Sets Gateway Id.
+     * Payment gateway identifier
      *
      * @maps gateway_id
      */
-    public function setGatewayId(?int $gatewayId): void
+    public function setGatewayId(?string $gatewayId): void
     {
-        $this->gatewayId['value'] = $gatewayId;
-    }
-
-    /**
-     * Unsets Gateway Id.
-     */
-    public function unsetGatewayId(): void
-    {
-        $this->gatewayId = [];
+        $this->gatewayId = $gatewayId;
     }
 
     /**
      * Returns Charge Id.
+     * Charge identifier
      */
     public function getChargeId(): ?string
     {
-        if (count($this->chargeId) == 0) {
-            return null;
-        }
-        return $this->chargeId['value'];
+        return $this->chargeId;
     }
 
     /**
      * Sets Charge Id.
+     * Charge identifier
      *
      * @maps charge_id
      */
     public function setChargeId(?string $chargeId): void
     {
-        $this->chargeId['value'] = $chargeId;
-    }
-
-    /**
-     * Unsets Charge Id.
-     */
-    public function unsetChargeId(): void
-    {
-        $this->chargeId = [];
+        $this->chargeId = $chargeId;
     }
 
     /**
@@ -395,10 +389,7 @@ class GetPayableResponse implements \JsonSerializable
      */
     public function getSplitId(): ?string
     {
-        if (count($this->splitId) == 0) {
-            return null;
-        }
-        return $this->splitId['value'];
+        return $this->splitId;
     }
 
     /**
@@ -408,15 +399,7 @@ class GetPayableResponse implements \JsonSerializable
      */
     public function setSplitId(?string $splitId): void
     {
-        $this->splitId['value'] = $splitId;
-    }
-
-    /**
-     * Unsets Split Id.
-     */
-    public function unsetSplitId(): void
-    {
-        $this->splitId = [];
+        $this->splitId = $splitId;
     }
 
     /**
@@ -424,10 +407,7 @@ class GetPayableResponse implements \JsonSerializable
      */
     public function getBulkAnticipationId(): ?string
     {
-        if (count($this->bulkAnticipationId) == 0) {
-            return null;
-        }
-        return $this->bulkAnticipationId['value'];
+        return $this->bulkAnticipationId;
     }
 
     /**
@@ -437,15 +417,7 @@ class GetPayableResponse implements \JsonSerializable
      */
     public function setBulkAnticipationId(?string $bulkAnticipationId): void
     {
-        $this->bulkAnticipationId['value'] = $bulkAnticipationId;
-    }
-
-    /**
-     * Unsets Bulk Anticipation Id.
-     */
-    public function unsetBulkAnticipationId(): void
-    {
-        $this->bulkAnticipationId = [];
+        $this->bulkAnticipationId = $bulkAnticipationId;
     }
 
     /**
@@ -479,31 +451,22 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Returns Recipient Id.
+     * Recipient identifier
      */
     public function getRecipientId(): ?string
     {
-        if (count($this->recipientId) == 0) {
-            return null;
-        }
-        return $this->recipientId['value'];
+        return $this->recipientId;
     }
 
     /**
      * Sets Recipient Id.
+     * Recipient identifier
      *
      * @maps recipient_id
      */
     public function setRecipientId(?string $recipientId): void
     {
-        $this->recipientId['value'] = $recipientId;
-    }
-
-    /**
-     * Unsets Recipient Id.
-     */
-    public function unsetRecipientId(): void
-    {
-        $this->recipientId = [];
+        $this->recipientId = $recipientId;
     }
 
     /**
@@ -511,10 +474,7 @@ class GetPayableResponse implements \JsonSerializable
      */
     public function getOriginatorModel(): ?string
     {
-        if (count($this->originatorModel) == 0) {
-            return null;
-        }
-        return $this->originatorModel['value'];
+        return $this->originatorModel;
     }
 
     /**
@@ -524,48 +484,32 @@ class GetPayableResponse implements \JsonSerializable
      */
     public function setOriginatorModel(?string $originatorModel): void
     {
-        $this->originatorModel['value'] = $originatorModel;
-    }
-
-    /**
-     * Unsets Originator Model.
-     */
-    public function unsetOriginatorModel(): void
-    {
-        $this->originatorModel = [];
+        $this->originatorModel = $originatorModel;
     }
 
     /**
      * Returns Originator Model Id.
+     * Originator model identifier
      */
     public function getOriginatorModelId(): ?string
     {
-        if (count($this->originatorModelId) == 0) {
-            return null;
-        }
-        return $this->originatorModelId['value'];
+        return $this->originatorModelId;
     }
 
     /**
      * Sets Originator Model Id.
+     * Originator model identifier
      *
      * @maps originator_model_id
      */
     public function setOriginatorModelId(?string $originatorModelId): void
     {
-        $this->originatorModelId['value'] = $originatorModelId;
-    }
-
-    /**
-     * Unsets Originator Model Id.
-     */
-    public function unsetOriginatorModelId(): void
-    {
-        $this->originatorModelId = [];
+        $this->originatorModelId = $originatorModelId;
     }
 
     /**
      * Returns Payment Date.
+     * Payment Date
      */
     public function getPaymentDate(): ?\DateTime
     {
@@ -577,6 +521,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Sets Payment Date.
+     * Payment Date
      *
      * @maps payment_date
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
@@ -588,6 +533,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Unsets Payment Date.
+     * Payment Date
      */
     public function unsetPaymentDate(): void
     {
@@ -596,36 +542,28 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Returns Original Payment Date.
+     * Original Payment Date
      */
     public function getOriginalPaymentDate(): ?\DateTime
     {
-        if (count($this->originalPaymentDate) == 0) {
-            return null;
-        }
-        return $this->originalPaymentDate['value'];
+        return $this->originalPaymentDate;
     }
 
     /**
      * Sets Original Payment Date.
+     * Original Payment Date
      *
      * @maps original_payment_date
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
     public function setOriginalPaymentDate(?\DateTime $originalPaymentDate): void
     {
-        $this->originalPaymentDate['value'] = $originalPaymentDate;
-    }
-
-    /**
-     * Unsets Original Payment Date.
-     */
-    public function unsetOriginalPaymentDate(): void
-    {
-        $this->originalPaymentDate = [];
+        $this->originalPaymentDate = $originalPaymentDate;
     }
 
     /**
      * Returns Type.
+     * Type of payable
      */
     public function getType(): ?string
     {
@@ -637,6 +575,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Sets Type.
+     * Type of payable
      *
      * @maps type
      */
@@ -647,6 +586,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Unsets Type.
+     * Type of payable
      */
     public function unsetType(): void
     {
@@ -655,35 +595,27 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Returns Payment Method.
+     * Payment method of transaction
      */
     public function getPaymentMethod(): ?string
     {
-        if (count($this->paymentMethod) == 0) {
-            return null;
-        }
-        return $this->paymentMethod['value'];
+        return $this->paymentMethod;
     }
 
     /**
      * Sets Payment Method.
+     * Payment method of transaction
      *
      * @maps payment_method
      */
     public function setPaymentMethod(?string $paymentMethod): void
     {
-        $this->paymentMethod['value'] = $paymentMethod;
-    }
-
-    /**
-     * Unsets Payment Method.
-     */
-    public function unsetPaymentMethod(): void
-    {
-        $this->paymentMethod = [];
+        $this->paymentMethod = $paymentMethod;
     }
 
     /**
      * Returns Accrual At.
+     * Date issuer identify payment
      */
     public function getAccrualAt(): ?\DateTime
     {
@@ -695,6 +627,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Sets Accrual At.
+     * Date issuer identify payment
      *
      * @maps accrual_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
@@ -706,6 +639,7 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Unsets Accrual At.
+     * Date issuer identify payment
      */
     public function unsetAccrualAt(): void
     {
@@ -714,32 +648,24 @@ class GetPayableResponse implements \JsonSerializable
 
     /**
      * Returns Created At.
+     * Creation date
      */
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt(): \DateTime
     {
-        if (count($this->createdAt) == 0) {
-            return null;
-        }
-        return $this->createdAt['value'];
+        return $this->createdAt;
     }
 
     /**
      * Sets Created At.
+     * Creation date
      *
+     * @required
      * @maps created_at
      * @factory \PagarmeApiSDKLib\Utils\DateTimeHelper::fromRfc3339DateTime
      */
-    public function setCreatedAt(?\DateTime $createdAt): void
+    public function setCreatedAt(\DateTime $createdAt): void
     {
-        $this->createdAt['value'] = $createdAt;
-    }
-
-    /**
-     * Unsets Created At.
-     */
-    public function unsetCreatedAt(): void
-    {
-        $this->createdAt = [];
+        $this->createdAt = $createdAt;
     }
 
     /**
@@ -772,6 +698,46 @@ class GetPayableResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Settlement Id.
+     * Settlement identifier  (new in v7.x)
+     */
+    public function getSettlementId(): ?string
+    {
+        return $this->settlementId;
+    }
+
+    /**
+     * Sets Settlement Id.
+     * Settlement identifier  (new in v7.x)
+     *
+     * @maps settlement_id
+     */
+    public function setSettlementId(?string $settlementId): void
+    {
+        $this->settlementId = $settlementId;
+    }
+
+    /**
+     * Returns Payment Profile Id.
+     * Operational identifier of merchant inside of payment platform (new in v7.x)
+     */
+    public function getPaymentProfileId(): ?string
+    {
+        return $this->paymentProfileId;
+    }
+
+    /**
+     * Sets Payment Profile Id.
+     * Operational identifier of merchant inside of payment platform (new in v7.x)
+     *
+     * @maps payment_profile_id
+     */
+    public function setPaymentProfileId(?string $paymentProfileId): void
+    {
+        $this->paymentProfileId = $paymentProfileId;
+    }
+
+    /**
      * Converts the GetPayableResponse object to a human-readable string representation.
      *
      * @return string The string representation of the GetPayableResponse object.
@@ -781,28 +747,30 @@ class GetPayableResponse implements \JsonSerializable
         return ApiHelper::stringify(
             'GetPayableResponse',
             [
-                'id' => $this->getId(),
-                'status' => $this->getStatus(),
-                'amount' => $this->getAmount(),
+                'id' => $this->id,
+                'status' => $this->status,
+                'amount' => $this->amount,
                 'fee' => $this->getFee(),
                 'anticipationFee' => $this->getAnticipationFee(),
                 'fraudCoverageFee' => $this->getFraudCoverageFee(),
                 'installment' => $this->getInstallment(),
-                'gatewayId' => $this->getGatewayId(),
-                'chargeId' => $this->getChargeId(),
-                'splitId' => $this->getSplitId(),
-                'bulkAnticipationId' => $this->getBulkAnticipationId(),
+                'gatewayId' => $this->gatewayId,
+                'chargeId' => $this->chargeId,
+                'splitId' => $this->splitId,
+                'bulkAnticipationId' => $this->bulkAnticipationId,
                 'anticipationId' => $this->getAnticipationId(),
-                'recipientId' => $this->getRecipientId(),
-                'originatorModel' => $this->getOriginatorModel(),
-                'originatorModelId' => $this->getOriginatorModelId(),
+                'recipientId' => $this->recipientId,
+                'originatorModel' => $this->originatorModel,
+                'originatorModelId' => $this->originatorModelId,
                 'paymentDate' => $this->getPaymentDate(),
-                'originalPaymentDate' => $this->getOriginalPaymentDate(),
+                'originalPaymentDate' => $this->originalPaymentDate,
                 'type' => $this->getType(),
-                'paymentMethod' => $this->getPaymentMethod(),
+                'paymentMethod' => $this->paymentMethod,
                 'accrualAt' => $this->getAccrualAt(),
-                'createdAt' => $this->getCreatedAt(),
-                'liquidationArrangementId' => $this->getLiquidationArrangementId()
+                'createdAt' => $this->createdAt,
+                'liquidationArrangementId' => $this->getLiquidationArrangementId(),
+                'settlementId' => $this->settlementId,
+                'paymentProfileId' => $this->paymentProfileId
             ]
         );
     }
@@ -819,15 +787,9 @@ class GetPayableResponse implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        if (!empty($this->id)) {
-            $json['id']                         = $this->id['value'];
-        }
-        if (!empty($this->status)) {
-            $json['status']                     = $this->status['value'];
-        }
-        if (!empty($this->amount)) {
-            $json['amount']                     = $this->amount['value'];
-        }
+        $json['id']                             = $this->id;
+        $json['status']                         = $this->status;
+        $json['amount']                         = $this->amount;
         if (!empty($this->fee)) {
             $json['fee']                        = $this->fee['value'];
         }
@@ -840,54 +802,33 @@ class GetPayableResponse implements \JsonSerializable
         if (!empty($this->installment)) {
             $json['installment']                = $this->installment['value'];
         }
-        if (!empty($this->gatewayId)) {
-            $json['gateway_id']                 = $this->gatewayId['value'];
-        }
-        if (!empty($this->chargeId)) {
-            $json['charge_id']                  = $this->chargeId['value'];
-        }
-        if (!empty($this->splitId)) {
-            $json['split_id']                   = $this->splitId['value'];
-        }
-        if (!empty($this->bulkAnticipationId)) {
-            $json['bulk_anticipation_id']       = $this->bulkAnticipationId['value'];
-        }
+        $json['gateway_id']                     = $this->gatewayId;
+        $json['charge_id']                      = $this->chargeId;
+        $json['split_id']                       = $this->splitId;
+        $json['bulk_anticipation_id']           = $this->bulkAnticipationId;
         if (!empty($this->anticipationId)) {
             $json['anticipation_id']            = $this->anticipationId['value'];
         }
-        if (!empty($this->recipientId)) {
-            $json['recipient_id']               = $this->recipientId['value'];
-        }
-        if (!empty($this->originatorModel)) {
-            $json['originator_model']           = $this->originatorModel['value'];
-        }
-        if (!empty($this->originatorModelId)) {
-            $json['originator_model_id']        = $this->originatorModelId['value'];
-        }
+        $json['recipient_id']                   = $this->recipientId;
+        $json['originator_model']               = $this->originatorModel;
+        $json['originator_model_id']            = $this->originatorModelId;
         if (!empty($this->paymentDate)) {
             $json['payment_date']               = DateTimeHelper::toRfc3339DateTime($this->paymentDate['value']);
         }
-        if (!empty($this->originalPaymentDate)) {
-            $json['original_payment_date']      =
-                DateTimeHelper::toRfc3339DateTime(
-                    $this->originalPaymentDate['value']
-                );
-        }
+        $json['original_payment_date']          = DateTimeHelper::toRfc3339DateTime($this->originalPaymentDate);
         if (!empty($this->type)) {
             $json['type']                       = $this->type['value'];
         }
-        if (!empty($this->paymentMethod)) {
-            $json['payment_method']             = $this->paymentMethod['value'];
-        }
+        $json['payment_method']                 = $this->paymentMethod;
         if (!empty($this->accrualAt)) {
             $json['accrual_at']                 = DateTimeHelper::toRfc3339DateTime($this->accrualAt['value']);
         }
-        if (!empty($this->createdAt)) {
-            $json['created_at']                 = DateTimeHelper::toRfc3339DateTime($this->createdAt['value']);
-        }
+        $json['created_at']                     = DateTimeHelper::toRfc3339DateTime($this->createdAt);
         if (!empty($this->liquidationArrangementId)) {
             $json['liquidation_arrangement_id'] = $this->liquidationArrangementId['value'];
         }
+        $json['settlement_id']                  = $this->settlementId;
+        $json['payment_profile_id']             = $this->paymentProfileId;
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

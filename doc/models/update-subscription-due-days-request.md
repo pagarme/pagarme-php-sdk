@@ -11,11 +11,13 @@
 |  --- | --- | --- | --- | --- | --- |
 | `boletoDueDays` | `int` | Required | - | getBoletoDueDays(): int | setBoletoDueDays(int boletoDueDays): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "boleto_due_days": 56
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateSubscriptionDueDaysRequestBuilder;
+
+$updateSubscriptionDueDaysRequest = UpdateSubscriptionDueDaysRequestBuilder::init(
+    78
+)->build();
 ```
 

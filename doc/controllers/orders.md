@@ -10,58 +10,160 @@ $ordersController = $client->getOrdersController();
 
 ## Methods
 
-* [Delete All Order Items](../../doc/controllers/orders.md#delete-all-order-items)
-* [Get Order Item](../../doc/controllers/orders.md#get-order-item)
-* [Update Order Metadata](../../doc/controllers/orders.md#update-order-metadata)
-* [Delete Order Item](../../doc/controllers/orders.md#delete-order-item)
-* [Get Order](../../doc/controllers/orders.md#get-order)
-* [Get Orders](../../doc/controllers/orders.md#get-orders)
-* [Update Order Item](../../doc/controllers/orders.md#update-order-item)
 * [Close Order](../../doc/controllers/orders.md#close-order)
 * [Create Order](../../doc/controllers/orders.md#create-order)
 * [Create Order Item](../../doc/controllers/orders.md#create-order-item)
+* [Delete All Order Items](../../doc/controllers/orders.md#delete-all-order-items)
+* [Delete Order Item](../../doc/controllers/orders.md#delete-order-item)
+* [Get Order](../../doc/controllers/orders.md#get-order)
+* [Get Order Item](../../doc/controllers/orders.md#get-order-item)
+* [Get Orders](../../doc/controllers/orders.md#get-orders)
+* [Update Order Item](../../doc/controllers/orders.md#update-order-item)
+* [Update Order Metadata](../../doc/controllers/orders.md#update-order-metadata)
 
 
-# Delete All Order Items
+# Close Order
 
 ```php
-function deleteAllOrderItems(string $orderId, ?string $idempotencyKey = null): GetOrderResponse
+function closeOrder(
+    string $id,
+    UpdateOrderStatusRequest $request,
+    ?string $idempotencyKey = null
+): GetOrderResponse
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | Order Id |
+| `id` | `string` | Template, Required | Order Id |
+| `request` | [`UpdateOrderStatusRequest`](../../doc/models/update-order-status-request.md) | Body, Required | Update Order Model |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetOrderResponse`](../../doc/models/get-order-response.md)
 
 ## Example Usage
 
 ```php
-$orderId = 'orderId2';
+$id = 'id0';
 
-$result = $ordersController->deleteAllOrderItems($orderId);
+$request = UpdateOrderStatusRequestBuilder::init(
+    'status8'
+)->build();
+
+$ordersController = $client->getOrdersController();
+
+try {
+    $result = $ordersController->closeOrder(
+        $id,
+        $request
+    );
+    echo 'GetOrderResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Get Order Item
+# Create Order
+
+Creates a new Order
 
 ```php
-function getOrderItem(string $orderId, string $itemId): GetOrderItemResponse
+function createOrder(CreateOrderRequest $body, ?string $idempotencyKey = null): GetOrderResponse
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreateOrderRequest`](../../doc/models/create-order-request.md) | Body, Required | Request for creating an order |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
+
+## Example Usage
+
+```php
+$body = CreateOrderRequestBuilder::init(
+    [
+        null
+    ],
+    CreateCustomerRequestBuilder::init(
+        'Tony Stark',
+        '',
+        '',
+        '',
+        null,
+        [],
+        null,
+        ''
+    )->build(),
+    [
+        null
+    ],
+    '',
+    true
+)->build();
+
+$ordersController = $client->getOrdersController();
+
+try {
+    $result = $ordersController->createOrder($body);
+    echo 'GetOrderResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Create Order Item
+
+```php
+function createOrderItem(
+    string $orderId,
+    CreateOrderItemRequest $request,
+    ?string $idempotencyKey = null
+): GetOrderItemResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `orderId` | `string` | Template, Required | Order Id |
-| `itemId` | `string` | Template, Required | Item Id |
+| `request` | [`CreateOrderItemRequest`](../../doc/models/create-order-item-request.md) | Body, Required | Order Item Model |
+| `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
 
@@ -70,54 +172,69 @@ function getOrderItem(string $orderId, string $itemId): GetOrderItemResponse
 ```php
 $orderId = 'orderId2';
 
-$itemId = 'itemId8';
+$request = CreateOrderItemRequestBuilder::init(
+    242,
+    'description6',
+    100,
+    'category4'
+)->build();
 
-$result = $ordersController->getOrderItem(
-    $orderId,
-    $itemId
-);
+$ordersController = $client->getOrdersController();
+
+try {
+    $result = $ordersController->createOrderItem(
+        $orderId,
+        $request
+    );
+    echo 'GetOrderItemResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Update Order Metadata
-
-Updates the metadata from an order
+# Delete All Order Items
 
 ```php
-function updateOrderMetadata(
-    string $orderId,
-    UpdateMetadataRequest $request,
-    ?string $idempotencyKey = null
-): GetOrderResponse
+function deleteAllOrderItems(string $orderId, ?string $idempotencyKey = null): GetOrderResponse
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | The order id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the order metadata |
+| `orderId` | `string` | Template, Required | Order Id |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetOrderResponse`](../../doc/models/get-order-response.md)
 
 ## Example Usage
 
 ```php
-$orderId = 'order_id6';
+$orderId = 'orderId2';
 
-$request = UpdateMetadataRequestBuilder::init(
-    [
-        'key0' => 'metadata3'
-    ]
-)->build();
+$ordersController = $client->getOrdersController();
 
-$result = $ordersController->updateOrderMetadata(
-    $orderId,
-    $request
-);
+try {
+    $result = $ordersController->deleteAllOrderItems($orderId);
+    echo 'GetOrderResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -127,6 +244,10 @@ $result = $ordersController->updateOrderMetadata(
 function deleteOrderItem(string $orderId, string $itemId, ?string $idempotencyKey = null): GetOrderItemResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -137,6 +258,8 @@ function deleteOrderItem(string $orderId, string $itemId, ?string $idempotencyKe
 
 ## Response Type
 
+**200**
+
 [`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
 
 ## Example Usage
@@ -146,10 +269,20 @@ $orderId = 'orderId2';
 
 $itemId = 'itemId8';
 
-$result = $ordersController->deleteOrderItem(
-    $orderId,
-    $itemId
-);
+$ordersController = $client->getOrdersController();
+
+try {
+    $result = $ordersController->deleteOrderItem(
+        $orderId,
+        $itemId
+    );
+    echo 'GetOrderItemResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -161,6 +294,10 @@ Gets an order
 function getOrder(string $orderId): GetOrderResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -169,6 +306,8 @@ function getOrder(string $orderId): GetOrderResponse
 
 ## Response Type
 
+**200**
+
 [`GetOrderResponse`](../../doc/models/get-order-response.md)
 
 ## Example Usage
@@ -176,7 +315,64 @@ function getOrder(string $orderId): GetOrderResponse
 ```php
 $orderId = 'order_id6';
 
-$result = $ordersController->getOrder($orderId);
+$ordersController = $client->getOrdersController();
+
+try {
+    $result = $ordersController->getOrder($orderId);
+    echo 'GetOrderResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Order Item
+
+```php
+function getOrderItem(string $orderId, string $itemId): GetOrderItemResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `itemId` | `string` | Template, Required | Item Id |
+
+## Response Type
+
+**200**
+
+[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'orderId2';
+
+$itemId = 'itemId8';
+
+$ordersController = $client->getOrdersController();
+
+try {
+    $result = $ordersController->getOrderItem(
+        $orderId,
+        $itemId
+    );
+    echo 'GetOrderItemResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -196,6 +392,10 @@ function getOrders(
 ): ListOrderResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -210,12 +410,24 @@ function getOrders(
 
 ## Response Type
 
+**200**
+
 [`ListOrderResponse`](../../doc/models/list-order-response.md)
 
 ## Example Usage
 
 ```php
-$result = $ordersController->getOrders();
+$ordersController = $client->getOrdersController();
+
+try {
+    $result = $ordersController->getOrders();
+    echo 'ListOrderResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -230,6 +442,10 @@ function updateOrderItem(
 ): GetOrderItemResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -240,6 +456,8 @@ function updateOrderItem(
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
 
@@ -257,156 +475,78 @@ $request = UpdateOrderItemRequestBuilder::init(
     'category4'
 )->build();
 
-$result = $ordersController->updateOrderItem(
-    $orderId,
-    $itemId,
-    $request
-);
+$ordersController = $client->getOrdersController();
+
+try {
+    $result = $ordersController->updateOrderItem(
+        $orderId,
+        $itemId,
+        $request
+    );
+    echo 'GetOrderItemResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Close Order
+# Update Order Metadata
+
+Updates the metadata from an order
 
 ```php
-function closeOrder(
-    string $id,
-    UpdateOrderStatusRequest $request,
+function updateOrderMetadata(
+    string $orderId,
+    UpdateMetadataRequest $request,
     ?string $idempotencyKey = null
 ): GetOrderResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | Order Id |
-| `request` | [`UpdateOrderStatusRequest`](../../doc/models/update-order-status-request.md) | Body, Required | Update Order Model |
+| `orderId` | `string` | Template, Required | The order id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the order metadata |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetOrderResponse`](../../doc/models/get-order-response.md)
 
 ## Example Usage
 
 ```php
-$id = 'id0';
+$orderId = 'order_id6';
 
-$request = UpdateOrderStatusRequestBuilder::init(
-    'status8'
-)->build();
-
-$result = $ordersController->closeOrder(
-    $id,
-    $request
-);
-```
-
-
-# Create Order
-
-Creates a new Order
-
-```php
-function createOrder(CreateOrderRequest $body, ?string $idempotencyKey = null): GetOrderResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `body` | [`CreateOrderRequest`](../../doc/models/create-order-request.md) | Body, Required | Request for creating an order |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetOrderResponse`](../../doc/models/get-order-response.md)
-
-## Example Usage
-
-```php
-$body = CreateOrderRequestBuilder::init(
+$request = UpdateMetadataRequestBuilder::init(
     [
-        CreateOrderItemRequestBuilder::init(
-            164,
-            'description2',
-            22,
-            'category6'
-        )->build()
-    ],
-    CreateCustomerRequestBuilder::init(
-        'Tony Stark',
-        'email6',
-        'document6',
-        'type0',
-        CreateAddressRequestBuilder::init(
-            'street6',
-            'number4',
-            'zip_code0',
-            'neighborhood2',
-            'city6',
-            'state2',
-            'country0',
-            'complement2',
-            'line_10',
-            'line_24'
-        )->build(),
-        [
-            'key0' => 'metadata3'
-        ],
-        CreatePhonesRequestBuilder::init()->build(),
-        'code8'
-    )->build(),
-    [
-        CreatePaymentRequestBuilder::init(
-            'payment_method8'
-        )->build()
-    ],
-    'code4',
-    true
+        'key0' => 'metadata3'
+    ]
 )->build();
 
-$result = $ordersController->createOrder($body);
-```
+$ordersController = $client->getOrdersController();
 
-
-# Create Order Item
-
-```php
-function createOrderItem(
-    string $orderId,
-    CreateOrderItemRequest $request,
-    ?string $idempotencyKey = null
-): GetOrderItemResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `orderId` | `string` | Template, Required | Order Id |
-| `request` | [`CreateOrderItemRequest`](../../doc/models/create-order-item-request.md) | Body, Required | Order Item Model |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
-
-## Example Usage
-
-```php
-$orderId = 'orderId2';
-
-$request = CreateOrderItemRequestBuilder::init(
-    242,
-    'description6',
-    100,
-    'category4'
-)->build();
-
-$result = $ordersController->createOrderItem(
-    $orderId,
-    $request
-);
+try {
+    $result = $ordersController->updateOrderMetadata(
+        $orderId,
+        $request
+    );
+    echo 'GetOrderResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 

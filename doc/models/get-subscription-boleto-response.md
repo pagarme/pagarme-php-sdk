@@ -15,21 +15,29 @@ Response object for getting a boleto
 | `fine` | [`?GetFineResponse`](../../doc/models/get-fine-response.md) | Optional | Fine | getFine(): ?GetFineResponse | setFine(?GetFineResponse fine): void |
 | `maxDaysToPayPastDue` | `?int` | Optional | - | getMaxDaysToPayPastDue(): ?int | setMaxDaysToPayPastDue(?int maxDaysToPayPastDue): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "interest": {
-    "days": 2,
-    "type": "percentage",
-    "amount": 20
-  },
-  "fine": {
-    "days": 2,
-    "type": "flat",
-    "amount": 10
-  },
-  "max_days_to_pay_past_due": 2
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetSubscriptionBoletoResponseBuilder;
+use PagarmeApiSDKLib\Models\Builders\GetInterestResponseBuilder;
+use PagarmeApiSDKLib\Models\Builders\GetFineResponseBuilder;
+
+$getSubscriptionBoletoResponse = GetSubscriptionBoletoResponseBuilder::init()
+    ->interest(
+        GetInterestResponseBuilder::init()
+            ->days(2)
+            ->type('percentage')
+            ->amount(20)
+            ->build()
+    )
+    ->fine(
+        GetFineResponseBuilder::init()
+            ->days(2)
+            ->type('flat')
+            ->amount(10)
+            ->build()
+    )
+    ->maxDaysToPayPastDue(2)
+    ->build();
 ```
 

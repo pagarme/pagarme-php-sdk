@@ -17,21 +17,19 @@ The settings for creating a voucher payment
 | `card` | [`?CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Card info | getCard(): ?CreateCardRequest | setCard(?CreateCardRequest card): void |
 | `recurrencyCycle` | `?string` | Optional | Defines whether the card has been used one or more times. | getRecurrencyCycle(): ?string | setRecurrencyCycle(?string recurrencyCycle): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "recurrency_cycle": "\"first\" or \"subsequent\"",
-  "statement_descriptor": "statement_descriptor0",
-  "card_id": "card_id6",
-  "card_token": "card_token0",
-  "Card": {
-    "number": "number8",
-    "holder_name": "holder_name6",
-    "exp_month": 240,
-    "exp_year": 56,
-    "cvv": "cvv8"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateVoucherPaymentRequestBuilder;
+
+$createVoucherPaymentRequest = CreateVoucherPaymentRequestBuilder::init()
+    ->statementDescriptor('statement_descriptor4')
+    ->cardId('card_id0')
+    ->cardToken('card_token6')
+    ->card(
+        null
+    )
+    ->recurrencyCycle('"first" or "subsequent"')
+    ->build();
 ```
 

@@ -8,11 +8,6 @@ $payablesController = $client->getPayablesController();
 
 `PayablesController`
 
-## Methods
-
-* [Get Payables](../../doc/controllers/payables.md#get-payables)
-* [Get Payable by Id](../../doc/controllers/payables.md#get-payable-by-id)
-
 
 # Get Payables
 
@@ -39,6 +34,10 @@ function getPayables(
 ): ListPayablesResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -64,36 +63,23 @@ function getPayables(
 
 ## Response Type
 
+**200**
+
 [`ListPayablesResponse`](../../doc/models/list-payables-response.md)
 
 ## Example Usage
 
 ```php
-$result = $payablesController->getPayables();
-```
+$payablesController = $client->getPayablesController();
 
-
-# Get Payable by Id
-
-```php
-function getPayableById(int $id): GetPayableResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `int` | Template, Required | - |
-
-## Response Type
-
-[`GetPayableResponse`](../../doc/models/get-payable-response.md)
-
-## Example Usage
-
-```php
-$id = 112;
-
-$result = $payablesController->getPayableById($id);
+try {
+    $result = $payablesController->getPayables();
+    echo 'ListPayablesResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 

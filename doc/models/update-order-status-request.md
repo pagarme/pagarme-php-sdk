@@ -11,11 +11,13 @@
 |  --- | --- | --- | --- | --- | --- |
 | `status` | `string` | Required | Order status | getStatus(): string | setStatus(string status): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "status6"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateOrderStatusRequestBuilder;
+
+$updateOrderStatusRequest = UpdateOrderStatusRequestBuilder::init(
+    'status8'
+)->build();
 ```
 

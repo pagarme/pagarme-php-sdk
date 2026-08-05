@@ -10,33 +10,160 @@ $plansController = $client->getPlansController();
 
 ## Methods
 
-* [Get Plan](../../doc/controllers/plans.md#get-plan)
-* [Delete Plan Item](../../doc/controllers/plans.md#delete-plan-item)
-* [Update Plan Metadata](../../doc/controllers/plans.md#update-plan-metadata)
 * [Create Plan](../../doc/controllers/plans.md#create-plan)
-* [Update Plan](../../doc/controllers/plans.md#update-plan)
-* [Delete Plan](../../doc/controllers/plans.md#delete-plan)
-* [Get Plans](../../doc/controllers/plans.md#get-plans)
-* [Update Plan Item](../../doc/controllers/plans.md#update-plan-item)
 * [Create Plan Item](../../doc/controllers/plans.md#create-plan-item)
+* [Delete Plan](../../doc/controllers/plans.md#delete-plan)
+* [Delete Plan Item](../../doc/controllers/plans.md#delete-plan-item)
+* [Get Plan](../../doc/controllers/plans.md#get-plan)
 * [Get Plan Item](../../doc/controllers/plans.md#get-plan-item)
+* [Get Plans](../../doc/controllers/plans.md#get-plans)
+* [Update Plan](../../doc/controllers/plans.md#update-plan)
+* [Update Plan Item](../../doc/controllers/plans.md#update-plan-item)
+* [Update Plan Metadata](../../doc/controllers/plans.md#update-plan-metadata)
 
 
-# Get Plan
+# Create Plan
 
-Gets a plan
+Creates a new plan
 
 ```php
-function getPlan(string $planId): GetPlanResponse
+function createPlan(CreatePlanRequest $body, ?string $idempotencyKey = null): GetPlanResponse
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreatePlanRequest`](../../doc/models/create-plan-request.md) | Body, Required | Request for creating a plan |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetPlanResponse`](../../doc/models/get-plan-response.md)
+
+## Example Usage
+
+```php
+$body = CreatePlanRequestBuilder::init(
+    '',
+    '',
+    '',
+    [
+        null
+    ],
+    false,
+    [],
+    [],
+    '',
+    '',
+    0,
+    [],
+    '',
+    null,
+    []
+)->build();
+
+$plansController = $client->getPlansController();
+
+try {
+    $result = $plansController->createPlan($body);
+    echo 'GetPlanResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Create Plan Item
+
+Adds a new item to a plan
+
+```php
+function createPlanItem(
+    string $planId,
+    CreatePlanItemRequest $request,
+    ?string $idempotencyKey = null
+): GetPlanItemResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `planId` | `string` | Template, Required | Plan id |
+| `request` | [`CreatePlanItemRequest`](../../doc/models/create-plan-item-request.md) | Body, Required | Request for creating a plan item |
+| `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
+
+[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
+
+## Example Usage
+
+```php
+$planId = 'plan_id8';
+
+$request = CreatePlanItemRequestBuilder::init(
+    'name6',
+    null,
+    'id6',
+    'description6'
+)->build();
+
+$plansController = $client->getPlansController();
+
+try {
+    $result = $plansController->createPlanItem(
+        $planId,
+        $request
+    );
+    echo 'GetPlanItemResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Delete Plan
+
+Deletes a plan
+
+```php
+function deletePlan(string $planId, ?string $idempotencyKey = null): GetPlanResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | Plan id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
 
 [`GetPlanResponse`](../../doc/models/get-plan-response.md)
 
@@ -45,7 +172,17 @@ function getPlan(string $planId): GetPlanResponse
 ```php
 $planId = 'plan_id8';
 
-$result = $plansController->getPlan($planId);
+$plansController = $client->getPlansController();
+
+try {
+    $result = $plansController->deletePlan($planId);
+    echo 'GetPlanResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -57,6 +194,10 @@ Removes an item from a plan
 function deletePlanItem(string $planId, string $planItemId, ?string $idempotencyKey = null): GetPlanItemResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -67,6 +208,8 @@ function deletePlanItem(string $planId, string $planItemId, ?string $idempotency
 
 ## Response Type
 
+**200**
+
 [`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
 
 ## Example Usage
@@ -76,34 +219,44 @@ $planId = 'plan_id8';
 
 $planItemId = 'plan_item_id0';
 
-$result = $plansController->deletePlanItem(
-    $planId,
-    $planItemId
-);
+$plansController = $client->getPlansController();
+
+try {
+    $result = $plansController->deletePlanItem(
+        $planId,
+        $planItemId
+    );
+    echo 'GetPlanItemResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Update Plan Metadata
+# Get Plan
 
-Updates the metadata from a plan
+Gets a plan
 
 ```php
-function updatePlanMetadata(
-    string $planId,
-    UpdateMetadataRequest $request,
-    ?string $idempotencyKey = null
-): GetPlanResponse
+function getPlan(string $planId): GetPlanResponse
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `planId` | `string` | Template, Required | The plan id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the plan metadata |
-| `idempotencyKey` | `?string` | Header, Optional | - |
+| `planId` | `string` | Template, Required | Plan id |
 
 ## Response Type
+
+**200**
 
 [`GetPlanResponse`](../../doc/models/get-plan-response.md)
 
@@ -112,80 +265,121 @@ function updatePlanMetadata(
 ```php
 $planId = 'plan_id8';
 
-$request = UpdateMetadataRequestBuilder::init(
-    [
-        'key0' => 'metadata3'
-    ]
-)->build();
+$plansController = $client->getPlansController();
 
-$result = $plansController->updatePlanMetadata(
-    $planId,
-    $request
-);
+try {
+    $result = $plansController->getPlan($planId);
+    echo 'GetPlanResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Create Plan
+# Get Plan Item
 
-Creates a new plan
+Gets a plan item
 
 ```php
-function createPlan(CreatePlanRequest $body, ?string $idempotencyKey = null): GetPlanResponse
+function getPlanItem(string $planId, string $planItemId): GetPlanItemResponse
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreatePlanRequest`](../../doc/models/create-plan-request.md) | Body, Required | Request for creating a plan |
-| `idempotencyKey` | `?string` | Header, Optional | - |
+| `planId` | `string` | Template, Required | Plan id |
+| `planItemId` | `string` | Template, Required | Plan item id |
 
 ## Response Type
 
-[`GetPlanResponse`](../../doc/models/get-plan-response.md)
+**200**
+
+[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
 
 ## Example Usage
 
 ```php
-$body = CreatePlanRequestBuilder::init(
-    'name6',
-    'description4',
-    'statement_descriptor6',
-    [
-        CreatePlanItemRequestBuilder::init(
-            'name8',
-            CreatePricingSchemeRequestBuilder::init(
-                'scheme_type8'
-            )->build(),
-            'id8',
-            'description2'
-        )->build()
-    ],
-    false,
-    [
-        'payment_methods9'
-    ],
-    [
-        207
-    ],
-    'currency6',
-    'interval6',
-    170,
-    [
-        201,
-        200
-    ],
-    'billing_type0',
-    CreatePricingSchemeRequestBuilder::init(
-        'scheme_type8'
-    )->build(),
-    [
-        'key0' => 'metadata7',
-        'key1' => 'metadata8'
-    ]
-)->build();
+$planId = 'plan_id8';
 
-$result = $plansController->createPlan($body);
+$planItemId = 'plan_item_id0';
+
+$plansController = $client->getPlansController();
+
+try {
+    $result = $plansController->getPlanItem(
+        $planId,
+        $planItemId
+    );
+    echo 'GetPlanItemResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Plans
+
+Gets all plans
+
+```php
+function getPlans(
+    ?int $page = null,
+    ?int $size = null,
+    ?string $name = null,
+    ?string $status = null,
+    ?string $billingType = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListPlansResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `name` | `?string` | Query, Optional | Filter for Plan's name |
+| `status` | `?string` | Query, Optional | Filter for Plan's status |
+| `billingType` | `?string` | Query, Optional | Filter for plan's billing type |
+| `createdSince` | `?DateTime` | Query, Optional | Filter for plan's creation date start range |
+| `createdUntil` | `?DateTime` | Query, Optional | Filter for plan's creation date end range |
+
+## Response Type
+
+**200**
+
+[`ListPlansResponse`](../../doc/models/list-plans-response.md)
+
+## Example Usage
+
+```php
+$plansController = $client->getPlansController();
+
+try {
+    $result = $plansController->getPlans();
+    echo 'ListPlansResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -197,6 +391,10 @@ Updates a plan
 function updatePlan(string $planId, UpdatePlanRequest $request, ?string $idempotencyKey = null): GetPlanResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -206,6 +404,8 @@ function updatePlan(string $planId, UpdatePlanRequest $request, ?string $idempot
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetPlanResponse`](../../doc/models/get-plan-response.md)
 
@@ -241,77 +441,20 @@ $request = UpdatePlanRequestBuilder::init(
     ]
 )->build();
 
-$result = $plansController->updatePlan(
-    $planId,
-    $request
-);
-```
+$plansController = $client->getPlansController();
 
-
-# Delete Plan
-
-Deletes a plan
-
-```php
-function deletePlan(string $planId, ?string $idempotencyKey = null): GetPlanResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `planId` | `string` | Template, Required | Plan id |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetPlanResponse`](../../doc/models/get-plan-response.md)
-
-## Example Usage
-
-```php
-$planId = 'plan_id8';
-
-$result = $plansController->deletePlan($planId);
-```
-
-
-# Get Plans
-
-Gets all plans
-
-```php
-function getPlans(
-    ?int $page = null,
-    ?int $size = null,
-    ?string $name = null,
-    ?string $status = null,
-    ?string $billingType = null,
-    ?\DateTime $createdSince = null,
-    ?\DateTime $createdUntil = null
-): ListPlansResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-| `name` | `?string` | Query, Optional | Filter for Plan's name |
-| `status` | `?string` | Query, Optional | Filter for Plan's status |
-| `billingType` | `?string` | Query, Optional | Filter for plan's billing type |
-| `createdSince` | `?DateTime` | Query, Optional | Filter for plan's creation date start range |
-| `createdUntil` | `?DateTime` | Query, Optional | Filter for plan's creation date end range |
-
-## Response Type
-
-[`ListPlansResponse`](../../doc/models/list-plans-response.md)
-
-## Example Usage
-
-```php
-$result = $plansController->getPlans();
+try {
+    $result = $plansController->updatePlan(
+        $planId,
+        $request
+    );
+    echo 'GetPlanResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -328,6 +471,10 @@ function updatePlanItem(
 ): GetPlanItemResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -339,6 +486,8 @@ function updatePlanItem(
 
 ## Response Type
 
+**200**
+
 [`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
 
 ## Example Usage
@@ -349,102 +498,89 @@ $planId = 'plan_id8';
 $planItemId = 'plan_item_id0';
 
 $body = UpdatePlanItemRequestBuilder::init(
-    'name6',
-    'description4',
-    'status2',
+    '',
+    '',
+    '',
     UpdatePricingSchemeRequestBuilder::init(
-        'scheme_type8',
+        '',
         [
-            UpdatePriceBracketRequestBuilder::init(
-                144,
-                174
-            )->build()
+            null
         ]
     )->build()
 )->build();
 
-$result = $plansController->updatePlanItem(
-    $planId,
-    $planItemId,
-    $body
-);
+$plansController = $client->getPlansController();
+
+try {
+    $result = $plansController->updatePlanItem(
+        $planId,
+        $planItemId,
+        $body
+    );
+    echo 'GetPlanItemResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Create Plan Item
+# Update Plan Metadata
 
-Adds a new item to a plan
+Updates the metadata from a plan
 
 ```php
-function createPlanItem(
+function updatePlanMetadata(
     string $planId,
-    CreatePlanItemRequest $request,
+    UpdateMetadataRequest $request,
     ?string $idempotencyKey = null
-): GetPlanItemResponse
+): GetPlanResponse
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `planId` | `string` | Template, Required | Plan id |
-| `request` | [`CreatePlanItemRequest`](../../doc/models/create-plan-item-request.md) | Body, Required | Request for creating a plan item |
+| `planId` | `string` | Template, Required | The plan id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the plan metadata |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
+**200**
+
+[`GetPlanResponse`](../../doc/models/get-plan-response.md)
 
 ## Example Usage
 
 ```php
 $planId = 'plan_id8';
 
-$request = CreatePlanItemRequestBuilder::init(
-    'name6',
-    CreatePricingSchemeRequestBuilder::init(
-        'scheme_type8'
-    )->build(),
-    'id6',
-    'description6'
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
 )->build();
 
-$result = $plansController->createPlanItem(
-    $planId,
-    $request
-);
-```
+$plansController = $client->getPlansController();
 
-
-# Get Plan Item
-
-Gets a plan item
-
-```php
-function getPlanItem(string $planId, string $planItemId): GetPlanItemResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `planId` | `string` | Template, Required | Plan id |
-| `planItemId` | `string` | Template, Required | Plan item id |
-
-## Response Type
-
-[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
-
-## Example Usage
-
-```php
-$planId = 'plan_id8';
-
-$planItemId = 'plan_item_id0';
-
-$result = $plansController->getPlanItem(
-    $planId,
-    $planItemId
-);
+try {
+    $result = $plansController->updatePlanMetadata(
+        $planId,
+        $request
+    );
+    echo 'GetPlanResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 

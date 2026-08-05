@@ -21,19 +21,21 @@ Bank Account
 | `accountCheckDigit` | `string` | Required | Dígito verificador da conta | getAccountCheckDigit(): string | setAccountCheckDigit(string accountCheckDigit): void |
 | `type` | `string` | Required | Tipo de conta | getType(): string | setType(string type): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "holder_name": "holder_name2",
-  "holder_type": "holder_type8",
-  "holder_document": "holder_document0",
-  "bank": "bank4",
-  "branch_number": "branch_number2",
-  "branch_check_digit": "branch_check_digit2",
-  "account_number": "account_number6",
-  "account_check_digit": "account_check_digit2",
-  "type": "type4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateBankAccountRefundingDTOBuilder;
+
+$createBankAccountRefundingDTO = CreateBankAccountRefundingDTOBuilder::init(
+    'holder_name4',
+    'holder_type0',
+    'holder_document8',
+    'bank6',
+    'branch_number4',
+    'branch_check_digit4',
+    'account_number2',
+    'account_check_digit4',
+    'type2'
+)->build();
 ```
 

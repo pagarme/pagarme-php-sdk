@@ -12,15 +12,20 @@
 | `amount` | `int` | Required | - | getAmount(): int | setAmount(int amount): void |
 | `metadata` | `?array<string,string>` | Optional | - | getMetadata(): ?array | setMetadata(?array metadata): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 204,
-  "metadata": {
-    "key0": "metadata7",
-    "key1": "metadata6"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateWithdrawRequestBuilder;
+
+$createWithdrawRequest = CreateWithdrawRequestBuilder::init(
+    46
+)
+    ->metadata(
+        [
+            'key0' => 'metadata5',
+            'key1' => 'metadata6'
+        ]
+    )
+    ->build();
 ```
 

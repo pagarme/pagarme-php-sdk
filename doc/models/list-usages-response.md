@@ -14,24 +14,20 @@ Response model for listing the usages from a subscription item
 | `data` | [`?(GetUsageResponse[])`](../../doc/models/get-usage-response.md) | Optional | The usage objects | getData(): ?array | setData(?array data): void |
 | `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging object | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "quantity": 94,
-      "description": "description0",
-      "used_at": "2016-03-13T12:52:32.123Z",
-      "created_at": "2016-03-13T12:52:32.123Z"
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\ListUsagesResponseBuilder;
+
+$listUsagesResponse = ListUsagesResponseBuilder::init()
+    ->data(
+        [
+            null
+        ]
+    )
+    ->paging(
+        null
+    )
+    ->build();
 ```
 

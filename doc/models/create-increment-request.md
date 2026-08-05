@@ -17,15 +17,18 @@ Request for creating a new increment
 | `cycles` | `?int` | Optional | Number of cycles that the increment will be applied | getCycles(): ?int | setCycles(?int cycles): void |
 | `description` | `?string` | Optional | Description | getDescription(): ?string | setDescription(?string description): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "value": 72.04,
-  "increment_type": "increment_type4",
-  "item_id": "item_id8",
-  "cycles": 196,
-  "description": "description8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateIncrementRequestBuilder;
+
+$createIncrementRequest = CreateIncrementRequestBuilder::init(
+    84.78,
+    'increment_type8',
+    'item_id4'
+)
+    ->cycles(202)
+    ->description('description4')
+    ->build();
 ```
 

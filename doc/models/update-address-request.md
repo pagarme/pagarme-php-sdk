@@ -16,17 +16,18 @@ Request for updating an address
 | `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 | `line2` | `string` | Required | Line 2 for address | getLine2(): string | setLine2(string line2): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "number": "number6",
-  "complement": "complement8",
-  "metadata": {
-    "key0": "metadata7",
-    "key1": "metadata8"
-  },
-  "line_2": "line_24"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateAddressRequestBuilder;
+
+$updateAddressRequest = UpdateAddressRequestBuilder::init(
+    'number8',
+    'complement0',
+    [
+        'key0' => 'metadata9'
+    ],
+    'line_22'
+)->build();
 ```
 

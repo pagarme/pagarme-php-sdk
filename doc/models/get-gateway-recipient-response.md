@@ -17,15 +17,17 @@ Information about the recipient on the gateway
 | `createdAt` | `?string` | Optional | Creation date | getCreatedAt(): ?string | setCreatedAt(?string createdAt): void |
 | `updatedAt` | `?string` | Optional | Last update date | getUpdatedAt(): ?string | setUpdatedAt(?string updatedAt): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway": "gateway2",
-  "status": "status4",
-  "pgid": "pgid8",
-  "created_at": "created_at0",
-  "updated_at": "updated_at8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetGatewayRecipientResponseBuilder;
+
+$getGatewayRecipientResponse = GetGatewayRecipientResponseBuilder::init()
+    ->gateway('gateway0')
+    ->status('status2')
+    ->pgid('pgid6')
+    ->createdAt('created_at8')
+    ->updatedAt('updated_at6')
+    ->build();
 ```
 

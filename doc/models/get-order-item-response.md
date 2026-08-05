@@ -22,15 +22,17 @@ Response object for getting an order item
 | `createdAt` | `?DateTime` | Optional | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
 | `updatedAt` | `?DateTime` | Optional | - | getUpdatedAt(): ?\DateTime | setUpdatedAt(?\DateTime updatedAt): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id8",
-  "type": "type8",
-  "description": "description8",
-  "amount": 224,
-  "quantity": 82
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetOrderItemResponseBuilder;
+
+$getOrderItemResponse = GetOrderItemResponseBuilder::init()
+    ->id('id4')
+    ->type('type6')
+    ->description('description6')
+    ->amount(212)
+    ->quantity(70)
+    ->build();
 ```
 

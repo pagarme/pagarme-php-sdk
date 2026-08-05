@@ -15,13 +15,15 @@ Register Information Phone
 | `number` | `string` | Required | - | getNumber(): string | setNumber(string number): void |
 | `type` | `string` | Required | - | getType(): string | setType(string type): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "ddd": "ddd4",
-  "number": "number6",
-  "type": "type8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateRegisterInformationPhoneRequestBuilder;
+
+$createRegisterInformationPhoneRequest = CreateRegisterInformationPhoneRequestBuilder::init(
+    'ddd2',
+    'number0',
+    'type8'
+)->build();
 ```
 

@@ -15,13 +15,16 @@ Response object for getting an RetryTransactionInformation
 | `transactionLimit` | `?int` | Required | - | getTransactionLimit(): ?int | setTransactionLimit(?int transactionLimit): void |
 | `transactionDateLimit` | `?DateTime` | Required | - | getTransactionDateLimit(): ?\DateTime | setTransactionDateLimit(?\DateTime transactionDateLimit): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "brand_failure_return_code": "brand_failure_return_code2",
-  "transaction_limit": 44,
-  "transaction_date_limit": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetRetryTransactionInformationResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getRetryTransactionInformationResponse = GetRetryTransactionInformationResponseBuilder::init()
+    ->brandFailureReturnCode('brand_failure_return_code0')
+    ->transactionLimit(158)
+    ->transactionDateLimit(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->build();
 ```
 

@@ -22,21 +22,20 @@ Response object for getting a period
 | `updatedAt` | `?string` | Optional | - | getUpdatedAt(): ?string | setUpdatedAt(?string updatedAt): void |
 | `cycle` | `?int` | Optional | - | getCycle(): ?int | setCycle(?int cycle): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "start_at": "2016-03-13T12:52:32.123Z",
-  "end_at": "2016-03-13T12:52:32.123Z",
-  "id": "id0",
-  "billing_at": "2016-03-13T12:52:32.123Z",
-  "subscription": {
-    "id": "id4",
-    "code": "code2",
-    "start_at": "2016-03-13T12:52:32.123Z",
-    "interval": "interval2",
-    "interval_count": 234
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetPeriodResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getPeriodResponse = GetPeriodResponseBuilder::init()
+    ->startAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->endAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->id('id4')
+    ->billingAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->subscription(
+        null
+    )
+    ->build();
 ```
 

@@ -20,41 +20,32 @@
 | `professionalOccupation` | `string` | Required | - | getProfessionalOccupation(): string | setProfessionalOccupation(string professionalOccupation): void |
 | `address` | [`CreateRegisterInformationAddressRequest`](../../doc/models/create-register-information-address-request.md) | Required | - | getAddress(): CreateRegisterInformationAddressRequest | setAddress(CreateRegisterInformationAddressRequest address): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email": "email4",
-  "document": "document6",
-  "type": "type8",
-  "site_url": "site_url4",
-  "phone_numbers": [
-    {
-      "ddd": "ddd4",
-      "number": "number2",
-      "type": "type0"
-    },
-    {
-      "ddd": "ddd4",
-      "number": "number2",
-      "type": "type0"
-    }
-  ],
-  "name": "name6",
-  "mother_name": "mother_name2",
-  "birthdate": "birthdate0",
-  "monthly_income": 206,
-  "professional_occupation": "professional_occupation0",
-  "address": {
-    "street": "street6",
-    "complementary": "complementary8",
-    "street_number": "street_number6",
-    "neighborhood": "neighborhood2",
-    "city": "city6",
-    "state": "state2",
-    "zip_code": "zip_code0",
-    "reference_point": "reference_point0"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateRegisterInformationIndividualRequestBuilder;
+use PagarmeApiSDKLib\Models\Builders\CreateRegisterInformationPhoneRequestBuilder;
+
+$createRegisterInformationIndividualRequest = CreateRegisterInformationIndividualRequestBuilder::init(
+    'email4',
+    'document6',
+    'type8',
+    [
+        null,
+        CreateRegisterInformationPhoneRequestBuilder::init(
+            '',
+            '',
+            ''
+        )->build()
+    ],
+    'name2',
+    'birthdate6',
+    20,
+    'professional_occupation6',
+    null
+)
+    ->siteUrl('site_url4')
+    ->motherName('mother_name8')
+    ->build();
 ```
 

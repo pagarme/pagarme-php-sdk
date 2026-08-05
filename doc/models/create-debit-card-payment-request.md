@@ -22,21 +22,19 @@ The settings for creating a debit card payment
 | `recurrenceModel` | `?string` | Optional | - | getRecurrenceModel(): ?string | setRecurrenceModel(?string recurrenceModel): void |
 | `paymentOrigin` | [`?CreatePaymentOriginRequest`](../../doc/models/create-payment-origin-request.md) | Optional | - | getPaymentOrigin(): ?CreatePaymentOriginRequest | setPaymentOrigin(?CreatePaymentOriginRequest paymentOrigin): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "statement_descriptor": "statement_descriptor8",
-  "card": {
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4"
-  },
-  "card_id": "card_id4",
-  "card_token": "card_token2",
-  "recurrence": false
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateDebitCardPaymentRequestBuilder;
+
+$createDebitCardPaymentRequest = CreateDebitCardPaymentRequestBuilder::init()
+    ->statementDescriptor('statement_descriptor0')
+    ->card(
+        null
+    )
+    ->cardId('card_id6')
+    ->cardToken('card_token0')
+    ->recurrence(false)
+    ->build();
 ```
 

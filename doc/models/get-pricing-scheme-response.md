@@ -17,22 +17,21 @@ Response object for getting a pricing scheme
 | `minimumPrice` | `?int` | Optional | - | getMinimumPrice(): ?int | setMinimumPrice(?int minimumPrice): void |
 | `percentage` | `?float` | Optional | percentual value used in pricing_scheme Percent | getPercentage(): ?float | setPercentage(?float percentage): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "price": 182,
-  "scheme_type": "scheme_type8",
-  "price_brackets": [
-    {
-      "start_quantity": 144,
-      "price": 174,
-      "end_quantity": 152,
-      "overage_price": 166
-    }
-  ],
-  "minimum_price": 170,
-  "percentage": 166.36
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetPricingSchemeResponseBuilder;
+
+$getPricingSchemeResponse = GetPricingSchemeResponseBuilder::init()
+    ->price(34)
+    ->schemeType('scheme_type2')
+    ->priceBrackets(
+        [
+            null
+        ]
+    )
+    ->minimumPrice(130)
+    ->percentage(35.4)
+    ->build();
 ```
 

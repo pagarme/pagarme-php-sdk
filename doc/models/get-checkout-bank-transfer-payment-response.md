@@ -13,14 +13,18 @@ Bank transfer checkout response
 |  --- | --- | --- | --- | --- | --- |
 | `bank` | `?(string[])` | Optional | bank list response | getBank(): ?array | setBank(?array bank): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank": [
-    "bank3",
-    "bank4"
-  ]
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetCheckoutBankTransferPaymentResponseBuilder;
+
+$getCheckoutBankTransferPaymentResponse = GetCheckoutBankTransferPaymentResponseBuilder::init()
+    ->bank(
+        [
+            'bank3',
+            'bank4'
+        ]
+    )
+    ->build();
 ```
 
