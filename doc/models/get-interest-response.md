@@ -15,13 +15,15 @@ Interest Response
 | `type` | `?string` | Optional | Type | getType(): ?string | setType(?string type): void |
 | `amount` | `?int` | Optional | Amount | getAmount(): ?int | setAmount(?int amount): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "\"percentage\" or \"flat\"",
-  "days": 114,
-  "amount": 188
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetInterestResponseBuilder;
+
+$getInterestResponse = GetInterestResponseBuilder::init()
+    ->days(82)
+    ->type('"percentage" or "flat"')
+    ->amount(156)
+    ->build();
 ```
 

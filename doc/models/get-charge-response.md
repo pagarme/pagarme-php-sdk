@@ -34,16 +34,18 @@ Response object for getting a charge
 | `recurrencyCycle` | `?string` | Optional | Defines whether the card has been used one or more times. | getRecurrencyCycle(): ?string | setRecurrencyCycle(?string recurrencyCycle): void |
 | `paymentOrigin` | [`?GetPaymentOriginResponse`](../../doc/models/get-payment-origin-response.md) | Optional | - | getPaymentOrigin(): ?GetPaymentOriginResponse | setPaymentOrigin(?GetPaymentOriginResponse paymentOrigin): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "recurrency_cycle": "\"first\" or \"subsequent\"",
-  "id": "id0",
-  "code": "code8",
-  "gateway_id": "gateway_id0",
-  "amount": 164,
-  "status": "status2"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetChargeResponseBuilder;
+
+$getChargeResponse = GetChargeResponseBuilder::init()
+    ->id('id4')
+    ->code('code2')
+    ->gatewayId('gateway_id6')
+    ->amount(36)
+    ->status('status4')
+    ->recurrencyCycle('"first" or "subsequent"')
+    ->build();
 ```
 

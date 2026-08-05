@@ -15,13 +15,15 @@ KYC Link
 | `url` | `?string` | Optional | URL | getUrl(): ?string | setUrl(?string url): void |
 | `expirationDate` | `?string` | Optional | Expiration Date | getExpirationDate(): ?string | setExpirationDate(?string expirationDate): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "base64": "base644",
-  "url": "url0",
-  "expiration_date": "expiration_date0"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateKYCLinkResponseBuilder;
+
+$createKYCLinkResponse = CreateKYCLinkResponseBuilder::init()
+    ->base64('base648')
+    ->url('url4')
+    ->expirationDate('expiration_date4')
+    ->build();
 ```
 

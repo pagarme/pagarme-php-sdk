@@ -22,21 +22,19 @@ Anticipation
 | `status` | `?string` | Optional | Status | getStatus(): ?string | setStatus(?string status): void |
 | `timeframe` | `?string` | Optional | Timeframe | getTimeframe(): ?string | setTimeframe(?string timeframe): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id8",
-  "requested_amount": 130,
-  "approved_amount": 184,
-  "recipient": {
-    "id": "id8",
-    "name": "name8",
-    "email": "email8",
-    "document": "document8",
-    "description": "description2"
-  },
-  "pgid": "pgid4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetAnticipationResponseBuilder;
+
+$getAnticipationResponse = GetAnticipationResponseBuilder::init()
+    ->id('id6')
+    ->requestedAmount(186)
+    ->approvedAmount(240)
+    ->recipient(
+        null
+    )
+    ->pgid('pgid2')
+    ->build();
 ```
 

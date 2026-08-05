@@ -16,14 +16,16 @@ Response object for getting the setup from a subscription
 | `amount` | `?int` | Optional | - | getAmount(): ?int | setAmount(?int amount): void |
 | `status` | `?string` | Optional | - | getStatus(): ?string | setStatus(?string status): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "description": "description4",
-  "amount": 152,
-  "status": "status2"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetSetupResponseBuilder;
+
+$getSetupResponse = GetSetupResponseBuilder::init()
+    ->id('id6')
+    ->description('description6')
+    ->amount(108)
+    ->status('status8')
+    ->build();
 ```
 

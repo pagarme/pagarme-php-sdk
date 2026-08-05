@@ -15,20 +15,24 @@ Request for updating the card from a subscription
 | `cardId` | `string` | Required | Credit card id | getCardId(): string | setCardId(string cardId): void |
 | `indirectAcceptor` | `?string` | Optional | Business model identifier | getIndirectAcceptor(): ?string | setIndirectAcceptor(?string indirectAcceptor): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "card": {
-    "type": "credit",
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4"
-  },
-  "card_id": "card_id0",
-  "indirect_acceptor": "indirect_acceptor0"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateSubscriptionCardRequestBuilder;
+use PagarmeApiSDKLib\Models\Builders\CreateCardRequestBuilder;
+
+$updateSubscriptionCardRequest = UpdateSubscriptionCardRequestBuilder::init(
+    CreateCardRequestBuilder::init()
+        ->number('number6')
+        ->holderName('holder_name2')
+        ->expMonth(228)
+        ->expYear(68)
+        ->cvv('cvv4')
+        ->type('credit')
+        ->build(),
+    ''
+)
+    ->indirectAcceptor('indirect_acceptor6')
+    ->build();
 ```
 

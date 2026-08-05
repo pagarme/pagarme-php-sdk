@@ -13,11 +13,14 @@ Request for updating the start date from a subscription
 |  --- | --- | --- | --- | --- | --- |
 | `startAt` | `DateTime` | Required | The date when the subscription periods will start | getStartAt(): \DateTime | setStartAt(\DateTime startAt): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "start_at": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateSubscriptionStartAtRequestBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$updateSubscriptionStartAtRequest = UpdateSubscriptionStartAtRequestBuilder::init(
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
 ```
 

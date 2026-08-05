@@ -28,89 +28,38 @@ Checkout payment request
 | `acceptedBrands` | `string[]` | Required | Accepted Brands | getAcceptedBrands(): array | setAcceptedBrands(array acceptedBrands): void |
 | `pix` | [`?CreateCheckoutPixPaymentRequest`](../../doc/models/create-checkout-pix-payment-request.md) | Optional | Pix payment request | getPix(): ?CreateCheckoutPixPaymentRequest | setPix(?CreateCheckoutPixPaymentRequest pix): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "accepted_payment_methods": [
-    "accepted_payment_methods9",
-    "accepted_payment_methods0"
-  ],
-  "accepted_multi_payment_methods": [
-    {
-      "key1": "val1",
-      "key2": "val2"
-    },
-    {
-      "key1": "val1",
-      "key2": "val2"
-    }
-  ],
-  "success_url": "success_url8",
-  "default_payment_method": "default_payment_method6",
-  "gateway_affiliation_id": "gateway_affiliation_id2",
-  "credit_card": {
-    "statement_descriptor": "statement_descriptor8",
-    "installments": [
-      {
-        "number": 164,
-        "total": 16
-      }
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateCheckoutPaymentRequestBuilder;
+use PagarmeApiSDKLib\ApiHelper;
+
+$createCheckoutPaymentRequest = CreateCheckoutPaymentRequestBuilder::init(
+    [
+        'accepted_payment_methods1'
     ],
-    "authentication": {
-      "type": "type2",
-      "threed_secure": {
-        "mpi": "mpi0",
-        "cavv": "cavv8",
-        "eci": "eci2",
-        "transaction_id": "transaction_id0",
-        "success_url": "success_url4",
-        "ds_transaction_id": "ds_transaction_id0"
-      }
-    },
-    "capture": false
-  },
-  "debit_card": {
-    "statement_descriptor": "statement_descriptor4",
-    "authentication": {
-      "type": "type2",
-      "threed_secure": {
-        "mpi": "mpi0",
-        "cavv": "cavv8",
-        "eci": "eci2",
-        "transaction_id": "transaction_id0",
-        "success_url": "success_url4",
-        "ds_transaction_id": "ds_transaction_id0"
-      }
-    }
-  },
-  "boleto": {
-    "bank": "bank8",
-    "instructions": "instructions2",
-    "due_at": "2016-03-13T12:52:32.123Z"
-  },
-  "skip_checkout_success_page": false,
-  "billing_address_editable": false,
-  "billing_address": {
-    "street": "street8",
-    "number": "number4",
-    "zip_code": "zip_code2",
-    "neighborhood": "neighborhood4",
-    "city": "city2",
-    "state": "state6",
-    "country": "country2",
-    "complement": "complement6",
-    "metadata": {
-      "key0": "metadata5",
-      "key1": "metadata6"
-    },
-    "line_1": "line_18",
-    "line_2": "line_26"
-  },
-  "accepted_brands": [
-    "accepted_brands2",
-    "accepted_brands3"
-  ]
-}
+    [
+        ApiHelper::deserialize('{"key1":"val1","key2":"val2"}')
+    ],
+    'success_url0',
+    false,
+    false,
+    null,
+    [
+        'accepted_brands6'
+    ]
+)
+    ->defaultPaymentMethod('default_payment_method8')
+    ->gatewayAffiliationId('gateway_affiliation_id4')
+    ->creditCard(
+        null
+    )
+    ->debitCard(
+        null
+    )
+    ->boleto(
+        null
+    )
+    ->build();
 ```
 

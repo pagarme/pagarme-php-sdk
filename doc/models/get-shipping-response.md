@@ -20,21 +20,19 @@ Response object for getting the shipping data
 | `estimatedDeliveryDate` | `?DateTime` | Optional | Prazo estimado de entrega | getEstimatedDeliveryDate(): ?\DateTime | setEstimatedDeliveryDate(?\DateTime estimatedDeliveryDate): void |
 | `type` | `?string` | Optional | Shipping Type | getType(): ?string | setType(?string type): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 214,
-  "description": "description8",
-  "recipient_name": "recipient_name6",
-  "recipient_phone": "recipient_phone0",
-  "address": {
-    "id": "id6",
-    "street": "street6",
-    "number": "number4",
-    "complement": "complement2",
-    "zip_code": "zip_code0"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetShippingResponseBuilder;
+
+$getShippingResponse = GetShippingResponseBuilder::init()
+    ->amount(228)
+    ->description('description8')
+    ->recipientName('recipient_name0')
+    ->recipientPhone('recipient_phone4')
+    ->address(
+        null
+    )
+    ->build();
 ```
 

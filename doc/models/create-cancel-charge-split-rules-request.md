@@ -15,13 +15,15 @@ Creates a refund with split rules
 | `amount` | `int` | Required | The split rule amount | getAmount(): int | setAmount(int amount): void |
 | `type` | `string` | Required | The amount type (flat ou percentage) | getType(): string | setType(string type): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "Amount": 222,
-  "type": "type6"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateCancelChargeSplitRulesRequestBuilder;
+
+$createCancelChargeSplitRulesRequest = CreateCancelChargeSplitRulesRequestBuilder::init(
+    'id0',
+    140,
+    'type0'
+)->build();
 ```
 

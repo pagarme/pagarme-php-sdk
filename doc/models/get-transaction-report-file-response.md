@@ -12,12 +12,15 @@
 | `name` | `?string` | Optional | - | getName(): ?string | setName(?string name): void |
 | `date` | `?DateTime` | Optional | - | getDate(): ?\DateTime | setDate(?\DateTime date): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name8",
-  "date": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetTransactionReportFileResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getTransactionReportFileResponse = GetTransactionReportFileResponseBuilder::init()
+    ->name('name0')
+    ->date(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->build();
 ```
 

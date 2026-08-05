@@ -10,27 +10,81 @@ $customersController = $client->getCustomersController();
 
 ## Methods
 
-* [Create Address](../../doc/controllers/customers.md#create-address)
-* [Update Card](../../doc/controllers/customers.md#update-card)
-* [Delete Access Token](../../doc/controllers/customers.md#delete-access-token)
-* [Create Customer](../../doc/controllers/customers.md#create-customer)
-* [Delete Access Tokens](../../doc/controllers/customers.md#delete-access-tokens)
-* [Update Address](../../doc/controllers/customers.md#update-address)
-* [Get Address](../../doc/controllers/customers.md#get-address)
-* [Delete Address](../../doc/controllers/customers.md#delete-address)
-* [Get Customers](../../doc/controllers/customers.md#get-customers)
-* [Get Access Tokens](../../doc/controllers/customers.md#get-access-tokens)
-* [Delete Card](../../doc/controllers/customers.md#delete-card)
-* [Get Card](../../doc/controllers/customers.md#get-card)
-* [Create Card](../../doc/controllers/customers.md#create-card)
-* [Get Access Token](../../doc/controllers/customers.md#get-access-token)
-* [Get Addresses](../../doc/controllers/customers.md#get-addresses)
-* [Update Customer](../../doc/controllers/customers.md#update-customer)
 * [Create Access Token](../../doc/controllers/customers.md#create-access-token)
+* [Create Address](../../doc/controllers/customers.md#create-address)
+* [Create Card](../../doc/controllers/customers.md#create-card)
+* [Create Customer](../../doc/controllers/customers.md#create-customer)
+* [Delete Access Token](../../doc/controllers/customers.md#delete-access-token)
+* [Delete Access Tokens](../../doc/controllers/customers.md#delete-access-tokens)
+* [Delete Address](../../doc/controllers/customers.md#delete-address)
+* [Delete Card](../../doc/controllers/customers.md#delete-card)
+* [Get Access Token](../../doc/controllers/customers.md#get-access-token)
+* [Get Access Tokens](../../doc/controllers/customers.md#get-access-tokens)
+* [Get Address](../../doc/controllers/customers.md#get-address)
+* [Get Addresses](../../doc/controllers/customers.md#get-addresses)
+* [Get Card](../../doc/controllers/customers.md#get-card)
 * [Get Cards](../../doc/controllers/customers.md#get-cards)
-* [Renew Card](../../doc/controllers/customers.md#renew-card)
-* [Update Customer Metadata](../../doc/controllers/customers.md#update-customer-metadata)
 * [Get Customer](../../doc/controllers/customers.md#get-customer)
+* [Get Customers](../../doc/controllers/customers.md#get-customers)
+* [Renew Card](../../doc/controllers/customers.md#renew-card)
+* [Update Address](../../doc/controllers/customers.md#update-address)
+* [Update Card](../../doc/controllers/customers.md#update-card)
+* [Update Customer](../../doc/controllers/customers.md#update-customer)
+* [Update Customer Metadata](../../doc/controllers/customers.md#update-customer-metadata)
+
+
+# Create Access Token
+
+Creates a access token for a customer
+
+```php
+function createAccessToken(
+    string $customerId,
+    CreateAccessTokenRequest $request,
+    ?string $idempotencyKey = null
+): GetAccessTokenResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `request` | [`CreateAccessTokenRequest`](../../doc/models/create-access-token-request.md) | Body, Required | Request for creating a access token |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$request = CreateAccessTokenRequestBuilder::init()->build();
+
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->createAccessToken(
+        $customerId,
+        $request
+    );
+    echo 'GetAccessTokenResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
 
 
 # Create Address
@@ -45,6 +99,10 @@ function createAddress(
 ): GetAddressResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -54,6 +112,8 @@ function createAddress(
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetAddressResponse`](../../doc/models/get-address-response.md)
 
@@ -75,36 +135,50 @@ $request = CreateAddressRequestBuilder::init(
     'line_24'
 )->build();
 
-$result = $customersController->createAddress(
-    $customerId,
-    $request
-);
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->createAddress(
+        $customerId,
+        $request
+    );
+    echo 'GetAddressResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Update Card
+# Create Card
 
-Updates a card
+Creates a new card for a customer
 
 ```php
-function updateCard(
+function createCard(
     string $customerId,
-    string $cardId,
-    UpdateCardRequest $request,
+    CreateCardRequest $request,
     ?string $idempotencyKey = null
 ): GetCardResponse
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `cardId` | `string` | Template, Required | Card id |
-| `request` | [`UpdateCardRequest`](../../doc/models/update-card-request.md) | Body, Required | Request for updating a card |
+| `customerId` | `string` | Template, Required | Customer id |
+| `request` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Body, Required | Request for creating a card |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetCardResponse`](../../doc/models/get-card-response.md)
 
@@ -113,35 +187,77 @@ function updateCard(
 ```php
 $customerId = 'customer_id8';
 
-$cardId = 'card_id4';
+$request = CreateCardRequestBuilder::init()
+    ->type('credit')
+    ->build();
 
-$request = UpdateCardRequestBuilder::init(
-    'holder_name2',
-    10,
-    30,
-    CreateAddressRequestBuilder::init(
-        'street8',
-        'number4',
-        'zip_code2',
-        'neighborhood4',
-        'city2',
-        'state6',
-        'country2',
-        'complement6',
-        'line_18',
-        'line_26'
-    )->build(),
-    [
-        'key0' => 'metadata3'
-    ],
-    'label6'
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->createCard(
+        $customerId,
+        $request
+    );
+    echo 'GetCardResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Create Customer
+
+Creates a new customer
+
+```php
+function createCustomer(CreateCustomerRequest $request, ?string $idempotencyKey = null): GetCustomerResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `request` | [`CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Body, Required | Request for creating a customer |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
+
+## Example Usage
+
+```php
+$request = CreateCustomerRequestBuilder::init(
+    'Tony Stark',
+    '',
+    '',
+    '',
+    null,
+    [],
+    null,
+    ''
 )->build();
 
-$result = $customersController->updateCard(
-    $customerId,
-    $cardId,
-    $request
-);
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->createCustomer($request);
+    echo 'GetCustomerResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -157,6 +273,10 @@ function deleteAccessToken(
 ): GetAccessTokenResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -167,6 +287,8 @@ function deleteAccessToken(
 
 ## Response Type
 
+**200**
+
 [`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
 
 ## Example Usage
@@ -176,60 +298,20 @@ $customerId = 'customer_id8';
 
 $tokenId = 'token_id6';
 
-$result = $customersController->deleteAccessToken(
-    $customerId,
-    $tokenId
-);
-```
+$customersController = $client->getCustomersController();
 
-
-# Create Customer
-
-Creates a new customer
-
-```php
-function createCustomer(CreateCustomerRequest $request, ?string $idempotencyKey = null): GetCustomerResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `request` | [`CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Body, Required | Request for creating a customer |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
-
-## Example Usage
-
-```php
-$request = CreateCustomerRequestBuilder::init(
-    'Tony Stark',
-    'email0',
-    'document0',
-    'type4',
-    CreateAddressRequestBuilder::init(
-        'street6',
-        'number4',
-        'zip_code0',
-        'neighborhood2',
-        'city6',
-        'state2',
-        'country0',
-        'complement2',
-        'line_10',
-        'line_24'
-    )->build(),
-    [
-        'key0' => 'metadata3'
-    ],
-    CreatePhonesRequestBuilder::init()->build(),
-    'code4'
-)->build();
-
-$result = $customersController->createCustomer($request);
+try {
+    $result = $customersController->deleteAccessToken(
+        $customerId,
+        $tokenId
+    );
+    echo 'GetAccessTokenResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -241,6 +323,10 @@ Delete a Customer's access tokens
 function deleteAccessTokens(string $customerId): ListAccessTokensResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -249,6 +335,8 @@ function deleteAccessTokens(string $customerId): ListAccessTokensResponse
 
 ## Response Type
 
+**200**
+
 [`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
 
 ## Example Usage
@@ -256,7 +344,558 @@ function deleteAccessTokens(string $customerId): ListAccessTokensResponse
 ```php
 $customerId = 'customer_id8';
 
-$result = $customersController->deleteAccessTokens($customerId);
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->deleteAccessTokens($customerId);
+    echo 'ListAccessTokensResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Delete Address
+
+Delete a Customer's address
+
+```php
+function deleteAddress(
+    string $customerId,
+    string $addressId,
+    ?string $idempotencyKey = null
+): GetAddressResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `addressId` | `string` | Template, Required | Address Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$addressId = 'address_id0';
+
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->deleteAddress(
+        $customerId,
+        $addressId
+    );
+    echo 'GetAddressResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Delete Card
+
+Delete a customer's card
+
+```php
+function deleteCard(string $customerId, string $cardId, ?string $idempotencyKey = null): GetCardResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `cardId` | `string` | Template, Required | Card Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$cardId = 'card_id4';
+
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->deleteCard(
+        $customerId,
+        $cardId
+    );
+    echo 'GetCardResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Access Token
+
+Get a Customer's access token
+
+```php
+function getAccessToken(string $customerId, string $tokenId): GetAccessTokenResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `tokenId` | `string` | Template, Required | Token Id |
+
+## Response Type
+
+**200**
+
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$tokenId = 'token_id6';
+
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->getAccessToken(
+        $customerId,
+        $tokenId
+    );
+    echo 'GetAccessTokenResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Access Tokens
+
+Get all access tokens from a customer
+
+```php
+function getAccessTokens(string $customerId, ?int $page = null, ?int $size = null): ListAccessTokensResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+**200**
+
+[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->getAccessTokens($customerId);
+    echo 'ListAccessTokensResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Address
+
+Get a customer's address
+
+```php
+function getAddress(string $customerId, string $addressId): GetAddressResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `addressId` | `string` | Template, Required | Address Id |
+
+## Response Type
+
+**200**
+
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$addressId = 'address_id0';
+
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->getAddress(
+        $customerId,
+        $addressId
+    );
+    echo 'GetAddressResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Addresses
+
+Gets all adressess from a customer
+
+```php
+function getAddresses(string $customerId, ?int $page = null, ?int $size = null): ListAddressesResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+**200**
+
+[`ListAddressesResponse`](../../doc/models/list-addresses-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->getAddresses($customerId);
+    echo 'ListAddressesResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Card
+
+Get a customer's card
+
+```php
+function getCard(string $customerId, string $cardId): GetCardResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `cardId` | `string` | Template, Required | Card id |
+
+## Response Type
+
+**200**
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$cardId = 'card_id4';
+
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->getCard(
+        $customerId,
+        $cardId
+    );
+    echo 'GetCardResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Cards
+
+Get all cards from a customer
+
+```php
+function getCards(string $customerId, ?int $page = null, ?int $size = null): ListCardsResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+**200**
+
+[`ListCardsResponse`](../../doc/models/list-cards-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->getCards($customerId);
+    echo 'ListCardsResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Customer
+
+Get a customer
+
+```php
+function getCustomer(string $customerId): GetCustomerResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+
+## Response Type
+
+**200**
+
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->getCustomer($customerId);
+    echo 'GetCustomerResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Customers
+
+Get all Customers
+
+```php
+function getCustomers(
+    ?string $name = null,
+    ?string $document = null,
+    ?int $page = 1,
+    ?int $size = 10,
+    ?string $email = null,
+    ?string $code = null
+): ListCustomersResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `name` | `?string` | Query, Optional | Name of the Customer |
+| `document` | `?string` | Query, Optional | Document of the Customer |
+| `page` | `?int` | Query, Optional | Current page the the search<br><br>**Default**: `1` |
+| `size` | `?int` | Query, Optional | Quantity pages of the search<br><br>**Default**: `10` |
+| `email` | `?string` | Query, Optional | Customer's email |
+| `code` | `?string` | Query, Optional | Customer's code |
+
+## Response Type
+
+**200**
+
+[`ListCustomersResponse`](../../doc/models/list-customers-response.md)
+
+## Example Usage
+
+```php
+$page = 1;
+
+$size = 10;
+
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->getCustomers(
+        null,
+        null,
+        $page,
+        $size
+    );
+    echo 'ListCustomersResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Renew Card
+
+Renew a card
+
+```php
+function renewCard(string $customerId, string $cardId, ?string $idempotencyKey = null): GetCardResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `cardId` | `string` | Template, Required | Card Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$cardId = 'card_id4';
+
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->renewCard(
+        $customerId,
+        $cardId
+    );
+    echo 'GetCardResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -273,6 +912,10 @@ function updateAddress(
 ): GetAddressResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -283,6 +926,8 @@ function updateAddress(
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetAddressResponse`](../../doc/models/get-address-response.md)
 
@@ -302,248 +947,53 @@ $request = UpdateAddressRequestBuilder::init(
     'line_24'
 )->build();
 
-$result = $customersController->updateAddress(
-    $customerId,
-    $addressId,
-    $request
-);
+$customersController = $client->getCustomersController();
+
+try {
+    $result = $customersController->updateAddress(
+        $customerId,
+        $addressId,
+        $request
+    );
+    echo 'GetAddressResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Get Address
+# Update Card
 
-Get a customer's address
-
-```php
-function getAddress(string $customerId, string $addressId): GetAddressResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `addressId` | `string` | Template, Required | Address Id |
-
-## Response Type
-
-[`GetAddressResponse`](../../doc/models/get-address-response.md)
-
-## Example Usage
+Updates a card
 
 ```php
-$customerId = 'customer_id8';
-
-$addressId = 'address_id0';
-
-$result = $customersController->getAddress(
-    $customerId,
-    $addressId
-);
-```
-
-
-# Delete Address
-
-Delete a Customer's address
-
-```php
-function deleteAddress(
+function updateCard(
     string $customerId,
-    string $addressId,
-    ?string $idempotencyKey = null
-): GetAddressResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `addressId` | `string` | Template, Required | Address Id |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetAddressResponse`](../../doc/models/get-address-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-
-$addressId = 'address_id0';
-
-$result = $customersController->deleteAddress(
-    $customerId,
-    $addressId
-);
-```
-
-
-# Get Customers
-
-Get all Customers
-
-```php
-function getCustomers(
-    ?string $name = null,
-    ?string $document = null,
-    ?int $page = 1,
-    ?int $size = 10,
-    ?string $email = null,
-    ?string $code = null
-): ListCustomersResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `name` | `?string` | Query, Optional | Name of the Customer |
-| `document` | `?string` | Query, Optional | Document of the Customer |
-| `page` | `?int` | Query, Optional | Current page the the search<br><br>**Default**: `1` |
-| `size` | `?int` | Query, Optional | Quantity pages of the search<br><br>**Default**: `10` |
-| `email` | `?string` | Query, Optional | Customer's email |
-| `code` | `?string` | Query, Optional | Customer's code |
-
-## Response Type
-
-[`ListCustomersResponse`](../../doc/models/list-customers-response.md)
-
-## Example Usage
-
-```php
-$page = 1;
-
-$size = 10;
-
-$result = $customersController->getCustomers(
-    null,
-    null,
-    $page,
-    $size
-);
-```
-
-
-# Get Access Tokens
-
-Get all access tokens from a customer
-
-```php
-function getAccessTokens(string $customerId, ?int $page = null, ?int $size = null): ListAccessTokensResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-
-## Response Type
-
-[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-
-$result = $customersController->getAccessTokens($customerId);
-```
-
-
-# Delete Card
-
-Delete a customer's card
-
-```php
-function deleteCard(string $customerId, string $cardId, ?string $idempotencyKey = null): GetCardResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `cardId` | `string` | Template, Required | Card Id |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetCardResponse`](../../doc/models/get-card-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-
-$cardId = 'card_id4';
-
-$result = $customersController->deleteCard(
-    $customerId,
-    $cardId
-);
-```
-
-
-# Get Card
-
-Get a customer's card
-
-```php
-function getCard(string $customerId, string $cardId): GetCardResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `cardId` | `string` | Template, Required | Card id |
-
-## Response Type
-
-[`GetCardResponse`](../../doc/models/get-card-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-
-$cardId = 'card_id4';
-
-$result = $customersController->getCard(
-    $customerId,
-    $cardId
-);
-```
-
-
-# Create Card
-
-Creates a new card for a customer
-
-```php
-function createCard(
-    string $customerId,
-    CreateCardRequest $request,
+    string $cardId,
+    UpdateCardRequest $request,
     ?string $idempotencyKey = null
 ): GetCardResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `request` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Body, Required | Request for creating a card |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `cardId` | `string` | Template, Required | Card id |
+| `request` | [`UpdateCardRequest`](../../doc/models/update-card-request.md) | Body, Required | Request for updating a card |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetCardResponse`](../../doc/models/get-card-response.md)
 
@@ -552,76 +1002,34 @@ function createCard(
 ```php
 $customerId = 'customer_id8';
 
-$request = CreateCardRequestBuilder::init()
-    ->type('credit')
-    ->build();
+$cardId = 'card_id4';
 
-$result = $customersController->createCard(
-    $customerId,
-    $request
-);
-```
+$request = UpdateCardRequestBuilder::init(
+    'holder_name2',
+    10,
+    30,
+    null,
+    [
+        'key0' => 'metadata3'
+    ],
+    'label6'
+)->build();
 
+$customersController = $client->getCustomersController();
 
-# Get Access Token
-
-Get a Customer's access token
-
-```php
-function getAccessToken(string $customerId, string $tokenId): GetAccessTokenResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `tokenId` | `string` | Template, Required | Token Id |
-
-## Response Type
-
-[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-
-$tokenId = 'token_id6';
-
-$result = $customersController->getAccessToken(
-    $customerId,
-    $tokenId
-);
-```
-
-
-# Get Addresses
-
-Gets all adressess from a customer
-
-```php
-function getAddresses(string $customerId, ?int $page = null, ?int $size = null): ListAddressesResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-
-## Response Type
-
-[`ListAddressesResponse`](../../doc/models/list-addresses-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-
-$result = $customersController->getAddresses($customerId);
+try {
+    $result = $customersController->updateCard(
+        $customerId,
+        $cardId,
+        $request
+    );
+    echo 'GetCardResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -637,6 +1045,10 @@ function updateCustomer(
 ): GetCustomerResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -647,6 +1059,8 @@ function updateCustomer(
 
 ## Response Type
 
+**200**
+
 [`GetCustomerResponse`](../../doc/models/get-customer-response.md)
 
 ## Example Usage
@@ -656,111 +1070,20 @@ $customerId = 'customer_id8';
 
 $request = UpdateCustomerRequestBuilder::init()->build();
 
-$result = $customersController->updateCustomer(
-    $customerId,
-    $request
-);
-```
+$customersController = $client->getCustomersController();
 
-
-# Create Access Token
-
-Creates a access token for a customer
-
-```php
-function createAccessToken(
-    string $customerId,
-    CreateAccessTokenRequest $request,
-    ?string $idempotencyKey = null
-): GetAccessTokenResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `request` | [`CreateAccessTokenRequest`](../../doc/models/create-access-token-request.md) | Body, Required | Request for creating a access token |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-
-$request = CreateAccessTokenRequestBuilder::init()->build();
-
-$result = $customersController->createAccessToken(
-    $customerId,
-    $request
-);
-```
-
-
-# Get Cards
-
-Get all cards from a customer
-
-```php
-function getCards(string $customerId, ?int $page = null, ?int $size = null): ListCardsResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-
-## Response Type
-
-[`ListCardsResponse`](../../doc/models/list-cards-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-
-$result = $customersController->getCards($customerId);
-```
-
-
-# Renew Card
-
-Renew a card
-
-```php
-function renewCard(string $customerId, string $cardId, ?string $idempotencyKey = null): GetCardResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer id |
-| `cardId` | `string` | Template, Required | Card Id |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetCardResponse`](../../doc/models/get-card-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-
-$cardId = 'card_id4';
-
-$result = $customersController->renewCard(
-    $customerId,
-    $cardId
-);
+try {
+    $result = $customersController->updateCustomer(
+        $customerId,
+        $request
+    );
+    echo 'GetCustomerResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -776,6 +1099,10 @@ function updateCustomerMetadata(
 ): GetCustomerResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -785,6 +1112,8 @@ function updateCustomerMetadata(
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetCustomerResponse`](../../doc/models/get-customer-response.md)
 
@@ -799,36 +1128,19 @@ $request = UpdateMetadataRequestBuilder::init(
     ]
 )->build();
 
-$result = $customersController->updateCustomerMetadata(
-    $customerId,
-    $request
-);
-```
+$customersController = $client->getCustomersController();
 
-
-# Get Customer
-
-Get a customer
-
-```php
-function getCustomer(string $customerId): GetCustomerResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `customerId` | `string` | Template, Required | Customer Id |
-
-## Response Type
-
-[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
-
-## Example Usage
-
-```php
-$customerId = 'customer_id8';
-
-$result = $customersController->getCustomer($customerId);
+try {
+    $result = $customersController->updateCustomerMetadata(
+        $customerId,
+        $request
+    );
+    echo 'GetCustomerResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 

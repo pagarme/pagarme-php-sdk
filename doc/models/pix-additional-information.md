@@ -14,12 +14,14 @@ Pix Additional Information
 | `name` | `?string` | Optional | - | getName(): ?string | setName(?string name): void |
 | `value` | `?string` | Optional | - | getValue(): ?string | setValue(?string value): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "Name": "Name6",
-  "Value": "Value6"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\PixAdditionalInformationBuilder;
+
+$pixAdditionalInformation = PixAdditionalInformationBuilder::init()
+    ->name('Name2')
+    ->value('Value0')
+    ->build();
 ```
 

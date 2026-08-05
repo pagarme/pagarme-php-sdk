@@ -11,11 +11,13 @@
 |  --- | --- | --- | --- | --- | --- |
 | `total` | `?int` | Optional | - | getTotal(): ?int | setTotal(?int total): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "total": 150
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetChargesSummaryResponseBuilder;
+
+$getChargesSummaryResponse = GetChargesSummaryResponseBuilder::init()
+    ->total(134)
+    ->build();
 ```
 

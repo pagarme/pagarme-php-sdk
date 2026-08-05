@@ -33,20 +33,23 @@ Response object for getting a boleto transaction
 | `creditAt` | `?DateTime` | Optional | - | getCreditAt(): ?\DateTime | setCreditAt(?\DateTime creditAt): void |
 | `statementDescriptor` | `?string` | Optional | Soft Descriptor | getStatementDescriptor(): ?string | setStatementDescriptor(?string statementDescriptor): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "url": "url0",
-  "barcode": "barcode4",
-  "nosso_numero": "nosso_numero6",
-  "bank": "bank4",
-  "document_number": "document_number0"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetBoletoTransactionResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getBoletoTransactionResponse = GetBoletoTransactionResponseBuilder::init()
+    ->gatewayId('gateway_id8')
+    ->amount(40)
+    ->status('status6')
+    ->success(false)
+    ->createdAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->url('url2')
+    ->barcode('barcode2')
+    ->nossoNumero('nosso_numero8')
+    ->bank('bank6')
+    ->documentNumber('document_number8')
+    ->build();
 ```
 

@@ -31,29 +31,29 @@ Generic response object for getting a transaction.
 | `fine` | [`?GetFineResponse`](../../doc/models/get-fine-response.md) | Optional | - | getFine(): ?GetFineResponse | setFine(?GetFineResponse fine): void |
 | `maxDaysToPayPastDue` | `?int` | Optional | - | getMaxDaysToPayPastDue(): ?int | setMaxDaysToPayPastDue(?int maxDaysToPayPastDue): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "qr_code": "qr_code0",
-  "qr_code_url": "qr_code_url6",
-  "expires_at": "2016-03-13T12:52:32.123Z",
-  "additional_information": [
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    },
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    }
-  ],
-  "end_to_end_id": "end_to_end_id6"
-}
+```php
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+use PagarmeApiSDKLib\Models\Builders\GetPixTransactionResponseBuilder;
+use PagarmeApiSDKLib\Models\Builders\PixAdditionalInformationBuilder;
+
+$getTransactionResponse = GetPixTransactionResponseBuilder::init()
+    ->gatewayId('gateway_id8')
+    ->amount(40)
+    ->status('status6')
+    ->success(false)
+    ->createdAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->qrCode('qr_code0')
+    ->qrCodeUrl('qr_code_url6')
+    ->expiresAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->additionalInformation(
+        [
+            null,
+            PixAdditionalInformationBuilder::init()->build()
+        ]
+    )
+    ->endToEndId('end_to_end_id6')
+    ->build();
 ```
 

@@ -22,15 +22,17 @@ Response object for getting a billing address
 | `line1` | `?string` | Optional | Line 1 for address | getLine1(): ?string | setLine1(?string line1): void |
 | `line2` | `?string` | Optional | Line 2 for address | getLine2(): ?string | setLine2(?string line2): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "street": "street4",
-  "number": "number2",
-  "zip_code": "zip_code8",
-  "neighborhood": "neighborhood0",
-  "city": "city4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetBillingAddressResponseBuilder;
+
+$getBillingAddressResponse = GetBillingAddressResponseBuilder::init()
+    ->street('street8')
+    ->number('number4')
+    ->zipCode('zip_code2')
+    ->neighborhood('neighborhood4')
+    ->city('city8')
+    ->build();
 ```
 

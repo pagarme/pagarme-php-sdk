@@ -16,14 +16,16 @@ Payer's bank details.
 | `branchCode` | `?string` | Optional | - | getBranchCode(): ?string | setBranchCode(?string branchCode): void |
 | `accountNumber` | `?string` | Optional | - | getAccountNumber(): ?string | setAccountNumber(?string accountNumber): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank_name": "bank_name0",
-  "ispb": "ispb8",
-  "branch_code": "branch_code2",
-  "account_number": "account_number4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetPixBankAccountResponseBuilder;
+
+$getPixBankAccountResponse = GetPixBankAccountResponseBuilder::init()
+    ->bankName('bank_name4')
+    ->ispb('ispb4')
+    ->branchCode('branch_code8')
+    ->accountNumber('account_number0')
+    ->build();
 ```
 

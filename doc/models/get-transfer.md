@@ -23,31 +23,33 @@
 | `source` | [`GetTransferSourceResponse`](../../doc/models/get-transfer-source-response.md) | Required | - | getSource(): GetTransferSourceResponse | setSource(GetTransferSourceResponse source): void |
 | `target` | [`GetTransferTargetResponse`](../../doc/models/get-transfer-target-response.md) | Required | - | getTarget(): GetTransferTargetResponse | setTarget(GetTransferTargetResponse target): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id8",
-  "gateway_id": "gateway_id8",
-  "amount": 122,
-  "status": "status0",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z",
-  "metadata": {
-    "key0": "metadata5"
-  },
-  "fee": 80,
-  "funding_date": "2016-03-13T12:52:32.123Z",
-  "funding_estimated_date": "2016-03-13T12:52:32.123Z",
-  "type": "type8",
-  "source": {
-    "source_id": "source_id8",
-    "type": "type6"
-  },
-  "target": {
-    "target_id": "target_id2",
-    "type": "type8"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetTransferBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getTransfer = GetTransferBuilder::init(
+    'id6',
+    'gateway_id4',
+    0,
+    'status2',
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z'),
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z'),
+    'type4',
+    null,
+    null
+)
+    ->metadata(
+        [
+            'key0' => 'metadata7',
+            'key1' => 'metadata8',
+            'key2' => 'metadata9'
+        ]
+    )
+    ->fee(214)
+    ->fundingDate(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->fundingEstimatedDate(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->build();
 ```
 

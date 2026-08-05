@@ -16,19 +16,18 @@ Pix payer data.
 | `documentType` | `?string` | Optional | - | getDocumentType(): ?string | setDocumentType(?string documentType): void |
 | `bankAccount` | [`?GetPixBankAccountResponse`](../../doc/models/get-pix-bank-account-response.md) | Optional | - | getBankAccount(): ?GetPixBankAccountResponse | setBankAccount(?GetPixBankAccountResponse bankAccount): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "document": "document4",
-  "document_type": "document_type8",
-  "bank_account": {
-    "bank_name": "bank_name0",
-    "ispb": "ispb8",
-    "branch_code": "branch_code2",
-    "account_number": "account_number4"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetPixPayerResponseBuilder;
+
+$getPixPayerResponse = GetPixPayerResponseBuilder::init()
+    ->name('name0')
+    ->document('document6')
+    ->documentType('document_type8')
+    ->bankAccount(
+        null
+    )
+    ->build();
 ```
 

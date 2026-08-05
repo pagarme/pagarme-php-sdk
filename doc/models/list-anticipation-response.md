@@ -14,30 +14,23 @@ Anticipations
 | `data` | [`?(GetAnticipationResponse[])`](../../doc/models/get-anticipation-response.md) | Optional | Anticipations | getData(): ?array | setData(?array data): void |
 | `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "requested_amount": 16,
-      "approved_amount": 70,
-      "recipient": {
-        "id": "id8",
-        "name": "name8",
-        "email": "email8",
-        "document": "document8",
-        "description": "description2"
-      },
-      "pgid": "pgid6"
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\ListAnticipationResponseBuilder;
+use PagarmeApiSDKLib\Models\Builders\GetAnticipationResponseBuilder;
+
+$listAnticipationResponse = ListAnticipationResponseBuilder::init()
+    ->data(
+        [
+            null,
+            GetAnticipationResponseBuilder::init()->build(),
+            GetAnticipationResponseBuilder::init()->build()
+        ]
+    )
+    ->paging(
+        null
+    )
+    ->build();
 ```
 

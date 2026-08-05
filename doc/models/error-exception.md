@@ -15,19 +15,15 @@ Api Error Exception
 | `errors` | `?array` | Required | - | getErrors(): ?array | setErrors(?array errors): void |
 | `request` | `?array` | Required | - | getRequest(): ?array | setRequest(?array request): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "message": "message4",
-  "errors": {
-    "key1": "val1",
-    "key2": "val2"
-  },
-  "request": {
-    "key1": "val1",
-    "key2": "val2"
-  }
+```php
+try {
+    // make the API call
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught ApiException:', $exp;
 }
 ```
 

@@ -15,13 +15,16 @@ Request for creating an anticipation
 | `timeframe` | `string` | Required | Timeframe | getTimeframe(): string | setTimeframe(string timeframe): void |
 | `paymentDate` | `DateTime` | Required | Payment date | getPaymentDate(): \DateTime | setPaymentDate(\DateTime paymentDate): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 68,
-  "timeframe": "timeframe2",
-  "payment_date": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateAnticipationRequestBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$createAnticipationRequest = CreateAnticipationRequestBuilder::init(
+    84,
+    'timeframe2',
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
 ```
 

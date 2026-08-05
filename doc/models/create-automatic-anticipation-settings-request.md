@@ -15,18 +15,20 @@
 | `delay` | `int` | Required | - | getDelay(): int | setDelay(int delay): void |
 | `days` | `int[]` | Required | - | getDays(): array | setDays(array days): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "enabled": false,
-  "type": "type8",
-  "volume_percentage": 208,
-  "delay": 82,
-  "days": [
-    58,
-    59
-  ]
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateAutomaticAnticipationSettingsRequestBuilder;
+
+$createAutomaticAnticipationSettingsRequest = CreateAutomaticAnticipationSettingsRequestBuilder::init(
+    false,
+    'type4',
+    24,
+    10,
+    [
+        242,
+        243
+    ]
+)->build();
 ```
 

@@ -22,15 +22,18 @@ Response object for getting a discount
 | `subscription` | [`?GetSubscriptionResponse`](../../doc/models/get-subscription-response.md) | Optional | - | getSubscription(): ?GetSubscriptionResponse | setSubscription(?GetSubscriptionResponse subscription): void |
 | `subscriptionItem` | [`?GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md) | Optional | The subscription item | getSubscriptionItem(): ?GetSubscriptionItemResponse | setSubscriptionItem(?GetSubscriptionItemResponse subscriptionItem): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id4",
-  "value": 139.66,
-  "discount_type": "discount_type2",
-  "status": "status6",
-  "created_at": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetDiscountResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getDiscountResponse = GetDiscountResponseBuilder::init()
+    ->id('id0')
+    ->value(135.12)
+    ->discountType('discount_type8')
+    ->status('status2')
+    ->createdAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->build();
 ```
 

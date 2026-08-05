@@ -16,14 +16,16 @@ Response object for getting a price bracket
 | `endQuantity` | `?int` | Optional | - | getEndQuantity(): ?int | setEndQuantity(?int endQuantity): void |
 | `overagePrice` | `?int` | Optional | - | getOveragePrice(): ?int | setOveragePrice(?int overagePrice): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "start_quantity": 186,
-  "price": 124,
-  "end_quantity": 194,
-  "overage_price": 208
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetPriceBracketResponseBuilder;
+
+$getPriceBracketResponse = GetPriceBracketResponseBuilder::init()
+    ->startQuantity(80)
+    ->price(18)
+    ->endQuantity(88)
+    ->overagePrice(102)
+    ->build();
 ```
 

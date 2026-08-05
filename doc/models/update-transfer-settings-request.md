@@ -13,13 +13,15 @@
 | `transferInterval` | `string` | Required | - | getTransferInterval(): string | setTransferInterval(string transferInterval): void |
 | `transferDay` | `string` | Required | - | getTransferDay(): string | setTransferDay(string transferDay): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "transfer_enabled": "transfer_enabled4",
-  "transfer_interval": "transfer_interval0",
-  "transfer_day": "transfer_day0"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateTransferSettingsRequestBuilder;
+
+$updateTransferSettingsRequest = UpdateTransferSettingsRequestBuilder::init(
+    'transfer_enabled8',
+    'transfer_interval2',
+    'transfer_day2'
+)->build();
 ```
 

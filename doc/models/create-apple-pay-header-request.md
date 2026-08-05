@@ -15,13 +15,16 @@ The ApplePay header request
 | `ephemeralPublicKey` | `string` | Required | X.509 encoded key bytes, Base64 encoded as a string | getEphemeralPublicKey(): string | setEphemeralPublicKey(string ephemeralPublicKey): void |
 | `transactionId` | `?string` | Optional | Transaction identifier, generated on Device | getTransactionId(): ?string | setTransactionId(?string transactionId): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "public_key_hash": "public_key_hash8",
-  "ephemeral_public_key": "ephemeral_public_key0",
-  "transaction_id": "transaction_id8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateApplePayHeaderRequestBuilder;
+
+$createApplePayHeaderRequest = CreateApplePayHeaderRequestBuilder::init(
+    'ephemeral_public_key0'
+)
+    ->publicKeyHash('public_key_hash8')
+    ->transactionId('transaction_id8')
+    ->build();
 ```
 

@@ -23,15 +23,17 @@ Response object for getting an ManagingPartnerResponse
 | `address` | [`?GetRegisterInformationAddressResponse`](../../doc/models/get-register-information-address-response.md) | Optional | - | getAddress(): ?GetRegisterInformationAddressResponse | setAddress(?GetRegisterInformationAddressResponse address): void |
 | `phoneNumbers` | [`?(GetPhoneNumberResponse[])`](../../doc/models/get-phone-number-response.md) | Optional | - | getPhoneNumbers(): ?array | setPhoneNumbers(?array phoneNumbers): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "email": "email6",
-  "document": "document6",
-  "type": "type0",
-  "mother_name": "mother_name6"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetManagingPartnerResponseBuilder;
+
+$getManagingPartnerResponse = GetManagingPartnerResponseBuilder::init()
+    ->name('name8')
+    ->email('email8')
+    ->document('document2')
+    ->type('type8')
+    ->motherName('mother_name4')
+    ->build();
 ```
 

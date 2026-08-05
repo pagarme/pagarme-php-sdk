@@ -12,12 +12,14 @@
 | `chargeId` | `?string` | Optional | - | getChargeId(): ?string | setChargeId(?string chargeId): void |
 | `brandId` | `?string` | Optional | - | getBrandId(): ?string | setBrandId(?string brandId): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "charge_id": "charge_id8",
-  "brand_id": "brand_id4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetPaymentOriginResponseBuilder;
+
+$getPaymentOriginResponse = GetPaymentOriginResponseBuilder::init()
+    ->chargeId('charge_id4')
+    ->brandId('brand_id0')
+    ->build();
 ```
 

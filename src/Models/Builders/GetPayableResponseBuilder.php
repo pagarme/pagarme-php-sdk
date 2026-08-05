@@ -32,70 +32,15 @@ class GetPayableResponseBuilder
 
     /**
      * Initializes a new Get Payable Response Builder object.
-     */
-    public static function init(): self
-    {
-        return new self(new GetPayableResponse());
-    }
-
-    /**
-     * Sets id field.
      *
-     * @param int|null $value
+     * @param string $id
+     * @param string $status
+     * @param int $amount
+     * @param \DateTime $createdAt
      */
-    public function id(?int $value): self
+    public static function init(string $id, string $status, int $amount, \DateTime $createdAt): self
     {
-        $this->instance->setId($value);
-        return $this;
-    }
-
-    /**
-     * Unsets id field.
-     */
-    public function unsetId(): self
-    {
-        $this->instance->unsetId();
-        return $this;
-    }
-
-    /**
-     * Sets status field.
-     *
-     * @param string|null $value
-     */
-    public function status(?string $value): self
-    {
-        $this->instance->setStatus($value);
-        return $this;
-    }
-
-    /**
-     * Unsets status field.
-     */
-    public function unsetStatus(): self
-    {
-        $this->instance->unsetStatus();
-        return $this;
-    }
-
-    /**
-     * Sets amount field.
-     *
-     * @param int|null $value
-     */
-    public function amount(?int $value): self
-    {
-        $this->instance->setAmount($value);
-        return $this;
-    }
-
-    /**
-     * Unsets amount field.
-     */
-    public function unsetAmount(): self
-    {
-        $this->instance->unsetAmount();
-        return $this;
+        return new self(new GetPayableResponse($id, $status, $amount, $createdAt));
     }
 
     /**
@@ -181,20 +126,11 @@ class GetPayableResponseBuilder
     /**
      * Sets gateway id field.
      *
-     * @param int|null $value
+     * @param string|null $value
      */
-    public function gatewayId(?int $value): self
+    public function gatewayId(?string $value): self
     {
         $this->instance->setGatewayId($value);
-        return $this;
-    }
-
-    /**
-     * Unsets gateway id field.
-     */
-    public function unsetGatewayId(): self
-    {
-        $this->instance->unsetGatewayId();
         return $this;
     }
 
@@ -210,15 +146,6 @@ class GetPayableResponseBuilder
     }
 
     /**
-     * Unsets charge id field.
-     */
-    public function unsetChargeId(): self
-    {
-        $this->instance->unsetChargeId();
-        return $this;
-    }
-
-    /**
      * Sets split id field.
      *
      * @param string|null $value
@@ -230,15 +157,6 @@ class GetPayableResponseBuilder
     }
 
     /**
-     * Unsets split id field.
-     */
-    public function unsetSplitId(): self
-    {
-        $this->instance->unsetSplitId();
-        return $this;
-    }
-
-    /**
      * Sets bulk anticipation id field.
      *
      * @param string|null $value
@@ -246,15 +164,6 @@ class GetPayableResponseBuilder
     public function bulkAnticipationId(?string $value): self
     {
         $this->instance->setBulkAnticipationId($value);
-        return $this;
-    }
-
-    /**
-     * Unsets bulk anticipation id field.
-     */
-    public function unsetBulkAnticipationId(): self
-    {
-        $this->instance->unsetBulkAnticipationId();
         return $this;
     }
 
@@ -290,15 +199,6 @@ class GetPayableResponseBuilder
     }
 
     /**
-     * Unsets recipient id field.
-     */
-    public function unsetRecipientId(): self
-    {
-        $this->instance->unsetRecipientId();
-        return $this;
-    }
-
-    /**
      * Sets originator model field.
      *
      * @param string|null $value
@@ -310,15 +210,6 @@ class GetPayableResponseBuilder
     }
 
     /**
-     * Unsets originator model field.
-     */
-    public function unsetOriginatorModel(): self
-    {
-        $this->instance->unsetOriginatorModel();
-        return $this;
-    }
-
-    /**
      * Sets originator model id field.
      *
      * @param string|null $value
@@ -326,15 +217,6 @@ class GetPayableResponseBuilder
     public function originatorModelId(?string $value): self
     {
         $this->instance->setOriginatorModelId($value);
-        return $this;
-    }
-
-    /**
-     * Unsets originator model id field.
-     */
-    public function unsetOriginatorModelId(): self
-    {
-        $this->instance->unsetOriginatorModelId();
         return $this;
     }
 
@@ -370,15 +252,6 @@ class GetPayableResponseBuilder
     }
 
     /**
-     * Unsets original payment date field.
-     */
-    public function unsetOriginalPaymentDate(): self
-    {
-        $this->instance->unsetOriginalPaymentDate();
-        return $this;
-    }
-
-    /**
      * Sets type field.
      *
      * @param string|null $value
@@ -410,15 +283,6 @@ class GetPayableResponseBuilder
     }
 
     /**
-     * Unsets payment method field.
-     */
-    public function unsetPaymentMethod(): self
-    {
-        $this->instance->unsetPaymentMethod();
-        return $this;
-    }
-
-    /**
      * Sets accrual at field.
      *
      * @param \DateTime|null $value
@@ -439,26 +303,6 @@ class GetPayableResponseBuilder
     }
 
     /**
-     * Sets created at field.
-     *
-     * @param \DateTime|null $value
-     */
-    public function createdAt(?\DateTime $value): self
-    {
-        $this->instance->setCreatedAt($value);
-        return $this;
-    }
-
-    /**
-     * Unsets created at field.
-     */
-    public function unsetCreatedAt(): self
-    {
-        $this->instance->unsetCreatedAt();
-        return $this;
-    }
-
-    /**
      * Sets liquidation arrangement id field.
      *
      * @param string|null $value
@@ -475,6 +319,28 @@ class GetPayableResponseBuilder
     public function unsetLiquidationArrangementId(): self
     {
         $this->instance->unsetLiquidationArrangementId();
+        return $this;
+    }
+
+    /**
+     * Sets settlement id field.
+     *
+     * @param string|null $value
+     */
+    public function settlementId(?string $value): self
+    {
+        $this->instance->setSettlementId($value);
+        return $this;
+    }
+
+    /**
+     * Sets payment profile id field.
+     *
+     * @param string|null $value
+     */
+    public function paymentProfileId(?string $value): self
+    {
+        $this->instance->setPaymentProfileId($value);
         return $this;
     }
 

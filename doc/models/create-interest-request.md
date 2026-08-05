@@ -15,13 +15,15 @@ Interest Request
 | `type` | `string` | Required | Type | getType(): string | setType(string type): void |
 | `amount` | `int` | Required | Amount | getAmount(): int | setAmount(int amount): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "days": 4,
-  "type": "\"percentage\" or \"flat\"",
-  "amount": 78
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateInterestRequestBuilder;
+
+$createInterestRequest = CreateInterestRequestBuilder::init(
+    0,
+    '"percentage" or "flat"',
+    0
+)->build();
 ```
 

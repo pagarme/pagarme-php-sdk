@@ -16,14 +16,17 @@ Request for updating a price bracket
 | `endQuantity` | `?int` | Optional | End quantity of the bracket | getEndQuantity(): ?int | setEndQuantity(?int endQuantity): void |
 | `overagePrice` | `?int` | Optional | Overage price | getOveragePrice(): ?int | setOveragePrice(?int overagePrice): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "start_quantity": 154,
-  "price": 164,
-  "end_quantity": 162,
-  "overage_price": 176
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdatePriceBracketRequestBuilder;
+
+$updatePriceBracketRequest = UpdatePriceBracketRequestBuilder::init(
+    160,
+    98
+)
+    ->endQuantity(168)
+    ->overagePrice(182)
+    ->build();
 ```
 

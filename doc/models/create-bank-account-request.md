@@ -23,25 +23,27 @@ Request for creating a bank account
 | `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 | `pixKey` | `?string` | Optional | Pix key | getPixKey(): ?string | setPixKey(?string pixKey): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "holder_name": "holder_name4",
-  "holder_type": "holder_type0",
-  "holder_document": "holder_document8",
-  "bank": "bank6",
-  "branch_number": "branch_number4",
-  "branch_check_digit": "branch_check_digit4",
-  "account_number": "account_number8",
-  "account_check_digit": "account_check_digit4",
-  "type": "type2",
-  "metadata": {
-    "key0": "metadata5",
-    "key1": "metadata6",
-    "key2": "metadata7"
-  },
-  "pix_key": "pix_key8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateBankAccountRequestBuilder;
+
+$createBankAccountRequest = CreateBankAccountRequestBuilder::init(
+    'holder_name6',
+    'holder_type2',
+    'holder_document6',
+    'bank8',
+    'branch_number6',
+    'account_number0',
+    'account_check_digit6',
+    'type0',
+    [
+        'key0' => 'metadata3',
+        'key1' => 'metadata4'
+    ]
+)
+    ->branchCheckDigit('branch_check_digit4')
+    ->pixKey('pix_key6')
+    ->build();
 ```
 

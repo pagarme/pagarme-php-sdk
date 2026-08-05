@@ -14,12 +14,14 @@ Request for creating a bank transfer payment
 | `bank` | `string` | Required | Bank | getBank(): string | setBank(string bank): void |
 | `retries` | `int` | Required | Number of retries | getRetries(): int | setRetries(int retries): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank": "bank4",
-  "retries": 188
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateBankTransferPaymentRequestBuilder;
+
+$createBankTransferPaymentRequest = CreateBankTransferPaymentRequestBuilder::init(
+    'bank6',
+    20
+)->build();
 ```
 

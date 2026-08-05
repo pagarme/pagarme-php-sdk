@@ -22,19 +22,21 @@
 | `fundingEstimatedDate` | `?string` | Optional | - | getFundingEstimatedDate(): ?string | setFundingEstimatedDate(?string fundingEstimatedDate): void |
 | `bankAccount` | `?string` | Optional | - | getBankAccount(): ?string | setBankAccount(?string bankAccount): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "status": "status4",
-  "amount": "amount4",
-  "created_at": "created_at0",
-  "source_type": "source_type6",
-  "source_id": "source_id0",
-  "target_type": "target_type8",
-  "target_id": "target_id4",
-  "fee": "fee8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetMovementObjectTransferResponseBuilder;
+
+$getMovementObjectTransferResponse = GetMovementObjectTransferResponseBuilder::init()
+    ->id('id2')
+    ->status('status4')
+    ->amount('amount4')
+    ->createdAt('created_at0')
+    ->sourceType('source_type6')
+    ->sourceId('source_id0')
+    ->targetType('target_type8')
+    ->targetId('target_id4')
+    ->fee('fee8')
+    ->build();
 ```
 

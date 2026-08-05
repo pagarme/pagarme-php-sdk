@@ -13,13 +13,15 @@
 | `usageReportUrl` | `?string` | Optional | - | getUsageReportUrl(): ?string | setUsageReportUrl(?string usageReportUrl): void |
 | `groupedReportUrl` | `?string` | Optional | - | getGroupedReportUrl(): ?string | setGroupedReportUrl(?string groupedReportUrl): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "url": "url2",
-  "usage_report_url": "usage_report_url0",
-  "grouped_report_url": "grouped_report_url0"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetUsageReportResponseBuilder;
+
+$getUsageReportResponse = GetUsageReportResponseBuilder::init()
+    ->url('url2')
+    ->usageReportUrl('usage_report_url0')
+    ->groupedReportUrl('grouped_report_url0')
+    ->build();
 ```
 

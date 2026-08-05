@@ -18,29 +18,29 @@ Request for updating a plan item
 | `quantity` | `?int` | Optional | Quantity | getQuantity(): ?int | setQuantity(?int quantity): void |
 | `cycles` | `?int` | Optional | Number of cycles that the item will be charged | getCycles(): ?int | setCycles(?int cycles): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name6",
-  "description": "description6",
-  "status": "status8",
-  "pricing_scheme": {
-    "scheme_type": "scheme_type8",
-    "price_brackets": [
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      }
-    ],
-    "price": 166,
-    "minimum_price": 6,
-    "percentage": 251.76
-  },
-  "quantity": 200,
-  "cycles": 36
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdatePlanItemRequestBuilder;
+use PagarmeApiSDKLib\Models\Builders\UpdatePricingSchemeRequestBuilder;
+
+$updatePlanItemRequest = UpdatePlanItemRequestBuilder::init(
+    '',
+    '',
+    '',
+    UpdatePricingSchemeRequestBuilder::init(
+        '',
+        [
+            null
+        ]
+    )
+        ->price(166)
+        ->minimumPrice(6)
+        ->percentage(251.76)
+        ->build()
+)
+    ->quantity(174)
+    ->cycles(194)
+    ->build();
 ```
 

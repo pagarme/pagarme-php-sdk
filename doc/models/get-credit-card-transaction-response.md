@@ -32,20 +32,23 @@ Response object for getting a credit card transaction
 | `brandId` | `?string` | Optional | - | getBrandId(): ?string | setBrandId(?string brandId): void |
 | `indirectAcceptor` | `?string` | Optional | Business model identifier | getIndirectAcceptor(): ?string | setIndirectAcceptor(?string indirectAcceptor): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gateway_id": "gateway_id8",
-  "amount": 40,
-  "status": "status6",
-  "success": false,
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "statement_descriptor": "statement_descriptor2",
-  "acquirer_name": "acquirer_name6",
-  "acquirer_affiliation_code": "acquirer_affiliation_code6",
-  "acquirer_tid": "acquirer_tid8",
-  "acquirer_nsu": "acquirer_nsu8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetCreditCardTransactionResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getCreditCardTransactionResponse = GetCreditCardTransactionResponseBuilder::init()
+    ->gatewayId('gateway_id8')
+    ->amount(40)
+    ->status('status6')
+    ->success(false)
+    ->createdAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->statementDescriptor('statement_descriptor6')
+    ->acquirerName('acquirer_name0')
+    ->acquirerAffiliationCode('acquirer_affiliation_code2')
+    ->acquirerTid('acquirer_tid4')
+    ->acquirerNsu('acquirer_nsu4')
+    ->build();
 ```
 

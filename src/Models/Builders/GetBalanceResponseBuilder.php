@@ -140,6 +140,17 @@ class GetBalanceResponseBuilder
     }
 
     /**
+     * Sets payment profile id field.
+     *
+     * @param string|null $value
+     */
+    public function paymentProfileId(?string $value): self
+    {
+        $this->instance->setPaymentProfileId($value);
+        return $this;
+    }
+
+    /**
      * Initializes a new Get Balance Response object.
      */
     public function build(): GetBalanceResponse

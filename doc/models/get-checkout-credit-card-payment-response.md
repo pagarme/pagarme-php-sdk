@@ -13,27 +13,30 @@
 | `installments` | [`?(GetCheckoutCardInstallmentOptionsResponse[])`](../../doc/models/get-checkout-card-installment-options-response.md) | Optional | Parcelas | getInstallments(): ?array | setInstallments(?array installments): void |
 | `authentication` | [`?GetPaymentAuthenticationResponse`](../../doc/models/get-payment-authentication-response.md) | Optional | Payment Authentication response | getAuthentication(): ?GetPaymentAuthenticationResponse | setAuthentication(?GetPaymentAuthenticationResponse authentication): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "statementDescriptor": "statementDescriptor8",
-  "installments": [
-    {
-      "number": 164,
-      "total": 16
-    }
-  ],
-  "authentication": {
-    "type": "type2",
-    "threed_secure": {
-      "mpi": "mpi0",
-      "eci": "eci2",
-      "cavv": "cavv8",
-      "transaction_Id": "transaction_Id2",
-      "success_url": "success_url4"
-    }
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetCheckoutCreditCardPaymentResponseBuilder;
+use PagarmeApiSDKLib\Models\Builders\GetCheckoutCardInstallmentOptionsResponseBuilder;
+
+$getCheckoutCreditCardPaymentResponse = GetCheckoutCreditCardPaymentResponseBuilder::init()
+    ->statementDescriptor('statementDescriptor2')
+    ->installments(
+        [
+            null,
+            GetCheckoutCardInstallmentOptionsResponseBuilder::init()
+                ->number(null)
+                ->total(null)
+                ->build(),
+            GetCheckoutCardInstallmentOptionsResponseBuilder::init()
+                ->number(null)
+                ->total(null)
+                ->build()
+        ]
+    )
+    ->authentication(
+        null
+    )
+    ->build();
 ```
 

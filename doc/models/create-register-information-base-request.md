@@ -17,21 +17,20 @@ Request object for RegisterInformation.
 | `siteUrl` | `?string` | Optional | - | getSiteUrl(): ?string | setSiteUrl(?string siteUrl): void |
 | `phoneNumbers` | [`CreateRegisterInformationPhoneRequest[]`](../../doc/models/create-register-information-phone-request.md) | Required | - | getPhoneNumbers(): array | setPhoneNumbers(array phoneNumbers): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email": "email4",
-  "document": "document6",
-  "type": "type8",
-  "phone_numbers": [
-    {
-      "ddd": "ddd4",
-      "number": "number2",
-      "type": "type0"
-    }
-  ],
-  "site_url": "site_url4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateRegisterInformationBaseRequestBuilder;
+
+$createRegisterInformationBaseRequest = CreateRegisterInformationBaseRequestBuilder::init(
+    '',
+    '',
+    '',
+    [
+        null
+    ]
+)
+    ->siteUrl('site_url6')
+    ->build();
 ```
 

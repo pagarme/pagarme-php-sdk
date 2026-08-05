@@ -14,38 +14,22 @@ Response object for listing addresses
 | `data` | [`?(GetAddressResponse[])`](../../doc/models/get-address-response.md) | Optional | The address objects | getData(): ?array | setData(?array data): void |
 | `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging object | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "street": "street0",
-      "number": "number8",
-      "complement": "complement6",
-      "zip_code": "zip_code4"
-    },
-    {
-      "id": "id0",
-      "street": "street0",
-      "number": "number8",
-      "complement": "complement6",
-      "zip_code": "zip_code4"
-    },
-    {
-      "id": "id0",
-      "street": "street0",
-      "number": "number8",
-      "complement": "complement6",
-      "zip_code": "zip_code4"
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\ListAddressesResponseBuilder;
+use PagarmeApiSDKLib\Models\Builders\GetAddressResponseBuilder;
+
+$listAddressesResponse = ListAddressesResponseBuilder::init()
+    ->data(
+        [
+            null,
+            GetAddressResponseBuilder::init()->build()
+        ]
+    )
+    ->paging(
+        null
+    )
+    ->build();
 ```
 

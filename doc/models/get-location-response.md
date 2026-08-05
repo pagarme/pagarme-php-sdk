@@ -14,12 +14,14 @@ Response object for geetting an order location request
 | `latitude` | `?string` | Optional | Latitude | getLatitude(): ?string | setLatitude(?string latitude): void |
 | `longitude` | `?string` | Optional | Longitude | getLongitude(): ?string | setLongitude(?string longitude): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "latitude": "latitude6",
-  "longitude": "longitude4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetLocationResponseBuilder;
+
+$getLocationResponse = GetLocationResponseBuilder::init()
+    ->latitude('latitude2')
+    ->longitude('longitude8')
+    ->build();
 ```
 

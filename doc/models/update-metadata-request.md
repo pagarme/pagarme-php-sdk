@@ -13,14 +13,17 @@ Request for updating an metadata
 |  --- | --- | --- | --- | --- | --- |
 | `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "metadata": {
-    "key0": "metadata7",
-    "key1": "metadata6"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateMetadataRequestBuilder;
+
+$updateMetadataRequest = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata5',
+        'key1' => 'metadata6',
+        'key2' => 'metadata7'
+    ]
+)->build();
 ```
 

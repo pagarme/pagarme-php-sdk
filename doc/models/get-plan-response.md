@@ -33,15 +33,17 @@ Response object for getting a plan
 | `minimumPrice` | `?int` | Optional | - | getMinimumPrice(): ?int | setMinimumPrice(?int minimumPrice): void |
 | `deletedAt` | `?DateTime` | Optional | - | getDeletedAt(): ?\DateTime | setDeletedAt(?\DateTime deletedAt): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "name": "name0",
-  "description": "description0",
-  "url": "url4",
-  "statement_descriptor": "statement_descriptor0"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetPlanResponseBuilder;
+
+$getPlanResponse = GetPlanResponseBuilder::init()
+    ->id('id0')
+    ->name('name0')
+    ->description('description0')
+    ->url('url4')
+    ->statementDescriptor('statement_descriptor0')
+    ->build();
 ```
 

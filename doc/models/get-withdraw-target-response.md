@@ -12,12 +12,14 @@
 | `targetId` | `?string` | Optional | - | getTargetId(): ?string | setTargetId(?string targetId): void |
 | `type` | `?string` | Optional | - | getType(): ?string | setType(?string type): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "target_id": "target_id4",
-  "type": "type6"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetWithdrawTargetResponseBuilder;
+
+$getWithdrawTargetResponse = GetWithdrawTargetResponseBuilder::init()
+    ->targetId('target_id8')
+    ->type('type8')
+    ->build();
 ```
 

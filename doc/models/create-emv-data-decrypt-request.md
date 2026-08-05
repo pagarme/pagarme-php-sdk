@@ -13,21 +13,20 @@
 | `dukpt` | [`?CreateEmvDataDukptDecryptRequest`](../../doc/models/create-emv-data-dukpt-decrypt-request.md) | Optional | Dukpt data request | getDukpt(): ?CreateEmvDataDukptDecryptRequest | setDukpt(?CreateEmvDataDukptDecryptRequest dukpt): void |
 | `tags` | [`CreateEmvDataTlvDecryptRequest[]`](../../doc/models/create-emv-data-tlv-decrypt-request.md) | Required | Encrypted tags list | getTags(): array | setTags(array tags): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "cipher": "cipher2",
-  "tags": [
-    {
-      "tag": "tag4",
-      "lenght": "lenght2",
-      "value": "value2"
-    }
-  ],
-  "dukpt": {
-    "ksn": "ksn0"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateEmvDataDecryptRequestBuilder;
+
+$createEmvDataDecryptRequest = CreateEmvDataDecryptRequestBuilder::init(
+    '',
+    [
+        null
+    ]
+)
+    ->dukpt(
+        null
+    )
+    ->build();
 ```
 

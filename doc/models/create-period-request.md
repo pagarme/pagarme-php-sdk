@@ -11,11 +11,14 @@
 |  --- | --- | --- | --- | --- | --- |
 | `endAt` | `?DateTime` | Optional | - | getEndAt(): ?\DateTime | setEndAt(?\DateTime endAt): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "end_at": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreatePeriodRequestBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$createPeriodRequest = CreatePeriodRequestBuilder::init()
+    ->endAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->build();
 ```
 

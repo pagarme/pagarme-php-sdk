@@ -17,43 +17,50 @@ Request for canceling a charge.
 | `operationReference` | `string` | Required | - | getOperationReference(): string | setOperationReference(string operationReference): void |
 | `bankAccount` | [`?CreateBankAccountRefundingDTO`](../../doc/models/create-bank-account-refunding-dto.md) | Optional | - | getBankAccount(): ?CreateBankAccountRefundingDTO | setBankAccount(?CreateBankAccountRefundingDTO bankAccount): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 244,
-  "split_rules": [
-    {
-      "id": "id2",
-      "Amount": 244,
-      "type": "type8"
-    }
-  ],
-  "split": [
-    {
-      "type": "type2",
-      "amount": 10,
-      "recipient_id": "recipient_id2",
-      "options": {
-        "liable": false,
-        "charge_processing_fee": false,
-        "charge_remainder_fee": false
-      },
-      "split_rule_id": "split_rule_id0"
-    }
-  ],
-  "operation_reference": "operation_reference8",
-  "bank_account": {
-    "holder_name": "holder_name0",
-    "holder_type": "holder_type6",
-    "holder_document": "holder_document8",
-    "bank": "bank2",
-    "branch_number": "branch_number0",
-    "branch_check_digit": "branch_check_digit0",
-    "account_number": "account_number4",
-    "account_check_digit": "account_check_digit0",
-    "type": "type6"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateCancelChargeRequestBuilder;
+use PagarmeApiSDKLib\Models\Builders\CreateCancelChargeSplitRulesRequestBuilder;
+use PagarmeApiSDKLib\Models\Builders\CreateSplitRequestBuilder;
+
+$createCancelChargeRequest = CreateCancelChargeRequestBuilder::init(
+    'operation_reference0'
+)
+    ->amount(222)
+    ->splitRules(
+        [
+            null,
+            CreateCancelChargeSplitRulesRequestBuilder::init(
+                '',
+                0,
+                ''
+            )->build(),
+            CreateCancelChargeSplitRulesRequestBuilder::init(
+                '',
+                0,
+                ''
+            )->build()
+        ]
+    )
+    ->split(
+        [
+            null,
+            CreateSplitRequestBuilder::init(
+                '',
+                0,
+                ''
+            )->build(),
+            CreateSplitRequestBuilder::init(
+                '',
+                0,
+                ''
+            )->build()
+        ]
+    )
+    ->bankAccount(
+        null
+    )
+    ->build();
 ```
 
