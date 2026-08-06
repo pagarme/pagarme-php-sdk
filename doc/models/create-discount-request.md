@@ -17,15 +17,18 @@ Request for creating a new discount
 | `cycles` | `?int` | Optional | Number of cycles that the discount will be applied | getCycles(): ?int | setCycles(?int cycles): void |
 | `description` | `?string` | Optional | Description | getDescription(): ?string | setDescription(?string description): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "value": 146.6,
-  "discount_type": "discount_type6",
-  "item_id": "item_id2",
-  "cycles": 164,
-  "description": "description2"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateDiscountRequestBuilder;
+
+$createDiscountRequest = CreateDiscountRequestBuilder::init(
+    66.94,
+    'discount_type0',
+    'item_id8'
+)
+    ->cycles(194)
+    ->description('description8')
+    ->build();
 ```
 

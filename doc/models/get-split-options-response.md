@@ -13,13 +13,15 @@
 | `chargeProcessingFee` | `?bool` | Optional | - | getChargeProcessingFee(): ?bool | setChargeProcessingFee(?bool chargeProcessingFee): void |
 | `chargeRemainderFee` | `?string` | Optional | - | getChargeRemainderFee(): ?string | setChargeRemainderFee(?string chargeRemainderFee): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "liable": false,
-  "charge_processing_fee": false,
-  "charge_remainder_fee": "charge_remainder_fee6"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetSplitOptionsResponseBuilder;
+
+$getSplitOptionsResponse = GetSplitOptionsResponseBuilder::init()
+    ->liable(false)
+    ->chargeProcessingFee(false)
+    ->chargeRemainderFee('charge_remainder_fee6')
+    ->build();
 ```
 

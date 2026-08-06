@@ -13,13 +13,15 @@
 | `number` | `?string` | Optional | - | getNumber(): ?string | setNumber(?string number): void |
 | `areaCode` | `?string` | Optional | - | getAreaCode(): ?string | setAreaCode(?string areaCode): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "country_code": "country_code6",
-  "number": "number4",
-  "area_code": "area_code6"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetPhoneResponseBuilder;
+
+$getPhoneResponse = GetPhoneResponseBuilder::init()
+    ->countryCode('country_code2')
+    ->number('number0')
+    ->areaCode('area_code2')
+    ->build();
 ```
 

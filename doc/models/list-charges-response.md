@@ -14,38 +14,20 @@ Response object for listing charges
 | `data` | [`?(GetChargeResponse[])`](../../doc/models/get-charge-response.md) | Optional | The charge objects | getData(): ?array | setData(?array data): void |
 | `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging object | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "code": "code8",
-      "gateway_id": "gateway_id0",
-      "amount": 236,
-      "status": "status2"
-    },
-    {
-      "id": "id0",
-      "code": "code8",
-      "gateway_id": "gateway_id0",
-      "amount": 236,
-      "status": "status2"
-    },
-    {
-      "id": "id0",
-      "code": "code8",
-      "gateway_id": "gateway_id0",
-      "amount": 236,
-      "status": "status2"
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\ListChargesResponseBuilder;
+
+$listChargesResponse = ListChargesResponseBuilder::init()
+    ->data(
+        [
+            null
+        ]
+    )
+    ->paging(
+        null
+    )
+    ->build();
 ```
 

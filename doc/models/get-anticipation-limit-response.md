@@ -14,12 +14,14 @@ Anticipation limit
 | `amount` | `?int` | Optional | Amount | getAmount(): ?int | setAmount(?int amount): void |
 | `anticipationFee` | `?int` | Optional | Anticipation fee | getAnticipationFee(): ?int | setAnticipationFee(?int anticipationFee): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 6,
-  "anticipation_fee": 88
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetAnticipationLimitResponseBuilder;
+
+$getAnticipationLimitResponse = GetAnticipationLimitResponseBuilder::init()
+    ->amount(160)
+    ->anticipationFee(190)
+    ->build();
 ```
 

@@ -13,11 +13,13 @@ Request for creating a device
 |  --- | --- | --- | --- | --- | --- |
 | `platform` | `?string` | Optional | Device's platform | getPlatform(): ?string | setPlatform(?string platform): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "platform": "platform8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateDeviceRequestBuilder;
+
+$createDeviceRequest = CreateDeviceRequestBuilder::init()
+    ->platform('platform2')
+    ->build();
 ```
 

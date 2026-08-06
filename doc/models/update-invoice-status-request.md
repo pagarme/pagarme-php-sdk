@@ -13,11 +13,13 @@ Invoice Update Status Request
 |  --- | --- | --- | --- | --- | --- |
 | `status` | `string` | Required | Status | getStatus(): string | setStatus(string status): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "status8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateInvoiceStatusRequestBuilder;
+
+$updateInvoiceStatusRequest = UpdateInvoiceStatusRequestBuilder::init(
+    'status2'
+)->build();
 ```
 

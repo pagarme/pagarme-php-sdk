@@ -17,15 +17,18 @@ Request for creating an order item
 | `category` | `string` | Required | Category | getCategory(): string | setCategory(string category): void |
 | `code` | `?string` | Optional | The item code passed by the client | getCode(): ?string | setCode(?string code): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 102,
-  "description": "description4",
-  "quantity": 216,
-  "category": "category4",
-  "code": "code4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateOrderItemRequestBuilder;
+
+$createOrderItemRequest = CreateOrderItemRequestBuilder::init(
+    154,
+    'description6',
+    12,
+    'category4'
+)
+    ->code('code4')
+    ->build();
 ```
 

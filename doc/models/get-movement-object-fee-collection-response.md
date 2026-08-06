@@ -19,17 +19,19 @@ Generic response object for getting a MovementObjectFeeCollection.
 | `paymentDate` | `?string` | Optional | - | getPaymentDate(): ?string | setPaymentDate(?string paymentDate): void |
 | `recipientId` | `?string` | Optional | - | getRecipientId(): ?string | setRecipientId(?string recipientId): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "status": "status4",
-  "amount": "amount4",
-  "created_at": "created_at0",
-  "description": "description4",
-  "payment_date": "payment_date4",
-  "recipient_id": "recipient_id6"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetMovementObjectFeeCollectionResponseBuilder;
+
+$getMovementObjectFeeCollectionResponse = GetMovementObjectFeeCollectionResponseBuilder::init()
+    ->id('id2')
+    ->status('status4')
+    ->amount('amount4')
+    ->createdAt('created_at0')
+    ->description('description0')
+    ->paymentDate('payment_date8')
+    ->recipientId('recipient_id0')
+    ->build();
 ```
 

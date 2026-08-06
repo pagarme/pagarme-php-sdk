@@ -23,6 +23,9 @@ Documentation for accessing and setting credentials for httpBasic.
 You must provide credentials in the client as shown in the following code snippet.
 
 ```php
+use PagarmeApiSDKLib\Authentication\BasicAuthCredentialsBuilder;
+use PagarmeApiSDKLib\PagarmeApiSDKClientBuilder;
+
 $client = PagarmeApiSDKClientBuilder::init()
     ->basicAuthCredentials(
         BasicAuthCredentialsBuilder::init(

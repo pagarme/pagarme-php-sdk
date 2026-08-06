@@ -16,14 +16,16 @@ Update Order item Request
 | `quantity` | `int` | Required | - | getQuantity(): int | setQuantity(int quantity): void |
 | `category` | `string` | Required | - | getCategory(): string | setCategory(string category): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 130,
-  "description": "description4",
-  "quantity": 244,
-  "category": "category2"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateOrderItemRequestBuilder;
+
+$updateOrderItemRequest = UpdateOrderItemRequestBuilder::init(
+    202,
+    'description0',
+    60,
+    'category8'
+)->build();
 ```
 

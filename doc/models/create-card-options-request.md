@@ -13,11 +13,13 @@ Options for creating the card
 |  --- | --- | --- | --- | --- | --- |
 | `verifyCard` | `bool` | Required | Indicates if the card should be verified before creation. If true, executes an authorization before saving the card. | getVerifyCard(): bool | setVerifyCard(bool verifyCard): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "verify_card": false
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateCardOptionsRequestBuilder;
+
+$createCardOptionsRequest = CreateCardOptionsRequestBuilder::init(
+    false
+)->build();
 ```
 

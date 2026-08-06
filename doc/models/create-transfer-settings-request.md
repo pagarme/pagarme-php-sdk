@@ -15,13 +15,15 @@ Informações de transferência do recebedor
 | `transferInterval` | `string` | Required | - | getTransferInterval(): string | setTransferInterval(string transferInterval): void |
 | `transferDay` | `int` | Required | - | getTransferDay(): int | setTransferDay(int transferDay): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "transfer_enabled": false,
-  "transfer_interval": "transfer_interval4",
-  "transfer_day": 82
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateTransferSettingsRequestBuilder;
+
+$createTransferSettingsRequest = CreateTransferSettingsRequestBuilder::init(
+    false,
+    'transfer_interval2',
+    128
+)->build();
 ```
 

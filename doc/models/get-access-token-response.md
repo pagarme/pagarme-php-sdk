@@ -17,21 +17,20 @@ Response object for getting a access token
 | `createdAt` | `?DateTime` | Optional | - | getCreatedAt(): ?\DateTime | setCreatedAt(?\DateTime createdAt): void |
 | `customer` | [`?GetCustomerResponse`](../../doc/models/get-customer-response.md) | Optional | - | getCustomer(): ?GetCustomerResponse | setCustomer(?GetCustomerResponse customer): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "code": "code8",
-  "status": "status2",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "customer": {
-    "id": "id0",
-    "name": "name0",
-    "email": "email6",
-    "delinquent": false,
-    "created_at": "2016-03-13T12:52:32.123Z"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetAccessTokenResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getAccessTokenResponse = GetAccessTokenResponseBuilder::init()
+    ->id('id2')
+    ->code('code0')
+    ->status('status6')
+    ->createdAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->customer(
+        null
+    )
+    ->build();
 ```
 

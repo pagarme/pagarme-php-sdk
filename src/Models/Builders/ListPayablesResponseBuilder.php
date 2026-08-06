@@ -11,9 +11,9 @@ declare(strict_types=1);
 namespace PagarmeApiSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PagarmeApiSDKLib\Models\CursorPagingResponse;
 use PagarmeApiSDKLib\Models\GetPayableResponse;
 use PagarmeApiSDKLib\Models\ListPayablesResponse;
-use PagarmeApiSDKLib\Models\PagingResponse;
 
 /**
  * Builder for model ListPayablesResponse
@@ -34,10 +34,12 @@ class ListPayablesResponseBuilder
 
     /**
      * Initializes a new List Payables Response Builder object.
+     *
+     * @param CursorPagingResponse $paging
      */
-    public static function init(): self
+    public static function init(CursorPagingResponse $paging): self
     {
-        return new self(new ListPayablesResponse());
+        return new self(new ListPayablesResponse($paging));
     }
 
     /**
@@ -57,26 +59,6 @@ class ListPayablesResponseBuilder
     public function unsetData(): self
     {
         $this->instance->unsetData();
-        return $this;
-    }
-
-    /**
-     * Sets paging field.
-     *
-     * @param PagingResponse|null $value
-     */
-    public function paging(?PagingResponse $value): self
-    {
-        $this->instance->setPaging($value);
-        return $this;
-    }
-
-    /**
-     * Unsets paging field.
-     */
-    public function unsetPaging(): self
-    {
-        $this->instance->unsetPaging();
         return $this;
     }
 

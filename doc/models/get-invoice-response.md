@@ -35,15 +35,17 @@ Response object for getting an invoice
 | `totalIncrement` | `?int` | Optional | Total discounted value | getTotalIncrement(): ?int | setTotalIncrement(?int totalIncrement): void |
 | `subscriptionId` | `?string` | Optional | Subscription Id | getSubscriptionId(): ?string | setSubscriptionId(?string subscriptionId): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "code": "code8",
-  "url": "url4",
-  "amount": 168,
-  "status": "status8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetInvoiceResponseBuilder;
+
+$getInvoiceResponse = GetInvoiceResponseBuilder::init()
+    ->id('id8')
+    ->code('code6')
+    ->url('url2')
+    ->amount(132)
+    ->status('status0')
+    ->build();
 ```
 

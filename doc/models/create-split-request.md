@@ -17,19 +17,20 @@ Split
 | `options` | [`?CreateSplitOptionsRequest`](../../doc/models/create-split-options-request.md) | Optional | The split options request | getOptions(): ?CreateSplitOptionsRequest | setOptions(?CreateSplitOptionsRequest options): void |
 | `splitRuleId` | `?string` | Optional | Rule code used in cancellation. | getSplitRuleId(): ?string | setSplitRuleId(?string splitRuleId): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "type6",
-  "amount": 100,
-  "recipient_id": "recipient_id6",
-  "options": {
-    "liable": false,
-    "charge_processing_fee": false,
-    "charge_remainder_fee": false
-  },
-  "split_rule_id": "split_rule_id8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateSplitRequestBuilder;
+
+$createSplitRequest = CreateSplitRequestBuilder::init(
+    'type8',
+    166,
+    'recipient_id8'
+)
+    ->options(
+        null
+    )
+    ->splitRuleId('split_rule_id4')
+    ->build();
 ```
 

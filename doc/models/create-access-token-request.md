@@ -13,11 +13,13 @@ Request for creating a new Access Token
 |  --- | --- | --- | --- | --- | --- |
 | `expiresIn` | `?int` | Optional | Minutes to expire the token | getExpiresIn(): ?int | setExpiresIn(?int expiresIn): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "expires_in": 86
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateAccessTokenRequestBuilder;
+
+$createAccessTokenRequest = CreateAccessTokenRequestBuilder::init()
+    ->expiresIn(204)
+    ->build();
 ```
 

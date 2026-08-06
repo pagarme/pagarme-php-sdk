@@ -14,38 +14,23 @@ Response object for listing order objects
 | `data` | [`?(GetOrderResponse[])`](../../doc/models/get-order-response.md) | Optional | The order object | getData(): ?array | setData(?array data): void |
 | `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging object | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "code": "code8",
-      "amount": 236,
-      "currency": "currency0",
-      "closed": false
-    },
-    {
-      "id": "id0",
-      "code": "code8",
-      "amount": 236,
-      "currency": "currency0",
-      "closed": false
-    },
-    {
-      "id": "id0",
-      "code": "code8",
-      "amount": 236,
-      "currency": "currency0",
-      "closed": false
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\ListOrderResponseBuilder;
+use PagarmeApiSDKLib\Models\Builders\GetOrderResponseBuilder;
+
+$listOrderResponse = ListOrderResponseBuilder::init()
+    ->data(
+        [
+            null,
+            GetOrderResponseBuilder::init()->build(),
+            GetOrderResponseBuilder::init()->build()
+        ]
+    )
+    ->paging(
+        null
+    )
+    ->build();
 ```
 

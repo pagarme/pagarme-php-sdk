@@ -23,15 +23,18 @@ Response object for getting a plan item
 | `cycles` | `?int` | Optional | - | getCycles(): ?int | setCycles(?int cycles): void |
 | `deletedAt` | `?DateTime` | Optional | - | getDeletedAt(): ?\DateTime | setDeletedAt(?\DateTime deletedAt): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id8",
-  "name": "name8",
-  "status": "status0",
-  "created_at": "2016-03-13T12:52:32.123Z",
-  "updated_at": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetPlanItemResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getPlanItemResponse = GetPlanItemResponseBuilder::init()
+    ->id('id4')
+    ->name('name4')
+    ->status('status4')
+    ->createdAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->updatedAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->build();
 ```
 

@@ -14,38 +14,22 @@ Response for the listing recipient method
 | `data` | [`?(GetRecipientResponse[])`](../../doc/models/get-recipient-response.md) | Optional | Recipients | getData(): ?array | setData(?array data): void |
 | `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "name": "name0",
-      "email": "email6",
-      "document": "document4",
-      "description": "description0"
-    },
-    {
-      "id": "id0",
-      "name": "name0",
-      "email": "email6",
-      "document": "document4",
-      "description": "description0"
-    },
-    {
-      "id": "id0",
-      "name": "name0",
-      "email": "email6",
-      "document": "document4",
-      "description": "description0"
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\ListRecipientResponseBuilder;
+use PagarmeApiSDKLib\Models\Builders\GetRecipientResponseBuilder;
+
+$listRecipientResponse = ListRecipientResponseBuilder::init()
+    ->data(
+        [
+            null,
+            GetRecipientResponseBuilder::init()->build()
+        ]
+    )
+    ->paging(
+        null
+    )
+    ->build();
 ```
 

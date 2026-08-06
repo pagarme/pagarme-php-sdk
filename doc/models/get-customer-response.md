@@ -27,15 +27,18 @@ Response object for getting a customer
 | `code` | `?string` | Optional | Código de referência do cliente no sistema da loja. Max: 52 caracteres | getCode(): ?string | setCode(?string code): void |
 | `documentType` | `?string` | Optional | - | getDocumentType(): ?string | setDocumentType(?string documentType): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id4",
-  "name": "name4",
-  "email": "email2",
-  "delinquent": false,
-  "created_at": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetCustomerResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getCustomerResponse = GetCustomerResponseBuilder::init()
+    ->id('id6')
+    ->name('name6')
+    ->email('email0')
+    ->delinquent(false)
+    ->createdAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->build();
 ```
 

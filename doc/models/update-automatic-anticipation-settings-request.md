@@ -15,15 +15,17 @@
 | `delay` | `?int` | Optional | - | getDelay(): ?int | setDelay(?int delay): void |
 | `days` | `?int` | Optional | - | getDays(): ?int | setDays(?int days): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "enabled": false,
-  "type": "type8",
-  "volume_percentage": 132,
-  "delay": 158,
-  "days": 66
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateAutomaticAnticipationSettingsRequestBuilder;
+
+$updateAutomaticAnticipationSettingsRequest = UpdateAutomaticAnticipationSettingsRequestBuilder::init()
+    ->enabled(false)
+    ->type('type4')
+    ->volumePercentage(178)
+    ->delay(112)
+    ->days(20)
+    ->build();
 ```
 

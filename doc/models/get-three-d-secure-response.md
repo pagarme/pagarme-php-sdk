@@ -17,15 +17,17 @@
 | `transactionId` | `?string` | Optional | Identificador da transação (XID) | getTransactionId(): ?string | setTransactionId(?string transactionId): void |
 | `successUrl` | `?string` | Optional | Url de redirecionamento de sucessso | getSuccessUrl(): ?string | setSuccessUrl(?string successUrl): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "mpi": "mpi2",
-  "eci": "eci4",
-  "cavv": "cavv0",
-  "transaction_Id": "transaction_Id0",
-  "success_url": "success_url6"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetThreeDSecureResponseBuilder;
+
+$getThreeDSecureResponse = GetThreeDSecureResponseBuilder::init()
+    ->mpi('mpi4')
+    ->eci('eci6')
+    ->cavv('cavv2')
+    ->transactionId('transaction_Id2')
+    ->successUrl('success_url8')
+    ->build();
 ```
 

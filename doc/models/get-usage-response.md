@@ -23,15 +23,18 @@ Response object for getting a usage
 | `group` | `?string` | Optional | Identification group in the client system | getGroup(): ?string | setGroup(?string group): void |
 | `amount` | `?int` | Optional | Field used in item scheme type 'Percent' | getAmount(): ?int | setAmount(?int amount): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "quantity": 34,
-  "description": "description2",
-  "used_at": "2016-03-13T12:52:32.123Z",
-  "created_at": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetUsageResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getUsageResponse = GetUsageResponseBuilder::init()
+    ->id('id6')
+    ->quantity(226)
+    ->description('description6')
+    ->usedAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->createdAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->build();
 ```
 

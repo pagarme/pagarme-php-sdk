@@ -11,11 +11,13 @@
 |  --- | --- | --- | --- | --- | --- |
 | `customSla` | `int` | Required | - | getCustomSla(): int | setCustomSla(int customSla): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "custom_sla": 150
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateClearSaleRequestBuilder;
+
+$createClearSaleRequest = CreateClearSaleRequestBuilder::init(
+    156
+)->build();
 ```
 

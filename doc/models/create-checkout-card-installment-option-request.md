@@ -14,12 +14,14 @@ Options for card installment
 | `number` | `int` | Required | Installment quantity | getNumber(): int | setNumber(int number): void |
 | `total` | `int` | Required | Total amount | getTotal(): int | setTotal(int total): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "number": 154,
-  "total": 46
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateCheckoutCardInstallmentOptionRequestBuilder;
+
+$createCheckoutCardInstallmentOptionRequest = CreateCheckoutCardInstallmentOptionRequestBuilder::init(
+    68,
+    176
+)->build();
 ```
 

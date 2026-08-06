@@ -14,19 +14,18 @@ The Transaction Gateway Response
 | `code` | `?string` | Optional | The error code | getCode(): ?string | setCode(?string code): void |
 | `errors` | [`?(GetGatewayErrorResponse[])`](../../doc/models/get-gateway-error-response.md) | Optional | The gateway response errors list | getErrors(): ?array | setErrors(?array errors): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "code6",
-  "errors": [
-    {
-      "message": "message0"
-    },
-    {
-      "message": "message0"
-    }
-  ]
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetGatewayResponseResponseBuilder;
+
+$getGatewayResponseResponse = GetGatewayResponseResponseBuilder::init()
+    ->code('code4')
+    ->errors(
+        [
+            null
+        ]
+    )
+    ->build();
 ```
 

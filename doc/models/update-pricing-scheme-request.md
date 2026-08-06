@@ -17,22 +17,20 @@ Request for updating a pricing scheme
 | `minimumPrice` | `?int` | Optional | Minimum price | getMinimumPrice(): ?int | setMinimumPrice(?int minimumPrice): void |
 | `percentage` | `?float` | Optional | percentual value used in pricing_scheme Percent | getPercentage(): ?float | setPercentage(?float percentage): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "scheme_type": "scheme_type0",
-  "price_brackets": [
-    {
-      "start_quantity": 144,
-      "price": 174,
-      "end_quantity": 152,
-      "overage_price": 166
-    }
-  ],
-  "price": 162,
-  "minimum_price": 2,
-  "percentage": 62.28
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdatePricingSchemeRequestBuilder;
+
+$updatePricingSchemeRequest = UpdatePricingSchemeRequestBuilder::init(
+    '',
+    [
+        null
+    ]
+)
+    ->price(180)
+    ->minimumPrice(84)
+    ->percentage(238.06)
+    ->build();
 ```
 

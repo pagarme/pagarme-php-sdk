@@ -18,25 +18,21 @@ Split response
 | `options` | [`?GetSplitOptionsResponse`](../../doc/models/get-split-options-response.md) | Optional | - | getOptions(): ?GetSplitOptionsResponse | setOptions(?GetSplitOptionsResponse options): void |
 | `id` | `?string` | Optional | - | getId(): ?string | setId(?string id): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "type0",
-  "amount": 252,
-  "recipient": {
-    "id": "id8",
-    "name": "name8",
-    "email": "email8",
-    "document": "document8",
-    "description": "description2"
-  },
-  "gateway_id": "gateway_id0",
-  "options": {
-    "liable": false,
-    "charge_processing_fee": false,
-    "charge_remainder_fee": "charge_remainder_fee0"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetSplitResponseBuilder;
+
+$getSplitResponse = GetSplitResponseBuilder::init()
+    ->type('type0')
+    ->amount(42)
+    ->recipient(
+        null
+    )
+    ->gatewayId('gateway_id0')
+    ->options(
+        null
+    )
+    ->build();
 ```
 

@@ -14,12 +14,14 @@ Request for creating a location
 | `latitude` | `string` | Required | Latitude | getLatitude(): string | setLatitude(string latitude): void |
 | `longitude` | `string` | Required | Longitude | getLongitude(): string | setLongitude(string longitude): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "latitude": "latitude0",
-  "longitude": "longitude0"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateLocationRequestBuilder;
+
+$createLocationRequest = CreateLocationRequestBuilder::init(
+    'latitude0',
+    'longitude0'
+)->build();
 ```
 

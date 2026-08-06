@@ -13,11 +13,14 @@ Request to update the end date of the current subscription cycle
 |  --- | --- | --- | --- | --- | --- |
 | `endAt` | `?DateTime` | Optional | Current cycle end date | getEndAt(): ?\DateTime | setEndAt(?\DateTime endAt): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "end_at": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateCurrentCycleEndDateRequestBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$updateCurrentCycleEndDateRequest = UpdateCurrentCycleEndDateRequestBuilder::init()
+    ->endAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->build();
 ```
 

@@ -20,28 +20,31 @@ Request for updating card data
 | `paymentOrigin` | [`?CreatePaymentOriginRequest`](../../doc/models/create-payment-origin-request.md) | Optional | - | getPaymentOrigin(): ?CreatePaymentOriginRequest | setPaymentOrigin(?CreatePaymentOriginRequest paymentOrigin): void |
 | `indirectAcceptor` | `?string` | Optional | Business model identifier | getIndirectAcceptor(): ?string | setIndirectAcceptor(?string indirectAcceptor): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "update_subscription": false,
-  "card_id": "card_id2",
-  "card": {
-    "type": "credit",
-    "number": "number6",
-    "holder_name": "holder_name2",
-    "exp_month": 228,
-    "exp_year": 68,
-    "cvv": "cvv4"
-  },
-  "recurrence": false,
-  "initiated_type": "initiated_type8",
-  "recurrence_model": "recurrence_model6",
-  "payment_origin": {
-    "brand_id": "brand_id8",
-    "charge_id": "charge_id2"
-  },
-  "indirect_acceptor": "indirect_acceptor2"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateChargeCardRequestBuilder;
+use PagarmeApiSDKLib\Models\Builders\CreateCardRequestBuilder;
+
+$updateChargeCardRequest = UpdateChargeCardRequestBuilder::init(
+    false,
+    '',
+    CreateCardRequestBuilder::init()
+        ->number('number6')
+        ->holderName('holder_name2')
+        ->expMonth(228)
+        ->expYear(68)
+        ->cvv('cvv4')
+        ->type('credit')
+        ->build(),
+    false
+)
+    ->initiatedType('initiated_type4')
+    ->recurrenceModel('recurrence_model2')
+    ->paymentOrigin(
+        null
+    )
+    ->indirectAcceptor('indirect_acceptor8')
+    ->build();
 ```
 

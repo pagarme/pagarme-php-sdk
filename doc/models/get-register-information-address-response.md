@@ -20,15 +20,17 @@ Response object for getting an RegisterInformationAddress
 | `zipCode` | `?string` | Optional | - | getZipCode(): ?string | setZipCode(?string zipCode): void |
 | `referencePoint` | `?string` | Optional | - | getReferencePoint(): ?string | setReferencePoint(?string referencePoint): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "street": "street2",
-  "complementary": "complementary4",
-  "street_number": "street_number2",
-  "neighborhood": "neighborhood8",
-  "city": "city2"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetRegisterInformationAddressResponseBuilder;
+
+$getRegisterInformationAddressResponse = GetRegisterInformationAddressResponseBuilder::init()
+    ->street('street4')
+    ->complementary('complementary6')
+    ->streetNumber('street_number4')
+    ->neighborhood('neighborhood0')
+    ->city('city4')
+    ->build();
 ```
 

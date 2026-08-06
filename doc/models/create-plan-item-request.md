@@ -18,41 +18,19 @@ Request for creating a plan item
 | `cycles` | `?int` | Optional | Number of cycles where the item will be charged | getCycles(): ?int | setCycles(?int cycles): void |
 | `quantity` | `?int` | Optional | Quantity | getQuantity(): ?int | setQuantity(?int quantity): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "pricing_scheme": {
-    "scheme_type": "scheme_type8",
-    "price_brackets": [
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      },
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      },
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      }
-    ],
-    "price": 166,
-    "minimum_price": 6,
-    "percentage": 251.76
-  },
-  "id": "id0",
-  "description": "description0",
-  "cycles": 52,
-  "quantity": 184
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreatePlanItemRequestBuilder;
+
+$createPlanItemRequest = CreatePlanItemRequestBuilder::init(
+    'name8',
+    null,
+    'id8',
+    'description8'
+)
+    ->cycles(78)
+    ->quantity(158)
+    ->build();
 ```
 

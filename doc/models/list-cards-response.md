@@ -14,38 +14,23 @@ Response object for listing cards
 | `data` | [`?(GetCardResponse[])`](../../doc/models/get-card-response.md) | Optional | The card objects | getData(): ?array | setData(?array data): void |
 | `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging object | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "last_four_digits": "last_four_digits6",
-      "brand": "brand4",
-      "holder_name": "holder_name6",
-      "exp_month": 240
-    },
-    {
-      "id": "id0",
-      "last_four_digits": "last_four_digits6",
-      "brand": "brand4",
-      "holder_name": "holder_name6",
-      "exp_month": 240
-    },
-    {
-      "id": "id0",
-      "last_four_digits": "last_four_digits6",
-      "brand": "brand4",
-      "holder_name": "holder_name6",
-      "exp_month": 240
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\ListCardsResponseBuilder;
+use PagarmeApiSDKLib\Models\Builders\GetCardResponseBuilder;
+
+$listCardsResponse = ListCardsResponseBuilder::init()
+    ->data(
+        [
+            null,
+            GetCardResponseBuilder::init()->build(),
+            GetCardResponseBuilder::init()->build()
+        ]
+    )
+    ->paging(
+        null
+    )
+    ->build();
 ```
 

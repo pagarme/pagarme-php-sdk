@@ -14,25 +14,19 @@ Checkout pix payment response
 | `expiresAt` | `?DateTime` | Optional | Expires at | getExpiresAt(): ?\DateTime | setExpiresAt(?\DateTime expiresAt): void |
 | `additionalInformation` | [`?(PixAdditionalInformation[])`](../../doc/models/pix-additional-information.md) | Optional | Additional information | getAdditionalInformation(): ?array | setAdditionalInformation(?array additionalInformation): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "expires_at": "2016-03-13T12:52:32.123Z",
-  "additional_information": [
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    },
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    },
-    {
-      "Name": "Name0",
-      "Value": "Value2"
-    }
-  ]
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetCheckoutPixPaymentResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getCheckoutPixPaymentResponse = GetCheckoutPixPaymentResponseBuilder::init()
+    ->expiresAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->additionalInformation(
+        [
+            null
+        ]
+    )
+    ->build();
 ```
 

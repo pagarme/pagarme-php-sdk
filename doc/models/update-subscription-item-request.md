@@ -19,30 +19,30 @@ Request for updating a subscription item
 | `quantity` | `?int` | Optional | Quantity | getQuantity(): ?int | setQuantity(?int quantity): void |
 | `minimumPrice` | `?int` | Optional | Minimum price | getMinimumPrice(): ?int | setMinimumPrice(?int minimumPrice): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "description": "description2",
-  "status": "status4",
-  "pricing_scheme": {
-    "scheme_type": "scheme_type8",
-    "price_brackets": [
-      {
-        "start_quantity": 144,
-        "price": 174,
-        "end_quantity": 152,
-        "overage_price": 166
-      }
-    ],
-    "price": 166,
-    "minimum_price": 6,
-    "percentage": 251.76
-  },
-  "name": "name2",
-  "cycles": 108,
-  "quantity": 128,
-  "minimum_price": 140
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateSubscriptionItemRequestBuilder;
+use PagarmeApiSDKLib\Models\Builders\UpdatePricingSchemeRequestBuilder;
+
+$updateSubscriptionItemRequest = UpdateSubscriptionItemRequestBuilder::init(
+    '',
+    '',
+    UpdatePricingSchemeRequestBuilder::init(
+        '',
+        [
+            null
+        ]
+    )
+        ->price(166)
+        ->minimumPrice(6)
+        ->percentage(251.76)
+        ->build(),
+    ''
+)
+    ->cycles(64)
+    ->quantity(44)
+    ->minimumPrice(56)
+    ->build();
 ```
 

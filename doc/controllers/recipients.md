@@ -10,364 +10,58 @@ $recipientsController = $client->getRecipientsController();
 
 ## Methods
 
-* [Update Recipient](../../doc/controllers/recipients.md#update-recipient)
-* [Get Withdraw by Id](../../doc/controllers/recipients.md#get-withdraw-by-id)
-* [Get Recipient](../../doc/controllers/recipients.md#get-recipient)
-* [Get Balance](../../doc/controllers/recipients.md#get-balance)
-* [Get Recipients](../../doc/controllers/recipients.md#get-recipients)
-* [Update Recipient Default Bank Account](../../doc/controllers/recipients.md#update-recipient-default-bank-account)
-* [Get Transfers](../../doc/controllers/recipients.md#get-transfers)
-* [Get Transfer](../../doc/controllers/recipients.md#get-transfer)
+* [Create Anticipation](../../doc/controllers/recipients.md#create-anticipation)
+* [Create KYC Link](../../doc/controllers/recipients.md#create-kyc-link)
+* [Create Recipient](../../doc/controllers/recipients.md#create-recipient)
+* [Create Transfer](../../doc/controllers/recipients.md#create-transfer)
 * [Create Withdraw](../../doc/controllers/recipients.md#create-withdraw)
 * [Get Anticipation](../../doc/controllers/recipients.md#get-anticipation)
-* [Update Recipient Transfer Settings](../../doc/controllers/recipients.md#update-recipient-transfer-settings)
-* [Get Recipient by Code](../../doc/controllers/recipients.md#get-recipient-by-code)
-* [Update Automatic Anticipation Settings](../../doc/controllers/recipients.md#update-automatic-anticipation-settings)
-* [Create Transfer](../../doc/controllers/recipients.md#create-transfer)
-* [Create Recipient](../../doc/controllers/recipients.md#create-recipient)
-* [Get Default Recipient](../../doc/controllers/recipients.md#get-default-recipient)
-* [Create Anticipation](../../doc/controllers/recipients.md#create-anticipation)
 * [Get Anticipation Limits](../../doc/controllers/recipients.md#get-anticipation-limits)
-* [Update Recipient Metadata](../../doc/controllers/recipients.md#update-recipient-metadata)
 * [Get Anticipations](../../doc/controllers/recipients.md#get-anticipations)
+* [Get Balance](../../doc/controllers/recipients.md#get-balance)
+* [Get Default Recipient](../../doc/controllers/recipients.md#get-default-recipient)
+* [Get Recipient](../../doc/controllers/recipients.md#get-recipient)
+* [Get Recipient by Code](../../doc/controllers/recipients.md#get-recipient-by-code)
+* [Get Recipients](../../doc/controllers/recipients.md#get-recipients)
+* [Get Transfer](../../doc/controllers/recipients.md#get-transfer)
+* [Get Transfers](../../doc/controllers/recipients.md#get-transfers)
+* [Get Withdraw by Id](../../doc/controllers/recipients.md#get-withdraw-by-id)
 * [Get Withdrawals](../../doc/controllers/recipients.md#get-withdrawals)
-* [Create KYC Link](../../doc/controllers/recipients.md#create-kyc-link)
+* [Update Automatic Anticipation Settings](../../doc/controllers/recipients.md#update-automatic-anticipation-settings)
+* [Update Recipient](../../doc/controllers/recipients.md#update-recipient)
 * [Update Recipient Code](../../doc/controllers/recipients.md#update-recipient-code)
+* [Update Recipient Default Bank Account](../../doc/controllers/recipients.md#update-recipient-default-bank-account)
+* [Update Recipient Metadata](../../doc/controllers/recipients.md#update-recipient-metadata)
+* [Update Recipient Transfer Settings](../../doc/controllers/recipients.md#update-recipient-transfer-settings)
 
 
-# Update Recipient
+# Create Anticipation
 
-Updates a recipient
+Creates an anticipation
 
 ```php
-function updateRecipient(
+function createAnticipation(
     string $recipientId,
-    UpdateRecipientRequest $request,
+    CreateAnticipationRequest $request,
     ?string $idempotencyKey = null
-): GetRecipientResponse
+): GetAnticipationResponse
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateRecipientRequest`](../../doc/models/update-recipient-request.md) | Body, Required | Recipient data |
+| `request` | [`CreateAnticipationRequest`](../../doc/models/create-anticipation-request.md) | Body, Required | Anticipation data |
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$request = UpdateRecipientRequestBuilder::init(
-    'name6',
-    'email0',
-    'description6',
-    'type4',
-    'status8',
-    [
-        'key0' => 'metadata3'
-    ]
-)->build();
-
-$result = $recipientsController->updateRecipient(
-    $recipientId,
-    $request
-);
-```
-
-
-# Get Withdraw by Id
-
-```php
-function getWithdrawById(string $recipientId, string $withdrawalId): GetWithdrawResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | - |
-| `withdrawalId` | `string` | Template, Required | - |
-
-## Response Type
-
-[`GetWithdrawResponse`](../../doc/models/get-withdraw-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$withdrawalId = 'withdrawal_id2';
-
-$result = $recipientsController->getWithdrawById(
-    $recipientId,
-    $withdrawalId
-);
-```
-
-
-# Get Recipient
-
-Retrieves recipient information
-
-```php
-function getRecipient(string $recipientId): GetRecipientResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipiend id |
-
-## Response Type
-
-[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$result = $recipientsController->getRecipient($recipientId);
-```
-
-
-# Get Balance
-
-Get balance information for a recipient
-
-```php
-function getBalance(string $recipientId): GetBalanceResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-
-## Response Type
-
-[`GetBalanceResponse`](../../doc/models/get-balance-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$result = $recipientsController->getBalance($recipientId);
-```
-
-
-# Get Recipients
-
-Retrieves paginated recipients information
-
-```php
-function getRecipients(?int $page = null, ?int $size = null): ListRecipientResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-
-## Response Type
-
-[`ListRecipientResponse`](../../doc/models/list-recipient-response.md)
-
-## Example Usage
-
-```php
-$result = $recipientsController->getRecipients();
-```
-
-
-# Update Recipient Default Bank Account
-
-Updates the default bank account from a recipient
-
-```php
-function updateRecipientDefaultBankAccount(
-    string $recipientId,
-    UpdateRecipientBankAccountRequest $request,
-    ?string $idempotencyKey = null
-): GetRecipientResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateRecipientBankAccountRequest`](../../doc/models/update-recipient-bank-account-request.md) | Body, Required | Bank account data |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$request = UpdateRecipientBankAccountRequestBuilder::init(
-    CreateBankAccountRequestBuilder::init(
-        'holder_name0',
-        'holder_type6',
-        'holder_document8',
-        'bank2',
-        'branch_number0',
-        'account_number4',
-        'account_check_digit0',
-        'type6',
-        [
-            'key0' => 'metadata1',
-            'key1' => 'metadata0'
-        ]
-    )->build(),
-    'bank_transfer'
-)->build();
-
-$result = $recipientsController->updateRecipientDefaultBankAccount(
-    $recipientId,
-    $request
-);
-```
-
-
-# Get Transfers
-
-Gets a paginated list of transfers for the recipient
-
-```php
-function getTransfers(
-    string $recipientId,
-    ?int $page = null,
-    ?int $size = null,
-    ?string $status = null,
-    ?\DateTime $createdSince = null,
-    ?\DateTime $createdUntil = null
-): ListTransferResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `page` | `?int` | Query, Optional | Page number |
-| `size` | `?int` | Query, Optional | Page size |
-| `status` | `?string` | Query, Optional | Filter for transfer status |
-| `createdSince` | `?DateTime` | Query, Optional | Filter for start range of transfer creation date |
-| `createdUntil` | `?DateTime` | Query, Optional | Filter for end range of transfer creation date |
-
-## Response Type
-
-[`ListTransferResponse`](../../doc/models/list-transfer-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$result = $recipientsController->getTransfers($recipientId);
-```
-
-
-# Get Transfer
-
-Gets a transfer
-
-```php
-function getTransfer(string $recipientId, string $transferId): GetTransferResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `transferId` | `string` | Template, Required | Transfer id |
-
-## Response Type
-
-[`GetTransferResponse`](../../doc/models/get-transfer-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$transferId = 'transfer_id6';
-
-$result = $recipientsController->getTransfer(
-    $recipientId,
-    $transferId
-);
-```
-
-
-# Create Withdraw
-
-```php
-function createWithdraw(string $recipientId, CreateWithdrawRequest $request): GetWithdrawResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | - |
-| `request` | [`CreateWithdrawRequest`](../../doc/models/create-withdraw-request.md) | Body, Required | - |
-
-## Response Type
-
-[`GetWithdrawResponse`](../../doc/models/get-withdraw-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$request = CreateWithdrawRequestBuilder::init(
-    242
-)->build();
-
-$result = $recipientsController->createWithdraw(
-    $recipientId,
-    $request
-);
-```
-
-
-# Get Anticipation
-
-Gets an anticipation
-
-```php
-function getAnticipation(string $recipientId, string $anticipationId): GetAnticipationResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `anticipationId` | `string` | Template, Required | Anticipation id |
-
-## Response Type
+**200**
 
 [`GetAnticipationResponse`](../../doc/models/get-anticipation-response.md)
 
@@ -376,117 +70,118 @@ function getAnticipation(string $recipientId, string $anticipationId): GetAntici
 ```php
 $recipientId = 'recipient_id0';
 
-$anticipationId = 'anticipation_id0';
-
-$result = $recipientsController->getAnticipation(
-    $recipientId,
-    $anticipationId
-);
-```
-
-
-# Update Recipient Transfer Settings
-
-```php
-function updateRecipientTransferSettings(
-    string $recipientId,
-    UpdateTransferSettingsRequest $request,
-    ?string $idempotencyKey = null
-): GetRecipientResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient Identificator |
-| `request` | [`UpdateTransferSettingsRequest`](../../doc/models/update-transfer-settings-request.md) | Body, Required | - |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$request = UpdateTransferSettingsRequestBuilder::init(
-    'transfer_enabled2',
-    'transfer_interval6',
-    'transfer_day6'
+$request = CreateAnticipationRequestBuilder::init(
+    242,
+    'timeframe8',
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
 )->build();
 
-$result = $recipientsController->updateRecipientTransferSettings(
-    $recipientId,
-    $request
-);
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->createAnticipation(
+        $recipientId,
+        $request
+    );
+    echo 'GetAnticipationResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Get Recipient by Code
+# Create KYC Link
 
-Retrieves recipient information
+Create a KYC link
 
 ```php
-function getRecipientByCode(string $code): GetRecipientResponse
+function createKYCLink(string $recipientId): CreateKYCLinkResponse
 ```
 
-## Parameters
+## Authentication
 
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `code` | `string` | Template, Required | Recipient code |
-
-## Response Type
-
-[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```php
-$code = 'code8';
-
-$result = $recipientsController->getRecipientByCode($code);
-```
-
-
-# Update Automatic Anticipation Settings
-
-Updates recipient metadata
-
-```php
-function updateAutomaticAnticipationSettings(
-    string $recipientId,
-    UpdateAutomaticAnticipationSettingsRequest $request,
-    ?string $idempotencyKey = null
-): GetRecipientResponse
-```
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateAutomaticAnticipationSettingsRequest`](../../doc/models/update-automatic-anticipation-settings-request.md) | Body, Required | Metadata |
-| `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+**200**
+
+[`CreateKYCLinkResponse`](../../doc/models/create-kyc-link-response.md)
 
 ## Example Usage
 
 ```php
 $recipientId = 'recipient_id0';
 
-$request = UpdateAutomaticAnticipationSettingsRequestBuilder::init()->build();
+$recipientsController = $client->getRecipientsController();
 
-$result = $recipientsController->updateAutomaticAnticipationSettings(
-    $recipientId,
-    $request
-);
+try {
+    $result = $recipientsController->createKYCLink($recipientId);
+    echo 'CreateKYCLinkResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Create Recipient
+
+Creates a new recipient
+
+```php
+function createRecipient(CreateRecipientRequest $request, ?string $idempotencyKey = null): GetRecipientResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `request` | [`CreateRecipientRequest`](../../doc/models/create-recipient-request.md) | Body, Required | Recipient data |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$request = CreateRecipientRequestBuilder::init(
+    null,
+    [],
+    '',
+    'bank_transfer'
+)->build();
+
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->createRecipient($request);
+    echo 'GetRecipientResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -502,6 +197,10 @@ function createTransfer(
 ): GetTransferResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -511,6 +210,8 @@ function createTransfer(
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetTransferResponse`](../../doc/models/get-transfer-response.md)
 
@@ -526,100 +227,94 @@ $request = CreateTransferRequestBuilder::init(
     ]
 )->build();
 
-$result = $recipientsController->createTransfer(
-    $recipientId,
-    $request
-);
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->createTransfer(
+        $recipientId,
+        $request
+    );
+    echo 'GetTransferResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Create Recipient
-
-Creates a new recipient
+# Create Withdraw
 
 ```php
-function createRecipient(CreateRecipientRequest $request, ?string $idempotencyKey = null): GetRecipientResponse
+function createWithdraw(string $recipientId, CreateWithdrawRequest $request): GetWithdrawResponse
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `request` | [`CreateRecipientRequest`](../../doc/models/create-recipient-request.md) | Body, Required | Recipient data |
-| `idempotencyKey` | `?string` | Header, Optional | - |
+| `recipientId` | `string` | Template, Required | - |
+| `request` | [`CreateWithdrawRequest`](../../doc/models/create-withdraw-request.md) | Body, Required | - |
 
 ## Response Type
 
-[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+**200**
+
+[`GetWithdrawResponse`](../../doc/models/get-withdraw-response.md)
 
 ## Example Usage
 
 ```php
-$request = CreateRecipientRequestBuilder::init(
-    CreateBankAccountRequestBuilder::init(
-        'holder_name4',
-        'holder_type0',
-        'holder_document2',
-        'bank6',
-        'branch_number4',
-        'account_number8',
-        'account_check_digit4',
-        'type2',
-        [
-            'key0' => 'metadata5',
-            'key1' => 'metadata4',
-            'key2' => 'metadata3'
-        ]
-    )->build(),
-    [
-        'key0' => 'metadata3'
-    ],
-    'code4',
-    'bank_transfer'
+$recipientId = 'recipient_id0';
+
+$request = CreateWithdrawRequestBuilder::init(
+    242
 )->build();
 
-$result = $recipientsController->createRecipient($request);
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->createWithdraw(
+        $recipientId,
+        $request
+    );
+    echo 'GetWithdrawResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Get Default Recipient
+# Get Anticipation
+
+Gets an anticipation
 
 ```php
-function getDefaultRecipient(): GetRecipientResponse
+function getAnticipation(string $recipientId, string $anticipationId): GetAnticipationResponse
 ```
 
-## Response Type
+## Authentication
 
-[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```php
-$result = $recipientsController->getDefaultRecipient();
-```
-
-
-# Create Anticipation
-
-Creates an anticipation
-
-```php
-function createAnticipation(
-    string $recipientId,
-    CreateAnticipationRequest $request,
-    ?string $idempotencyKey = null
-): GetAnticipationResponse
-```
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`CreateAnticipationRequest`](../../doc/models/create-anticipation-request.md) | Body, Required | Anticipation data |
-| `idempotencyKey` | `?string` | Header, Optional | - |
+| `anticipationId` | `string` | Template, Required | Anticipation id |
 
 ## Response Type
+
+**200**
 
 [`GetAnticipationResponse`](../../doc/models/get-anticipation-response.md)
 
@@ -628,16 +323,22 @@ function createAnticipation(
 ```php
 $recipientId = 'recipient_id0';
 
-$request = CreateAnticipationRequestBuilder::init(
-    242,
-    'timeframe8',
-    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
-)->build();
+$anticipationId = 'anticipation_id0';
 
-$result = $recipientsController->createAnticipation(
-    $recipientId,
-    $request
-);
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->getAnticipation(
+        $recipientId,
+        $anticipationId
+    );
+    echo 'GetAnticipationResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -653,6 +354,10 @@ function getAnticipationLimits(
 ): GetAnticipationLimitResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -662,6 +367,8 @@ function getAnticipationLimits(
 | `paymentDate` | `DateTime` | Query, Required | Anticipation payment date |
 
 ## Response Type
+
+**200**
 
 [`GetAnticipationLimitResponse`](../../doc/models/get-anticipation-limit-response.md)
 
@@ -674,53 +381,21 @@ $timeframe = 'timeframe2';
 
 $paymentDate = DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z');
 
-$result = $recipientsController->getAnticipationLimits(
-    $recipientId,
-    $timeframe,
-    $paymentDate
-);
-```
+$recipientsController = $client->getRecipientsController();
 
-
-# Update Recipient Metadata
-
-Updates recipient metadata
-
-```php
-function updateRecipientMetadata(
-    string $recipientId,
-    UpdateMetadataRequest $request,
-    ?string $idempotencyKey = null
-): GetRecipientResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `recipientId` | `string` | Template, Required | Recipient id |
-| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Metadata |
-| `idempotencyKey` | `?string` | Header, Optional | - |
-
-## Response Type
-
-[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
-
-## Example Usage
-
-```php
-$recipientId = 'recipient_id0';
-
-$request = UpdateMetadataRequestBuilder::init(
-    [
-        'key0' => 'metadata3'
-    ]
-)->build();
-
-$result = $recipientsController->updateRecipientMetadata(
-    $recipientId,
-    $request
-);
+try {
+    $result = $recipientsController->getAnticipationLimits(
+        $recipientId,
+        $timeframe,
+        $paymentDate
+    );
+    echo 'GetAnticipationLimitResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -742,6 +417,10 @@ function getAnticipations(
 ): ListAnticipationResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -758,6 +437,8 @@ function getAnticipations(
 
 ## Response Type
 
+**200**
+
 [`ListAnticipationResponse`](../../doc/models/list-anticipation-response.md)
 
 ## Example Usage
@@ -765,7 +446,372 @@ function getAnticipations(
 ```php
 $recipientId = 'recipient_id0';
 
-$result = $recipientsController->getAnticipations($recipientId);
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->getAnticipations($recipientId);
+    echo 'ListAnticipationResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Balance
+
+Get balance information for a recipient
+
+```php
+function getBalance(string $recipientId): GetBalanceResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+
+## Response Type
+
+**200**
+
+[`GetBalanceResponse`](../../doc/models/get-balance-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->getBalance($recipientId);
+    echo 'GetBalanceResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Default Recipient
+
+```php
+function getDefaultRecipient(): GetRecipientResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Response Type
+
+**200**
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->getDefaultRecipient();
+    echo 'GetRecipientResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Recipient
+
+Retrieves recipient information
+
+```php
+function getRecipient(string $recipientId): GetRecipientResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipiend id |
+
+## Response Type
+
+**200**
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->getRecipient($recipientId);
+    echo 'GetRecipientResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Recipient by Code
+
+Retrieves recipient information
+
+```php
+function getRecipientByCode(string $code): GetRecipientResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `code` | `string` | Template, Required | Recipient code |
+
+## Response Type
+
+**200**
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$code = 'code8';
+
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->getRecipientByCode($code);
+    echo 'GetRecipientResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Recipients
+
+Retrieves paginated recipients information
+
+```php
+function getRecipients(?int $page = null, ?int $size = null): ListRecipientResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+**200**
+
+[`ListRecipientResponse`](../../doc/models/list-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->getRecipients();
+    echo 'ListRecipientResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Transfer
+
+Gets a transfer
+
+```php
+function getTransfer(string $recipientId, string $transferId): GetTransferResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `transferId` | `string` | Template, Required | Transfer id |
+
+## Response Type
+
+**200**
+
+[`GetTransferResponse`](../../doc/models/get-transfer-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$transferId = 'transfer_id6';
+
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->getTransfer(
+        $recipientId,
+        $transferId
+    );
+    echo 'GetTransferResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Transfers
+
+Gets a paginated list of transfers for the recipient
+
+```php
+function getTransfers(
+    string $recipientId,
+    ?int $page = null,
+    ?int $size = null,
+    ?string $status = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListTransferResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `status` | `?string` | Query, Optional | Filter for transfer status |
+| `createdSince` | `?DateTime` | Query, Optional | Filter for start range of transfer creation date |
+| `createdUntil` | `?DateTime` | Query, Optional | Filter for end range of transfer creation date |
+
+## Response Type
+
+**200**
+
+[`ListTransferResponse`](../../doc/models/list-transfer-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->getTransfers($recipientId);
+    echo 'ListTransferResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Withdraw by Id
+
+```php
+function getWithdrawById(string $recipientId, string $withdrawalId): GetWithdrawResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | - |
+| `withdrawalId` | `string` | Template, Required | - |
+
+## Response Type
+
+**200**
+
+[`GetWithdrawResponse`](../../doc/models/get-withdraw-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$withdrawalId = 'withdrawal_id2';
+
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->getWithdrawById(
+        $recipientId,
+        $withdrawalId
+    );
+    echo 'GetWithdrawResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -784,6 +830,10 @@ function getWithdrawals(
 ): ListWithdrawals
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -797,6 +847,8 @@ function getWithdrawals(
 
 ## Response Type
 
+**200**
+
 [`ListWithdrawals`](../../doc/models/list-withdrawals.md)
 
 ## Example Usage
@@ -804,34 +856,134 @@ function getWithdrawals(
 ```php
 $recipientId = 'recipient_id0';
 
-$result = $recipientsController->getWithdrawals($recipientId);
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->getWithdrawals($recipientId);
+    echo 'ListWithdrawals:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
-# Create KYC Link
+# Update Automatic Anticipation Settings
 
-Create a KYC link
+Updates recipient metadata
 
 ```php
-function createKYCLink(string $recipientId): CreateKYCLinkResponse
+function updateAutomaticAnticipationSettings(
+    string $recipientId,
+    UpdateAutomaticAnticipationSettingsRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
 ```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateAutomaticAnticipationSettingsRequest`](../../doc/models/update-automatic-anticipation-settings-request.md) | Body, Required | Metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
 
-[`CreateKYCLinkResponse`](../../doc/models/create-kyc-link-response.md)
+**200**
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
 ## Example Usage
 
 ```php
 $recipientId = 'recipient_id0';
 
-$result = $recipientsController->createKYCLink($recipientId);
+$request = UpdateAutomaticAnticipationSettingsRequestBuilder::init()->build();
+
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->updateAutomaticAnticipationSettings(
+        $recipientId,
+        $request
+    );
+    echo 'GetRecipientResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Update Recipient
+
+Updates a recipient
+
+```php
+function updateRecipient(
+    string $recipientId,
+    UpdateRecipientRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateRecipientRequest`](../../doc/models/update-recipient-request.md) | Body, Required | Recipient data |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = UpdateRecipientRequestBuilder::init(
+    'name6',
+    'email0',
+    'description6',
+    'type4',
+    'status8',
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->updateRecipient(
+        $recipientId,
+        $request
+    );
+    echo 'GetRecipientResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 
 
@@ -847,6 +999,10 @@ function updateRecipientCode(
 ): GetRecipientResponse
 ```
 
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -856,6 +1012,8 @@ function updateRecipientCode(
 | `idempotencyKey` | `?string` | Header, Optional | - |
 
 ## Response Type
+
+**200**
 
 [`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
 
@@ -868,9 +1026,190 @@ $request = UpdateRecipientCodeRequestBuilder::init(
     'code4'
 )->build();
 
-$result = $recipientsController->updateRecipientCode(
-    $recipientId,
-    $request
-);
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->updateRecipientCode(
+        $recipientId,
+        $request
+    );
+    echo 'GetRecipientResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Update Recipient Default Bank Account
+
+Updates the default bank account from a recipient
+
+```php
+function updateRecipientDefaultBankAccount(
+    string $recipientId,
+    UpdateRecipientBankAccountRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateRecipientBankAccountRequest`](../../doc/models/update-recipient-bank-account-request.md) | Body, Required | Bank account data |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = UpdateRecipientBankAccountRequestBuilder::init(
+    null,
+    'bank_transfer'
+)->build();
+
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->updateRecipientDefaultBankAccount(
+        $recipientId,
+        $request
+    );
+    echo 'GetRecipientResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Update Recipient Metadata
+
+Updates recipient metadata
+
+```php
+function updateRecipientMetadata(
+    string $recipientId,
+    UpdateMetadataRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->updateRecipientMetadata(
+        $recipientId,
+        $request
+    );
+    echo 'GetRecipientResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Update Recipient Transfer Settings
+
+```php
+function updateRecipientTransferSettings(
+    string $recipientId,
+    UpdateTransferSettingsRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient Identificator |
+| `request` | [`UpdateTransferSettingsRequest`](../../doc/models/update-transfer-settings-request.md) | Body, Required | - |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+**200**
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = UpdateTransferSettingsRequestBuilder::init(
+    'transfer_enabled2',
+    'transfer_interval6',
+    'transfer_day6'
+)->build();
+
+$recipientsController = $client->getRecipientsController();
+
+try {
+    $result = $recipientsController->updateRecipientTransferSettings(
+        $recipientId,
+        $request
+    );
+    echo 'GetRecipientResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
 ```
 

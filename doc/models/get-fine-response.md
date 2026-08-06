@@ -15,13 +15,15 @@ Fine Response
 | `type` | `?string` | Optional | Type | getType(): ?string | setType(?string type): void |
 | `amount` | `?int` | Optional | Amount | getAmount(): ?int | setAmount(?int amount): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "\"percentage\" or \"flat\"",
-  "days": 112,
-  "amount": 186
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetFineResponseBuilder;
+
+$getFineResponse = GetFineResponseBuilder::init()
+    ->days(20)
+    ->type('"percentage" or "flat"')
+    ->amount(94)
+    ->build();
 ```
 

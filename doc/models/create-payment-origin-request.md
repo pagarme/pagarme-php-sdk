@@ -14,12 +14,14 @@ Request object for PaymentOrigin
 | `brandId` | `?string` | Optional | - | getBrandId(): ?string | setBrandId(?string brandId): void |
 | `chargeId` | `?string` | Optional | - | getChargeId(): ?string | setChargeId(?string chargeId): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "brand_id": "brand_id0",
-  "charge_id": "charge_id4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreatePaymentOriginRequestBuilder;
+
+$createPaymentOriginRequest = CreatePaymentOriginRequestBuilder::init()
+    ->brandId('brand_id8')
+    ->chargeId('charge_id2')
+    ->build();
 ```
 

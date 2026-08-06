@@ -15,13 +15,15 @@ The Split Options Request
 | `chargeProcessingFee` | `?bool` | Optional | Charge processing fee | getChargeProcessingFee(): ?bool | setChargeProcessingFee(?bool chargeProcessingFee): void |
 | `chargeRemainderFee` | `?bool` | Optional | - | getChargeRemainderFee(): ?bool | setChargeRemainderFee(?bool chargeRemainderFee): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "liable": false,
-  "charge_processing_fee": false,
-  "charge_remainder_fee": false
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateSplitOptionsRequestBuilder;
+
+$createSplitOptionsRequest = CreateSplitOptionsRequestBuilder::init()
+    ->liable(false)
+    ->chargeProcessingFee(false)
+    ->chargeRemainderFee(false)
+    ->build();
 ```
 

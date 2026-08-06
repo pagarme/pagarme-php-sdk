@@ -16,29 +16,27 @@ Checkout card payment request
 | `authentication` | [`?CreatePaymentAuthenticationRequest`](../../doc/models/create-payment-authentication-request.md) | Optional | Creates payment authentication | getAuthentication(): ?CreatePaymentAuthenticationRequest | setAuthentication(?CreatePaymentAuthenticationRequest authentication): void |
 | `capture` | `?bool` | Optional | Authorize and capture? | getCapture(): ?bool | setCapture(?bool capture): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "statement_descriptor": "statement_descriptor0",
-  "installments": [
-    {
-      "number": 164,
-      "total": 16
-    }
-  ],
-  "authentication": {
-    "type": "type2",
-    "threed_secure": {
-      "mpi": "mpi0",
-      "cavv": "cavv8",
-      "eci": "eci2",
-      "transaction_id": "transaction_id0",
-      "success_url": "success_url4",
-      "ds_transaction_id": "ds_transaction_id0"
-    }
-  },
-  "capture": false
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateCheckoutCreditCardPaymentRequestBuilder;
+use PagarmeApiSDKLib\Models\Builders\CreateCheckoutCardInstallmentOptionRequestBuilder;
+
+$createCheckoutCreditCardPaymentRequest = CreateCheckoutCreditCardPaymentRequestBuilder::init()
+    ->statementDescriptor('statement_descriptor8')
+    ->installments(
+        [
+            null,
+            CreateCheckoutCardInstallmentOptionRequestBuilder::init(
+                0,
+                0
+            )->build()
+        ]
+    )
+    ->authentication(
+        null
+    )
+    ->capture(false)
+    ->build();
 ```
 

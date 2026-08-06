@@ -13,11 +13,13 @@ Update code for a recipient
 |  --- | --- | --- | --- | --- | --- |
 | `code` | `string` | Required | Code | getCode(): string | setCode(string code): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "code6"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateRecipientCodeRequestBuilder;
+
+$updateRecipientCodeRequest = UpdateRecipientCodeRequestBuilder::init(
+    'code8'
+)->build();
 ```
 

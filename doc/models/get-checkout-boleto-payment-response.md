@@ -12,12 +12,15 @@
 | `dueAt` | `?DateTime` | Optional | Data de vencimento do boleto | getDueAt(): ?\DateTime | setDueAt(?\DateTime dueAt): void |
 | `instructions` | `?string` | Optional | Instruções do boleto | getInstructions(): ?string | setInstructions(?string instructions): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "due_at": "2016-03-13T12:52:32.123Z",
-  "instructions": "instructions8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetCheckoutBoletoPaymentResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getCheckoutBoletoPaymentResponse = GetCheckoutBoletoPaymentResponseBuilder::init()
+    ->dueAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->instructions('instructions6')
+    ->build();
 ```
 

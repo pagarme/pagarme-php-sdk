@@ -16,7 +16,6 @@ use Core\Response\Types\ErrorType;
 use Core\Utils\CoreHelper;
 use PagarmeApiSDKLib\Authentication\BasicAuthCredentialsBuilder;
 use PagarmeApiSDKLib\Authentication\BasicAuthManager;
-use PagarmeApiSDKLib\Controllers\BalanceOperationsController;
 use PagarmeApiSDKLib\Controllers\ChargesController;
 use PagarmeApiSDKLib\Controllers\CustomersController;
 use PagarmeApiSDKLib\Controllers\InvoicesController;
@@ -58,8 +57,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
 
     private $payables;
 
-    private $balanceOperations;
-
     private $basicAuthManager;
 
     private $proxyConfiguration;
@@ -85,7 +82,7 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
             ->apiCallback($this->config['httpCallback'] ?? null)
-            ->userAgent('PagarmeApiSDK - PHP 6.8.17')
+            ->userAgent('PagarmeApiSDK - PHP 7.0.1')
             ->globalConfig($this->getGlobalConfiguration())
             ->globalErrors($this->getGlobalErrors())
             ->serverUrls(self::ENVIRONMENT_MAP[$this->getEnvironment()], Server::DEFAULT_)
@@ -359,17 +356,6 @@ class PagarmeApiSDKClient implements ConfigurationInterface
             $this->payables = new PayablesController($this->client);
         }
         return $this->payables;
-    }
-
-    /**
-     * Returns Balance Operations Controller
-     */
-    public function getBalanceOperationsController(): BalanceOperationsController
-    {
-        if ($this->balanceOperations == null) {
-            $this->balanceOperations = new BalanceOperationsController($this->client);
-        }
-        return $this->balanceOperations;
     }
 
     /**

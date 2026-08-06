@@ -12,31 +12,22 @@
 | `data` | [`?(GetDiscountResponse[])`](../../doc/models/get-discount-response.md) | Optional | The Discounts response | getData(): ?array | setData(?array data): void |
 | `paging` | [`?PagingResponse`](../../doc/models/paging-response.md) | Optional | Paging object | getPaging(): ?PagingResponse | setPaging(?PagingResponse paging): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "data": [
-    {
-      "id": "id0",
-      "value": 95.62,
-      "discount_type": "discount_type8",
-      "status": "status2",
-      "created_at": "2016-03-13T12:52:32.123Z"
-    },
-    {
-      "id": "id0",
-      "value": 95.62,
-      "discount_type": "discount_type8",
-      "status": "status2",
-      "created_at": "2016-03-13T12:52:32.123Z"
-    }
-  ],
-  "paging": {
-    "total": 6,
-    "previous": "previous2",
-    "next": "next8"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\ListDiscountsResponseBuilder;
+use PagarmeApiSDKLib\Models\Builders\GetDiscountResponseBuilder;
+
+$listDiscountsResponse = ListDiscountsResponseBuilder::init()
+    ->data(
+        [
+            null,
+            GetDiscountResponseBuilder::init()->build()
+        ]
+    )
+    ->paging(
+        null
+    )
+    ->build();
 ```
 

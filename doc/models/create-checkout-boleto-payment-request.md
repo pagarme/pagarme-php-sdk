@@ -13,13 +13,16 @@
 | `instructions` | `string` | Required | Instructions | getInstructions(): string | setInstructions(string instructions): void |
 | `dueAt` | `DateTime` | Required | Due date | getDueAt(): \DateTime | setDueAt(\DateTime dueAt): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bank": "bank4",
-  "instructions": "instructions4",
-  "due_at": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateCheckoutBoletoPaymentRequestBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$createCheckoutBoletoPaymentRequest = CreateCheckoutBoletoPaymentRequestBuilder::init(
+    'bank6',
+    'instructions6',
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
 ```
 

@@ -33,15 +33,17 @@ Response object for getting an Order
 | `device` | [`?GetDeviceResponse`](../../doc/models/get-device-response.md) | Optional | Device's informations | getDevice(): ?GetDeviceResponse | setDevice(?GetDeviceResponse device): void |
 | `integration` | [`?GetIntegrationResponse`](../../doc/models/get-integration-response.md) | Optional | - | getIntegration(): ?GetIntegrationResponse | setIntegration(?GetIntegrationResponse integration): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "code": "code4",
-  "amount": 64,
-  "currency": "currency6",
-  "closed": false
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetOrderResponseBuilder;
+
+$getOrderResponse = GetOrderResponseBuilder::init()
+    ->id('id4')
+    ->code('code2')
+    ->amount(212)
+    ->currency('currency4')
+    ->closed(false)
+    ->build();
 ```
 

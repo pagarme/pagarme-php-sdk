@@ -28,16 +28,18 @@ Card data
 | `id` | `?string` | Optional | Identifier | getId(): ?string | setId(?string id): void |
 | `token` | `?string` | Optional | token identifier | getToken(): ?string | setToken(?string token): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "type": "credit",
-  "number": "number0",
-  "holder_name": "holder_name8",
-  "exp_month": 92,
-  "exp_year": 204,
-  "cvv": "cvv0"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateCardRequestBuilder;
+
+$createCardRequest = CreateCardRequestBuilder::init()
+    ->number('number6')
+    ->holderName('holder_name4')
+    ->expMonth(22)
+    ->expYear(62)
+    ->cvv('cvv6')
+    ->type('credit')
+    ->build();
 ```
 

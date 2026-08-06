@@ -20,19 +20,21 @@ Generic response object for getting a MovementObjectBase.
 | `chargeId` | `?string` | Optional | - | getChargeId(): ?string | setChargeId(?string chargeId): void |
 | `gatewayId` | `?string` | Optional | - | getGatewayId(): ?string | setGatewayId(?string gatewayId): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "status": "status4",
-  "amount": "amount4",
-  "created_at": "created_at0",
-  "product": "product2",
-  "brand": "brand6",
-  "payment_date": "payment_date4",
-  "recipient_id": "recipient_id2",
-  "document_type": "document_type0"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetMovementObjectSettlementResponseBuilder;
+
+$getMovementObjectBaseResponse = GetMovementObjectSettlementResponseBuilder::init()
+    ->id('id2')
+    ->status('status4')
+    ->amount('amount4')
+    ->createdAt('created_at0')
+    ->product('product2')
+    ->brand('brand6')
+    ->paymentDate('payment_date4')
+    ->recipientId('recipient_id2')
+    ->documentType('document_type0')
+    ->build();
 ```
 

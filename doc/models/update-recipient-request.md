@@ -18,19 +18,21 @@ Request for updating a Recipient
 | `status` | `string` | Required | Status | getStatus(): string | setStatus(string status): void |
 | `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "email": "email6",
-  "description": "description0",
-  "type": "type0",
-  "status": "status8",
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\UpdateRecipientRequestBuilder;
+
+$updateRecipientRequest = UpdateRecipientRequestBuilder::init(
+    'name4',
+    'email2',
+    'description4',
+    'type4',
+    'status6',
+    [
+        'key0' => 'metadata1',
+        'key1' => 'metadata0'
+    ]
+)->build();
 ```
 

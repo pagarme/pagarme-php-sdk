@@ -15,15 +15,17 @@
 | `serialNumber` | `string` | Required | serial number | getSerialNumber(): string | setSerialNumber(string serialNumber): void |
 | `versionNumber` | `string` | Required | version number | getVersionNumber(): string | setVersionNumber(string versionNumber): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "system_name": "system_name0",
-  "model": "model8",
-  "provider": "provider2",
-  "serial_number": "serial_number4",
-  "version_number": "version_number0"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateCardPaymentContactlessPOIRequestBuilder;
+
+$createCardPaymentContactlessPOIRequest = CreateCardPaymentContactlessPOIRequestBuilder::init(
+    'system_name4',
+    'model2',
+    'provider4',
+    'serial_number8',
+    'version_number4'
+)->build();
 ```
 

@@ -12,12 +12,14 @@
 | `sourceId` | `?string` | Optional | - | getSourceId(): ?string | setSourceId(?string sourceId): void |
 | `type` | `?string` | Optional | - | getType(): ?string | setType(?string type): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "source_id": "source_id2",
-  "type": "type8"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetWithdrawSourceResponseBuilder;
+
+$getWithdrawSourceResponse = GetWithdrawSourceResponseBuilder::init()
+    ->sourceId('source_id6')
+    ->type('type8')
+    ->build();
 ```
 

@@ -21,6 +21,9 @@ The following parameters are configurable for the API Client:
 The API client can be initialized as follows:
 
 ```php
+use PagarmeApiSDKLib\Authentication\BasicAuthCredentialsBuilder;
+use PagarmeApiSDKLib\PagarmeApiSDKClientBuilder;
+
 $client = PagarmeApiSDKClientBuilder::init()
     ->basicAuthCredentials(
         BasicAuthCredentialsBuilder::init(
@@ -51,5 +54,4 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 | getTransactionsController() | Gets TransactionsController |
 | getTransfersController() | Gets TransfersController |
 | getPayablesController() | Gets PayablesController |
-| getBalanceOperationsController() | Gets BalanceOperationsController |
 

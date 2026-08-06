@@ -22,15 +22,18 @@ Response object for getting a increment
 | `subscription` | [`?GetSubscriptionResponse`](../../doc/models/get-subscription-response.md) | Optional | - | getSubscription(): ?GetSubscriptionResponse | setSubscription(?GetSubscriptionResponse subscription): void |
 | `subscriptionItem` | [`?GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md) | Optional | The Subscription Item | getSubscriptionItem(): ?GetSubscriptionItemResponse | setSubscriptionItem(?GetSubscriptionItemResponse subscriptionItem): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "value": 167.72,
-  "increment_type": "increment_type2",
-  "status": "status2",
-  "created_at": "2016-03-13T12:52:32.123Z"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetIncrementResponseBuilder;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
+
+$getIncrementResponse = GetIncrementResponseBuilder::init()
+    ->id('id4')
+    ->value(191.36)
+    ->incrementType('increment_type6')
+    ->status('status6')
+    ->createdAt(DateTimeHelper::fromRfc3339DateTime('2016-03-13T12:52:32.123Z'))
+    ->build();
 ```
 

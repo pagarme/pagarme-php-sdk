@@ -14,16 +14,17 @@ Request for creating a transfer
 | `amount` | `int` | Required | Transfer amount | getAmount(): int | setAmount(int amount): void |
 | `metadata` | `array<string,string>` | Required | Metadata | getMetadata(): array | setMetadata(array metadata): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": 148,
-  "metadata": {
-    "key0": "metadata7",
-    "key1": "metadata8",
-    "key2": "metadata9"
-  }
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateTransferRequestBuilder;
+
+$createTransferRequest = CreateTransferRequestBuilder::init(
+    192,
+    [
+        'key0' => 'metadata3',
+        'key1' => 'metadata2'
+    ]
+)->build();
 ```
 

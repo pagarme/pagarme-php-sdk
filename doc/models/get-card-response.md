@@ -29,15 +29,17 @@ Response object for getting a credit card
 | `firstSixDigits` | `?string` | Optional | First six digits | getFirstSixDigits(): ?string | setFirstSixDigits(?string firstSixDigits): void |
 | `label` | `?string` | Optional | - | getLabel(): ?string | setLabel(?string label): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id4",
-  "last_four_digits": "last_four_digits0",
-  "brand": "brand8",
-  "holder_name": "holder_name0",
-  "exp_month": 52
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetCardResponseBuilder;
+
+$getCardResponse = GetCardResponseBuilder::init()
+    ->id('id6')
+    ->lastFourDigits('last_four_digits2')
+    ->brand('brand0')
+    ->holderName('holder_name2')
+    ->expMonth(2)
+    ->build();
 ```
 

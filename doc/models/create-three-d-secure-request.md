@@ -19,16 +19,19 @@ Creates a 3D-S authentication payment
 | `dsTransactionId` | `?string` | Optional | Directory Service Transaction Identifier | getDsTransactionId(): ?string | setDsTransactionId(?string dsTransactionId): void |
 | `version` | `?string` | Optional | ThreeDSecure Version | getVersion(): ?string | setVersion(?string version): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "mpi": "mpi4",
-  "cavv": "cavv2",
-  "eci": "eci6",
-  "transaction_id": "transaction_id4",
-  "success_url": "success_url8",
-  "ds_transaction_id": "ds_transaction_id4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateThreeDSecureRequestBuilder;
+
+$createThreeDSecureRequest = CreateThreeDSecureRequestBuilder::init(
+    'mpi2'
+)
+    ->cavv('cavv0')
+    ->eci('eci4')
+    ->transactionId('transaction_id2')
+    ->successUrl('success_url6')
+    ->dsTransactionId('ds_transaction_id2')
+    ->build();
 ```
 

@@ -13,13 +13,15 @@
 | `transferInterval` | `?string` | Optional | - | getTransferInterval(): ?string | setTransferInterval(?string transferInterval): void |
 | `transferDay` | `?int` | Optional | - | getTransferDay(): ?int | setTransferDay(?int transferDay): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "transfer_enabled": false,
-  "transfer_interval": "transfer_interval0",
-  "transfer_day": 52
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetTransferSettingsResponseBuilder;
+
+$getTransferSettingsResponse = GetTransferSettingsResponseBuilder::init()
+    ->transferEnabled(false)
+    ->transferInterval('transfer_interval4')
+    ->transferDay(156)
+    ->build();
 ```
 

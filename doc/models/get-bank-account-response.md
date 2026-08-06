@@ -26,15 +26,17 @@
 | `metadata` | `?array<string,string>` | Optional | Metadata | getMetadata(): ?array | setMetadata(?array metadata): void |
 | `pixKey` | `?string` | Optional | Pix Key | getPixKey(): ?string | setPixKey(?string pixKey): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "holder_name": "holder_name2",
-  "holder_type": "holder_type8",
-  "bank": "bank4",
-  "branch_number": "branch_number2"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\GetBankAccountResponseBuilder;
+
+$getBankAccountResponse = GetBankAccountResponseBuilder::init()
+    ->id('id4')
+    ->holderName('holder_name0')
+    ->holderType('holder_type6')
+    ->bank('bank2')
+    ->branchNumber('branch_number0')
+    ->build();
 ```
 

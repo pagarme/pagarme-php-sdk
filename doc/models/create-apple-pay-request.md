@@ -17,19 +17,17 @@ The ApplePay Token Payment Request
 | `signature` | `string` | Required | Detached PKCS #7 signature, Base64 encoded as string | getSignature(): string | setSignature(string signature): void |
 | `merchantIdentifier` | `string` | Required | ApplePay Merchant identifier | getMerchantIdentifier(): string | setMerchantIdentifier(string merchantIdentifier): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "version": "version6",
-  "data": "data0",
-  "header": {
-    "public_key_hash": "public_key_hash4",
-    "ephemeral_public_key": "ephemeral_public_key6",
-    "transaction_id": "transaction_id4"
-  },
-  "signature": "signature8",
-  "merchant_identifier": "merchant_identifier4"
-}
+```php
+use PagarmeApiSDKLib\Models\Builders\CreateApplePayRequestBuilder;
+
+$createApplePayRequest = CreateApplePayRequestBuilder::init(
+    'version2',
+    'data6',
+    null,
+    'signature4',
+    'merchant_identifier0'
+)->build();
 ```
 
