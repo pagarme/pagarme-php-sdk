@@ -1,0 +1,64 @@
+name: Build and Sonar
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check_php7_sintax:
+    name: Check Sintaxe PHP v-7.1
+    runs-on: ubuntu-latest
+    container:
+      image: php:7.1-apache
+    steps:
+    - 
+      name: Checkout
+      uses: actions/checkout@v3
+    -
+      name: install system packages
+      run: apt-get update && apt-get -y install zip git zlib1g-dev wget
+    -
+      name: Install PHP extensions
+      run: |
+        docker-php-ext-install pdo
+        docker-php-ext-install zip
+    -
+      name: Display PHP Information
+      run: php -v
+    -
+      name: Check PHP sintax
+      run: php -l $(find . -name "*.php")
+
+  check_php8_sintax:
+    name: Check Sintaxe PHP v-8.5
+    runs-on: ubuntu-latest
+    container:
+      image: php:8.5-apache
+    steps:
+    - 
+      name: Checkout
+      uses: actions/checkout@v3  
+    -
+      name: install system packages
+      run: apt-get update && apt-get -y install libzip-dev
+    -
+      name: Install PHP extensions
+      run: |
+        docker-php-ext-install zip
+        docker-php-ext-install pdo
+    -
+      name: Display PHP Information
+      run: php -v
+    -
+      name: Check PHP sintax
+      run: php -l $(find . -name "*.php")
