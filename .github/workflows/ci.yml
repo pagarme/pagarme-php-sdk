@@ -1,4 +1,4 @@
-name: Build and Sonar
+name: Lint PHP Syntax
 
 on:
   push:
@@ -15,15 +15,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check_php7_sintax:
-    name: Check Sintaxe PHP v-7.1
-    runs-on: ubuntu-latest
+  check_php7_syntax:
+    name: Check Syntax PHP v-7.1
+    runs-on: small-runner
     container:
       image: php:7.1-apache
     steps:
     - 
       name: Checkout
-      uses: actions/checkout@v3
+      uses: stone-payments/approved-actions/actions/checkout/v4@stable
     -
       name: install system packages
       run: apt-get update && apt-get -y install zip git zlib1g-dev wget
@@ -36,18 +36,18 @@ jobs:
       name: Display PHP Information
       run: php -v
     -
-      name: Check PHP sintax
+      name: Check PHP syntax
       run: php -l $(find . -name "*.php")
 
-  check_php8_sintax:
-    name: Check Sintaxe PHP v-8.5
-    runs-on: ubuntu-latest
+  check_php8_syntax:
+    name: Check Syntax PHP v-8.5
+    runs-on: small-runner
     container:
       image: php:8.5-apache
     steps:
     - 
       name: Checkout
-      uses: actions/checkout@v3  
+      uses: stone-payments/approved-actions/actions/checkout/v4@stable
     -
       name: install system packages
       run: apt-get update && apt-get -y install libzip-dev
@@ -60,5 +60,5 @@ jobs:
       name: Display PHP Information
       run: php -v
     -
-      name: Check PHP sintax
+      name: Check PHP syntax
       run: php -l $(find . -name "*.php")
