@@ -154,6 +154,15 @@ class CreateCreditCardPaymentRequestBuilder
     }
 
     /**
+     * Unsets merchant category code field.
+     */
+    public function unsetMerchantCategoryCode(): self
+    {
+        $this->instance->unsetMerchantCategoryCode();
+        return $this;
+    }
+
+    /**
      * Sets authentication field.
      *
      * @param CreatePaymentAuthenticationRequest|null $value

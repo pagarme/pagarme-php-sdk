@@ -56,7 +56,6 @@ $getPayableResponse = GetPayableResponseBuilder::init(
     ->chargeId('ch_123')
     ->splitId(null)
     ->bulkAnticipationId(null)
-    ->anticipationId('anticipation_id6')
     ->recipientId('re_abcde123fghijk789')
     ->originatorModel('ownership_assignment')
     ->originatorModelId(null)

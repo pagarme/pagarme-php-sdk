@@ -64,9 +64,9 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
     private $extendedLimitCode;
 
     /**
-     * @var int|null
+     * @var array
      */
-    private $merchantCategoryCode;
+    private $merchantCategoryCode = [];
 
     /**
      * @var CreatePaymentAuthenticationRequest|null
@@ -302,7 +302,10 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
      */
     public function getMerchantCategoryCode(): ?int
     {
-        return $this->merchantCategoryCode;
+        if (count($this->merchantCategoryCode) == 0) {
+            return null;
+        }
+        return $this->merchantCategoryCode['value'];
     }
 
     /**
@@ -313,7 +316,16 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
      */
     public function setMerchantCategoryCode(?int $merchantCategoryCode): void
     {
-        $this->merchantCategoryCode = $merchantCategoryCode;
+        $this->merchantCategoryCode['value'] = $merchantCategoryCode;
+    }
+
+    /**
+     * Unsets Merchant Category Code.
+     * Customer business segment code
+     */
+    public function unsetMerchantCategoryCode(): void
+    {
+        $this->merchantCategoryCode = [];
     }
 
     /**
@@ -527,7 +539,7 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
                 'capture' => $this->capture,
                 'extendedLimitEnabled' => $this->extendedLimitEnabled,
                 'extendedLimitCode' => $this->extendedLimitCode,
-                'merchantCategoryCode' => $this->merchantCategoryCode,
+                'merchantCategoryCode' => $this->getMerchantCategoryCode(),
                 'authentication' => $this->authentication,
                 'contactless' => $this->contactless,
                 'autoRecovery' => $this->autoRecovery,
@@ -581,8 +593,8 @@ class CreateCreditCardPaymentRequest implements \JsonSerializable
         if (isset($this->extendedLimitCode)) {
             $json['extended_limit_code']    = $this->extendedLimitCode;
         }
-        if (isset($this->merchantCategoryCode)) {
-            $json['merchant_category_code'] = $this->merchantCategoryCode;
+        if (!empty($this->merchantCategoryCode)) {
+            $json['merchant_category_code'] = $this->merchantCategoryCode['value'];
         }
         if (isset($this->authentication)) {
             $json['authentication']         = $this->authentication;
