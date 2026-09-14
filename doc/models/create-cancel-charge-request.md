@@ -16,6 +16,7 @@ Request for canceling a charge.
 | `split` | [`?(CreateSplitRequest[])`](../../doc/models/create-split-request.md) | Optional | Splits | getSplit(): ?array | setSplit(?array split): void |
 | `operationReference` | `string` | Required | - | getOperationReference(): string | setOperationReference(string operationReference): void |
 | `bankAccount` | [`?CreateBankAccountRefundingDTO`](../../doc/models/create-bank-account-refunding-dto.md) | Optional | - | getBankAccount(): ?CreateBankAccountRefundingDTO | setBankAccount(?CreateBankAccountRefundingDTO bankAccount): void |
+| `reason` | `?string` | Optional | Cancellation reason | getReason(): ?string | setReason(?string reason): void |
 
 ## Example
 
@@ -61,6 +62,7 @@ $createCancelChargeRequest = CreateCancelChargeRequestBuilder::init(
     ->bankAccount(
         null
     )
+    ->reason('reason4')
     ->build();
 ```
 

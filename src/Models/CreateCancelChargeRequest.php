@@ -44,6 +44,11 @@ class CreateCancelChargeRequest implements \JsonSerializable
     private $bankAccount;
 
     /**
+     * @var string|null
+     */
+    private $reason;
+
+    /**
      * @param string $operationReference
      */
     public function __construct(string $operationReference)
@@ -157,6 +162,26 @@ class CreateCancelChargeRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Reason.
+     * Cancellation reason
+     */
+    public function getReason(): ?string
+    {
+        return $this->reason;
+    }
+
+    /**
+     * Sets Reason.
+     * Cancellation reason
+     *
+     * @maps reason
+     */
+    public function setReason(?string $reason): void
+    {
+        $this->reason = $reason;
+    }
+
+    /**
      * Converts the CreateCancelChargeRequest object to a human-readable string representation.
      *
      * @return string The string representation of the CreateCancelChargeRequest object.
@@ -170,7 +195,8 @@ class CreateCancelChargeRequest implements \JsonSerializable
                 'splitRules' => $this->splitRules,
                 'split' => $this->split,
                 'operationReference' => $this->operationReference,
-                'bankAccount' => $this->bankAccount
+                'bankAccount' => $this->bankAccount,
+                'reason' => $this->reason
             ]
         );
     }
@@ -199,6 +225,9 @@ class CreateCancelChargeRequest implements \JsonSerializable
         $json['operation_reference'] = $this->operationReference;
         if (isset($this->bankAccount)) {
             $json['bank_account']    = $this->bankAccount;
+        }
+        if (isset($this->reason)) {
+            $json['reason']          = $this->reason;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

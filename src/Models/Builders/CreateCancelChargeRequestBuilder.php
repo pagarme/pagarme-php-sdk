@@ -88,6 +88,17 @@ class CreateCancelChargeRequestBuilder
     }
 
     /**
+     * Sets reason field.
+     *
+     * @param string|null $value
+     */
+    public function reason(?string $value): self
+    {
+        $this->instance->setReason($value);
+        return $this;
+    }
+
+    /**
      * Initializes a new Create Cancel Charge Request object.
      */
     public function build(): CreateCancelChargeRequest

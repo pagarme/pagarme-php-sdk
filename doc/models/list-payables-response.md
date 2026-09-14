@@ -43,7 +43,6 @@ $listPayablesResponse = ListPayablesResponseBuilder::init(
                 ->chargeId('ch_123')
                 ->splitId(null)
                 ->bulkAnticipationId(null)
-                ->anticipationId('anticipation_id0')
                 ->recipientId('re_cixm61j7e00doin6de8ocgttb')
                 ->originatorModel('ownership_assignment')
                 ->originatorModelId(null)
