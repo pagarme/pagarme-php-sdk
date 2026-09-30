@@ -12,12 +12,15 @@ namespace PagarmeApiSDKLib\Controllers;
 
 use Core\Request\Parameters\BodyParam;
 use Core\Request\Parameters\HeaderParam;
+use Core\Request\Parameters\QueryParam;
 use Core\Request\Parameters\TemplateParam;
 use CoreInterfaces\Core\Request\RequestMethod;
 use PagarmeApiSDKLib\Exceptions\ApiException;
 use PagarmeApiSDKLib\Models\CreatePaymentLinkRequest;
 use PagarmeApiSDKLib\Models\GetPaymentLinkResponse;
+use PagarmeApiSDKLib\Models\ListPaymentLinksResponse;
 use PagarmeApiSDKLib\Server;
+use PagarmeApiSDKLib\Utils\DateTimeHelper;
 
 class PaymentLinksController extends BaseController
 {
@@ -64,5 +67,95 @@ class PaymentLinksController extends BaseController
         $_resHandler = $this->responseHandler()->type(GetPaymentLinkResponse::class);
 
         return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Lists payment links
+     *
+     * @param string|null $name Filter for payment link's name
+     * @param string|null $status Filter for payment link's status (building, active, cancelled or
+     *        expired)
+     * @param \DateTime|null $createdSince Filter for the beginning of the range for payment link's
+     *        creation
+     * @param \DateTime|null $createdUntil Filter for the end of the range for payment link's
+     *        creation
+     * @param int|null $page Page number
+     * @param int|null $perPage Page size (max 30)
+     *
+     * @return ListPaymentLinksResponse Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function getPaymentLinks(
+        ?string $name = null,
+        ?string $status = null,
+        ?\DateTime $createdSince = null,
+        ?\DateTime $createdUntil = null,
+        ?int $page = null,
+        ?int $perPage = null
+    ): ListPaymentLinksResponse {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/paymentlinks')
+            ->server(Server::PAYMENT_LINKS)
+            ->auth('httpBasic')
+            ->parameters(
+                QueryParam::init('name', $name),
+                QueryParam::init('status', $status),
+                QueryParam::init('created_since', $createdSince)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('created_until', $createdUntil)
+                    ->serializeBy([DateTimeHelper::class, 'toRfc3339DateTime']),
+                QueryParam::init('page', $page),
+                QueryParam::init('per_page', $perPage)
+            );
+
+        $_resHandler = $this->responseHandler()->type(ListPaymentLinksResponse::class);
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Activates a payment link created with is_building = true
+     *
+     * @param string $paymentLinkId Payment link id
+     * @param string|null $idempotencyKey
+     *
+     * @return void Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function activatePaymentLink(string $paymentLinkId, ?string $idempotencyKey = null): void
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/paymentlinks/{payment_link_id}/activate')
+            ->server(Server::PAYMENT_LINKS)
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('payment_link_id', $paymentLinkId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $this->execute($_reqBuilder);
+    }
+
+    /**
+     * Cancels an active payment link
+     *
+     * @param string $paymentLinkId Payment link id
+     * @param string|null $idempotencyKey
+     *
+     * @return void Response from the API call
+     *
+     * @throws ApiException Thrown if API call fails
+     */
+    public function cancelPaymentLink(string $paymentLinkId, ?string $idempotencyKey = null): void
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/paymentlinks/{payment_link_id}/cancel')
+            ->server(Server::PAYMENT_LINKS)
+            ->auth('httpBasic')
+            ->parameters(
+                TemplateParam::init('payment_link_id', $paymentLinkId),
+                HeaderParam::init('idempotency-key', $idempotencyKey)
+            );
+
+        $this->execute($_reqBuilder);
     }
 }

@@ -14,6 +14,9 @@ Payment Links are served from a different host for test accounts. When using a `
 
 * [Create Payment Link](../../doc/controllers/payment-links.md#create-payment-link)
 * [Get Payment Link](../../doc/controllers/payment-links.md#get-payment-link)
+* [Get Payment Links](../../doc/controllers/payment-links.md#get-payment-links)
+* [Activate Payment Link](../../doc/controllers/payment-links.md#activate-payment-link)
+* [Cancel Payment Link](../../doc/controllers/payment-links.md#cancel-payment-link)
 
 
 # Create Payment Link
@@ -137,6 +140,139 @@ try {
     $result = $paymentLinksController->getPaymentLink($paymentLinkId);
     echo 'GetPaymentLinkResponse:';
     var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Get Payment Links
+
+Lists payment links
+
+```php
+function getPaymentLinks(
+    ?string $name = null,
+    ?string $status = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null,
+    ?int $page = null,
+    ?int $perPage = null
+): ListPaymentLinksResponse
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `name` | `?string` | Query, Optional | Filter for payment link's name |
+| `status` | `?string` | Query, Optional | Filter for payment link's status (building, active, cancelled or expired) |
+| `createdSince` | `?DateTime` | Query, Optional | Filter for the beginning of the range for payment link's creation |
+| `createdUntil` | `?DateTime` | Query, Optional | Filter for the end of the range for payment link's creation |
+| `page` | `?int` | Query, Optional | Page number |
+| `perPage` | `?int` | Query, Optional | Page size (max 30) |
+
+## Response Type
+
+**200**
+
+[`ListPaymentLinksResponse`](../../doc/models/list-payment-links-response.md)
+
+## Example Usage
+
+```php
+$paymentLinksController = $client->getPaymentLinksController();
+
+try {
+    $result = $paymentLinksController->getPaymentLinks();
+    echo 'ListPaymentLinksResponse:';
+    var_dump($result);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Activate Payment Link
+
+Activates a payment link created with is_building = true
+
+```php
+function activatePaymentLink(string $paymentLinkId, ?string $idempotencyKey = null): void
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `paymentLinkId` | `string` | Template, Required | Payment link id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+`void`
+
+## Example Usage
+
+```php
+$paymentLinkId = 'payment_link_id6';
+
+$paymentLinksController = $client->getPaymentLinksController();
+
+try {
+    $paymentLinksController->activatePaymentLink($paymentLinkId);
+} catch (ErrorException $exp) {
+    echo 'Caught ErrorException:', $exp;
+} catch (ApiException $exp) {
+    echo 'Caught:', $exp;
+}
+```
+
+
+# Cancel Payment Link
+
+Cancels an active payment link
+
+```php
+function cancelPaymentLink(string $paymentLinkId, ?string $idempotencyKey = null): void
+```
+
+## Authentication
+
+This endpoint requires [httpBasic](../../doc/auth/basic-authentication.md)
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `paymentLinkId` | `string` | Template, Required | Payment link id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+`void`
+
+## Example Usage
+
+```php
+$paymentLinkId = 'payment_link_id6';
+
+$paymentLinksController = $client->getPaymentLinksController();
+
+try {
+    $paymentLinksController->cancelPaymentLink($paymentLinkId);
 } catch (ErrorException $exp) {
     echo 'Caught ErrorException:', $exp;
 } catch (ApiException $exp) {
