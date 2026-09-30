@@ -5,6 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
+| environment | `Environment` | The API environment. <br> **Default: `Environment::PRODUCTION`** |
 | serviceRefererName | `string` |  |
 | timeout | `int` | Timeout for API calls in seconds.<br>*Default*: `0` |
 | enableRetries | `bool` | Whether to enable retries and backoff feature.<br>*Default*: `false` |
@@ -54,4 +55,5 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 | getTransactionsController() | Gets TransactionsController |
 | getTransfersController() | Gets TransfersController |
 | getPayablesController() | Gets PayablesController |
+| getPaymentLinksController() | Gets PaymentLinksController |
 

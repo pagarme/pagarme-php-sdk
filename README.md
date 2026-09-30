@@ -161,6 +161,7 @@ Here is the list of errors that the API might throw.
 * [Invoices](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.2/doc/controllers/invoices.md)
 * [Orders](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.2/doc/controllers/orders.md)
 * [Payables](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.2/doc/controllers/payables.md)
+* [Payment Links](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.2/doc/controllers/payment-links.md)
 * [Plans](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.2/doc/controllers/plans.md)
 * [Recipients](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.2/doc/controllers/recipients.md)
 * [Subscriptions](https://www.github.com/pagarme/pagarme-php-sdk/tree/7.0.2/doc/controllers/subscriptions.md)
