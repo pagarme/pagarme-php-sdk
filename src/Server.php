@@ -16,4 +16,6 @@ namespace PagarmeApiSDKLib;
 class Server
 {
     public const DEFAULT_ = 'default';
+
+    public const PAYMENT_LINKS = 'payment links';
 }

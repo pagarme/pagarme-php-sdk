@@ -21,6 +21,7 @@ use PagarmeApiSDKLib\Controllers\CustomersController;
 use PagarmeApiSDKLib\Controllers\InvoicesController;
 use PagarmeApiSDKLib\Controllers\OrdersController;
 use PagarmeApiSDKLib\Controllers\PayablesController;
+use PagarmeApiSDKLib\Controllers\PaymentLinksController;
 use PagarmeApiSDKLib\Controllers\PlansController;
 use PagarmeApiSDKLib\Controllers\RecipientsController;
 use PagarmeApiSDKLib\Controllers\SubscriptionsController;
@@ -56,6 +57,8 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     private $transfers;
 
     private $payables;
+
+    private $paymentLinks;
 
     private $basicAuthManager;
 
@@ -359,6 +362,17 @@ class PagarmeApiSDKClient implements ConfigurationInterface
     }
 
     /**
+     * Returns Payment Links Controller
+     */
+    public function getPaymentLinksController(): PaymentLinksController
+    {
+        if ($this->paymentLinks == null) {
+            $this->paymentLinks = new PaymentLinksController($this->client);
+        }
+        return $this->paymentLinks;
+    }
+
+    /**
      * Get the defined global configurations
      */
     private function getGlobalConfiguration(): array
@@ -386,5 +400,14 @@ class PagarmeApiSDKClient implements ConfigurationInterface
      *
      * @var array
      */
-    private const ENVIRONMENT_MAP = [Environment::PRODUCTION => [Server::DEFAULT_ => 'https://api.pagar.me/core/v5']];
+    private const ENVIRONMENT_MAP = [
+        Environment::PRODUCTION => [
+            Server::DEFAULT_ => 'https://api.pagar.me/core/v5',
+            Server::PAYMENT_LINKS => 'https://api.pagar.me/core/v5'
+        ],
+        Environment::SANDBOX => [
+            Server::DEFAULT_ => 'https://api.pagar.me/core/v5',
+            Server::PAYMENT_LINKS => 'https://sdx-api.pagar.me/core/v5'
+        ]
+    ];
 }
